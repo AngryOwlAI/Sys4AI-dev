@@ -10,7 +10,7 @@
 
 ## 1. Executive summary
 
-`sys-for-ai` is a domain-agnostic system development and management framework for AI agents. It enables a capable AI agent, such as Codex or another root agent, to design, develop, run, improve, and maintain agentic systems for specific use cases across domains such as software engineering, AI, machine learning, physics, mathematics, finance, biology, and other fields.
+`sys-for-ai` is a domain-agnostic system development and management framework for AI agents. It enables a capable AI agent, such as Codex or another AI-harnessed agent, to design, develop, run, improve, and maintain agentic systems for specific use cases across domains such as software engineering, AI, machine learning, physics, mathematics, finance, biology, and other fields. However this project is for now developed within the Codex App AI-harness; therefore, it will leverage the functionality of the Codex App AI-harness.
 
 The central idea is meta-agentic: AI agents use `sys-for-ai` to create and manage other agentic systems. The target output is not merely a document, prompt, repository, or one-off workflow. The target output is a governed agentic system, or a package ready to implement such a system, with defined roles, artifacts, requirements, architecture, verification hooks, operating assumptions, improvement loops, and maintenance obligations.
 
