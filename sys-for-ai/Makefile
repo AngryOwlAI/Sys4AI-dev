@@ -40,6 +40,7 @@ validate-agentjobs:
 	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-SYSTEM-DEFINITION-TEMPLATE-001.yaml
 	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-SELFHOST-CONTINUE-KERNEL-001.yaml
 	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-BOUNDARY-VALIDATORS-001.yaml
+	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-DERIVATIVE-GENERATORS-001.yaml
 
 validate-skills:
 	$(PYTHON) -m sys_for_ai.cli validate-skills skills/core_skill_manifest.yaml
@@ -96,10 +97,10 @@ validate-memory-preflight:
 	$(PYTHON) -m sys_for_ai.cli validate-memory-preflight control_records/memory_preflights
 
 validate-agentjob-boundaries:
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob-boundaries --agentjob AJ-P1-BOUNDARY-VALIDATORS-001 --git --json
+	$(PYTHON) -m sys_for_ai.cli validate-agentjob-boundaries --agentjob AJ-P1-DERIVATIVE-GENERATORS-001 --git --json
 
 validate-check-diff:
-	$(PYTHON) -m sys_for_ai.cli validate-check-diff --agentjob AJ-P1-BOUNDARY-VALIDATORS-001 --json
+	$(PYTHON) -m sys_for_ai.cli validate-check-diff --agentjob AJ-P1-DERIVATIVE-GENERATORS-001 --json
 
 validate-one-active-agentjob:
 	$(PYTHON) -m sys_for_ai.cli validate-one-active-agentjob

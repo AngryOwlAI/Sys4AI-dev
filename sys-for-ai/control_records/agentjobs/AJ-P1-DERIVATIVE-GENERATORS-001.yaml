@@ -1,0 +1,86 @@
+agentjob_id: AJ-P1-DERIVATIVE-GENERATORS-001
+schema_version: 0.2.0
+status: pending
+objective: >
+  Replace generated derivative stubs with deterministic check/write generators
+  for the Configuration and Control Wiki and Validation Contracts Catalog while
+  preserving noncanonical generated-surface authority boundaries.
+lifecycle_stage: implementation_initialization
+role_binding:
+  role_id: derivative_generator_engineer
+  binding_type: one_job_provisional_role
+  authority_scope: sys-for-ai Phase 1 scaffold
+  expires_with_agentjob: true
+required_inputs:
+  - implementation_plans/sys-for-ai-dev_memory_continue_self_hosting_implementation_plan.md
+  - temp_handoff/handoff-0008.md
+  - sys-for-ai/registries/derivative_registry.csv
+  - sys-for-ai/registries/validation_contract_registry.csv
+  - sys-for-ai/registries/control_record_registry.csv
+  - sys-for-ai/registries/config_source_registry.csv
+allowed_reads:
+  - PRDs/**
+  - implementation_plans/**
+  - temp_handoff/handoff-0008.md
+  - sys-for-ai/**
+allowed_writes:
+  - sys-for-ai/sys_for_ai/derivatives/**
+  - sys-for-ai/sys_for_ai/derivative_generation.py
+  - sys-for-ai/sys_for_ai/cli.py
+  - sys-for-ai/Makefile
+  - sys-for-ai/control_records/agentjobs/AJ-P1-DERIVATIVE-GENERATORS-001.yaml
+  - sys-for-ai/docs/generated/**
+  - sys-for-ai/registries/**
+  - sys-for-ai/tests/**
+generated_paths:
+  - sys-for-ai/docs/generated/**
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - sys-for-ai/.venv/**
+  - sys-for-ai/docs/generated/** as canonical source
+forbidden_actions:
+  - Modify repository LICENSE or NOTICE.
+  - Treat generated derivatives as canonical.
+  - Execute more than one AgentJob in one /continue invocation.
+  - Mutate activated control records instead of superseding them.
+memory_preflight:
+  required: true
+  minimum_queries:
+    - generated derivative generator
+    - configuration control wiki validation contracts catalog
+  required_evidence:
+    - latest handoff inspection
+    - implementation plan Phase 8 inspection
+expected_outputs:
+  - Configuration and Control Wiki deterministic generator.
+  - Validation Contracts Catalog deterministic generator.
+  - Shared generated page metadata template.
+  - Check and write CLI modes.
+  - Unit tests proving drift detection and deterministic rewrite.
+validators:
+  - cd sys-for-ai && make generate-config-control-wiki generate-validation-contracts-catalog validate-generated-derivatives
+  - cd sys-for-ai && make validate-agentjob-boundaries validate-check-diff
+  - cd sys-for-ai && make validate
+completion_evidence_required:
+  - changed_artifacts
+  - command_results
+  - validation_status
+handoff_policy:
+  create_handoff_when:
+    - implementation remains incomplete
+    - next AgentJob is recommended
+authority_boundary:
+  may_modify_product_scaffold: true
+  may_modify_canonical_prds: false
+  may_promote_generated_derivatives: false
+  may_change_runtime_skill_authority: false
+stop_conditions:
+  - Required plan or handoff source cannot be inspected.
+  - Generated derivative content claims canonical authority.
+  - Generated pages cannot be reproduced deterministically.
+  - Existing schema or registry would be broken.
+  - More than one AgentJob is required.
+  - Required write is outside allowlist.

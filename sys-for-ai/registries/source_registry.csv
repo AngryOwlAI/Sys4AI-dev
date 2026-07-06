@@ -47,7 +47,7 @@ SRC-TOML-IO,sys-for-ai/sys_for_ai/toml_io.py,parser_helper,controlled,implementa
 SRC-JSONSCHEMA-IO,sys-for-ai/sys_for_ai/jsonschema_io.py,validator_helper,controlled,implementation_initialization,2026-07-06,JSON Schema loading and validation helper.
 SRC-REGISTRY-IO,sys-for-ai/sys_for_ai/registry_io.py,registry_helper,controlled,implementation_initialization,2026-07-06,CSV registry loading and path-resolution helper.
 SRC-SECURITY-CHECKS,sys-for-ai/sys_for_ai/security_checks.py,security_helper,controlled,implementation_initialization,2026-07-06,Phase 1 secret-like structured example checks.
-SRC-DERIVATIVE-GENERATION,sys-for-ai/sys_for_ai/derivative_generation.py,derivative_validator,controlled,implementation_initialization,2026-07-06,Generated derivative stub validation helper.
+SRC-DERIVATIVE-GENERATION,sys-for-ai/sys_for_ai/derivative_generation.py,derivative_validator,controlled,implementation_initialization,2026-07-06,Generated derivative validation helper that checks deterministic generated page output.
 SRC-SELFHOST-BOUNDARY-DECISION,implementation_plans/self_hosting_boundary_decision_record.md,decision_record,controlled,implementation_initialization,2026-07-06,Decision record authorizing self-hosting boundaries for memory and continue-loop implementation.
 SRC-SELFHOST-BOUNDARY-POLICY,sys-for-ai/docs/self_hosting_boundary_policy.md,policy,controlled,implementation_initialization,2026-07-06,Policy distinguishing framework system development system target system runtime skills and generated surfaces.
 SRC-MEMORY-RETRIEVAL-POLICY,sys-for-ai/docs/memory_retrieval_policy.md,policy,controlled,implementation_initialization,2026-07-06,Policy defining memory retrieval as navigation rather than authority.
@@ -97,3 +97,9 @@ SRC-STATE-SNAPSHOT-SELFHOST-CONTINUE-KERNEL-001,sys-for-ai/control_records/state
 SRC-CONTROL-LOOP-BOUNDARIES,sys-for-ai/sys_for_ai/control_loop/boundaries.py,control_loop_boundary_validator,controlled,control_loop,2026-07-06,AgentJob boundary and Git diff validation implementation.
 SRC-AJ-BOUNDARY-VALIDATORS-001,sys-for-ai/control_records/agentjobs/AJ-P1-BOUNDARY-VALIDATORS-001.yaml,agentjob,controlled,control_loop,2026-07-06,Pending AgentJob for Phase 7 boundary and diff validators.
 SRC-TEST-AGENTJOB-BOUNDARIES,sys-for-ai/tests/test_agentjob_boundaries.py,test,controlled,control_loop,2026-07-06,Unit tests for AgentJob boundary and Git diff validators.
+SRC-DERIVATIVES-PACKAGE-INIT,sys-for-ai/sys_for_ai/derivatives/__init__.py,derivative_generator_package,controlled,control_loop,2026-07-06,Public API for deterministic generated derivative builders.
+SRC-DERIVATIVES-TEMPLATES,sys-for-ai/sys_for_ai/derivatives/templates.py,derivative_generator_template,controlled,control_loop,2026-07-06,Shared noncanonical generated page templates and check-write helpers.
+SRC-DERIVATIVES-CONFIG-CONTROL,sys-for-ai/sys_for_ai/derivatives/config_control_wiki.py,derivative_generator,controlled,control_loop,2026-07-06,Configuration and Control Wiki deterministic generator.
+SRC-DERIVATIVES-VALIDATION-CONTRACTS,sys-for-ai/sys_for_ai/derivatives/validation_contracts_catalog.py,derivative_generator,controlled,control_loop,2026-07-06,Validation Contracts Catalog deterministic generator.
+SRC-AJ-DERIVATIVE-GENERATORS-001,sys-for-ai/control_records/agentjobs/AJ-P1-DERIVATIVE-GENERATORS-001.yaml,agentjob,controlled,control_loop,2026-07-06,Pending AgentJob for Phase 8 generated derivative generators.
+SRC-TEST-GENERATED-DERIVATIVES,sys-for-ai/tests/test_generated_derivatives.py,test,controlled,control_loop,2026-07-06,Unit tests for deterministic generated derivative check and write behavior.

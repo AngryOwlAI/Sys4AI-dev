@@ -5,24 +5,191 @@
 ```yaml
 page_metadata:
   derivative_id: der_validation_contracts_by_target
+  authority_status: generated_noncanonical
   derivative_type: validation_contracts_catalog_page
-  generator: sys_for_ai.derivative_generation
-  generator_version: phase1-stub
-  generated_at: pending
-  source_ids:
-    - SRC-REG-VALIDATION-CONTRACTS
-  source_paths:
+  source_registries:
     - registries/validation_contract_registry.csv
+  validation_contracts:
+    - contract_agentjob
+    - contract_handoff
+    - contract_completion_receipt
+    - contract_state_snapshot
+    - contract_sys_for_ai_config
+    - contract_target_project_config
+    - contract_format_profile_registry_row
+    - contract_config_source_registry_row
+    - contract_control_record_registry_row
+    - contract_validation_contract_registry_row
+    - contract_registry_header
+    - contract_requirement_trace_registry_row
+    - contract_program_state
+    - contract_director_decision
+    - contract_agentjob_v0_2
+    - contract_handoff_v0_2
+    - contract_completion_receipt_v0_2
+    - contract_memory_preflight_receipt
+    - contract_agentjob_registry_row
+    - contract_director_decision_registry_row
+    - contract_handoff_registry_row
+    - contract_completion_receipt_registry_row
+    - contract_memory_preflight_receipt_registry_row
+  generated_at: 2026-07-06T00:00:00Z
+  generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
+  stale_or_orphan_status: current
   source_hashes:
     - pending
-  registry_rows:
-    - der_validation_contracts_by_target
-  validation_status: pending
-  stale_status: pending
 ```
 
 # Contracts By Target
 
-Registered validation contracts are grouped by target format in `registries/validation_contract_registry.csv`.
+Contracts grouped by target format and artifact class.
 
-Phase 1 targets include YAML control records, TOML configuration sources, CSV registry rows, and PRD requirement trace rows.
+## Structural Versus Semantic Warning
+
+Validation contracts prove structural conformance only. They do not prove semantic truth, product correctness, or implementation completeness.
+
+## csv / agentjob_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_agentjob_registry_row | schemas/contracts/agentjob_registry_row.schema.json | 2020-12 | csv | agentjob_registry_row | registries/agentjob_registry.csv | sys-for-ai validate-agentjob-registry | control_loop | controlled | pending | pending |
+
+## csv / completion_receipt_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_completion_receipt_registry_row | schemas/contracts/completion_receipt_registry_row.schema.json | 2020-12 | csv | completion_receipt_registry_row | registries/completion_receipt_registry.csv | sys-for-ai validate-completion-receipt-registry | control_loop | controlled | pending | pending |
+
+## csv / config_source_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_config_source_registry_row | schemas/contracts/config_source_registry_row.schema.json | 2020-12 | csv | config_source_registry_row | registries/config_source_registry.csv | sys-for-ai validate-config-sources | implementation_initialization | controlled | pending | pending |
+
+## csv / control_record_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_control_record_registry_row | schemas/contracts/control_record_registry_row.schema.json | 2020-12 | csv | control_record_registry_row | registries/control_record_registry.csv | sys-for-ai validate-control-records | implementation_initialization | controlled | pending | pending |
+
+## csv / director_decision_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_director_decision_registry_row | schemas/contracts/director_decision_registry_row.schema.json | 2020-12 | csv | director_decision_registry_row | registries/director_decision_registry.csv | sys-for-ai validate-director-decision-registry | control_loop | controlled | pending | pending |
+
+## csv / format_profile_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_format_profile_registry_row | schemas/contracts/format_profile_registry_row.schema.json | 2020-12 | csv | format_profile_registry_row | registries/format_profile_registry.csv | sys-for-ai validate-format-profiles | implementation_initialization | controlled | pending | pending |
+
+## csv / handoff_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_handoff_registry_row | schemas/contracts/handoff_registry_row.schema.json | 2020-12 | csv | handoff_registry_row | registries/handoff_registry.csv | sys-for-ai validate-handoff-registry | control_loop | controlled | pending | pending |
+
+## csv / memory_preflight_receipt_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_memory_preflight_receipt_registry_row | schemas/contracts/memory_preflight_receipt_registry_row.schema.json | 2020-12 | csv | memory_preflight_receipt_registry_row | registries/memory_preflight_receipt_registry.csv | sys-for-ai validate-memory-preflight-registry | control_loop | controlled | pending | pending |
+
+## csv / registry_header
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_registry_header | schemas/contracts/registry_header.schema.json | 2020-12 | csv | registry_header | registries/*.csv | sys-for-ai validate-registry-graph | implementation_initialization | controlled | pending | pending |
+
+## csv / requirement_trace_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_requirement_trace_registry_row | schemas/contracts/requirement_trace_registry_row.schema.json | 2020-12 | csv | requirement_trace_registry_row | registries/requirement_trace_registry.csv | sys-for-ai validate-requirement-trace | implementation_initialization | controlled | pending | pending |
+
+## csv / validation_contract_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_validation_contract_registry_row | schemas/contracts/validation_contract_registry_row.schema.json | 2020-12 | csv | validation_contract_registry_row | registries/validation_contract_registry.csv | sys-for-ai validate-validation-contract-registry | implementation_initialization | controlled | pending | pending |
+
+## toml / framework_config
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_sys_for_ai_config | schemas/contracts/sys_for_ai_config.schema.json | 2020-12 | toml | framework_config | pyproject.toml;configs/examples/sys_for_ai.example.toml | sys-for-ai validate-toml-config | implementation_initialization | controlled | pending | pending |
+
+## toml / target_project_config
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_target_project_config | schemas/contracts/target_project_config.schema.json | 2020-12 | toml | target_project_config | configs/examples/target_project.example.toml | sys-for-ai validate-toml-config | implementation_initialization | controlled | pending | pending |
+
+## yaml / agentjob
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_agentjob | schemas/contracts/agentjob.schema.json | 2020-12 | yaml | agentjob | control_records/**/*.yaml | sys-for-ai validate-jsonschema-contracts | implementation_initialization | controlled | pending | pending |
+
+## yaml / agentjob_v0_2
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_agentjob_v0_2 | schemas/contracts/agentjob_v0_2.schema.json | 2020-12 | yaml | agentjob_v0_2 | control_records/agentjobs/*.yaml | sys-for-ai validate-agentjob | control_loop | controlled | pending | pending |
+
+## yaml / completion_receipt
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_completion_receipt | schemas/contracts/completion_receipt.schema.json | 2020-12 | yaml | completion_receipt | control_records/**/*.yaml | sys-for-ai validate-jsonschema-contracts | implementation_initialization | controlled | pending | pending |
+
+## yaml / completion_receipt_v0_2
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_completion_receipt_v0_2 | schemas/contracts/completion_receipt_v0_2.schema.json | 2020-12 | yaml | completion_receipt_v0_2 | control_records/completions/*.yaml | sys-for-ai validate-completion-receipts | control_loop | controlled | pending | pending |
+
+## yaml / director_decision
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_director_decision | schemas/contracts/director_decision.schema.json | 2020-12 | yaml | director_decision | control_records/director_decisions/*.yaml | sys-for-ai validate-director-decisions | control_loop | controlled | pending | pending |
+
+## yaml / handoff
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_handoff | schemas/contracts/handoff.schema.json | 2020-12 | yaml | handoff | control_records/**/*.yaml | sys-for-ai validate-jsonschema-contracts | implementation_initialization | controlled | pending | pending |
+
+## yaml / handoff_v0_2
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_handoff_v0_2 | schemas/contracts/handoff_v0_2.schema.json | 2020-12 | yaml | handoff_v0_2 | control_records/handoffs/*.yaml | sys-for-ai validate-handoffs | control_loop | controlled | pending | pending |
+
+## yaml / memory_preflight_receipt
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_memory_preflight_receipt | schemas/contracts/memory_preflight_receipt.schema.json | 2020-12 | yaml | memory_preflight_receipt | control_records/memory_preflights/*.yaml | sys-for-ai validate-memory-preflight | control_loop | controlled | pending | pending |
+
+## yaml / program_state
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_program_state | schemas/contracts/program_state.schema.json | 2020-12 | yaml | program_state | control_records/program_state.yaml | sys-for-ai validate-program-state | control_loop | controlled | pending | pending |
+
+## yaml / state_snapshot
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_state_snapshot | schemas/contracts/state_snapshot.schema.json | 2020-12 | yaml | state_snapshot | control_records/**/*.yaml | sys-for-ai validate-jsonschema-contracts | implementation_initialization | controlled | pending | pending |
+
+## Known Limitations
+
+Target groups are derived from registry rows. A row with stale metadata can mislead this page until the registry is corrected.
+
+## Allowed Promotion Path
+
+Promotion requires an explicit source-authority decision, registry update, and validation evidence. This generated page is not promoted by generation.

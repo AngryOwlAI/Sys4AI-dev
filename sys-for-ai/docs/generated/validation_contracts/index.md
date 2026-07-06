@@ -5,26 +5,88 @@
 ```yaml
 page_metadata:
   derivative_id: der_validation_contracts_index
+  authority_status: generated_noncanonical
   derivative_type: validation_contracts_catalog_page
-  generator: sys_for_ai.derivative_generation
-  generator_version: phase1-stub
-  generated_at: pending
-  source_ids:
-    - SRC-REG-VALIDATION-CONTRACTS
-  source_paths:
+  source_registries:
     - registries/validation_contract_registry.csv
+  validation_contracts:
+    - contract_agentjob
+    - contract_handoff
+    - contract_completion_receipt
+    - contract_state_snapshot
+    - contract_sys_for_ai_config
+    - contract_target_project_config
+    - contract_format_profile_registry_row
+    - contract_config_source_registry_row
+    - contract_control_record_registry_row
+    - contract_validation_contract_registry_row
+    - contract_registry_header
+    - contract_requirement_trace_registry_row
+    - contract_program_state
+    - contract_director_decision
+    - contract_agentjob_v0_2
+    - contract_handoff_v0_2
+    - contract_completion_receipt_v0_2
+    - contract_memory_preflight_receipt
+    - contract_agentjob_registry_row
+    - contract_director_decision_registry_row
+    - contract_handoff_registry_row
+    - contract_completion_receipt_registry_row
+    - contract_memory_preflight_receipt_registry_row
+  generated_at: 2026-07-06T00:00:00Z
+  generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
+  stale_or_orphan_status: current
   source_hashes:
     - pending
-  registry_rows:
-    - der_validation_contracts_index
-  validation_status: pending
-  stale_status: pending
 ```
 
 # Validation Contracts Catalog
 
-This generated stub indexes registered JSON Schema validation contracts. It is a contract catalog, not a JSON wiki.
+This generated page indexes executable validation contracts. It is a reader catalog, not a contract authority.
 
-## Registered Surfaces
+## Registry Trace
 
-- Contracts by target: `docs/generated/validation_contracts/contracts-by-target.md`
+| derivative_id | path | source_ids | generation_method | status |
+| --- | --- | --- | --- | --- |
+| der_validation_contracts_index | docs/generated/validation_contracts/index.md | SRC-REG-VALIDATION-CONTRACTS | sys_for_ai.derivatives.validation_contracts_catalog:0.1.0 | generated_derivative |
+| der_validation_contracts_by_target | docs/generated/validation_contracts/contracts-by-target.md | SRC-REG-VALIDATION-CONTRACTS | sys_for_ai.derivatives.validation_contracts_catalog:0.1.0 | generated_derivative |
+
+## Structural Versus Semantic Warning
+
+Validation contracts prove structural conformance only. They do not prove semantic truth, product correctness, or implementation completeness.
+
+## Contract Rows
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_agentjob | schemas/contracts/agentjob.schema.json | 2020-12 | yaml | agentjob | control_records/**/*.yaml | sys-for-ai validate-jsonschema-contracts | implementation_initialization | controlled | pending | pending |
+| contract_handoff | schemas/contracts/handoff.schema.json | 2020-12 | yaml | handoff | control_records/**/*.yaml | sys-for-ai validate-jsonschema-contracts | implementation_initialization | controlled | pending | pending |
+| contract_completion_receipt | schemas/contracts/completion_receipt.schema.json | 2020-12 | yaml | completion_receipt | control_records/**/*.yaml | sys-for-ai validate-jsonschema-contracts | implementation_initialization | controlled | pending | pending |
+| contract_state_snapshot | schemas/contracts/state_snapshot.schema.json | 2020-12 | yaml | state_snapshot | control_records/**/*.yaml | sys-for-ai validate-jsonschema-contracts | implementation_initialization | controlled | pending | pending |
+| contract_sys_for_ai_config | schemas/contracts/sys_for_ai_config.schema.json | 2020-12 | toml | framework_config | pyproject.toml;configs/examples/sys_for_ai.example.toml | sys-for-ai validate-toml-config | implementation_initialization | controlled | pending | pending |
+| contract_target_project_config | schemas/contracts/target_project_config.schema.json | 2020-12 | toml | target_project_config | configs/examples/target_project.example.toml | sys-for-ai validate-toml-config | implementation_initialization | controlled | pending | pending |
+| contract_format_profile_registry_row | schemas/contracts/format_profile_registry_row.schema.json | 2020-12 | csv | format_profile_registry_row | registries/format_profile_registry.csv | sys-for-ai validate-format-profiles | implementation_initialization | controlled | pending | pending |
+| contract_config_source_registry_row | schemas/contracts/config_source_registry_row.schema.json | 2020-12 | csv | config_source_registry_row | registries/config_source_registry.csv | sys-for-ai validate-config-sources | implementation_initialization | controlled | pending | pending |
+| contract_control_record_registry_row | schemas/contracts/control_record_registry_row.schema.json | 2020-12 | csv | control_record_registry_row | registries/control_record_registry.csv | sys-for-ai validate-control-records | implementation_initialization | controlled | pending | pending |
+| contract_validation_contract_registry_row | schemas/contracts/validation_contract_registry_row.schema.json | 2020-12 | csv | validation_contract_registry_row | registries/validation_contract_registry.csv | sys-for-ai validate-validation-contract-registry | implementation_initialization | controlled | pending | pending |
+| contract_registry_header | schemas/contracts/registry_header.schema.json | 2020-12 | csv | registry_header | registries/*.csv | sys-for-ai validate-registry-graph | implementation_initialization | controlled | pending | pending |
+| contract_requirement_trace_registry_row | schemas/contracts/requirement_trace_registry_row.schema.json | 2020-12 | csv | requirement_trace_registry_row | registries/requirement_trace_registry.csv | sys-for-ai validate-requirement-trace | implementation_initialization | controlled | pending | pending |
+| contract_program_state | schemas/contracts/program_state.schema.json | 2020-12 | yaml | program_state | control_records/program_state.yaml | sys-for-ai validate-program-state | control_loop | controlled | pending | pending |
+| contract_director_decision | schemas/contracts/director_decision.schema.json | 2020-12 | yaml | director_decision | control_records/director_decisions/*.yaml | sys-for-ai validate-director-decisions | control_loop | controlled | pending | pending |
+| contract_agentjob_v0_2 | schemas/contracts/agentjob_v0_2.schema.json | 2020-12 | yaml | agentjob_v0_2 | control_records/agentjobs/*.yaml | sys-for-ai validate-agentjob | control_loop | controlled | pending | pending |
+| contract_handoff_v0_2 | schemas/contracts/handoff_v0_2.schema.json | 2020-12 | yaml | handoff_v0_2 | control_records/handoffs/*.yaml | sys-for-ai validate-handoffs | control_loop | controlled | pending | pending |
+| contract_completion_receipt_v0_2 | schemas/contracts/completion_receipt_v0_2.schema.json | 2020-12 | yaml | completion_receipt_v0_2 | control_records/completions/*.yaml | sys-for-ai validate-completion-receipts | control_loop | controlled | pending | pending |
+| contract_memory_preflight_receipt | schemas/contracts/memory_preflight_receipt.schema.json | 2020-12 | yaml | memory_preflight_receipt | control_records/memory_preflights/*.yaml | sys-for-ai validate-memory-preflight | control_loop | controlled | pending | pending |
+| contract_agentjob_registry_row | schemas/contracts/agentjob_registry_row.schema.json | 2020-12 | csv | agentjob_registry_row | registries/agentjob_registry.csv | sys-for-ai validate-agentjob-registry | control_loop | controlled | pending | pending |
+| contract_director_decision_registry_row | schemas/contracts/director_decision_registry_row.schema.json | 2020-12 | csv | director_decision_registry_row | registries/director_decision_registry.csv | sys-for-ai validate-director-decision-registry | control_loop | controlled | pending | pending |
+| contract_handoff_registry_row | schemas/contracts/handoff_registry_row.schema.json | 2020-12 | csv | handoff_registry_row | registries/handoff_registry.csv | sys-for-ai validate-handoff-registry | control_loop | controlled | pending | pending |
+| contract_completion_receipt_registry_row | schemas/contracts/completion_receipt_registry_row.schema.json | 2020-12 | csv | completion_receipt_registry_row | registries/completion_receipt_registry.csv | sys-for-ai validate-completion-receipt-registry | control_loop | controlled | pending | pending |
+| contract_memory_preflight_receipt_registry_row | schemas/contracts/memory_preflight_receipt_registry_row.schema.json | 2020-12 | csv | memory_preflight_receipt_registry_row | registries/memory_preflight_receipt_registry.csv | sys-for-ai validate-memory-preflight-registry | control_loop | controlled | pending | pending |
+
+## Known Limitations
+
+Validators listed here check declared structure and registered paths. They do not replace source review, semantic review, or human approval gates.
+
+## Allowed Promotion Path
+
+Promotion requires an explicit source-authority decision, registry update, and validation evidence. This generated page is not promoted by generation.

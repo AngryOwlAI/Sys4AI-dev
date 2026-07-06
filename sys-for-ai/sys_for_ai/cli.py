@@ -12,6 +12,12 @@ from pathlib import Path
 
 from .discovery import validate_discovery_record
 from .derivative_generation import validate_generated_derivatives
+from .derivatives import (
+    check_config_control_wiki,
+    check_validation_contracts_catalog,
+    write_config_control_wiki,
+    write_validation_contracts_catalog,
+)
 from .memory import bootstrap_registries
 from .memory import hash_path as memory_hash_path
 from .memory import lookup_memory, memory_status, run_memory_preflight, search_memory, update_hashes, validate_hashes
@@ -290,11 +296,15 @@ def build_parser() -> argparse.ArgumentParser:
     validate_trace.add_argument("--phase0-prd", default="PRDs/sys-for-ai_phase-0_product_system_design_prd.md")
     validate_trace.add_argument("--phase1-prd", default="PRDs/sys-for-ai_phase-1_implementation_initialization_prd.md")
 
-    generate_cc = sub.add_parser("generate-config-control-wiki", help="Check generated Configuration and Control Wiki stubs")
-    generate_cc.add_argument("--check", action="store_true", help="Check stubs without writing")
+    generate_cc = sub.add_parser("generate-config-control-wiki", help="Generate Configuration and Control Wiki pages")
+    generate_cc_mode = generate_cc.add_mutually_exclusive_group()
+    generate_cc_mode.add_argument("--check", action="store_true", help="Check generated pages without writing")
+    generate_cc_mode.add_argument("--write", action="store_true", help="Write generated pages")
 
-    generate_vc = sub.add_parser("generate-validation-contracts-catalog", help="Check generated Validation Contracts Catalog stubs")
-    generate_vc.add_argument("--check", action="store_true", help="Check stubs without writing")
+    generate_vc = sub.add_parser("generate-validation-contracts-catalog", help="Generate Validation Contracts Catalog pages")
+    generate_vc_mode = generate_vc.add_mutually_exclusive_group()
+    generate_vc_mode.add_argument("--check", action="store_true", help="Check generated pages without writing")
+    generate_vc_mode.add_argument("--write", action="store_true", help="Write generated pages")
 
     validate_generated = sub.add_parser("validate-generated-derivatives", help="Validate generated derivative stubs")
     validate_generated.add_argument("docs_root", default="docs/generated", nargs="?")
@@ -413,10 +423,12 @@ def main(argv: list[str] | None = None) -> int:
         return print_result(validate_requirement_trace(args.path, args.phase0_prd, args.phase1_prd))
 
     if args.command == "generate-config-control-wiki":
-        return print_result(validate_generated_derivatives("docs/generated", "registries/derivative_registry.csv"))
+        return print_result(write_config_control_wiki() if args.write else check_config_control_wiki())
 
     if args.command == "generate-validation-contracts-catalog":
-        return print_result(validate_generated_derivatives("docs/generated", "registries/derivative_registry.csv"))
+        return print_result(
+            write_validation_contracts_catalog() if args.write else check_validation_contracts_catalog()
+        )
 
     if args.command == "validate-generated-derivatives":
         return print_result(validate_generated_derivatives(args.docs_root, args.derivative_registry))
@@ -445,7 +457,7 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_toml_config(args.config_sources))
         result.extend(validate_jsonschema_contracts(args.contracts_root))
         result.extend(validate_registry_graph(args.registries))
-        boundary_payload = validate_check_diff("AJ-P1-BOUNDARY-VALIDATORS-001")
+        boundary_payload = validate_check_diff("AJ-P1-DERIVATIVE-GENERATORS-001")
         result.extend(
             ValidationResult(
                 bool(boundary_payload.get("ok")),
