@@ -11,25 +11,29 @@ lifecycle_stage: develop
 active_task_id: TASK-P1-SELFHOST-001
 active_director_decision_id: DDR-P1-SELFHOST-001
 active_agentjob_id: null
-latest_completion_receipt_id: null
-latest_handoff_id: null
+latest_completion_receipt_id: RECEIPT-P1-SELFHOST-CONTINUE-KERNEL-001
+latest_handoff_id: HANDOFF-P1-SELFHOST-CONTINUE-KERNEL-001
 latest_memory_preflight_receipt_id: MEMPREFLIGHT-P1-EXAMPLE-001
 state_status: active
 blocked_reason: null
 human_gate_required: false
 allowed_next_actions:
-  - run_memory_preflight
-  - inspect_latest_handoff
-  - select_one_agentjob
-  - emit_execution_packet
+- run_memory_preflight
+- inspect_latest_handoff
+- select_one_agentjob
+- emit_execution_packet
+- validate_completion_receipt
 blocked_actions:
-  - execute_multiple_agentjobs
-  - use_chat_memory_as_authority
-  - treat_generated_derivative_as_canonical
-  - mutate_activated_control_record_without_supersession
+- execute_multiple_agentjobs
+- use_chat_memory_as_authority
+- treat_generated_derivative_as_canonical
+- mutate_activated_control_record_without_supersession
 validation_status:
-  last_validated_at: pending
+  last_validated_at: '2026-07-06T00:00:00Z'
   validators:
-    - validate-program-state
-    - validate-control-records
-    - validate-registry-graph
+  - validate-program-state
+  - validate-control-records
+  - validate-registry-graph
+  - validate-handoffs
+  - validate-completion-receipts
+  - validate-state-snapshots

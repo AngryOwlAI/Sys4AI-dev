@@ -1,0 +1,62 @@
+handoff_id: HANDOFF-P1-SELFHOST-CONTINUE-KERNEL-001
+schema_version: 0.2.0
+framework_name: sys-for-ai
+target_agentic_system: sys-for-ai-dev
+artifact_name: Phase 6 Continue Finalization Handoff
+artifact_type: operational_handoff
+artifact_version: 0.2.0
+producing_role: control_loop_engineer
+artifact_status: completed
+summary: >
+  The /continue kernel now has deterministic finalization support for
+  completion receipts, handoff validation, state snapshots, and program state
+  updates. The next bounded task should harden diff and allowlist validators.
+source_artifacts:
+  - sys-for-ai/control_records/completions/completion_receipt.example.v0_2.yaml
+  - sys-for-ai/sys_for_ai/control_loop/finalization.py
+  - sys-for-ai/sys_for_ai/control_loop/receipts.py
+traceability:
+  agentjob_id: AJ-P1-SELFHOST-CONTINUE-KERNEL-001
+  completion_receipt_id: RECEIPT-P1-SELFHOST-CONTINUE-KERNEL-001
+  implementation_plan_section: "16"
+control_loop_notes:
+  previous_agentjob_id: AJ-P1-SELFHOST-CONTINUE-KERNEL-001
+  next_agentjob_id: AJ-P1-BOUNDARY-VALIDATORS-001
+  next_agentjob_status: not_created
+  selection_basis: Phase 7 boundary validator work
+memory_preflight:
+  memory_preflight_receipt_id: MEMPREFLIGHT-P1-EXAMPLE-001
+  usable_for_routing: true
+  required_next_queries:
+    - Phase 7 AgentJob write boundary validator
+    - changed artifacts allowlist validation
+format_profile_evidence:
+  yaml_control_records:
+    - control_records/completions/completion_receipt.example.v0_2.yaml
+    - control_records/handoffs/handoff.example.v0_2.yaml
+    - control_records/state_snapshots/state_snapshot.example.v0_2.yaml
+  registry_rows_added:
+    - ctrl_selfhost_continue_kernel_completion
+    - ctrl_selfhost_continue_kernel_handoff
+    - ctrl_selfhost_continue_kernel_state_snapshot
+source_authority_evidence:
+  canonical_sources_checked:
+    - implementation_plans/sys-for-ai-dev_memory_continue_self_hosting_implementation_plan.md
+    - temp_handoff/handoff-0006.md
+  authority_boundary: Generated derivatives were not promoted.
+derivative_surface_evidence:
+  generated_derivatives_changed: false
+  notes: No generated reader surface was promoted or rewritten in Phase 6.
+security_evidence:
+  secret_scan_scope: Structured YAML records validated by existing secret-like value checks.
+  new_secret_material: false
+recommended_next_role: validator_engineer
+phase_boundary_notes: >
+  Phase 6 completes finalization scaffolding. Phase 7 should add diff collection
+  and enforce changed artifact allowlists against the actual working tree or
+  commit range.
+stop_conditions:
+  - More than one AgentJob is required.
+  - A changed artifact is outside the active AgentJob allowlist.
+  - Completion receipt evidence does not cover declared validators.
+  - Program state cannot be updated deterministically.

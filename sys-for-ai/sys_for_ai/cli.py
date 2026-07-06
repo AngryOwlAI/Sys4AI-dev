@@ -20,6 +20,7 @@ from .control_loop import (
     continue_preflight,
     continue_select,
     continue_status,
+    finalize_agentjob,
     validate_control_loop,
     validate_one_active_agentjob,
 )
@@ -46,6 +47,7 @@ from .validators import (
     validate_registry_headers,
     validate_requirement_trace,
     validate_skill_manifest,
+    validate_state_snapshots,
     validate_toml_config,
     validate_validation_contract_registry,
 )
@@ -124,6 +126,10 @@ def build_parser() -> argparse.ArgumentParser:
 
     continue_packet_parser = sub.add_parser("continue-packet", help="Emit a /continue execution packet")
     continue_packet_parser.add_argument("--json", action="store_true")
+
+    continue_finalize_parser = sub.add_parser("continue-finalize", help="Finalize an AgentJob from a completion receipt")
+    continue_finalize_parser.add_argument("--completion", required=True)
+    continue_finalize_parser.add_argument("--json", action="store_true")
 
     validate = sub.add_parser("validate", help="Run all default Phase 1 validations")
     validate.add_argument("--agentjob", default="control_records/examples/phase1_smoke_agentjob.yaml")
@@ -244,6 +250,9 @@ def build_parser() -> argparse.ArgumentParser:
     validate_memory_pref = sub.add_parser("validate-memory-preflight", help="Validate memory preflight receipts")
     validate_memory_pref.add_argument("root", default="control_records/memory_preflights", nargs="?")
 
+    validate_snapshots = sub.add_parser("validate-state-snapshots", help="Validate bounded state snapshot records")
+    validate_snapshots.add_argument("root", default="control_records/state_snapshots", nargs="?")
+
     sub.add_parser("validate-one-active-agentjob", help="Validate the one-active-AgentJob invariant")
     sub.add_parser("validate-control-loop", help="Validate the /continue control-loop kernel")
 
@@ -302,6 +311,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "continue-packet":
         return _emit_payload(continue_packet(), args.json)
 
+    if args.command == "continue-finalize":
+        return _emit_payload(finalize_agentjob(args.completion), args.json)
+
     if args.command == "validate-agentjob":
         return print_result(validate_agentjob(args.path))
 
@@ -359,6 +371,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "validate-memory-preflight":
         return print_result(validate_memory_preflight_receipts(args.root))
 
+    if args.command == "validate-state-snapshots":
+        return print_result(validate_state_snapshots(args.root))
+
     if args.command == "validate-one-active-agentjob":
         return print_result(validate_one_active_agentjob())
 
@@ -405,6 +420,10 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_handoff_registry())
         result.extend(validate_completion_receipt_registry())
         result.extend(validate_memory_preflight_registry())
+        result.extend(validate_handoffs())
+        result.extend(validate_completion_receipts())
+        result.extend(validate_state_snapshots())
+        result.extend(validate_memory_preflight_receipts())
         result.extend(validate_validation_contract_registry(args.validation_contracts))
         result.extend(validate_toml_config(args.config_sources))
         result.extend(validate_jsonschema_contracts(args.contracts_root))

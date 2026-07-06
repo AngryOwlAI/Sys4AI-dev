@@ -1,0 +1,27 @@
+state_snapshot_id: STATE-RECEIPT-P1-SELFHOST-CONTINUE-KERNEL-001
+snapshot_scope: completion_finalization
+created_by_role: control_loop_engineer
+current_agentjob_id: AJ-P1-SELFHOST-CONTINUE-KERNEL-001
+phase: implementation_initialization
+known_registries:
+- registries/agentjob_registry.csv
+- registries/completion_receipt_registry.csv
+- registries/handoff_registry.csv
+- registries/control_record_registry.csv
+validation_status:
+  last_validated_at: '2026-07-06T00:00:00Z'
+  validators:
+  - validate-handoffs
+  - validate-completion-receipts
+  - validate-state-snapshots
+  source_completion_receipt_id: RECEIPT-P1-SELFHOST-CONTINUE-KERNEL-001
+next_allowed_actions:
+- inspect_latest_handoff
+- run_memory_preflight
+- select_one_agentjob
+- emit_execution_packet
+blocked_actions:
+- execute_multiple_agentjobs
+- use_chat_memory_as_authority
+- treat_generated_derivative_as_canonical
+- mutate_activated_control_record_without_supersession

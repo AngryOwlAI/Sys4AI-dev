@@ -1,1 +1,2 @@
 handoff_id,path,status,producing_agentjob_id,next_recommended_role,next_agentjob_id,source_ids,supersedes,source_hash,last_validated_at,notes
+HANDOFF-P1-SELFHOST-CONTINUE-KERNEL-001,control_records/handoffs/handoff.example.v0_2.yaml,completed,AJ-P1-SELFHOST-CONTINUE-KERNEL-001,validator_engineer,AJ-P1-BOUNDARY-VALIDATORS-001,SRC-AJ-SELFHOST-CONTINUE-KERNEL-001,,pending,2026-07-06T00:00:00Z,Finalized by continue-finalize

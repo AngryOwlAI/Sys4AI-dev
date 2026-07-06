@@ -798,7 +798,52 @@ def validate_handoffs(root: str | Path = "control_records/handoffs") -> Validati
 def validate_completion_receipts(root: str | Path = "control_records/completions") -> ValidationResult:
     """Validate operational completion receipt v0.2 YAML files under *root*."""
 
-    return _validate_yaml_records_in_root(root, "completion_receipt_v0_2.schema.json", "completion_receipt_id")
+    result = _validate_yaml_records_in_root(root, "completion_receipt_v0_2.schema.json", "completion_receipt_id")
+    if not result.ok:
+        return result
+
+    messages = list(result.messages)
+    base = _registry_base_from_control_path(root)
+    agentjob_ids = _known_agentjob_ids(base)
+    handoff_ids = _known_handoff_ids(base)
+    for path in _yaml_paths(root):
+        data = load_yaml(path)
+        agentjob_id = data.get("agentjob_id")
+        if agentjob_id not in agentjob_ids:
+            messages.append(f"{path}: unknown agentjob_id {agentjob_id!r}")
+        handoff_id = data.get("next_handoff_id")
+        if isinstance(handoff_id, str) and handoff_id and handoff_id not in handoff_ids:
+            fallback = base / "control_records/handoffs" / f"{handoff_id}.yaml"
+            if not fallback.exists():
+                messages.append(f"{path}: unknown next_handoff_id {handoff_id!r}")
+        changed = data.get("changed_artifacts", [])
+        if not isinstance(changed, list):
+            messages.append(f"{path}: changed_artifacts must be a list")
+            continue
+        for item in changed:
+            if not isinstance(item, dict) or not item.get("path"):
+                messages.append(f"{path}: changed_artifacts entries must be mappings with path")
+    failures = [msg for msg in messages if "validation passed" not in msg and "no operational" not in msg]
+    return ValidationResult(not failures, messages)
+
+
+def validate_state_snapshots(root: str | Path = "control_records/state_snapshots") -> ValidationResult:
+    """Validate bounded state snapshot YAML files under *root*."""
+
+    result = _validate_yaml_records_in_root(root, "state_snapshot.schema.json", "state_snapshot_id")
+    if not result.ok:
+        return result
+
+    messages = list(result.messages)
+    base = _registry_base_from_control_path(root)
+    agentjob_ids = _known_agentjob_ids(base)
+    for path in _yaml_paths(root):
+        data = load_yaml(path)
+        agentjob_id = data.get("current_agentjob_id")
+        if agentjob_id not in agentjob_ids:
+            messages.append(f"{path}: unknown current_agentjob_id {agentjob_id!r}")
+    failures = [msg for msg in messages if "validation passed" not in msg and "no operational" not in msg]
+    return ValidationResult(not failures, messages)
 
 
 def validate_memory_preflight_receipts(root: str | Path = "control_records/memory_preflights") -> ValidationResult:
@@ -906,18 +951,43 @@ def _yaml_paths(root: str | Path) -> list[Path]:
     return sorted(target.glob("*.yaml"))
 
 
-def _known_agentjob_ids() -> set[str]:
+def _registry_base_from_control_path(path: str | Path) -> Path:
+    target = Path(path)
+    parts = target.parts
+    if "control_records" in parts:
+        index = parts.index("control_records")
+        if index == 0:
+            return Path(".")
+        return Path(*parts[:index])
+    return Path(".")
+
+
+def _known_agentjob_ids(root: str | Path = ".") -> set[str]:
+    base = Path(root)
     ids: set[str] = set()
-    if Path("registries/agentjob_registry.csv").exists():
-        ids.update(row.get("agentjob_id", "") for row in read_registry_rows("registries/agentjob_registry.csv"))
-    if Path("registries/control_record_registry.csv").exists():
-        rows = read_registry_rows("registries/control_record_registry.csv")
+    agentjob_registry = base / "registries/agentjob_registry.csv"
+    control_registry = base / "registries/control_record_registry.csv"
+    if agentjob_registry.exists():
+        ids.update(row.get("agentjob_id", "") for row in read_registry_rows(agentjob_registry))
+    if control_registry.exists():
+        rows = read_registry_rows(control_registry)
         ids.update(row.get("related_agentjob_id", "") for row in rows)
     return {item for item in ids if item}
 
 
-def _registry_row_exists(registry: str, row_id: str) -> bool:
-    path = Path("registries") / registry
+def _known_handoff_ids(root: str | Path = ".") -> set[str]:
+    path = Path(root) / "registries/handoff_registry.csv"
+    if not path.exists():
+        return set()
+    return {
+        row.get("handoff_id", "")
+        for row in read_registry_rows(path)
+        if row.get("handoff_id")
+    }
+
+
+def _registry_row_exists(registry: str, row_id: str, root: str | Path = ".") -> bool:
+    path = Path(root) / "registries" / registry
     if not path.exists():
         return False
     header, rows = read_registry(path)

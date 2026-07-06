@@ -11,11 +11,23 @@ from ..yaml_io import load_yaml
 def load_handoff_by_id(handoff_id: str, root: str | Path = ".") -> dict[str, object] | None:
     """Load an operational handoff by ID."""
 
+    path = load_handoff_path(handoff_id, root)
+    if path is not None:
+        return load_yaml(path)
+    return None
+
+
+def load_handoff_path(handoff_id: str, root: str | Path = ".") -> Path | None:
+    """Resolve an operational handoff path by ID."""
+
     base = Path(root)
     for row in read_registry_rows(base / "registries/handoff_registry.csv"):
         if row.get("handoff_id") != handoff_id:
             continue
-        return load_yaml(resolve_registered_path(row.get("path", ""), base))
+        return resolve_registered_path(row.get("path", ""), base)
+    fallback = base / "control_records/handoffs" / f"{handoff_id}.yaml"
+    if fallback.exists():
+        return fallback
     return None
 
 

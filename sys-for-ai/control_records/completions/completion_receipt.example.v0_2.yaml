@@ -1,0 +1,122 @@
+completion_receipt_id: RECEIPT-P1-SELFHOST-CONTINUE-KERNEL-001
+schema_version: 0.2.0
+agentjob_id: AJ-P1-SELFHOST-CONTINUE-KERNEL-001
+role: control_loop_engineer
+result: PASS_WITH_WARNINGS
+summary: >
+  Minimal /continue packet kernel and deterministic finalization support were
+  implemented with memory preflight, one-AgentJob selection, completion receipt,
+  handoff, state snapshot, and program-state update evidence.
+changed_artifacts:
+  - path: sys-for-ai/sys_for_ai/control_loop/__init__.py
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/sys_for_ai/control_loop/finalization.py
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/sys_for_ai/control_loop/handoff.py
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/sys_for_ai/control_loop/receipts.py
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/sys_for_ai/cli.py
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/sys_for_ai/validators.py
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/Makefile
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/control_records/agentjobs/AJ-P1-SELFHOST-CONTINUE-KERNEL-001.yaml
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/control_records/completions/completion_receipt.example.v0_2.yaml
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/control_records/handoffs/handoff.example.v0_2.yaml
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/control_records/program_state.yaml
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/control_records/state_snapshots/state_snapshot.example.v0_2.yaml
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/registries/completion_receipt_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/control_record_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/handoff_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/source_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/tests/test_completion_chain.py
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/tests/test_handoff_chain.py
+    change_type: added
+    authority_status: controlled
+memory_preflight_receipt_id: MEMPREFLIGHT-P1-EXAMPLE-001
+validation_evidence:
+  commands_run:
+    - command: cd sys-for-ai && make validate-control-loop
+      result: pass
+      output_path: .local/receipts/validate-control-loop.txt
+    - command: cd sys-for-ai && make validate-handoffs validate-completion-receipts validate-state-snapshots
+      result: pass
+      output_path: .local/receipts/validate-finalization-records.txt
+    - command: cd sys-for-ai && make validate
+      result: pass
+      output_path: .local/receipts/validate.txt
+  validators:
+    - validator_id: validate-control-loop
+      target_path: control_records/program_state.yaml
+      result: pass
+      notes: One-AgentJob selection passed.
+    - validator_id: validate-completion-receipts
+      target_path: control_records/completions
+      result: pass
+      notes: Completion receipt schema and AgentJob reference passed.
+    - validator_id: validate-handoffs
+      target_path: control_records/handoffs
+      result: pass
+      notes: Handoff schema passed.
+    - validator_id: validate-state-snapshots
+      target_path: control_records/state_snapshots
+      result: pass
+      notes: Bounded state snapshot schema passed.
+format_profile_changes:
+  added:
+    - path: control_records/completions/completion_receipt.example.v0_2.yaml
+      profile_id: fmt_yaml_control
+      registry_row_id: ctrl_selfhost_continue_kernel_completion
+    - path: control_records/handoffs/handoff.example.v0_2.yaml
+      profile_id: fmt_yaml_control
+      registry_row_id: ctrl_selfhost_continue_kernel_handoff
+    - path: control_records/state_snapshots/state_snapshot.example.v0_2.yaml
+      profile_id: fmt_yaml_control
+      registry_row_id: ctrl_selfhost_continue_kernel_state_snapshot
+  modified:
+    - path: control_records/program_state.yaml
+      profile_id: fmt_yaml_control
+      registry_row_id: ctrl_program_state
+  generated_derivatives: []
+authority_changes:
+  promoted: []
+  not_promoted:
+    - path: docs/generated/configuration_control/index.md
+      reason: Generated reader surface remains derivative.
+unresolved_issues:
+  - issue_id: ISSUE-CONTINUE-001
+    summary: Diff-to-allowlist validator still needs hardening in Phase 7.
+    blocking: false
+next_recommendation: Route one Validator Engineer AgentJob for diff boundary checks.
+next_handoff_id: HANDOFF-P1-SELFHOST-CONTINUE-KERNEL-001
+state_snapshot_path: control_records/state_snapshots/state_snapshot.example.v0_2.yaml
+completed_at: "2026-07-06T00:00:00Z"

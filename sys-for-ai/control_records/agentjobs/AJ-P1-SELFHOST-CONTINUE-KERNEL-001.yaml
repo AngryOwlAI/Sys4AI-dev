@@ -2,9 +2,10 @@ agentjob_id: AJ-P1-SELFHOST-CONTINUE-KERNEL-001
 schema_version: 0.2.0
 status: pending
 objective: >
-  Implement the minimal self-hosting memory preflight and /continue control-loop
-  packet kernel for sys-for-ai-dev using source-first memory, tracked program
-  state, one-AgentJob selection, and execution-packet evidence.
+  Implement the minimal self-hosting memory preflight, /continue control-loop
+  packet kernel, and completion finalization support for sys-for-ai-dev using
+  source-first memory, tracked program state, one-AgentJob selection, execution
+  packet evidence, completion receipts, handoffs, and state snapshots.
 lifecycle_stage: implementation_initialization
 role_binding:
   role_id: control_loop_engineer
@@ -26,8 +27,11 @@ allowed_writes:
   - sys-for-ai/sys_for_ai/cli.py
   - sys-for-ai/sys_for_ai/validators.py
   - sys-for-ai/control_records/agentjobs/AJ-P1-SELFHOST-CONTINUE-KERNEL-001.yaml
+  - sys-for-ai/control_records/completions/**
   - sys-for-ai/control_records/director_decisions/DDR-P1-SELFHOST-001.yaml
+  - sys-for-ai/control_records/handoffs/**
   - sys-for-ai/control_records/program_state.yaml
+  - sys-for-ai/control_records/state_snapshots/**
   - sys-for-ai/registries/**
   - sys-for-ai/Makefile
   - sys-for-ai/tests/**
@@ -55,10 +59,15 @@ expected_outputs:
   - /continue preflight command.
   - /continue selection command.
   - /continue execution-packet command.
+  - /continue finalization command.
   - One-active-AgentJob validation.
   - Control-loop validation.
+  - Completion receipt validation.
+  - Handoff validation.
+  - State snapshot validation.
 validators:
   - cd sys-for-ai && make validate-control-loop
+  - cd sys-for-ai && make validate-handoffs validate-completion-receipts validate-state-snapshots
   - cd sys-for-ai && make validate
 completion_evidence_required:
   - changed_artifacts
