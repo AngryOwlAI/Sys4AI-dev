@@ -30,6 +30,10 @@ This is the long-session variant of `decision-grilling`. It keeps the original
 one-question-at-a-time behavior and adds a Codex usage checkpoint after each
 user answer.
 
+Do not create, overwrite, or refresh `temp_prd.md` after each question when
+context is still safe. Safe-context turns should update only the live working
+state and the point-in-time `usage-metrics.txt` receipt.
+
 ## When To Use
 
 - The user asks to be grilled, challenged, or stress-tested on a plan and the
@@ -46,8 +50,9 @@ user answer.
 - A progressively clarified decision tree.
 - `usage-metrics.txt` in this skill folder as a refreshed point-in-time metrics
   receipt.
-- `temp_prd.md` in this skill folder when context used reaches 45% or metrics
-  are unavailable.
+- `temp_prd.md` in this skill folder only when context used reaches 45%,
+  context left is 55% or lower, metrics are unavailable/unknown, or the user
+  explicitly requests a handoff.
 - A resume instruction for `/decision-grilling-context-45 temp_prd`.
 
 ## Required Files
@@ -86,5 +91,7 @@ A valid adaptation should satisfy these checks:
 - Each question maps to a real dependency or risk.
 - Recommendations are grounded in evidence or clearly marked assumptions.
 - Context metrics are checked after each user answer.
+- `temp_prd.md` is not used as the normal per-question state file while context
+  remains safe.
 - `temp_prd.md` includes the last question, the user answer, gathered
   requirements, unresolved questions, and the resume command.

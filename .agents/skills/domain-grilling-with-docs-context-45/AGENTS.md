@@ -51,6 +51,8 @@ handoff behavior.
 - Keep generated artifacts non-authoritative unless the target project explicitly defines them as authority.
 - Treat `usage-metrics.txt` and `temp_prd.md` as runtime artifacts, not static
   template content.
+- Do not create, overwrite, or refresh `temp_prd.md` after each question when
+  context is still safe.
 
 ## Validation Requirements
 
@@ -63,6 +65,7 @@ Before finalizing changes to this template, check that:
 - The 45% context-used threshold is documented as equivalent to 55% context
   left.
 - Resume behavior from `temp_prd.md` is explicit.
+- Threshold-only `temp_prd.md` creation is explicit.
 - Domain terminology, glossary/context updates, and ADR candidates are included
   in the handoff file requirements.
 

@@ -27,6 +27,10 @@ Provide the long-session variant of `system-definition-interview`. It
 establishes or reconstructs system intent while protecting extended stakeholder
 interviews with context checkpoints and resumable `temp_prd.md` handoff.
 
+Do not create, overwrite, or refresh `temp_prd.md` after each question when
+context is still safe. Safe-context turns should update only the discovery
+record or live working state and the point-in-time `usage-metrics.txt` receipt.
+
 ## When To Use
 
 - A system-definition interview may run across multiple discussions.
@@ -42,8 +46,9 @@ interviews with context checkpoints and resumable `temp_prd.md` handoff.
 - Traceable entries using IDs such as `NEED-*`, `STK-*`, `SCN-*`,
   `REQ-CAND-*`, `NFR-CAND-*`, `DRV-*`, `IF-*`, `VVE-*`, and `OPEN-*`.
 - `usage-metrics.txt` in this skill folder after each context check.
-- `temp_prd.md` in this skill folder when context used reaches 45 percent or
-  metrics are unavailable.
+- `temp_prd.md` in this skill folder only when context used reaches 45 percent,
+  context left is 55 percent or lower, metrics are unavailable/unknown, or the
+  user explicitly requests a handoff.
 - A resume instruction for `/system-definition-interview-context-45 temp_prd`.
 
 ## Required Files
@@ -77,6 +82,8 @@ are unavailable.
 A valid adaptation should satisfy these checks:
 
 - Context metrics are checked after each user answer.
+- `temp_prd.md` is not used as the normal per-question state file while context
+  remains safe.
 - `temp_prd.md` includes the last question, the user answer, System Intent
   Profile status, trace IDs, open questions, metrics snapshot, and resume
   command.

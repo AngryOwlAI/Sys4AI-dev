@@ -2,7 +2,7 @@ skill_id: system-definition-interview-context-45
 version: 0.1.0
 status: active
 canonical_path: .agents/skills/system-definition-interview-context-45
-summary: Long-running system-definition interview for sys-for-ai-dev with Codex metric checkpoints and resumable discovery handoff behavior.
+summary: Long-running system-definition interview for sys-for-ai-dev with Codex metric checkpoints and threshold-only temp_prd discovery handoff behavior.
 scope:
   system_agnostic: false
   target_system_types:

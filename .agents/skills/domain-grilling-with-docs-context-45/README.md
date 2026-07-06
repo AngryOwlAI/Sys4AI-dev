@@ -32,6 +32,11 @@ This is the long-session variant of `domain-grilling-with-docs`. It keeps the
 original documentation-aware one-question behavior and adds a Codex usage
 checkpoint after each user answer.
 
+Do not create, overwrite, or refresh `temp_prd.md` after each question when
+context is still safe. Safe-context turns should update only the live working
+state, approved documentation artifacts, and the point-in-time
+`usage-metrics.txt` receipt.
+
 ## When To Use
 
 - The user wants a grilling session grounded in existing docs or domain language
@@ -48,8 +53,9 @@ checkpoint after each user answer.
 - Optional ADRs for qualifying decisions.
 - `usage-metrics.txt` in this skill folder as a refreshed point-in-time metrics
   receipt.
-- `temp_prd.md` in this skill folder when context used reaches 45% or metrics
-  are unavailable.
+- `temp_prd.md` in this skill folder only when context used reaches 45%,
+  context left is 55% or lower, metrics are unavailable/unknown, or the user
+  explicitly requests a handoff.
 - A resume instruction for `/domain-grilling-with-docs-context-45 temp_prd`.
 
 ## Required Files
@@ -91,6 +97,8 @@ A valid adaptation should satisfy these checks:
 - Code contradictions are reported with evidence.
 - Questions remain one at a time.
 - Context metrics are checked after each user answer.
+- `temp_prd.md` is not used as the normal per-question state file while context
+  remains safe.
 - `temp_prd.md` includes the last question, the user answer, gathered
   requirements, terminology context, ADR candidates, unresolved questions, and
   the resume command.

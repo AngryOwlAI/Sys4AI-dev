@@ -38,6 +38,8 @@ behavior.
   credentials, non-public URLs, or organization-specific operational state.
 - Do not duplicate the `codex-usage-metrics` collector. This skill should call
   it as a required adjacent template dependency.
+- Do not create, overwrite, or refresh `temp_prd.md` after each question when
+  context is still safe.
 - Keep examples neutral and portable.
 - Treat `usage-metrics.txt` and `temp_prd.md` as runtime artifacts, not static
   template content.
@@ -62,6 +64,7 @@ Before finalizing changes to this template, check that:
 - The 45 percent context-used threshold is documented as equivalent to 55
   percent context left.
 - Resume behavior from `temp_prd.md` is explicit.
+- Threshold-only `temp_prd.md` creation is explicit.
 - The record template includes stable trace IDs.
 - No hard-coded local source paths or project-bound names remain.
 

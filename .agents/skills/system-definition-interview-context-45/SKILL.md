@@ -21,7 +21,7 @@ The imported source guidance below remains valid where it does not conflict with
 
 ---
 name: system-definition-interview-context-45
-description: Interview stakeholders to establish or reconstruct system intent with a 45 percent context-used checkpoint, saving temp_prd.md for resumable system-definition discovery when context is low or metrics are unavailable.
+description: Interview stakeholders to establish or reconstruct system intent with a 45 percent context-used checkpoint, saving temp_prd.md only when context is low, metrics are unavailable, or the user explicitly requests a handoff.
 ---
 
 # system-definition-interview-context-45
@@ -36,6 +36,11 @@ each user answer. When context used reaches 45 percent, context left is 55
 percent or lower, or metrics cannot be collected, write a resumable
 `temp_prd.md` in this skill folder and instruct the user to continue with
 `/system-definition-interview-context-45 temp_prd`.
+
+Do not create, overwrite, or refresh `temp_prd.md` after each question when
+context is still safe. During normal safe-context turns, keep the evolving state
+in the discovery record, live working context, or chat summary, and refresh only
+`usage-metrics.txt`.
 
 ## When To Use
 
@@ -69,7 +74,8 @@ discovery record is coherent enough.
 - A `System Intent Profile` and traceable discovery entries using stable IDs.
 - `usage-metrics.txt` in this skill folder after each context check.
 - `temp_prd.md` in this skill folder when context used is `>= 45%`, context
-  left is `<= 55%`, or metrics cannot be collected.
+  left is `<= 55%`, metrics cannot be collected, context left is unknown, or
+  the user explicitly requests a handoff.
 - A resume instruction using `/system-definition-interview-context-45 temp_prd`.
 
 ## Procedure
@@ -89,7 +95,8 @@ discovery record is coherent enough.
    requirement meaning, or stakeholder priority. Use compact batches only for
    independent factual data.
 5. After the user answers, record the answer in the working context and update
-   the discovery record or chat summary.
+   the discovery record or chat summary. Do not write that routine update to
+   `temp_prd.md` while context is still safe.
 6. Run the context metrics checkpoint:
 
    ```sh
@@ -98,10 +105,12 @@ discovery record is coherent enough.
    ```
 
 7. Read `<TARGET_SKILL_PATH>/usage-metrics.txt` and inspect the `Context`
-   section. Continue only when context left is known and greater than `55%`.
-8. If context left is `<= 55%`, context used is therefore `>= 45%`. Write
-   `<TARGET_SKILL_PATH>/temp_prd.md`, overwriting any previous file only after
-   integrating still-relevant prior content, then tell the user:
+   section. Continue only when context left is known and greater than `55%`,
+   unless the user explicitly requested a handoff.
+8. If context left is `<= 55%`, context used is therefore `>= 45%`, or the user
+   explicitly requested a handoff, write `<TARGET_SKILL_PATH>/temp_prd.md`,
+   overwriting any previous file only after integrating still-relevant prior
+   content, then tell the user:
 
    ```text
    The discussion has been saved to temp_prd.md. Please start a new discussion
@@ -189,6 +198,8 @@ the prior content cannot be safely merged.
 
 - The interview establishes system intent before document generation.
 - The metrics checkpoint runs after each user answer.
+- `temp_prd.md` is written only at the threshold, on unknown/unavailable
+  metrics, or on explicit user handoff request.
 - `temp_prd.md` contains the last question and the user's answer.
 - Resumed sessions integrate prior context instead of discarding it.
 - Candidate requirements remain candidates until target-project authority
@@ -200,6 +211,8 @@ the prior content cannot be safely merged.
 
 - Continuing the interview when context metrics are unavailable.
 - Checking context before the user answer is captured.
+- Creating, overwriting, or refreshing `temp_prd.md` after each safe-context
+  question.
 - Overwriting `temp_prd.md` without integrating prior resumable context.
 - Turning elicitation into a large questionnaire instead of a focused interview.
 - Generating formal systems documents before intent and boundary are stable.

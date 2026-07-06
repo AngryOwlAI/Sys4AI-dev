@@ -44,6 +44,9 @@ python3 <SKILLS_ROOT>/codex-usage-metrics/scripts/collect_usage_metrics.py \
   --output <TARGET_SKILL_PATH>/usage-metrics.txt
 ```
 
+When context remains above the safe threshold, the agent continues the interview
+without creating, overwriting, or refreshing `temp_prd.md`.
+
 ## Example Resolved Decision
 
 ```md
@@ -71,6 +74,8 @@ and this resume command:
 - The recommendation is tied to evidence and risk.
 - The resolved decision can be carried into the PRD.
 - The context check happens after the user answer.
+- `temp_prd.md` is written only at the handoff threshold, on unavailable/unknown
+  metrics, or on explicit user request.
 - The handoff file contains enough context to resume without restarting the
   interview.
 

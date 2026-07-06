@@ -71,7 +71,7 @@ skills:
       - README.md
       - AGENTS.md
       - examples/portable-example.md
-    description: "Long-session stakeholder elicitation workflow for system intent discovery with a 45 percent context-used checkpoint and resumable temp_prd.md handoff."
+    description: "Long-session stakeholder elicitation workflow for system intent discovery with a 45 percent context-used checkpoint and threshold-only temp_prd.md handoff."
     required_skills:
       - codex-usage-metrics
     local_runtime_paths:
@@ -116,7 +116,12 @@ skills:
       - README.md
       - AGENTS.md
       - examples/portable-example.md
-    description: "Long-session decision grilling that checkpoints resumable context when Codex context usage reaches the defined threshold."
+    description: "Long-session decision grilling that checks metrics after each user answer and writes temp_prd.md only at the 45 percent threshold, unavailable/unknown metrics, or explicit user handoff."
+    required_skills:
+      - codex-usage-metrics
+    local_runtime_paths:
+      skills_root: skills/core
+      target_skill_path: skills/core/decision-grilling-context-45
   - id: domain-grilling-with-docs
     name: Domain Grilling With Docs
     family: domain_documentation_clarification
@@ -142,7 +147,12 @@ skills:
       - README.md
       - AGENTS.md
       - examples/portable-example.md
-    description: "Long-session documentation-aware grilling with resumable checkpoint behavior for extended discovery."
+    description: "Long-session documentation-aware grilling that checks metrics after each user answer and writes temp_prd.md only at the 45 percent threshold, unavailable/unknown metrics, or explicit user handoff."
+    required_skills:
+      - codex-usage-metrics
+    local_runtime_paths:
+      skills_root: skills/core
+      target_skill_path: skills/core/domain-grilling-with-docs-context-45
   - id: mermaid-diagrams
     name: Mermaid Diagrams
     family: technical_communication

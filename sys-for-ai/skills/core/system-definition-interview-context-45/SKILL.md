@@ -15,6 +15,11 @@ Use this local `sys-for-ai` adapter for long system-definition interviews that m
 
 When context used is at least 45 percent, context left is at most 55 percent, or metrics cannot be collected, write a resumable `temp_prd.md` and stop.
 
+Do not create, overwrite, or refresh `temp_prd.md` after each question when
+context is still safe. During normal safe-context turns, keep the evolving state
+in the discovery record, live working context, or chat summary, and refresh only
+`usage-metrics.txt`.
+
 ## Local path bindings
 
 ```text
@@ -49,7 +54,7 @@ Do not use this adapter for short clarifications that do not need continuation p
 
 - `control_records/system_definition/requirements-discovery-record.md`, unless chat-only output is authorized.
 - `skills/core/system-definition-interview-context-45/usage-metrics.txt` when metrics can be collected.
-- `skills/core/system-definition-interview-context-45/temp_prd.md` when context threshold is reached or metrics are unavailable.
+- `skills/core/system-definition-interview-context-45/temp_prd.md` only when context threshold is reached, metrics are unavailable or unknown, or the user explicitly requests a handoff.
 - Resume instruction:
 
 ```text
@@ -64,7 +69,7 @@ Do not use this adapter for short clarifications that do not need continuation p
 4. Initialize or refresh working context: objective, situation classification, System Intent Profile, stakeholders, boundary, as-is state, to-be state, operational scenarios, candidate requirements, quality attributes, architecture drivers, interfaces, V&V seeds, evidence, assumptions, risks, open questions, last exchange, and recommended next branch.
 5. Follow the local `system-definition-interview` procedure.
 6. Ask one focused question at a time unless a compact factual batch is safe.
-7. After each user answer, record the answer before checking metrics.
+7. After each user answer, record the answer before checking metrics. Do not write that routine update to `temp_prd.md` while context is still safe.
 8. Run the local context metrics checkpoint:
 
 ```bash
@@ -73,8 +78,8 @@ python3 skills/core/codex-usage-metrics/scripts/collect_usage_metrics.py \
 ```
 
 9. Read `usage-metrics.txt` and inspect the context section.
-10. Continue only when context left is known and greater than 55 percent.
-11. If context left is 55 percent or lower, context used is 45 percent or higher, metrics are unavailable, or context left is unknown, write `temp_prd.md` and stop.
+10. Continue only when context left is known and greater than 55 percent, unless the user explicitly requested a handoff.
+11. If context left is 55 percent or lower, context used is 45 percent or higher, metrics are unavailable, context left is unknown, or the user explicitly requests a handoff, write `temp_prd.md` and stop.
 12. Tell the user or downstream agent:
 
 ```text
@@ -153,6 +158,7 @@ If discovery-record validator exists:
 
 - Continuing the interview when metrics are unavailable.
 - Checking metrics before the user answer is recorded.
+- Creating, overwriting, or refreshing `temp_prd.md` after each safe-context question.
 - Overwriting `temp_prd.md` without integrating prior continuation context.
 - Treating `temp_prd.md` as a final PRD.
 - Creating final formal systems documents before intent and boundary are stable.

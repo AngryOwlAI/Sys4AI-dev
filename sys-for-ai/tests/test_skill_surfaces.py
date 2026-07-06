@@ -48,6 +48,30 @@ class SkillSurfaceTests(unittest.TestCase):
             self.assertNotIn("Codex", text, relative)
             self.assertRegex(text, r"target[ -]system", relative)
 
+    def test_context_45_temp_prd_is_threshold_only(self) -> None:
+        rule = "Do not create, overwrite, or refresh `temp_prd.md` after each question when context is still safe."
+        failure = "metrics are unavailable"
+
+        for skill in [
+            "decision-grilling-context-45",
+            "domain-grilling-with-docs-context-45",
+            "system-definition-interview-context-45",
+        ]:
+            for relative in [
+                f".agents/skills/{skill}/SKILL.md",
+                f"sys-for-ai/skills/core/{skill}/SKILL.md",
+            ]:
+                text = _read(relative)
+                normalized = " ".join(text.split())
+                self.assertIn(rule, normalized, relative)
+                self.assertRegex(text, r"context left is (at most 55 percent|55 percent or lower|`<= 55%`)", relative)
+                self.assertIn(failure, text, relative)
+
+        policy = _read("sys-for-ai/docs/skill_integration_policy.md")
+        normalized_policy = " ".join(policy.split())
+        self.assertIn(rule, normalized_policy)
+        self.assertIn("not the normal per-question state file", policy)
+
 
 def _read(relative: str) -> str:
     return (WORKSPACE_ROOT / relative).read_text(encoding="utf-8")

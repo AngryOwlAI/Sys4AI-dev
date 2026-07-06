@@ -33,6 +33,9 @@ python3 <SKILLS_ROOT>/codex-usage-metrics/scripts/collect_usage_metrics.py \
   --output <TARGET_SKILL_PATH>/usage-metrics.txt
 ```
 
+When context remains above the safe threshold, the agent continues the interview
+without creating, overwriting, or refreshing `temp_prd.md`.
+
 ## Example Discovery Entries
 
 ```md
@@ -85,6 +88,8 @@ The resume command is:
 
 - The question is focused and decision-relevant.
 - The user answer is captured before the metrics checkpoint.
+- `temp_prd.md` is written only at the handoff threshold, on unavailable/unknown
+  metrics, or on explicit user request.
 - The handoff file contains enough context to resume without restarting the
   interview.
 - Candidate requirements remain labeled as candidates.

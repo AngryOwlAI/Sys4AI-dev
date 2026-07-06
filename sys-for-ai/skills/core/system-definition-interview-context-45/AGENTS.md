@@ -9,3 +9,4 @@
 - Do not remove fail-closed context behavior.
 - Do not continue long interviews when metrics are unavailable or threshold is reached.
 - Do not treat `temp_prd.md` as canonical authority.
+- Do not create, overwrite, or refresh `temp_prd.md` after each question when context is still safe.

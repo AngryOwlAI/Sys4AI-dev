@@ -21,7 +21,7 @@ The imported source guidance below remains valid where it does not conflict with
 
 ---
 name: decision-grilling-context-45
-description: Interview the user one question at a time to stress-test a plan or design, checking Codex context after each answer and saving temp_prd.md when context used reaches 45% or metrics are unavailable.
+description: Interview the user one question at a time to stress-test a plan or design, checking Codex context after each answer and saving temp_prd.md only when context used reaches 45%, metrics are unavailable, or the user explicitly requests a handoff.
 ---
 
 # decision-grilling-context-45
@@ -37,6 +37,10 @@ context checkpoint after each user answer. When context used reaches 45% or more
 of the available window, the skill writes a resumable `temp_prd.md` in this
 skill folder and instructs the user to continue in a new discussion with the
 `temp_prd` parameter.
+
+Do not create, overwrite, or refresh `temp_prd.md` after each question when
+context is still safe. During normal safe-context turns, keep the evolving state
+in the live working context and refresh only `usage-metrics.txt`.
 
 ## When To Use
 
@@ -64,7 +68,8 @@ skill folder and instructs the user to continue in a new discussion with the
 - A progressively clarified decision tree.
 - `usage-metrics.txt` in this skill folder after each context check.
 - `temp_prd.md` in this skill folder when context used is `>= 45%`, context
-  left is `<= 55%`, or metrics cannot be collected.
+  left is `<= 55%`, metrics cannot be collected, context left is unknown, or
+  the user explicitly requests a handoff.
 - A resume instruction using `/decision-grilling-context-45 temp_prd`.
 
 ## Procedure
@@ -79,7 +84,8 @@ skill folder and instructs the user to continue in a new discussion with the
 4. If repository inspection can answer it, inspect evidence instead of asking.
 5. Ask exactly one focused question and include a recommended answer.
 6. Wait for the user before moving to the next branch.
-7. After the user answers, record the answer in the working context.
+7. After the user answers, record the answer in the working context. Do not
+   write that routine update to `temp_prd.md` while context is still safe.
 8. Run the context metrics checkpoint:
 
    ```sh
@@ -89,10 +95,11 @@ skill folder and instructs the user to continue in a new discussion with the
 
 9. Read `<TARGET_SKILL_PATH>/usage-metrics.txt` and inspect the `Context`
    section. Continue only when the context-left value is known and greater than
-   `55%`.
-10. If context left is `<= 55%`, context used is therefore `>= 45%`. Write
-    `<TARGET_SKILL_PATH>/temp_prd.md`, overwriting any previous file, then tell
-    the user:
+   `55%`, unless the user explicitly requested a handoff.
+10. If context left is `<= 55%`, context used is therefore `>= 45%`, or the user
+    explicitly requested a handoff, write `<TARGET_SKILL_PATH>/temp_prd.md`,
+    overwriting any previous file only after integrating still-relevant prior
+    content, then tell the user:
 
     ```text
     The discussion has been saved to temp_prd.md. Please start a new discussion
@@ -157,6 +164,8 @@ verbatim unless the prior content cannot be safely merged.
 - Each question maps to a real dependency or risk.
 - Recommendations are grounded in evidence or clearly marked assumptions.
 - The metrics checkpoint runs after each user answer.
+- `temp_prd.md` is written only at the threshold, on unknown/unavailable
+  metrics, or on explicit user handoff request.
 - `temp_prd.md` contains the last question and the user's answer.
 - Resumed sessions integrate prior `temp_prd.md` content instead of discarding
   it.
@@ -167,6 +176,8 @@ verbatim unless the prior content cannot be safely merged.
 - Ignoring codebase evidence that could answer the question.
 - Letting the interview drift away from implementation-relevant decisions.
 - Checking context before the user answer is captured.
+- Creating, overwriting, or refreshing `temp_prd.md` after each safe-context
+  question.
 - Continuing the loop when context metrics are unavailable.
 - Overwriting `temp_prd.md` without integrating the prior resumable context.
 

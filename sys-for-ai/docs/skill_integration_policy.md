@@ -27,6 +27,11 @@ After every user answer in a context-45 workflow:
 3. continue only when context left is known and greater than 55 percent,
 4. otherwise write `temp_prd.md` and stop with a resume command.
 
+Do not create, overwrite, or refresh `temp_prd.md` after each question when
+context is still safe. `temp_prd.md` is a threshold or fail-closed handoff file,
+not the normal per-question state file. If metrics cannot determine context
+left, fail closed by writing the best available `temp_prd.md` and stopping.
+
 For `system-definition-interview-context-45`, the resume command is:
 
 ```text

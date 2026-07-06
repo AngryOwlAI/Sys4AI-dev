@@ -42,6 +42,9 @@ python3 <SKILLS_ROOT>/codex-usage-metrics/scripts/collect_usage_metrics.py \
   --output <TARGET_SKILL_PATH>/usage-metrics.txt
 ```
 
+When context remains above the safe threshold, the agent continues the interview
+without creating, overwriting, or refreshing `temp_prd.md`.
+
 ## Example Documentation Update
 
 ```md
@@ -73,6 +76,8 @@ metrics snapshot, and this resume command:
   affects architecture.
 - Contradictions between user wording and source documents are explicit.
 - The context check happens after the user answer.
+- `temp_prd.md` is written only at the handoff threshold, on unavailable/unknown
+  metrics, or on explicit user request.
 - The handoff file contains enough requirements and terminology context to
   resume without restarting the interview.
 

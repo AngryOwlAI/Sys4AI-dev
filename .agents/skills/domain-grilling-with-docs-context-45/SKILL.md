@@ -21,7 +21,7 @@ The imported source guidance below remains valid where it does not conflict with
 
 ---
 name: domain-grilling-with-docs-context-45
-description: Stress-test a plan against project language one question at a time, checking Codex context after each answer and saving temp_prd.md with requirements, terminology, and ADR context when context used reaches 45% or metrics are unavailable.
+description: Stress-test a plan against project language one question at a time, checking Codex context after each answer and saving temp_prd.md only when context used reaches 45%, metrics are unavailable, or the user explicitly requests a handoff.
 ---
 
 # domain-grilling-with-docs-context-45
@@ -38,6 +38,11 @@ This variant preserves the documentation-aware one-question loop from
 answer. When context used reaches 45% or more of the available window, the skill
 writes a resumable `temp_prd.md` in this skill folder and instructs the user to
 continue in a new discussion with the `temp_prd` parameter.
+
+Do not create, overwrite, or refresh `temp_prd.md` after each question when
+context is still safe. During normal safe-context turns, keep the evolving state
+in the live working context, approved glossary/context files, ADR candidates, or
+chat summary, and refresh only `usage-metrics.txt`.
 
 ## When To Use
 
@@ -68,7 +73,8 @@ continue in a new discussion with the `temp_prd` parameter.
 - Optional ADRs for qualifying decisions.
 - `usage-metrics.txt` in this skill folder after each context check.
 - `temp_prd.md` in this skill folder when context used is `>= 45%`, context
-  left is `<= 55%`, or metrics cannot be collected.
+  left is `<= 55%`, metrics cannot be collected, context left is unknown, or
+  the user explicitly requests a handoff.
 - A resume instruction using `/domain-grilling-with-docs-context-45 temp_prd`.
 
 ## Procedure
@@ -90,7 +96,8 @@ continue in a new discussion with the `temp_prd` parameter.
 8. Use concrete scenarios and code inspection to test boundaries between concepts.
 9. Ask exactly one focused question and include a recommended answer.
 10. Wait for the user before moving to the next branch.
-11. After the user answers, record the answer in the working context.
+11. After the user answers, record the answer in the working context. Do not
+    write that routine update to `temp_prd.md` while context is still safe.
 12. Update <CONTEXT_FILE> inline when a term is resolved, keeping it free of implementation details.
 13. Offer an ADR only when the decision is hard to reverse, surprising without context, and based on a real tradeoff.
 14. Run the context metrics checkpoint:
@@ -102,10 +109,11 @@ continue in a new discussion with the `temp_prd` parameter.
 
 15. Read `<TARGET_SKILL_PATH>/usage-metrics.txt` and inspect the `Context`
     section. Continue only when the context-left value is known and greater than
-    `55%`.
-16. If context left is `<= 55%`, context used is therefore `>= 45%`. Write
-    `<TARGET_SKILL_PATH>/temp_prd.md`, overwriting any previous file, then tell
-    the user:
+    `55%`, unless the user explicitly requested a handoff.
+16. If context left is `<= 55%`, context used is therefore `>= 45%`, or the user
+    explicitly requested a handoff, write `<TARGET_SKILL_PATH>/temp_prd.md`,
+    overwriting any previous file only after integrating still-relevant prior
+    content, then tell the user:
 
     ```text
     The discussion has been saved to temp_prd.md. Please start a new discussion
@@ -182,6 +190,8 @@ content cannot be safely merged.
 - Code contradictions are reported with evidence.
 - Questions remain one at a time.
 - The metrics checkpoint runs after each user answer.
+- `temp_prd.md` is written only at the threshold, on unknown/unavailable
+  metrics, or on explicit user handoff request.
 - `temp_prd.md` contains the last question and the user's answer.
 - Resumed sessions integrate prior requirements, terminology, and ADR context
   instead of discarding it.
@@ -192,6 +202,8 @@ content cannot be safely merged.
 - Creating ADRs for obvious or reversible choices.
 - Accepting user terminology that contradicts existing project language without resolving it.
 - Checking context before the user answer is captured.
+- Creating, overwriting, or refreshing `temp_prd.md` after each safe-context
+  question.
 - Continuing the loop when context metrics are unavailable.
 - Overwriting `temp_prd.md` without integrating the prior resumable context.
 
