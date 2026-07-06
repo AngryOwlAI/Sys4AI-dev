@@ -8,11 +8,13 @@ import platform
 import sys
 from pathlib import Path
 
+from .discovery import validate_discovery_record
 from .memory import bootstrap_registries
 from .validators import (
     ValidationResult,
     print_result,
     validate_agentjob,
+    validate_metrics_script,
     validate_registry_headers,
     validate_skill_manifest,
 )
@@ -60,6 +62,8 @@ def build_parser() -> argparse.ArgumentParser:
     validate = sub.add_parser("validate", help="Run all default Phase 1 validations")
     validate.add_argument("--agentjob", default="control_records/examples/phase1_smoke_agentjob.yaml")
     validate.add_argument("--skills", default="skills/core_skill_manifest.yaml")
+    validate.add_argument("--metrics", default="skills/core/codex-usage-metrics/scripts/collect_usage_metrics.py")
+    validate.add_argument("--discovery-template", default="templates/system_definition/requirements-discovery-record-template.md")
     validate.add_argument("--registries", default="registries")
 
     validate_agent = sub.add_parser("validate-agentjob", help="Validate one AgentJob YAML file")
@@ -67,6 +71,16 @@ def build_parser() -> argparse.ArgumentParser:
 
     validate_skills = sub.add_parser("validate-skills", help="Validate the core skill manifest")
     validate_skills.add_argument("path")
+
+    validate_metrics = sub.add_parser("validate-metrics", help="Validate local Codex usage metrics script entry point")
+    validate_metrics.add_argument(
+        "path",
+        default="skills/core/codex-usage-metrics/scripts/collect_usage_metrics.py",
+        nargs="?",
+    )
+
+    validate_discovery = sub.add_parser("validate-discovery-record", help="Validate a requirements discovery record")
+    validate_discovery.add_argument("path")
 
     bootstrap = sub.add_parser("bootstrap-memory", help="Create missing memory registry files")
     bootstrap.add_argument("registry_dir", default="registries", nargs="?")
@@ -87,6 +101,12 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "validate-skills":
         return print_result(validate_skill_manifest(args.path))
 
+    if args.command == "validate-metrics":
+        return print_result(validate_metrics_script(args.path))
+
+    if args.command == "validate-discovery-record":
+        return print_result(validate_discovery_record(args.path))
+
     if args.command == "bootstrap-memory":
         return print_result(bootstrap_registries(args.registry_dir))
 
@@ -94,6 +114,8 @@ def main(argv: list[str] | None = None) -> int:
         result = _doctor()
         result.extend(validate_agentjob(args.agentjob))
         result.extend(validate_skill_manifest(args.skills))
+        result.extend(validate_metrics_script(args.metrics))
+        result.extend(validate_discovery_record(args.discovery_template))
         result.extend(validate_registry_headers(args.registries))
         return print_result(result)
 

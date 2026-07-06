@@ -16,7 +16,42 @@ skills:
       - README.md
       - AGENTS.md
       - examples/portable-example.md
+      - scripts/collect_usage_metrics.py
+    scripts:
+      - scripts/collect_usage_metrics.py
     description: "Capture Codex context, token, and rate-limit metrics into a refreshed local receipt without exporting conversation content."
+  - id: system-definition-interview
+    name: System Definition Interview
+    family: system_definition_elicitation
+    source_repo: https://github.com/AngryOwlAI/ai-skills-for-sys
+    source_path: skills/system-definition-interview
+    local_path: core/system-definition-interview
+    adaptation_status: adapter_shell
+    required_files:
+      - SKILL.md
+      - README.md
+      - AGENTS.md
+      - examples/portable-example.md
+    description: "Interview stakeholders to establish or reconstruct system intent, boundaries, stakeholders, scenarios, candidate requirements, architecture drivers, interfaces, evidence, and V&V seeds before PRD or formal systems-document generation."
+  - id: system-definition-interview-context-45
+    name: System Definition Interview Context 45
+    family: system_definition_elicitation
+    source_repo: https://github.com/AngryOwlAI/ai-skills-for-sys
+    source_path: skills/system-definition-interview-context-45
+    local_path: core/system-definition-interview-context-45
+    adaptation_status: adapter_shell
+    required_files:
+      - SKILL.md
+      - README.md
+      - AGENTS.md
+      - examples/portable-example.md
+    description: "Long-session stakeholder elicitation workflow for system intent discovery with a 45 percent context-used checkpoint and resumable temp_prd.md handoff."
+    required_skills:
+      - codex-usage-metrics
+    local_runtime_paths:
+      skills_root: skills/core
+      target_skill_path: skills/core/system-definition-interview-context-45
+      default_discovery_output_dir: control_records/system_definition
   - id: conversation-to-prd
     name: Conversation to PRD
     family: requirements_production

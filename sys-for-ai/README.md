@@ -22,8 +22,11 @@ make validate
 make doctor
 make validate-agentjob
 make validate-skills
+make validate-metrics
+make validate-discovery-template
 make bootstrap-memory
 make validate
+.venv/bin/python -m sys_for_ai.cli validate-discovery-record <path>
 ```
 
 ## Repository areas

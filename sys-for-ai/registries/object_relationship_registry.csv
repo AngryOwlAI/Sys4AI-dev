@@ -1,1 +1,7 @@
 relationship_id,subject_id,predicate,object_id,evidence_path,notes
+REL-DISCOVERY-VALIDATOR-IMPLEMENTS-SCHEMA,SRC-VALIDATOR-DISCOVERY,implements,SRC-SCHEMA-DISCOVERY-RECORD,sys-for-ai/sys_for_ai/discovery.py,Validator enforces the discovery-record contract and authority markers.
+REL-DISCOVERY-CLI-EXPOSES-VALIDATOR,SRC-CLI-PHASE1,exposes,SRC-VALIDATOR-DISCOVERY,sys-for-ai/sys_for_ai/cli.py,CLI command validate-discovery-record invokes the discovery validator.
+REL-DISCOVERY-MAKE-RUNS-VALIDATOR,SRC-MAKE-PHASE1,runs,SRC-VALIDATOR-DISCOVERY,sys-for-ai/Makefile,Make target validate-discovery-template validates the controlled discovery template.
+REL-DISCOVERY-TEMPLATE-CONFORMS-SCHEMA,SRC-TEMPLATE-RDR,conforms_to,SRC-SCHEMA-DISCOVERY-RECORD,sys-for-ai/templates/system_definition/requirements-discovery-record-template.md,Template supplies required sections and draft authority markers.
+REL-SYSDEF-SKILL-USES-DISCOVERY-TEMPLATE,system-definition-interview,uses,SRC-TEMPLATE-RDR,sys-for-ai/skills/core/system-definition-interview/SKILL.md,System-definition adapter writes discovery records from the controlled template.
+REL-CONTEXT45-SKILL-USES-METRICS,system-definition-interview-context-45,uses,SRC-METRICS-SCRIPT,sys-for-ai/skills/core/system-definition-interview-context-45/SKILL.md,Context-45 adapter depends on metrics for fail-closed continuation decisions.

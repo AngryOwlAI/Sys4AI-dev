@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import subprocess
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable
@@ -33,6 +35,8 @@ AGENTJOB_REQUIRED_FIELDS = {
 
 SKILL_MANIFEST_REQUIRED_SKILLS = {
     "codex-usage-metrics",
+    "system-definition-interview",
+    "system-definition-interview-context-45",
     "conversation-to-prd",
     "decision-grilling",
     "decision-grilling-context-45",
@@ -157,6 +161,20 @@ def validate_skill_manifest(path: str | Path) -> ValidationResult:
         for rel in sorted(SKILL_ADAPTER_REQUIRED_FILES):
             if not (adapter / rel).exists():
                 messages.append(f"{target}: {skill_id} missing required adapter file {rel}")
+        scripts = item.get("scripts", [])
+        if scripts is None:
+            scripts = []
+        if not isinstance(scripts, list):
+            messages.append(f"{target}: {skill_id} field 'scripts' must be a list when present")
+        else:
+            for rel_script in scripts:
+                if not isinstance(rel_script, str) or not rel_script:
+                    messages.append(
+                        f"{target}: {skill_id} has invalid script path entry: {rel_script!r}"
+                    )
+                    continue
+                if not (adapter / rel_script).exists():
+                    messages.append(f"{target}: {skill_id} missing declared script {rel_script}")
 
     missing_skills = sorted(SKILL_MANIFEST_REQUIRED_SKILLS - seen)
     extra_skills = sorted(seen - SKILL_MANIFEST_REQUIRED_SKILLS)
@@ -183,6 +201,22 @@ def validate_registry_headers(registry_dir: str | Path) -> ValidationResult:
                 f"{path}: header mismatch. Expected {expected_header!r}, found {actual!r}"
             )
     return ValidationResult(not messages, messages or [f"{root}: registry header validation passed"])
+
+
+def validate_metrics_script(path: str | Path) -> ValidationResult:
+    script = Path(path)
+    if not script.exists():
+        return ValidationResult(False, [f"{script}: missing metrics script"])
+    proc = subprocess.run(
+        [sys.executable, str(script), "--help"],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    output = proc.stdout.strip() or proc.stderr.strip() or f"{script}: --help produced no output"
+    if proc.returncode != 0:
+        return ValidationResult(False, [output])
+    return ValidationResult(True, [f"{script}: metrics script --help validation passed"])
 
 
 def print_result(result: ValidationResult) -> int:

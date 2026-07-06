@@ -36,3 +36,13 @@ recommended_fields:
     type: list[string]
   known_failure_modes:
     type: list[string]
+  required_skills:
+    type: list[string]
+  optional_skills:
+    type: list[string]
+  scripts:
+    type: list[string]
+  local_runtime_paths:
+    type: mapping
+  source_provenance:
+    type: mapping

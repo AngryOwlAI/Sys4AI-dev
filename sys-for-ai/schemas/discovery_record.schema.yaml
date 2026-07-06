@@ -1,0 +1,42 @@
+schema_id: SFA-SCHEMA-DISCOVERY-RECORD-001
+schema_kind: schema_like_markdown_contract
+status: draft
+purpose: Define required sections and authority rules for requirements discovery records created by system-definition skills.
+required_sections:
+  - Authority Notice
+  - System Intent Profile
+  - Needs
+  - Stakeholders And Roles
+  - System Boundary
+  - As-Is State
+  - To-Be State
+  - Operational Scenarios And ConOps Seeds
+  - Candidate Requirements
+  - Architecture Drivers
+  - Interface Candidates
+  - Verification And Validation Seeds
+  - Evidence Register
+  - Assumptions, Risks, And Constraints
+  - Open Questions
+  - Downstream Routing Recommendation
+  - Completion Evidence
+id_prefixes:
+  needs: NEED-
+  stakeholders: STK-
+  scenarios: SCN-
+  functional_candidates: REQ-CAND-
+  quality_candidates: NFR-CAND-
+  drivers: DRV-
+  interfaces: IF-
+  verification_validation: VVE-
+  open_questions: OPEN-
+authority_policy:
+  default_status: draft_discovery_evidence
+  source_authority_status: derivative_draft
+  candidate_requirements_not_baselined: true
+  source_first_required: true
+  promotion_required_for_canonical_status: true
+forbidden_authority_inversions:
+  - Treating discovery records as canonical requirements without promotion.
+  - Removing REQ-CAND or NFR-CAND labels before approval.
+  - Citing generated discovery text as the only authority when canonical sources exist.
