@@ -9,11 +9,11 @@ system_context:
 current_phase: implementation_initialization
 lifecycle_stage: develop
 active_task_id: TASK-P1-SELFHOST-001
-active_director_decision_id: null
+active_director_decision_id: DDR-P1-SELFHOST-001
 active_agentjob_id: null
 latest_completion_receipt_id: null
 latest_handoff_id: null
-latest_memory_preflight_receipt_id: null
+latest_memory_preflight_receipt_id: MEMPREFLIGHT-P1-EXAMPLE-001
 state_status: active
 blocked_reason: null
 human_gate_required: false

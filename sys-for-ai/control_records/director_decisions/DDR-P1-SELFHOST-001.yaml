@@ -1,0 +1,28 @@
+director_decision_id: DDR-P1-SELFHOST-001
+schema_version: 0.1.0
+decision_status: active
+created_at: "2026-07-06T00:00:00Z"
+director_role: system_director
+decision_context:
+  trigger: self_hosting_bootstrap
+  program_state_id: SFA-PROGRAM-STATE-001
+  latest_handoff_id: null
+  memory_preflight_receipt_id: MEMPREFLIGHT-P1-EXAMPLE-001
+selected_route:
+  route_id: implement_continue_loop_kernel
+  rationale: Phase 5 requires deterministic /continue status, selection, preflight, and packet generation.
+  selected_role: control_loop_engineer
+  creates_agentjob_id: AJ-P1-SELFHOST-CONTINUE-KERNEL-001
+rejected_routes:
+  - route_id: add_vector_memory
+    reason: Out of Phase 1 scope.
+  - route_id: execute_multiple_agentjobs
+    reason: Violates one-AgentJob invariant.
+authority_boundary:
+  may_create_agentjob: true
+  may_expand_role_authority: false
+  may_promote_derivatives: false
+  may_modify_prds: false
+validators:
+  - cd sys-for-ai && make validate-control-loop
+  - cd sys-for-ai && make validate

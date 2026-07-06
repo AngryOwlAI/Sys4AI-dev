@@ -79,3 +79,13 @@ SRC-MEMORY-GRAPH,sys-for-ai/sys_for_ai/memory/graph.py,memory_graph,controlled,s
 SRC-MEMORY-PREFLIGHT-SCAFFOLD,sys-for-ai/sys_for_ai/memory/preflight.py,memory_preflight_scaffold,controlled,source_first_memory,2026-07-06,Phase 3 scaffold for Phase 4 memory preflight behavior.
 SRC-MEMORY-RECEIPTS-SCAFFOLD,sys-for-ai/sys_for_ai/memory/receipts.py,memory_receipts_scaffold,controlled,source_first_memory,2026-07-06,Phase 3 scaffold for Phase 4 memory receipt behavior.
 SRC-MEMORY-PREFLIGHT-EXAMPLE,sys-for-ai/control_records/memory_preflights/memory_preflight_receipt.example.yaml,memory_preflight_receipt,controlled,source_first_memory,2026-07-06,Example memory preflight receipt with source and registry inspection evidence.
+SRC-CONTROL-LOOP-INIT,sys-for-ai/sys_for_ai/control_loop/__init__.py,control_loop_module,controlled,control_loop,2026-07-06,Public API for generic continue control-loop kernel.
+SRC-CONTROL-LOOP-MODEL,sys-for-ai/sys_for_ai/control_loop/model.py,control_loop_model,controlled,control_loop,2026-07-06,Dataclasses for program state AgentJob Director decision and selection evidence.
+SRC-CONTROL-LOOP-STATE,sys-for-ai/sys_for_ai/control_loop/state.py,control_loop_state,controlled,control_loop,2026-07-06,Program state loading and JSON status helpers.
+SRC-CONTROL-LOOP-DIRECTOR,sys-for-ai/sys_for_ai/control_loop/director.py,control_loop_director,controlled,control_loop,2026-07-06,Director decision loading helpers.
+SRC-CONTROL-LOOP-JOB-SELECTION,sys-for-ai/sys_for_ai/control_loop/job_selection.py,control_loop_selection,controlled,control_loop,2026-07-06,One-AgentJob selection implementation.
+SRC-CONTROL-LOOP-EXECUTION-PACKET,sys-for-ai/sys_for_ai/control_loop/execution_packet.py,control_loop_packet,controlled,control_loop,2026-07-06,Continue status preflight selection and execution packet generation.
+SRC-CONTROL-LOOP-HANDOFF,sys-for-ai/sys_for_ai/control_loop/handoff.py,control_loop_handoff,controlled,control_loop,2026-07-06,Handoff lookup helper for continue selection.
+SRC-CONTROL-LOOP-VALIDATORS,sys-for-ai/sys_for_ai/control_loop/validators.py,control_loop_validator,controlled,control_loop,2026-07-06,One-active-AgentJob and control-loop validation helpers.
+SRC-DDR-SELFHOST-001,sys-for-ai/control_records/director_decisions/DDR-P1-SELFHOST-001.yaml,director_decision,controlled,control_loop,2026-07-06,Director decision selecting the Phase 5 continue packet kernel AgentJob.
+SRC-AJ-SELFHOST-CONTINUE-KERNEL-001,sys-for-ai/control_records/agentjobs/AJ-P1-SELFHOST-CONTINUE-KERNEL-001.yaml,agentjob,controlled,control_loop,2026-07-06,Pending AgentJob for Phase 5 continue packet kernel.

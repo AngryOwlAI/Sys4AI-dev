@@ -1,0 +1,82 @@
+agentjob_id: AJ-P1-SELFHOST-CONTINUE-KERNEL-001
+schema_version: 0.2.0
+status: pending
+objective: >
+  Implement the minimal self-hosting memory preflight and /continue control-loop
+  packet kernel for sys-for-ai-dev using source-first memory, tracked program
+  state, one-AgentJob selection, and execution-packet evidence.
+lifecycle_stage: implementation_initialization
+role_binding:
+  role_id: control_loop_engineer
+  binding_type: one_job_provisional_role
+  authority_scope: sys-for-ai Phase 1 scaffold
+  expires_with_agentjob: true
+required_inputs:
+  - PRDs/sys-for-ai_phase-0_product_system_design_prd.md
+  - PRDs/sys-for-ai_phase-1_implementation_initialization_prd.md
+  - implementation_plans/sys-for-ai-dev_memory_continue_self_hosting_implementation_plan.md
+  - sys-for-ai/control_records/program_state.yaml
+  - sys-for-ai/control_records/memory_preflights/memory_preflight_receipt.example.yaml
+allowed_reads:
+  - PRDs/**
+  - implementation_plans/**
+  - sys-for-ai/**
+allowed_writes:
+  - sys-for-ai/sys_for_ai/control_loop/**
+  - sys-for-ai/sys_for_ai/cli.py
+  - sys-for-ai/sys_for_ai/validators.py
+  - sys-for-ai/control_records/agentjobs/AJ-P1-SELFHOST-CONTINUE-KERNEL-001.yaml
+  - sys-for-ai/control_records/director_decisions/DDR-P1-SELFHOST-001.yaml
+  - sys-for-ai/control_records/program_state.yaml
+  - sys-for-ai/registries/**
+  - sys-for-ai/Makefile
+  - sys-for-ai/tests/**
+generated_paths: []
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - sys-for-ai/.venv/**
+forbidden_actions:
+  - Modify repository LICENSE or NOTICE.
+  - Treat generated derivatives as canonical.
+  - Execute more than one AgentJob in one /continue invocation.
+  - Mutate activated control records instead of superseding them.
+memory_preflight:
+  required: true
+  minimum_queries:
+    - source-first memory continue handoff AgentJob
+  required_evidence:
+    - canonical source inspection
+    - registry row inspection
+expected_outputs:
+  - /continue status command.
+  - /continue preflight command.
+  - /continue selection command.
+  - /continue execution-packet command.
+  - One-active-AgentJob validation.
+  - Control-loop validation.
+validators:
+  - cd sys-for-ai && make validate-control-loop
+  - cd sys-for-ai && make validate
+completion_evidence_required:
+  - changed_artifacts
+  - command_results
+  - validation_status
+  - next_handoff_id
+handoff_policy:
+  create_handoff_when:
+    - implementation remains incomplete
+    - next AgentJob is recommended
+authority_boundary:
+  may_modify_product_scaffold: true
+  may_modify_canonical_prds: false
+  may_promote_generated_derivatives: false
+  may_change_runtime_skill_authority: false
+stop_conditions:
+  - Required PRD source cannot be inspected.
+  - Existing schema or registry would be broken.
+  - More than one AgentJob is required.
+  - Required write is outside allowlist.
+  - Validation fails for reasons outside this AgentJob scope.

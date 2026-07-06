@@ -15,6 +15,14 @@ from .derivative_generation import validate_generated_derivatives
 from .memory import bootstrap_registries
 from .memory import hash_path as memory_hash_path
 from .memory import lookup_memory, memory_status, run_memory_preflight, search_memory, update_hashes, validate_hashes
+from .control_loop import (
+    continue_packet,
+    continue_preflight,
+    continue_select,
+    continue_status,
+    validate_control_loop,
+    validate_one_active_agentjob,
+)
 from .validators import (
     ValidationResult,
     print_result,
@@ -104,6 +112,18 @@ def build_parser() -> argparse.ArgumentParser:
     sub = parser.add_subparsers(dest="command", required=True)
 
     sub.add_parser("doctor", help="Check Python, dependencies, imports, and expected folders")
+
+    continue_status_parser = sub.add_parser("continue-status", help="Report current /continue state")
+    continue_status_parser.add_argument("--json", action="store_true")
+
+    continue_preflight_parser = sub.add_parser("continue-preflight", help="Run /continue memory preflight")
+    continue_preflight_parser.add_argument("--json", action="store_true")
+
+    continue_select_parser = sub.add_parser("continue-select", help="Select one authorized AgentJob")
+    continue_select_parser.add_argument("--json", action="store_true")
+
+    continue_packet_parser = sub.add_parser("continue-packet", help="Emit a /continue execution packet")
+    continue_packet_parser.add_argument("--json", action="store_true")
 
     validate = sub.add_parser("validate", help="Run all default Phase 1 validations")
     validate.add_argument("--agentjob", default="control_records/examples/phase1_smoke_agentjob.yaml")
@@ -224,6 +244,9 @@ def build_parser() -> argparse.ArgumentParser:
     validate_memory_pref = sub.add_parser("validate-memory-preflight", help="Validate memory preflight receipts")
     validate_memory_pref.add_argument("root", default="control_records/memory_preflights", nargs="?")
 
+    sub.add_parser("validate-one-active-agentjob", help="Validate the one-active-AgentJob invariant")
+    sub.add_parser("validate-control-loop", help="Validate the /continue control-loop kernel")
+
     validate_contract_registry = sub.add_parser(
         "validate-validation-contract-registry",
         help="Validate validation-contract registry rows and schema files",
@@ -266,6 +289,18 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "doctor":
         return print_result(_doctor())
+
+    if args.command == "continue-status":
+        return _emit_payload(continue_status(), args.json)
+
+    if args.command == "continue-preflight":
+        return _emit_payload(continue_preflight(), args.json)
+
+    if args.command == "continue-select":
+        return _emit_payload(continue_select(), args.json)
+
+    if args.command == "continue-packet":
+        return _emit_payload(continue_packet(), args.json)
 
     if args.command == "validate-agentjob":
         return print_result(validate_agentjob(args.path))
@@ -324,6 +359,12 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "validate-memory-preflight":
         return print_result(validate_memory_preflight_receipts(args.root))
 
+    if args.command == "validate-one-active-agentjob":
+        return print_result(validate_one_active_agentjob())
+
+    if args.command == "validate-control-loop":
+        return print_result(validate_control_loop())
+
     if args.command == "validate-validation-contract-registry":
         return print_result(validate_validation_contract_registry(args.path))
 
@@ -368,6 +409,8 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_toml_config(args.config_sources))
         result.extend(validate_jsonschema_contracts(args.contracts_root))
         result.extend(validate_registry_graph(args.registries))
+        result.extend(validate_one_active_agentjob())
+        result.extend(validate_control_loop())
         result.extend(validate_requirement_trace(args.requirement_trace))
         result.extend(validate_generated_derivatives(args.generated_docs, "registries/derivative_registry.csv"))
         return print_result(result)
@@ -406,6 +449,10 @@ def _handle_memory_command(args: argparse.Namespace) -> int:
 
 
 def _emit_memory_payload(payload: dict[str, object], json_output: bool) -> int:
+    return _emit_payload(payload, json_output)
+
+
+def _emit_payload(payload: dict[str, object], json_output: bool) -> int:
     if json_output:
         print(json.dumps(payload, indent=2, sort_keys=True))
     else:
