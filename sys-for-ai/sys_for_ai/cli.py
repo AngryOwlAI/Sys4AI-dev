@@ -16,10 +16,19 @@ from .validators import (
     ValidationResult,
     print_result,
     validate_agentjob,
+    validate_agentjob_registry,
     validate_config_sources,
+    validate_completion_receipt_registry,
+    validate_completion_receipts,
     validate_control_records,
+    validate_director_decision_registry,
+    validate_director_decisions,
     validate_format_profiles,
+    validate_handoff_registry,
+    validate_handoffs,
     validate_jsonschema_contracts,
+    validate_memory_preflight_registry,
+    validate_memory_preflight_receipts,
     validate_metrics_script,
     validate_program_state,
     validate_registry_graph,
@@ -138,6 +147,45 @@ def build_parser() -> argparse.ArgumentParser:
     validate_state = sub.add_parser("validate-program-state", help="Validate tracked /continue program state")
     validate_state.add_argument("path", default="control_records/program_state.yaml", nargs="?")
 
+    validate_directors = sub.add_parser("validate-director-decisions", help="Validate Director Decision Records")
+    validate_directors.add_argument("root", default="control_records/director_decisions", nargs="?")
+
+    validate_agentjob_reg = sub.add_parser("validate-agentjob-registry", help="Validate AgentJob registry rows")
+    validate_agentjob_reg.add_argument("path", default="registries/agentjob_registry.csv", nargs="?")
+
+    validate_director_reg = sub.add_parser(
+        "validate-director-decision-registry",
+        help="Validate Director decision registry rows",
+    )
+    validate_director_reg.add_argument("path", default="registries/director_decision_registry.csv", nargs="?")
+
+    validate_handoff_reg = sub.add_parser("validate-handoff-registry", help="Validate handoff registry rows")
+    validate_handoff_reg.add_argument("path", default="registries/handoff_registry.csv", nargs="?")
+
+    validate_completion_reg = sub.add_parser(
+        "validate-completion-receipt-registry",
+        help="Validate completion receipt registry rows",
+    )
+    validate_completion_reg.add_argument("path", default="registries/completion_receipt_registry.csv", nargs="?")
+
+    validate_memory_pref_reg = sub.add_parser(
+        "validate-memory-preflight-registry",
+        help="Validate memory preflight receipt registry rows",
+    )
+    validate_memory_pref_reg.add_argument("path", default="registries/memory_preflight_receipt_registry.csv", nargs="?")
+
+    validate_handoff_records = sub.add_parser("validate-handoffs", help="Validate operational handoff records")
+    validate_handoff_records.add_argument("root", default="control_records/handoffs", nargs="?")
+
+    validate_completion_records = sub.add_parser(
+        "validate-completion-receipts",
+        help="Validate operational completion receipts",
+    )
+    validate_completion_records.add_argument("root", default="control_records/completions", nargs="?")
+
+    validate_memory_pref = sub.add_parser("validate-memory-preflight", help="Validate memory preflight receipts")
+    validate_memory_pref.add_argument("root", default="control_records/memory_preflights", nargs="?")
+
     validate_contract_registry = sub.add_parser(
         "validate-validation-contract-registry",
         help="Validate validation-contract registry rows and schema files",
@@ -208,6 +256,33 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "validate-program-state":
         return print_result(validate_program_state(args.path))
 
+    if args.command == "validate-director-decisions":
+        return print_result(validate_director_decisions(args.root))
+
+    if args.command == "validate-agentjob-registry":
+        return print_result(validate_agentjob_registry(args.path))
+
+    if args.command == "validate-director-decision-registry":
+        return print_result(validate_director_decision_registry(args.path))
+
+    if args.command == "validate-handoff-registry":
+        return print_result(validate_handoff_registry(args.path))
+
+    if args.command == "validate-completion-receipt-registry":
+        return print_result(validate_completion_receipt_registry(args.path))
+
+    if args.command == "validate-memory-preflight-registry":
+        return print_result(validate_memory_preflight_registry(args.path))
+
+    if args.command == "validate-handoffs":
+        return print_result(validate_handoffs(args.root))
+
+    if args.command == "validate-completion-receipts":
+        return print_result(validate_completion_receipts(args.root))
+
+    if args.command == "validate-memory-preflight":
+        return print_result(validate_memory_preflight_receipts(args.root))
+
     if args.command == "validate-validation-contract-registry":
         return print_result(validate_validation_contract_registry(args.path))
 
@@ -243,6 +318,11 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_config_sources(args.config_sources))
         result.extend(validate_control_records(args.control_records))
         result.extend(validate_program_state())
+        result.extend(validate_agentjob_registry())
+        result.extend(validate_director_decision_registry())
+        result.extend(validate_handoff_registry())
+        result.extend(validate_completion_receipt_registry())
+        result.extend(validate_memory_preflight_registry())
         result.extend(validate_validation_contract_registry(args.validation_contracts))
         result.extend(validate_toml_config(args.config_sources))
         result.extend(validate_jsonschema_contracts(args.contracts_root))

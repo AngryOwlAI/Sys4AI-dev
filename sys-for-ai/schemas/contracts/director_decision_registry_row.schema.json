@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys-for-ai/schemas/contracts/director_decision_registry_row.schema.json",
+  "title": "Director decision registry row",
+  "type": "object",
+  "required": [
+    "director_decision_id",
+    "path",
+    "status",
+    "task_id",
+    "selected_route",
+    "selected_agentjob_id",
+    "authority_status",
+    "supersedes",
+    "source_hash",
+    "last_validated_at",
+    "notes"
+  ],
+  "properties": {
+    "director_decision_id": { "type": "string", "minLength": 1 },
+    "path": { "type": "string", "minLength": 1 },
+    "status": {
+      "enum": ["draft", "pending", "active", "completed", "blocked", "human_gated", "superseded", "cancelled"]
+    },
+    "authority_status": { "enum": ["controlled", "canonical", "canonical_draft", "draft"] }
+  },
+  "additionalProperties": { "type": "string" }
+}

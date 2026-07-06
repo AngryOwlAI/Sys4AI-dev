@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys-for-ai/schemas/contracts/director_decision.schema.json",
+  "title": "sys-for-ai Director Decision Record",
+  "type": "object",
+  "required": [
+    "director_decision_id",
+    "schema_version",
+    "decision_status",
+    "created_at",
+    "director_role",
+    "decision_context",
+    "selected_route",
+    "rejected_routes",
+    "authority_boundary",
+    "validators"
+  ],
+  "properties": {
+    "director_decision_id": { "type": "string", "minLength": 1 },
+    "schema_version": { "type": "string", "minLength": 1 },
+    "decision_status": {
+      "enum": ["draft", "pending", "active", "completed", "blocked", "human_gated", "superseded", "cancelled"]
+    },
+    "created_at": { "type": "string", "minLength": 1 },
+    "director_role": { "type": "string", "minLength": 1 },
+    "decision_context": { "type": "object" },
+    "selected_route": { "type": "object" },
+    "rejected_routes": { "type": "array", "items": { "type": "object" } },
+    "authority_boundary": { "type": "object" },
+    "validators": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

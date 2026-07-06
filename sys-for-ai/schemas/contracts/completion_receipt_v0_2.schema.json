@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys-for-ai/schemas/contracts/completion_receipt_v0_2.schema.json",
+  "title": "sys-for-ai operational completion receipt v0.2",
+  "type": "object",
+  "required": [
+    "completion_receipt_id",
+    "schema_version",
+    "agentjob_id",
+    "role",
+    "result",
+    "summary",
+    "changed_artifacts",
+    "validation_evidence",
+    "memory_preflight_receipt_id",
+    "format_profile_changes",
+    "authority_changes",
+    "unresolved_issues",
+    "next_recommendation"
+  ],
+  "properties": {
+    "completion_receipt_id": { "type": "string", "minLength": 1 },
+    "schema_version": { "const": "0.2.0" },
+    "agentjob_id": { "type": "string", "minLength": 1 },
+    "role": { "type": "string", "minLength": 1 },
+    "result": {
+      "enum": ["PASS", "PASS_WITH_WARNINGS", "FAIL", "BLOCKED", "HUMAN_GATED", "SUPERSEDED"]
+    },
+    "summary": { "type": "string", "minLength": 1 },
+    "changed_artifacts": { "type": "array" },
+    "validation_evidence": { "type": "object" },
+    "memory_preflight_receipt_id": { "type": "string", "minLength": 1 },
+    "format_profile_changes": { "type": "object" },
+    "authority_changes": { "type": "object" },
+    "unresolved_issues": { "type": "array" },
+    "next_recommendation": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": true
+}

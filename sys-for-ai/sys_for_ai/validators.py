@@ -194,6 +194,75 @@ REGISTRY_HEADERS: dict[str, list[str]] = {
         "evidence_paths",
         "notes",
     ],
+    "agentjob_registry.csv": [
+        "agentjob_id",
+        "path",
+        "status",
+        "role_id",
+        "task_id",
+        "created_at",
+        "activated_at",
+        "completed_at",
+        "completion_receipt_id",
+        "handoff_id",
+        "authority_status",
+        "supersedes",
+        "source_hash",
+        "last_validated_at",
+        "notes",
+    ],
+    "director_decision_registry.csv": [
+        "director_decision_id",
+        "path",
+        "status",
+        "task_id",
+        "selected_route",
+        "selected_agentjob_id",
+        "authority_status",
+        "supersedes",
+        "source_hash",
+        "last_validated_at",
+        "notes",
+    ],
+    "handoff_registry.csv": [
+        "handoff_id",
+        "path",
+        "status",
+        "producing_agentjob_id",
+        "next_recommended_role",
+        "next_agentjob_id",
+        "source_ids",
+        "supersedes",
+        "source_hash",
+        "last_validated_at",
+        "notes",
+    ],
+    "completion_receipt_registry.csv": [
+        "completion_receipt_id",
+        "path",
+        "agentjob_id",
+        "result",
+        "validation_status",
+        "changed_artifacts_count",
+        "next_handoff_id",
+        "source_hash",
+        "last_validated_at",
+        "notes",
+    ],
+    "memory_preflight_receipt_registry.csv": [
+        "memory_preflight_receipt_id",
+        "path",
+        "agentjob_id",
+        "created_at",
+        "status",
+        "queries_count",
+        "hits_count",
+        "canonical_inspections_count",
+        "stale_risks_count",
+        "source_hash",
+        "last_validated_at",
+        "notes",
+    ],
 }
 
 EXPECTED_FORMAT_PROFILE_IDS = {
@@ -210,6 +279,11 @@ ROW_CONTRACTS = {
     "control_record_registry.csv": "schemas/contracts/control_record_registry_row.schema.json",
     "validation_contract_registry.csv": "schemas/contracts/validation_contract_registry_row.schema.json",
     "requirement_trace_registry.csv": "schemas/contracts/requirement_trace_registry_row.schema.json",
+    "agentjob_registry.csv": "schemas/contracts/agentjob_registry_row.schema.json",
+    "director_decision_registry.csv": "schemas/contracts/director_decision_registry_row.schema.json",
+    "handoff_registry.csv": "schemas/contracts/handoff_registry_row.schema.json",
+    "completion_receipt_registry.csv": "schemas/contracts/completion_receipt_registry_row.schema.json",
+    "memory_preflight_receipt_registry.csv": "schemas/contracts/memory_preflight_receipt_registry_row.schema.json",
 }
 
 
@@ -226,6 +300,10 @@ def validate_agentjob(path: str | Path) -> ValidationResult:
     messages.extend(_require_mapping(data, target))
     if messages:
         return ValidationResult(False, messages)
+
+    if data.get("schema_version") == "0.2.0":
+        messages.extend(_validate_instance_with_schema(data, "schemas/contracts/agentjob_v0_2.schema.json", str(target)))
+        return ValidationResult(not messages, messages or [f"{target}: AgentJob v0.2 validation passed"])
 
     missing = sorted(AGENTJOB_REQUIRED_FIELDS - set(data))
     if missing:
@@ -703,6 +781,86 @@ def validate_program_state(path: str | Path = "control_records/program_state.yam
         messages.append(f"{target}: missing blocked_actions: {', '.join(missing_blocks)}")
 
     return ValidationResult(not messages, messages or [f"{target}: program state validation passed"])
+
+
+def validate_director_decisions(root: str | Path = "control_records/director_decisions") -> ValidationResult:
+    """Validate Director Decision Record YAML files under *root*."""
+
+    return _validate_yaml_records_in_root(root, "director_decision.schema.json", "director_decision_id")
+
+
+def validate_handoffs(root: str | Path = "control_records/handoffs") -> ValidationResult:
+    """Validate operational handoff v0.2 YAML files under *root*."""
+
+    return _validate_yaml_records_in_root(root, "handoff_v0_2.schema.json", "handoff_id")
+
+
+def validate_completion_receipts(root: str | Path = "control_records/completions") -> ValidationResult:
+    """Validate operational completion receipt v0.2 YAML files under *root*."""
+
+    return _validate_yaml_records_in_root(root, "completion_receipt_v0_2.schema.json", "completion_receipt_id")
+
+
+def validate_memory_preflight_receipts(root: str | Path = "control_records/memory_preflights") -> ValidationResult:
+    """Validate memory preflight receipt YAML files under *root*."""
+
+    return _validate_yaml_records_in_root(root, "memory_preflight_receipt.schema.json", "memory_preflight_receipt_id")
+
+
+def validate_agentjob_registry(path: str | Path = "registries/agentjob_registry.csv") -> ValidationResult:
+    return _validate_rows_against_contract(path, ROW_CONTRACTS["agentjob_registry.csv"], "agentjob_id")
+
+
+def validate_director_decision_registry(path: str | Path = "registries/director_decision_registry.csv") -> ValidationResult:
+    return _validate_rows_against_contract(
+        path,
+        ROW_CONTRACTS["director_decision_registry.csv"],
+        "director_decision_id",
+    )
+
+
+def validate_handoff_registry(path: str | Path = "registries/handoff_registry.csv") -> ValidationResult:
+    return _validate_rows_against_contract(path, ROW_CONTRACTS["handoff_registry.csv"], "handoff_id")
+
+
+def validate_completion_receipt_registry(path: str | Path = "registries/completion_receipt_registry.csv") -> ValidationResult:
+    return _validate_rows_against_contract(
+        path,
+        ROW_CONTRACTS["completion_receipt_registry.csv"],
+        "completion_receipt_id",
+    )
+
+
+def validate_memory_preflight_registry(path: str | Path = "registries/memory_preflight_receipt_registry.csv") -> ValidationResult:
+    return _validate_rows_against_contract(
+        path,
+        ROW_CONTRACTS["memory_preflight_receipt_registry.csv"],
+        "memory_preflight_receipt_id",
+    )
+
+
+def _validate_yaml_records_in_root(root: str | Path, schema_name: str, id_field: str) -> ValidationResult:
+    target_root = Path(root)
+    messages: list[str] = []
+    if not target_root.exists():
+        return ValidationResult(False, [f"{target_root}: missing record directory"])
+
+    paths = sorted(target_root.glob("*.yaml"))
+    for path in paths:
+        data = load_yaml(path)
+        messages.extend(_require_mapping(data, path))
+        if not isinstance(data, dict):
+            continue
+        if not data.get(id_field):
+            messages.append(f"{path}: missing {id_field}")
+        messages.extend(_validate_instance_with_schema(data, f"schemas/contracts/{schema_name}", str(path)))
+        secret_findings = find_secret_like_values(data)
+        if secret_findings:
+            messages.extend(f"{path}: {finding}" for finding in secret_findings)
+
+    if not paths:
+        return ValidationResult(True, [f"{target_root}: no operational YAML records to validate yet"])
+    return ValidationResult(not messages, messages or [f"{target_root}: operational YAML validation passed"])
 
 
 def validate_validation_contract_registry(path: str | Path) -> ValidationResult:

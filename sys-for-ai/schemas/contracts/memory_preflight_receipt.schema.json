@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys-for-ai/schemas/contracts/memory_preflight_receipt.schema.json",
+  "title": "sys-for-ai memory preflight receipt",
+  "type": "object",
+  "required": [
+    "memory_preflight_receipt_id",
+    "schema_version",
+    "agentjob_id",
+    "created_at",
+    "status",
+    "commands_run",
+    "queries",
+    "canonical_sources_inspected",
+    "registry_rows_inspected",
+    "stale_context_risks",
+    "usable_for_routing"
+  ],
+  "properties": {
+    "memory_preflight_receipt_id": { "type": "string", "minLength": 1 },
+    "schema_version": { "type": "string", "minLength": 1 },
+    "agentjob_id": { "type": "string", "minLength": 1 },
+    "created_at": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["PASS", "PASS_WITH_WARNINGS", "FAIL", "BLOCKED"] },
+    "commands_run": { "type": "array", "items": { "type": "object" } },
+    "queries": { "type": "array", "items": { "type": "object" } },
+    "canonical_sources_inspected": { "type": "array", "items": { "type": "object" } },
+    "registry_rows_inspected": { "type": "array", "items": { "type": "object" } },
+    "stale_context_risks": { "type": "array", "items": { "type": "object" } },
+    "usable_for_routing": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

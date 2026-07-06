@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys-for-ai/schemas/contracts/handoff_registry_row.schema.json",
+  "title": "Handoff registry row",
+  "type": "object",
+  "required": [
+    "handoff_id",
+    "path",
+    "status",
+    "producing_agentjob_id",
+    "next_recommended_role",
+    "next_agentjob_id",
+    "source_ids",
+    "supersedes",
+    "source_hash",
+    "last_validated_at",
+    "notes"
+  ],
+  "properties": {
+    "handoff_id": { "type": "string", "minLength": 1 },
+    "path": { "type": "string", "minLength": 1 },
+    "status": {
+      "enum": ["draft", "pending", "active", "completed", "blocked", "human_gated", "superseded", "cancelled"]
+    }
+  },
+  "additionalProperties": { "type": "string" }
+}

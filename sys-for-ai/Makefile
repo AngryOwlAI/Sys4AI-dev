@@ -3,7 +3,7 @@ VENV ?= .venv
 PYTHON := $(VENV)/bin/python
 PIP := $(VENV)/bin/pip
 
-.PHONY: venv install doctor validate validate-agentjob validate-agentjobs validate-skills validate-metrics validate-discovery-template bootstrap-memory validate-format-profiles validate-config-sources validate-control-records validate-program-state validate-validation-contract-registry validate-toml-config validate-jsonschema-contracts validate-registry-graph validate-requirement-trace generate-config-control-wiki generate-validation-contracts-catalog validate-generated-derivatives clean-local
+.PHONY: venv install doctor validate validate-agentjob validate-agentjobs validate-skills validate-metrics validate-discovery-template bootstrap-memory validate-format-profiles validate-config-sources validate-control-records validate-program-state validate-director-decisions validate-agentjob-registry validate-director-decision-registry validate-handoff-registry validate-completion-receipt-registry validate-memory-preflight-registry validate-handoffs validate-completion-receipts validate-memory-preflight validate-validation-contract-registry validate-toml-config validate-jsonschema-contracts validate-registry-graph validate-requirement-trace generate-config-control-wiki generate-validation-contracts-catalog validate-generated-derivatives clean-local
 
 venv:
 	$(PY) -m venv $(VENV)
@@ -48,6 +48,33 @@ validate-control-records:
 validate-program-state:
 	$(PYTHON) -m sys_for_ai.cli validate-program-state control_records/program_state.yaml
 
+validate-director-decisions:
+	$(PYTHON) -m sys_for_ai.cli validate-director-decisions control_records/director_decisions
+
+validate-agentjob-registry:
+	$(PYTHON) -m sys_for_ai.cli validate-agentjob-registry registries/agentjob_registry.csv
+
+validate-director-decision-registry:
+	$(PYTHON) -m sys_for_ai.cli validate-director-decision-registry registries/director_decision_registry.csv
+
+validate-handoff-registry:
+	$(PYTHON) -m sys_for_ai.cli validate-handoff-registry registries/handoff_registry.csv
+
+validate-completion-receipt-registry:
+	$(PYTHON) -m sys_for_ai.cli validate-completion-receipt-registry registries/completion_receipt_registry.csv
+
+validate-memory-preflight-registry:
+	$(PYTHON) -m sys_for_ai.cli validate-memory-preflight-registry registries/memory_preflight_receipt_registry.csv
+
+validate-handoffs:
+	$(PYTHON) -m sys_for_ai.cli validate-handoffs control_records/handoffs
+
+validate-completion-receipts:
+	$(PYTHON) -m sys_for_ai.cli validate-completion-receipts control_records/completions
+
+validate-memory-preflight:
+	$(PYTHON) -m sys_for_ai.cli validate-memory-preflight control_records/memory_preflights
+
 validate-validation-contract-registry:
 	$(PYTHON) -m sys_for_ai.cli validate-validation-contract-registry registries/validation_contract_registry.csv
 
@@ -72,7 +99,7 @@ generate-validation-contracts-catalog:
 validate-generated-derivatives:
 	$(PYTHON) -m sys_for_ai.cli validate-generated-derivatives docs/generated registries/derivative_registry.csv
 
-validate: doctor validate-agentjobs validate-skills validate-metrics validate-discovery-template bootstrap-memory validate-format-profiles validate-config-sources validate-control-records validate-program-state validate-validation-contract-registry validate-toml-config validate-jsonschema-contracts validate-registry-graph validate-requirement-trace generate-config-control-wiki generate-validation-contracts-catalog validate-generated-derivatives
+validate: doctor validate-agentjobs validate-skills validate-metrics validate-discovery-template bootstrap-memory validate-format-profiles validate-config-sources validate-control-records validate-program-state validate-agentjob-registry validate-director-decision-registry validate-handoff-registry validate-completion-receipt-registry validate-memory-preflight-registry validate-validation-contract-registry validate-toml-config validate-jsonschema-contracts validate-registry-graph validate-requirement-trace generate-config-control-wiki generate-validation-contracts-catalog validate-generated-derivatives
 
 clean-local:
 	rm -rf .pytest_cache __pycache__ sys_for_ai/__pycache__ .local/receipts

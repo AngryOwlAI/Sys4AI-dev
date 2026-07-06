@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys-for-ai/schemas/contracts/memory_preflight_receipt_registry_row.schema.json",
+  "title": "Memory preflight receipt registry row",
+  "type": "object",
+  "required": [
+    "memory_preflight_receipt_id",
+    "path",
+    "agentjob_id",
+    "created_at",
+    "status",
+    "queries_count",
+    "hits_count",
+    "canonical_inspections_count",
+    "stale_risks_count",
+    "source_hash",
+    "last_validated_at",
+    "notes"
+  ],
+  "properties": {
+    "memory_preflight_receipt_id": { "type": "string", "minLength": 1 },
+    "path": { "type": "string", "minLength": 1 },
+    "agentjob_id": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["PASS", "PASS_WITH_WARNINGS", "FAIL", "BLOCKED"] }
+  },
+  "additionalProperties": { "type": "string" }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys-for-ai/schemas/contracts/agentjob_registry_row.schema.json",
+  "title": "AgentJob registry row",
+  "type": "object",
+  "required": [
+    "agentjob_id",
+    "path",
+    "status",
+    "role_id",
+    "task_id",
+    "created_at",
+    "activated_at",
+    "completed_at",
+    "completion_receipt_id",
+    "handoff_id",
+    "authority_status",
+    "supersedes",
+    "source_hash",
+    "last_validated_at",
+    "notes"
+  ],
+  "properties": {
+    "agentjob_id": { "type": "string", "minLength": 1 },
+    "path": { "type": "string", "minLength": 1 },
+    "status": {
+      "enum": ["draft", "pending", "active", "completed", "blocked", "human_gated", "superseded", "cancelled"]
+    },
+    "authority_status": { "enum": ["controlled", "canonical", "canonical_draft", "draft"] }
+  },
+  "additionalProperties": { "type": "string" }
+}

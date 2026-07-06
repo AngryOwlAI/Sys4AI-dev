@@ -52,3 +52,18 @@ SRC-SELFHOST-BOUNDARY-DECISION,implementation_plans/self_hosting_boundary_decisi
 SRC-SELFHOST-BOUNDARY-POLICY,sys-for-ai/docs/self_hosting_boundary_policy.md,policy,controlled,implementation_initialization,2026-07-06,Policy distinguishing framework system development system target system runtime skills and generated surfaces.
 SRC-MEMORY-RETRIEVAL-POLICY,sys-for-ai/docs/memory_retrieval_policy.md,policy,controlled,implementation_initialization,2026-07-06,Policy defining memory retrieval as navigation rather than authority.
 SRC-CONTINUE-LOOP-POLICY,sys-for-ai/docs/continue_loop_policy.md,policy,controlled,implementation_initialization,2026-07-06,Policy defining one-AgentJob continue-loop behavior.
+SRC-REG-AGENTJOBS,sys-for-ai/registries/agentjob_registry.csv,agentjob_registry,controlled,control_loop,2026-07-06,Operational registry for AgentJob lifecycle rows.
+SRC-REG-DIRECTOR-DECISIONS,sys-for-ai/registries/director_decision_registry.csv,director_decision_registry,controlled,control_loop,2026-07-06,Operational registry for Director Decision Records.
+SRC-REG-HANDOFFS,sys-for-ai/registries/handoff_registry.csv,handoff_registry,controlled,control_loop,2026-07-06,Operational registry for handoff records.
+SRC-REG-COMPLETION-RECEIPTS,sys-for-ai/registries/completion_receipt_registry.csv,completion_receipt_registry,controlled,control_loop,2026-07-06,Operational registry for completion receipts.
+SRC-REG-MEMORY-PREFLIGHT-RECEIPTS,sys-for-ai/registries/memory_preflight_receipt_registry.csv,memory_preflight_receipt_registry,controlled,control_loop,2026-07-06,Operational registry for memory preflight receipts.
+SRC-CONTRACT-DIRECTOR-DECISION,sys-for-ai/schemas/contracts/director_decision.schema.json,validation_contract,controlled,control_loop,2026-07-06,JSON Schema contract for Director Decision Records.
+SRC-CONTRACT-AGENTJOB-V0-2,sys-for-ai/schemas/contracts/agentjob_v0_2.schema.json,validation_contract,controlled,control_loop,2026-07-06,JSON Schema contract for operational AgentJob v0.2 records.
+SRC-CONTRACT-HANDOFF-V0-2,sys-for-ai/schemas/contracts/handoff_v0_2.schema.json,validation_contract,controlled,control_loop,2026-07-06,JSON Schema contract for operational handoff v0.2 records.
+SRC-CONTRACT-COMPLETION-RECEIPT-V0-2,sys-for-ai/schemas/contracts/completion_receipt_v0_2.schema.json,validation_contract,controlled,control_loop,2026-07-06,JSON Schema contract for operational completion receipt v0.2 records.
+SRC-CONTRACT-MEMORY-PREFLIGHT-RECEIPT,sys-for-ai/schemas/contracts/memory_preflight_receipt.schema.json,validation_contract,controlled,control_loop,2026-07-06,JSON Schema contract for memory preflight receipts.
+SRC-CONTRACT-AGENTJOB-REGISTRY-ROW,sys-for-ai/schemas/contracts/agentjob_registry_row.schema.json,validation_contract,controlled,control_loop,2026-07-06,JSON Schema contract for AgentJob registry rows.
+SRC-CONTRACT-DIRECTOR-DECISION-REGISTRY-ROW,sys-for-ai/schemas/contracts/director_decision_registry_row.schema.json,validation_contract,controlled,control_loop,2026-07-06,JSON Schema contract for Director decision registry rows.
+SRC-CONTRACT-HANDOFF-REGISTRY-ROW,sys-for-ai/schemas/contracts/handoff_registry_row.schema.json,validation_contract,controlled,control_loop,2026-07-06,JSON Schema contract for handoff registry rows.
+SRC-CONTRACT-COMPLETION-RECEIPT-REGISTRY-ROW,sys-for-ai/schemas/contracts/completion_receipt_registry_row.schema.json,validation_contract,controlled,control_loop,2026-07-06,JSON Schema contract for completion receipt registry rows.
+SRC-CONTRACT-MEMORY-PREFLIGHT-RECEIPT-REGISTRY-ROW,sys-for-ai/schemas/contracts/memory_preflight_receipt_registry_row.schema.json,validation_contract,controlled,control_loop,2026-07-06,JSON Schema contract for memory preflight receipt registry rows.

@@ -1,0 +1,1 @@
+memory_preflight_receipt_id,path,agentjob_id,created_at,status,queries_count,hits_count,canonical_inspections_count,stale_risks_count,source_hash,last_validated_at,notes
