@@ -1,0 +1,42 @@
+agentjob_id: AJ-P1-CODEX-METRICS-ADAPT-001
+objective: Adapt the codex-usage-metrics script into the local sys-for-ai core adapter so context-45 skills can make operational continuation decisions or fail closed with evidence.
+role: skill_dependency_adaptation_agent
+allowed_reads:
+  - sys-for-ai/skills/core/codex-usage-metrics/**
+  - sys-for-ai/skills/core/system-definition-interview-context-45/**
+  - sys-for-ai/skills/core_skill_manifest.yaml
+  - sys-for-ai/sys_for_ai/validators.py
+  - sys-for-ai/sys_for_ai/cli.py
+  - https://github.com/AngryOwlAI/ai-skills-for-sys/tree/main/skills/codex-usage-metrics
+allowed_writes:
+  - sys-for-ai/skills/core/codex-usage-metrics/**
+  - sys-for-ai/skills/core_skill_manifest.yaml
+  - sys-for-ai/sys_for_ai/validators.py
+  - sys-for-ai/sys_for_ai/cli.py
+  - sys-for-ai/Makefile
+  - sys-for-ai/registries/skill_registry.csv
+  - sys-for-ai/registries/source_registry.csv
+  - sys-for-ai/.local/receipts/AJ-P1-CODEX-METRICS-ADAPT-001*.txt
+forbidden_actions:
+  - Export chat messages, secrets, tool arguments, reasoning content, or full session logs.
+  - Require heavy dependencies for Phase 1.
+  - Break make validate for users without live Codex session files.
+required_inputs:
+  - Local codex-usage-metrics adapter shell.
+  - Upstream metrics script and documentation.
+expected_outputs:
+  - Local scripts/collect_usage_metrics.py or explicit fail-closed policy.
+  - Updated adapter docs.
+  - Optional validate-metrics CLI command.
+  - Validation receipt for --help or documented reason metrics are fail-closed.
+validators:
+  - cd sys-for-ai && make validate-skills
+  - cd sys-for-ai && .venv/bin/python skills/core/codex-usage-metrics/scripts/collect_usage_metrics.py --help
+  - cd sys-for-ai && make validate
+completion_evidence:
+  - Metrics policy decision.
+  - Command output from --help if operational.
+  - Updated context-45 adapter behavior.
+stop_conditions:
+  - Metrics script requires unavailable secrets or private session content.
+  - Script cannot be adapted without violating source-first or privacy constraints.

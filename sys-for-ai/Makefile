@@ -3,7 +3,7 @@ VENV ?= .venv
 PYTHON := $(VENV)/bin/python
 PIP := $(VENV)/bin/pip
 
-.PHONY: venv install doctor validate validate-agentjob validate-skills validate-metrics validate-discovery-template bootstrap-memory clean-local
+.PHONY: venv install doctor validate validate-agentjob validate-agentjobs validate-skills validate-metrics validate-discovery-template bootstrap-memory clean-local
 
 venv:
 	$(PY) -m venv $(VENV)
@@ -18,6 +18,12 @@ doctor:
 validate-agentjob:
 	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/examples/phase1_smoke_agentjob.yaml
 
+validate-agentjobs:
+	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/examples/phase1_smoke_agentjob.yaml
+	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-SKILL-SYNC-001.yaml
+	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-CODEX-METRICS-ADAPT-001.yaml
+	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-SYSTEM-DEFINITION-TEMPLATE-001.yaml
+
 validate-skills:
 	$(PYTHON) -m sys_for_ai.cli validate-skills skills/core_skill_manifest.yaml
 
@@ -30,7 +36,7 @@ validate-discovery-template:
 bootstrap-memory:
 	$(PYTHON) -m sys_for_ai.cli bootstrap-memory registries
 
-validate: doctor validate-agentjob validate-skills validate-metrics validate-discovery-template bootstrap-memory
+validate: doctor validate-agentjobs validate-skills validate-metrics validate-discovery-template bootstrap-memory
 
 clean-local:
 	rm -rf .pytest_cache __pycache__ sys_for_ai/__pycache__ .local/receipts

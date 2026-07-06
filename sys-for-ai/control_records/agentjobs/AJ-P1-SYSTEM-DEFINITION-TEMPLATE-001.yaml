@@ -1,0 +1,42 @@
+agentjob_id: AJ-P1-SYSTEM-DEFINITION-TEMPLATE-001
+objective: Add controlled templates and optional validation for requirements discovery records and context-45 temp_prd handoffs.
+role: system_definition_template_agent
+allowed_reads:
+  - PRDs/sys-for-ai_phase-0_product_system_design_prd.md
+  - PRDs/sys-for-ai_phase-1_implementation_initialization_prd.md
+  - sys-for-ai/skills/core/system-definition-interview/**
+  - sys-for-ai/skills/core/system-definition-interview-context-45/**
+  - sys-for-ai/schemas/skill.schema.yaml
+allowed_writes:
+  - sys-for-ai/templates/system_definition/**
+  - sys-for-ai/control_records/system_definition/**
+  - sys-for-ai/schemas/discovery_record.schema.yaml
+  - sys-for-ai/sys_for_ai/discovery.py
+  - sys-for-ai/sys_for_ai/cli.py
+  - sys-for-ai/Makefile
+  - sys-for-ai/registries/source_registry.csv
+  - sys-for-ai/registries/derivative_registry.csv
+  - sys-for-ai/registries/object_relationship_registry.csv
+  - sys-for-ai/.local/receipts/AJ-P1-SYSTEM-DEFINITION-TEMPLATE-001*.txt
+forbidden_actions:
+  - Treat discovery records as canonical requirements.
+  - Generate formal PRD SRD or architecture documents as part of template creation.
+  - Add heavyweight dependencies.
+required_inputs:
+  - Local system-definition skill adapters.
+  - Existing source-first authority policy.
+expected_outputs:
+  - requirements-discovery-record-template.md
+  - temp-prd-template.md
+  - Optional discovery record schema and validator.
+  - Registry entries.
+validators:
+  - cd sys-for-ai && make validate
+  - cd sys-for-ai && .venv/bin/python -m sys_for_ai.cli validate-discovery-record templates/system_definition/requirements-discovery-record-template.md
+completion_evidence:
+  - Changed file list.
+  - Validator output.
+  - Registry updates.
+stop_conditions:
+  - Template conflicts with source-first authority rules.
+  - Validator cannot distinguish template placeholders from missing live record fields.

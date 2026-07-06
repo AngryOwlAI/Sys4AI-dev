@@ -1,0 +1,49 @@
+agentjob_id: AJ-P1-SKILL-SYNC-001
+objective: Integrate the current system-definition skills from ai-skills-for-sys into the sys-for-ai core skill manifest, validator expectations, local adapter folders, and skill registry.
+role: skill_integration_agent
+allowed_reads:
+  - PRDs/sys-for-ai_phase-0_product_system_design_prd.md
+  - PRDs/sys-for-ai_phase-1_implementation_initialization_prd.md
+  - sys-for-ai/skills/core_skill_manifest.yaml
+  - sys-for-ai/sys_for_ai/validators.py
+  - sys-for-ai/registries/skill_registry.csv
+  - sys-for-ai/skills/core/**
+  - sys-for-ai/schemas/skill.schema.yaml
+  - https://github.com/AngryOwlAI/ai-skills-for-sys/tree/main/skills/system-definition-interview
+  - https://github.com/AngryOwlAI/ai-skills-for-sys/tree/main/skills/system-definition-interview-context-45
+allowed_writes:
+  - sys-for-ai/skills/core_skill_manifest.yaml
+  - sys-for-ai/sys_for_ai/validators.py
+  - sys-for-ai/registries/skill_registry.csv
+  - sys-for-ai/registries/source_registry.csv
+  - sys-for-ai/registries/object_relationship_registry.csv
+  - sys-for-ai/schemas/skill.schema.yaml
+  - sys-for-ai/skills/core/system-definition-interview/**
+  - sys-for-ai/skills/core/system-definition-interview-context-45/**
+  - sys-for-ai/.local/receipts/AJ-P1-SKILL-SYNC-001*.txt
+forbidden_actions:
+  - Delete existing skill adapters.
+  - Mark adaptation_status as adapted without review and validation evidence.
+  - Treat upstream templates as opaque external authority.
+  - Promote discovery records to canonical requirements.
+  - Modify Phase 0 product identity or Phase 1 phase boundary.
+required_inputs:
+  - Current ai-skills-for-sys retained systems-engineering skillset.
+  - Current sys-for-ai core skill manifest and validator.
+expected_outputs:
+  - Updated core_skill_manifest.yaml including system-definition-interview and system-definition-interview-context-45.
+  - Updated validators.py required skill set.
+  - Updated skill_registry.csv rows.
+  - New adapter shell folders with SKILL.md, README.md, AGENTS.md, and examples/portable-example.md.
+  - Registry updates preserving provenance.
+validators:
+  - cd sys-for-ai && make validate-skills
+  - cd sys-for-ai && make validate
+completion_evidence:
+  - Validation receipt path.
+  - List of changed files.
+  - Any skipped validator with reason.
+stop_conditions:
+  - Existing local adapter folder would be overwritten without review.
+  - Upstream skill source cannot be inspected.
+  - Validator failure cannot be explained by an expected intermediate state.

@@ -21,6 +21,7 @@ make validate
 ```bash
 make doctor
 make validate-agentjob
+make validate-agentjobs
 make validate-skills
 make validate-metrics
 make validate-discovery-template
@@ -44,3 +45,9 @@ templates/           Project and target-runtime templates
 ## Authority rule
 
 Canonical sources and registries outrank generated derivatives. Obsidian, wiki, HTML, PDF, diagram, semantic-cache, and index surfaces are reader aids unless explicitly promoted through a source-authority workflow.
+
+## System-document spine
+
+`sys-for-ai` does not treat Product Requirements Documents as the only systems-engineering source. See [`docs/system_document_spine.md`](docs/system_document_spine.md) for the practical chain from mission need and system definition through requirements, architecture, verification and validation, operations, and closeout.
+
+Skill routing for unclear target-system intent is defined in [`docs/skill_integration_policy.md`](docs/skill_integration_policy.md).
