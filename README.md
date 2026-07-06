@@ -49,5 +49,5 @@ file states otherwise, the license applies to all copyrightable materials in
 this project, including code, documents, project files, repository structure,
 architecture descriptions, templates, and associated artifacts.
 
-Credit and attribution notices for Alexander Samuel Ricciardi and the Angry Owl
+Credit and attribution notices for Alexander Samuel Ricciardi and the AngryOwl
 label are preserved in [`NOTICE`](NOTICE).

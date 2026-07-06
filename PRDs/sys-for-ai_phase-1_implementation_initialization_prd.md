@@ -198,6 +198,8 @@ make doctor
 
 `SFA-P1-INIT-VAL-008`: Add a PRD requirement trace validator that checks requirement ID uniqueness and verifies that Phase 0 requirement IDs have explicit Phase 1 coverage, partial coverage, deferral, or not-applicable trace rows with semantic trace classes, justification for partial, deferred, or out-of-phase mappings, and a semantic review verdict for each non-implemented trace row.
 
+`SFA-P1-INIT-VAL-009`: Add a dedicated `make validate-roles` target for controlled role catalogs, role-to-skill crosswalks, execution-binding constraints, generated role Markdown freshness, and role-related proposed skill references. The aggregate `make validate` target shall include `make validate-roles` so role-catalog drift is checked by default.
+
 ---
 
 ## 5. Acceptance criteria
@@ -228,6 +230,7 @@ Phase 1 initialization is acceptable when:
 22. `make validate` passes after dependencies are installed.
 23. The Phase 1 recommended AgentJob includes the new validators and generated derivative checks.
 24. The PRD requirement trace validator passes against the canonical Phase 0 PRD, Phase 1 PRD, and requirement trace registry, including semantic trace class, partial-justification, and non-implemented semantic review verdict checks.
+25. `make validate-roles` exists, passes for the controlled role-catalog surface, and is included in `make validate`.
 
 ---
 
@@ -301,6 +304,7 @@ expected_outputs:
 validators:
   - cd sys-for-ai && make doctor
   - cd sys-for-ai && make validate
+  - cd sys-for-ai && make validate-roles
   - cd sys-for-ai && make validate-format-profiles
   - cd sys-for-ai && make validate-toml-config
   - cd sys-for-ai && make validate-jsonschema-contracts

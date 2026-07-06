@@ -172,7 +172,7 @@ The framework should let the root AI agent answer:
 
 ### 6.3 Role and artifact model
 
-`SFA-CORE-ROLE-001`: `sys-for-ai` shall define controlled roles for system direction, requirements, architecture, domain validation, implementation planning, verification, memory governance, skill governance, and maintenance.
+`SFA-CORE-ROLE-001`: `sys-for-ai` shall define controlled roles for system direction, requirements, architecture, domain validation, implementation planning, verification, memory governance, skill governance, and maintenance. The controlled role model shall be structured enough for agents and validators to distinguish framework/governance roles, portable target-system roles, and bounded execution roles without relying on prose inference alone.
 
 `SFA-CORE-ART-001`: `sys-for-ai` shall define artifact contracts for user/system requirements, architecture, technical readiness, traceability, source authority, run manifests, issue registers, and implementation task packets.
 
@@ -583,6 +583,8 @@ flowchart TD
 ---
 
 ## 10. Role model
+
+The role model shall be represented as controlled role data first and reader-facing prose second. Markdown role catalog pages may explain and summarize roles, but the operative role definitions, role-to-skill relationships, execution bindings, and validation status shall come from controlled registries or equivalent machine-readable sources.
 
 ### 10.1 Core roles
 
