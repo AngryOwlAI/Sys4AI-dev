@@ -67,3 +67,14 @@ SRC-CONTRACT-DIRECTOR-DECISION-REGISTRY-ROW,sys-for-ai/schemas/contracts/directo
 SRC-CONTRACT-HANDOFF-REGISTRY-ROW,sys-for-ai/schemas/contracts/handoff_registry_row.schema.json,validation_contract,controlled,control_loop,2026-07-06,JSON Schema contract for handoff registry rows.
 SRC-CONTRACT-COMPLETION-RECEIPT-REGISTRY-ROW,sys-for-ai/schemas/contracts/completion_receipt_registry_row.schema.json,validation_contract,controlled,control_loop,2026-07-06,JSON Schema contract for completion receipt registry rows.
 SRC-CONTRACT-MEMORY-PREFLIGHT-RECEIPT-REGISTRY-ROW,sys-for-ai/schemas/contracts/memory_preflight_receipt_registry_row.schema.json,validation_contract,controlled,control_loop,2026-07-06,JSON Schema contract for memory preflight receipt registry rows.
+SRC-MEMORY-PACKAGE-INIT,sys-for-ai/sys_for_ai/memory/__init__.py,memory_package,controlled,source_first_memory,2026-07-06,Source-first memory package public API.
+SRC-MEMORY-MODEL,sys-for-ai/sys_for_ai/memory/model.py,memory_model,controlled,source_first_memory,2026-07-06,Dataclasses for registry validation derivative memory object and memory hit evidence.
+SRC-MEMORY-AUTHORITY,sys-for-ai/sys_for_ai/memory/authority.py,memory_authority,controlled,source_first_memory,2026-07-06,Authority classification and required-next-action rules for memory objects.
+SRC-MEMORY-BOOTSTRAP,sys-for-ai/sys_for_ai/memory/bootstrap.py,memory_bootstrap,controlled,source_first_memory,2026-07-06,Registry bootstrap compatibility surface.
+SRC-MEMORY-REGISTRY-CATALOG,sys-for-ai/sys_for_ai/memory/registry_catalog.py,memory_catalog,controlled,source_first_memory,2026-07-06,Registry-backed memory catalog and memory status implementation.
+SRC-MEMORY-LOOKUP,sys-for-ai/sys_for_ai/memory/lookup.py,memory_lookup,controlled,source_first_memory,2026-07-06,Memory lookup command implementation.
+SRC-MEMORY-SEARCH,sys-for-ai/sys_for_ai/memory/search.py,memory_search,controlled,source_first_memory,2026-07-06,Deterministic source-first memory search implementation.
+SRC-MEMORY-HASHING,sys-for-ai/sys_for_ai/memory/hashing.py,memory_hashing,controlled,source_first_memory,2026-07-06,Hash-path validate-hashes and update-hashes support.
+SRC-MEMORY-GRAPH,sys-for-ai/sys_for_ai/memory/graph.py,memory_graph,controlled,source_first_memory,2026-07-06,Object relationship loading helper for memory graph work.
+SRC-MEMORY-PREFLIGHT-SCAFFOLD,sys-for-ai/sys_for_ai/memory/preflight.py,memory_preflight_scaffold,controlled,source_first_memory,2026-07-06,Phase 3 scaffold for Phase 4 memory preflight behavior.
+SRC-MEMORY-RECEIPTS-SCAFFOLD,sys-for-ai/sys_for_ai/memory/receipts.py,memory_receipts_scaffold,controlled,source_first_memory,2026-07-06,Phase 3 scaffold for Phase 4 memory receipt behavior.

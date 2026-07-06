@@ -5,10 +5,12 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
-from .validators import REGISTRY_HEADERS, ValidationResult, validate_registry_headers
+from ..validators import REGISTRY_HEADERS, ValidationResult, validate_registry_headers
 
 
 def bootstrap_registries(registry_dir: str | Path) -> ValidationResult:
+    """Create missing registry files using the declared headers."""
+
     root = Path(registry_dir)
     root.mkdir(parents=True, exist_ok=True)
     messages: list[str] = []

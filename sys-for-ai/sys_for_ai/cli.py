@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import importlib.util
+import json
 import platform
 import sys
 from importlib.metadata import PackageNotFoundError, version
@@ -12,6 +13,8 @@ from pathlib import Path
 from .discovery import validate_discovery_record
 from .derivative_generation import validate_generated_derivatives
 from .memory import bootstrap_registries
+from .memory import hash_path as memory_hash_path
+from .memory import lookup_memory, memory_status, search_memory, update_hashes, validate_hashes
 from .validators import (
     ValidationResult,
     print_result,
@@ -135,6 +138,34 @@ def build_parser() -> argparse.ArgumentParser:
     bootstrap = sub.add_parser("bootstrap-memory", help="Create missing memory registry files")
     bootstrap.add_argument("registry_dir", default="registries", nargs="?")
 
+    memory = sub.add_parser("memory", help="Source-first memory commands")
+    memory_sub = memory.add_subparsers(dest="memory_command", required=True)
+
+    memory_status_parser = memory_sub.add_parser("status", help="Report memory catalog status")
+    memory_status_parser.add_argument("--json", action="store_true")
+
+    memory_lookup_parser = memory_sub.add_parser("lookup", help="Lookup a registered memory object by ID or path")
+    memory_lookup_parser.add_argument("query")
+    memory_lookup_parser.add_argument("--json", action="store_true")
+
+    memory_search_parser = memory_sub.add_parser("search", help="Search registered memory objects")
+    memory_search_parser.add_argument("query")
+    memory_search_parser.add_argument("--limit", type=int, default=10)
+    memory_search_parser.add_argument("--json", action="store_true")
+
+    memory_hash_parser = memory_sub.add_parser("hash-path", help="Hash a path with sha256")
+    memory_hash_parser.add_argument("path")
+    memory_hash_parser.add_argument("--json", action="store_true")
+
+    memory_validate_hashes_parser = memory_sub.add_parser("validate-hashes", help="Validate populated registry hashes")
+    memory_validate_hashes_parser.add_argument("--json", action="store_true")
+
+    memory_update_hashes_parser = memory_sub.add_parser("update-hashes", help="Check or write registry source_hash values")
+    update_mode = memory_update_hashes_parser.add_mutually_exclusive_group(required=True)
+    update_mode.add_argument("--check", action="store_true")
+    update_mode.add_argument("--write", action="store_true")
+    memory_update_hashes_parser.add_argument("--json", action="store_true")
+
     validate_formats = sub.add_parser("validate-format-profiles", help="Validate format-profile registry rows")
     validate_formats.add_argument("path", default="registries/format_profile_registry.csv", nargs="?")
 
@@ -244,6 +275,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "bootstrap-memory":
         return print_result(bootstrap_registries(args.registry_dir))
 
+    if args.command == "memory":
+        return _handle_memory_command(args)
+
     if args.command == "validate-format-profiles":
         return print_result(validate_format_profiles(args.path))
 
@@ -333,6 +367,37 @@ def main(argv: list[str] | None = None) -> int:
 
     parser.error(f"Unknown command: {args.command}")
     return 2
+
+
+def _handle_memory_command(args: argparse.Namespace) -> int:
+    if args.memory_command == "status":
+        return _emit_memory_payload(memory_status(), args.json)
+    if args.memory_command == "lookup":
+        payload = lookup_memory(args.query)
+        return _emit_memory_payload(payload, args.json)
+    if args.memory_command == "search":
+        payload = search_memory(args.query, limit=args.limit)
+        return _emit_memory_payload(payload, args.json)
+    if args.memory_command == "hash-path":
+        payload = memory_hash_path(args.path)
+        return _emit_memory_payload(payload, args.json)
+    if args.memory_command == "validate-hashes":
+        payload = validate_hashes()
+        return _emit_memory_payload(payload, args.json)
+    if args.memory_command == "update-hashes":
+        payload = update_hashes(write=args.write)
+        return _emit_memory_payload(payload, args.json)
+    return 2
+
+
+def _emit_memory_payload(payload: dict[str, object], json_output: bool) -> int:
+    if json_output:
+        print(json.dumps(payload, indent=2, sort_keys=True))
+    else:
+        print(payload.get("status", "OK"))
+        for warning in payload.get("warnings", []) if isinstance(payload.get("warnings", []), list) else []:
+            print(warning)
+    return 0 if payload.get("ok") else 1
 
 
 if __name__ == "__main__":
