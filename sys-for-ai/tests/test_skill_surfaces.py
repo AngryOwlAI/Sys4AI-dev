@@ -82,6 +82,39 @@ class SkillSurfaceTests(unittest.TestCase):
         self.assertIn(archive_path, policy)
         self.assertIn(archive_helper, policy)
 
+    def test_context_45_prd_handoff_is_user_gated(self) -> None:
+        prompt = "Questioning is complete. Should I create a PRD with `/conversation-to-prd` using the current discussion and `temp_prd.md` if it exists?"
+        no_auto = "Do not create the PRD automatically"
+        before_complete = "before questioning is complete"
+
+        for skill in [
+            "decision-grilling-context-45",
+            "domain-grilling-with-docs-context-45",
+            "system-definition-interview-context-45",
+        ]:
+            for relative in [
+                f".agents/skills/{skill}/SKILL.md",
+                f"sys-for-ai/skills/core/{skill}/SKILL.md",
+            ]:
+                text = _read(relative)
+                normalized = " ".join(text.split())
+                self.assertIn(prompt, text, relative)
+                self.assertIn("/conversation-to-prd", text, relative)
+                self.assertIn("/conversation-to-PRD", text, relative)
+                self.assertIn("current discussion", text, relative)
+                self.assertIn("temp_prd.md", text, relative)
+                self.assertIn(no_auto, normalized, relative)
+                self.assertIn(before_complete, text, relative)
+
+        policy = _read("sys-for-ai/docs/skill_integration_policy.md")
+        normalized_policy = " ".join(policy.split())
+        self.assertIn(prompt, policy)
+        self.assertIn("/conversation-to-PRD", policy)
+        self.assertIn("current discussion", policy)
+        self.assertIn("temp_prd.md", policy)
+        self.assertIn(no_auto, normalized_policy)
+        self.assertIn(before_complete, policy)
+
 
 def _read(relative: str) -> str:
     return (WORKSPACE_ROOT / relative).read_text(encoding="utf-8")

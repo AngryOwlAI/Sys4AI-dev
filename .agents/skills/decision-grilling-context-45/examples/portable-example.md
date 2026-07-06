@@ -68,6 +68,18 @@ and this resume command:
 /decision-grilling-context-45 temp_prd
 ```
 
+## Example PRD Handoff
+
+When questioning is genuinely complete, the agent asks:
+
+```text
+Questioning is complete. Should I create a PRD with `/conversation-to-prd` using the current discussion and `temp_prd.md` if it exists?
+```
+
+If the user says yes, the agent routes the current discussion and any existing
+`temp_prd.md` content into `/conversation-to-prd`. If the user says no, the
+agent stops with a concise summary and logical next step.
+
 ## Validation
 
 - The question is singular and decision-relevant.
@@ -78,6 +90,7 @@ and this resume command:
   metrics, or on explicit user request.
 - The handoff file contains enough context to resume without restarting the
   interview.
+- PRD creation requires explicit user confirmation.
 
 ## Adaptation Notes
 

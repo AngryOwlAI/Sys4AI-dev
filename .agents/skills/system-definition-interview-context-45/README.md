@@ -50,6 +50,9 @@ record or live working state and the point-in-time `usage-metrics.txt` receipt.
   context left is 55 percent or lower, metrics are unavailable/unknown, or the
   user explicitly requests a handoff.
 - A resume instruction for `/system-definition-interview-context-45 temp_prd`.
+- An end-of-questioning prompt asking whether to create a PRD with
+  `/conversation-to-prd` using the current discussion and `temp_prd.md` if it
+  exists.
 
 ## Required Files
 
@@ -90,3 +93,4 @@ A valid adaptation should satisfy these checks:
 - Resumed sessions merge prior context instead of discarding it.
 - Formal document generation remains a downstream route, not part of this
   skill.
+- PRD creation is explicitly user-gated and never automatic.

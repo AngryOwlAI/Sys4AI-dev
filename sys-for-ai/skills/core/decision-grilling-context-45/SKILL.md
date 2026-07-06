@@ -50,6 +50,7 @@ Use this skill when a `sys-for-ai` AgentJob requires the `decision_clarification
 - `skills/core/decision-grilling-context-45/temp_prd.md` only when context used is at least 45 percent, context left is at most 55 percent, metrics are unavailable or unknown, or the user explicitly requests a handoff.
 - `skills/core/decision-grilling-context-45/archived_temp_prd/temp_prd_date_yyyy-mm-dd-hh-mm-ss.md` when the user confirms an existing checkpoint is from a prior context-45 run and should be archived before a fresh session.
 - Resume instruction: `/decision-grilling-context-45 temp_prd`.
+- End-of-questioning prompt: Questioning is complete. Should I create a PRD with `/conversation-to-prd` using the current discussion and `temp_prd.md` if it exists?
 
 ## Procedure
 
@@ -81,9 +82,16 @@ python3 skills/core/codex-usage-metrics/scripts/collect_usage_metrics.py \
 ```
 
 8. Continue only when context left is known and greater than 55 percent.
-9. If context left is 55 percent or lower, context used is 45 percent or higher, metrics are unavailable, context left is unknown, or the user explicitly requests a handoff, write `temp_prd.md` and stop with the resume instruction.
-10. Preserve source provenance and document assumptions.
-11. Run or name validators before completion.
+9. If context left is 55 percent or lower, context used is 45 percent or higher, metrics are unavailable, context left is unknown, or the user explicitly requests a handoff before questioning is complete, write `temp_prd.md` and stop with the resume instruction. Do not ask for PRD creation yet.
+10. When questioning is complete, ask:
+
+```text
+Questioning is complete. Should I create a PRD with `/conversation-to-prd` using the current discussion and `temp_prd.md` if it exists?
+```
+
+Use `/conversation-to-prd` as the canonical command spelling; treat `/conversation-to-PRD` as the same user-facing intent. If the user says yes, route to `/conversation-to-prd` with the current discussion and any existing `skills/core/decision-grilling-context-45/temp_prd.md`. If the user says no, stop with a concise summary and the logical next step. Do not create the PRD automatically.
+11. Preserve source provenance and document assumptions.
+12. Run or name validators before completion.
 
 ## `temp_prd.md` required sections
 
@@ -132,3 +140,4 @@ cd sys-for-ai && make validate-skills
 - Creating, overwriting, or refreshing `temp_prd.md` after each safe-context question.
 - Continuing the loop when metrics are unavailable or context left is unknown.
 - Archiving or overwriting an existing `temp_prd.md` without explicit user confirmation during a fresh invocation.
+- Creating a PRD automatically without explicit user confirmation.

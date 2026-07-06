@@ -73,9 +73,12 @@ skills:
       - README.md
       - AGENTS.md
       - examples/portable-example.md
-    description: "Long-session stakeholder elicitation workflow for system intent discovery with a 45 percent context-used checkpoint and threshold-only temp_prd.md handoff."
+    description: "Long-session stakeholder elicitation workflow for system intent discovery with a 45 percent context-used checkpoint, threshold-only temp_prd.md handoff, and explicit end-of-questioning /conversation-to-prd prompt."
     required_skills:
       - codex-usage-metrics
+    optional_skills:
+      - conversation-to-prd
+      - prd-to-implementation-plan
     local_runtime_paths:
       skills_root: skills/core
       target_skill_path: skills/core/system-definition-interview-context-45
@@ -118,9 +121,12 @@ skills:
       - README.md
       - AGENTS.md
       - examples/portable-example.md
-    description: "Long-session decision grilling that checks metrics after each user answer and writes temp_prd.md only at the 45 percent threshold, unavailable/unknown metrics, or explicit user handoff."
+    description: "Long-session decision grilling that checks metrics after each user answer, writes temp_prd.md only at the 45 percent threshold, unavailable/unknown metrics, or explicit user handoff, and asks for explicit /conversation-to-prd confirmation when questioning is complete."
     required_skills:
       - codex-usage-metrics
+    optional_skills:
+      - conversation-to-prd
+      - prd-to-implementation-plan
     local_runtime_paths:
       skills_root: skills/core
       target_skill_path: skills/core/decision-grilling-context-45
@@ -149,9 +155,12 @@ skills:
       - README.md
       - AGENTS.md
       - examples/portable-example.md
-    description: "Long-session documentation-aware grilling that checks metrics after each user answer and writes temp_prd.md only at the 45 percent threshold, unavailable/unknown metrics, or explicit user handoff."
+    description: "Long-session documentation-aware grilling that checks metrics after each user answer, writes temp_prd.md only at the 45 percent threshold, unavailable/unknown metrics, or explicit user handoff, and asks for explicit /conversation-to-prd confirmation when questioning is complete."
     required_skills:
       - codex-usage-metrics
+    optional_skills:
+      - conversation-to-prd
+      - prd-to-implementation-plan
     local_runtime_paths:
       skills_root: skills/core
       target_skill_path: skills/core/domain-grilling-with-docs-context-45

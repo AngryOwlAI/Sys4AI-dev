@@ -150,11 +150,24 @@ discovery record is coherent enough.
       decisions.
     - Use `domain-grilling-with-docs-context-45` for terminology, glossary,
       documentation, or ADR-worthy conflicts.
-    - Use `conversation-to-prd` only when product requirements are ready to
-      synthesize.
+    - When product requirements are ready to synthesize, ask:
+
+      ```text
+      Questioning is complete. Should I create a PRD with `/conversation-to-prd` using the current discussion and `temp_prd.md` if it exists?
+      ```
+
+      Use `/conversation-to-prd` as the canonical command spelling; treat
+      `/conversation-to-PRD` as the same user-facing intent. If the user says
+      yes, route to `/conversation-to-prd` with the current discussion and any
+      existing `<TARGET_SKILL_PATH>/temp_prd.md`. If the user says no, stop with
+      a concise summary and the logical next step. Do not create the PRD
+      automatically.
     - Use a future requirements-analysis or systems-document package skill for
       Mission Need, Charter, ConOps, SRD/SyRS, Architecture, SEMP, or V&V Plan
       generation.
+    If context threshold, unknown context, unavailable metrics, or explicit
+    handoff happens before questioning is complete, do not ask for PRD creation
+    yet; write `temp_prd.md` and give the resume instruction.
 
 ## `temp_prd.md` Requirements
 
@@ -232,6 +245,9 @@ the prior content cannot be safely merged.
   baselines them.
 - Stakeholders, boundaries, scenarios, candidates, drivers, interfaces, V&V
   seeds, evidence, and open questions remain traceable.
+- At the end of questioning, the agent asks whether to create a PRD with
+  `/conversation-to-prd` using the current discussion and `temp_prd.md` if it
+  exists, and waits for explicit confirmation.
 
 ## Failure Modes
 
@@ -245,6 +261,7 @@ the prior content cannot be safely merged.
 - Turning elicitation into a large questionnaire instead of a focused interview.
 - Generating formal systems documents before intent and boundary are stable.
 - Treating candidate requirements as approved requirements.
+- Creating a PRD automatically instead of asking at the end of questioning.
 
 ## Provenance
 

@@ -14,7 +14,18 @@ A system-definition interview spans multiple sessions. The agent captures user a
 6. Run the metrics checkpoint.
 7. Continue only if context left is known and greater than 55 percent.
 8. Do not create, overwrite, or refresh `temp_prd.md` after each question when context is still safe.
-9. Otherwise write `temp_prd.md` and stop.
+9. If the threshold or metrics failure occurs before questioning is complete, write `temp_prd.md` and stop.
+10. When questioning is complete, ask whether to create a PRD with `/conversation-to-prd`.
+
+## Example PRD handoff
+
+```text
+Questioning is complete. Should I create a PRD with `/conversation-to-prd` using the current discussion and `temp_prd.md` if it exists?
+```
+
+If the user says yes, route the current discussion and any existing
+`temp_prd.md` into `/conversation-to-prd`. If the user says no, stop with a
+concise summary and next step. Do not create the PRD automatically.
 
 ## Example resume command
 
@@ -30,6 +41,7 @@ Status: pass | repair | block
 Discovery record: control_records/system_definition/requirements-discovery-record.md
 Checkpoint file: skills/core/system-definition-interview-context-45/temp_prd.md
 Archive file: skills/core/system-definition-interview-context-45/archived_temp_prd/temp_prd_date_yyyy-mm-dd-hh-mm-ss.md
+PRD handoff: requires explicit user confirmation before `/conversation-to-prd`
 Validation:
 - make validate-skills
 - collect_usage_metrics.py --help, if operational

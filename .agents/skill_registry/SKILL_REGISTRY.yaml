@@ -119,6 +119,8 @@ skills:
       - codex-usage-metrics
     optional_skills:
       - domain-grilling-with-docs
+      - conversation-to-prd
+      - prd-to-implementation-plan
       - technical-writing-quality-gate
     python_requirements: null
     scripts: []

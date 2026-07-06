@@ -35,6 +35,8 @@ handoff behavior.
   procedure in `SKILL.md`.
 - Keep `examples/portable-example.md` synchronized with the context-check and
   resume behavior.
+- Keep the end-of-questioning `/conversation-to-prd` prompt synchronized across
+  `SKILL.md`, `README.md`, examples, and `skill.yaml`.
 - Preserve placeholders for project-specific paths, commands, authorities, registries, tools, and output directories.
 - Do not add secrets, private URLs, absolute local paths, branch names, task IDs, or organization-specific operational state.
 - Add scripts, templates, or examples only when they are portable and documented.
@@ -66,6 +68,8 @@ Before finalizing changes to this template, check that:
   left.
 - Resume behavior from `temp_prd.md` is explicit.
 - Threshold-only `temp_prd.md` creation is explicit.
+- PRD creation is user-gated and uses the current discussion plus
+  `temp_prd.md` when it exists.
 - Domain terminology, glossary/context updates, and ADR candidates are included
   in the handoff file requirements.
 

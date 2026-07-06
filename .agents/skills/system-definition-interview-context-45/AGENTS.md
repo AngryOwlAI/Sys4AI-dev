@@ -40,6 +40,8 @@ behavior.
   it as a required adjacent template dependency.
 - Do not create, overwrite, or refresh `temp_prd.md` after each question when
   context is still safe.
+- Keep the end-of-questioning `/conversation-to-prd` prompt synchronized across
+  `SKILL.md`, `README.md`, examples, and `skill.yaml`.
 - Keep examples neutral and portable.
 - Treat `usage-metrics.txt` and `temp_prd.md` as runtime artifacts, not static
   template content.
@@ -65,6 +67,8 @@ Before finalizing changes to this template, check that:
   percent context left.
 - Resume behavior from `temp_prd.md` is explicit.
 - Threshold-only `temp_prd.md` creation is explicit.
+- PRD creation is user-gated and uses the current discussion plus
+  `temp_prd.md` when it exists.
 - The record template includes stable trace IDs.
 - No hard-coded local source paths or project-bound names remain.
 

@@ -134,9 +134,20 @@ in the live working context and refresh only `usage-metrics.txt`.
     context-left value is unknown, fail closed: write the best available
     `temp_prd.md`, explain that metrics were unavailable, and give the same
     resume instruction.
-13. When enough information has been gathered, stop the grilling loop and
-    recommend using `/conversation-to-prd` to create the final PRD. Do not create
-    the final PRD automatically unless the user asks.
+13. If context threshold, unknown context, unavailable metrics, or explicit
+    handoff happens before questioning is complete, do not ask for PRD creation
+    yet; write `temp_prd.md` and give the resume instruction.
+14. When enough information has been gathered and questioning is complete, ask:
+
+    ```text
+    Questioning is complete. Should I create a PRD with `/conversation-to-prd` using the current discussion and `temp_prd.md` if it exists?
+    ```
+
+    Use `/conversation-to-prd` as the canonical command spelling; treat
+    `/conversation-to-PRD` as the same user-facing intent. If the user says yes,
+    route to `/conversation-to-prd` with the current discussion and any existing
+    `<TARGET_SKILL_PATH>/temp_prd.md`. If the user says no, stop with a concise
+    summary and the logical next step. Do not create the PRD automatically.
 
 ## `temp_prd.md` Requirements
 
@@ -195,6 +206,9 @@ verbatim unless the prior content cannot be safely merged.
 - `temp_prd.md` contains the last question and the user's answer.
 - Resumed sessions integrate prior `temp_prd.md` content instead of discarding
   it.
+- At the end of questioning, the agent asks whether to create a PRD with
+  `/conversation-to-prd` using the current discussion and `temp_prd.md` if it
+  exists, and waits for explicit confirmation.
 
 ## Failure Modes
 
@@ -208,6 +222,7 @@ verbatim unless the prior content cannot be safely merged.
 - Overwriting `temp_prd.md` without integrating the prior resumable context.
 - Archiving or overwriting an existing `temp_prd.md` without explicit user
   confirmation during a fresh invocation.
+- Creating a PRD automatically instead of asking at the end of questioning.
 
 ## Provenance
 

@@ -14,8 +14,19 @@ A `sys-for-ai` implementation agent receives an AgentJob requiring `domain_docum
 6. Refresh `usage-metrics.txt` after the answer.
 7. Continue when context left is known and greater than 55 percent.
 8. Write `temp_prd.md` only when context used is at least 45 percent, context left is at most 55 percent, metrics are unavailable or unknown, or the user explicitly requests a handoff.
-9. Produce bounded output with provenance notes.
-10. Run the named validator or record why it could not be run.
+9. When questioning is complete, ask whether to create a PRD with `/conversation-to-prd`.
+10. Produce bounded output with provenance notes if the user declines PRD creation.
+11. Run the named validator or record why it could not be run.
+
+## Example PRD handoff
+
+```text
+Questioning is complete. Should I create a PRD with `/conversation-to-prd` using the current discussion and `temp_prd.md` if it exists?
+```
+
+If the user says yes, route the current discussion and any existing
+`temp_prd.md` into `/conversation-to-prd`. If the user says no, stop with a
+concise summary and next step. Do not create the PRD automatically.
 
 ## Example output shape
 
@@ -31,4 +42,5 @@ Validation:
 Checkpoint:
 - Do not create, overwrite, or refresh temp_prd.md after each question when context is still safe.
 - Archive confirmed prior checkpoints as archived_temp_prd/temp_prd_date_yyyy-mm-dd-hh-mm-ss.md.
+- PRD creation requires explicit user confirmation.
 ```

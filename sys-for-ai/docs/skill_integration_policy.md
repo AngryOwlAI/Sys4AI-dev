@@ -47,6 +47,23 @@ context is still safe. `temp_prd.md` is a threshold or fail-closed handoff file,
 not the normal per-question state file. If metrics cannot determine context
 left, fail closed by writing the best available `temp_prd.md` and stopping.
 
+When a `*-context-45` workflow reaches the end of questioning while context is
+still safe, ask exactly:
+
+```text
+Questioning is complete. Should I create a PRD with `/conversation-to-prd` using the current discussion and `temp_prd.md` if it exists?
+```
+
+Use `/conversation-to-prd` as the canonical command spelling; treat
+`/conversation-to-PRD` as the same user-facing intent. If the user says yes,
+route the current discussion and any existing `temp_prd.md` into
+`conversation-to-prd`. If the user says no, stop with a concise summary and the
+logical next step. Do not create the PRD automatically; explicit user
+confirmation is required. If the context threshold, unknown context, unavailable
+metrics, or explicit handoff request happens before questioning is complete,
+write `temp_prd.md` and provide the resume command without asking for PRD
+creation yet.
+
 For `system-definition-interview-context-45`, the resume command is:
 
 ```text

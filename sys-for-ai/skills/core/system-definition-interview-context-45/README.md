@@ -20,6 +20,10 @@ on explicit user request.
 Do not create, overwrite, or refresh `temp_prd.md` after each question when
 context is still safe.
 
+When questioning is complete, ask whether to create a PRD with
+`/conversation-to-prd` using the current discussion and `temp_prd.md` if it
+exists. Do not create the PRD automatically.
+
 ## Archive preflight
 
 On normal invocation without `temp_prd`, run
@@ -48,5 +52,6 @@ Use `skills/core/codex-usage-metrics/scripts/collect_usage_metrics.py` for local
 1. Compare this adapter shell with the current upstream template.
 2. Replace generic placeholders with local paths, validators, and authority boundaries.
 3. Add stronger validation for `temp_prd.md` once a discovery-record validator exists.
-4. Update `skills/core_skill_manifest.yaml` and `registries/skill_registry.csv` if status changes.
-5. Mark status as `adapted` only after review and validation evidence.
+4. Keep the end-of-questioning PRD handoff prompt synchronized with `SKILL.md`.
+5. Update `skills/core_skill_manifest.yaml` and `registries/skill_registry.csv` if status changes.
+6. Mark status as `adapted` only after review and validation evidence.

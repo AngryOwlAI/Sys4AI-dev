@@ -53,9 +53,11 @@ outputs:
     - Completion receipt or concise handoff when the task changes files or creates derivative material.
   secondary:
     - Assumptions, unresolved questions, skipped checks, and recommended next step.
+    - End-of-questioning prompt asking whether to create a PRD with /conversation-to-prd using the current discussion and temp_prd.md if it exists.
   evidence:
     - Source files, validators, registries, user decisions, and repository observations used.
     - Distinction between canonical source, accepted project decision, generated derivative, and assumption.
+    - Explicit user confirmation before PRD creation.
   handoff:
     - Files changed, validation commands run, skipped checks, remaining risk, and next owner action.
 dependencies:
@@ -63,6 +65,8 @@ dependencies:
     - codex-usage-metrics
   optional_skills:
     - domain-grilling-with-docs
+    - conversation-to-prd
+    - prd-to-implementation-plan
     - technical-writing-quality-gate
   validation_skills: []
   python:
@@ -86,6 +90,7 @@ authority:
     - Treat sys-for-ai/skills/core as the active runtime authority for sys-for-ai-dev.
     - Delete or replace product scaffold adapters unless an explicit project authority requests it.
     - Import .DS_Store, __pycache__, pyc files, usage-metrics receipts, temp_prd checkpoints, secrets, or local operational state as source.
+    - Create a PRD automatically without explicit user confirmation.
   canonical_sources:
     - Root PRDs and implementation plans.
     - Git-tracked validators, registries, schemas, templates, and source files.
@@ -96,6 +101,7 @@ authority:
   human_gates:
     - Owner approval before generated requirements or plans become accepted scope.
     - Owner approval before deleting scaffold adapters or changing project authority policy.
+    - User confirmation before routing the current discussion and existing temp_prd.md into conversation-to-prd.
 validation:
   commands:
     - command: python3 scripts/skills/validate_skill_manifest.py --manifest .agents/skills/domain-grilling-with-docs-context-45/skill.yaml
@@ -146,5 +152,7 @@ failure_modes:
     recovery: State that sys-for-ai is the subsystem scaffold and .agents/skills is the active development runtime layer.
   - mode: Generated-output promotion.
     recovery: Relabel as derivative or obtain explicit approval before treating the artifact as project authority.
+  - mode: Automatic PRD creation.
+    recovery: Ask the end-of-questioning /conversation-to-prd prompt and wait for explicit user confirmation before routing current discussion or temp_prd.md into PRD synthesis.
 compatibility_shims:
   - .codex/skills/domain-grilling-with-docs-context-45/SKILL.md

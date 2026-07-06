@@ -54,6 +54,9 @@ state and the point-in-time `usage-metrics.txt` receipt.
   context left is 55% or lower, metrics are unavailable/unknown, or the user
   explicitly requests a handoff.
 - A resume instruction for `/decision-grilling-context-45 temp_prd`.
+- An end-of-questioning prompt asking whether to create a PRD with
+  `/conversation-to-prd` using the current discussion and `temp_prd.md` if it
+  exists.
 
 ## Required Files
 
@@ -95,3 +98,4 @@ A valid adaptation should satisfy these checks:
   remains safe.
 - `temp_prd.md` includes the last question, the user answer, gathered
   requirements, unresolved questions, and the resume command.
+- PRD creation is explicitly user-gated and never automatic.
