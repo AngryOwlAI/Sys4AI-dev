@@ -55,6 +55,10 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_boundary_validators_agentjob | control_records/agentjobs/AJ-P1-BOUNDARY-VALIDATORS-001.yaml | agentjob_v0_2 | controlled | control_loop | contract_agentjob_v0_2 | pending |
 | ctrl_derivative_generators_agentjob | control_records/agentjobs/AJ-P1-DERIVATIVE-GENERATORS-001.yaml | agentjob_v0_2 | controlled | control_loop | contract_agentjob_v0_2 | pending |
 | ctrl_continue_skills_agentjob | control_records/agentjobs/AJ-P1-CONTINUE-SKILLS-001.yaml | agentjob_v0_2 | controlled | skill_governance | contract_agentjob_v0_2 | pending |
+| ctrl_selfhost_acceptance_agentjob | control_records/agentjobs/AJ-P1-SELFHOST-ACCEPTANCE-001.yaml | agentjob_v0_2 | controlled | control_loop | contract_agentjob_v0_2 | pending |
+| ctrl_selfhost_acceptance_completion | control_records/completions/RECEIPT-P1-SELFHOST-ACCEPTANCE-001.yaml | completion_receipt_v0_2 | controlled | control_loop | contract_completion_receipt_v0_2 | pending |
+| ctrl_selfhost_acceptance_handoff | control_records/handoffs/HANDOFF-P1-SELFHOST-ACCEPTANCE-001.yaml | handoff_v0_2 | controlled | control_loop | contract_handoff_v0_2 | pending |
+| ctrl_selfhost_acceptance_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-P1-SELFHOST-ACCEPTANCE-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
 
 ## Validation Contract Trace
 

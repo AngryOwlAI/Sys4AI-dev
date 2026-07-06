@@ -1,2 +1,2 @@
 director_decision_id,path,status,task_id,selected_route,selected_agentjob_id,authority_status,supersedes,source_hash,last_validated_at,notes
-DDR-P1-SELFHOST-001,control_records/director_decisions/DDR-P1-SELFHOST-001.yaml,active,TASK-P1-SELFHOST-001,implement_continue_loop_kernel,AJ-P1-SELFHOST-CONTINUE-KERNEL-001,controlled,,pending,pending,Active Director decision selecting the Phase 5 continue packet kernel AgentJob
+DDR-P1-SELFHOST-001,control_records/director_decisions/DDR-P1-SELFHOST-001.yaml,completed,TASK-P1-SELFHOST-001,implement_continue_loop_kernel,AJ-P1-SELFHOST-CONTINUE-KERNEL-001,controlled,,pending,2026-07-06T00:00:00Z,Completed by Phase 10 self-hosting acceptance receipt

@@ -1,0 +1,45 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-P1-SELFHOST-ACCEPTANCE-001
+schema_version: 0.1.0
+agentjob_id: AJ-P1-SELFHOST-ACCEPTANCE-001
+created_at: "2026-07-06T00:00:00Z"
+status: PASS
+commands_run:
+  - command: python -m sys_for_ai.cli memory status --json
+    result: pass
+  - command: python -m sys_for_ai.cli memory lookup AJ-P1-CONTINUE-SKILLS-001 --json
+    result: pass
+  - command: python -m sys_for_ai.cli memory search 'Phase 10 hardening acceptance' --limit 10 --json
+    result: pass
+queries:
+  - query: Phase 10 hardening acceptance
+    returned_object_ids:
+      - SRC-SELFHOST-MEMORY-CONTINUE-PLAN
+      - SRC-AJ-CONTINUE-SKILLS-001
+      - SRC-TEST-SKILL-SURFACES
+canonical_sources_inspected:
+  - path: implementation_plans/sys-for-ai-dev_memory_continue_self_hosting_implementation_plan.md
+    registry: source_registry.csv
+    row_id: SRC-SELFHOST-MEMORY-CONTINUE-PLAN
+    inspected_sections:
+      - Phase 10 Hardening and acceptance
+      - Acceptance criteria
+  - path: temp_handoff/handoff-0010.md
+    registry: source_registry.csv
+    row_id: SRC-TEMP-HANDOFF-0010
+    inspected_sections:
+      - Next logical step
+registry_rows_inspected:
+  - registry: agentjob_registry.csv
+    row_id: AJ-P1-CONTINUE-SKILLS-001
+    purpose: Confirm Phase 9 was registered before Phase 10 acceptance.
+  - registry: skill_registry.csv
+    row_id: continue
+    purpose: Confirm the continue scaffold skill is registered.
+  - registry: skill_registry.csv
+    row_id: source-first-memory
+    purpose: Confirm the source-first-memory scaffold skill is registered.
+stale_context_risks:
+  - risk_id: MEMPREFLIGHT-RISK-001
+    status: not_observed
+    notes: Acceptance routing used the implementation plan handoff and registries rather than generated derivatives or chat memory.
+usable_for_routing: true

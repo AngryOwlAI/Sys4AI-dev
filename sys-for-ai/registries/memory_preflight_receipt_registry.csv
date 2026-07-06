@@ -1,2 +1,3 @@
 memory_preflight_receipt_id,path,agentjob_id,created_at,status,queries_count,hits_count,canonical_inspections_count,stale_risks_count,source_hash,last_validated_at,notes
 MEMPREFLIGHT-P1-EXAMPLE-001,control_records/memory_preflights/memory_preflight_receipt.example.yaml,AJ-P1-SKILL-SYNC-001,2026-07-06T00:00:00Z,PASS_WITH_WARNINGS,1,2,1,1,pending,pending,Example memory preflight receipt
+MEMPREFLIGHT-P1-SELFHOST-ACCEPTANCE-001,control_records/memory_preflights/MEMPREFLIGHT-P1-SELFHOST-ACCEPTANCE-001.yaml,AJ-P1-SELFHOST-ACCEPTANCE-001,2026-07-06T00:00:00Z,PASS,1,3,2,1,pending,2026-07-06T00:00:00Z,Memory preflight receipt for Phase 10 acceptance

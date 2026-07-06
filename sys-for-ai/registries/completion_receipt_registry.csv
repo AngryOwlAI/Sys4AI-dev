@@ -1,2 +1,3 @@
 completion_receipt_id,path,agentjob_id,result,validation_status,changed_artifacts_count,next_handoff_id,source_hash,last_validated_at,notes
 RECEIPT-P1-SELFHOST-CONTINUE-KERNEL-001,control_records/completions/completion_receipt.example.v0_2.yaml,AJ-P1-SELFHOST-CONTINUE-KERNEL-001,PASS_WITH_WARNINGS,validated,18,HANDOFF-P1-SELFHOST-CONTINUE-KERNEL-001,pending,2026-07-06T00:00:00Z,Finalized by continue-finalize
+RECEIPT-P1-SELFHOST-ACCEPTANCE-001,control_records/completions/RECEIPT-P1-SELFHOST-ACCEPTANCE-001.yaml,AJ-P1-SELFHOST-ACCEPTANCE-001,PASS,validated,23,HANDOFF-P1-SELFHOST-ACCEPTANCE-001,pending,2026-07-06T00:00:00Z,Acceptance receipt for completed self-hosting memory and continue implementation plan

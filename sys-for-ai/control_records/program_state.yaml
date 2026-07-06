@@ -9,20 +9,19 @@ system_context:
 current_phase: implementation_initialization
 lifecycle_stage: develop
 active_task_id: TASK-P1-SELFHOST-001
-active_director_decision_id: DDR-P1-SELFHOST-001
+active_director_decision_id: null
 active_agentjob_id: null
-latest_completion_receipt_id: RECEIPT-P1-SELFHOST-CONTINUE-KERNEL-001
-latest_handoff_id: HANDOFF-P1-SELFHOST-CONTINUE-KERNEL-001
-latest_memory_preflight_receipt_id: MEMPREFLIGHT-P1-EXAMPLE-001
-state_status: active
+latest_completion_receipt_id: RECEIPT-P1-SELFHOST-ACCEPTANCE-001
+latest_handoff_id: HANDOFF-P1-SELFHOST-ACCEPTANCE-001
+latest_memory_preflight_receipt_id: MEMPREFLIGHT-P1-SELFHOST-ACCEPTANCE-001
+state_status: complete
 blocked_reason: null
 human_gate_required: false
 allowed_next_actions:
 - run_memory_preflight
 - inspect_latest_handoff
-- select_one_agentjob
-- emit_execution_packet
-- validate_completion_receipt
+- open_new_director_decision_for_future_work
+- validate_acceptance_receipt
 blocked_actions:
 - execute_multiple_agentjobs
 - use_chat_memory_as_authority
@@ -37,3 +36,5 @@ validation_status:
   - validate-handoffs
   - validate-completion-receipts
   - validate-state-snapshots
+  - validate-control-loop
+  - validate-requirement-trace

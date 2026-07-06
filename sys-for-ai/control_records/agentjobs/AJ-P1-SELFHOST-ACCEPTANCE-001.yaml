@@ -1,0 +1,111 @@
+agentjob_id: AJ-P1-SELFHOST-ACCEPTANCE-001
+schema_version: 0.2.0
+status: completed
+objective: >
+  Complete Phase 10 hardening and acceptance for the self-hosting memory and
+  /continue implementation by closing trace evidence, validating all controlled
+  surfaces, refreshing generated derivatives, and writing final acceptance
+  receipt and handoff records.
+lifecycle_stage: implementation_initialization
+role_binding:
+  role_id: acceptance_engineer
+  binding_type: one_job_provisional_role
+  authority_scope: sys-for-ai Phase 1 self-hosting acceptance
+  expires_with_agentjob: true
+required_inputs:
+  - implementation_plans/sys-for-ai-dev_memory_continue_self_hosting_implementation_plan.md
+  - temp_handoff/handoff-0010.md
+  - sys-for-ai/registries/requirement_trace_registry.csv
+  - sys-for-ai/control_records/program_state.yaml
+allowed_reads:
+  - PRDs/**
+  - implementation_plans/**
+  - temp_handoff/handoff-0010.md
+  - sys-for-ai/**
+  - .agents/skills/**
+  - .codex/skills/**
+allowed_writes:
+  - implementation_plans/self_hosting_memory_continue_acceptance_report.md
+  - sys-for-ai/Makefile
+  - sys-for-ai/control_records/agentjobs/AJ-P1-SELFHOST-ACCEPTANCE-001.yaml
+  - sys-for-ai/control_records/completions/RECEIPT-P1-SELFHOST-ACCEPTANCE-001.yaml
+  - sys-for-ai/control_records/director_decisions/DDR-P1-SELFHOST-001.yaml
+  - sys-for-ai/control_records/handoffs/HANDOFF-P1-SELFHOST-ACCEPTANCE-001.yaml
+  - sys-for-ai/control_records/memory_preflights/MEMPREFLIGHT-P1-SELFHOST-ACCEPTANCE-001.yaml
+  - sys-for-ai/control_records/program_state.yaml
+  - sys-for-ai/docs/generated/**
+  - sys-for-ai/registries/**
+  - sys-for-ai/sys_for_ai/cli.py
+  - sys-for-ai/tests/**
+  - temp_handoff/handoff-0011.md
+generated_paths:
+  - sys-for-ai/docs/generated/**
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - sys-for-ai/.venv/**
+  - sys-for-ai/docs/generated/** as canonical source
+forbidden_actions:
+  - Modify repository LICENSE or NOTICE.
+  - Treat generated derivatives as canonical.
+  - Execute more than one AgentJob in one /continue invocation.
+  - Mutate activated control records without acceptance evidence.
+  - Mark full production autonomy complete when only the Phase 1 deterministic kernel is implemented.
+memory_preflight:
+  required: true
+  minimum_queries:
+    - Phase 10 hardening acceptance
+    - self-hosting continue memory acceptance evidence
+  required_evidence:
+    - latest handoff inspection
+    - implementation plan Phase 10 inspection
+    - registry trace inspection
+expected_outputs:
+  - Updated requirement trace rows for newly implemented self-hosting memory continue and derivative coverage.
+  - Acceptance completion receipt and handoff records.
+  - Final acceptance report with criteria-by-criteria evidence.
+  - Refreshed generated derivatives affected by acceptance registry changes.
+  - Full validation evidence.
+validators:
+  - cd sys-for-ai && make doctor
+  - cd sys-for-ai && make validate-agentjobs
+  - cd sys-for-ai && make validate-skills
+  - cd sys-for-ai && make validate-format-profiles
+  - cd sys-for-ai && make validate-config-sources
+  - cd sys-for-ai && make validate-control-records
+  - cd sys-for-ai && make validate-validation-contract-registry
+  - cd sys-for-ai && make validate-toml-config
+  - cd sys-for-ai && make validate-jsonschema-contracts
+  - cd sys-for-ai && make validate-registry-graph
+  - cd sys-for-ai && make validate-requirement-trace
+  - cd sys-for-ai && make validate-program-state
+  - cd sys-for-ai && make validate-control-loop
+  - cd sys-for-ai && make validate-memory-preflight
+  - cd sys-for-ai && make validate-handoffs
+  - cd sys-for-ai && make validate-completion-receipts
+  - cd sys-for-ai && make validate-generated-derivatives
+  - cd sys-for-ai && make validate
+completion_evidence_required:
+  - changed_artifacts
+  - command_results
+  - validation_status
+  - acceptance_report
+handoff_policy:
+  create_handoff_when:
+    - acceptance completes
+    - future work must be routed through a new Director decision
+authority_boundary:
+  may_modify_product_scaffold: true
+  may_modify_canonical_prds: false
+  may_promote_generated_derivatives: false
+  may_change_runtime_skill_authority: false
+  terminal_state: complete
+stop_conditions:
+  - Required plan or latest handoff source cannot be inspected.
+  - Acceptance evidence cannot be tied to controlled sources or registries.
+  - Generated derivative refresh is stale after registry changes.
+  - Full validation fails.
+  - More than one AgentJob is required.
+  - Required write is outside allowlist.

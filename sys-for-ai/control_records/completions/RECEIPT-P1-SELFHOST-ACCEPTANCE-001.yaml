@@ -1,0 +1,169 @@
+completion_receipt_id: RECEIPT-P1-SELFHOST-ACCEPTANCE-001
+schema_version: 0.2.0
+agentjob_id: AJ-P1-SELFHOST-ACCEPTANCE-001
+role: acceptance_engineer
+result: PASS
+summary: >
+  Phase 10 acceptance completed the self-hosting memory and /continue
+  implementation with updated trace evidence, final acceptance records,
+  generated derivative refresh, terminal program state, and full validation.
+changed_artifacts:
+  - path: implementation_plans/self_hosting_memory_continue_acceptance_report.md
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/Makefile
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/control_records/agentjobs/AJ-P1-SELFHOST-ACCEPTANCE-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/control_records/completions/RECEIPT-P1-SELFHOST-ACCEPTANCE-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/control_records/director_decisions/DDR-P1-SELFHOST-001.yaml
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/control_records/handoffs/HANDOFF-P1-SELFHOST-ACCEPTANCE-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/control_records/memory_preflights/MEMPREFLIGHT-P1-SELFHOST-ACCEPTANCE-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/control_records/program_state.yaml
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/docs/generated/configuration_control/index.md
+    change_type: regenerated
+    authority_status: derivative
+  - path: sys-for-ai/docs/generated/configuration_control/yaml-control-records.md
+    change_type: regenerated
+    authority_status: derivative
+  - path: sys-for-ai/registries/agentjob_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/completion_receipt_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/control_record_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/director_decision_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/handoff_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/memory_preflight_receipt_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/requirement_trace_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/source_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/sys_for_ai/cli.py
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/tests/test_agentjob_boundaries.py
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/tests/test_continue_packet.py
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/tests/test_program_state.py
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/tests/test_self_hosting_acceptance.py
+    change_type: added
+    authority_status: controlled
+memory_preflight_receipt_id: MEMPREFLIGHT-P1-SELFHOST-ACCEPTANCE-001
+validation_evidence:
+  commands_run:
+    - command: cd sys-for-ai && make doctor
+      result: pass
+    - command: cd sys-for-ai && make validate-agentjobs
+      result: pass
+    - command: cd sys-for-ai && make validate-skills
+      result: pass
+    - command: cd sys-for-ai && make validate-format-profiles
+      result: pass
+    - command: cd sys-for-ai && make validate-config-sources
+      result: pass
+    - command: cd sys-for-ai && make validate-control-records
+      result: pass
+    - command: cd sys-for-ai && make validate-validation-contract-registry
+      result: pass
+    - command: cd sys-for-ai && make validate-toml-config
+      result: pass
+    - command: cd sys-for-ai && make validate-jsonschema-contracts
+      result: pass
+    - command: cd sys-for-ai && make validate-registry-graph
+      result: pass
+    - command: cd sys-for-ai && make validate-requirement-trace
+      result: pass
+    - command: cd sys-for-ai && make validate-program-state
+      result: pass
+    - command: cd sys-for-ai && make validate-control-loop
+      result: pass
+    - command: cd sys-for-ai && make validate-memory-preflight
+      result: pass
+    - command: cd sys-for-ai && make validate-handoffs
+      result: pass
+    - command: cd sys-for-ai && make validate-completion-receipts
+      result: pass
+    - command: cd sys-for-ai && make validate-generated-derivatives
+      result: pass
+    - command: cd sys-for-ai && .venv/bin/python -m unittest discover -s tests
+      result: pass
+    - command: cd sys-for-ai && make validate
+      result: pass
+  validators:
+    - validator_id: validate-requirement-trace
+      target_path: registries/requirement_trace_registry.csv
+      result: pass
+      notes: Trace rows include final self-hosting memory continue evidence without claiming production autonomy.
+    - validator_id: validate-control-loop
+      target_path: control_records/program_state.yaml
+      result: pass
+      notes: Program state validates in terminal complete state and no active Director decision remains.
+    - validator_id: validate-generated-derivatives
+      target_path: docs/generated
+      result: pass
+      notes: Generated derivatives are current and remain noncanonical.
+format_profile_changes:
+  added:
+    - path: control_records/agentjobs/AJ-P1-SELFHOST-ACCEPTANCE-001.yaml
+      profile_id: fmt_yaml_control
+      registry_row_id: ctrl_selfhost_acceptance_agentjob
+    - path: control_records/completions/RECEIPT-P1-SELFHOST-ACCEPTANCE-001.yaml
+      profile_id: fmt_yaml_control
+      registry_row_id: ctrl_selfhost_acceptance_completion
+    - path: control_records/handoffs/HANDOFF-P1-SELFHOST-ACCEPTANCE-001.yaml
+      profile_id: fmt_yaml_control
+      registry_row_id: ctrl_selfhost_acceptance_handoff
+    - path: control_records/memory_preflights/MEMPREFLIGHT-P1-SELFHOST-ACCEPTANCE-001.yaml
+      profile_id: fmt_yaml_control
+      registry_row_id: ctrl_selfhost_acceptance_memory_preflight
+  modified:
+    - path: control_records/program_state.yaml
+      profile_id: fmt_yaml_control
+      registry_row_id: ctrl_program_state
+  generated_derivatives:
+    - docs/generated/configuration_control/index.md
+    - docs/generated/configuration_control/yaml-control-records.md
+authority_changes:
+  promoted: []
+  completed:
+    - director_decision_id: DDR-P1-SELFHOST-001
+      reason: Initial self-hosting route completed by acceptance receipt.
+  not_promoted:
+    - path: docs/generated/configuration_control/index.md
+      reason: Generated reader surface remains derivative.
+unresolved_issues: []
+next_recommendation: >
+  The self-hosting memory and /continue implementation plan is accepted for
+  Phase 1. Future work should begin with a new Director decision or
+  implementation plan rather than reusing this completed AgentJob route.
+next_handoff_id: HANDOFF-P1-SELFHOST-ACCEPTANCE-001
+completed_at: "2026-07-06T00:00:00Z"

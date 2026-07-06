@@ -1,0 +1,72 @@
+handoff_id: HANDOFF-P1-SELFHOST-ACCEPTANCE-001
+schema_version: 0.2.0
+framework_name: sys-for-ai
+target_agentic_system: sys-for-ai-dev
+artifact_name: Phase 10 Self-Hosting Acceptance Handoff
+artifact_type: operational_handoff
+artifact_version: 0.2.0
+producing_role: acceptance_engineer
+artifact_status: completed
+summary: >
+  The self-hosting memory and /continue implementation plan has completed
+  Phase 10 acceptance. The repository now contains controlled source-first
+  memory navigation, deterministic continuation packets, completion and handoff
+  finalization, diff boundary validation, generated derivative generators,
+  runtime skill surfaces, trace closure, and final acceptance evidence.
+source_artifacts:
+  - implementation_plans/sys-for-ai-dev_memory_continue_self_hosting_implementation_plan.md
+  - implementation_plans/self_hosting_memory_continue_acceptance_report.md
+  - sys-for-ai/control_records/completions/RECEIPT-P1-SELFHOST-ACCEPTANCE-001.yaml
+  - sys-for-ai/control_records/memory_preflights/MEMPREFLIGHT-P1-SELFHOST-ACCEPTANCE-001.yaml
+traceability:
+  agentjob_id: AJ-P1-SELFHOST-ACCEPTANCE-001
+  completion_receipt_id: RECEIPT-P1-SELFHOST-ACCEPTANCE-001
+  implementation_plan_section: "20"
+  acceptance_report: implementation_plans/self_hosting_memory_continue_acceptance_report.md
+control_loop_notes:
+  previous_agentjob_id: AJ-P1-CONTINUE-SKILLS-001
+  next_agentjob_id: null
+  next_agentjob_status: not_applicable
+  selection_basis: Phase 10 is terminal for the referenced implementation plan.
+memory_preflight:
+  memory_preflight_receipt_id: MEMPREFLIGHT-P1-SELFHOST-ACCEPTANCE-001
+  usable_for_routing: true
+  required_next_queries:
+    - new Director decision for any future work beyond this accepted plan
+format_profile_evidence:
+  yaml_control_records:
+    - control_records/agentjobs/AJ-P1-SELFHOST-ACCEPTANCE-001.yaml
+    - control_records/completions/RECEIPT-P1-SELFHOST-ACCEPTANCE-001.yaml
+    - control_records/handoffs/HANDOFF-P1-SELFHOST-ACCEPTANCE-001.yaml
+    - control_records/memory_preflights/MEMPREFLIGHT-P1-SELFHOST-ACCEPTANCE-001.yaml
+  registry_rows_added:
+    - ctrl_selfhost_acceptance_agentjob
+    - ctrl_selfhost_acceptance_completion
+    - ctrl_selfhost_acceptance_handoff
+    - ctrl_selfhost_acceptance_memory_preflight
+source_authority_evidence:
+  canonical_sources_checked:
+    - implementation_plans/sys-for-ai-dev_memory_continue_self_hosting_implementation_plan.md
+    - temp_handoff/handoff-0010.md
+    - sys-for-ai/registries/requirement_trace_registry.csv
+    - sys-for-ai/control_records/program_state.yaml
+  authority_boundary: Generated derivatives were refreshed but not promoted.
+derivative_surface_evidence:
+  generated_derivatives_changed: true
+  changed_derivatives:
+    - docs/generated/configuration_control/index.md
+    - docs/generated/configuration_control/yaml-control-records.md
+  notes: Generated pages were refreshed only because control registry rows changed.
+security_evidence:
+  secret_scan_scope: Structured YAML TOML and registry examples validated by existing secret-like value checks.
+  new_secret_material: false
+recommended_next_role: system_director
+phase_boundary_notes: >
+  Phase 10 closes the referenced implementation plan. Any future work should
+  start from a new explicit plan or Director decision and should first inspect
+  this handoff and the acceptance report.
+stop_conditions:
+  - A future task attempts to reuse this completed acceptance AgentJob.
+  - A generated derivative is treated as source authority.
+  - More than one AgentJob is selected for one continuation invocation.
+  - A future route lacks a Director decision or tracked handoff basis.
