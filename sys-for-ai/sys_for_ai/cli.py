@@ -21,6 +21,8 @@ from .control_loop import (
     continue_select,
     continue_status,
     finalize_agentjob,
+    validate_agentjob_boundaries,
+    validate_check_diff,
     validate_control_loop,
     validate_one_active_agentjob,
 )
@@ -253,6 +255,15 @@ def build_parser() -> argparse.ArgumentParser:
     validate_snapshots = sub.add_parser("validate-state-snapshots", help="Validate bounded state snapshot records")
     validate_snapshots.add_argument("root", default="control_records/state_snapshots", nargs="?")
 
+    validate_boundaries = sub.add_parser("validate-agentjob-boundaries", help="Validate changed paths against an AgentJob boundary")
+    validate_boundaries.add_argument("--agentjob", required=True)
+    validate_boundaries.add_argument("--git", action="store_true")
+    validate_boundaries.add_argument("--json", action="store_true")
+
+    validate_diff = sub.add_parser("validate-check-diff", help="Validate the current Git diff against an AgentJob boundary")
+    validate_diff.add_argument("--agentjob", required=True)
+    validate_diff.add_argument("--json", action="store_true")
+
     sub.add_parser("validate-one-active-agentjob", help="Validate the one-active-AgentJob invariant")
     sub.add_parser("validate-control-loop", help="Validate the /continue control-loop kernel")
 
@@ -374,6 +385,12 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "validate-state-snapshots":
         return print_result(validate_state_snapshots(args.root))
 
+    if args.command == "validate-agentjob-boundaries":
+        return _emit_payload(validate_agentjob_boundaries(args.agentjob, use_git=args.git), args.json)
+
+    if args.command == "validate-check-diff":
+        return _emit_payload(validate_check_diff(args.agentjob), args.json)
+
     if args.command == "validate-one-active-agentjob":
         return print_result(validate_one_active_agentjob())
 
@@ -428,6 +445,13 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_toml_config(args.config_sources))
         result.extend(validate_jsonschema_contracts(args.contracts_root))
         result.extend(validate_registry_graph(args.registries))
+        boundary_payload = validate_check_diff("AJ-P1-BOUNDARY-VALIDATORS-001")
+        result.extend(
+            ValidationResult(
+                bool(boundary_payload.get("ok")),
+                _boundary_messages(boundary_payload),
+            )
+        )
         result.extend(validate_one_active_agentjob())
         result.extend(validate_control_loop())
         result.extend(validate_requirement_trace(args.requirement_trace))
@@ -479,6 +503,18 @@ def _emit_payload(payload: dict[str, object], json_output: bool) -> int:
         for warning in payload.get("warnings", []) if isinstance(payload.get("warnings", []), list) else []:
             print(warning)
     return 0 if payload.get("ok") else 1
+
+
+def _boundary_messages(payload: dict[str, object]) -> list[str]:
+    agentjob_id = payload.get("agentjob_id", "")
+    messages = [f"{agentjob_id}: AgentJob boundary validation passed"] if payload.get("ok") else []
+    for item in payload.get("violations", []) if isinstance(payload.get("violations", []), list) else []:
+        if isinstance(item, dict):
+            messages.append(f"{agentjob_id}: {item.get('path')}: {item.get('reason')}")
+    for item in payload.get("warnings", []) if isinstance(payload.get("warnings", []), list) else []:
+        if isinstance(item, dict):
+            messages.append(f"{agentjob_id}: warning {item.get('path')}: {item.get('reason')}")
+    return messages or [f"{agentjob_id}: AgentJob boundary validation failed"]
 
 
 if __name__ == "__main__":

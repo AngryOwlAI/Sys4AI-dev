@@ -1,2 +1,3 @@
 agentjob_id,path,status,role_id,task_id,created_at,activated_at,completed_at,completion_receipt_id,handoff_id,authority_status,supersedes,source_hash,last_validated_at,notes
 AJ-P1-SELFHOST-CONTINUE-KERNEL-001,control_records/agentjobs/AJ-P1-SELFHOST-CONTINUE-KERNEL-001.yaml,pending,control_loop_engineer,TASK-P1-SELFHOST-001,2026-07-06T00:00:00Z,,,,,controlled,,pending,pending,Pending AgentJob selected by DDR-P1-SELFHOST-001 for Phase 5 continue packet kernel
+AJ-P1-BOUNDARY-VALIDATORS-001,control_records/agentjobs/AJ-P1-BOUNDARY-VALIDATORS-001.yaml,pending,validator_engineer,TASK-P1-SELFHOST-001,2026-07-06T00:00:00Z,,,,,controlled,,pending,pending,Pending AgentJob selected by Phase 6 handoff for Phase 7 boundary and diff validators

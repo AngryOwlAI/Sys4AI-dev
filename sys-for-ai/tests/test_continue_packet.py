@@ -11,11 +11,11 @@ from sys_for_ai.yaml_io import dump_yaml
 
 
 class ContinuePacketTests(unittest.TestCase):
-    def test_continue_packet_selects_seed_job(self) -> None:
+    def test_continue_packet_selects_latest_handoff_job(self) -> None:
         payload = continue_packet()
         self.assertTrue(payload["ok"])
         self.assertEqual(payload["packet_type"], "execution_packet")
-        self.assertEqual(payload["agentjob_id"], "AJ-P1-SELFHOST-CONTINUE-KERNEL-001")
+        self.assertEqual(payload["agentjob_id"], "AJ-P1-BOUNDARY-VALIDATORS-001")
 
     def test_missing_director_decision_blocks(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

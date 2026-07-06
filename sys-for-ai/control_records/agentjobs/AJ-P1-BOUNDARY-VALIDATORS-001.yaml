@@ -1,0 +1,79 @@
+agentjob_id: AJ-P1-BOUNDARY-VALIDATORS-001
+schema_version: 0.2.0
+status: pending
+objective: >
+  Implement boundary and diff validators that enforce the selected AgentJob's
+  allowed writes, generated paths, and forbidden paths against current Git
+  changes from either the repository root or the sys-for-ai product root.
+lifecycle_stage: implementation_initialization
+role_binding:
+  role_id: validator_engineer
+  binding_type: one_job_provisional_role
+  authority_scope: sys-for-ai Phase 1 scaffold
+  expires_with_agentjob: true
+required_inputs:
+  - implementation_plans/sys-for-ai-dev_memory_continue_self_hosting_implementation_plan.md
+  - temp_handoff/handoff-0007.md
+  - sys-for-ai/control_records/handoffs/handoff.example.v0_2.yaml
+  - sys-for-ai/control_records/program_state.yaml
+allowed_reads:
+  - PRDs/**
+  - implementation_plans/**
+  - temp_handoff/handoff-0007.md
+  - sys-for-ai/**
+allowed_writes:
+  - sys-for-ai/sys_for_ai/control_loop/**
+  - sys-for-ai/sys_for_ai/cli.py
+  - sys-for-ai/Makefile
+  - sys-for-ai/control_records/agentjobs/AJ-P1-BOUNDARY-VALIDATORS-001.yaml
+  - sys-for-ai/registries/**
+  - sys-for-ai/tests/**
+generated_paths: []
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - sys-for-ai/.venv/**
+  - sys-for-ai/docs/generated/** as canonical source
+forbidden_actions:
+  - Modify repository LICENSE or NOTICE.
+  - Treat generated derivatives as canonical.
+  - Execute more than one AgentJob in one /continue invocation.
+  - Mutate activated control records instead of superseding them.
+memory_preflight:
+  required: true
+  minimum_queries:
+    - Phase 7 AgentJob write boundary validator
+    - changed artifacts allowlist validation
+  required_evidence:
+    - latest handoff inspection
+    - implementation plan Phase 7 inspection
+expected_outputs:
+  - AgentJob boundary validator.
+  - Git diff collection for unstaged staged and untracked files.
+  - Generated derivative path authorization check.
+  - CLI commands for validate-agentjob-boundaries and validate-check-diff.
+  - Unit tests for allowed outside forbidden generated derivative and untracked paths.
+validators:
+  - cd sys-for-ai && make validate-agentjob-boundaries validate-check-diff
+  - cd sys-for-ai && make validate
+completion_evidence_required:
+  - changed_artifacts
+  - command_results
+  - validation_status
+handoff_policy:
+  create_handoff_when:
+    - implementation remains incomplete
+    - next AgentJob is recommended
+authority_boundary:
+  may_modify_product_scaffold: true
+  may_modify_canonical_prds: false
+  may_promote_generated_derivatives: false
+  may_change_runtime_skill_authority: false
+stop_conditions:
+  - Required plan or handoff source cannot be inspected.
+  - Existing schema or registry would be broken.
+  - More than one AgentJob is required.
+  - Required write is outside allowlist.
+  - Validation fails for reasons outside this AgentJob scope.

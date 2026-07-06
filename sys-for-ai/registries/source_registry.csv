@@ -94,3 +94,6 @@ SRC-CONTROL-LOOP-RECEIPTS,sys-for-ai/sys_for_ai/control_loop/receipts.py,control
 SRC-COMPLETION-SELFHOST-CONTINUE-KERNEL-001,sys-for-ai/control_records/completions/completion_receipt.example.v0_2.yaml,completion_receipt,controlled,control_loop,2026-07-06,Operational completion receipt for continue kernel finalization.
 SRC-HANDOFF-SELFHOST-CONTINUE-KERNEL-001,sys-for-ai/control_records/handoffs/handoff.example.v0_2.yaml,handoff,controlled,control_loop,2026-07-06,Operational handoff after continue kernel finalization.
 SRC-STATE-SNAPSHOT-SELFHOST-CONTINUE-KERNEL-001,sys-for-ai/control_records/state_snapshots/state_snapshot.example.v0_2.yaml,state_snapshot,controlled,control_loop,2026-07-06,Bounded state snapshot after continue kernel finalization.
+SRC-CONTROL-LOOP-BOUNDARIES,sys-for-ai/sys_for_ai/control_loop/boundaries.py,control_loop_boundary_validator,controlled,control_loop,2026-07-06,AgentJob boundary and Git diff validation implementation.
+SRC-AJ-BOUNDARY-VALIDATORS-001,sys-for-ai/control_records/agentjobs/AJ-P1-BOUNDARY-VALIDATORS-001.yaml,agentjob,controlled,control_loop,2026-07-06,Pending AgentJob for Phase 7 boundary and diff validators.
+SRC-TEST-AGENTJOB-BOUNDARIES,sys-for-ai/tests/test_agentjob_boundaries.py,test,controlled,control_loop,2026-07-06,Unit tests for AgentJob boundary and Git diff validators.

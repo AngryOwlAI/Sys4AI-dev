@@ -3,7 +3,7 @@ VENV ?= .venv
 PYTHON := $(VENV)/bin/python
 PIP := $(VENV)/bin/pip
 
-.PHONY: venv install doctor continue-status continue-preflight continue-select continue-packet continue-finalize validate validate-agentjob validate-agentjobs validate-skills validate-metrics validate-discovery-template bootstrap-memory validate-format-profiles validate-config-sources validate-control-records validate-program-state validate-director-decisions validate-agentjob-registry validate-director-decision-registry validate-handoff-registry validate-completion-receipt-registry validate-memory-preflight-registry validate-handoffs validate-completion-receipts validate-state-snapshots validate-memory-preflight validate-one-active-agentjob validate-control-loop validate-validation-contract-registry validate-toml-config validate-jsonschema-contracts validate-registry-graph validate-requirement-trace generate-config-control-wiki generate-validation-contracts-catalog validate-generated-derivatives clean-local
+.PHONY: venv install doctor continue-status continue-preflight continue-select continue-packet continue-finalize validate validate-agentjob validate-agentjobs validate-skills validate-metrics validate-discovery-template bootstrap-memory validate-format-profiles validate-config-sources validate-control-records validate-program-state validate-director-decisions validate-agentjob-registry validate-director-decision-registry validate-handoff-registry validate-completion-receipt-registry validate-memory-preflight-registry validate-handoffs validate-completion-receipts validate-state-snapshots validate-memory-preflight validate-agentjob-boundaries validate-check-diff validate-one-active-agentjob validate-control-loop validate-validation-contract-registry validate-toml-config validate-jsonschema-contracts validate-registry-graph validate-requirement-trace generate-config-control-wiki generate-validation-contracts-catalog validate-generated-derivatives clean-local
 
 venv:
 	$(PY) -m venv $(VENV)
@@ -39,6 +39,7 @@ validate-agentjobs:
 	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-CODEX-METRICS-ADAPT-001.yaml
 	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-SYSTEM-DEFINITION-TEMPLATE-001.yaml
 	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-SELFHOST-CONTINUE-KERNEL-001.yaml
+	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-BOUNDARY-VALIDATORS-001.yaml
 
 validate-skills:
 	$(PYTHON) -m sys_for_ai.cli validate-skills skills/core_skill_manifest.yaml
@@ -94,6 +95,12 @@ validate-state-snapshots:
 validate-memory-preflight:
 	$(PYTHON) -m sys_for_ai.cli validate-memory-preflight control_records/memory_preflights
 
+validate-agentjob-boundaries:
+	$(PYTHON) -m sys_for_ai.cli validate-agentjob-boundaries --agentjob AJ-P1-BOUNDARY-VALIDATORS-001 --git --json
+
+validate-check-diff:
+	$(PYTHON) -m sys_for_ai.cli validate-check-diff --agentjob AJ-P1-BOUNDARY-VALIDATORS-001 --json
+
 validate-one-active-agentjob:
 	$(PYTHON) -m sys_for_ai.cli validate-one-active-agentjob
 
@@ -124,7 +131,7 @@ generate-validation-contracts-catalog:
 validate-generated-derivatives:
 	$(PYTHON) -m sys_for_ai.cli validate-generated-derivatives docs/generated registries/derivative_registry.csv
 
-validate: doctor validate-agentjobs validate-skills validate-metrics validate-discovery-template bootstrap-memory validate-format-profiles validate-config-sources validate-control-records validate-program-state validate-agentjob-registry validate-director-decision-registry validate-handoff-registry validate-completion-receipt-registry validate-memory-preflight-registry validate-handoffs validate-completion-receipts validate-state-snapshots validate-memory-preflight validate-validation-contract-registry validate-toml-config validate-jsonschema-contracts validate-registry-graph validate-one-active-agentjob validate-control-loop validate-requirement-trace generate-config-control-wiki generate-validation-contracts-catalog validate-generated-derivatives
+validate: doctor validate-agentjobs validate-skills validate-metrics validate-discovery-template bootstrap-memory validate-format-profiles validate-config-sources validate-control-records validate-program-state validate-agentjob-registry validate-director-decision-registry validate-handoff-registry validate-completion-receipt-registry validate-memory-preflight-registry validate-handoffs validate-completion-receipts validate-state-snapshots validate-memory-preflight validate-validation-contract-registry validate-toml-config validate-jsonschema-contracts validate-registry-graph validate-check-diff validate-one-active-agentjob validate-control-loop validate-requirement-trace generate-config-control-wiki generate-validation-contracts-catalog validate-generated-derivatives
 
 clean-local:
 	rm -rf .pytest_cache __pycache__ sys_for_ai/__pycache__ .local/receipts
