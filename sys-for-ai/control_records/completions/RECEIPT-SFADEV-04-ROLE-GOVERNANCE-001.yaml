@@ -1,0 +1,90 @@
+completion_receipt_id: RECEIPT-SFADEV-04-ROLE-GOVERNANCE-001
+schema_version: 0.2.0
+agentjob_id: AJ-SFADEV-04-ROLE-GOVERNANCE-001
+role: implementation_initialization_agent
+result: PASS
+summary: >
+  Role governance implementation completed for the all-recommendations plan.
+  The role registries now include legacy temporary AgentJob roles with expiry
+  bindings, active runtime skills have role crosswalk coverage, dedicated role
+  helpers and validators exist, and generated role docs are marked derivative.
+changed_artifacts:
+  - path: sys-for-ai/registries/role_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/role_skill_crosswalk.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/role_execution_binding_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/derivative_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/sys_for_ai/roles.py
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/sys_for_ai/role_validators.py
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/sys_for_ai/validators.py
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/docs/generated/roles/README.md
+    change_type: added
+    authority_status: generated_derivative
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-04-ROLE-GOVERNANCE-001
+validation_evidence:
+  commands_run:
+    - command: cd sys-for-ai && make validate-roles
+      result: pass
+    - command: cd sys-for-ai && make validate-agentjob-boundaries
+      result: pass_before_closeout
+    - command: cd sys-for-ai && make validate-check-diff
+      result: pass_before_closeout
+    - command: cd sys-for-ai && make validate
+      result: pass_after_control_closeout
+  validators:
+    - validator_id: validate-roles
+      target_path: sys-for-ai/registries/role_registry.csv
+      result: pass
+      notes: Role rows crosswalk rows execution bindings AgentJob role references and generated role docs validate.
+format_profile_changes:
+  added:
+    - path: sys_for_ai/roles.py
+      profile_id: python_source
+      registry_row_id: SRC-ROLE-HELPERS
+    - path: sys_for_ai/role_validators.py
+      profile_id: python_source
+      registry_row_id: SRC-ROLE-VALIDATORS
+  modified:
+    - path: registries/role_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-ROLES
+    - path: registries/role_skill_crosswalk.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-ROLE-SKILL-CROSSWALK
+    - path: registries/role_execution_binding_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-ROLE-EXECUTION-BINDINGS
+  generated_derivatives:
+    - docs/generated/roles/README.md
+    - docs/generated/roles/*.md
+authority_changes:
+  promoted: []
+  completed:
+    - agentjob_id: AJ-SFADEV-04-ROLE-GOVERNANCE-001
+      reason: Role governance implementation slice completed and validated.
+  not_promoted:
+    - path: sys-for-ai/docs/generated/roles/README.md
+      reason: Generated role docs remain derivative navigation surfaces.
+unresolved_issues:
+  - issue_id: SFADEV-ALL-RECS-OPEN-005
+    status: deferred
+    notes: Skill lifecycle governance and core skill scaffold batches remain future bounded AgentJobs.
+next_recommendation: >
+  Continue with AJ-SFADEV-06-SKILL-LIFECYCLE-001. AJ-05 runtime skill
+  reconciliation is already complete, so the next open plan slice is controlled
+  lifecycle vocabulary and validation.
+next_handoff_id: HANDOFF-SFADEV-04-ROLE-GOVERNANCE-001
+completed_at: "2026-07-07T04:07:48Z"

@@ -79,6 +79,11 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_discovery_gate_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-03-DISCOVERY-GATE-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
 | ctrl_discovery_gate_completion | control_records/completions/RECEIPT-SFADEV-03-DISCOVERY-GATE-001.yaml | completion_receipt_v0_2 | controlled | system_definition | contract_completion_receipt_v0_2 | pending |
 | ctrl_discovery_gate_handoff | control_records/handoffs/HANDOFF-SFADEV-03-DISCOVERY-GATE-001.yaml | handoff_v0_2 | controlled | system_definition | contract_handoff_v0_2 | pending |
+| ctrl_role_governance_director_decision | control_records/director_decisions/DDR-SFADEV-04-ROLE-GOVERNANCE-001.yaml | director_decision | controlled | implementation_initialization | contract_director_decision | pending |
+| ctrl_role_governance_agentjob | control_records/agentjobs/AJ-SFADEV-04-ROLE-GOVERNANCE-001.yaml | agentjob_v0_2 | controlled | implementation_initialization | contract_agentjob_v0_2 | pending |
+| ctrl_role_governance_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-04-ROLE-GOVERNANCE-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
+| ctrl_role_governance_completion | control_records/completions/RECEIPT-SFADEV-04-ROLE-GOVERNANCE-001.yaml | completion_receipt_v0_2 | controlled | implementation_initialization | contract_completion_receipt_v0_2 | pending |
+| ctrl_role_governance_handoff | control_records/handoffs/HANDOFF-SFADEV-04-ROLE-GOVERNANCE-001.yaml | handoff_v0_2 | controlled | implementation_initialization | contract_handoff_v0_2 | pending |
 
 ## Validation Contract Trace
 

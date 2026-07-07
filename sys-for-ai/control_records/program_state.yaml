@@ -8,12 +8,12 @@ system_context:
   reflection_depth: 1
 current_phase: implementation_initialization
 lifecycle_stage: develop
-active_task_id: TASK-P1-SELFHOST-001
+active_task_id: TASK-SFADEV-ALL-RECS-001
 active_director_decision_id: null
 active_agentjob_id: null
-latest_completion_receipt_id: RECEIPT-SFADEV-03-DISCOVERY-GATE-001
-latest_handoff_id: HANDOFF-SFADEV-03-DISCOVERY-GATE-001
-latest_memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-03-DISCOVERY-GATE-001
+latest_completion_receipt_id: RECEIPT-SFADEV-04-ROLE-GOVERNANCE-001
+latest_handoff_id: HANDOFF-SFADEV-04-ROLE-GOVERNANCE-001
+latest_memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-04-ROLE-GOVERNANCE-001
 state_status: complete
 blocked_reason: null
 human_gate_required: false
@@ -28,8 +28,9 @@ blocked_actions:
 - treat_generated_derivative_as_canonical
 - mutate_activated_control_record_without_supersession
 validation_status:
-  last_validated_at: '2026-07-07T03:55:34Z'
+  last_validated_at: '2026-07-07T04:07:48Z'
   validators:
+  - validate-roles
   - validate-program-state
   - validate-control-records
   - validate-registry-graph

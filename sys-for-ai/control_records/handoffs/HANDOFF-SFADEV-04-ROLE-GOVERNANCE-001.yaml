@@ -1,0 +1,81 @@
+handoff_id: HANDOFF-SFADEV-04-ROLE-GOVERNANCE-001
+schema_version: 0.2.0
+framework_name: sys-for-ai
+target_agentic_system: sys-for-ai-dev
+artifact_name: All Recommendations Role Governance Handoff
+artifact_type: operational_handoff
+artifact_version: 0.2.0
+producing_role: implementation_initialization_agent
+artifact_status: completed
+summary: >
+  The all-recommendations role governance slice is complete. Dedicated role
+  helpers and validators now check role rows, skill crosswalks, execution
+  bindings, active runtime skill coverage, AgentJob role references, temporary
+  role expiry policies, and generated derivative role docs.
+source_artifacts:
+  - implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+  - implementation_plans/self_hosting_boundary_decision_record.md
+  - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-03-DISCOVERY-GATE-001.yaml
+  - sys-for-ai/registries/role_registry.csv
+  - sys-for-ai/registries/role_skill_crosswalk.csv
+  - sys-for-ai/registries/role_execution_binding_registry.csv
+traceability:
+  agentjob_id: AJ-SFADEV-04-ROLE-GOVERNANCE-001
+  director_decision_id: DDR-SFADEV-04-ROLE-GOVERNANCE-001
+  completion_receipt_id: RECEIPT-SFADEV-04-ROLE-GOVERNANCE-001
+  implementation_plan_section: "20 AJ-04"
+  workstream: WS-04 Role Governance and validate-roles
+control_loop_notes:
+  previous_handoff_id: HANDOFF-SFADEV-03-DISCOVERY-GATE-001
+  next_agentjob_id: AJ-SFADEV-06-SKILL-LIFECYCLE-001
+  next_agentjob_status: pending_new_selection
+  selection_basis: AJ-05 runtime skill reconciliation is already complete and AJ-06 is the next open all-recommendations plan packet.
+memory_preflight:
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-04-ROLE-GOVERNANCE-001
+  usable_for_routing: true
+  required_next_queries:
+    - skill lifecycle governance
+    - core skill scaffold batch 1
+format_profile_evidence:
+  csv_registries_modified:
+    - registries/role_registry.csv
+    - registries/role_skill_crosswalk.csv
+    - registries/role_execution_binding_registry.csv
+    - registries/derivative_registry.csv
+  validator_sources_modified:
+    - sys_for_ai/roles.py
+    - sys_for_ai/role_validators.py
+    - sys_for_ai/validators.py
+  generated_derivatives:
+    - docs/generated/roles/README.md
+    - docs/generated/roles/*.md
+source_authority_evidence:
+  canonical_sources_checked:
+    - implementation_plans/self_hosting_boundary_decision_record.md
+    - sys-for-ai/control_records/program_state.yaml
+    - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-03-DISCOVERY-GATE-001.yaml
+    - temp_handoff/handoff-0015.md
+    - implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+    - sys-for-ai/registries/role_registry.csv
+    - sys-for-ai/registries/role_skill_crosswalk.csv
+    - sys-for-ai/registries/role_execution_binding_registry.csv
+  authority_boundary: Generated role docs are deterministic derivative navigation and not canonical role authority.
+derivative_surface_evidence:
+  generated_derivatives_changed: true
+  changed_derivatives:
+    - docs/generated/roles/README.md
+    - docs/generated/roles/*.md
+  notes: Role docs are regenerated from role registries and checked by validate-roles.
+security_evidence:
+  secret_scan_scope: Python source YAML control records CSV registries and generated Markdown were checked by structured validators and diff checks.
+  new_secret_material: false
+recommended_next_role: documentation_librarian
+phase_boundary_notes: >
+  This handoff closes one bounded all-recommendations slice. Continue with
+  AJ-SFADEV-06-SKILL-LIFECYCLE-001 because AJ-SFADEV-05-RUNTIME-SKILL-
+  RECONCILIATION-001 is already completed and registered.
+stop_conditions:
+  - A future task attempts to execute multiple all-recommendations AgentJobs in one invocation.
+  - Generated role docs are treated as canonical role authority.
+  - Adapter shells are made runtime-authoritative without lifecycle approval.
+  - A future route lacks a tracked Director decision, AgentJob, or explicit plan-backed selection.

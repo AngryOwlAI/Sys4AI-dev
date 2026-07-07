@@ -1195,28 +1195,9 @@ def validate_roles(
     crosswalk: str | Path = "registries/role_skill_crosswalk.csv",
     execution_bindings: str | Path = "registries/role_execution_binding_registry.csv",
 ) -> ValidationResult:
-    result = _validate_rows_against_contract(
-        role_registry,
-        ROW_CONTRACTS["role_registry.csv"],
-        "role_id",
-    )
-    crosswalk_result = _validate_rows_against_contract(
-        crosswalk,
-        ROW_CONTRACTS["role_skill_crosswalk.csv"],
-        "crosswalk_id",
-    )
-    execution_result = _validate_rows_against_contract(
-        execution_bindings,
-        ROW_CONTRACTS["role_execution_binding_registry.csv"],
-        "binding_id",
-    )
-    result.extend(crosswalk_result)
-    result.extend(execution_result)
-    result.messages.extend(_validate_role_relationships(role_registry, crosswalk, execution_bindings))
-    result.ok = not [msg for msg in result.messages if "validation passed" not in msg and "row validation passed" not in msg]
-    if result.ok and not result.messages:
-        result.messages.append("roles: validation passed")
-    return result
+    from .role_validators import validate_roles as validate_role_governance
+
+    return validate_role_governance(role_registry, crosswalk, execution_bindings)
 
 
 def validate_artifact_contracts(path: str | Path = "registries/artifact_contract_registry.csv") -> ValidationResult:

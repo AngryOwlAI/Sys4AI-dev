@@ -21,11 +21,11 @@ class SelfHostingAcceptanceTests(unittest.TestCase):
         self.assertIsNone(state["active_agentjob_id"])
         self.assertIsNone(state["active_director_decision_id"])
         self.assertEqual(
-            "RECEIPT-SFADEV-03-DISCOVERY-GATE-001",
+            "RECEIPT-SFADEV-04-ROLE-GOVERNANCE-001",
             state["latest_completion_receipt_id"],
         )
         self.assertEqual(
-            "HANDOFF-SFADEV-03-DISCOVERY-GATE-001",
+            "HANDOFF-SFADEV-04-ROLE-GOVERNANCE-001",
             state["latest_handoff_id"],
         )
 
@@ -34,6 +34,8 @@ class SelfHostingAcceptanceTests(unittest.TestCase):
         self.assertIn("HANDOFF-SFADEV-05-RUNTIME-SKILL-RECONCILIATION-001", handoff_rows)
         self.assertIn("HANDOFF-SFADEV-01-PRD-INTEGRATION-001", handoff_rows)
         self.assertIn("HANDOFF-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001", handoff_rows)
+        self.assertIn("HANDOFF-SFADEV-03-DISCOVERY-GATE-001", handoff_rows)
+        self.assertIn("HANDOFF-SFADEV-04-ROLE-GOVERNANCE-001", handoff_rows)
 
     def test_acceptance_receipt_and_handoff_are_registered(self) -> None:
         receipt = load_yaml(PRODUCT_ROOT / "control_records/completions/RECEIPT-P1-SELFHOST-ACCEPTANCE-001.yaml")

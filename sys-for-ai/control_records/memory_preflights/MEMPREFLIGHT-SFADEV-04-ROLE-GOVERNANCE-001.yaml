@@ -1,0 +1,105 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-04-ROLE-GOVERNANCE-001
+schema_version: 0.1.0
+agentjob_id: AJ-SFADEV-04-ROLE-GOVERNANCE-001
+created_at: "2026-07-07T04:07:48Z"
+status: PASS_WITH_WARNINGS
+commands_run:
+  - command: cd sys-for-ai && make continue-preflight
+    result: pass_with_warnings
+  - command: cd sys-for-ai && make continue-select
+    result: blocked_director_decision_required
+  - command: rg memory quick pass for role governance validate-roles routing
+    result: pass_no_memory_hits
+queries:
+  - query: source-first memory continue handoff AgentJob
+    returned_object_ids:
+      - SRC-REG-CONTROL-RECORDS
+      - SRC-CLI-PHASE1
+      - SRC-SELFHOST-MEMORY-CONTINUE-PLAN
+      - der_configuration_control_yaml
+      - SRC-CONTROL-LOOP-FINALIZATION
+      - SRC-SKILL-SOURCE-FIRST-MEMORY-RUNTIME-MANIFEST
+      - SRC-CONTROL-LOOP-JOB-SELECTION
+      - SRC-TEMP-HANDOFF-0010
+      - SRC-REG-REQ-TRACE
+      - SRC-MEMORY-REGISTRY-CATALOG
+  - query: role governance validate-roles role skill crosswalk execution binding
+    returned_object_ids:
+      - SRC-ALL-RECS-IMPLEMENTATION-PLAN
+      - SRC-REG-ROLES
+      - SRC-REG-ROLE-SKILL-CROSSWALK
+      - SRC-REG-ROLE-EXECUTION-BINDINGS
+      - SRC-SCHEMA-ROLE-ROW
+      - SRC-SCHEMA-ROLE-SKILL-CROSSWALK-ROW
+      - SRC-SCHEMA-ROLE-EXECUTION-BINDING-ROW
+canonical_sources_inspected:
+  - path: implementation_plans/self_hosting_boundary_decision_record.md
+    registry: source_registry.csv
+    row_id: SRC-SELFHOST-BOUNDARY-DECISION
+    inspected_sections:
+      - Decision
+      - Rules
+  - path: sys-for-ai/control_records/program_state.yaml
+    registry: source_registry.csv
+    row_id: SRC-PROGRAM-STATE
+    inspected_sections:
+      - latest_handoff_id
+      - allowed_next_actions
+  - path: sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-03-DISCOVERY-GATE-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-HANDOFF-DISCOVERY-GATE-001
+    inspected_sections:
+      - next_agentjob_id
+      - phase_boundary_notes
+  - path: temp_handoff/handoff-0015.md
+    registry: source_registry.csv
+    row_id: SRC-TEMP-HANDOFF-0015
+    inspected_sections:
+      - Next logical step
+  - path: implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+    registry: source_registry.csv
+    row_id: SRC-ALL-RECS-IMPLEMENTATION-PLAN
+    inspected_sections:
+      - WS-04 Role Governance
+      - AJ-04 Role Governance
+      - AJ-06 Skill Lifecycle Governance
+  - path: sys-for-ai/registries/role_registry.csv
+    registry: source_registry.csv
+    row_id: SRC-REG-ROLES
+    inspected_sections:
+      - Role IDs
+      - Role classes
+  - path: sys-for-ai/registries/role_skill_crosswalk.csv
+    registry: source_registry.csv
+    row_id: SRC-REG-ROLE-SKILL-CROSSWALK
+    inspected_sections:
+      - Active skill bindings
+  - path: sys-for-ai/registries/role_execution_binding_registry.csv
+    registry: source_registry.csv
+    row_id: SRC-REG-ROLE-EXECUTION-BINDINGS
+    inspected_sections:
+      - Temporary role expiry policies
+registry_rows_inspected:
+  - registry: source_registry.csv
+    row_id: SRC-ALL-RECS-IMPLEMENTATION-PLAN
+    purpose: Confirm all-recommendations role governance authority.
+  - registry: source_registry.csv
+    row_id: SRC-REG-ROLES
+    purpose: Confirm role registry authority.
+  - registry: source_registry.csv
+    row_id: SRC-REG-ROLE-SKILL-CROSSWALK
+    purpose: Confirm role-to-skill crosswalk authority.
+  - registry: source_registry.csv
+    row_id: SRC-REG-ROLE-EXECUTION-BINDINGS
+    purpose: Confirm role execution binding authority.
+  - registry: derivative_registry.csv
+    row_id: der_configuration_control_yaml
+    purpose: Confirm generated derivatives remain navigation only.
+stale_context_risks:
+  - risk_id: MEMPREFLIGHT-SFADEV-04-RISK-001
+    status: observed
+    notes: Continue selection required a Director decision because no active AgentJob was set.
+  - risk_id: MEMPREFLIGHT-SFADEV-04-RISK-002
+    status: mitigated
+    notes: Memory hits were treated as navigation and checked against plan handoff program state and registries.
+usable_for_routing: true

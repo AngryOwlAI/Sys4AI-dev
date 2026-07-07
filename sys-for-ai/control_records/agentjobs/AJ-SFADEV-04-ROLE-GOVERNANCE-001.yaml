@@ -1,0 +1,119 @@
+agentjob_id: AJ-SFADEV-04-ROLE-GOVERNANCE-001
+schema_version: 0.2.0
+status: completed
+objective: >
+  Complete role governance by adding dedicated role helper and validator modules,
+  strengthening role graph validation, and adding generated derivative role docs.
+lifecycle_stage: implementation_initialization
+role_binding:
+  role_id: implementation_initialization_agent
+  binding_type: one_job_provisional_role
+  authority_scope: all-recommendations role governance implementation
+  expires_with_agentjob: true
+required_inputs:
+  - implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+  - implementation_plans/self_hosting_boundary_decision_record.md
+  - sys-for-ai/control_records/program_state.yaml
+  - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-03-DISCOVERY-GATE-001.yaml
+  - .agents/skill_registry/SKILL_REGISTRY.yaml
+  - sys-for-ai/skills/core_skill_manifest.yaml
+  - sys-for-ai/registries/role_registry.csv
+  - sys-for-ai/registries/role_skill_crosswalk.csv
+  - sys-for-ai/registries/role_execution_binding_registry.csv
+allowed_reads:
+  - PRDs/**
+  - implementation_plans/**
+  - temp_handoff/**
+  - .agents/**
+  - sys-for-ai/**
+allowed_writes:
+  - sys-for-ai/registries/role_registry.csv
+  - sys-for-ai/registries/role_skill_crosswalk.csv
+  - sys-for-ai/registries/role_execution_binding_registry.csv
+  - sys-for-ai/registries/derivative_registry.csv
+  - sys-for-ai/registries/source_registry.csv
+  - sys-for-ai/registries/control_record_registry.csv
+  - sys-for-ai/registries/agentjob_registry.csv
+  - sys-for-ai/registries/director_decision_registry.csv
+  - sys-for-ai/registries/completion_receipt_registry.csv
+  - sys-for-ai/registries/handoff_registry.csv
+  - sys-for-ai/registries/memory_preflight_receipt_registry.csv
+  - sys-for-ai/schemas/contracts/role*.schema.json
+  - sys-for-ai/sys_for_ai/roles.py
+  - sys-for-ai/sys_for_ai/role_validators.py
+  - sys-for-ai/sys_for_ai/validators.py
+  - sys-for-ai/sys_for_ai/cli.py
+  - sys-for-ai/Makefile
+  - sys-for-ai/docs/generated/roles/**
+  - sys-for-ai/docs/generated/configuration_control/**
+  - sys-for-ai/tests/test_agentjob_boundaries.py
+  - sys-for-ai/tests/test_program_state.py
+  - sys-for-ai/tests/test_self_hosting_acceptance.py
+  - sys-for-ai/control_records/director_decisions/DDR-SFADEV-04-ROLE-GOVERNANCE-001.yaml
+  - sys-for-ai/control_records/agentjobs/AJ-SFADEV-04-ROLE-GOVERNANCE-001.yaml
+  - sys-for-ai/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-04-ROLE-GOVERNANCE-001.yaml
+  - sys-for-ai/control_records/completions/RECEIPT-SFADEV-04-ROLE-GOVERNANCE-001.yaml
+  - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-04-ROLE-GOVERNANCE-001.yaml
+  - sys-for-ai/control_records/program_state.yaml
+  - temp_handoff/handoff-0016.md
+generated_paths:
+  - sys-for-ai/docs/generated/roles/**
+  - sys-for-ai/docs/generated/configuration_control/**
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - sys-for-ai/.venv/**
+  - PRDs/**
+  - sys-for-ai/docs/generated/** as canonical source
+forbidden_actions:
+  - Treat generated role docs as canonical.
+  - Remove existing role registry headers.
+  - Break aggregate validation.
+  - Promote proposed core skills to active runtime authority.
+  - Execute more than one all-recommendations AgentJob in one continuation invocation.
+memory_preflight:
+  required: true
+  minimum_queries:
+    - role governance validate-roles
+    - role skill crosswalk execution binding
+  required_evidence:
+    - self-hosting boundary decision record inspection
+    - latest controlled handoff inspection
+    - all-recommendations plan AJ-04 inspection
+    - current role registry crosswalk execution binding inspection
+expected_outputs:
+  - Dedicated roles.py helper module.
+  - Dedicated role_validators.py module.
+  - validate-roles checks role registry crosswalk execution bindings AgentJob role references and generated role docs.
+  - Generated derivative role docs with noncanonical notice.
+  - Completion receipt and handoff evidence.
+validators:
+  - cd sys-for-ai && make validate-roles
+  - cd sys-for-ai && make validate-check-diff
+  - cd sys-for-ai && make validate
+completion_evidence_required:
+  - changed_artifacts
+  - command_results
+  - validation_status
+  - residual_risk
+handoff_policy:
+  create_handoff_when:
+    - role governance implementation completes
+    - next AgentJob is recommended
+authority_boundary:
+  may_modify_product_scaffold: true
+  may_modify_canonical_prds: false
+  may_modify_role_registries: true
+  may_modify_role_validators: true
+  may_promote_generated_derivatives: false
+  role_registry_surface: sys-for-ai/registries/role_registry.csv
+stop_conditions:
+  - Existing skills cannot be mapped to roles.
+  - Generated role docs become canonical authority.
+  - Required write is outside allowlist.
+  - More than one AgentJob is required.
+created_at: "2026-07-07T04:07:48Z"
+activated_at: "2026-07-07T04:07:48Z"
+completed_at: "2026-07-07T04:07:48Z"

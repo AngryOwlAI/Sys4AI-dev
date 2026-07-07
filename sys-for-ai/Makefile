@@ -72,6 +72,7 @@ validate-agentjobs:
 	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-01-PRD-INTEGRATION-001.yaml
 	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml
 	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-03-DISCOVERY-GATE-001.yaml
+	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-04-ROLE-GOVERNANCE-001.yaml
 	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-DISCOVERY-GATE-SMOKE-001.yaml
 
 validate-skills:
@@ -150,10 +151,10 @@ validate-memory-preflight:
 	$(PYTHON) -m sys_for_ai.cli validate-memory-preflight control_records/memory_preflights
 
 validate-agentjob-boundaries:
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob-boundaries --agentjob AJ-SFADEV-03-DISCOVERY-GATE-001 --git --json
+	$(PYTHON) -m sys_for_ai.cli validate-agentjob-boundaries --agentjob AJ-SFADEV-04-ROLE-GOVERNANCE-001 --git --json
 
 validate-check-diff:
-	$(PYTHON) -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-03-DISCOVERY-GATE-001 --json
+	$(PYTHON) -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-04-ROLE-GOVERNANCE-001 --json
 
 validate-one-active-agentjob:
 	$(PYTHON) -m sys_for_ai.cli validate-one-active-agentjob
