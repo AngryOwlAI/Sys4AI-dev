@@ -53,18 +53,18 @@ This generated page indexes registered CSV registries. It is a navigation surfac
 
 | registry_file | registered_source_id | source_type | authority_status | row_count | owner |
 | --- | --- | --- | --- | --- | --- |
-| registries/agentjob_registry.csv | SRC-REG-AGENTJOBS | agentjob_registry | controlled | 15 | control_loop |
+| registries/agentjob_registry.csv | SRC-REG-AGENTJOBS | agentjob_registry | controlled | 16 | control_loop |
 | registries/artifact_contract_registry.csv | SRC-REG-ARTIFACT-CONTRACTS | artifact_contract_registry | controlled | 22 | implementation_initialization |
-| registries/completion_receipt_registry.csv | SRC-REG-COMPLETION-RECEIPTS | completion_receipt_registry | controlled | 11 | control_loop |
-| registries/config_source_registry.csv | SRC-REG-CONFIG-SOURCES | config_source_registry | controlled | 3 | implementation_initialization |
-| registries/control_record_registry.csv | SRC-REG-CONTROL-RECORDS | control_record_registry | controlled | 67 | implementation_initialization |
+| registries/completion_receipt_registry.csv | SRC-REG-COMPLETION-RECEIPTS | completion_receipt_registry | controlled | 12 | control_loop |
+| registries/config_source_registry.csv | SRC-REG-CONFIG-SOURCES | config_source_registry | controlled | 4 | implementation_initialization |
+| registries/control_record_registry.csv | SRC-REG-CONTROL-RECORDS | control_record_registry | controlled | 72 | implementation_initialization |
 | registries/core_skill_proposal_registry.csv | SRC-REG-CORE-SKILL-PROPOSALS | core_skill_proposal_registry | controlled | 18 | implementation_initialization |
 | registries/derivative_registry.csv | SRC-REG-DERIVATIVES | derivative_registry | controlled | 41 | implementation_initialization |
-| registries/director_decision_registry.csv | SRC-REG-DIRECTOR-DECISIONS | director_decision_registry | controlled | 9 | control_loop |
+| registries/director_decision_registry.csv | SRC-REG-DIRECTOR-DECISIONS | director_decision_registry | controlled | 10 | control_loop |
 | registries/discovery_record_registry.csv | SRC-REG-DISCOVERY-RECORDS | discovery_record_registry | controlled | 0 | implementation_initialization |
 | registries/format_profile_registry.csv | SRC-REG-FORMAT-PROFILES | format_profile_registry | controlled | 5 | implementation_initialization |
-| registries/handoff_registry.csv | SRC-REG-HANDOFFS | handoff_registry | controlled | 11 | control_loop |
-| registries/memory_preflight_receipt_registry.csv | SRC-REG-MEMORY-PREFLIGHT-RECEIPTS | memory_preflight_receipt_registry | controlled | 11 | control_loop |
+| registries/handoff_registry.csv | SRC-REG-HANDOFFS | handoff_registry | controlled | 12 | control_loop |
+| registries/memory_preflight_receipt_registry.csv | SRC-REG-MEMORY-PREFLIGHT-RECEIPTS | memory_preflight_receipt_registry | controlled | 12 | control_loop |
 | registries/object_relationship_registry.csv | SRC-REG-OBJECT-RELATIONSHIPS | object_relationship_registry | controlled | 22 | source_first_memory |
 | registries/requirement_trace_registry.csv | SRC-REG-REQ-TRACE | requirement_trace_registry | controlled | 183 | implementation_initialization |
 | registries/role_execution_binding_registry.csv | SRC-REG-ROLE-EXECUTION-BINDINGS | role_execution_binding_registry | controlled | 15 | implementation_initialization |
@@ -72,9 +72,9 @@ This generated page indexes registered CSV registries. It is a navigation surfac
 | registries/role_skill_crosswalk.csv | SRC-REG-ROLE-SKILL-CROSSWALK | role_skill_crosswalk | controlled | 43 | implementation_initialization |
 | registries/skill_lifecycle_status_registry.csv | SRC-REG-SKILL-LIFECYCLE | skill_lifecycle_status_registry | controlled | 8 | implementation_initialization |
 | registries/skill_registry.csv | SRC-PRODUCT-SKILL-REGISTRY | skill_registry | controlled | 33 | skill_governance |
-| registries/source_registry.csv | SRC-REG-SOURCES | source_registry | controlled | 234 | implementation_initialization |
+| registries/source_registry.csv | SRC-REG-SOURCES | source_registry | controlled | 244 | implementation_initialization |
 | registries/system_layer_registry.csv | SRC-REG-SYSTEM-LAYERS | system_layer_registry | controlled | 5 | implementation_initialization |
-| registries/validation_contract_registry.csv | SRC-REG-VALIDATION-CONTRACTS | validation_contract_registry | controlled | 31 | implementation_initialization |
+| registries/validation_contract_registry.csv | SRC-REG-VALIDATION-CONTRACTS | validation_contract_registry | controlled | 32 | implementation_initialization |
 
 ## Generation Boundary
 

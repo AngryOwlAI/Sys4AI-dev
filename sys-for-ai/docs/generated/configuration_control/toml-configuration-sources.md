@@ -12,6 +12,7 @@ page_metadata:
     - registries/validation_contract_registry.csv
     - registries/format_profile_registry.csv
   validation_contracts:
+    - contract_self_hosting_mode
     - contract_sys_for_ai_config
     - contract_target_project_config
   generated_at: 2026-07-06T00:00:00Z
@@ -30,6 +31,7 @@ Registered TOML configuration sources are listed below. Runtime values and secre
 | config_id | path | domain | authority_status | owner | validation_contract_id | source_hash |
 | --- | --- | --- | --- | --- | --- | --- |
 | cfg_pyproject | pyproject.toml | python_package | controlled | implementation_initialization | contract_sys_for_ai_config | pending |
+| cfg_self_hosting_mode | configs/self_hosting_mode.toml | self_hosting_mode | controlled | implementation_initialization | contract_self_hosting_mode | pending |
 | cfg_sys_for_ai_example | configs/examples/sys_for_ai.example.toml | framework_example | controlled | implementation_initialization | contract_sys_for_ai_config | pending |
 | cfg_target_project_example | configs/examples/target_project.example.toml | target_project_template | controlled | implementation_initialization | contract_target_project_config | pending |
 
@@ -37,6 +39,7 @@ Registered TOML configuration sources are listed below. Runtime values and secre
 
 | contract_id | path | target_format | target_artifact_type | validator_command |
 | --- | --- | --- | --- | --- |
+| contract_self_hosting_mode | schemas/contracts/self_hosting_mode.schema.json | toml | self_hosting_mode | sys-for-ai validate-system-layers |
 | contract_sys_for_ai_config | schemas/contracts/sys_for_ai_config.schema.json | toml | framework_config | sys-for-ai validate-toml-config |
 | contract_target_project_config | schemas/contracts/target_project_config.schema.json | toml | target_project_config | sys-for-ai validate-toml-config |
 

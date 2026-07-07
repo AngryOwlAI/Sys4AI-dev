@@ -1186,24 +1186,78 @@ def validate_memory_preflight_registry(path: str | Path = "registries/memory_pre
 
 
 def validate_system_layers(path: str | Path = "registries/system_layer_registry.csv") -> ValidationResult:
+    registry_path = Path(path)
     result = _validate_rows_against_contract(
-        path,
+        registry_path,
         ROW_CONTRACTS["system_layer_registry.csv"],
         "layer_id",
     )
-    rows = read_registry_rows(path)
+    rows = read_registry_rows(registry_path)
     seen = {row.get("layer_id", "") for row in rows}
     missing = sorted(SYSTEM_LAYER_IDS - seen)
     if missing:
         result.ok = False
-        result.messages.append(f"{path}: missing expected system layer IDs: {', '.join(missing)}")
+        result.messages.append(f"{registry_path}: missing expected system layer IDs: {', '.join(missing)}")
     for row in rows:
         if row.get("layer_id") != row.get("layer_type"):
             result.ok = False
             result.messages.append(
-                f"{path}: {row.get('layer_id')}: layer_type must match layer_id"
+                f"{registry_path}: {row.get('layer_id')}: layer_type must match layer_id"
             )
+    base = registry_path.parent.parent if registry_path.parent.name == "registries" else Path(".")
+    result.extend(validate_self_hosting_config(base / "configs/self_hosting_mode.toml", registry_path))
     return result
+
+
+def validate_self_hosting_config(
+    path: str | Path = "configs/self_hosting_mode.toml",
+    system_layer_registry: str | Path = "registries/system_layer_registry.csv",
+) -> ValidationResult:
+    """Validate self-hosting mode configuration against system-layer registry rows."""
+
+    try:
+        from .toml_io import load_toml
+    except ModuleNotFoundError as exc:
+        return ValidationResult(False, [f"TOML parser dependency unavailable: {exc}"])
+
+    config_path = resolve_registered_path(str(path))
+    registry_path = Path(system_layer_registry)
+    messages: list[str] = []
+    if not config_path.exists():
+        return ValidationResult(False, [f"{config_path}: missing self-hosting mode config"])
+    try:
+        data = load_toml(config_path)
+    except RuntimeError as exc:
+        return ValidationResult(False, [str(exc)])
+
+    messages.extend(_validate_instance_with_schema(data, "schemas/contracts/self_hosting_mode.schema.json", str(config_path)))
+
+    system_layers = data.get("system_layers", {})
+    if isinstance(system_layers, dict):
+        config_layer_ids = set(system_layers)
+        registry_layer_ids = {row.get("layer_id", "") for row in read_registry_rows(registry_path)}
+        missing_in_config = sorted(SYSTEM_LAYER_IDS - config_layer_ids)
+        missing_in_registry = sorted(config_layer_ids - registry_layer_ids)
+        if missing_in_config:
+            messages.append(f"{config_path}: missing system_layers keys: {', '.join(missing_in_config)}")
+        if missing_in_registry:
+            messages.append(f"{config_path}: system_layers keys missing from registry: {', '.join(missing_in_registry)}")
+
+    self_hosting = data.get("self_hosting", {})
+    if isinstance(self_hosting, dict):
+        if self_hosting.get("generated_derivatives_can_authorize_changes") is not False:
+            messages.append(f"{config_path}: generated_derivatives_can_authorize_changes must be false")
+        if self_hosting.get("product_scaffold_is_runtime_authority") is not False:
+            messages.append(f"{config_path}: product_scaffold_is_runtime_authority must be false")
+
+    validation = data.get("validation", {})
+    required_commands = validation.get("required_commands", []) if isinstance(validation, dict) else []
+    if not required_commands:
+        messages.append(f"{config_path}: validation.required_commands must be non-empty")
+    elif "cd sys-for-ai && make validate-system-layers" not in required_commands:
+        messages.append(f"{config_path}: required_commands must include validate-system-layers")
+
+    return ValidationResult(not messages, messages or [f"{config_path}: self-hosting mode config validation passed"])
 
 
 def validate_discovery_records(path: str | Path = "registries/discovery_record_registry.csv") -> ValidationResult:

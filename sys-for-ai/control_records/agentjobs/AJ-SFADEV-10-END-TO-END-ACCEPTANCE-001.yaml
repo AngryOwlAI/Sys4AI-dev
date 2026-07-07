@@ -1,0 +1,112 @@
+agentjob_id: AJ-SFADEV-10-END-TO-END-ACCEPTANCE-001
+schema_version: 0.2.0
+status: completed
+objective: >
+  Run full validation, repair acceptance-discovered requirement gaps, and
+  produce the final all-recommendations acceptance packet.
+lifecycle_stage: implementation_initialization
+role_binding:
+  role_id: requirements_verifier
+  binding_type: registered_role
+  authority_scope: all-recommendations end-to-end acceptance
+  expires_with_agentjob: true
+required_inputs:
+  - implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+  - implementation_plans/self_hosting_boundary_decision_record.md
+  - sys-for-ai/control_records/program_state.yaml
+  - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-09-GENERATED-DOCS-001.yaml
+  - temp_handoff/handoff-0020.md
+allowed_reads:
+  - "**"
+allowed_writes:
+  - implementation_plans/completion_receipts/**
+  - sys-for-ai/configs/self_hosting_mode.toml
+  - sys-for-ai/docs/self_hosting_mode_policy.md
+  - sys-for-ai/schemas/contracts/self_hosting_mode.schema.json
+  - sys-for-ai/sys_for_ai/validators.py
+  - sys-for-ai/sys_for_ai/cli.py
+  - sys-for-ai/Makefile
+  - sys-for-ai/tests/test_agentjob_boundaries.py
+  - sys-for-ai/tests/test_program_state.py
+  - sys-for-ai/tests/test_self_hosting_acceptance.py
+  - sys-for-ai/registries/config_source_registry.csv
+  - sys-for-ai/registries/validation_contract_registry.csv
+  - sys-for-ai/registries/source_registry.csv
+  - sys-for-ai/registries/control_record_registry.csv
+  - sys-for-ai/registries/agentjob_registry.csv
+  - sys-for-ai/registries/director_decision_registry.csv
+  - sys-for-ai/registries/completion_receipt_registry.csv
+  - sys-for-ai/registries/handoff_registry.csv
+  - sys-for-ai/registries/memory_preflight_receipt_registry.csv
+  - sys-for-ai/docs/generated/configuration_control/**
+  - sys-for-ai/docs/generated/validation_contracts/**
+  - sys-for-ai/docs/generated/registry_catalog/**
+  - sys-for-ai/control_records/director_decisions/DDR-SFADEV-10-END-TO-END-ACCEPTANCE-001.yaml
+  - sys-for-ai/control_records/agentjobs/AJ-SFADEV-10-END-TO-END-ACCEPTANCE-001.yaml
+  - sys-for-ai/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-10-END-TO-END-ACCEPTANCE-001.yaml
+  - sys-for-ai/control_records/completions/RECEIPT-SFADEV-10-END-TO-END-ACCEPTANCE-001.yaml
+  - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-10-END-TO-END-ACCEPTANCE-001.yaml
+  - sys-for-ai/control_records/program_state.yaml
+  - temp_handoff/handoff-0021.md
+generated_paths:
+  - sys-for-ai/docs/generated/configuration_control/**
+  - sys-for-ai/docs/generated/validation_contracts/**
+  - sys-for-ai/docs/generated/registry_catalog/**
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - sys-for-ai/.venv/**
+  - PRDs/**
+  - sys-for-ai/docs/generated/** as canonical source
+stop_conditions:
+  - Validation fails without documented repair path.
+  - Acceptance audit finds a required implementation-plan item with no evidence.
+  - A generated derivative is promoted to canonical authority.
+  - A required write is outside the AJ-10 allowlist.
+forbidden_actions:
+  - Change source files to force validation pass without recording changes.
+  - Accept the plan while a required implementation-plan item lacks evidence.
+  - Execute more than one all-recommendations AgentJob in one continuation invocation.
+memory_preflight:
+  required: true
+  minimum_queries:
+    - end-to-end acceptance
+    - final acceptance receipt open issue list deferred item list
+  required_evidence:
+    - self-hosting boundary decision record inspection
+    - latest controlled handoff inspection
+    - all-recommendations plan AJ-10 inspection
+    - final Definition of Done inspection
+expected_outputs:
+  - Final acceptance receipt.
+  - Open issue list.
+  - Deferred item list.
+  - Self-hosting mode config repair with validation evidence.
+  - Completion receipt and terminal handoff evidence.
+validators:
+  - make validate-dev-skills
+  - make validate-product-scaffold
+  - make validate
+  - cd sys-for-ai && make validate
+completion_evidence_required:
+  - final_acceptance_packet
+  - command_results
+  - validation_status
+  - open_issues
+  - deferred_items
+handoff_policy:
+  create_handoff_when:
+    - final acceptance completes
+authority_boundary:
+  may_modify_acceptance_evidence: true
+  may_repair_acceptance_discovered_requirement_gaps: true
+  may_modify_self_hosting_config_and_contract: true
+  may_modify_generated_derivatives: true
+  may_modify_canonical_prds: false
+  may_promote_generated_derivatives: false
+created_at: "2026-07-07T05:32:54Z"
+activated_at: "2026-07-07T05:32:54Z"
+completed_at: "2026-07-07T05:32:54Z"
+director_decision_id: DDR-SFADEV-10-END-TO-END-ACCEPTANCE-001

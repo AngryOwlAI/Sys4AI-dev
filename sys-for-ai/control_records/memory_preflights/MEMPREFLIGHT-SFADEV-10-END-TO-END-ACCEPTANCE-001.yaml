@@ -1,0 +1,83 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-10-END-TO-END-ACCEPTANCE-001
+schema_version: 0.1.0
+agentjob_id: AJ-SFADEV-10-END-TO-END-ACCEPTANCE-001
+created_at: "2026-07-07T05:32:54Z"
+status: PASS_WITH_WARNINGS
+commands_run:
+  - command: cd sys-for-ai && make continue-preflight
+    result: pass_with_warnings
+  - command: cd sys-for-ai && make continue-select
+    result: blocked_director_decision_required
+  - command: rg memory quick pass for end-to-end acceptance routing
+    result: pass_memory_hits_checked_against_source
+queries:
+  - query: source-first memory continue handoff AgentJob
+    returned_object_ids:
+      - SRC-REG-CONTROL-RECORDS
+      - der_configuration_control_yaml
+      - SRC-REG-SOURCES
+      - SRC-CLI-PHASE1
+      - SRC-CONTROL-LOOP-JOB-SELECTION
+  - query: end-to-end acceptance final receipt deferred items
+    returned_object_ids:
+      - SRC-ALL-RECS-IMPLEMENTATION-PLAN
+      - SRC-HANDOFF-GENERATED-DOCS-001
+      - SRC-REG-REQ-TRACE
+      - SRC-REG-CONFIG-SOURCES
+canonical_sources_inspected:
+  - path: implementation_plans/self_hosting_boundary_decision_record.md
+    registry: source_registry.csv
+    row_id: SRC-SELFHOST-BOUNDARY-DECISION
+    inspected_sections:
+      - Decision
+      - Rules
+  - path: sys-for-ai/control_records/program_state.yaml
+    registry: source_registry.csv
+    row_id: SRC-PROGRAM-STATE
+    inspected_sections:
+      - latest_handoff_id
+      - allowed_next_actions
+  - path: sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-09-GENERATED-DOCS-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-HANDOFF-GENERATED-DOCS-001
+    inspected_sections:
+      - next_agentjob_id
+      - phase_boundary_notes
+  - path: temp_handoff/handoff-0020.md
+    registry: source_registry.csv
+    row_id: SRC-TEMP-HANDOFF-0020
+    inspected_sections:
+      - Next logical step
+  - path: implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+    registry: source_registry.csv
+    row_id: SRC-ALL-RECS-IMPLEMENTATION-PLAN
+    inspected_sections:
+      - WS-15 End-to-End Acceptance
+      - AJ-10 End-to-End Acceptance
+      - Definition of Done
+  - path: sys-for-ai/registries/config_source_registry.csv
+    registry: source_registry.csv
+    row_id: SRC-REG-CONFIG-SOURCES
+    inspected_sections:
+      - self-hosting mode config row
+registry_rows_inspected:
+  - registry: source_registry.csv
+    row_id: SRC-ALL-RECS-IMPLEMENTATION-PLAN
+    purpose: Confirm AJ-10 authority and final acceptance requirements.
+  - registry: source_registry.csv
+    row_id: SRC-HANDOFF-GENERATED-DOCS-001
+    purpose: Confirm prior handoff route to AJ-10.
+  - registry: source_registry.csv
+    row_id: SRC-REG-CONFIG-SOURCES
+    purpose: Check acceptance-discovered self-hosting config requirement.
+  - registry: requirement_trace_registry.csv
+    row_id: TRACE-SFA-CORE-SELFHOST-001
+    purpose: Confirm self-hosting mode trace evidence and remaining scope.
+stale_context_risks:
+  - risk_id: MEMPREFLIGHT-SFADEV-10-RISK-001
+    status: observed
+    notes: Continue selection required a Director decision because no active AgentJob was set.
+  - risk_id: MEMPREFLIGHT-SFADEV-10-RISK-002
+    status: mitigated
+    notes: Acceptance audit found missing self-hosting mode TOML; AJ-10 repaired and validated it.
+usable_for_routing: true

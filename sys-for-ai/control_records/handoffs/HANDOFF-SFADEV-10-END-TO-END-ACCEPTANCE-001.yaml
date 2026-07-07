@@ -1,0 +1,89 @@
+handoff_id: HANDOFF-SFADEV-10-END-TO-END-ACCEPTANCE-001
+schema_version: 0.2.0
+framework_name: sys-for-ai
+target_agentic_system: sys-for-ai-dev
+artifact_name: All Recommendations End-To-End Acceptance Handoff
+artifact_type: operational_handoff
+artifact_version: 0.2.0
+producing_role: requirements_verifier
+artifact_status: completed
+summary: >
+  End-to-end acceptance is complete for the all-recommendations implementation
+  plan. Root and product scaffold validation gates pass, the final acceptance
+  packet exists, and the acceptance audit repaired the missing self-hosting
+  mode TOML configuration and validation contract.
+source_artifacts:
+  - implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+  - implementation_plans/completion_receipts/CR-SFADEV-ALL-RECS-IMPLEMENTED-001.md
+  - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-09-GENERATED-DOCS-001.yaml
+  - sys-for-ai/configs/self_hosting_mode.toml
+  - sys-for-ai/registries/config_source_registry.csv
+traceability:
+  agentjob_id: AJ-SFADEV-10-END-TO-END-ACCEPTANCE-001
+  director_decision_id: DDR-SFADEV-10-END-TO-END-ACCEPTANCE-001
+  completion_receipt_id: RECEIPT-SFADEV-10-END-TO-END-ACCEPTANCE-001
+  implementation_plan_section: "19 WS-15 and 20 AJ-10"
+  workstream: WS-15 End-to-End Acceptance and Release Bundle
+control_loop_notes:
+  previous_handoff_id: HANDOFF-SFADEV-09-GENERATED-DOCS-001
+  next_agentjob_id: null
+  next_agentjob_status: none_remaining_in_plan
+  selection_basis: AJ-10 is the final all-recommendations plan packet.
+memory_preflight:
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-10-END-TO-END-ACCEPTANCE-001
+  usable_for_routing: true
+  required_next_queries: []
+format_profile_evidence:
+  controlled_sources_added:
+    - sys-for-ai/configs/self_hosting_mode.toml
+    - sys-for-ai/schemas/contracts/self_hosting_mode.schema.json
+    - implementation_plans/completion_receipts/CR-SFADEV-ALL-RECS-IMPLEMENTED-001.md
+  generated_pages_resynchronized:
+    - sys-for-ai/docs/generated/configuration_control/index.md
+    - sys-for-ai/docs/generated/configuration_control/toml-configuration-sources.md
+    - sys-for-ai/docs/generated/configuration_control/yaml-control-records.md
+    - sys-for-ai/docs/generated/validation_contracts/contracts-by-target.md
+    - sys-for-ai/docs/generated/validation_contracts/index.md
+    - sys-for-ai/docs/generated/registry_catalog/index.md
+  validator_surface:
+    - sys-for-ai/sys_for_ai/validators.py
+    - sys-for-ai/sys_for_ai/cli.py
+    - sys-for-ai/Makefile
+source_authority_evidence:
+  canonical_sources_checked:
+    - implementation_plans/self_hosting_boundary_decision_record.md
+    - sys-for-ai/control_records/program_state.yaml
+    - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-09-GENERATED-DOCS-001.yaml
+    - temp_handoff/handoff-0020.md
+    - implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+    - sys-for-ai/registries/config_source_registry.csv
+    - sys-for-ai/registries/requirement_trace_registry.csv
+  authority_boundary: Generated docs remain noncanonical derivative surfaces and are not promoted by AJ-10.
+derivative_surface_evidence:
+  generated_derivatives_changed: true
+  changed_derivatives:
+    - docs/generated/configuration_control/index.md
+    - docs/generated/configuration_control/toml-configuration-sources.md
+    - docs/generated/configuration_control/yaml-control-records.md
+    - docs/generated/validation_contracts/contracts-by-target.md
+    - docs/generated/validation_contracts/index.md
+    - docs/generated/registry_catalog/index.md
+  notes: Generated pages were resynchronized from canonical registries and remain noncanonical derivative surfaces.
+acceptance_evidence:
+  final_acceptance_packet: implementation_plans/completion_receipts/CR-SFADEV-ALL-RECS-IMPLEMENTED-001.md
+  root_validation: pass
+  product_validation: pass
+  open_issues: []
+  deferred_items_count: 8
+security_evidence:
+  secret_scan_scope: Python source YAML control records CSV registries TOML configs JSON schemas tests and generated Markdown were checked by structured validators and diff checks.
+  new_secret_material: false
+recommended_next_role: system_director
+phase_boundary_notes: >
+  This handoff closes the all-recommendations implementation plan. Future work
+  should start from a new plan or Director Decision rather than reopening the
+  completed AJ-00 through AJ-10 sequence.
+stop_conditions:
+  - A future task tries to treat generated docs as canonical.
+  - A future task mutates this completed sequence without supersession.
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-10-END-TO-END-ACCEPTANCE-001

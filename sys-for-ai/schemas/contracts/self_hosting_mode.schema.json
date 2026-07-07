@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys-for-ai/schemas/contracts/self_hosting_mode.schema.json",
+  "title": "Self-hosting mode configuration",
+  "type": "object",
+  "required": ["system_layers", "self_hosting", "authority_roots", "validation"],
+  "properties": {
+    "system_layers": {
+      "type": "object",
+      "required": [
+        "development_system",
+        "framework_product",
+        "target_system_template",
+        "target_system_instance",
+        "derivative_surface"
+      ],
+      "properties": {
+        "development_system": { "type": "string", "minLength": 1 },
+        "framework_product": { "type": "string", "minLength": 1 },
+        "target_system_template": { "type": "string", "minLength": 1 },
+        "target_system_instance": { "type": "string", "minLength": 1 },
+        "derivative_surface": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "self_hosting": {
+      "type": "object",
+      "required": [
+        "enabled",
+        "requires_layer_classification",
+        "requires_director_decision_for_authority_expansion",
+        "generated_derivatives_can_authorize_changes",
+        "product_scaffold_is_runtime_authority"
+      ],
+      "properties": {
+        "enabled": { "const": true },
+        "requires_layer_classification": { "const": true },
+        "requires_director_decision_for_authority_expansion": { "const": true },
+        "generated_derivatives_can_authorize_changes": { "const": false },
+        "product_scaffold_is_runtime_authority": { "const": false }
+      },
+      "additionalProperties": false
+    },
+    "authority_roots": {
+      "type": "object",
+      "required": ["development_system_runtime", "product_scaffold", "derivative_roots"],
+      "properties": {
+        "development_system_runtime": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        },
+        "product_scaffold": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        },
+        "derivative_roots": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "validation": {
+      "type": "object",
+      "required": ["required_commands"],
+      "properties": {
+        "required_commands": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

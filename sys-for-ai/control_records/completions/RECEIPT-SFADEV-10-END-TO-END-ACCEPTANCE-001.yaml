@@ -1,0 +1,187 @@
+completion_receipt_id: RECEIPT-SFADEV-10-END-TO-END-ACCEPTANCE-001
+schema_version: 0.2.0
+agentjob_id: AJ-SFADEV-10-END-TO-END-ACCEPTANCE-001
+role: requirements_verifier
+result: PASS
+summary: >
+  Final end-to-end acceptance completed for the all-recommendations plan.
+  AJ-10 produced the final acceptance packet, repaired the missing self-hosting
+  mode TOML and validation contract found during acceptance audit, and verified
+  root and product scaffold validation gates.
+changed_artifacts:
+  - path: implementation_plans/completion_receipts/CR-SFADEV-ALL-RECS-IMPLEMENTED-001.md
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/Makefile
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/configs/self_hosting_mode.toml
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/control_records/agentjobs/AJ-SFADEV-10-END-TO-END-ACCEPTANCE-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/control_records/completions/RECEIPT-SFADEV-10-END-TO-END-ACCEPTANCE-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/control_records/director_decisions/DDR-SFADEV-10-END-TO-END-ACCEPTANCE-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-10-END-TO-END-ACCEPTANCE-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-10-END-TO-END-ACCEPTANCE-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/control_records/program_state.yaml
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/docs/generated/configuration_control/index.md
+    change_type: modified
+    authority_status: generated_noncanonical
+  - path: sys-for-ai/docs/generated/configuration_control/toml-configuration-sources.md
+    change_type: modified
+    authority_status: generated_noncanonical
+  - path: sys-for-ai/docs/generated/configuration_control/yaml-control-records.md
+    change_type: modified
+    authority_status: generated_noncanonical
+  - path: sys-for-ai/docs/generated/registry_catalog/index.md
+    change_type: modified
+    authority_status: generated_noncanonical
+  - path: sys-for-ai/docs/generated/validation_contracts/contracts-by-target.md
+    change_type: modified
+    authority_status: generated_noncanonical
+  - path: sys-for-ai/docs/generated/validation_contracts/index.md
+    change_type: modified
+    authority_status: generated_noncanonical
+  - path: sys-for-ai/docs/self_hosting_mode_policy.md
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/registries/agentjob_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/completion_receipt_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/config_source_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/control_record_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/director_decision_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/handoff_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/memory_preflight_receipt_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/source_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/validation_contract_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/schemas/contracts/self_hosting_mode.schema.json
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/sys_for_ai/cli.py
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/sys_for_ai/validators.py
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/tests/test_agentjob_boundaries.py
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/tests/test_program_state.py
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/tests/test_self_hosting_acceptance.py
+    change_type: modified
+    authority_status: controlled
+  - path: temp_handoff/handoff-0021.md
+    change_type: added
+    authority_status: controlled
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-10-END-TO-END-ACCEPTANCE-001
+validation_evidence:
+  commands_run:
+    - command: make validate-dev-skills
+      result: pass
+    - command: make validate-product-scaffold
+      result: pass
+    - command: make validate
+      result: pass
+    - command: cd sys-for-ai && make validate
+      result: pass
+    - command: cd sys-for-ai && make generate-governance-docs
+      result: pass
+    - command: cd sys-for-ai && .venv/bin/python -m unittest discover -s tests
+      result: pass
+    - command: git diff --check
+      result: pass
+  validators:
+    - validator_id: validate-system-layers
+      target_path: sys-for-ai/registries/system_layer_registry.csv
+      result: pass
+      notes: Validates layer registry and self-hosting mode TOML agreement.
+    - validator_id: validate-toml-config
+      target_path: sys-for-ai/registries/config_source_registry.csv
+      result: pass
+      notes: Self-hosting mode TOML is registered and schema-valid.
+    - validator_id: validate-check-diff
+      target_path: git diff
+      result: pass
+      notes: AJ-10 changed paths are inside its authority boundary.
+    - validator_id: make-validate
+      target_path: sys-for-ai
+      result: pass
+      notes: Product aggregate validation passed.
+format_profile_changes:
+  added:
+    - path: sys-for-ai/configs/self_hosting_mode.toml
+      profile_id: fmt_toml_config
+      registry_row_id: cfg_self_hosting_mode
+    - path: sys-for-ai/schemas/contracts/self_hosting_mode.schema.json
+      profile_id: fmt_jsonschema_contract
+      registry_row_id: contract_self_hosting_mode
+    - path: implementation_plans/completion_receipts/CR-SFADEV-ALL-RECS-IMPLEMENTED-001.md
+      profile_id: fmt_markdown_source
+      registry_row_id: SRC-ALL-RECS-FINAL-ACCEPTANCE
+  modified:
+    - path: sys-for-ai/docs/generated/**
+      profile_id: fmt_markdown_source
+      registry_row_id: generated_derivative_rows
+authority_changes:
+  promoted: []
+  completed:
+    - agentjob_id: AJ-SFADEV-10-END-TO-END-ACCEPTANCE-001
+      reason: Final all-recommendations acceptance completed and validated.
+  not_promoted:
+    - path: sys-for-ai/docs/generated/**
+      reason: Generated docs remain derivative navigation surfaces.
+unresolved_issues: []
+open_issues: []
+deferred_items:
+  - trace_id: TRACE-SFA-CORE-LIFE-001
+    reason: Full lifecycle runtime execution is later-phase work.
+  - trace_id: TRACE-SFA-CORE-LIFE-002
+    reason: Full lifecycle runtime execution is later-phase work.
+  - trace_id: TRACE-SFA-CORE-LIFE-003
+    reason: Full lifecycle runtime execution is later-phase work.
+  - trace_id: TRACE-SFA-P0-FR-014
+    reason: Docker/later runtime trigger remains outside Phase 1 initialization.
+  - trace_id: TRACE-SFA-P0-FR-015
+    reason: Docker/later runtime trigger remains outside Phase 1 initialization.
+  - trace_id: TRACE-SFA-P0-NFR-007
+    reason: Docker/later runtime trigger remains outside Phase 1 initialization.
+  - trace_id: TRACE-SFA-P0-NFR-008
+    reason: Docker/later runtime trigger remains outside Phase 1 initialization.
+  - trace_id: TRACE-SFA-P0-NFR-012
+    reason: Docker/later runtime trigger remains outside Phase 1 initialization.
+next_recommendation: >
+  No further all-recommendations AgentJob remains in the implementation plan.
+next_handoff_id: HANDOFF-SFADEV-10-END-TO-END-ACCEPTANCE-001
+completed_at: "2026-07-07T05:32:54Z"

@@ -11,9 +11,9 @@ lifecycle_stage: develop
 active_task_id: TASK-SFADEV-ALL-RECS-001
 active_director_decision_id: null
 active_agentjob_id: null
-latest_completion_receipt_id: RECEIPT-SFADEV-09-GENERATED-DOCS-001
-latest_handoff_id: HANDOFF-SFADEV-09-GENERATED-DOCS-001
-latest_memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-09-GENERATED-DOCS-001
+latest_completion_receipt_id: RECEIPT-SFADEV-10-END-TO-END-ACCEPTANCE-001
+latest_handoff_id: HANDOFF-SFADEV-10-END-TO-END-ACCEPTANCE-001
+latest_memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-10-END-TO-END-ACCEPTANCE-001
 state_status: complete
 blocked_reason: null
 human_gate_required: false
@@ -28,9 +28,11 @@ blocked_actions:
 - treat_generated_derivative_as_canonical
 - mutate_activated_control_record_without_supersession
 validation_status:
-  last_validated_at: '2026-07-07T05:19:36Z'
+  last_validated_at: '2026-07-07T05:32:54Z'
   validators:
+  - make validate
   - validate-generated-derivatives
+  - validate-system-layers
   - validate-roles
   - validate-program-state
   - validate-control-records

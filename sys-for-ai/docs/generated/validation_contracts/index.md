@@ -15,6 +15,7 @@ page_metadata:
     - contract_completion_receipt
     - contract_state_snapshot
     - contract_sys_for_ai_config
+    - contract_self_hosting_mode
     - contract_target_project_config
     - contract_format_profile_registry_row
     - contract_config_source_registry_row
@@ -72,6 +73,7 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_completion_receipt | schemas/contracts/completion_receipt.schema.json | 2020-12 | yaml | completion_receipt | control_records/**/*.yaml | sys-for-ai validate-jsonschema-contracts | implementation_initialization | controlled | pending | pending |
 | contract_state_snapshot | schemas/contracts/state_snapshot.schema.json | 2020-12 | yaml | state_snapshot | control_records/**/*.yaml | sys-for-ai validate-jsonschema-contracts | implementation_initialization | controlled | pending | pending |
 | contract_sys_for_ai_config | schemas/contracts/sys_for_ai_config.schema.json | 2020-12 | toml | framework_config | pyproject.toml;configs/examples/sys_for_ai.example.toml | sys-for-ai validate-toml-config | implementation_initialization | controlled | pending | pending |
+| contract_self_hosting_mode | schemas/contracts/self_hosting_mode.schema.json | 2020-12 | toml | self_hosting_mode | configs/self_hosting_mode.toml | sys-for-ai validate-system-layers | implementation_initialization | controlled | pending | pending |
 | contract_target_project_config | schemas/contracts/target_project_config.schema.json | 2020-12 | toml | target_project_config | configs/examples/target_project.example.toml | sys-for-ai validate-toml-config | implementation_initialization | controlled | pending | pending |
 | contract_format_profile_registry_row | schemas/contracts/format_profile_registry_row.schema.json | 2020-12 | csv | format_profile_registry_row | registries/format_profile_registry.csv | sys-for-ai validate-format-profiles | implementation_initialization | controlled | pending | pending |
 | contract_config_source_registry_row | schemas/contracts/config_source_registry_row.schema.json | 2020-12 | csv | config_source_registry_row | registries/config_source_registry.csv | sys-for-ai validate-config-sources | implementation_initialization | controlled | pending | pending |

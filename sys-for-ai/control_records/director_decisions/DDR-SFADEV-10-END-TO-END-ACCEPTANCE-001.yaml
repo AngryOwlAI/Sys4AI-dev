@@ -1,0 +1,47 @@
+director_decision_id: DDR-SFADEV-10-END-TO-END-ACCEPTANCE-001
+schema_version: 0.1.0
+decision_status: completed
+created_at: "2026-07-07T05:32:54Z"
+completed_at: "2026-07-07T05:32:54Z"
+director_role: system_director
+decision_context:
+  trigger: all_recommendations_end_to_end_acceptance
+  program_state_id: SFA-PROGRAM-STATE-001
+  latest_handoff_id: HANDOFF-SFADEV-09-GENERATED-DOCS-001
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-10-END-TO-END-ACCEPTANCE-001
+  implementation_plan: implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+selected_route:
+  route_id: run_end_to_end_acceptance
+  rationale: >
+    The generated docs and derivative governance handoff names
+    AJ-SFADEV-10-END-TO-END-ACCEPTANCE-001 as the next and final open
+    all-recommendations packet. AJ-10 is authorized to run final validation,
+    repair acceptance-discovered requirement gaps, and produce the final
+    acceptance packet.
+  selected_role: requirements_verifier
+  creates_agentjob_id: AJ-SFADEV-10-END-TO-END-ACCEPTANCE-001
+rejected_routes:
+  - route_id: rerun_generated_docs
+    reason: AJ-SFADEV-09-GENERATED-DOCS-001 is already completed and registered.
+  - route_id: accept_without_self_hosting_config
+    reason: The plan requires self-hosting TOML configuration and registry evidence.
+  - route_id: execute_multiple_all_recommendations_agentjobs
+    reason: Violates the one-AgentJob continuation invariant.
+authority_boundary:
+  may_create_agentjob: true
+  may_write_acceptance_packet: true
+  may_repair_acceptance_discovered_requirement_gaps: true
+  may_modify_self_hosting_config_and_contract: true
+  may_modify_validators_for_acceptance_coverage: true
+  may_modify_control_closeout_records: true
+  may_promote_generated_derivatives: false
+  may_modify_canonical_prds: false
+validators:
+  - make validate-dev-skills
+  - make validate-product-scaffold
+  - make validate
+  - cd sys-for-ai && make validate
+completion_evidence:
+  completion_receipt_id: RECEIPT-SFADEV-10-END-TO-END-ACCEPTANCE-001
+  handoff_id: HANDOFF-SFADEV-10-END-TO-END-ACCEPTANCE-001
+  notes: End-to-end acceptance completed and validated.

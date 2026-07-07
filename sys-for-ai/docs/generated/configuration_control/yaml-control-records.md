@@ -104,6 +104,11 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_generated_docs_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-09-GENERATED-DOCS-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
 | ctrl_generated_docs_completion | control_records/completions/RECEIPT-SFADEV-09-GENERATED-DOCS-001.yaml | completion_receipt_v0_2 | controlled | implementation_initialization | contract_completion_receipt_v0_2 | pending |
 | ctrl_generated_docs_handoff | control_records/handoffs/HANDOFF-SFADEV-09-GENERATED-DOCS-001.yaml | handoff_v0_2 | controlled | implementation_initialization | contract_handoff_v0_2 | pending |
+| ctrl_end_to_end_acceptance_director_decision | control_records/director_decisions/DDR-SFADEV-10-END-TO-END-ACCEPTANCE-001.yaml | director_decision | controlled | implementation_initialization | contract_director_decision | pending |
+| ctrl_end_to_end_acceptance_agentjob | control_records/agentjobs/AJ-SFADEV-10-END-TO-END-ACCEPTANCE-001.yaml | agentjob_v0_2 | controlled | implementation_initialization | contract_agentjob_v0_2 | pending |
+| ctrl_end_to_end_acceptance_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-10-END-TO-END-ACCEPTANCE-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
+| ctrl_end_to_end_acceptance_completion | control_records/completions/RECEIPT-SFADEV-10-END-TO-END-ACCEPTANCE-001.yaml | completion_receipt_v0_2 | controlled | implementation_initialization | contract_completion_receipt_v0_2 | pending |
+| ctrl_end_to_end_acceptance_handoff | control_records/handoffs/HANDOFF-SFADEV-10-END-TO-END-ACCEPTANCE-001.yaml | handoff_v0_2 | controlled | implementation_initialization | contract_handoff_v0_2 | pending |
 
 ## Validation Contract Trace
 

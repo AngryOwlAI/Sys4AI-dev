@@ -1,0 +1,25 @@
+[system_layers]
+development_system = "sys-for-ai-dev"
+framework_product = "sys-for-ai"
+target_system_template = "future-target-system-template"
+target_system_instance = "future-target-system-instance"
+derivative_surface = "generated-derivative-surface"
+
+[self_hosting]
+enabled = true
+requires_layer_classification = true
+requires_director_decision_for_authority_expansion = true
+generated_derivatives_can_authorize_changes = false
+product_scaffold_is_runtime_authority = false
+
+[authority_roots]
+development_system_runtime = [".agents/skills", ".agents/skill_registry", "scripts", "PRDs", "implementation_plans"]
+product_scaffold = ["sys-for-ai"]
+derivative_roots = ["docs/generated", "sys-for-ai/docs/generated"]
+
+[validation]
+required_commands = [
+  "make validate-dev-skills",
+  "cd sys-for-ai && make validate-system-layers",
+  "cd sys-for-ai && make validate"
+]
