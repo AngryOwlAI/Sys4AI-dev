@@ -68,6 +68,11 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_prd_integration_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-01-PRD-INTEGRATION-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
 | ctrl_prd_integration_completion | control_records/completions/RECEIPT-SFADEV-01-PRD-INTEGRATION-001.yaml | completion_receipt_v0_2 | controlled | implementation_initialization | contract_completion_receipt_v0_2 | pending |
 | ctrl_prd_integration_handoff | control_records/handoffs/HANDOFF-SFADEV-01-PRD-INTEGRATION-001.yaml | handoff_v0_2 | controlled | implementation_initialization | contract_handoff_v0_2 | pending |
+| ctrl_registry_schema_expansion_director_decision | control_records/director_decisions/DDR-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml | director_decision | controlled | implementation_initialization | contract_director_decision | pending |
+| ctrl_registry_schema_expansion_agentjob | control_records/agentjobs/AJ-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml | agentjob_v0_2 | controlled | implementation_initialization | contract_agentjob_v0_2 | pending |
+| ctrl_registry_schema_expansion_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
+| ctrl_registry_schema_expansion_completion | control_records/completions/RECEIPT-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml | completion_receipt_v0_2 | controlled | implementation_initialization | contract_completion_receipt_v0_2 | pending |
+| ctrl_registry_schema_expansion_handoff | control_records/handoffs/HANDOFF-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml | handoff_v0_2 | controlled | implementation_initialization | contract_handoff_v0_2 | pending |
 
 ## Validation Contract Trace
 

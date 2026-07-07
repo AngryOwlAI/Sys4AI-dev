@@ -11,9 +11,9 @@ lifecycle_stage: develop
 active_task_id: TASK-P1-SELFHOST-001
 active_director_decision_id: null
 active_agentjob_id: null
-latest_completion_receipt_id: RECEIPT-SFADEV-01-PRD-INTEGRATION-001
-latest_handoff_id: HANDOFF-SFADEV-01-PRD-INTEGRATION-001
-latest_memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-01-PRD-INTEGRATION-001
+latest_completion_receipt_id: RECEIPT-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+latest_handoff_id: HANDOFF-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+latest_memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
 state_status: complete
 blocked_reason: null
 human_gate_required: false
@@ -28,7 +28,7 @@ blocked_actions:
 - treat_generated_derivative_as_canonical
 - mutate_activated_control_record_without_supersession
 validation_status:
-  last_validated_at: '2026-07-07T03:28:46Z'
+  last_validated_at: '2026-07-07T03:45:23Z'
   validators:
   - validate-program-state
   - validate-control-records

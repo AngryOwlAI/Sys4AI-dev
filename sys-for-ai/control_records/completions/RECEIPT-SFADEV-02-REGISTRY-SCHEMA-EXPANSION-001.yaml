@@ -1,0 +1,146 @@
+completion_receipt_id: RECEIPT-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+schema_version: 0.2.0
+agentjob_id: AJ-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+role: implementation_initialization_agent
+result: PASS
+summary: >
+  Registry and schema expansion completed for the all-recommendations plan.
+  The scaffold now includes controlled registries, row schemas, CLI validators,
+  Makefile targets, aggregate validation, and registry graph checks for system
+  layers, discovery records, roles, artifact contracts, core skill proposals,
+  and skill lifecycle statuses.
+changed_artifacts:
+  - path: sys-for-ai/registries/system_layer_registry.csv
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/registries/discovery_record_registry.csv
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/registries/role_registry.csv
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/registries/role_skill_crosswalk.csv
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/registries/role_execution_binding_registry.csv
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/registries/artifact_contract_registry.csv
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/registries/core_skill_proposal_registry.csv
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/registries/skill_lifecycle_status_registry.csv
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/schemas/contracts/system_layer_registry_row.schema.json
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/schemas/contracts/discovery_record_registry_row.schema.json
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/schemas/contracts/role_registry_row.schema.json
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/schemas/contracts/role_skill_crosswalk_row.schema.json
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/schemas/contracts/role_execution_binding_registry_row.schema.json
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/schemas/contracts/artifact_contract_registry_row.schema.json
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/schemas/contracts/core_skill_proposal_registry_row.schema.json
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/schemas/contracts/skill_lifecycle_status_registry_row.schema.json
+    change_type: added
+    authority_status: controlled
+  - path: sys-for-ai/sys_for_ai/validators.py
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/sys_for_ai/cli.py
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/Makefile
+    change_type: modified
+    authority_status: controlled
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+validation_evidence:
+  commands_run:
+    - command: cd sys-for-ai && make validate-jsonschema-contracts
+      result: pass
+    - command: cd sys-for-ai && make validate-registry-graph
+      result: pass
+    - command: cd sys-for-ai && make validate
+      result: pass_after_control_closeout
+  validators:
+    - validator_id: validate-jsonschema-contracts
+      target_path: sys-for-ai/schemas/contracts
+      result: pass
+      notes: New row schemas load and pass JSON Schema checks.
+    - validator_id: validate-registry-graph
+      target_path: sys-for-ai/registries
+      result: pass
+      notes: Graph checks cover new role skill artifact layer discovery and lifecycle references.
+format_profile_changes:
+  added:
+    - path: registries/system_layer_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-SYSTEM-LAYERS
+    - path: registries/discovery_record_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-DISCOVERY-RECORDS
+    - path: registries/role_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-ROLES
+    - path: registries/role_skill_crosswalk.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-ROLE-SKILL-CROSSWALK
+    - path: registries/role_execution_binding_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-ROLE-EXECUTION-BINDINGS
+    - path: registries/artifact_contract_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-ARTIFACT-CONTRACTS
+    - path: registries/core_skill_proposal_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-CORE-SKILL-PROPOSALS
+    - path: registries/skill_lifecycle_status_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-SKILL-LIFECYCLE
+  modified:
+    - path: registries/source_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-SOURCES
+    - path: registries/validation_contract_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-VALIDATION-CONTRACTS
+    - path: control_records/program_state.yaml
+      profile_id: fmt_yaml_control
+      registry_row_id: ctrl_program_state
+  generated_derivatives:
+    - docs/generated/configuration_control/index.md
+    - docs/generated/configuration_control/yaml-control-records.md
+    - docs/generated/validation_contracts/index.md
+    - docs/generated/validation_contracts/contracts-by-target.md
+authority_changes:
+  promoted: []
+  completed:
+    - agentjob_id: AJ-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+      reason: Registry and schema expansion slice completed and validated.
+  not_promoted:
+    - path: sys-for-ai/registries/core_skill_proposal_registry.csv
+      reason: Proposed skills remain proposals and are not active runtime authority.
+unresolved_issues:
+  - issue_id: SFADEV-ALL-RECS-OPEN-003
+    status: deferred
+    notes: Discovery gate runtime role document generation and core skill package activation remain future bounded AgentJobs.
+next_recommendation: >
+  Continue with AJ-SFADEV-03-DISCOVERY-GATE-001 so the RDR template, discovery
+  validator, discovery registry rows, and system-definition-interview-context-45
+  procedure consume the new registry and schema surfaces.
+next_handoff_id: HANDOFF-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+completed_at: "2026-07-07T03:45:23Z"

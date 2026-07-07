@@ -37,12 +37,15 @@ from .validators import (
     print_result,
     validate_agentjob,
     validate_agentjob_registry,
+    validate_artifact_contracts,
     validate_config_sources,
     validate_completion_receipt_registry,
     validate_completion_receipts,
     validate_control_records,
+    validate_core_skill_proposals,
     validate_director_decision_registry,
     validate_director_decisions,
+    validate_discovery_records,
     validate_format_profiles,
     validate_handoff_registry,
     validate_handoffs,
@@ -54,8 +57,11 @@ from .validators import (
     validate_registry_graph,
     validate_registry_headers,
     validate_requirement_trace,
+    validate_roles,
+    validate_skill_lifecycle,
     validate_skill_manifest,
     validate_state_snapshots,
+    validate_system_layers,
     validate_toml_config,
     validate_validation_contract_registry,
 )
@@ -148,6 +154,11 @@ def build_parser() -> argparse.ArgumentParser:
     validate.add_argument("--format-profiles", default="registries/format_profile_registry.csv")
     validate.add_argument("--config-sources", default="registries/config_source_registry.csv")
     validate.add_argument("--control-records", default="registries/control_record_registry.csv")
+    validate.add_argument("--system-layers", default="registries/system_layer_registry.csv")
+    validate.add_argument("--discovery-records", default="registries/discovery_record_registry.csv")
+    validate.add_argument("--artifact-contracts", default="registries/artifact_contract_registry.csv")
+    validate.add_argument("--core-skill-proposals", default="registries/core_skill_proposal_registry.csv")
+    validate.add_argument("--skill-lifecycle", default="registries/skill_lifecycle_status_registry.csv")
     validate.add_argument("--validation-contracts", default="registries/validation_contract_registry.csv")
     validate.add_argument("--requirement-trace", default="registries/requirement_trace_registry.csv")
     validate.add_argument("--contracts-root", default="schemas/contracts")
@@ -215,6 +226,23 @@ def build_parser() -> argparse.ArgumentParser:
 
     validate_controls = sub.add_parser("validate-control-records", help="Validate control-record registry rows and examples")
     validate_controls.add_argument("path", default="registries/control_record_registry.csv", nargs="?")
+
+    validate_system_layer_rows = sub.add_parser("validate-system-layers", help="Validate system-layer registry rows")
+    validate_system_layer_rows.add_argument("path", default="registries/system_layer_registry.csv", nargs="?")
+
+    validate_discovery_rows = sub.add_parser("validate-discovery-records", help="Validate discovery-record registry rows")
+    validate_discovery_rows.add_argument("path", default="registries/discovery_record_registry.csv", nargs="?")
+
+    sub.add_parser("validate-roles", help="Validate role registries and role relationship references")
+
+    validate_artifact_rows = sub.add_parser("validate-artifact-contracts", help="Validate artifact-contract registry rows")
+    validate_artifact_rows.add_argument("path", default="registries/artifact_contract_registry.csv", nargs="?")
+
+    validate_core_skill_rows = sub.add_parser("validate-core-skill-proposals", help="Validate core skill proposal registry rows")
+    validate_core_skill_rows.add_argument("path", default="registries/core_skill_proposal_registry.csv", nargs="?")
+
+    validate_skill_lifecycle_rows = sub.add_parser("validate-skill-lifecycle", help="Validate skill lifecycle status registry rows")
+    validate_skill_lifecycle_rows.add_argument("path", default="registries/skill_lifecycle_status_registry.csv", nargs="?")
 
     validate_state = sub.add_parser("validate-program-state", help="Validate tracked /continue program state")
     validate_state.add_argument("path", default="control_records/program_state.yaml", nargs="?")
@@ -362,6 +390,24 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "validate-control-records":
         return print_result(validate_control_records(args.path))
 
+    if args.command == "validate-system-layers":
+        return print_result(validate_system_layers(args.path))
+
+    if args.command == "validate-discovery-records":
+        return print_result(validate_discovery_records(args.path))
+
+    if args.command == "validate-roles":
+        return print_result(validate_roles())
+
+    if args.command == "validate-artifact-contracts":
+        return print_result(validate_artifact_contracts(args.path))
+
+    if args.command == "validate-core-skill-proposals":
+        return print_result(validate_core_skill_proposals(args.path))
+
+    if args.command == "validate-skill-lifecycle":
+        return print_result(validate_skill_lifecycle(args.path))
+
     if args.command == "validate-program-state":
         return print_result(validate_program_state(args.path))
 
@@ -443,6 +489,12 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_format_profiles(args.format_profiles))
         result.extend(validate_config_sources(args.config_sources))
         result.extend(validate_control_records(args.control_records))
+        result.extend(validate_system_layers(args.system_layers))
+        result.extend(validate_discovery_records(args.discovery_records))
+        result.extend(validate_roles())
+        result.extend(validate_artifact_contracts(args.artifact_contracts))
+        result.extend(validate_core_skill_proposals(args.core_skill_proposals))
+        result.extend(validate_skill_lifecycle(args.skill_lifecycle))
         result.extend(validate_program_state())
         result.extend(validate_agentjob_registry())
         result.extend(validate_director_decision_registry())
@@ -457,7 +509,7 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_toml_config(args.config_sources))
         result.extend(validate_jsonschema_contracts(args.contracts_root))
         result.extend(validate_registry_graph(args.registries))
-        boundary_payload = validate_check_diff("AJ-SFADEV-01-PRD-INTEGRATION-001")
+        boundary_payload = validate_check_diff("AJ-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001")
         result.extend(
             ValidationResult(
                 bool(boundary_payload.get("ok")),

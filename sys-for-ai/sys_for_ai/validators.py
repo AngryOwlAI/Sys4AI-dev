@@ -47,6 +47,23 @@ TRACE_CLASSES_BY_COVERAGE = {
     "not_applicable": {"out_of_phase"},
 }
 SEMANTIC_REVIEW_VERDICTS = {"sufficient", "needs_evidence", "incorrect_mapping"}
+SYSTEM_LAYER_IDS = {
+    "development_system",
+    "framework_product",
+    "target_system_template",
+    "target_system_instance",
+    "derivative_surface",
+}
+SKILL_LIFECYCLE_STATUS_NAMES = {
+    "proposed",
+    "imported_unadapted",
+    "adapter_shell",
+    "adapted_runtime_active",
+    "product_scaffold_reference",
+    "deprecated",
+    "superseded",
+    "blocked",
+}
 
 AGENTJOB_REQUIRED_FIELDS = {
     "agentjob_id",
@@ -265,6 +282,134 @@ REGISTRY_HEADERS: dict[str, list[str]] = {
         "last_validated_at",
         "notes",
     ],
+    "system_layer_registry.csv": [
+        "layer_id",
+        "layer_name",
+        "layer_type",
+        "canonical_roots",
+        "mutable_roots",
+        "derivative_roots",
+        "authority_notes",
+        "requires_director_decision_for_mutation",
+        "default_validators",
+        "owner",
+        "source_hash",
+        "last_validated_at",
+        "notes",
+    ],
+    "discovery_record_registry.csv": [
+        "discovery_record_id",
+        "path",
+        "subject_system_id",
+        "subject_layer",
+        "status",
+        "producer_agentjob_id",
+        "source_authority_status",
+        "candidate_requirement_count",
+        "open_question_count",
+        "downstream_usrd_path",
+        "validation_status",
+        "source_hash",
+        "last_validated_at",
+        "notes",
+    ],
+    "role_registry.csv": [
+        "role_id",
+        "role_name",
+        "role_class",
+        "system_layer_scope",
+        "primary_mission",
+        "required_skills",
+        "optional_skills",
+        "forbidden_skills",
+        "primary_outputs",
+        "allowed_artifact_classes",
+        "may_create_agentjobs",
+        "requires_director_decision",
+        "authority_status",
+        "owner",
+        "supersedes",
+        "source_hash",
+        "last_validated_at",
+        "notes",
+    ],
+    "role_skill_crosswalk.csv": [
+        "crosswalk_id",
+        "role_id",
+        "skill_id",
+        "binding_type",
+        "required_when",
+        "system_layer_scope",
+        "invocation_policy",
+        "authority_status",
+        "evidence_path",
+        "source_hash",
+        "last_validated_at",
+        "notes",
+    ],
+    "role_execution_binding_registry.csv": [
+        "binding_id",
+        "role_id",
+        "allowed_agentjob_types",
+        "allowed_reads",
+        "allowed_writes",
+        "forbidden_actions",
+        "required_validators",
+        "completion_evidence",
+        "expiry_policy",
+        "authority_status",
+        "owner",
+        "supersedes",
+        "source_hash",
+        "last_validated_at",
+        "notes",
+    ],
+    "artifact_contract_registry.csv": [
+        "artifact_contract_id",
+        "artifact_type",
+        "canonical_filename_or_pattern",
+        "producer_role_ids",
+        "consumer_role_ids",
+        "system_layer_scope",
+        "authority_default",
+        "required_sections",
+        "validation_contract_id",
+        "registry_required",
+        "derivative_surfaces",
+        "promotion_rule",
+        "source_hash",
+        "last_validated_at",
+        "notes",
+    ],
+    "core_skill_proposal_registry.csv": [
+        "proposal_id",
+        "skill_id",
+        "skill_family",
+        "priority",
+        "status",
+        "core_or_project_specific",
+        "required_by_roles",
+        "source_rationale",
+        "target_runtime_path",
+        "product_scaffold_path",
+        "validator_plan",
+        "owner",
+        "source_hash",
+        "last_validated_at",
+        "notes",
+    ],
+    "skill_lifecycle_status_registry.csv": [
+        "status_id",
+        "status_name",
+        "may_execute_runtime",
+        "may_be_used_as_authority",
+        "requires_provenance",
+        "requires_manifest",
+        "requires_skill_md",
+        "requires_validator",
+        "allowed_roots",
+        "notes",
+    ],
 }
 
 EXPECTED_FORMAT_PROFILE_IDS = {
@@ -286,6 +431,14 @@ ROW_CONTRACTS = {
     "handoff_registry.csv": "schemas/contracts/handoff_registry_row.schema.json",
     "completion_receipt_registry.csv": "schemas/contracts/completion_receipt_registry_row.schema.json",
     "memory_preflight_receipt_registry.csv": "schemas/contracts/memory_preflight_receipt_registry_row.schema.json",
+    "system_layer_registry.csv": "schemas/contracts/system_layer_registry_row.schema.json",
+    "discovery_record_registry.csv": "schemas/contracts/discovery_record_registry_row.schema.json",
+    "role_registry.csv": "schemas/contracts/role_registry_row.schema.json",
+    "role_skill_crosswalk.csv": "schemas/contracts/role_skill_crosswalk_row.schema.json",
+    "role_execution_binding_registry.csv": "schemas/contracts/role_execution_binding_registry_row.schema.json",
+    "artifact_contract_registry.csv": "schemas/contracts/artifact_contract_registry_row.schema.json",
+    "core_skill_proposal_registry.csv": "schemas/contracts/core_skill_proposal_registry_row.schema.json",
+    "skill_lifecycle_status_registry.csv": "schemas/contracts/skill_lifecycle_status_registry_row.schema.json",
 }
 
 
@@ -426,6 +579,67 @@ def _split_selectors(value: str) -> list[str]:
 
 def _matches_selector(selector: str, candidates: Iterable[str]) -> list[str]:
     return sorted(candidate for candidate in candidates if fnmatchcase(candidate, selector))
+
+
+def _check_layer_scope(label: str, value: str, known_layers: set[str]) -> list[str]:
+    messages: list[str] = []
+    for layer_id in _split_selectors(value):
+        if layer_id not in known_layers:
+            messages.append(f"{label}: unknown system layer {layer_id!r}")
+    return messages
+
+
+def _load_skill_ids() -> set[str]:
+    skill_ids: set[str] = set()
+    root_registry = Path("../.agents/skill_registry/SKILL_REGISTRY.yaml")
+    if root_registry.exists():
+        data = load_yaml(root_registry)
+        if isinstance(data, dict):
+            for item in data.get("skills", []):
+                if isinstance(item, dict) and item.get("skill_id"):
+                    skill_ids.add(str(item["skill_id"]))
+
+    product_manifest = Path("skills/core_skill_manifest.yaml")
+    if product_manifest.exists():
+        data = load_yaml(product_manifest)
+        if isinstance(data, dict):
+            for item in data.get("skills", []):
+                if isinstance(item, dict) and item.get("id"):
+                    skill_ids.add(str(item["id"]))
+    return skill_ids
+
+
+def _load_runtime_skill_lifecycle() -> dict[str, str]:
+    lifecycle: dict[str, str] = {}
+    root_registry = Path("../.agents/skill_registry/SKILL_REGISTRY.yaml")
+    if root_registry.exists():
+        data = load_yaml(root_registry)
+        if isinstance(data, dict):
+            for item in data.get("skills", []):
+                if not isinstance(item, dict):
+                    continue
+                skill_id = item.get("skill_id")
+                if skill_id:
+                    lifecycle[str(skill_id)] = str(item.get("migration_phase", ""))
+    return lifecycle
+
+
+def _load_product_skill_lifecycle() -> dict[str, str]:
+    lifecycle: dict[str, str] = {}
+    product_manifest = Path("skills/core_skill_manifest.yaml")
+    if product_manifest.exists():
+        data = load_yaml(product_manifest)
+        if isinstance(data, dict):
+            for item in data.get("skills", []):
+                if not isinstance(item, dict):
+                    continue
+                skill_id = item.get("id")
+                if skill_id:
+                    adaptation_status = str(item.get("adaptation_status", ""))
+                    if adaptation_status == "scaffold_template":
+                        adaptation_status = "product_scaffold_reference"
+                    lifecycle[str(skill_id)] = adaptation_status
+    return lifecycle
 
 
 def _find_duplicate_requirement_ids(declarations: Iterable[RequirementDeclaration]) -> list[str]:
@@ -920,6 +1134,241 @@ def validate_memory_preflight_registry(path: str | Path = "registries/memory_pre
     )
 
 
+def validate_system_layers(path: str | Path = "registries/system_layer_registry.csv") -> ValidationResult:
+    result = _validate_rows_against_contract(
+        path,
+        ROW_CONTRACTS["system_layer_registry.csv"],
+        "layer_id",
+    )
+    rows = read_registry_rows(path)
+    seen = {row.get("layer_id", "") for row in rows}
+    missing = sorted(SYSTEM_LAYER_IDS - seen)
+    if missing:
+        result.ok = False
+        result.messages.append(f"{path}: missing expected system layer IDs: {', '.join(missing)}")
+    for row in rows:
+        if row.get("layer_id") != row.get("layer_type"):
+            result.ok = False
+            result.messages.append(
+                f"{path}: {row.get('layer_id')}: layer_type must match layer_id"
+            )
+    return result
+
+
+def validate_discovery_records(path: str | Path = "registries/discovery_record_registry.csv") -> ValidationResult:
+    result = _validate_rows_against_contract(
+        path,
+        ROW_CONTRACTS["discovery_record_registry.csv"],
+        "discovery_record_id",
+    )
+    known_layers = _known_system_layers()
+    for row in read_registry_rows(path):
+        record_id = row.get("discovery_record_id", "")
+        subject_layer = row.get("subject_layer", "")
+        if subject_layer not in known_layers:
+            result.ok = False
+            result.messages.append(f"{path}: {record_id}: unknown subject_layer {subject_layer!r}")
+        record_path = resolve_registered_path(row.get("path", ""))
+        if not record_path.exists():
+            result.ok = False
+            result.messages.append(f"{path}: {record_id}: missing discovery record {record_path}")
+        downstream = row.get("downstream_usrd_path", "").strip()
+        if downstream and not resolve_registered_path(downstream).exists():
+            result.messages.append(f"{path}: {record_id}: downstream USRD path not found yet: {downstream}")
+    return result
+
+
+def validate_roles(
+    role_registry: str | Path = "registries/role_registry.csv",
+    crosswalk: str | Path = "registries/role_skill_crosswalk.csv",
+    execution_bindings: str | Path = "registries/role_execution_binding_registry.csv",
+) -> ValidationResult:
+    result = _validate_rows_against_contract(
+        role_registry,
+        ROW_CONTRACTS["role_registry.csv"],
+        "role_id",
+    )
+    crosswalk_result = _validate_rows_against_contract(
+        crosswalk,
+        ROW_CONTRACTS["role_skill_crosswalk.csv"],
+        "crosswalk_id",
+    )
+    execution_result = _validate_rows_against_contract(
+        execution_bindings,
+        ROW_CONTRACTS["role_execution_binding_registry.csv"],
+        "binding_id",
+    )
+    result.extend(crosswalk_result)
+    result.extend(execution_result)
+    result.messages.extend(_validate_role_relationships(role_registry, crosswalk, execution_bindings))
+    result.ok = not [msg for msg in result.messages if "validation passed" not in msg and "row validation passed" not in msg]
+    if result.ok and not result.messages:
+        result.messages.append("roles: validation passed")
+    return result
+
+
+def validate_artifact_contracts(path: str | Path = "registries/artifact_contract_registry.csv") -> ValidationResult:
+    result = _validate_rows_against_contract(
+        path,
+        ROW_CONTRACTS["artifact_contract_registry.csv"],
+        "artifact_contract_id",
+    )
+    known_roles = _known_roles()
+    known_layers = _known_system_layers()
+    contract_ids = _known_contract_ids()
+    for row in read_registry_rows(path):
+        artifact_id = row.get("artifact_contract_id", "")
+        result.messages.extend(_unknown_roles_message(path, artifact_id, "producer_role_ids", row.get("producer_role_ids", ""), known_roles))
+        result.messages.extend(_unknown_roles_message(path, artifact_id, "consumer_role_ids", row.get("consumer_role_ids", ""), known_roles))
+        result.messages.extend(_check_layer_scope(f"{path}: {artifact_id}", row.get("system_layer_scope", ""), known_layers))
+        contract_id = row.get("validation_contract_id", "").strip()
+        if contract_id and contract_id not in contract_ids:
+            result.messages.append(f"{path}: {artifact_id}: unknown validation_contract_id {contract_id!r}")
+    result.ok = not [msg for msg in result.messages if "row validation passed" not in msg]
+    return result
+
+
+def validate_core_skill_proposals(path: str | Path = "registries/core_skill_proposal_registry.csv") -> ValidationResult:
+    result = _validate_rows_against_contract(
+        path,
+        ROW_CONTRACTS["core_skill_proposal_registry.csv"],
+        "proposal_id",
+    )
+    known_roles = _known_roles()
+    for row in read_registry_rows(path):
+        proposal_id = row.get("proposal_id", "")
+        if row.get("core_or_project_specific") != "core":
+            result.ok = False
+            result.messages.append(f"{path}: {proposal_id}: core_or_project_specific must be core")
+        result.messages.extend(
+            _unknown_roles_message(path, proposal_id, "required_by_roles", row.get("required_by_roles", ""), known_roles)
+        )
+    result.ok = not [msg for msg in result.messages if "row validation passed" not in msg]
+    return result
+
+
+def validate_skill_lifecycle(path: str | Path = "registries/skill_lifecycle_status_registry.csv") -> ValidationResult:
+    result = _validate_rows_against_contract(
+        path,
+        ROW_CONTRACTS["skill_lifecycle_status_registry.csv"],
+        "status_id",
+    )
+    rows = read_registry_rows(path)
+    statuses = {row.get("status_name", "") for row in rows}
+    missing = sorted(SKILL_LIFECYCLE_STATUS_NAMES - statuses)
+    if missing:
+        result.ok = False
+        result.messages.append(f"{path}: missing expected lifecycle statuses: {', '.join(missing)}")
+
+    executable_statuses = {
+        row.get("status_name", "")
+        for row in rows
+        if row.get("may_execute_runtime") == "true" and row.get("may_be_used_as_authority") == "true"
+    }
+    for skill_id, lifecycle in _load_runtime_skill_lifecycle().items():
+        if lifecycle not in statuses:
+            result.ok = False
+            result.messages.append(f"../.agents/skill_registry/SKILL_REGISTRY.yaml: {skill_id}: unknown lifecycle {lifecycle!r}")
+        if lifecycle and lifecycle not in executable_statuses:
+            result.ok = False
+            result.messages.append(
+                f"../.agents/skill_registry/SKILL_REGISTRY.yaml: {skill_id}: active runtime skill has non-executable lifecycle {lifecycle!r}"
+            )
+    for skill_id, lifecycle in _load_product_skill_lifecycle().items():
+        if lifecycle and lifecycle not in statuses:
+            result.ok = False
+            result.messages.append(f"skills/core_skill_manifest.yaml: {skill_id}: unknown lifecycle {lifecycle!r}")
+    return result
+
+
+def _known_system_layers(path: str | Path = "registries/system_layer_registry.csv") -> set[str]:
+    registry = Path(path)
+    if not registry.exists():
+        return set()
+    return {row.get("layer_id", "") for row in read_registry_rows(registry) if row.get("layer_id")}
+
+
+def _known_roles(path: str | Path = "registries/role_registry.csv") -> set[str]:
+    registry = Path(path)
+    if not registry.exists():
+        return set()
+    return {row.get("role_id", "") for row in read_registry_rows(registry) if row.get("role_id")}
+
+
+def _known_contract_ids(path: str | Path = "registries/validation_contract_registry.csv") -> set[str]:
+    registry = Path(path)
+    if not registry.exists():
+        return set()
+    return {row.get("contract_id", "") for row in read_registry_rows(registry) if row.get("contract_id")}
+
+
+def _known_proposed_skill_ids(path: str | Path = "registries/core_skill_proposal_registry.csv") -> set[str]:
+    registry = Path(path)
+    if not registry.exists():
+        return set()
+    return {
+        row.get("skill_id", "")
+        for row in read_registry_rows(registry)
+        if row.get("skill_id") and row.get("status") not in {"blocked", "superseded"}
+    }
+
+
+def _unknown_roles_message(
+    path: str | Path,
+    row_id: str,
+    field_name: str,
+    value: str,
+    known_roles: set[str],
+) -> list[str]:
+    messages: list[str] = []
+    for role_id in _split_selectors(value):
+        if role_id in {"all_agents", "human_sponsor"}:
+            continue
+        if role_id not in known_roles:
+            messages.append(f"{path}: {row_id}: {field_name} references unknown role {role_id!r}")
+    return messages
+
+
+def _validate_role_relationships(
+    role_registry: str | Path,
+    crosswalk: str | Path,
+    execution_bindings: str | Path,
+) -> list[str]:
+    messages: list[str] = []
+    roles = read_registry_rows(role_registry)
+    role_ids = {row.get("role_id", "") for row in roles}
+    known_layers = _known_system_layers()
+    known_skills = _load_skill_ids() | _known_proposed_skill_ids()
+
+    for row in roles:
+        role_id = row.get("role_id", "")
+        messages.extend(_check_layer_scope(f"{role_registry}: {role_id}", row.get("system_layer_scope", ""), known_layers))
+        for field_name in ("required_skills", "optional_skills", "forbidden_skills"):
+            for skill_id in _split_selectors(row.get(field_name, "")):
+                if skill_id not in known_skills:
+                    messages.append(f"{role_registry}: {role_id}: {field_name} references unknown skill {skill_id!r}")
+
+    for row in read_registry_rows(crosswalk):
+        crosswalk_id = row.get("crosswalk_id", "")
+        role_id = row.get("role_id", "")
+        skill_id = row.get("skill_id", "")
+        if role_id not in role_ids:
+            messages.append(f"{crosswalk}: {crosswalk_id}: unknown role_id {role_id!r}")
+        if skill_id not in known_skills:
+            messages.append(f"{crosswalk}: {crosswalk_id}: unknown skill_id {skill_id!r}")
+        messages.extend(_check_layer_scope(f"{crosswalk}: {crosswalk_id}", row.get("system_layer_scope", ""), known_layers))
+        evidence_path = resolve_registered_path(row.get("evidence_path", ""))
+        if not evidence_path.exists():
+            messages.append(f"{crosswalk}: {crosswalk_id}: missing evidence_path {evidence_path}")
+
+    for row in read_registry_rows(execution_bindings):
+        binding_id = row.get("binding_id", "")
+        role_id = row.get("role_id", "")
+        if role_id not in role_ids:
+            messages.append(f"{execution_bindings}: {binding_id}: unknown role_id {role_id!r}")
+    return messages
+
+
 def _validate_yaml_records_in_root(root: str | Path, schema_name: str, id_field: str) -> ValidationResult:
     target_root = Path(root)
     messages: list[str] = []
@@ -1129,6 +1578,68 @@ def validate_registry_graph(registry_dir: str | Path) -> ValidationResult:
     for path in sorted(Path("schemas/contracts").glob("*.schema.json")):
         if path.resolve() not in contract_paths:
             messages.append(f"{path}: JSON Schema contract missing validation contract registry row")
+
+    known_layers = _known_system_layers(root / "system_layer_registry.csv")
+    known_roles = _known_roles(root / "role_registry.csv")
+    known_skills = _load_skill_ids() | _known_proposed_skill_ids(root / "core_skill_proposal_registry.csv")
+    lifecycle_statuses = {
+        row.get("status_name", "")
+        for row in read_registry_rows(root / "skill_lifecycle_status_registry.csv")
+        if row.get("status_name")
+    }
+
+    for row in read_registry_rows(root / "role_registry.csv"):
+        role_id = row.get("role_id", "")
+        messages.extend(_check_layer_scope(f"{root / 'role_registry.csv'}: {role_id}", row.get("system_layer_scope", ""), known_layers))
+        for field_name in ("required_skills", "optional_skills", "forbidden_skills"):
+            for skill_id in _split_selectors(row.get(field_name, "")):
+                if skill_id not in known_skills:
+                    messages.append(f"{root / 'role_registry.csv'}: {role_id}: {field_name} references unknown skill {skill_id!r}")
+
+    for row in read_registry_rows(root / "role_skill_crosswalk.csv"):
+        crosswalk_id = row.get("crosswalk_id", "")
+        role_id = row.get("role_id", "")
+        skill_id = row.get("skill_id", "")
+        if role_id not in known_roles:
+            messages.append(f"{root / 'role_skill_crosswalk.csv'}: {crosswalk_id}: unknown role_id {role_id!r}")
+        if skill_id not in known_skills:
+            messages.append(f"{root / 'role_skill_crosswalk.csv'}: {crosswalk_id}: unknown skill_id {skill_id!r}")
+        messages.extend(_check_layer_scope(f"{root / 'role_skill_crosswalk.csv'}: {crosswalk_id}", row.get("system_layer_scope", ""), known_layers))
+        evidence_path = resolve_registered_path(row.get("evidence_path", ""))
+        if not evidence_path.exists():
+            messages.append(f"{root / 'role_skill_crosswalk.csv'}: {crosswalk_id}: missing evidence_path {evidence_path}")
+
+    for row in read_registry_rows(root / "role_execution_binding_registry.csv"):
+        binding_id = row.get("binding_id", "")
+        if row.get("role_id", "") not in known_roles:
+            messages.append(f"{root / 'role_execution_binding_registry.csv'}: {binding_id}: unknown role_id {row.get('role_id')!r}")
+
+    for row in read_registry_rows(root / "artifact_contract_registry.csv"):
+        artifact_id = row.get("artifact_contract_id", "")
+        messages.extend(_unknown_roles_message(root / "artifact_contract_registry.csv", artifact_id, "producer_role_ids", row.get("producer_role_ids", ""), known_roles))
+        messages.extend(_unknown_roles_message(root / "artifact_contract_registry.csv", artifact_id, "consumer_role_ids", row.get("consumer_role_ids", ""), known_roles))
+        messages.extend(_check_layer_scope(f"{root / 'artifact_contract_registry.csv'}: {artifact_id}", row.get("system_layer_scope", ""), known_layers))
+        contract_id = row.get("validation_contract_id", "").strip()
+        if contract_id and contract_id not in contract_ids:
+            messages.append(f"{root / 'artifact_contract_registry.csv'}: {artifact_id}: unknown validation_contract_id {contract_id!r}")
+
+    for row in read_registry_rows(root / "discovery_record_registry.csv"):
+        discovery_id = row.get("discovery_record_id", "")
+        discovery_path = resolve_registered_path(row.get("path", ""))
+        if not discovery_path.exists():
+            messages.append(f"{root / 'discovery_record_registry.csv'}: {discovery_id}: missing discovery record {row.get('path')}")
+        if row.get("subject_layer", "") not in known_layers:
+            messages.append(f"{root / 'discovery_record_registry.csv'}: {discovery_id}: unknown subject_layer {row.get('subject_layer')!r}")
+
+    for row in read_registry_rows(root / "core_skill_proposal_registry.csv"):
+        proposal_id = row.get("proposal_id", "")
+        if row.get("core_or_project_specific") != "core":
+            messages.append(f"{root / 'core_skill_proposal_registry.csv'}: {proposal_id}: core_or_project_specific must be core")
+        messages.extend(_unknown_roles_message(root / "core_skill_proposal_registry.csv", proposal_id, "required_by_roles", row.get("required_by_roles", ""), known_roles))
+
+    for skill_id, lifecycle in {**_load_product_skill_lifecycle(), **_load_runtime_skill_lifecycle()}.items():
+        if lifecycle and lifecycle not in lifecycle_statuses:
+            messages.append(f"skill lifecycle: {skill_id}: unknown lifecycle status {lifecycle!r}")
 
     return ValidationResult(not messages, messages or [f"{root}: registry graph validation passed"])
 

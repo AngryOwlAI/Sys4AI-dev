@@ -1,0 +1,9 @@
+status_id,status_name,may_execute_runtime,may_be_used_as_authority,requires_provenance,requires_manifest,requires_skill_md,requires_validator,allowed_roots,notes
+status_proposed,proposed,false,false,true,false,false,false,.agents/skills;sys-for-ai/skills/core,Idea or planned skill not yet usable as runtime authority.
+status_imported_unadapted,imported_unadapted,false,false,true,true,true,false,sys-for-ai/skills/core,Imported source content before local adaptation.
+status_adapter_shell,adapter_shell,false,false,true,true,true,false,sys-for-ai/skills/core,Local adapter shell exists but full adaptation is pending.
+status_adapted_runtime_active,adapted_runtime_active,true,true,true,true,true,true,.agents/skills,Active development runtime skill.
+status_product_scaffold_reference,product_scaffold_reference,false,false,true,true,true,true,sys-for-ai/skills/core,Product scaffold or reference skill only.
+status_deprecated,deprecated,false,false,true,true,true,true,.agents/skills;sys-for-ai/skills/core,Deprecated skill cannot be required for new active roles.
+status_superseded,superseded,false,false,true,true,true,true,.agents/skills;sys-for-ai/skills/core,Superseded skill cannot be required for new active roles.
+status_blocked,blocked,false,false,true,false,false,true,.agents/skills;sys-for-ai/skills/core,Blocked skill cannot be used until resolved.

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys-for-ai/schemas/contracts/core_skill_proposal_registry_row.schema.json",
+  "title": "Core skill proposal registry row",
+  "type": "object",
+  "required": [
+    "proposal_id",
+    "skill_id",
+    "skill_family",
+    "priority",
+    "status",
+    "core_or_project_specific",
+    "required_by_roles",
+    "source_rationale",
+    "target_runtime_path",
+    "product_scaffold_path",
+    "validator_plan",
+    "owner",
+    "source_hash",
+    "last_validated_at",
+    "notes"
+  ],
+  "properties": {
+    "proposal_id": { "type": "string", "pattern": "^proposal_[a-z0-9_]+$" },
+    "skill_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "priority": { "type": "string", "pattern": "^[0-9]+$" },
+    "status": {
+      "enum": ["proposed", "approved_for_scaffold", "scaffolded", "active", "blocked", "deferred", "superseded"]
+    },
+    "core_or_project_specific": { "enum": ["core", "project_specific"] },
+    "target_runtime_path": { "type": "string", "minLength": 1, "pattern": "^(?!/).*$" },
+    "product_scaffold_path": { "type": "string", "minLength": 1, "pattern": "^(?!/).*$" }
+  },
+  "additionalProperties": { "type": "string" }
+}

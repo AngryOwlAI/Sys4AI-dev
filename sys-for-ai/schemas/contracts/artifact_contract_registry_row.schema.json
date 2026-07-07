@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys-for-ai/schemas/contracts/artifact_contract_registry_row.schema.json",
+  "title": "Artifact contract registry row",
+  "type": "object",
+  "required": [
+    "artifact_contract_id",
+    "artifact_type",
+    "canonical_filename_or_pattern",
+    "producer_role_ids",
+    "consumer_role_ids",
+    "system_layer_scope",
+    "authority_default",
+    "required_sections",
+    "validation_contract_id",
+    "registry_required",
+    "derivative_surfaces",
+    "promotion_rule",
+    "source_hash",
+    "last_validated_at",
+    "notes"
+  ],
+  "properties": {
+    "artifact_contract_id": { "type": "string", "pattern": "^artifact_[a-z0-9_]+$" },
+    "artifact_type": { "type": "string", "minLength": 1 },
+    "canonical_filename_or_pattern": { "type": "string", "minLength": 1, "pattern": "^(?!/).*$" },
+    "producer_role_ids": { "type": "string", "minLength": 1 },
+    "consumer_role_ids": { "type": "string", "minLength": 1 },
+    "system_layer_scope": { "type": "string", "minLength": 1 },
+    "authority_default": {
+      "enum": ["candidate", "controlled_candidate", "controlled", "canonical_draft", "canonical", "derivative"]
+    },
+    "registry_required": { "enum": ["true", "false"] }
+  },
+  "additionalProperties": { "type": "string" }
+}

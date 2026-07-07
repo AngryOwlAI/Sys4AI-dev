@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys-for-ai/schemas/contracts/role_skill_crosswalk_row.schema.json",
+  "title": "Role skill crosswalk row",
+  "type": "object",
+  "required": [
+    "crosswalk_id",
+    "role_id",
+    "skill_id",
+    "binding_type",
+    "required_when",
+    "system_layer_scope",
+    "invocation_policy",
+    "authority_status",
+    "evidence_path",
+    "source_hash",
+    "last_validated_at",
+    "notes"
+  ],
+  "properties": {
+    "crosswalk_id": { "type": "string", "pattern": "^cross_[a-z0-9_]+$" },
+    "role_id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+    "skill_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "binding_type": {
+      "enum": ["required", "optional", "forbidden", "conditional", "recommended"]
+    },
+    "required_when": { "type": "string", "minLength": 1 },
+    "system_layer_scope": { "type": "string", "minLength": 1 },
+    "authority_status": { "enum": ["controlled", "draft", "superseded", "deprecated"] },
+    "evidence_path": { "type": "string", "minLength": 1, "pattern": "^(?!/).*$" }
+  },
+  "additionalProperties": { "type": "string" }
+}

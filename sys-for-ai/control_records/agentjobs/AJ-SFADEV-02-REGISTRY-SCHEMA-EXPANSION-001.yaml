@@ -1,0 +1,112 @@
+agentjob_id: AJ-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+schema_version: 0.2.0
+status: completed
+objective: >
+  Add registries, row schemas, CLI validators, Makefile targets, and registry
+  graph checks for system layers, discovery records, roles, artifact contracts,
+  core skill proposals, and skill lifecycle statuses.
+lifecycle_stage: implementation_initialization
+role_binding:
+  role_id: implementation_initialization_agent
+  binding_type: one_job_provisional_role
+  authority_scope: all-recommendations registry and schema expansion
+  expires_with_agentjob: true
+required_inputs:
+  - implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+  - implementation_plans/self_hosting_boundary_decision_record.md
+  - sys-for-ai/control_records/program_state.yaml
+  - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-01-PRD-INTEGRATION-001.yaml
+  - sys-for-ai/registries/**
+  - sys-for-ai/schemas/contracts/**
+  - sys-for-ai/sys_for_ai/validators.py
+  - sys-for-ai/sys_for_ai/cli.py
+allowed_reads:
+  - PRDs/**
+  - implementation_plans/**
+  - temp_handoff/**
+  - .agents/**
+  - sys-for-ai/**
+allowed_writes:
+  - sys-for-ai/Makefile
+  - sys-for-ai/sys_for_ai/validators.py
+  - sys-for-ai/sys_for_ai/cli.py
+  - sys-for-ai/tests/test_agentjob_boundaries.py
+  - sys-for-ai/tests/test_program_state.py
+  - sys-for-ai/tests/test_self_hosting_acceptance.py
+  - sys-for-ai/registries/**
+  - sys-for-ai/schemas/contracts/**
+  - sys-for-ai/control_records/director_decisions/DDR-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml
+  - sys-for-ai/control_records/agentjobs/AJ-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml
+  - sys-for-ai/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml
+  - sys-for-ai/control_records/completions/RECEIPT-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml
+  - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml
+  - sys-for-ai/control_records/program_state.yaml
+  - sys-for-ai/docs/generated/**
+  - temp_handoff/handoff-0014.md
+generated_paths:
+  - sys-for-ai/docs/generated/**
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - sys-for-ai/.venv/**
+  - PRDs/**
+  - sys-for-ai/docs/generated/** as canonical source
+forbidden_actions:
+  - Remove existing registry headers.
+  - Break existing validation commands.
+  - Execute more than one all-recommendations AgentJob in one continuation invocation.
+  - Treat generated derivatives or chat memory as source authority.
+  - Modify PRD authority.
+  - Promote proposed skills to active runtime authority.
+memory_preflight:
+  required: true
+  minimum_queries:
+    - registry schema expansion
+    - source-first memory continue handoff AgentJob
+  required_evidence:
+    - self-hosting boundary decision record inspection
+    - latest controlled handoff inspection
+    - all-recommendations plan AJ-02 inspection
+    - current registry and schema scaffold inspection
+expected_outputs:
+  - New registry files for system layers discovery records roles artifact contracts core skill proposals and skill lifecycle statuses.
+  - New JSON Schema row contracts for those registries.
+  - CLI validation commands for the new registry surfaces.
+  - Makefile validation targets for the new registry surfaces.
+  - Aggregate validation includes the new targets.
+  - Registry graph checks role skill artifact layer discovery and lifecycle references.
+  - Completion receipt and handoff evidence.
+validators:
+  - cd sys-for-ai && make validate-jsonschema-contracts
+  - cd sys-for-ai && make validate-registry-graph
+  - cd sys-for-ai && make validate
+completion_evidence_required:
+  - changed_artifacts
+  - command_results
+  - validation_status
+  - residual_risk
+handoff_policy:
+  create_handoff_when:
+    - registry and schema expansion completes
+    - next AgentJob is recommended
+authority_boundary:
+  may_modify_product_scaffold: false
+  may_modify_canonical_prds: false
+  may_modify_registries: true
+  may_modify_schemas: true
+  may_modify_validators: true
+  may_promote_generated_derivatives: false
+  may_change_runtime_skill_authority: false
+  registry_surface: sys-for-ai/registries
+  schema_surface: sys-for-ai/schemas/contracts
+stop_conditions:
+  - Required plan or latest handoff source cannot be inspected.
+  - Existing registry headers must be removed.
+  - Existing aggregate validation breaks without repair path.
+  - Required write is outside allowlist.
+  - More than one AgentJob is required.
+created_at: "2026-07-07T03:45:23Z"
+activated_at: "2026-07-07T03:45:23Z"
+completed_at: "2026-07-07T03:45:23Z"

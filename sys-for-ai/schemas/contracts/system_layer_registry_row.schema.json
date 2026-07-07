@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys-for-ai/schemas/contracts/system_layer_registry_row.schema.json",
+  "title": "System layer registry row",
+  "type": "object",
+  "required": [
+    "layer_id",
+    "layer_name",
+    "layer_type",
+    "canonical_roots",
+    "mutable_roots",
+    "derivative_roots",
+    "authority_notes",
+    "requires_director_decision_for_mutation",
+    "default_validators",
+    "owner",
+    "source_hash",
+    "last_validated_at",
+    "notes"
+  ],
+  "properties": {
+    "layer_id": {
+      "enum": [
+        "development_system",
+        "framework_product",
+        "target_system_template",
+        "target_system_instance",
+        "derivative_surface"
+      ]
+    },
+    "layer_name": { "type": "string", "minLength": 1 },
+    "layer_type": {
+      "enum": [
+        "development_system",
+        "framework_product",
+        "target_system_template",
+        "target_system_instance",
+        "derivative_surface"
+      ]
+    },
+    "canonical_roots": { "type": "string", "minLength": 1 },
+    "mutable_roots": { "type": "string" },
+    "derivative_roots": { "type": "string" },
+    "requires_director_decision_for_mutation": { "enum": ["true", "false"] },
+    "owner": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": { "type": "string" }
+}

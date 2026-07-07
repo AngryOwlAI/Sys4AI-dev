@@ -33,6 +33,14 @@ page_metadata:
     - contract_handoff_registry_row
     - contract_completion_receipt_registry_row
     - contract_memory_preflight_receipt_registry_row
+    - contract_system_layer_registry_row
+    - contract_discovery_record_registry_row
+    - contract_role_registry_row
+    - contract_role_skill_crosswalk_row
+    - contract_role_execution_binding_registry_row
+    - contract_artifact_contract_registry_row
+    - contract_core_skill_proposal_registry_row
+    - contract_skill_lifecycle_status_registry_row
   generated_at: 2026-07-06T00:00:00Z
   generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
   stale_or_orphan_status: current
@@ -82,6 +90,14 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_handoff_registry_row | schemas/contracts/handoff_registry_row.schema.json | 2020-12 | csv | handoff_registry_row | registries/handoff_registry.csv | sys-for-ai validate-handoff-registry | control_loop | controlled | pending | pending |
 | contract_completion_receipt_registry_row | schemas/contracts/completion_receipt_registry_row.schema.json | 2020-12 | csv | completion_receipt_registry_row | registries/completion_receipt_registry.csv | sys-for-ai validate-completion-receipt-registry | control_loop | controlled | pending | pending |
 | contract_memory_preflight_receipt_registry_row | schemas/contracts/memory_preflight_receipt_registry_row.schema.json | 2020-12 | csv | memory_preflight_receipt_registry_row | registries/memory_preflight_receipt_registry.csv | sys-for-ai validate-memory-preflight-registry | control_loop | controlled | pending | pending |
+| contract_system_layer_registry_row | schemas/contracts/system_layer_registry_row.schema.json | 2020-12 | csv | system_layer_registry_row | registries/system_layer_registry.csv | sys-for-ai validate-system-layers | implementation_initialization | controlled | pending | pending |
+| contract_discovery_record_registry_row | schemas/contracts/discovery_record_registry_row.schema.json | 2020-12 | csv | discovery_record_registry_row | registries/discovery_record_registry.csv | sys-for-ai validate-discovery-records | implementation_initialization | controlled | pending | pending |
+| contract_role_registry_row | schemas/contracts/role_registry_row.schema.json | 2020-12 | csv | role_registry_row | registries/role_registry.csv | sys-for-ai validate-roles | implementation_initialization | controlled | pending | pending |
+| contract_role_skill_crosswalk_row | schemas/contracts/role_skill_crosswalk_row.schema.json | 2020-12 | csv | role_skill_crosswalk_row | registries/role_skill_crosswalk.csv | sys-for-ai validate-roles | implementation_initialization | controlled | pending | pending |
+| contract_role_execution_binding_registry_row | schemas/contracts/role_execution_binding_registry_row.schema.json | 2020-12 | csv | role_execution_binding_registry_row | registries/role_execution_binding_registry.csv | sys-for-ai validate-roles | implementation_initialization | controlled | pending | pending |
+| contract_artifact_contract_registry_row | schemas/contracts/artifact_contract_registry_row.schema.json | 2020-12 | csv | artifact_contract_registry_row | registries/artifact_contract_registry.csv | sys-for-ai validate-artifact-contracts | implementation_initialization | controlled | pending | pending |
+| contract_core_skill_proposal_registry_row | schemas/contracts/core_skill_proposal_registry_row.schema.json | 2020-12 | csv | core_skill_proposal_registry_row | registries/core_skill_proposal_registry.csv | sys-for-ai validate-core-skill-proposals | implementation_initialization | controlled | pending | pending |
+| contract_skill_lifecycle_status_registry_row | schemas/contracts/skill_lifecycle_status_registry_row.schema.json | 2020-12 | csv | skill_lifecycle_status_registry_row | registries/skill_lifecycle_status_registry.csv | sys-for-ai validate-skill-lifecycle | implementation_initialization | controlled | pending | pending |
 
 ## Known Limitations
 

@@ -1,0 +1,94 @@
+handoff_id: HANDOFF-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+schema_version: 0.2.0
+framework_name: sys-for-ai
+target_agentic_system: sys-for-ai-dev
+artifact_name: All Recommendations Registry and Schema Expansion Handoff
+artifact_type: operational_handoff
+artifact_version: 0.2.0
+producing_role: implementation_initialization_agent
+artifact_status: completed
+summary: >
+  The all-recommendations registry and schema expansion slice is complete.
+  New controlled registries, row schemas, CLI validators, Makefile targets, and
+  graph checks now exist for system layers, discovery records, roles, artifact
+  contracts, core skill proposals, and skill lifecycle statuses.
+source_artifacts:
+  - implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+  - implementation_plans/self_hosting_boundary_decision_record.md
+  - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-01-PRD-INTEGRATION-001.yaml
+  - sys-for-ai/registries/system_layer_registry.csv
+  - sys-for-ai/registries/role_registry.csv
+  - sys-for-ai/registries/artifact_contract_registry.csv
+  - sys-for-ai/registries/core_skill_proposal_registry.csv
+traceability:
+  agentjob_id: AJ-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+  director_decision_id: DDR-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+  completion_receipt_id: RECEIPT-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+  implementation_plan_section: "20 AJ-02"
+  workstream: WS-02 Registry and Schema Expansion
+control_loop_notes:
+  previous_handoff_id: HANDOFF-SFADEV-01-PRD-INTEGRATION-001
+  next_agentjob_id: AJ-SFADEV-03-DISCOVERY-GATE-001
+  next_agentjob_status: pending_new_selection
+  selection_basis: Registry and schema surfaces now exist so the discovery gate can add operational RDR behavior.
+memory_preflight:
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+  usable_for_routing: true
+  required_next_queries:
+    - discovery gate implementation
+    - role governance validate-roles
+format_profile_evidence:
+  csv_registries_added:
+    - registries/system_layer_registry.csv
+    - registries/discovery_record_registry.csv
+    - registries/role_registry.csv
+    - registries/role_skill_crosswalk.csv
+    - registries/role_execution_binding_registry.csv
+    - registries/artifact_contract_registry.csv
+    - registries/core_skill_proposal_registry.csv
+    - registries/skill_lifecycle_status_registry.csv
+  jsonschema_contracts_added:
+    - schemas/contracts/system_layer_registry_row.schema.json
+    - schemas/contracts/discovery_record_registry_row.schema.json
+    - schemas/contracts/role_registry_row.schema.json
+    - schemas/contracts/role_skill_crosswalk_row.schema.json
+    - schemas/contracts/role_execution_binding_registry_row.schema.json
+    - schemas/contracts/artifact_contract_registry_row.schema.json
+    - schemas/contracts/core_skill_proposal_registry_row.schema.json
+    - schemas/contracts/skill_lifecycle_status_registry_row.schema.json
+  yaml_control_records:
+    - control_records/director_decisions/DDR-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml
+    - control_records/agentjobs/AJ-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml
+    - control_records/memory_preflights/MEMPREFLIGHT-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml
+    - control_records/completions/RECEIPT-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml
+    - control_records/handoffs/HANDOFF-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml
+source_authority_evidence:
+  canonical_sources_checked:
+    - implementation_plans/self_hosting_boundary_decision_record.md
+    - sys-for-ai/control_records/program_state.yaml
+    - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-01-PRD-INTEGRATION-001.yaml
+    - implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+    - sys-for-ai/registries/source_registry.csv
+    - sys-for-ai/registries/validation_contract_registry.csv
+  authority_boundary: Registry and schema sources are controlled; generated derivatives remain noncanonical.
+derivative_surface_evidence:
+  generated_derivatives_changed: true
+  changed_derivatives:
+    - docs/generated/configuration_control/index.md
+    - docs/generated/configuration_control/yaml-control-records.md
+    - docs/generated/validation_contracts/index.md
+    - docs/generated/validation_contracts/contracts-by-target.md
+  notes: Generated pages were refreshed because control and validation-contract registry rows changed.
+security_evidence:
+  secret_scan_scope: CSV registries JSON Schema contracts YAML control records and generated derivatives were validated by existing structured checks and diff checks.
+  new_secret_material: false
+recommended_next_role: user_wants_elicitor
+phase_boundary_notes: >
+  This handoff closes one bounded all-recommendations slice. The next logical
+  slice is discovery gate implementation. Execute only one AgentJob per
+  continuation invocation.
+stop_conditions:
+  - A future task attempts to execute multiple all-recommendations AgentJobs in one invocation.
+  - Generated derivatives are treated as source authority.
+  - Proposed core skills are treated as active runtime skills.
+  - A future route lacks a tracked Director decision, AgentJob, or explicit plan-backed selection.

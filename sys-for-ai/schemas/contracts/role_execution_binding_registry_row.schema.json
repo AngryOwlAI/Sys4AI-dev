@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys-for-ai/schemas/contracts/role_execution_binding_registry_row.schema.json",
+  "title": "Role execution binding registry row",
+  "type": "object",
+  "required": [
+    "binding_id",
+    "role_id",
+    "allowed_agentjob_types",
+    "allowed_reads",
+    "allowed_writes",
+    "forbidden_actions",
+    "required_validators",
+    "completion_evidence",
+    "expiry_policy",
+    "authority_status",
+    "owner",
+    "supersedes",
+    "source_hash",
+    "last_validated_at",
+    "notes"
+  ],
+  "properties": {
+    "binding_id": { "type": "string", "pattern": "^bind_[a-z0-9_]+$" },
+    "role_id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+    "allowed_agentjob_types": { "type": "string", "minLength": 1 },
+    "allowed_reads": { "type": "string", "minLength": 1 },
+    "allowed_writes": { "type": "string", "minLength": 1 },
+    "authority_status": { "enum": ["controlled", "draft", "superseded", "deprecated"] }
+  },
+  "additionalProperties": { "type": "string" }
+}

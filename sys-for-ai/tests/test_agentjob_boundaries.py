@@ -72,7 +72,7 @@ class AgentJobBoundaryTests(unittest.TestCase):
             self.assertIn("sys-for-ai/tmp/new.txt", payload["changed_paths"])
 
     def test_validate_check_diff_current_repo_has_no_boundary_violations(self) -> None:
-        payload = validate_check_diff("AJ-SFADEV-01-PRD-INTEGRATION-001")
+        payload = validate_check_diff("AJ-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001")
         self.assertTrue(payload["ok"], payload)
 
 

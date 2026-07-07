@@ -33,6 +33,14 @@ page_metadata:
     - contract_handoff_registry_row
     - contract_completion_receipt_registry_row
     - contract_memory_preflight_receipt_registry_row
+    - contract_system_layer_registry_row
+    - contract_discovery_record_registry_row
+    - contract_role_registry_row
+    - contract_role_skill_crosswalk_row
+    - contract_role_execution_binding_registry_row
+    - contract_artifact_contract_registry_row
+    - contract_core_skill_proposal_registry_row
+    - contract_skill_lifecycle_status_registry_row
   generated_at: 2026-07-06T00:00:00Z
   generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
   stale_or_orphan_status: current
@@ -54,6 +62,12 @@ Validation contracts prove structural conformance only. They do not prove semant
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | contract_agentjob_registry_row | schemas/contracts/agentjob_registry_row.schema.json | 2020-12 | csv | agentjob_registry_row | registries/agentjob_registry.csv | sys-for-ai validate-agentjob-registry | control_loop | controlled | pending | pending |
 
+## csv / artifact_contract_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_artifact_contract_registry_row | schemas/contracts/artifact_contract_registry_row.schema.json | 2020-12 | csv | artifact_contract_registry_row | registries/artifact_contract_registry.csv | sys-for-ai validate-artifact-contracts | implementation_initialization | controlled | pending | pending |
+
 ## csv / completion_receipt_registry_row
 
 | contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
@@ -72,11 +86,23 @@ Validation contracts prove structural conformance only. They do not prove semant
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | contract_control_record_registry_row | schemas/contracts/control_record_registry_row.schema.json | 2020-12 | csv | control_record_registry_row | registries/control_record_registry.csv | sys-for-ai validate-control-records | implementation_initialization | controlled | pending | pending |
 
+## csv / core_skill_proposal_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_core_skill_proposal_registry_row | schemas/contracts/core_skill_proposal_registry_row.schema.json | 2020-12 | csv | core_skill_proposal_registry_row | registries/core_skill_proposal_registry.csv | sys-for-ai validate-core-skill-proposals | implementation_initialization | controlled | pending | pending |
+
 ## csv / director_decision_registry_row
 
 | contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | contract_director_decision_registry_row | schemas/contracts/director_decision_registry_row.schema.json | 2020-12 | csv | director_decision_registry_row | registries/director_decision_registry.csv | sys-for-ai validate-director-decision-registry | control_loop | controlled | pending | pending |
+
+## csv / discovery_record_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_discovery_record_registry_row | schemas/contracts/discovery_record_registry_row.schema.json | 2020-12 | csv | discovery_record_registry_row | registries/discovery_record_registry.csv | sys-for-ai validate-discovery-records | implementation_initialization | controlled | pending | pending |
 
 ## csv / format_profile_registry_row
 
@@ -107,6 +133,36 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | contract_requirement_trace_registry_row | schemas/contracts/requirement_trace_registry_row.schema.json | 2020-12 | csv | requirement_trace_registry_row | registries/requirement_trace_registry.csv | sys-for-ai validate-requirement-trace | implementation_initialization | controlled | pending | pending |
+
+## csv / role_execution_binding_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_role_execution_binding_registry_row | schemas/contracts/role_execution_binding_registry_row.schema.json | 2020-12 | csv | role_execution_binding_registry_row | registries/role_execution_binding_registry.csv | sys-for-ai validate-roles | implementation_initialization | controlled | pending | pending |
+
+## csv / role_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_role_registry_row | schemas/contracts/role_registry_row.schema.json | 2020-12 | csv | role_registry_row | registries/role_registry.csv | sys-for-ai validate-roles | implementation_initialization | controlled | pending | pending |
+
+## csv / role_skill_crosswalk_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_role_skill_crosswalk_row | schemas/contracts/role_skill_crosswalk_row.schema.json | 2020-12 | csv | role_skill_crosswalk_row | registries/role_skill_crosswalk.csv | sys-for-ai validate-roles | implementation_initialization | controlled | pending | pending |
+
+## csv / skill_lifecycle_status_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_skill_lifecycle_status_registry_row | schemas/contracts/skill_lifecycle_status_registry_row.schema.json | 2020-12 | csv | skill_lifecycle_status_registry_row | registries/skill_lifecycle_status_registry.csv | sys-for-ai validate-skill-lifecycle | implementation_initialization | controlled | pending | pending |
+
+## csv / system_layer_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_system_layer_registry_row | schemas/contracts/system_layer_registry_row.schema.json | 2020-12 | csv | system_layer_registry_row | registries/system_layer_registry.csv | sys-for-ai validate-system-layers | implementation_initialization | controlled | pending | pending |
 
 ## csv / validation_contract_registry_row
 

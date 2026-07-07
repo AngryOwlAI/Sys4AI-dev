@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys-for-ai/schemas/contracts/discovery_record_registry_row.schema.json",
+  "title": "Discovery record registry row",
+  "type": "object",
+  "required": [
+    "discovery_record_id",
+    "path",
+    "subject_system_id",
+    "subject_layer",
+    "status",
+    "producer_agentjob_id",
+    "source_authority_status",
+    "candidate_requirement_count",
+    "open_question_count",
+    "downstream_usrd_path",
+    "validation_status",
+    "source_hash",
+    "last_validated_at",
+    "notes"
+  ],
+  "properties": {
+    "discovery_record_id": { "type": "string", "pattern": "^rdr_[a-z0-9_]+$" },
+    "path": { "type": "string", "minLength": 1, "pattern": "^(?!/).*$" },
+    "subject_system_id": { "type": "string", "minLength": 1 },
+    "subject_layer": {
+      "enum": [
+        "development_system",
+        "framework_product",
+        "target_system_template",
+        "target_system_instance",
+        "derivative_surface"
+      ]
+    },
+    "status": { "enum": ["draft", "candidate", "validated", "superseded", "blocked"] },
+    "source_authority_status": { "enum": ["candidate", "controlled", "canonical_draft", "canonical", "waived"] },
+    "candidate_requirement_count": { "type": "string", "pattern": "^[0-9]+$" },
+    "open_question_count": { "type": "string", "pattern": "^[0-9]+$" },
+    "validation_status": { "enum": ["pending", "validated", "warning", "failed", "waived"] }
+  },
+  "additionalProperties": { "type": "string" }
+}

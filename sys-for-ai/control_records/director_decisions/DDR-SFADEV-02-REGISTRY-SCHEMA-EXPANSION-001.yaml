@@ -1,0 +1,43 @@
+director_decision_id: DDR-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+schema_version: 0.1.0
+decision_status: completed
+created_at: "2026-07-07T03:45:23Z"
+completed_at: "2026-07-07T03:45:23Z"
+director_role: system_director
+decision_context:
+  trigger: all_recommendations_registry_schema_expansion
+  program_state_id: SFA-PROGRAM-STATE-001
+  latest_handoff_id: HANDOFF-SFADEV-01-PRD-INTEGRATION-001
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+  implementation_plan: implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+selected_route:
+  route_id: expand_registries_and_schemas
+  rationale: >
+    The PRD integration handoff names registry and schema expansion as the next
+    logical slice so the new requirements gain controlled data surfaces,
+    row contracts, CLI validators, Make targets, and graph checks.
+  selected_role: implementation_initialization_agent
+  creates_agentjob_id: AJ-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+rejected_routes:
+  - route_id: implement_discovery_gate_runtime_first
+    reason: Discovery runtime work depends on the registry and schema surfaces created by this slice.
+  - route_id: execute_multiple_all_recommendations_agentjobs
+    reason: Violates the one-AgentJob continuation invariant.
+authority_boundary:
+  may_create_agentjob: true
+  may_modify_registries: true
+  may_modify_schemas: true
+  may_modify_validators: true
+  may_modify_cli_and_makefile: true
+  may_modify_control_closeout_records: true
+  may_modify_prds: false
+  may_expand_runtime_skill_authority: false
+  may_promote_derivatives: false
+validators:
+  - cd sys-for-ai && make validate-jsonschema-contracts
+  - cd sys-for-ai && make validate-registry-graph
+  - cd sys-for-ai && make validate
+completion_evidence:
+  completion_receipt_id: RECEIPT-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+  handoff_id: HANDOFF-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+  notes: Registry and schema expansion slice completed and validated.

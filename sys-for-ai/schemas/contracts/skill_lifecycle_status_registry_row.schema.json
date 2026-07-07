@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys-for-ai/schemas/contracts/skill_lifecycle_status_registry_row.schema.json",
+  "title": "Skill lifecycle status registry row",
+  "type": "object",
+  "required": [
+    "status_id",
+    "status_name",
+    "may_execute_runtime",
+    "may_be_used_as_authority",
+    "requires_provenance",
+    "requires_manifest",
+    "requires_skill_md",
+    "requires_validator",
+    "allowed_roots",
+    "notes"
+  ],
+  "properties": {
+    "status_id": { "type": "string", "pattern": "^status_[a-z0-9_]+$" },
+    "status_name": {
+      "enum": [
+        "proposed",
+        "imported_unadapted",
+        "adapter_shell",
+        "adapted_runtime_active",
+        "product_scaffold_reference",
+        "deprecated",
+        "superseded",
+        "blocked"
+      ]
+    },
+    "may_execute_runtime": { "enum": ["true", "false"] },
+    "may_be_used_as_authority": { "enum": ["true", "false"] },
+    "requires_provenance": { "enum": ["true", "false"] },
+    "requires_manifest": { "enum": ["true", "false"] },
+    "requires_skill_md": { "enum": ["true", "false"] },
+    "requires_validator": { "enum": ["true", "false"] },
+    "allowed_roots": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": { "type": "string" }
+}

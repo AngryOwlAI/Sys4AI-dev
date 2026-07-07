@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys-for-ai/schemas/contracts/role_registry_row.schema.json",
+  "title": "Role registry row",
+  "type": "object",
+  "required": [
+    "role_id",
+    "role_name",
+    "role_class",
+    "system_layer_scope",
+    "primary_mission",
+    "required_skills",
+    "optional_skills",
+    "forbidden_skills",
+    "primary_outputs",
+    "allowed_artifact_classes",
+    "may_create_agentjobs",
+    "requires_director_decision",
+    "authority_status",
+    "owner",
+    "supersedes",
+    "source_hash",
+    "last_validated_at",
+    "notes"
+  ],
+  "properties": {
+    "role_id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+    "role_name": { "type": "string", "minLength": 1 },
+    "role_class": {
+      "enum": [
+        "framework_governance",
+        "system_design_core",
+        "system_design_support",
+        "implementation",
+        "verification",
+        "maintenance",
+        "runtime_control",
+        "temporary_agentjob_role",
+        "project_specific"
+      ]
+    },
+    "system_layer_scope": { "type": "string", "minLength": 1 },
+    "primary_mission": { "type": "string", "minLength": 1 },
+    "may_create_agentjobs": { "enum": ["true", "false"] },
+    "requires_director_decision": { "enum": ["true", "false"] },
+    "authority_status": { "enum": ["controlled", "draft", "superseded", "deprecated"] }
+  },
+  "additionalProperties": { "type": "string" }
+}

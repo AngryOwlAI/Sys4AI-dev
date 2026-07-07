@@ -1,0 +1,83 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+schema_version: 0.1.0
+agentjob_id: AJ-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001
+created_at: "2026-07-07T03:45:23Z"
+status: PASS_WITH_WARNINGS
+commands_run:
+  - command: cd sys-for-ai && make continue-preflight
+    result: pass_with_warnings
+  - command: cd sys-for-ai && make continue-select
+    result: blocked_director_decision_required
+  - command: rg memory quick pass for sys-for-ai-dev registry schema expansion routing
+    result: pass
+queries:
+  - query: source-first memory continue handoff AgentJob
+    returned_object_ids:
+      - SRC-CLI-PHASE1
+      - SRC-REG-CONTROL-RECORDS
+      - SRC-SELFHOST-MEMORY-CONTINUE-PLAN
+      - der_configuration_control_yaml
+      - SRC-CONTROL-LOOP-FINALIZATION
+      - SRC-SKILL-SOURCE-FIRST-MEMORY-RUNTIME-MANIFEST
+      - SRC-CONTROL-LOOP-JOB-SELECTION
+      - SRC-REG-REQ-TRACE
+      - SRC-MEMORY-REGISTRY-CATALOG
+  - query: registry schema expansion
+    returned_object_ids:
+      - SRC-ALL-RECS-IMPLEMENTATION-PLAN
+      - SRC-PRD-P0
+      - SRC-PRD-P1
+      - SRC-REG-REQ-TRACE
+canonical_sources_inspected:
+  - path: implementation_plans/self_hosting_boundary_decision_record.md
+    registry: source_registry.csv
+    row_id: SRC-SELFHOST-BOUNDARY-DECISION
+    inspected_sections:
+      - Decision
+      - Rules
+  - path: sys-for-ai/control_records/program_state.yaml
+    registry: source_registry.csv
+    row_id: SRC-PROGRAM-STATE
+    inspected_sections:
+      - active_agentjob_id
+      - latest_handoff_id
+      - allowed_next_actions
+  - path: sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-01-PRD-INTEGRATION-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-HANDOFF-PRD-INTEGRATION-001
+    inspected_sections:
+      - next_agentjob_id
+      - phase_boundary_notes
+      - stop_conditions
+  - path: temp_handoff/handoff-0013.md
+    registry: source_registry.csv
+    row_id: SRC-TEMP-HANDOFF-0013
+    inspected_sections:
+      - Next logical step
+  - path: implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+    registry: source_registry.csv
+    row_id: SRC-ALL-RECS-IMPLEMENTATION-PLAN
+    inspected_sections:
+      - WS-02 Registry and Schema Expansion
+      - AJ-02 Registry and Schema Expansion
+registry_rows_inspected:
+  - registry: source_registry.csv
+    row_id: SRC-ALL-RECS-IMPLEMENTATION-PLAN
+    purpose: Confirm all-recommendations implementation plan source authority.
+  - registry: source_registry.csv
+    row_id: SRC-REG-CONTROL-RECORDS
+    purpose: Confirm existing control registry source authority.
+  - registry: source_registry.csv
+    row_id: SRC-CLI-PHASE1
+    purpose: Confirm CLI source authority.
+  - registry: derivative_registry.csv
+    row_id: der_configuration_control_yaml
+    purpose: Confirm generated derivative remains navigation only.
+stale_context_risks:
+  - risk_id: MEMPREFLIGHT-SFADEV-02-RISK-001
+    status: observed
+    notes: Continue selection required a Director decision because no active AgentJob was set.
+  - risk_id: MEMPREFLIGHT-SFADEV-02-RISK-002
+    status: mitigated
+    notes: Memory hits were treated as navigation and checked against plan handoff program state and registry rows.
+usable_for_routing: true
