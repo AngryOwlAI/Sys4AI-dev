@@ -89,6 +89,32 @@ skills:
     compatibility_shims:
       - .codex/skills/conversation-to-prd/SKILL.md
     migration_phase: adapted_runtime_active
+  - skill_id: init
+    canonical_path: .agents/skills/init
+    status: active
+    lifecycle_status: adapted_runtime_active
+    manifest_path: .agents/skills/init/skill.yaml
+    required_by_roles:
+      - system_analyst
+      - system_engineer
+      - software_engineer
+      - user_wants_elicitor
+      - system_director
+    required_skills:
+      - system-layer-classifier
+      - source-first-memory
+      - system-definition-interview-context-45
+      - requirements-discovery-governor
+    optional_skills:
+      - conversation-to-prd
+      - prd-to-implementation-plan
+      - interface-and-integration-discovery
+      - operations-and-maintenance-planner
+    python_requirements: null
+    scripts: []
+    compatibility_shims:
+      - .codex/skills/init/SKILL.md
+    migration_phase: adapted_runtime_active
   - skill_id: decision-grilling
     canonical_path: .agents/skills/decision-grilling
     status: active

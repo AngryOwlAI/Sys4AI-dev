@@ -88,6 +88,7 @@ SKILL_MANIFEST_REQUIRED_SKILLS = {
     "continue",
     "director-decision-governor",
     "domain-pack-router",
+    "init",
     "system-definition-interview",
     "system-definition-interview-context-45",
     "evaluation-harness-designer",

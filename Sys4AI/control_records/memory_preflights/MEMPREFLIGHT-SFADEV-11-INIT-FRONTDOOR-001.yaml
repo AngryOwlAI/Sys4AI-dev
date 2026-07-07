@@ -1,0 +1,79 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-11-INIT-FRONTDOOR-001
+schema_version: 0.1.0
+agentjob_id: AJ-SFADEV-11-INIT-FRONTDOOR-001
+created_at: "2026-07-07T18:00:00Z"
+status: PASS_WITH_WARNINGS
+commands_run:
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli memory status --json
+    result: fail_expected_missing_new_control_records_before_creation
+  - command: rg system-definition-interview requirements-discovery sys-for-ai-dev in MEMORY.md
+    result: pass_memory_hits_checked_against_repository_sources
+  - command: inspect source-first memory system-layer and requirements-discovery skills
+    result: pass
+queries:
+  - query: init front door system definition adoption
+    returned_object_ids:
+      - SRC-PRD-P0
+      - SRC-PRD-P1
+      - SRC-SKILL-INTEGRATION-POLICY
+      - SRC-SYSTEM-DOCUMENT-SPINE
+  - query: Sys4AI-dev skill runtime boundaries
+    returned_object_ids:
+      - SRC-PRODUCT-CORE-SKILL-MANIFEST
+      - SRC-PRODUCT-SKILL-REGISTRY
+      - SRC-SKILL-SYSTEM-LAYER-CLASSIFIER
+      - SRC-SKILL-REQUIREMENTS-DISCOVERY-GOVERNOR
+canonical_sources_inspected:
+  - path: PRDs/Sys4AI_phase-0_product_system_design_prd.md
+    registry: source_registry.csv
+    row_id: SRC-PRD-P0
+    inspected_sections:
+      - system definition discovery gate
+      - new init front-door requirements
+  - path: PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+    registry: source_registry.csv
+    row_id: SRC-PRD-P1
+    inspected_sections:
+      - discovery gate initialization
+      - new init front-door initialization
+  - path: Sys4AI/docs/skill_integration_policy.md
+    registry: source_registry.csv
+    row_id: SRC-SKILL-INTEGRATION-POLICY
+    inspected_sections:
+      - core routing sequence
+  - path: Sys4AI/docs/system_document_spine.md
+    registry: source_registry.csv
+    row_id: SRC-SYSTEM-DOCUMENT-SPINE
+    inspected_sections:
+      - practical document chain
+  - path: Sys4AI/registries/system_layer_registry.csv
+    registry: source_registry.csv
+    row_id: SRC-REG-SYSTEM-LAYERS
+    inspected_sections:
+      - development system
+      - framework product
+      - target system template
+      - target system instance
+      - derivative surface
+registry_rows_inspected:
+  - registry: source_registry.csv
+    row_id: SRC-PRD-P0
+    purpose: Confirm Phase 0 discovery and authority boundaries.
+  - registry: source_registry.csv
+    row_id: SRC-PRD-P1
+    purpose: Confirm Phase 1 implementation initialization scope.
+  - registry: source_registry.csv
+    row_id: SRC-PRODUCT-CORE-SKILL-MANIFEST
+    purpose: Confirm product scaffold skill manifest authority.
+  - registry: source_registry.csv
+    row_id: SRC-PRODUCT-SKILL-REGISTRY
+    purpose: Confirm product skill registry authority.
+stale_context_risks:
+  - risk_id: MEMPREFLIGHT-SFADEV-11-RISK-001
+    status: observed
+    notes: Memory status failed before the new control records were created because their source rows already existed.
+  - risk_id: MEMPREFLIGHT-SFADEV-11-RISK-002
+    status: mitigated
+    notes: Repository sources were inspected directly and new control records are created in the same bounded packet.
+usable_for_routing: true
+

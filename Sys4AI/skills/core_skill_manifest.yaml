@@ -51,6 +51,30 @@ skills:
       - scripts/collect_usage_metrics.py
       - scripts/archive_temp_prd.py
     description: "Capture Codex context, token, and rate-limit metrics into a refreshed local receipt without exporting conversation content."
+  - id: init
+    name: Init
+    family: system_adoption_front_door
+    source_repo: local
+    source_path: .agents/skills/init
+    local_path: core/init
+    adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
+    required_files:
+      - SKILL.md
+      - README.md
+      - AGENTS.md
+      - examples/portable-example.md
+    description: "Reversible front door for Sys4AI system definition and brownfield adoption before PRD, requirements, implementation-plan, AgentJob, or scaffold generation."
+    required_skills:
+      - system-layer-classifier
+      - source-first-memory
+      - system-definition-interview-context-45
+      - requirements-discovery-governor
+    optional_skills:
+      - conversation-to-prd
+      - prd-to-implementation-plan
+      - interface-and-integration-discovery
+      - operations-and-maintenance-planner
   - id: system-definition-interview
     name: System Definition Interview
     family: system_definition_elicitation

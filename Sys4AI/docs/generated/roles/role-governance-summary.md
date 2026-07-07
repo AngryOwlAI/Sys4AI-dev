@@ -72,9 +72,9 @@ This generated page summarizes role governance registries and execution binding 
 
 | role_id | required | optional | forbidden | conditional | recommended |
 | --- | --- | --- | --- | --- | --- |
-| system_director | 3 | 1 | 0 | 0 | 0 |
-| user_wants_elicitor | 1 | 4 | 0 | 0 | 0 |
-| existing_system_analyst | 1 | 0 | 0 | 0 | 0 |
+| system_director | 4 | 1 | 0 | 0 | 0 |
+| user_wants_elicitor | 2 | 4 | 0 | 0 | 0 |
+| existing_system_analyst | 2 | 0 | 0 | 0 | 0 |
 | requirements_manager | 2 | 2 | 0 | 0 | 0 |
 | system_architect | 3 | 2 | 0 | 0 | 0 |
 | technical_requirements_engineer | 2 | 1 | 0 | 0 | 0 |

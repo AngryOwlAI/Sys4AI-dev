@@ -6,15 +6,40 @@ Define how core `Sys4AI` skills are sequenced when agents convert unclear target
 
 ## Core routing sequence
 
+When the user invokes `/init`, `/init greenfield`, `/init brownfield`, or
+`/init temp_prd`, use `init` first. `init` is the user-facing front door that
+classifies the situation, inspects available evidence, summarizes the route,
+and asks for approval before any controlled discovery record, Product
+Requirements Document, implementation plan, AgentJob, or scaffold is created.
+
+For brownfield repositories, `/init` first pass is read-only inspection and
+classification only.
+
 When target-system intent, boundary, stakeholders, operational scenarios, candidate requirements, architecture drivers, interfaces, or verification seeds are unclear, use this route:
 
-1. `system-definition-interview` or `system-definition-interview-context-45`
-2. `decision-grilling` or `decision-grilling-context-45`
-3. `domain-grilling-with-docs` or `domain-grilling-with-docs-context-45`
-4. `conversation-to-prd`
-5. `prd-to-implementation-plan`
+1. `init` when invoked or when adoption/state classification is needed
+2. `system-definition-interview` or `system-definition-interview-context-45`
+3. `decision-grilling` or `decision-grilling-context-45`
+4. `domain-grilling-with-docs` or `domain-grilling-with-docs-context-45`
+5. `conversation-to-prd`
+6. `prd-to-implementation-plan`
 
 Use the earliest skill that can resolve the present uncertainty. Do not skip to Product Requirements Document synthesis when the system boundary or stakeholder intent is still unclear.
+
+`/init` must ask for explicit approval before creating downstream artifacts.
+The required approval prompts are:
+
+```text
+I have enough evidence to create a draft Requirements Discovery Record. Should I write it to the controlled discovery area? This will not modify source code or install scaffolding.
+```
+
+```text
+Discovery is complete. Should I create a Product Requirements Document with `/conversation-to-prd` using the current discovery evidence?
+```
+
+```text
+For this brownfield project, should I create an implementation plan or AgentJob for Sys4AI governance adoption?
+```
 
 ## Long-session rule
 

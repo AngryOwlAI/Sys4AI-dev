@@ -52,6 +52,7 @@ Phase 0 owns:
 - Core file-format memory profile requirements for canonical sources, registries, control records, configuration sources, validation contracts, and generated derivative surfaces.
 - System-layer classification and self-hosting authority boundaries.
 - System Definition Discovery Gate and Requirements Discovery Record requirements before formal USRD generation.
+- `/init` front-door system-definition and adoption behavior.
 - Skill-system requirements.
 - Skill-lifecycle status and runtime-authority rules.
 - Source/version-control governance.
@@ -233,6 +234,26 @@ The framework should let the root AI agent answer:
 `SFA-CORE-DISCOVERY-006`: The discovery gate shall inspect available repository or document evidence before asking questions that existing source evidence can answer.
 
 `SFA-CORE-DISCOVERY-007`: The discovery gate shall ask focused questions and shall not automatically create a PRD until questioning is complete and the user or Director explicitly approves PRD synthesis.
+
+### 6.3.3 `/init` front-door adoption gate
+
+`SFA-CORE-INIT-001`: `Sys4AI` shall provide `/init` as the user-facing front door for system definition and adoption.
+
+`SFA-CORE-INIT-002`: `/init` shall classify the situation as `greenfield`, `brownfield`, `partially_built`, or `documentation_recovery` before routing to downstream requirements, architecture, implementation, operations, or scaffold work.
+
+`SFA-CORE-INIT-003`: `/init` shall identify the system-of-interest, subject layer, lifecycle goal, available evidence, missing evidence, and recommended downstream route.
+
+`SFA-CORE-INIT-004`: `/init` shall inspect available repository or document evidence before asking questions that existing source evidence can answer.
+
+`SFA-CORE-INIT-005`: `/init brownfield` shall perform its first pass as read-only inspection and classification. It shall not write files, install governance surfaces, create scaffolds, or mutate source code during that first pass.
+
+`SFA-CORE-INIT-006`: `/init` shall ask for explicit user or Director approval before writing a Requirements Discovery Record, Current-State Baseline, Product Requirements Document, system requirements document, implementation plan, AgentJob, scaffold, or governance-adoption surface.
+
+`SFA-CORE-INIT-007`: `/init` shall preserve discovered requirements as `REQ-CAND-*` or `NFR-CAND-*` until promoted by a source-authority workflow.
+
+`SFA-CORE-INIT-008`: `/init` shall route long or unclear discovery to `system-definition-interview-context-45`, requirements-readiness checks to `requirements-discovery-governor`, Product Requirements Document synthesis to `conversation-to-prd`, implementation planning to `prd-to-implementation-plan`, interface discovery to `interface-and-integration-discovery`, and sustainment concerns to `operations-and-maintenance-planner` only after the relevant gate is satisfied.
+
+`SFA-CORE-INIT-009`: `/init` shall treat Current-State Baselines, Requirements Discovery Records, generated Product Requirements Documents, implementation plans, and handoffs as derivative evidence until accepted by the relevant project authority.
 
 ### 6.4 AgentJob and continuation model
 

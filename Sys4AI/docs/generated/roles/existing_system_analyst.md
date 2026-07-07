@@ -24,6 +24,7 @@
 | Skill ID | Binding Type | Required When | System Layer Scope | Evidence Path |
 |---|---|---|---|---|
 | domain-grilling-with-docs | required | when brownfield evidence needs domain stress testing | target_system_instance | implementation_plans/Sys4AI-dev_all_recommendations_implementation_plan.md |
+| init | required | when brownfield repository adoption begins | target_system_instance | PRDs/Sys4AI_phase-0_product_system_design_prd.md |
 
 ## Execution Bindings
 

@@ -1,0 +1,158 @@
+skill_id: init
+version: 0.1.0
+status: active
+lifecycle_status: adapted_runtime_active
+canonical_path: .agents/skills/init
+summary: Reversible Sys4AI-dev front door for greenfield system definition and brownfield governance adoption.
+scope:
+  system_agnostic: false
+  target_system_types:
+    - Sys4AI-dev development workspace
+    - Sys4AI product scaffold
+    - Existing target repositories being evaluated for Sys4AI adoption
+  intentional_specialization: Project-fit runtime adaptation for Sys4AI-dev. It preserves development-system, product-scaffold, runtime-skill, and compatibility-shim boundaries.
+  exemptions: []
+domain_emphasis:
+  - system_definition
+  - brownfield_adoption
+  - requirements_discovery
+  - system_layer_classification
+  - source_first_memory
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+  - user_wants_elicitor
+optional_role_posture:
+  - requirements_manager
+  - system_director
+  - documentation_librarian
+  - control_loop_planner
+activation:
+  triggers:
+    - User invokes /init.
+    - User wants to start Sys4AI system definition or adoption.
+    - Existing repository needs read-only classification before governance installation.
+    - New system needs discovery before PRD or implementation planning.
+  when_not_to_use:
+    - Do not use as an immediate scaffold generator.
+    - Do not mutate a brownfield repository during first-pass inspection.
+    - Do not bypass root PRDs, implementation plans, registries, validators, or git-tracked files when they answer the question.
+  preconditions:
+    - Work is occurring in the Sys4AI-dev development workspace or an explicitly supplied target repository.
+    - Relevant repository evidence can be inspected when claims depend on it.
+    - Any generated output can be traced to source authority, explicit user decision, or labeled assumption.
+inputs:
+  required:
+    - Current user request or /init invocation.
+    - Available repository or document evidence when the task depends on current project state.
+  optional:
+    - Root PRDs and implementation plans.
+    - Sys4AI scaffold files, validators, registries, schemas, templates, and control records.
+    - Prior temp_prd.md, Requirements Discovery Record, Current-State Baseline, handoff, or stakeholder notes.
+outputs:
+  primary:
+    - Chat-visible situation classification and evidence summary.
+    - Approval prompt before writing controlled discovery, requirements, planning, AgentJob, or scaffold artifacts.
+  secondary:
+    - Downstream route recommendation to existing Sys4AI skills.
+    - Assumptions, unresolved questions, skipped checks, and recommended next step.
+  evidence:
+    - Source files, validators, registries, user decisions, and repository observations used.
+    - Distinction between canonical source, accepted project decision, generated derivative, and assumption.
+  handoff:
+    - Files changed, validation commands run, skipped checks, remaining risk, and next owner action when /init implementation changes project files.
+dependencies:
+  required_skills:
+    - system-layer-classifier
+    - source-first-memory
+    - system-definition-interview-context-45
+    - requirements-discovery-governor
+  optional_skills:
+    - conversation-to-prd
+    - prd-to-implementation-plan
+    - interface-and-integration-discovery
+    - operations-and-maintenance-planner
+  validation_skills: []
+  python:
+    standard_library_only: true
+    notes: Skill package and root validator use Python standard library only unless a future project authority states otherwise.
+  external_tools:
+    - python3
+    - make
+    - git
+authority:
+  may_read:
+    - Root README, PRDs, implementation plans, source registries, validators, schemas, templates, control records, and git-tracked files.
+    - Sys4AI product scaffold files when product behavior, adapters, validators, or reference policy are in scope.
+    - Existing adapted skill files under .agents/skills and compatibility shims under .codex/skills.
+  may_write:
+    - .agents/skills/init when adapting or maintaining this runtime skill.
+    - .codex/skills/init/SKILL.md when maintaining the compatibility shim.
+    - Generated discovery or planning artifacts only after explicit approval and only in project-approved locations.
+  may_not:
+    - Mutate a brownfield repository during first-pass inspection.
+    - Create PRDs, requirements documents, implementation plans, AgentJobs, or scaffolds without explicit approval.
+    - Treat Sys4AI/skills/core as the active runtime authority for Sys4AI-dev.
+    - Treat candidate requirements as baselined requirements.
+    - Import .DS_Store, __pycache__, pyc files, usage-metrics receipts, temp_prd checkpoints, secrets, or local operational state as source.
+  canonical_sources:
+    - Root PRDs and implementation plans.
+    - Git-tracked validators, registries, schemas, templates, and source files.
+    - Explicit user decisions in the active task.
+    - .agents/skills/init/skill.yaml and .agents/skills/init/SKILL.md for this runtime skill.
+  generated_derivatives:
+    - Generated Current-State Baselines, Requirements Discovery Records, PRDs, implementation plans, diagrams, warning reports, metrics receipts, temporary handoffs, and completion receipts.
+  human_gates:
+    - Approval before writing controlled discovery evidence.
+    - Approval before Product Requirements Document synthesis.
+    - Approval before system requirements, implementation plans, AgentJobs, scaffolds, or brownfield governance installation.
+validation:
+  commands:
+    - command: python3 scripts/skills/validate_skill_manifest.py --manifest .agents/skills/init/skill.yaml
+      validator_class: schema_validation
+      mode: required
+      dry_runnable: true
+      notes: Checks the active runtime manifest for this skill.
+    - command: test -f .agents/skills/init/SKILL.md && test -f .agents/skills/init/README.md && test -f .agents/skills/init/AGENTS.md
+      validator_class: path_validation
+      mode: required
+      dry_runnable: true
+      notes: Confirms the adapted runtime package keeps required docs.
+    - command: test -f .codex/skills/init/SKILL.md
+      validator_class: path_validation
+      mode: required
+      dry_runnable: true
+      notes: Confirms the Codex compatibility shim exists.
+  validator_classes:
+    - schema_validation
+    - path_validation
+    - dependency_validation
+    - trace_validation
+    - process_validation
+    - claim_validation
+  contextual_validation_rationale: Runtime correctness depends on current Sys4AI-dev source authority, requested artifact type, and project-local validators.
+  evidence_required:
+    - Relevant project authority inspected or unavailable evidence recorded.
+    - Generated outputs labeled as derivatives until accepted.
+    - Validation commands run or skipped with reasons.
+    - Compatibility shim remains subordinate to canonical runtime path.
+handoff:
+  requires_completion_receipt: true
+  evidence:
+    - Task objective and source authority used.
+    - Files changed or generated outputs created.
+    - Validation commands run, skipped checks, and residual risk.
+    - Logical next step and any human approval gate.
+  next_role: system_engineer or requirements_manager for review and downstream discovery.
+  open_issue_policy: Record missing authority, unresolved ambiguity, validation failures, or scaffold-boundary risks before ending the task.
+failure_modes:
+  - mode: Authority inversion.
+    recovery: Re-anchor to root PRDs, implementation plans, validators, registries, and git-tracked source before proceeding.
+  - mode: Brownfield mutation during inspection.
+    recovery: Stop, report the mutation risk, and resume only after explicit approval for a controlled artifact.
+  - mode: Generated-output promotion.
+    recovery: Relabel as derivative or obtain explicit approval before treating the artifact as project authority.
+compatibility_shims:
+  - .codex/skills/init/SKILL.md
+

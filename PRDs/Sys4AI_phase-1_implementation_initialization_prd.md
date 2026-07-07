@@ -42,6 +42,7 @@ The default Phase 1 environment is a local Python virtual environment. Docker is
 18. Initialize system-layer and self-hosting controls for development-system, framework-product, target-template, target-instance, and derivative-surface work.
 19. Initialize controlled role governance, role-to-skill crosswalks, temporary-role policy, and role execution-binding validation.
 20. Initialize core skill lifecycle statuses and governed core skill expansion workflow.
+21. Initialize `/init` as the gated Sys4AI system-definition and adoption front door.
 
 ---
 
@@ -220,6 +221,24 @@ make doctor
 `SFA-P1-INIT-DISC-004`: Add a sample completion receipt showing RDR creation, validation evidence, open issues, and recommended next route.
 
 `SFA-P1-INIT-DISC-005`: Extend aggregate validation so discovery-record templates and registered discovery records are validated by default.
+
+### 4.10.1 `/init` Front-Door Initialization
+
+`SFA-P1-INIT-FRONTDOOR-001`: Add active runtime skill package `.agents/skills/init/` with `SKILL.md`, `README.md`, `AGENTS.md`, `skill.yaml`, and a portable example.
+
+`SFA-P1-INIT-FRONTDOOR-002`: Add `.codex/skills/init/SKILL.md` as a compatibility shim that points to `.agents/skills/init/` and does not carry independent behavior.
+
+`SFA-P1-INIT-FRONTDOOR-003`: Add `Sys4AI/skills/core/init/` as the product-scaffold reference package for future target systems.
+
+`SFA-P1-INIT-FRONTDOOR-004`: Register `init` in the runtime skill registry, core systems engineering bundle, product core skill manifest, skill registry, core skill proposal registry, role-to-skill crosswalk, object relationship registry, source registry, and requirement trace registry.
+
+`SFA-P1-INIT-FRONTDOOR-005`: Extend the skill-manifest validator so `init` is required by the core skill set.
+
+`SFA-P1-INIT-FRONTDOOR-006`: Add a Current-State Baseline template for brownfield discovery and mark it as draft evidence rather than canonical authority.
+
+`SFA-P1-INIT-FRONTDOOR-007`: Add tests that verify `/init` exists in runtime, shim, and product-scaffold surfaces; brownfield first pass is read-only; Product Requirements Document creation is gated; candidate requirement labels are preserved; and product-scaffold wording does not claim active runtime authority.
+
+`SFA-P1-INIT-FRONTDOOR-008`: Add Director decision, AgentJob, memory preflight receipt, completion receipt, and handoff control records for `/init` front-door implementation.
 
 ### 4.11 System-Layer and Self-Hosting Initialization
 

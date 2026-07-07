@@ -21,3 +21,8 @@ REL-REQ-TRACE-COVERS-P1,SRC-REG-REQ-TRACE,traces_to,SRC-PRD-P1,Sys4AI/registries
 REL-REQ-TRACE-CONFORMS-CONTRACT,SRC-REG-REQ-TRACE,conforms_to,SRC-CONTRACT-REQUIREMENT-TRACE-ROW,Sys4AI/registries/requirement_trace_registry.csv,Requirement trace registry rows validate against trace class justification and review verdict rules in the row contract.
 REL-CLI-EXPOSES-REQ-TRACE,SRC-CLI-PHASE1,exposes,SRC-VALIDATOR-CORE,Sys4AI/sys_for_ai/cli.py,CLI exposes requirement trace validation.
 REL-MAKE-RUNS-REQ-TRACE,SRC-MAKE-PHASE1,runs,SRC-VALIDATOR-CORE,Sys4AI/Makefile,Make validate includes requirement trace validation.
+REL-SKILL-POLICY-ROUTES-INIT,SRC-SKILL-INTEGRATION-POLICY,routes_to,init,Sys4AI/docs/skill_integration_policy.md,Skill integration policy routes user-facing adoption through init before downstream discovery.
+REL-DOCUMENT-SPINE-USES-INIT,SRC-SYSTEM-DOCUMENT-SPINE,routes_to,init,Sys4AI/docs/system_document_spine.md,System-document spine treats init as the practical entry into discovery and adoption.
+REL-INIT-SKILL-USES-SYSDEF,init,routes_to,system-definition-interview-context-45,.agents/skills/init/SKILL.md,Init routes long discovery to the context-protected system-definition interview.
+REL-INIT-SKILL-USES-CSB-TEMPLATE,init,uses,SRC-TEMPLATE-CURRENT-STATE-BASELINE,.agents/skills/init/SKILL.md,Init uses the current-state baseline template for approved brownfield evidence capture.
+REL-AJ-INIT-AUTHORIZES-SKILL,SRC-AJ-INIT-FRONTDOOR-001,authorizes,init,Sys4AI/control_records/agentjobs/AJ-SFADEV-11-INIT-FRONTDOOR-001.yaml,AgentJob authorizes adding the init front-door skill surfaces and governance wiring.

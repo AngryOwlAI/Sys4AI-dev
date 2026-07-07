@@ -1,0 +1,50 @@
+director_decision_id: DDR-SFADEV-11-INIT-FRONTDOOR-001
+schema_version: 0.1.0
+decision_status: completed
+created_at: "2026-07-07T18:00:00Z"
+completed_at: "2026-07-07T18:00:00Z"
+director_role: system_director
+decision_context:
+  trigger: init_frontdoor_implementation
+  program_state_id: SYS4AI-PROGRAM-STATE-001
+  latest_handoff_id: HANDOFF-SYS4AI-DEV-NAME-MIGRATION-001
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-11-INIT-FRONTDOOR-001
+  user_request: Implement /init as the gated Sys4AI adoption front door.
+selected_route:
+  route_id: implement_init_frontdoor
+  rationale: >
+    The accepted plan requires a user-facing /init skill that classifies
+    greenfield and brownfield situations, preserves approval gates, and routes
+    downstream work through existing Sys4AI discovery and planning skills.
+  selected_role: system_engineer
+  creates_agentjob_id: AJ-SFADEV-11-INIT-FRONTDOOR-001
+rejected_routes:
+  - route_id: make_init_scaffold_generator
+    reason: /init must be reversible and gated rather than immediate scaffold generation.
+  - route_id: update_prds_only
+    reason: The feature is user-facing and must exist in runtime shim and product-scaffold skill surfaces.
+  - route_id: bypass_discovery_gate
+    reason: Existing Sys4AI policy requires discovery evidence before downstream requirements synthesis.
+authority_boundary:
+  may_create_agentjob: true
+  may_modify_canonical_prds: true
+  may_modify_skill_surfaces: true
+  may_modify_policy_docs: true
+  may_modify_registries: true
+  may_modify_validators: true
+  may_modify_tests: true
+  may_modify_control_closeout_records: true
+  may_promote_generated_derivatives: false
+  may_generate_downstream_prd_without_approval: false
+validators:
+  - python3 scripts/skills/validate_skill_manifest.py --manifest .agents/skills/init/skill.yaml
+  - python3 scripts/skills/validate_skill_manifest.py --bundle .agents/skill_registry/SKILL_BUNDLES/core-systems-engineering.yaml
+  - make validate-dev-skills
+  - cd Sys4AI && make validate
+  - make validate
+  - git diff --check
+completion_evidence:
+  completion_receipt_id: RECEIPT-SFADEV-11-INIT-FRONTDOOR-001
+  handoff_id: HANDOFF-SFADEV-11-INIT-FRONTDOOR-001
+  notes: Init front-door surfaces and governance wiring added.
+

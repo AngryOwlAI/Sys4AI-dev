@@ -8,12 +8,12 @@ system_context:
   reflection_depth: 1
 current_phase: implementation_initialization
 lifecycle_stage: develop
-active_task_id: TASK-SYS4AI-DEV-NAME-MIGRATION-001
+active_task_id: TASK-SFADEV-INIT-FRONTDOOR-001
 active_director_decision_id: null
 active_agentjob_id: null
-latest_completion_receipt_id: RECEIPT-SYS4AI-DEV-NAME-MIGRATION-001
-latest_handoff_id: HANDOFF-SYS4AI-DEV-NAME-MIGRATION-001
-latest_memory_preflight_receipt_id: MEMPREFLIGHT-SYS4AI-DEV-NAME-MIGRATION-001
+latest_completion_receipt_id: RECEIPT-SFADEV-11-INIT-FRONTDOOR-001
+latest_handoff_id: HANDOFF-SFADEV-11-INIT-FRONTDOOR-001
+latest_memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-11-INIT-FRONTDOOR-001
 state_status: complete
 blocked_reason: null
 human_gate_required: false
@@ -28,7 +28,7 @@ blocked_actions:
 - treat_generated_derivative_as_canonical
 - mutate_activated_control_record_without_supersession
 validation_status:
-  last_validated_at: '2026-07-07T12:00:00Z'
+  last_validated_at: '2026-07-07T18:00:00Z'
   validators:
   - make validate
   - validate-generated-derivatives

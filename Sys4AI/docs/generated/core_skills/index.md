@@ -69,6 +69,7 @@ This generated page summarizes product scaffold skills and proposed core organiz
 | domain-pack-router | domain_routing | adapter_shell | adapter_shell | skills/core/domain-pack-router |
 | interface-and-integration-discovery | interface_discovery | adapter_shell | adapter_shell | skills/core/interface-and-integration-discovery |
 | requirements-discovery-governor | discovery_governance | adapter_shell | adapter_shell | skills/core/requirements-discovery-governor |
+| init | system_adoption_front_door | adapter_shell | adapter_shell | skills/core/init |
 
 ## Core Skill Proposal Rows
 
@@ -92,6 +93,7 @@ This generated page summarizes product scaffold skills and proposed core organiz
 | proposal_requirements_discovery_governor | requirements-discovery-governor | 16 | scaffolded | user_wants_elicitor;requirements_manager | .agents/skills/requirements-discovery-governor | validate-discovery-records |
 | proposal_interface_integration_discovery | interface-and-integration-discovery | 17 | scaffolded | system_architect | .agents/skills/interface-and-integration-discovery | make validate |
 | proposal_assurance_case_builder | assurance-case-builder | 18 | scaffolded | security_safety_privacy_compliance_reviewer | .agents/skills/assurance-case-builder | make validate |
+| proposal_init | init | 0 | scaffolded | user_wants_elicitor;system_director;requirements_manager | .agents/skills/init | make validate |
 
 ## Lifecycle Vocabulary Rows
 

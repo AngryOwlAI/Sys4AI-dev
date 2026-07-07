@@ -4,6 +4,7 @@ status: active
 description: Active Sys4AI-dev runtime skills for system definition, decisions, PRDs, and implementation planning.
 includes:
   skills:
+    - init
     - system-definition-interview
     - system-definition-interview-context-45
     - decision-grilling

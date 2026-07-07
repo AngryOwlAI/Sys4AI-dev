@@ -32,3 +32,4 @@ project-ontology-and-glossary,skills/core/project-ontology-and-glossary,local,.a
 domain-pack-router,skills/core/domain-pack-router,local,.agents/skills/domain-pack-router,domain_routing,adapter_shell,adapter_shell,2026-07-07,Core skill scaffold batch 2 product reference surface.
 interface-and-integration-discovery,skills/core/interface-and-integration-discovery,local,.agents/skills/interface-and-integration-discovery,interface_discovery,adapter_shell,adapter_shell,2026-07-07,Core skill scaffold batch 2 product reference surface.
 requirements-discovery-governor,skills/core/requirements-discovery-governor,local,.agents/skills/requirements-discovery-governor,discovery_governance,adapter_shell,adapter_shell,2026-07-07,Core skill scaffold batch 2 product reference surface.
+init,skills/core/init,local,.agents/skills/init,system_adoption_front_door,adapter_shell,adapter_shell,2026-07-07,Core front-door skill for gated greenfield discovery and brownfield Sys4AI adoption.

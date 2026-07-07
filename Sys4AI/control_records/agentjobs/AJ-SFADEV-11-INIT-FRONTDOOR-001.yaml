@@ -1,0 +1,125 @@
+agentjob_id: AJ-SFADEV-11-INIT-FRONTDOOR-001
+schema_version: 0.2.0
+status: completed
+objective: >
+  Implement /init as the reversible and gated Sys4AI system-definition and
+  brownfield adoption front door across PRDs, skills, registries, validators,
+  tests, and control records.
+lifecycle_stage: implementation_initialization
+role_binding:
+  role_id: system_engineer
+  binding_type: one_job_provisional_role
+  authority_scope: init front-door implementation
+  expires_with_agentjob: true
+required_inputs:
+  - PRDs/Sys4AI_phase-0_product_system_design_prd.md
+  - PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+  - Sys4AI/docs/skill_integration_policy.md
+  - Sys4AI/docs/system_document_spine.md
+  - Sys4AI/skills/core/system-definition-interview-context-45/SKILL.md
+  - .agents/skills/source-first-memory/SKILL.md
+  - .agents/skills/system-layer-classifier/SKILL.md
+  - .agents/skills/requirements-discovery-governor/SKILL.md
+allowed_reads:
+  - PRDs/**
+  - implementation_plans/**
+  - .agents/**
+  - .codex/**
+  - Sys4AI/**
+  - scripts/**
+  - README.md
+allowed_writes:
+  - PRDs/Sys4AI_phase-0_product_system_design_prd.md
+  - PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+  - .agents/skills/init/**
+  - .codex/skills/init/**
+  - .agents/skill_registry/SKILL_REGISTRY.yaml
+  - .agents/skill_registry/SKILL_BUNDLES/core-systems-engineering.yaml
+  - Sys4AI/skills/core/init/**
+  - Sys4AI/skills/core_skill_manifest.yaml
+  - Sys4AI/docs/skill_integration_policy.md
+  - Sys4AI/docs/system_document_spine.md
+  - Sys4AI/templates/system_definition/current-state-baseline-template.md
+  - Sys4AI/registries/**
+  - Sys4AI/sys_for_ai/validators.py
+  - Sys4AI/Makefile
+  - Sys4AI/tests/test_skill_surfaces.py
+  - Sys4AI/control_records/director_decisions/DDR-SFADEV-11-INIT-FRONTDOOR-001.yaml
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-11-INIT-FRONTDOOR-001.yaml
+  - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-11-INIT-FRONTDOOR-001.yaml
+  - Sys4AI/control_records/completions/RECEIPT-SFADEV-11-INIT-FRONTDOOR-001.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-11-INIT-FRONTDOOR-001.yaml
+  - Sys4AI/control_records/program_state.yaml
+  - Sys4AI/docs/generated/**
+generated_paths:
+  - Sys4AI/docs/generated/**
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - Sys4AI/.venv/**
+forbidden_actions:
+  - Automatically create a Product Requirements Document without explicit approval.
+  - Generate system requirements or implementation plans without explicit approval.
+  - Install brownfield governance scaffolding during first-pass inspection.
+  - Promote candidate requirements to canonical requirements.
+  - Treat generated derivatives as source authority.
+expected_outputs:
+  - /init requirements added to Phase 0 and Phase 1 PRDs.
+  - Active runtime init skill package exists.
+  - Codex compatibility shim points to the runtime init skill.
+  - Product-scaffold init skill package exists.
+  - Brownfield Current-State Baseline template exists.
+  - Runtime and product registries include init.
+  - Skill validator requires init in the product core skill set.
+  - Tests cover runtime shim product scaffold and approval gates.
+validators:
+  - python3 scripts/skills/validate_skill_manifest.py --manifest .agents/skills/init/skill.yaml
+  - python3 scripts/skills/validate_skill_manifest.py --bundle .agents/skill_registry/SKILL_BUNDLES/core-systems-engineering.yaml
+  - make validate-dev-skills
+  - cd Sys4AI && make validate-skills
+  - cd Sys4AI && make validate-discovery-template
+  - cd Sys4AI && make validate-discovery-records
+  - cd Sys4AI && make validate-requirement-trace
+  - cd Sys4AI && make validate
+  - make validate
+  - git diff --check
+completion_evidence_required:
+  - changed_artifacts
+  - command_results
+  - validation_status
+  - residual_risk
+memory_preflight:
+  required: true
+  minimum_queries:
+    - init front door system definition adoption
+    - Sys4AI-dev skill runtime boundaries
+  required_evidence:
+    - live memory status inspection
+    - source-first boundary inspection
+    - system layer registry inspection
+    - discovery governance skill inspection
+authority_boundary:
+  may_modify_prds: true
+  may_modify_runtime_skill_docs: true
+  may_modify_product_scaffold: true
+  may_modify_registries: true
+  may_modify_validators: true
+  may_modify_tests: true
+  may_modify_control_records: true
+  may_promote_generated_derivatives: false
+  may_create_downstream_prd_without_approval: false
+handoff_policy:
+  create_handoff_when:
+    - init front-door implementation completes
+    - validation status is known
+stop_conditions:
+  - Required source authority cannot be inspected.
+  - Brownfield first-pass behavior loses read-only gating.
+  - Candidate requirements lose REQ-CAND or NFR-CAND labels.
+  - Required write is outside allowlist.
+created_at: "2026-07-07T18:00:00Z"
+activated_at: "2026-07-07T18:00:00Z"
+completed_at: "2026-07-07T18:00:00Z"
+
