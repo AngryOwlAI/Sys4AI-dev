@@ -25,6 +25,7 @@
 |---|---|---|---|---|
 | artifact-contract-governance | optional | when artifact contracts need validation | framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 | decision-grilling | required | when architecture decisions are unclear | framework_product;target_system_template;target_system_instance | PRDs/sys-for-ai_phase-0_product_system_design_prd.md |
+| interface-and-integration-discovery | optional | when external interfaces or integrations are unclear | framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 | mermaid-diagrams | required | when diagrams are needed | framework_product;target_system_template;target_system_instance | PRDs/sys-for-ai_phase-0_product_system_design_prd.md |
 | plantuml-diagrams | required | when PlantUML diagrams are needed | framework_product;target_system_template;target_system_instance | PRDs/sys-for-ai_phase-0_product_system_design_prd.md |
 

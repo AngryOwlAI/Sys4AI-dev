@@ -24,6 +24,7 @@
 | Skill ID | Binding Type | Required When | System Layer Scope | Evidence Path |
 |---|---|---|---|---|
 | domain-grilling-with-docs-context-45 | recommended | when long documentation review sessions need checkpointing | target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
+| domain-pack-router | optional | when domain-specific skill routing is needed | target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 
 ## Execution Bindings
 

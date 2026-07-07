@@ -1,0 +1,71 @@
+skill_id: project-ontology-and-glossary
+version: 0.1.0
+status: active
+lifecycle_status: adapted_runtime_active
+canonical_path: .agents/skills/project-ontology-and-glossary
+summary: Maintain controlled vocabulary, ontology, and term decisions.
+scope:
+  system_agnostic: true
+  target_system_types:
+    - agentic development systems
+    - generated target systems
+  intentional_specialization: Core ontology and glossary governance skill.
+  exemptions: []
+domain_emphasis:
+  - ontology_glossary
+  - controlled_vocabulary
+  - terminology_decisions
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+  - documentation_librarian
+activation:
+  triggers:
+    - Terms are ambiguous or overloaded.
+    - A glossary, ontology, or term decision is needed.
+    - Requirements and architecture language must be reconciled.
+  when_not_to_use:
+    - Do not use to impose domain-specific ontology as a core skill default.
+  preconditions:
+    - Term, concept, or ambiguity is known.
+inputs:
+  required:
+    - Term or concept requiring definition.
+    - Source context where the term is used.
+  optional:
+    - Existing glossary, ontology, ADR, PRD, or requirements text.
+outputs:
+  primary:
+    - Glossary entry, ontology note, or term decision.
+  evidence:
+    - Source paths and ambiguity resolution.
+dependencies:
+  required_skills: []
+  optional_skills:
+    - source-authority-auditor
+    - technical-writing-quality-gate
+  validation_skills: []
+  python:
+    standard_library_only: true
+    notes: No skill-specific Python dependency.
+  external_tools:
+    - make
+authority:
+  may_read:
+    - Requirements, architecture docs, glossaries, registries, and decision records.
+  may_write:
+    - Glossary or ontology records only when the active AgentJob authorizes those paths.
+  may_not:
+    - Treat project-specific vocabulary as universal core ontology.
+validation:
+  commands:
+    - cd sys-for-ai && make validate
+  validator_classes:
+    - domain_validation
+    - claim_validation
+handoff:
+  requires_completion_receipt: true
+  evidence:
+    - Term decision or no-change rationale.
+    - Source path list.

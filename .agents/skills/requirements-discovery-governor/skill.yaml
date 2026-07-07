@@ -1,0 +1,74 @@
+skill_id: requirements-discovery-governor
+version: 0.1.0
+status: active
+lifecycle_status: adapted_runtime_active
+canonical_path: .agents/skills/requirements-discovery-governor
+summary: Govern RDR creation and discovery-to-USRD transition.
+scope:
+  system_agnostic: true
+  target_system_types:
+    - agentic development systems
+    - generated target systems
+  intentional_specialization: Core requirements discovery governance skill.
+  exemptions: []
+domain_emphasis:
+  - discovery_governance
+  - requirements_discovery
+  - transition_readiness
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+  - user_wants_elicitor
+  - requirements_manager
+activation:
+  triggers:
+    - A requirements discovery record must be created, reviewed, or advanced.
+    - Discovery output needs readiness assessment before USRD or PRD synthesis.
+    - Open discovery gaps may block baseline.
+  when_not_to_use:
+    - Do not use to skip stakeholder discovery when major unknowns remain.
+  preconditions:
+    - Discovery source, stakeholder input, or RDR candidate exists.
+inputs:
+  required:
+    - Discovery record or discovery source.
+    - Intended downstream artifact.
+  optional:
+    - Stakeholder map, open questions, assumptions, and validation seeds.
+outputs:
+  primary:
+    - Discovery governance decision or RDR readiness assessment.
+  evidence:
+    - Open question list and transition criteria.
+dependencies:
+  required_skills: []
+  optional_skills:
+    - system-definition-interview
+    - system-definition-interview-context-45
+    - conversation-to-prd
+    - traceability-matrix-engine
+  validation_skills: []
+  python:
+    standard_library_only: true
+    notes: No skill-specific Python dependency.
+  external_tools:
+    - make
+authority:
+  may_read:
+    - Discovery records, templates, PRDs, stakeholder notes, and validation output.
+  may_write:
+    - Discovery governance records only when the active AgentJob authorizes those paths.
+  may_not:
+    - Promote discovery output to requirements baseline without readiness evidence.
+validation:
+  commands:
+    - cd sys-for-ai && make validate-discovery-records
+  validator_classes:
+    - schema_validation
+    - trace_validation
+handoff:
+  requires_completion_receipt: true
+  evidence:
+    - Discovery readiness decision.
+    - Open questions and transition criteria.

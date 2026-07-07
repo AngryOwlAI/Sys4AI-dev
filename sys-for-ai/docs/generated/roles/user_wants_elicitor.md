@@ -25,6 +25,7 @@
 |---|---|---|---|---|
 | conversation-to-prd | optional | after discovery is complete | framework_product;target_system_template;target_system_instance | PRDs/sys-for-ai_phase-0_product_system_design_prd.md |
 | decision-grilling-context-45 | optional | when decisions need structured clarification | framework_product;target_system_template;target_system_instance | PRDs/sys-for-ai_phase-0_product_system_design_prd.md |
+| requirements-discovery-governor | optional | when discovery readiness must be governed | framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 | system-definition-interview-context-45 | required | new or changed system definition | framework_product;target_system_template;target_system_instance | PRDs/sys-for-ai_phase-0_product_system_design_prd.md |
 | system-definition-interview | optional | when lightweight discovery is sufficient | framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 

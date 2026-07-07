@@ -23,6 +23,7 @@
 
 | Skill ID | Binding Type | Required When | System Layer Scope | Evidence Path |
 |---|---|---|---|---|
+| assurance-case-builder | required | when high impact claims need evidence argument | framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 | threat-model-and-permission-scope | required | when safety or privacy risk is present | framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 
 ## Execution Bindings

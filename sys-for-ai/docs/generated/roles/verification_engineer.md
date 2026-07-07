@@ -21,7 +21,10 @@
 
 ## Crosswalk Bindings
 
-No role-skill crosswalk bindings are registered for this role.
+| Skill ID | Binding Type | Required When | System Layer Scope | Evidence Path |
+|---|---|---|---|---|
+| evaluation-harness-designer | optional | when validation needs scenario or rubric design | development_system;framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
+| verification-validation-planner | required | when validation evidence is authored | development_system;framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 
 ## Execution Bindings
 

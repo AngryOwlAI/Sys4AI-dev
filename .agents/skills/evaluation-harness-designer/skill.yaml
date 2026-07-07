@@ -1,0 +1,72 @@
+skill_id: evaluation-harness-designer
+version: 0.1.0
+status: active
+lifecycle_status: adapted_runtime_active
+canonical_path: .agents/skills/evaluation-harness-designer
+summary: Design evaluation scenarios, rubrics, regression checks, and failure probes.
+scope:
+  system_agnostic: true
+  target_system_types:
+    - agentic development systems
+    - generated target systems
+  intentional_specialization: Core evaluation harness design skill.
+  exemptions: []
+domain_emphasis:
+  - evaluation_design
+  - regression_checks
+  - failure_probes
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+  - runtime_maintenance_planner
+  - verification_engineer
+activation:
+  triggers:
+    - A system behavior needs repeatable evaluation.
+    - A regression, rubric, or failure probe is required.
+    - Maintenance needs an evaluation cadence.
+  when_not_to_use:
+    - Do not use to replace tests that already have precise executable requirements.
+  preconditions:
+    - Behavior, risk, or quality target is known.
+inputs:
+  required:
+    - Evaluation objective.
+    - Candidate scenario or behavior.
+  optional:
+    - Baseline results, rubrics, acceptance criteria, or failure examples.
+outputs:
+  primary:
+    - Evaluation harness design or scenario set.
+  evidence:
+    - Rubric, expected signals, and regression cadence.
+dependencies:
+  required_skills: []
+  optional_skills:
+    - verification-validation-planner
+    - technical-writing-quality-gate
+  validation_skills: []
+  python:
+    standard_library_only: true
+    notes: No skill-specific Python dependency.
+  external_tools:
+    - make
+authority:
+  may_read:
+    - Requirements, tests, incidents, validation results, and maintenance plans.
+  may_write:
+    - Evaluation designs only when the active AgentJob authorizes those paths.
+  may_not:
+    - Treat subjective impressions as measured evaluation results.
+validation:
+  commands:
+    - cd sys-for-ai && make validate
+  validator_classes:
+    - process_validation
+    - trace_validation
+handoff:
+  requires_completion_receipt: true
+  evidence:
+    - Evaluation scenarios or no-change rationale.
+    - Rubric and expected signals.

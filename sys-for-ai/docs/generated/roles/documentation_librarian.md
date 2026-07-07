@@ -23,6 +23,7 @@
 
 | Skill ID | Binding Type | Required When | System Layer Scope | Evidence Path |
 |---|---|---|---|---|
+| project-ontology-and-glossary | required | when controlled terminology is needed | development_system;framework_product | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 | skill-import-generalizer | required | when skill import is governed | development_system;framework_product | PRDs/sys-for-ai_phase-0_product_system_design_prd.md |
 | source-authority-auditor | required | when source authority is reviewed | development_system;framework_product | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 

@@ -21,7 +21,9 @@
 
 ## Crosswalk Bindings
 
-No role-skill crosswalk bindings are registered for this role.
+| Skill ID | Binding Type | Required When | System Layer Scope | Evidence Path |
+|---|---|---|---|---|
+| baseline-change-manager | required | when baselines or supersession change | framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 
 ## Execution Bindings
 

@@ -417,3 +417,190 @@ skills:
     compatibility_shims:
       - .codex/skills/context-window-and-handoff-manager/SKILL.md
     migration_phase: adapted_runtime_active
+  - skill_id: verification-validation-planner
+    canonical_path: .agents/skills/verification-validation-planner
+    status: active
+    lifecycle_status: adapted_runtime_active
+    manifest_path: .agents/skills/verification-validation-planner/skill.yaml
+    required_by_roles:
+      - technical_requirements_engineer
+      - requirements_verifier
+      - verification_engineer
+    required_skills: []
+    optional_skills:
+      - traceability-matrix-engine
+      - technical-writing-quality-gate
+    python_requirements: null
+    scripts: []
+    compatibility_shims:
+      - .codex/skills/verification-validation-planner/SKILL.md
+    migration_phase: adapted_runtime_active
+  - skill_id: assurance-case-builder
+    canonical_path: .agents/skills/assurance-case-builder
+    status: active
+    lifecycle_status: adapted_runtime_active
+    manifest_path: .agents/skills/assurance-case-builder/skill.yaml
+    required_by_roles:
+      - security_safety_privacy_compliance_reviewer
+    required_skills: []
+    optional_skills:
+      - threat-model-and-permission-scope
+      - traceability-matrix-engine
+      - technical-writing-quality-gate
+    python_requirements: null
+    scripts: []
+    compatibility_shims:
+      - .codex/skills/assurance-case-builder/SKILL.md
+    migration_phase: adapted_runtime_active
+  - skill_id: threat-model-and-permission-scope
+    canonical_path: .agents/skills/threat-model-and-permission-scope
+    status: active
+    lifecycle_status: adapted_runtime_active
+    manifest_path: .agents/skills/threat-model-and-permission-scope/skill.yaml
+    required_by_roles:
+      - security_safety_privacy_compliance_reviewer
+    required_skills: []
+    optional_skills:
+      - source-authority-auditor
+      - assurance-case-builder
+    python_requirements: null
+    scripts: []
+    compatibility_shims:
+      - .codex/skills/threat-model-and-permission-scope/SKILL.md
+    migration_phase: adapted_runtime_active
+  - skill_id: evaluation-harness-designer
+    canonical_path: .agents/skills/evaluation-harness-designer
+    status: active
+    lifecycle_status: adapted_runtime_active
+    manifest_path: .agents/skills/evaluation-harness-designer/skill.yaml
+    required_by_roles:
+      - runtime_maintenance_planner
+      - verification_engineer
+    required_skills: []
+    optional_skills:
+      - verification-validation-planner
+      - technical-writing-quality-gate
+    python_requirements: null
+    scripts: []
+    compatibility_shims:
+      - .codex/skills/evaluation-harness-designer/SKILL.md
+    migration_phase: adapted_runtime_active
+  - skill_id: baseline-change-manager
+    canonical_path: .agents/skills/baseline-change-manager
+    status: active
+    lifecycle_status: adapted_runtime_active
+    manifest_path: .agents/skills/baseline-change-manager/skill.yaml
+    required_by_roles:
+      - svc_documentation_surface_architect
+    required_skills: []
+    optional_skills:
+      - source-authority-auditor
+      - traceability-matrix-engine
+    python_requirements: null
+    scripts: []
+    compatibility_shims:
+      - .codex/skills/baseline-change-manager/SKILL.md
+    migration_phase: adapted_runtime_active
+  - skill_id: agentjob-task-packet-author
+    canonical_path: .agents/skills/agentjob-task-packet-author
+    status: active
+    lifecycle_status: adapted_runtime_active
+    manifest_path: .agents/skills/agentjob-task-packet-author/skill.yaml
+    required_by_roles:
+      - control_loop_agentjob_planner
+      - technical_requirements_engineer
+    required_skills: []
+    optional_skills:
+      - director-decision-governor
+      - context-window-and-handoff-manager
+      - source-first-memory
+    python_requirements: null
+    scripts: []
+    compatibility_shims:
+      - .codex/skills/agentjob-task-packet-author/SKILL.md
+    migration_phase: adapted_runtime_active
+  - skill_id: operations-and-maintenance-planner
+    canonical_path: .agents/skills/operations-and-maintenance-planner
+    status: active
+    lifecycle_status: adapted_runtime_active
+    manifest_path: .agents/skills/operations-and-maintenance-planner/skill.yaml
+    required_by_roles:
+      - runtime_maintenance_planner
+    required_skills: []
+    optional_skills:
+      - evaluation-harness-designer
+      - threat-model-and-permission-scope
+    python_requirements: null
+    scripts: []
+    compatibility_shims:
+      - .codex/skills/operations-and-maintenance-planner/SKILL.md
+    migration_phase: adapted_runtime_active
+  - skill_id: project-ontology-and-glossary
+    canonical_path: .agents/skills/project-ontology-and-glossary
+    status: active
+    lifecycle_status: adapted_runtime_active
+    manifest_path: .agents/skills/project-ontology-and-glossary/skill.yaml
+    required_by_roles:
+      - documentation_librarian
+    required_skills: []
+    optional_skills:
+      - source-authority-auditor
+      - technical-writing-quality-gate
+    python_requirements: null
+    scripts: []
+    compatibility_shims:
+      - .codex/skills/project-ontology-and-glossary/SKILL.md
+    migration_phase: adapted_runtime_active
+  - skill_id: domain-pack-router
+    canonical_path: .agents/skills/domain-pack-router
+    status: active
+    lifecycle_status: adapted_runtime_active
+    manifest_path: .agents/skills/domain-pack-router/skill.yaml
+    required_by_roles:
+      - domain_specialist
+      - system_director
+    required_skills: []
+    optional_skills:
+      - project-ontology-and-glossary
+      - source-authority-auditor
+    python_requirements: null
+    scripts: []
+    compatibility_shims:
+      - .codex/skills/domain-pack-router/SKILL.md
+    migration_phase: adapted_runtime_active
+  - skill_id: interface-and-integration-discovery
+    canonical_path: .agents/skills/interface-and-integration-discovery
+    status: active
+    lifecycle_status: adapted_runtime_active
+    manifest_path: .agents/skills/interface-and-integration-discovery/skill.yaml
+    required_by_roles:
+      - system_architect
+    required_skills: []
+    optional_skills:
+      - artifact-contract-governance
+      - threat-model-and-permission-scope
+      - mermaid-diagrams
+    python_requirements: null
+    scripts: []
+    compatibility_shims:
+      - .codex/skills/interface-and-integration-discovery/SKILL.md
+    migration_phase: adapted_runtime_active
+  - skill_id: requirements-discovery-governor
+    canonical_path: .agents/skills/requirements-discovery-governor
+    status: active
+    lifecycle_status: adapted_runtime_active
+    manifest_path: .agents/skills/requirements-discovery-governor/skill.yaml
+    required_by_roles:
+      - user_wants_elicitor
+      - requirements_manager
+    required_skills: []
+    optional_skills:
+      - system-definition-interview
+      - system-definition-interview-context-45
+      - conversation-to-prd
+      - traceability-matrix-engine
+    python_requirements: null
+    scripts: []
+    compatibility_shims:
+      - .codex/skills/requirements-discovery-governor/SKILL.md
+    migration_phase: adapted_runtime_active

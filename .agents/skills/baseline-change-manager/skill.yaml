@@ -1,0 +1,73 @@
+skill_id: baseline-change-manager
+version: 0.1.0
+status: active
+lifecycle_status: adapted_runtime_active
+canonical_path: .agents/skills/baseline-change-manager
+summary: Manage baselines, supersession, migrations, rollback, and change evidence.
+scope:
+  system_agnostic: true
+  target_system_types:
+    - agentic development systems
+    - generated target systems
+  intentional_specialization: Core baseline and change-control skill.
+  exemptions: []
+domain_emphasis:
+  - change_control
+  - baseline_management
+  - supersession
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+  - svc_documentation_surface_architect
+activation:
+  triggers:
+    - A controlled artifact is superseded, migrated, or rebaselined.
+    - A rollback or compatibility decision is needed.
+    - Generated and canonical surfaces need change accounting.
+  when_not_to_use:
+    - Do not use to silently rewrite history or activated control records.
+  preconditions:
+    - Current baseline or controlled artifact is identified.
+inputs:
+  required:
+    - Baseline or artifact identifier.
+    - Proposed change or supersession reason.
+  optional:
+    - Migration plan, rollback path, compatibility notes, or validation output.
+outputs:
+  primary:
+    - Baseline change record or supersession plan.
+  evidence:
+    - Affected artifact list.
+    - Rollback and validation notes.
+dependencies:
+  required_skills: []
+  optional_skills:
+    - source-authority-auditor
+    - traceability-matrix-engine
+  validation_skills: []
+  python:
+    standard_library_only: true
+    notes: No skill-specific Python dependency.
+  external_tools:
+    - git
+    - make
+authority:
+  may_read:
+    - Registries, control records, generated derivatives, and source artifacts.
+  may_write:
+    - Baseline or supersession records only when the active AgentJob authorizes those paths.
+  may_not:
+    - Mutate activated records without supersession evidence.
+validation:
+  commands:
+    - cd sys-for-ai && make validate-registry-graph
+  validator_classes:
+    - path_validation
+    - process_validation
+handoff:
+  requires_completion_receipt: true
+  evidence:
+    - Baseline affected paths.
+    - Supersession, rollback, and validation notes.

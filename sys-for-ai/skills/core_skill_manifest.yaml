@@ -342,3 +342,157 @@ skills:
       - AGENTS.md
       - examples/portable-example.md
     description: "Manage context checkpoints, resumable handoffs, and continuation evidence."
+  - id: verification-validation-planner
+    name: Verification Validation Planner
+    family: verification_planning
+    source_repo: local
+    source_path: .agents/skills/verification-validation-planner
+    local_path: core/verification-validation-planner
+    adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
+    required_files:
+      - SKILL.md
+      - README.md
+      - AGENTS.md
+      - examples/portable-example.md
+    description: "Convert requirements into V and V plans, matrices, and evidence obligations."
+  - id: assurance-case-builder
+    name: Assurance Case Builder
+    family: assurance_case
+    source_repo: local
+    source_path: .agents/skills/assurance-case-builder
+    local_path: core/assurance-case-builder
+    adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
+    required_files:
+      - SKILL.md
+      - README.md
+      - AGENTS.md
+      - examples/portable-example.md
+    description: "Build claims, evidence, and argument structures for high impact systems."
+  - id: threat-model-and-permission-scope
+    name: Threat Model And Permission Scope
+    family: safety_security_privacy
+    source_repo: local
+    source_path: .agents/skills/threat-model-and-permission-scope
+    local_path: core/threat-model-and-permission-scope
+    adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
+    required_files:
+      - SKILL.md
+      - README.md
+      - AGENTS.md
+      - examples/portable-example.md
+    description: "Identify permissions, autonomy, tool, data risks, and controls."
+  - id: evaluation-harness-designer
+    name: Evaluation Harness Designer
+    family: evaluation_design
+    source_repo: local
+    source_path: .agents/skills/evaluation-harness-designer
+    local_path: core/evaluation-harness-designer
+    adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
+    required_files:
+      - SKILL.md
+      - README.md
+      - AGENTS.md
+      - examples/portable-example.md
+    description: "Design evaluation scenarios, rubrics, regression checks, and failure probes."
+  - id: baseline-change-manager
+    name: Baseline Change Manager
+    family: change_control
+    source_repo: local
+    source_path: .agents/skills/baseline-change-manager
+    local_path: core/baseline-change-manager
+    adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
+    required_files:
+      - SKILL.md
+      - README.md
+      - AGENTS.md
+      - examples/portable-example.md
+    description: "Manage baselines, supersession, migrations, rollback, and change evidence."
+  - id: agentjob-task-packet-author
+    name: Agentjob Task Packet Author
+    family: agentjob_authoring
+    source_repo: local
+    source_path: .agents/skills/agentjob-task-packet-author
+    local_path: core/agentjob-task-packet-author
+    adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
+    required_files:
+      - SKILL.md
+      - README.md
+      - AGENTS.md
+      - examples/portable-example.md
+    description: "Convert implementation plans into bounded AgentJobs and task packets."
+  - id: operations-and-maintenance-planner
+    name: Operations And Maintenance Planner
+    family: operations_maintenance
+    source_repo: local
+    source_path: .agents/skills/operations-and-maintenance-planner
+    local_path: core/operations-and-maintenance-planner
+    adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
+    required_files:
+      - SKILL.md
+      - README.md
+      - AGENTS.md
+      - examples/portable-example.md
+    description: "Define monitoring, incidents, updates, evaluation cadence, and maintenance."
+  - id: project-ontology-and-glossary
+    name: Project Ontology And Glossary
+    family: ontology_glossary
+    source_repo: local
+    source_path: .agents/skills/project-ontology-and-glossary
+    local_path: core/project-ontology-and-glossary
+    adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
+    required_files:
+      - SKILL.md
+      - README.md
+      - AGENTS.md
+      - examples/portable-example.md
+    description: "Maintain controlled vocabulary, ontology, and term decisions."
+  - id: domain-pack-router
+    name: Domain Pack Router
+    family: domain_routing
+    source_repo: local
+    source_path: .agents/skills/domain-pack-router
+    local_path: core/domain-pack-router
+    adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
+    required_files:
+      - SKILL.md
+      - README.md
+      - AGENTS.md
+      - examples/portable-example.md
+    description: "Detect when project-specific domain packs are needed and route accordingly."
+  - id: interface-and-integration-discovery
+    name: Interface And Integration Discovery
+    family: interface_discovery
+    source_repo: local
+    source_path: .agents/skills/interface-and-integration-discovery
+    local_path: core/interface-and-integration-discovery
+    adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
+    required_files:
+      - SKILL.md
+      - README.md
+      - AGENTS.md
+      - examples/portable-example.md
+    description: "Identify external systems, interfaces, data flows, owners, and integration risks."
+  - id: requirements-discovery-governor
+    name: Requirements Discovery Governor
+    family: discovery_governance
+    source_repo: local
+    source_path: .agents/skills/requirements-discovery-governor
+    local_path: core/requirements-discovery-governor
+    adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
+    required_files:
+      - SKILL.md
+      - README.md
+      - AGENTS.md
+      - examples/portable-example.md
+    description: "Govern RDR creation and discovery-to-USRD transition."

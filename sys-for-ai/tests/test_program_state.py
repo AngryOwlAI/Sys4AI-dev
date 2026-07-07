@@ -13,7 +13,7 @@ class ProgramStateTests(unittest.TestCase):
         self.assertIsNone(state.active_director_decision_id)
         self.assertEqual(
             state.latest_handoff_id,
-            "HANDOFF-SFADEV-07-CORE-SKILLS-BATCH-1-001",
+            "HANDOFF-SFADEV-08-CORE-SKILLS-BATCH-2-001",
         )
 
     def test_continue_status_reports_state(self) -> None:

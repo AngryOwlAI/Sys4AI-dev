@@ -1,0 +1,72 @@
+skill_id: interface-and-integration-discovery
+version: 0.1.0
+status: active
+lifecycle_status: adapted_runtime_active
+canonical_path: .agents/skills/interface-and-integration-discovery
+summary: Identify external systems, interfaces, data flows, owners, and integration risks.
+scope:
+  system_agnostic: true
+  target_system_types:
+    - agentic development systems
+    - generated target systems
+  intentional_specialization: Core interface and integration discovery skill.
+  exemptions: []
+domain_emphasis:
+  - interface_discovery
+  - integration_risks
+  - data_flows
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+  - system_architect
+activation:
+  triggers:
+    - A system boundary includes external dependencies.
+    - Interfaces, data flows, owners, or integration risks are unclear.
+    - Architecture needs integration evidence.
+  when_not_to_use:
+    - Do not use to implement integrations before requirements and owners are known.
+  preconditions:
+    - Candidate external system or interface is known.
+inputs:
+  required:
+    - System boundary or integration question.
+    - Candidate external system, API, file, process, or human workflow.
+  optional:
+    - Data contracts, owners, diagrams, threat model, or architecture notes.
+outputs:
+  primary:
+    - Interface and integration discovery record.
+  evidence:
+    - Data flow, owner, risk, and open question list.
+dependencies:
+  required_skills: []
+  optional_skills:
+    - artifact-contract-governance
+    - threat-model-and-permission-scope
+    - mermaid-diagrams
+  validation_skills: []
+  python:
+    standard_library_only: true
+    notes: No skill-specific Python dependency.
+  external_tools:
+    - make
+authority:
+  may_read:
+    - Requirements, architecture, interface specs, data contracts, and diagrams.
+  may_write:
+    - Interface discovery records only when the active AgentJob authorizes those paths.
+  may_not:
+    - Treat assumed external behavior as a verified interface contract.
+validation:
+  commands:
+    - cd sys-for-ai && make validate
+  validator_classes:
+    - dependency_validation
+    - path_validation
+handoff:
+  requires_completion_receipt: true
+  evidence:
+    - Interface list or no-interface rationale.
+    - Owner and risk list.

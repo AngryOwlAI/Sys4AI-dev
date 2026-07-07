@@ -74,7 +74,7 @@ validate-agentjobs:
 	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-03-DISCOVERY-GATE-001.yaml
 	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-04-ROLE-GOVERNANCE-001.yaml
 	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-06-SKILL-LIFECYCLE-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-07-CORE-SKILLS-BATCH-1-001.yaml
+	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-08-CORE-SKILLS-BATCH-2-001.yaml
 	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-DISCOVERY-GATE-SMOKE-001.yaml
 
 validate-skills:
@@ -153,10 +153,10 @@ validate-memory-preflight:
 	$(PYTHON) -m sys_for_ai.cli validate-memory-preflight control_records/memory_preflights
 
 validate-agentjob-boundaries:
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob-boundaries --agentjob AJ-SFADEV-07-CORE-SKILLS-BATCH-1-001 --git --json
+	$(PYTHON) -m sys_for_ai.cli validate-agentjob-boundaries --agentjob AJ-SFADEV-08-CORE-SKILLS-BATCH-2-001 --git --json
 
 validate-check-diff:
-	$(PYTHON) -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-07-CORE-SKILLS-BATCH-1-001 --json
+	$(PYTHON) -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-08-CORE-SKILLS-BATCH-2-001 --json
 
 validate-one-active-agentjob:
 	$(PYTHON) -m sys_for_ai.cli validate-one-active-agentjob

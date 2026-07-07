@@ -1,0 +1,109 @@
+handoff_id: HANDOFF-SFADEV-08-CORE-SKILLS-BATCH-2-001
+schema_version: 0.2.0
+framework_name: sys-for-ai
+target_agentic_system: sys-for-ai-dev
+artifact_name: All Recommendations Core Skill Scaffold Batch 2 Handoff
+artifact_type: operational_handoff
+artifact_version: 0.2.0
+producing_role: implementation_initialization_agent
+artifact_status: completed
+summary: >
+  The second governed core skill scaffold batch is complete. Eleven active
+  development-runtime skills, eleven compatibility shims, and eleven product
+  scaffold references now exist and validate for verification planning,
+  assurance cases, threat and permission scoping, evaluation harness design,
+  baseline changes, AgentJob packet authoring, operations planning, ontology
+  and glossary governance, domain routing, interface discovery, and
+  requirements discovery governance.
+source_artifacts:
+  - implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+  - implementation_plans/self_hosting_boundary_decision_record.md
+  - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-07-CORE-SKILLS-BATCH-1-001.yaml
+  - sys-for-ai/registries/core_skill_proposal_registry.csv
+  - sys-for-ai/registries/role_skill_crosswalk.csv
+  - .agents/skill_registry/SKILL_REGISTRY.yaml
+  - sys-for-ai/skills/core_skill_manifest.yaml
+traceability:
+  agentjob_id: AJ-SFADEV-08-CORE-SKILLS-BATCH-2-001
+  director_decision_id: DDR-SFADEV-08-CORE-SKILLS-BATCH-2-001
+  completion_receipt_id: RECEIPT-SFADEV-08-CORE-SKILLS-BATCH-2-001
+  implementation_plan_section: "20 AJ-08"
+  workstream: WS-08 Core Skill Scaffold Batch 2
+control_loop_notes:
+  previous_handoff_id: HANDOFF-SFADEV-07-CORE-SKILLS-BATCH-1-001
+  next_agentjob_id: AJ-SFADEV-09-GENERATED-DOCS-001
+  next_agentjob_status: pending_new_selection
+  selection_basis: AJ-08 is complete and AJ-09 is the next open all-recommendations plan packet.
+memory_preflight:
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-08-CORE-SKILLS-BATCH-2-001
+  usable_for_routing: true
+  required_next_queries:
+    - generated docs and derivative governance
+    - generated derivative docs for new registries roles artifact contracts layers and core skills
+format_profile_evidence:
+  runtime_skill_surfaces_added:
+    - .agents/skills/verification-validation-planner
+    - .agents/skills/assurance-case-builder
+    - .agents/skills/threat-model-and-permission-scope
+    - .agents/skills/evaluation-harness-designer
+    - .agents/skills/baseline-change-manager
+    - .agents/skills/agentjob-task-packet-author
+    - .agents/skills/operations-and-maintenance-planner
+    - .agents/skills/project-ontology-and-glossary
+    - .agents/skills/domain-pack-router
+    - .agents/skills/interface-and-integration-discovery
+    - .agents/skills/requirements-discovery-governor
+  compatibility_shims_added:
+    - .codex/skills/verification-validation-planner
+    - .codex/skills/assurance-case-builder
+    - .codex/skills/threat-model-and-permission-scope
+    - .codex/skills/evaluation-harness-designer
+    - .codex/skills/baseline-change-manager
+    - .codex/skills/agentjob-task-packet-author
+    - .codex/skills/operations-and-maintenance-planner
+    - .codex/skills/project-ontology-and-glossary
+    - .codex/skills/domain-pack-router
+    - .codex/skills/interface-and-integration-discovery
+    - .codex/skills/requirements-discovery-governor
+  product_scaffolds_added:
+    - sys-for-ai/skills/core/verification-validation-planner
+    - sys-for-ai/skills/core/assurance-case-builder
+    - sys-for-ai/skills/core/threat-model-and-permission-scope
+    - sys-for-ai/skills/core/evaluation-harness-designer
+    - sys-for-ai/skills/core/baseline-change-manager
+    - sys-for-ai/skills/core/agentjob-task-packet-author
+    - sys-for-ai/skills/core/operations-and-maintenance-planner
+    - sys-for-ai/skills/core/project-ontology-and-glossary
+    - sys-for-ai/skills/core/domain-pack-router
+    - sys-for-ai/skills/core/interface-and-integration-discovery
+    - sys-for-ai/skills/core/requirements-discovery-governor
+source_authority_evidence:
+  canonical_sources_checked:
+    - implementation_plans/self_hosting_boundary_decision_record.md
+    - sys-for-ai/control_records/program_state.yaml
+    - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-07-CORE-SKILLS-BATCH-1-001.yaml
+    - temp_handoff/handoff-0018.md
+    - implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+    - sys-for-ai/registries/core_skill_proposal_registry.csv
+    - sys-for-ai/registries/role_skill_crosswalk.csv
+    - .agents/skill_registry/SKILL_REGISTRY.yaml
+    - sys-for-ai/skills/core_skill_manifest.yaml
+  authority_boundary: Product scaffold skills remain reference surfaces and are not active development runtime authority.
+derivative_surface_evidence:
+  generated_derivatives_changed: true
+  changed_derivatives:
+    - docs/generated/roles/*.md
+  notes: Role docs are regenerated from role registries and checked as deterministic derivatives.
+security_evidence:
+  secret_scan_scope: Python source YAML control records CSV registries runtime skill manifests compatibility shims scaffold Markdown and generated Markdown were checked by structured validators and diff checks.
+  new_secret_material: false
+recommended_next_role: documentation_librarian
+phase_boundary_notes: >
+  This handoff closes one bounded all-recommendations slice. Continue with
+  AJ-SFADEV-09-GENERATED-DOCS-001 to generate or stub generated derivative
+  docs without promoting generated docs to canonical authority.
+stop_conditions:
+  - A future task attempts to execute multiple all-recommendations AgentJobs in one invocation.
+  - Product scaffold skills are treated as active runtime authority without an explicit promotion decision.
+  - Generated docs are marked canonical.
+  - Generated docs lack source trace.

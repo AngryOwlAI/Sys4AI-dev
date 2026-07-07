@@ -1,0 +1,52 @@
+director_decision_id: DDR-SFADEV-08-CORE-SKILLS-BATCH-2-001
+schema_version: 0.1.0
+decision_status: completed
+created_at: "2026-07-07T05:07:55Z"
+completed_at: "2026-07-07T05:07:55Z"
+director_role: system_director
+decision_context:
+  trigger: all_recommendations_core_skill_scaffold_batch_2
+  program_state_id: SFA-PROGRAM-STATE-001
+  latest_handoff_id: HANDOFF-SFADEV-07-CORE-SKILLS-BATCH-1-001
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-08-CORE-SKILLS-BATCH-2-001
+  implementation_plan: implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+selected_route:
+  route_id: implement_core_skill_scaffold_batch_2
+  rationale: >
+    The core skill scaffold batch 1 handoff names
+    AJ-SFADEV-08-CORE-SKILLS-BATCH-2-001 as the next open all-recommendations
+    packet. Batch 1 is complete, so the remaining high-priority core skill
+    scaffold batch is authorized as the next single bounded AgentJob.
+  selected_role: implementation_initialization_agent
+  creates_agentjob_id: AJ-SFADEV-08-CORE-SKILLS-BATCH-2-001
+rejected_routes:
+  - route_id: rerun_core_skill_scaffold_batch_1
+    reason: AJ-SFADEV-07-CORE-SKILLS-BATCH-1-001 is already completed and registered.
+  - route_id: generated_docs_and_derivative_governance
+    reason: AJ-09 depends on completing the second core skill scaffold batch first.
+  - route_id: execute_multiple_all_recommendations_agentjobs
+    reason: Violates the one-AgentJob continuation invariant.
+authority_boundary:
+  may_create_agentjob: true
+  may_modify_runtime_skill_registry: true
+  may_modify_runtime_skill_manifests: true
+  may_modify_codex_compatibility_shims: true
+  may_modify_product_scaffold_manifest: true
+  may_modify_product_skill_registry: true
+  may_modify_core_skill_proposal_registry: true
+  may_modify_role_crosswalk: true
+  may_modify_skill_validators: true
+  may_modify_control_closeout_records: true
+  may_modify_prds: false
+  may_add_project_specific_domain_pack_contents: false
+  may_promote_generated_derivatives: false
+validators:
+  - make validate-dev-skills
+  - cd sys-for-ai && make validate-skills
+  - cd sys-for-ai && make validate-core-skill-proposals
+  - cd sys-for-ai && make validate-check-diff
+  - cd sys-for-ai && make validate
+completion_evidence:
+  completion_receipt_id: RECEIPT-SFADEV-08-CORE-SKILLS-BATCH-2-001
+  handoff_id: HANDOFF-SFADEV-08-CORE-SKILLS-BATCH-2-001
+  notes: Core skill scaffold batch 2 completed and validated.

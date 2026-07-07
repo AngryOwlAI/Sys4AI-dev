@@ -509,7 +509,7 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_toml_config(args.config_sources))
         result.extend(validate_jsonschema_contracts(args.contracts_root))
         result.extend(validate_registry_graph(args.registries))
-        boundary_payload = validate_check_diff("AJ-SFADEV-07-CORE-SKILLS-BATCH-1-001")
+        boundary_payload = validate_check_diff("AJ-SFADEV-08-CORE-SKILLS-BATCH-2-001")
         result.extend(
             ValidationResult(
                 bool(boundary_payload.get("ok")),

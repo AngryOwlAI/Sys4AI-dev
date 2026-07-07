@@ -1,0 +1,71 @@
+skill_id: operations-and-maintenance-planner
+version: 0.1.0
+status: active
+lifecycle_status: adapted_runtime_active
+canonical_path: .agents/skills/operations-and-maintenance-planner
+summary: Define monitoring, incidents, updates, evaluation cadence, and maintenance.
+scope:
+  system_agnostic: true
+  target_system_types:
+    - agentic development systems
+    - generated target systems
+  intentional_specialization: Core operations and maintenance planning skill.
+  exemptions: []
+domain_emphasis:
+  - operations_maintenance
+  - monitoring
+  - incident_response
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+  - runtime_maintenance_planner
+activation:
+  triggers:
+    - A target system needs operations planning.
+    - Monitoring, incident, update, or evaluation cadence is undefined.
+    - Maintenance evidence must be handed off.
+  when_not_to_use:
+    - Do not use to invent production behavior that is outside the system scope.
+  preconditions:
+    - Target runtime or maintenance boundary is known.
+inputs:
+  required:
+    - Runtime boundary or maintenance objective.
+    - Known owners or explicit owner gap.
+  optional:
+    - Evaluation harness, incident history, deployment notes, or update policy.
+outputs:
+  primary:
+    - Operations and maintenance plan.
+  evidence:
+    - Monitoring, incident, update, and review cadence.
+dependencies:
+  required_skills: []
+  optional_skills:
+    - evaluation-harness-designer
+    - threat-model-and-permission-scope
+  validation_skills: []
+  python:
+    standard_library_only: true
+    notes: No skill-specific Python dependency.
+  external_tools:
+    - make
+authority:
+  may_read:
+    - Runtime requirements, validation outputs, incidents, and deployment notes.
+  may_write:
+    - Operations plans only when the active AgentJob authorizes those paths.
+  may_not:
+    - Claim operational readiness without owner and evidence coverage.
+validation:
+  commands:
+    - cd sys-for-ai && make validate
+  validator_classes:
+    - process_validation
+    - trace_validation
+handoff:
+  requires_completion_receipt: true
+  evidence:
+    - Maintenance plan or no-change rationale.
+    - Open operational risks.

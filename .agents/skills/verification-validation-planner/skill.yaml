@@ -1,0 +1,74 @@
+skill_id: verification-validation-planner
+version: 0.1.0
+status: active
+lifecycle_status: adapted_runtime_active
+canonical_path: .agents/skills/verification-validation-planner
+summary: Convert requirements into V and V plans, matrices, and evidence obligations.
+scope:
+  system_agnostic: true
+  target_system_types:
+    - agentic development systems
+    - generated target systems
+  intentional_specialization: Core verification and validation planning skill.
+  exemptions: []
+domain_emphasis:
+  - verification_planning
+  - validation_evidence
+  - acceptance_criteria
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+  - technical_requirements_engineer
+  - requirements_verifier
+  - verification_engineer
+activation:
+  triggers:
+    - A requirement needs acceptance criteria or validation evidence.
+    - A plan needs a verification matrix.
+    - Completion evidence must be mapped to requirements.
+  when_not_to_use:
+    - Do not use to claim a requirement is verified without actual evidence.
+  preconditions:
+    - Candidate requirements or validation obligations are available.
+inputs:
+  required:
+    - Requirement identifiers or requirement source.
+    - Intended validation scope.
+  optional:
+    - Existing tests, validators, traces, or acceptance receipts.
+outputs:
+  primary:
+    - Verification plan or validation matrix.
+  evidence:
+    - Requirement-to-evidence mapping.
+    - Validator or test command list.
+dependencies:
+  required_skills: []
+  optional_skills:
+    - traceability-matrix-engine
+    - technical-writing-quality-gate
+  validation_skills: []
+  python:
+    standard_library_only: true
+    notes: No skill-specific Python dependency.
+  external_tools:
+    - make
+authority:
+  may_read:
+    - Requirements, PRDs, trace rows, tests, validators, and completion receipts.
+  may_write:
+    - Verification plans or trace rows only when the active AgentJob authorizes those paths.
+  may_not:
+    - Treat a planned check as executed evidence.
+validation:
+  commands:
+    - cd sys-for-ai && make validate
+  validator_classes:
+    - trace_validation
+    - schema_validation
+handoff:
+  requires_completion_receipt: true
+  evidence:
+    - Verification matrix changed or no-change rationale.
+    - Validation commands selected or executed.

@@ -1,0 +1,72 @@
+skill_id: threat-model-and-permission-scope
+version: 0.1.0
+status: active
+lifecycle_status: adapted_runtime_active
+canonical_path: .agents/skills/threat-model-and-permission-scope
+summary: Identify permissions, autonomy, tool, data risks, and controls.
+scope:
+  system_agnostic: true
+  target_system_types:
+    - agentic development systems
+    - generated target systems
+  intentional_specialization: Core threat model and permission scoping skill.
+  exemptions: []
+domain_emphasis:
+  - safety_security_privacy
+  - permission_scope
+  - autonomy_controls
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+  - security_safety_privacy_compliance_reviewer
+activation:
+  triggers:
+    - A tool, integration, memory surface, or data flow changes.
+    - A system gains new permissions or autonomy.
+    - A risk review is required before acceptance.
+  when_not_to_use:
+    - Do not use as a replacement for a domain-specific security review when one is required.
+  preconditions:
+    - Scope, actors, tools, data, or permissions are known.
+inputs:
+  required:
+    - System boundary or change description.
+    - Tool, data, or permission inventory.
+  optional:
+    - Existing controls, incidents, policies, or assurance cases.
+outputs:
+  primary:
+    - Threat model and permission scope.
+  evidence:
+    - Risk-control mapping.
+    - Open risk list.
+dependencies:
+  required_skills: []
+  optional_skills:
+    - source-authority-auditor
+    - assurance-case-builder
+  validation_skills: []
+  python:
+    standard_library_only: true
+    notes: No skill-specific Python dependency.
+  external_tools:
+    - make
+authority:
+  may_read:
+    - System boundaries, tool manifests, data flows, permissions, and policy artifacts.
+  may_write:
+    - Threat model or permission records only when the active AgentJob authorizes those paths.
+  may_not:
+    - Approve risky permissions without recorded controls and owner acceptance.
+validation:
+  commands:
+    - cd sys-for-ai && make validate
+  validator_classes:
+    - process_validation
+    - dependency_validation
+handoff:
+  requires_completion_receipt: true
+  evidence:
+    - Risk-control mapping.
+    - Unresolved risk list.

@@ -23,6 +23,7 @@
 
 | Skill ID | Binding Type | Required When | System Layer Scope | Evidence Path |
 |---|---|---|---|---|
+| evaluation-harness-designer | optional | when operational behavior needs regression evaluation | target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 | operations-and-maintenance-planner | required | when operations plan is needed | target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 
 ## Execution Bindings

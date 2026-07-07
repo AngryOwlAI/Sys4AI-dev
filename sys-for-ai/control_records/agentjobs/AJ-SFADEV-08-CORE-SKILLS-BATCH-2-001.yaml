@@ -1,0 +1,157 @@
+agentjob_id: AJ-SFADEV-08-CORE-SKILLS-BATCH-2-001
+schema_version: 0.2.0
+status: completed
+objective: >
+  Add verification, assurance, threat, evaluation, baseline, AgentJob authoring,
+  operations, ontology, domain routing, interface discovery, and discovery
+  governance skills.
+lifecycle_stage: implementation_initialization
+role_binding:
+  role_id: implementation_initialization_agent
+  binding_type: registered_role
+  authority_scope: all-recommendations core skill scaffold batch 2 implementation
+  expires_with_agentjob: true
+required_inputs:
+  - implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+  - implementation_plans/self_hosting_boundary_decision_record.md
+  - sys-for-ai/control_records/program_state.yaml
+  - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-07-CORE-SKILLS-BATCH-1-001.yaml
+  - temp_handoff/handoff-0018.md
+  - .agents/skill_registry/SKILL_REGISTRY.yaml
+  - sys-for-ai/skills/core_skill_manifest.yaml
+  - sys-for-ai/registries/skill_registry.csv
+  - sys-for-ai/registries/core_skill_proposal_registry.csv
+allowed_reads:
+  - PRDs/**
+  - implementation_plans/**
+  - temp_handoff/**
+  - .agents/**
+  - .codex/**
+  - scripts/skills/**
+  - sys-for-ai/**
+allowed_writes:
+  - .agents/skill_registry/SKILL_REGISTRY.yaml
+  - .agents/skills/verification-validation-planner/**
+  - .agents/skills/assurance-case-builder/**
+  - .agents/skills/threat-model-and-permission-scope/**
+  - .agents/skills/evaluation-harness-designer/**
+  - .agents/skills/baseline-change-manager/**
+  - .agents/skills/agentjob-task-packet-author/**
+  - .agents/skills/operations-and-maintenance-planner/**
+  - .agents/skills/project-ontology-and-glossary/**
+  - .agents/skills/domain-pack-router/**
+  - .agents/skills/interface-and-integration-discovery/**
+  - .agents/skills/requirements-discovery-governor/**
+  - .codex/skills/verification-validation-planner/**
+  - .codex/skills/assurance-case-builder/**
+  - .codex/skills/threat-model-and-permission-scope/**
+  - .codex/skills/evaluation-harness-designer/**
+  - .codex/skills/baseline-change-manager/**
+  - .codex/skills/agentjob-task-packet-author/**
+  - .codex/skills/operations-and-maintenance-planner/**
+  - .codex/skills/project-ontology-and-glossary/**
+  - .codex/skills/domain-pack-router/**
+  - .codex/skills/interface-and-integration-discovery/**
+  - .codex/skills/requirements-discovery-governor/**
+  - sys-for-ai/skills/core/verification-validation-planner/**
+  - sys-for-ai/skills/core/assurance-case-builder/**
+  - sys-for-ai/skills/core/threat-model-and-permission-scope/**
+  - sys-for-ai/skills/core/evaluation-harness-designer/**
+  - sys-for-ai/skills/core/baseline-change-manager/**
+  - sys-for-ai/skills/core/agentjob-task-packet-author/**
+  - sys-for-ai/skills/core/operations-and-maintenance-planner/**
+  - sys-for-ai/skills/core/project-ontology-and-glossary/**
+  - sys-for-ai/skills/core/domain-pack-router/**
+  - sys-for-ai/skills/core/interface-and-integration-discovery/**
+  - sys-for-ai/skills/core/requirements-discovery-governor/**
+  - sys-for-ai/skills/core_skill_manifest.yaml
+  - sys-for-ai/registries/skill_registry.csv
+  - sys-for-ai/registries/core_skill_proposal_registry.csv
+  - sys-for-ai/registries/role_skill_crosswalk.csv
+  - sys-for-ai/registries/source_registry.csv
+  - sys-for-ai/registries/control_record_registry.csv
+  - sys-for-ai/registries/agentjob_registry.csv
+  - sys-for-ai/registries/director_decision_registry.csv
+  - sys-for-ai/registries/completion_receipt_registry.csv
+  - sys-for-ai/registries/handoff_registry.csv
+  - sys-for-ai/registries/memory_preflight_receipt_registry.csv
+  - sys-for-ai/sys_for_ai/validators.py
+  - sys-for-ai/sys_for_ai/cli.py
+  - sys-for-ai/Makefile
+  - sys-for-ai/control_records/director_decisions/DDR-SFADEV-08-CORE-SKILLS-BATCH-2-001.yaml
+  - sys-for-ai/control_records/agentjobs/AJ-SFADEV-08-CORE-SKILLS-BATCH-2-001.yaml
+  - sys-for-ai/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-08-CORE-SKILLS-BATCH-2-001.yaml
+  - sys-for-ai/control_records/completions/RECEIPT-SFADEV-08-CORE-SKILLS-BATCH-2-001.yaml
+  - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-08-CORE-SKILLS-BATCH-2-001.yaml
+  - sys-for-ai/control_records/program_state.yaml
+  - sys-for-ai/docs/generated/configuration_control/**
+  - sys-for-ai/docs/generated/roles/**
+  - sys-for-ai/tests/test_agentjob_boundaries.py
+  - sys-for-ai/tests/test_program_state.py
+  - sys-for-ai/tests/test_self_hosting_acceptance.py
+  - temp_handoff/handoff-0019.md
+generated_paths:
+  - sys-for-ai/docs/generated/configuration_control/**
+  - sys-for-ai/docs/generated/roles/**
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - sys-for-ai/.venv/**
+  - PRDs/**
+  - sys-for-ai/docs/generated/** as canonical source
+stop_conditions:
+  - Any new skill lacks required manifest or authority rules.
+  - A proposed core skill introduces project-specific domain-pack contents.
+  - A product scaffold reference is promoted to runtime authority without a separate decision.
+  - A required write is outside the AJ-08 allowlist.
+  - More than one all-recommendations AgentJob is required.
+forbidden_actions:
+  - Include project-specific domain-pack contents.
+  - Treat product scaffold skills as active development runtime authority.
+  - Treat generated derivatives as canonical.
+  - Execute more than one all-recommendations AgentJob in one continuation invocation.
+memory_preflight:
+  required: true
+  minimum_queries:
+    - core skill scaffold batch 2
+    - eleven additional core skills
+  required_evidence:
+    - self-hosting boundary decision record inspection
+    - latest controlled handoff inspection
+    - all-recommendations plan AJ-08 inspection
+    - core skill proposal registry inspection
+expected_outputs:
+  - Eleven active development-runtime core skill scaffolds under .agents/skills.
+  - Eleven Codex compatibility shims under .codex/skills.
+  - Eleven product scaffold reference skills under sys-for-ai/skills/core.
+  - Product and runtime skill registries updated.
+  - Core skill proposal rows marked scaffolded.
+  - Role crosswalk covers newly active runtime skills.
+  - Completion receipt and handoff evidence.
+validators:
+  - make validate-dev-skills
+  - cd sys-for-ai && make validate-skills
+  - cd sys-for-ai && make validate-core-skill-proposals
+  - cd sys-for-ai && make validate-check-diff
+  - cd sys-for-ai && make validate
+completion_evidence_required:
+  - changed_artifacts
+  - command_results
+  - validation_status
+  - residual_risk
+handoff_policy:
+  create_handoff_when:
+    - core skill scaffold batch 2 completes
+    - next AgentJob is recommended
+authority_boundary:
+  may_modify_runtime_skill_registry: true
+  may_modify_product_scaffold: true
+  may_modify_skill_validators: true
+  may_add_project_specific_domain_pack_contents: false
+  may_modify_canonical_prds: false
+created_at: "2026-07-07T05:07:55Z"
+activated_at: "2026-07-07T05:07:55Z"
+completed_at: "2026-07-07T05:07:55Z"
+director_decision_id: DDR-SFADEV-08-CORE-SKILLS-BATCH-2-001

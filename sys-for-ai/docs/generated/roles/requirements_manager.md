@@ -24,6 +24,7 @@
 | Skill ID | Binding Type | Required When | System Layer Scope | Evidence Path |
 |---|---|---|---|---|
 | conversation-to-prd | required | when producing requirements artifacts | framework_product;target_system_template;target_system_instance | PRDs/sys-for-ai_phase-0_product_system_design_prd.md |
+| requirements-discovery-governor | optional | when discovery output moves toward requirements baseline | framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 | technical-writing-quality-gate | required | before requirements baseline | framework_product;target_system_template;target_system_instance | PRDs/sys-for-ai_phase-0_product_system_design_prd.md |
 | traceability-matrix-engine | optional | when trace matrix is needed | framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 

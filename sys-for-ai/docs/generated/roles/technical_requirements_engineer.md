@@ -23,6 +23,7 @@
 
 | Skill ID | Binding Type | Required When | System Layer Scope | Evidence Path |
 |---|---|---|---|---|
+| agentjob-task-packet-author | optional | when technical plans need task packet boundaries | framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 | prd-to-implementation-plan | required | when technical plan is needed | framework_product;target_system_template;target_system_instance | PRDs/sys-for-ai_phase-0_product_system_design_prd.md |
 | verification-validation-planner | required | when verification evidence is needed | framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 

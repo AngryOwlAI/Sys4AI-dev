@@ -1,0 +1,73 @@
+skill_id: assurance-case-builder
+version: 0.1.0
+status: active
+lifecycle_status: adapted_runtime_active
+canonical_path: .agents/skills/assurance-case-builder
+summary: Build claims, evidence, and argument structures for high impact systems.
+scope:
+  system_agnostic: true
+  target_system_types:
+    - agentic development systems
+    - generated target systems
+  intentional_specialization: Core assurance case construction skill.
+  exemptions: []
+domain_emphasis:
+  - assurance_case
+  - claims_evidence_argument
+  - risk_controls
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+  - security_safety_privacy_compliance_reviewer
+activation:
+  triggers:
+    - A high-impact claim needs structured evidence.
+    - A safety, privacy, or compliance argument needs an auditable case.
+    - A risk control needs traceable justification.
+  when_not_to_use:
+    - Do not use to convert weak evidence into strong claims.
+  preconditions:
+    - Claims, hazards, controls, or assurance goals are known.
+inputs:
+  required:
+    - Claim or assurance objective.
+    - Evidence source or explicit evidence gap.
+  optional:
+    - Threat model, requirements trace, validation results, or open issues.
+outputs:
+  primary:
+    - Assurance case outline or claims-evidence-argument map.
+  evidence:
+    - Source paths for claims and controls.
+    - Residual risk list.
+dependencies:
+  required_skills: []
+  optional_skills:
+    - threat-model-and-permission-scope
+    - traceability-matrix-engine
+    - technical-writing-quality-gate
+  validation_skills: []
+  python:
+    standard_library_only: true
+    notes: No skill-specific Python dependency.
+  external_tools:
+    - make
+authority:
+  may_read:
+    - Requirements, risks, validation outputs, policies, and completion evidence.
+  may_write:
+    - Assurance case artifacts only when the active AgentJob authorizes those paths.
+  may_not:
+    - Strengthen a claim beyond the cited evidence.
+validation:
+  commands:
+    - cd sys-for-ai && make validate
+  validator_classes:
+    - trace_validation
+    - claim_validation
+handoff:
+  requires_completion_receipt: true
+  evidence:
+    - Claim map or no-change rationale.
+    - Residual risk statement.

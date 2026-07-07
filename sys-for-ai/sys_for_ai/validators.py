@@ -79,13 +79,22 @@ AGENTJOB_REQUIRED_FIELDS = {
 }
 
 SKILL_MANIFEST_REQUIRED_SKILLS = {
+    "agentjob-task-packet-author",
     "artifact-contract-governance",
+    "assurance-case-builder",
+    "baseline-change-manager",
     "codex-usage-metrics",
     "context-window-and-handoff-manager",
     "continue",
     "director-decision-governor",
+    "domain-pack-router",
     "system-definition-interview",
     "system-definition-interview-context-45",
+    "evaluation-harness-designer",
+    "interface-and-integration-discovery",
+    "operations-and-maintenance-planner",
+    "project-ontology-and-glossary",
+    "requirements-discovery-governor",
     "source-first-memory",
     "source-authority-auditor",
     "role-catalog-governance",
@@ -100,7 +109,9 @@ SKILL_MANIFEST_REQUIRED_SKILLS = {
     "skill-import-generalizer",
     "system-layer-classifier",
     "technical-writing-quality-gate",
+    "threat-model-and-permission-scope",
     "traceability-matrix-engine",
+    "verification-validation-planner",
 }
 
 SKILL_ADAPTER_REQUIRED_FILES = {

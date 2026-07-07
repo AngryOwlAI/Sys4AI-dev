@@ -24,6 +24,7 @@
 | Skill ID | Binding Type | Required When | System Layer Scope | Evidence Path |
 |---|---|---|---|---|
 | director-decision-governor | required | when routing is not determined | development_system;framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
+| domain-pack-router | optional | when core versus domain-pack boundary is disputed | development_system;framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 | role-catalog-governance | required | when role catalog governance is needed | development_system;framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 | system-layer-classifier | required | before mutating controlled authority | development_system;framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 

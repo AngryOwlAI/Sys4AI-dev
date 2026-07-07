@@ -1,0 +1,101 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-08-CORE-SKILLS-BATCH-2-001
+schema_version: 0.1.0
+agentjob_id: AJ-SFADEV-08-CORE-SKILLS-BATCH-2-001
+created_at: "2026-07-07T05:07:55Z"
+status: PASS_WITH_WARNINGS
+commands_run:
+  - command: cd sys-for-ai && make continue-preflight
+    result: pass_with_warnings
+  - command: cd sys-for-ai && make continue-select
+    result: blocked_director_decision_required
+  - command: rg memory quick pass for core skill scaffold batch 2 routing
+    result: pass_memory_hits_checked_against_source
+queries:
+  - query: source-first memory continue handoff AgentJob
+    returned_object_ids:
+      - SRC-REG-CONTROL-RECORDS
+      - der_configuration_control_yaml
+      - SRC-CLI-PHASE1
+      - SRC-SELFHOST-MEMORY-CONTINUE-PLAN
+      - SRC-CONTROL-LOOP-FINALIZATION
+      - SRC-SKILL-SOURCE-FIRST-MEMORY-RUNTIME-MANIFEST
+      - SRC-REG-ROLES
+      - SRC-CONTROL-LOOP-JOB-SELECTION
+      - SRC-TEMP-HANDOFF-0010
+      - SRC-REG-REQ-TRACE
+  - query: core skill scaffold batch 2 eleven additional core skills
+    returned_object_ids:
+      - SRC-ALL-RECS-IMPLEMENTATION-PLAN
+      - SRC-REG-CORE-SKILL-PROPOSALS
+      - SRC-DEV-SKILL-REGISTRY
+      - SRC-PRODUCT-CORE-SKILL-MANIFEST
+      - SRC-PRODUCT-SKILL-REGISTRY
+canonical_sources_inspected:
+  - path: implementation_plans/self_hosting_boundary_decision_record.md
+    registry: source_registry.csv
+    row_id: SRC-SELFHOST-BOUNDARY-DECISION
+    inspected_sections:
+      - Decision
+      - Rules
+  - path: sys-for-ai/control_records/program_state.yaml
+    registry: source_registry.csv
+    row_id: SRC-PROGRAM-STATE
+    inspected_sections:
+      - latest_handoff_id
+      - allowed_next_actions
+  - path: sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-07-CORE-SKILLS-BATCH-1-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-HANDOFF-CORE-SKILLS-BATCH-1-001
+    inspected_sections:
+      - next_agentjob_id
+      - phase_boundary_notes
+  - path: temp_handoff/handoff-0018.md
+    registry: source_registry.csv
+    row_id: SRC-TEMP-HANDOFF-0018
+    inspected_sections:
+      - Next logical step
+  - path: implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+    registry: source_registry.csv
+    row_id: SRC-ALL-RECS-IMPLEMENTATION-PLAN
+    inspected_sections:
+      - AJ-08 Core Skill Scaffold Batch 2
+      - AJ-09 Generated Docs and Derivative Governance
+  - path: sys-for-ai/registries/core_skill_proposal_registry.csv
+    registry: source_registry.csv
+    row_id: SRC-REG-CORE-SKILL-PROPOSALS
+    inspected_sections:
+      - batch 2 proposal rows
+  - path: .agents/skill_registry/SKILL_REGISTRY.yaml
+    registry: source_registry.csv
+    row_id: SRC-DEV-SKILL-REGISTRY
+    inspected_sections:
+      - runtime skill entries
+  - path: sys-for-ai/skills/core_skill_manifest.yaml
+    registry: source_registry.csv
+    row_id: SRC-PRODUCT-CORE-SKILL-MANIFEST
+    inspected_sections:
+      - product scaffold entries
+registry_rows_inspected:
+  - registry: source_registry.csv
+    row_id: SRC-ALL-RECS-IMPLEMENTATION-PLAN
+    purpose: Confirm AJ-08 authority and AJ-09 next-step boundary.
+  - registry: source_registry.csv
+    row_id: SRC-REG-CORE-SKILL-PROPOSALS
+    purpose: Confirm proposed core skill batch 2 rows.
+  - registry: source_registry.csv
+    row_id: SRC-DEV-SKILL-REGISTRY
+    purpose: Confirm active development runtime skill registry authority.
+  - registry: source_registry.csv
+    row_id: SRC-PRODUCT-CORE-SKILL-MANIFEST
+    purpose: Confirm product scaffold manifest authority.
+  - registry: source_registry.csv
+    row_id: SRC-PRODUCT-SKILL-REGISTRY
+    purpose: Confirm product skill registry authority.
+stale_context_risks:
+  - risk_id: MEMPREFLIGHT-SFADEV-08-RISK-001
+    status: observed
+    notes: Continue selection required a Director decision because no active AgentJob was set.
+  - risk_id: MEMPREFLIGHT-SFADEV-08-RISK-002
+    status: mitigated
+    notes: Batch 2 skill proposals were checked against the implementation plan and proposal registry before scaffolding.
+usable_for_routing: true

@@ -25,6 +25,7 @@
 |---|---|---|---|---|
 | technical-writing-quality-gate | required | before accepting requirements | framework_product;target_system_template;target_system_instance | PRDs/sys-for-ai_phase-0_product_system_design_prd.md |
 | traceability-matrix-engine | required | when traceability is reviewed | framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
+| verification-validation-planner | optional | when validation evidence planning is needed | framework_product;target_system_template;target_system_instance | implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md |
 
 ## Execution Bindings
 

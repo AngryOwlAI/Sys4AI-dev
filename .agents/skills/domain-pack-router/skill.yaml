@@ -1,0 +1,72 @@
+skill_id: domain-pack-router
+version: 0.1.0
+status: active
+lifecycle_status: adapted_runtime_active
+canonical_path: .agents/skills/domain-pack-router
+summary: Detect when project-specific domain packs are needed and route accordingly.
+scope:
+  system_agnostic: true
+  target_system_types:
+    - agentic development systems
+    - generated target systems
+  intentional_specialization: Core domain-pack routing skill, not a domain-pack content skill.
+  exemptions: []
+domain_emphasis:
+  - domain_routing
+  - specialization_boundary
+  - pack_selection
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+  - domain_specialist
+  - system_director
+activation:
+  triggers:
+    - A task needs domain-specific knowledge beyond the core framework.
+    - A project-specific pack may be required.
+    - Core skill boundaries risk absorbing domain content.
+  when_not_to_use:
+    - Do not use to add domain-specific content to core skills.
+  preconditions:
+    - Domain pressure or specialization need is observed.
+inputs:
+  required:
+    - Task or requirement showing domain pressure.
+    - Available domain-pack candidates or explicit absence.
+  optional:
+    - Domain review notes, glossary, or risk assessment.
+outputs:
+  primary:
+    - Domain-pack routing decision.
+  evidence:
+    - Core-versus-domain boundary rationale.
+dependencies:
+  required_skills: []
+  optional_skills:
+    - project-ontology-and-glossary
+    - source-authority-auditor
+  validation_skills: []
+  python:
+    standard_library_only: true
+    notes: No skill-specific Python dependency.
+  external_tools:
+    - make
+authority:
+  may_read:
+    - Domain-pack registries, requirements, ontology notes, and handoffs.
+  may_write:
+    - Routing records only when the active AgentJob authorizes those paths.
+  may_not:
+    - Embed project-specific domain constraints into core skill instructions.
+validation:
+  commands:
+    - cd sys-for-ai && make validate
+  validator_classes:
+    - domain_validation
+    - process_validation
+handoff:
+  requires_completion_receipt: true
+  evidence:
+    - Routing decision or no-pack rationale.
+    - Boundary risk statement.

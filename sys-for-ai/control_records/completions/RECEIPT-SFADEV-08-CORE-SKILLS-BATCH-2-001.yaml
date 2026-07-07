@@ -1,0 +1,142 @@
+completion_receipt_id: RECEIPT-SFADEV-08-CORE-SKILLS-BATCH-2-001
+schema_version: 0.2.0
+agentjob_id: AJ-SFADEV-08-CORE-SKILLS-BATCH-2-001
+role: implementation_initialization_agent
+result: PASS
+summary: >
+  Core skill scaffold batch 2 completed for the all-recommendations plan.
+  Eleven active development-runtime skill scaffolds, eleven Codex compatibility
+  shims, and eleven product scaffold reference skills now exist for
+  verification planning, assurance cases, threat and permission scoping,
+  evaluation harness design, baseline changes, AgentJob packet authoring,
+  operations planning, ontology and glossary governance, domain routing,
+  interface discovery, and requirements discovery governance.
+changed_artifacts:
+  - path: .agents/skills/verification-validation-planner/**
+    change_type: added
+    authority_status: controlled
+  - path: .agents/skills/assurance-case-builder/**
+    change_type: added
+    authority_status: controlled
+  - path: .agents/skills/threat-model-and-permission-scope/**
+    change_type: added
+    authority_status: controlled
+  - path: .agents/skills/evaluation-harness-designer/**
+    change_type: added
+    authority_status: controlled
+  - path: .agents/skills/baseline-change-manager/**
+    change_type: added
+    authority_status: controlled
+  - path: .agents/skills/agentjob-task-packet-author/**
+    change_type: added
+    authority_status: controlled
+  - path: .agents/skills/operations-and-maintenance-planner/**
+    change_type: added
+    authority_status: controlled
+  - path: .agents/skills/project-ontology-and-glossary/**
+    change_type: added
+    authority_status: controlled
+  - path: .agents/skills/domain-pack-router/**
+    change_type: added
+    authority_status: controlled
+  - path: .agents/skills/interface-and-integration-discovery/**
+    change_type: added
+    authority_status: controlled
+  - path: .agents/skills/requirements-discovery-governor/**
+    change_type: added
+    authority_status: controlled
+  - path: .codex/skills/*/SKILL.md
+    change_type: added
+    authority_status: compatibility_shim
+  - path: sys-for-ai/skills/core/*/**
+    change_type: added
+    authority_status: product_scaffold_reference
+  - path: .agents/skill_registry/SKILL_REGISTRY.yaml
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/skills/core_skill_manifest.yaml
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/skill_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/core_skill_proposal_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: sys-for-ai/registries/role_skill_crosswalk.csv
+    change_type: modified
+    authority_status: controlled
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-08-CORE-SKILLS-BATCH-2-001
+validation_evidence:
+  commands_run:
+    - command: python3 scripts/skills/validate_skill_manifest.py --root .
+      result: pass
+    - command: cd sys-for-ai && make validate-skills
+      result: pass
+    - command: cd sys-for-ai && make validate-core-skill-proposals
+      result: pass
+    - command: cd sys-for-ai && make validate-roles
+      result: pass
+    - command: cd sys-for-ai && make validate-check-diff
+      result: pass
+    - command: cd sys-for-ai && make validate
+      result: pass
+  validators:
+    - validator_id: validate-dev-skills
+      target_path: .agents/skill_registry/SKILL_REGISTRY.yaml
+      result: pass
+      notes: Eleven new active runtime skill manifests validate.
+    - validator_id: validate-skills
+      target_path: sys-for-ai/skills/core_skill_manifest.yaml
+      result: pass
+      notes: Eleven new product scaffold reference skills validate.
+    - validator_id: validate-core-skill-proposals
+      target_path: sys-for-ai/registries/core_skill_proposal_registry.csv
+      result: pass
+      notes: Batch 2 proposal rows are scaffolded and remain core.
+    - validator_id: validate-roles
+      target_path: sys-for-ai/registries/role_skill_crosswalk.csv
+      result: pass
+      notes: Newly active runtime skills have role crosswalk coverage.
+format_profile_changes:
+  added:
+    - path: .agents/skills/*/**
+      profile_id: fmt_markdown_source
+      registry_row_id: SRC-AJ08-RUNTIME-SKILLS
+    - path: .codex/skills/*/SKILL.md
+      profile_id: fmt_markdown_source
+      registry_row_id: SRC-AJ08-CODEX-SHIMS
+    - path: sys-for-ai/skills/core/*/**
+      profile_id: fmt_markdown_source
+      registry_row_id: SRC-AJ08-PRODUCT-SCAFFOLDS
+  modified:
+    - path: .agents/skill_registry/SKILL_REGISTRY.yaml
+      profile_id: fmt_yaml_registry
+      registry_row_id: SRC-DEV-SKILL-REGISTRY
+    - path: sys-for-ai/registries/core_skill_proposal_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-CORE-SKILL-PROPOSALS
+    - path: sys-for-ai/registries/role_skill_crosswalk.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-ROLE-SKILL-CROSSWALK
+  generated_derivatives:
+    - docs/generated/roles/*.md
+authority_changes:
+  promoted: []
+  completed:
+    - agentjob_id: AJ-SFADEV-08-CORE-SKILLS-BATCH-2-001
+      reason: Core skill scaffold batch 2 completed and validated.
+  not_promoted:
+    - path: sys-for-ai/skills/core/*/**
+      reason: Product scaffold skills remain reference surfaces unless separately promoted.
+    - path: sys-for-ai/docs/generated/roles/*.md
+      reason: Generated role docs remain derivative navigation surfaces.
+unresolved_issues:
+  - issue_id: SFADEV-ALL-RECS-OPEN-008
+    status: deferred
+    notes: Generated docs and derivative governance remain for AJ-09.
+next_recommendation: >
+  Continue with AJ-SFADEV-09-GENERATED-DOCS-001. Batch 2 is scaffolded, so
+  the next logical packet is generated docs and derivative governance.
+next_handoff_id: HANDOFF-SFADEV-08-CORE-SKILLS-BATCH-2-001
+completed_at: "2026-07-07T05:07:55Z"
