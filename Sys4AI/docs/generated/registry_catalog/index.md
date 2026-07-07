@@ -53,11 +53,11 @@ This generated page indexes registered CSV registries. It is a navigation surfac
 
 | registry_file | registered_source_id | source_type | authority_status | row_count | owner |
 | --- | --- | --- | --- | --- | --- |
-| registries/agentjob_registry.csv | SRC-REG-AGENTJOBS | agentjob_registry | controlled | 18 | control_loop |
+| registries/agentjob_registry.csv | SRC-REG-AGENTJOBS | agentjob_registry | controlled | 19 | control_loop |
 | registries/artifact_contract_registry.csv | SRC-REG-ARTIFACT-CONTRACTS | artifact_contract_registry | controlled | 22 | implementation_initialization |
 | registries/completion_receipt_registry.csv | SRC-REG-COMPLETION-RECEIPTS | completion_receipt_registry | controlled | 14 | control_loop |
 | registries/config_source_registry.csv | SRC-REG-CONFIG-SOURCES | config_source_registry | controlled | 4 | implementation_initialization |
-| registries/control_record_registry.csv | SRC-REG-CONTROL-RECORDS | control_record_registry | controlled | 82 | implementation_initialization |
+| registries/control_record_registry.csv | SRC-REG-CONTROL-RECORDS | control_record_registry | controlled | 83 | implementation_initialization |
 | registries/core_skill_proposal_registry.csv | SRC-REG-CORE-SKILL-PROPOSALS | core_skill_proposal_registry | controlled | 19 | implementation_initialization |
 | registries/derivative_registry.csv | SRC-REG-DERIVATIVES | derivative_registry | controlled | 41 | implementation_initialization |
 | registries/director_decision_registry.csv | SRC-REG-DIRECTOR-DECISIONS | director_decision_registry | controlled | 12 | control_loop |

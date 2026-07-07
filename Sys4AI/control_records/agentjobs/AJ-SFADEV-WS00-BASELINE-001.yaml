@@ -1,0 +1,95 @@
+agentjob_id: AJ-SFADEV-WS00-BASELINE-001
+schema_version: 0.2.0
+status: completed
+objective: >
+  Complete WS-00 baseline, sync, and safety preflight for the current
+  Sys4AI-dev implementation-plan surface, repair the narrow rename-audit
+  issue found during validation, and add the missing baseline receipt.
+lifecycle_stage: implementation_initialization
+role_binding:
+  role_id: requirements_verifier
+  binding_type: one_job_provisional_role
+  authority_scope: WS-00 baseline validation and receipt evidence
+  expires_with_agentjob: true
+required_inputs:
+  - implementation_plans/Sys4AI-dev_all_recommendations_implementation_plan.md
+  - Sys4AI/control_records/program_state.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-11-INIT-FRONTDOOR-001.yaml
+  - Makefile
+  - Sys4AI/Makefile
+allowed_reads:
+  - README.md
+  - Makefile
+  - PRDs/**
+  - implementation_plans/**
+  - .agents/**
+  - .codex/**
+  - Sys4AI/**
+  - scripts/**
+allowed_writes:
+  - implementation_plans/completion_receipts/CR-WS00-BASELINE-001.md
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-WS00-BASELINE-001.yaml
+  - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-11-INIT-FRONTDOOR-001.yaml
+  - Sys4AI/registries/agentjob_registry.csv
+  - Sys4AI/registries/control_record_registry.csv
+  - Sys4AI/Makefile
+  - Sys4AI/docs/generated/**
+generated_paths:
+  - Sys4AI/docs/generated/**
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - Sys4AI/.venv/**
+  - Sys4AI/docs/generated/** as canonical source
+forbidden_actions:
+  - Broaden the implementation plan beyond WS-00 baseline evidence.
+  - Rewrite completed control records beyond the narrow rename-audit string repair.
+  - Promote generated derivatives to source authority.
+  - Treat the absent requested filename as a current repository file.
+expected_outputs:
+  - WS-00 baseline completion receipt.
+  - Passing root aggregate validation.
+  - Diff-boundary validation against this WS-00 AgentJob.
+validators:
+  - make validate-dev-skills
+  - make validate-product-scaffold
+  - make validate
+  - cd Sys4AI && make validate
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-discovery-record templates/system_definition/requirements-discovery-record-template.md
+  - cd Sys4AI && make generate-config-control-wiki
+  - cd Sys4AI && make generate-governance-docs
+  - git diff --check
+completion_evidence_required:
+  - baseline_receipt
+  - command_results
+  - validation_status
+  - narrow_repair_notes
+memory_preflight:
+  required: true
+  minimum_queries:
+    - Sys4AI-dev implementation plan first logical task
+    - WS-00 baseline completion receipt
+  required_evidence:
+    - MEMORY.md quick pass
+    - implementation plan WS-00 inspection
+    - repository validation output
+authority_boundary:
+  may_add_baseline_receipt: true
+  may_repair_rename_audit_string: true
+  may_update_current_diff_boundary_agentjob: true
+  may_refresh_generated_derivatives: true
+  may_modify_product_requirements: false
+  may_modify_runtime_skills: false
+  may_promote_generated_derivatives: false
+handoff_policy:
+  create_handoff_when:
+    - Not required for this baseline evidence repair unless future continuation needs it.
+stop_conditions:
+  - Root aggregate validation fails after the narrow repair.
+  - Required write is outside the WS-00 allowlist.
+  - Current plan equivalent cannot be identified from repository evidence.
+created_at: "2026-07-07T18:30:00Z"
+activated_at: "2026-07-07T18:30:00Z"
+completed_at: "2026-07-07T18:30:00Z"

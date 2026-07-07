@@ -6,7 +6,7 @@ status: PASS_WITH_WARNINGS
 commands_run:
   - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli memory status --json
     result: fail_expected_missing_new_control_records_before_creation
-  - command: rg system-definition-interview requirements-discovery sys-for-ai-dev in MEMORY.md
+  - command: rg system-definition-interview requirements-discovery Sys4AI-dev in MEMORY.md
     result: pass_memory_hits_checked_against_repository_sources
   - command: inspect source-first memory system-layer and requirements-discovery skills
     result: pass
@@ -76,4 +76,3 @@ stale_context_risks:
     status: mitigated
     notes: Repository sources were inspected directly and new control records are created in the same bounded packet.
 usable_for_routing: true
-

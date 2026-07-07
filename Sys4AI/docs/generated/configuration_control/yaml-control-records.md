@@ -119,6 +119,7 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_init_frontdoor_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-11-INIT-FRONTDOOR-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
 | ctrl_init_frontdoor_completion | control_records/completions/RECEIPT-SFADEV-11-INIT-FRONTDOOR-001.yaml | completion_receipt_v0_2 | controlled | implementation_initialization | contract_completion_receipt_v0_2 | pending |
 | ctrl_init_frontdoor_handoff | control_records/handoffs/HANDOFF-SFADEV-11-INIT-FRONTDOOR-001.yaml | handoff_v0_2 | controlled | implementation_initialization | contract_handoff_v0_2 | pending |
+| ctrl_ws00_baseline_agentjob | control_records/agentjobs/AJ-SFADEV-WS00-BASELINE-001.yaml | agentjob_v0_2 | controlled | implementation_initialization | contract_agentjob_v0_2 | pending |
 
 ## Validation Contract Trace
 
