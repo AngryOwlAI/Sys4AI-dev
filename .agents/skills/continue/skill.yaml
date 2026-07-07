@@ -1,6 +1,7 @@
 skill_id: continue
 version: 0.1.0
 status: active
+lifecycle_status: adapted_runtime_active
 canonical_path: .agents/skills/continue
 summary: Resume sys-for-ai-dev from tracked state and advance at most one authorized AgentJob.
 scope:

@@ -84,6 +84,11 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_role_governance_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-04-ROLE-GOVERNANCE-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
 | ctrl_role_governance_completion | control_records/completions/RECEIPT-SFADEV-04-ROLE-GOVERNANCE-001.yaml | completion_receipt_v0_2 | controlled | implementation_initialization | contract_completion_receipt_v0_2 | pending |
 | ctrl_role_governance_handoff | control_records/handoffs/HANDOFF-SFADEV-04-ROLE-GOVERNANCE-001.yaml | handoff_v0_2 | controlled | implementation_initialization | contract_handoff_v0_2 | pending |
+| ctrl_skill_lifecycle_director_decision | control_records/director_decisions/DDR-SFADEV-06-SKILL-LIFECYCLE-001.yaml | director_decision | controlled | implementation_initialization | contract_director_decision | pending |
+| ctrl_skill_lifecycle_agentjob | control_records/agentjobs/AJ-SFADEV-06-SKILL-LIFECYCLE-001.yaml | agentjob_v0_2 | controlled | implementation_initialization | contract_agentjob_v0_2 | pending |
+| ctrl_skill_lifecycle_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-06-SKILL-LIFECYCLE-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
+| ctrl_skill_lifecycle_completion | control_records/completions/RECEIPT-SFADEV-06-SKILL-LIFECYCLE-001.yaml | completion_receipt_v0_2 | controlled | implementation_initialization | contract_completion_receipt_v0_2 | pending |
+| ctrl_skill_lifecycle_handoff | control_records/handoffs/HANDOFF-SFADEV-06-SKILL-LIFECYCLE-001.yaml | handoff_v0_2 | controlled | implementation_initialization | contract_handoff_v0_2 | pending |
 
 ## Validation Contract Trace
 

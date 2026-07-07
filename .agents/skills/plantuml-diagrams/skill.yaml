@@ -1,6 +1,7 @@
 skill_id: plantuml-diagrams
 version: 0.1.0
 status: active
+lifecycle_status: adapted_runtime_active
 canonical_path: .agents/skills/plantuml-diagrams
 summary: Create, review, and validate source-grounded PlantUML diagrams for sys-for-ai-dev with include and rendering discipline.
 scope:

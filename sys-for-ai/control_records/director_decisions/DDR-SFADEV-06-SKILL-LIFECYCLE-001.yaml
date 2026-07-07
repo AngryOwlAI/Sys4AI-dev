@@ -1,0 +1,47 @@
+director_decision_id: DDR-SFADEV-06-SKILL-LIFECYCLE-001
+schema_version: 0.1.0
+decision_status: completed
+created_at: "2026-07-07T04:26:49Z"
+completed_at: "2026-07-07T04:26:49Z"
+director_role: system_director
+decision_context:
+  trigger: all_recommendations_skill_lifecycle_governance
+  program_state_id: SFA-PROGRAM-STATE-001
+  latest_handoff_id: HANDOFF-SFADEV-04-ROLE-GOVERNANCE-001
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-06-SKILL-LIFECYCLE-001
+  implementation_plan: implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+selected_route:
+  route_id: implement_skill_lifecycle_governance
+  rationale: >
+    The role governance handoff names AJ-SFADEV-06-SKILL-LIFECYCLE-001 as the
+    next open all-recommendations packet. AJ-05 is already complete, so the
+    lifecycle vocabulary and validation layer is the next bounded slice.
+  selected_role: documentation_librarian
+  creates_agentjob_id: AJ-SFADEV-06-SKILL-LIFECYCLE-001
+rejected_routes:
+  - route_id: rerun_runtime_skill_reconciliation
+    reason: AJ-SFADEV-05-RUNTIME-SKILL-RECONCILIATION-001 is already completed and registered.
+  - route_id: core_skill_scaffold_batch_1
+    reason: Core skill scaffold activation depends on lifecycle validation.
+  - route_id: execute_multiple_all_recommendations_agentjobs
+    reason: Violates the one-AgentJob continuation invariant.
+authority_boundary:
+  may_create_agentjob: true
+  may_modify_runtime_skill_registry: true
+  may_modify_runtime_skill_manifests: true
+  may_modify_product_scaffold_manifest: true
+  may_modify_skill_lifecycle_registry: true
+  may_modify_skill_validators: true
+  may_modify_control_closeout_records: true
+  may_modify_prds: false
+  may_promote_adapter_shells_to_runtime_authority: false
+  may_promote_generated_derivatives: false
+validators:
+  - make validate-dev-skills
+  - cd sys-for-ai && make validate-skill-lifecycle
+  - cd sys-for-ai && make validate-check-diff
+  - cd sys-for-ai && make validate
+completion_evidence:
+  completion_receipt_id: RECEIPT-SFADEV-06-SKILL-LIFECYCLE-001
+  handoff_id: HANDOFF-SFADEV-06-SKILL-LIFECYCLE-001
+  notes: Skill lifecycle governance implementation slice completed and validated.

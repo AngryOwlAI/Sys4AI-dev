@@ -1,0 +1,82 @@
+handoff_id: HANDOFF-SFADEV-06-SKILL-LIFECYCLE-001
+schema_version: 0.2.0
+framework_name: sys-for-ai
+target_agentic_system: sys-for-ai-dev
+artifact_name: All Recommendations Skill Lifecycle Governance Handoff
+artifact_type: operational_handoff
+artifact_version: 0.2.0
+producing_role: documentation_librarian
+artifact_status: completed
+summary: >
+  The all-recommendations skill lifecycle governance slice is complete.
+  Controlled lifecycle_status fields now exist across runtime skill registry
+  rows, active runtime skill manifests, product scaffold manifest entries, and
+  the product skill registry. Validators reject uncontrolled lifecycle states
+  and keep product scaffold references distinct from active runtime authority.
+source_artifacts:
+  - implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+  - implementation_plans/self_hosting_boundary_decision_record.md
+  - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-04-ROLE-GOVERNANCE-001.yaml
+  - sys-for-ai/registries/skill_lifecycle_status_registry.csv
+  - .agents/skill_registry/SKILL_REGISTRY.yaml
+  - sys-for-ai/skills/core_skill_manifest.yaml
+traceability:
+  agentjob_id: AJ-SFADEV-06-SKILL-LIFECYCLE-001
+  director_decision_id: DDR-SFADEV-06-SKILL-LIFECYCLE-001
+  completion_receipt_id: RECEIPT-SFADEV-06-SKILL-LIFECYCLE-001
+  implementation_plan_section: "20 AJ-06"
+  workstream: WS-06 Skill Lifecycle Governance
+control_loop_notes:
+  previous_handoff_id: HANDOFF-SFADEV-04-ROLE-GOVERNANCE-001
+  next_agentjob_id: AJ-SFADEV-07-CORE-SKILLS-BATCH-1-001
+  next_agentjob_status: pending_new_selection
+  selection_basis: AJ-06 is complete and AJ-07 is the next open all-recommendations plan packet.
+memory_preflight:
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-06-SKILL-LIFECYCLE-001
+  usable_for_routing: true
+  required_next_queries:
+    - core skill scaffold batch 1
+    - core skill proposal registry validation
+format_profile_evidence:
+  yaml_registries_modified:
+    - .agents/skill_registry/SKILL_REGISTRY.yaml
+    - sys-for-ai/skills/core_skill_manifest.yaml
+  csv_registries_modified:
+    - sys-for-ai/registries/skill_registry.csv
+    - sys-for-ai/registries/source_registry.csv
+    - sys-for-ai/registries/control_record_registry.csv
+  validator_sources_modified:
+    - scripts/skills/validate_skill_manifest.py
+    - sys-for-ai/sys_for_ai/validators.py
+    - sys-for-ai/sys_for_ai/cli.py
+  generated_derivatives:
+    - docs/generated/configuration_control/*.md
+source_authority_evidence:
+  canonical_sources_checked:
+    - implementation_plans/self_hosting_boundary_decision_record.md
+    - sys-for-ai/control_records/program_state.yaml
+    - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-04-ROLE-GOVERNANCE-001.yaml
+    - temp_handoff/handoff-0016.md
+    - implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+    - sys-for-ai/registries/skill_lifecycle_status_registry.csv
+    - .agents/skill_registry/SKILL_REGISTRY.yaml
+    - sys-for-ai/skills/core_skill_manifest.yaml
+  authority_boundary: Product scaffold skills remain reference surfaces and are not promoted to active runtime authority by lifecycle_status fields.
+derivative_surface_evidence:
+  generated_derivatives_changed: true
+  changed_derivatives:
+    - docs/generated/configuration_control/*.md
+  notes: Configuration-control docs are regenerated from registries and checked as deterministic derivatives.
+security_evidence:
+  secret_scan_scope: Python source YAML control records CSV registries runtime manifests and generated Markdown were checked by structured validators and diff checks.
+  new_secret_material: false
+recommended_next_role: implementation_initialization_agent
+phase_boundary_notes: >
+  This handoff closes one bounded all-recommendations slice. Continue with
+  AJ-SFADEV-07-CORE-SKILLS-BATCH-1-001 to add the first governed batch of core
+  skill scaffolds.
+stop_conditions:
+  - A future task attempts to execute multiple all-recommendations AgentJobs in one invocation.
+  - Product scaffold skills are treated as active runtime authority without an explicit promotion decision.
+  - New core skills are added without required manifests lifecycle_status fields and authority rules.
+  - A future route lacks a tracked Director decision AgentJob or explicit plan-backed selection.

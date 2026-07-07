@@ -1,6 +1,7 @@
 skill_id: conversation-to-prd
 version: 0.1.0
 status: active
+lifecycle_status: adapted_runtime_active
 canonical_path: .agents/skills/conversation-to-prd
 summary: Synthesize conversation and repository evidence into sys-for-ai-dev PRD material without restarting discovery unless a blocking ambiguity remains.
 scope:

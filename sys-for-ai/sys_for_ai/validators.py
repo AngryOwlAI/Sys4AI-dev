@@ -138,6 +138,7 @@ REGISTRY_HEADERS: dict[str, list[str]] = {
         "source_path",
         "family",
         "adaptation_status",
+        "lifecycle_status",
         "last_reviewed",
         "notes",
     ],
@@ -503,6 +504,20 @@ def validate_skill_manifest(path: str | Path) -> ValidationResult:
             messages.append(f"{target}: skill entry #{index} has missing string id")
             continue
         seen.add(skill_id)
+        adaptation_status = str(item.get("adaptation_status", ""))
+        lifecycle_status = str(item.get("lifecycle_status", ""))
+        expected_lifecycle = _product_lifecycle_from_adaptation(adaptation_status)
+        known_lifecycle_statuses = _known_skill_lifecycle_statuses()
+        if not lifecycle_status:
+            messages.append(f"{target}: {skill_id} missing lifecycle_status")
+        elif lifecycle_status not in known_lifecycle_statuses:
+            messages.append(f"{target}: {skill_id} unknown lifecycle_status {lifecycle_status!r}")
+        if expected_lifecycle and lifecycle_status and expected_lifecycle != lifecycle_status:
+            messages.append(
+                f"{target}: {skill_id} lifecycle_status {lifecycle_status!r} does not match adaptation_status {adaptation_status!r}"
+            )
+        if lifecycle_status == "adapted_runtime_active":
+            messages.append(f"{target}: {skill_id} product scaffold skill cannot be runtime-active")
         local_path = item.get("local_path", f"core/{skill_id}")
         adapter = root / str(local_path)
         if not adapter.exists():
@@ -612,16 +627,10 @@ def _load_skill_ids() -> set[str]:
 
 def _load_runtime_skill_lifecycle() -> dict[str, str]:
     lifecycle: dict[str, str] = {}
-    root_registry = Path("../.agents/skill_registry/SKILL_REGISTRY.yaml")
-    if root_registry.exists():
-        data = load_yaml(root_registry)
-        if isinstance(data, dict):
-            for item in data.get("skills", []):
-                if not isinstance(item, dict):
-                    continue
-                skill_id = item.get("skill_id")
-                if skill_id:
-                    lifecycle[str(skill_id)] = str(item.get("migration_phase", ""))
+    for item in _load_runtime_skill_entries():
+        skill_id = item.get("skill_id")
+        if skill_id:
+            lifecycle[str(skill_id)] = str(item.get("lifecycle_status") or item.get("migration_phase") or "")
     return lifecycle
 
 
@@ -636,11 +645,34 @@ def _load_product_skill_lifecycle() -> dict[str, str]:
                     continue
                 skill_id = item.get("id")
                 if skill_id:
-                    adaptation_status = str(item.get("adaptation_status", ""))
-                    if adaptation_status == "scaffold_template":
-                        adaptation_status = "product_scaffold_reference"
-                    lifecycle[str(skill_id)] = adaptation_status
+                    lifecycle[str(skill_id)] = str(
+                        item.get("lifecycle_status")
+                        or _product_lifecycle_from_adaptation(str(item.get("adaptation_status", "")))
+                    )
     return lifecycle
+
+
+def _load_runtime_skill_entries(path: str | Path = "../.agents/skill_registry/SKILL_REGISTRY.yaml") -> list[dict[str, Any]]:
+    registry = Path(path)
+    if not registry.exists():
+        return []
+    data = load_yaml(registry)
+    if not isinstance(data, dict):
+        return []
+    return [item for item in data.get("skills", []) if isinstance(item, dict)]
+
+
+def _product_lifecycle_from_adaptation(adaptation_status: str) -> str:
+    if adaptation_status == "scaffold_template":
+        return "product_scaffold_reference"
+    return adaptation_status
+
+
+def _known_skill_lifecycle_statuses(path: str | Path = "registries/skill_lifecycle_status_registry.csv") -> set[str]:
+    registry = Path(path)
+    if not registry.exists():
+        return set(SKILL_LIFECYCLE_STATUS_NAMES)
+    return {row.get("status_name", "") for row in read_registry_rows(registry) if row.get("status_name")}
 
 
 def _find_duplicate_requirement_ids(declarations: Iterable[RequirementDeclaration]) -> list[str]:
@@ -1258,7 +1290,37 @@ def validate_skill_lifecycle(path: str | Path = "registries/skill_lifecycle_stat
         for row in rows
         if row.get("may_execute_runtime") == "true" and row.get("may_be_used_as_authority") == "true"
     }
-    for skill_id, lifecycle in _load_runtime_skill_lifecycle().items():
+    blocked_required_lifecycles = {"deprecated", "superseded", "blocked"}
+
+    runtime_lifecycle = _load_runtime_skill_lifecycle()
+    for item in _load_runtime_skill_entries():
+        skill_id = str(item.get("skill_id", ""))
+        lifecycle = str(item.get("lifecycle_status") or item.get("migration_phase") or "")
+        migration_phase = str(item.get("migration_phase", ""))
+        if item.get("lifecycle_status") and migration_phase and item.get("lifecycle_status") != migration_phase:
+            result.ok = False
+            result.messages.append(
+                f"../.agents/skill_registry/SKILL_REGISTRY.yaml: {skill_id}: lifecycle_status must match migration_phase during transition"
+            )
+        if str(item.get("canonical_path", "")).startswith(".codex/"):
+            result.ok = False
+            result.messages.append(f"../.agents/skill_registry/SKILL_REGISTRY.yaml: {skill_id}: canonical_path points at shim")
+        for shim_path in item.get("compatibility_shims", []):
+            if not isinstance(shim_path, str) or not shim_path.startswith(".codex/"):
+                result.ok = False
+                result.messages.append(f"../.agents/skill_registry/SKILL_REGISTRY.yaml: {skill_id}: invalid compatibility shim {shim_path!r}")
+        manifest_path = Path("..") / str(item.get("manifest_path", ""))
+        if manifest_path.exists():
+            manifest = load_yaml(manifest_path)
+            if isinstance(manifest, dict):
+                manifest_lifecycle = manifest.get("lifecycle_status")
+                if manifest_lifecycle != lifecycle:
+                    result.ok = False
+                    result.messages.append(
+                        f"{manifest_path}: {skill_id}: manifest lifecycle_status must match runtime registry"
+                    )
+
+    for skill_id, lifecycle in runtime_lifecycle.items():
         if lifecycle not in statuses:
             result.ok = False
             result.messages.append(f"../.agents/skill_registry/SKILL_REGISTRY.yaml: {skill_id}: unknown lifecycle {lifecycle!r}")
@@ -1267,10 +1329,40 @@ def validate_skill_lifecycle(path: str | Path = "registries/skill_lifecycle_stat
             result.messages.append(
                 f"../.agents/skill_registry/SKILL_REGISTRY.yaml: {skill_id}: active runtime skill has non-executable lifecycle {lifecycle!r}"
             )
-    for skill_id, lifecycle in _load_product_skill_lifecycle().items():
+    product_lifecycle = _load_product_skill_lifecycle()
+    for skill_id, lifecycle in product_lifecycle.items():
         if lifecycle and lifecycle not in statuses:
             result.ok = False
             result.messages.append(f"skills/core_skill_manifest.yaml: {skill_id}: unknown lifecycle {lifecycle!r}")
+        if lifecycle == "adapted_runtime_active":
+            result.ok = False
+            result.messages.append(f"skills/core_skill_manifest.yaml: {skill_id}: product scaffold cannot be runtime-active")
+
+    skill_registry = Path("registries/skill_registry.csv")
+    if skill_registry.exists():
+        for row in read_registry_rows(skill_registry):
+            skill_id = row.get("skill_id", "")
+            lifecycle = row.get("lifecycle_status", "")
+            expected = _product_lifecycle_from_adaptation(row.get("adaptation_status", ""))
+            if lifecycle not in statuses:
+                result.ok = False
+                result.messages.append(f"{skill_registry}: {skill_id}: unknown lifecycle_status {lifecycle!r}")
+            if expected and lifecycle != expected:
+                result.ok = False
+                result.messages.append(
+                    f"{skill_registry}: {skill_id}: lifecycle_status {lifecycle!r} does not match adaptation_status {row.get('adaptation_status', '')!r}"
+                )
+            if lifecycle == "product_scaffold_reference" and not row.get("local_path", "").startswith("skills/core/"):
+                result.ok = False
+                result.messages.append(f"{skill_registry}: {skill_id}: product scaffold reference must live under skills/core")
+
+    skill_lifecycle = {**product_lifecycle, **runtime_lifecycle}
+    for row in read_registry_rows("registries/role_registry.csv"):
+        role_id = row.get("role_id", "")
+        for skill_id in _split_selectors(row.get("required_skills", "")):
+            if skill_lifecycle.get(skill_id) in blocked_required_lifecycles:
+                result.ok = False
+                result.messages.append(f"registries/role_registry.csv: {role_id}: required skill {skill_id} has blocked lifecycle")
     return result
 
 

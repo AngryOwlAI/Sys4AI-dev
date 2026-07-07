@@ -1,6 +1,7 @@
 skill_id: source-first-memory
 version: 0.1.0
 status: active
+lifecycle_status: adapted_runtime_active
 canonical_path: .agents/skills/source-first-memory
 summary: Use sys-for-ai source-first memory as navigation to registered authority.
 scope:

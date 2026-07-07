@@ -1,6 +1,7 @@
 skill_id: mermaid-diagrams
 version: 0.1.0
 status: active
+lifecycle_status: adapted_runtime_active
 canonical_path: .agents/skills/mermaid-diagrams
 summary: Create, review, and validate source-controlled Mermaid diagrams for sys-for-ai-dev with text source treated as canonical.
 scope:

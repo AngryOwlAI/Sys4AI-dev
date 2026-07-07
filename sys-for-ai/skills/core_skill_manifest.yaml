@@ -11,6 +11,7 @@ skills:
     source_path: .agents/skills/continue
     local_path: core/continue
     adaptation_status: scaffold_template
+    lifecycle_status: product_scaffold_reference
     required_files:
       - SKILL.md
       - README.md
@@ -24,6 +25,7 @@ skills:
     source_path: .agents/skills/source-first-memory
     local_path: core/source-first-memory
     adaptation_status: scaffold_template
+    lifecycle_status: product_scaffold_reference
     required_files:
       - SKILL.md
       - README.md
@@ -37,6 +39,7 @@ skills:
     source_path: skills/codex-usage-metrics
     local_path: core/codex-usage-metrics
     adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
     required_files:
       - SKILL.md
       - README.md
@@ -55,6 +58,7 @@ skills:
     source_path: skills/system-definition-interview
     local_path: core/system-definition-interview
     adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
     required_files:
       - SKILL.md
       - README.md
@@ -68,6 +72,7 @@ skills:
     source_path: skills/system-definition-interview-context-45
     local_path: core/system-definition-interview-context-45
     adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
     required_files:
       - SKILL.md
       - README.md
@@ -90,6 +95,7 @@ skills:
     source_path: skills/conversation-to-prd
     local_path: core/conversation-to-prd
     adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
     required_files:
       - SKILL.md
       - README.md
@@ -103,6 +109,7 @@ skills:
     source_path: skills/decision-grilling
     local_path: core/decision-grilling
     adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
     required_files:
       - SKILL.md
       - README.md
@@ -116,6 +123,7 @@ skills:
     source_path: skills/decision-grilling-context-45
     local_path: core/decision-grilling-context-45
     adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
     required_files:
       - SKILL.md
       - README.md
@@ -137,6 +145,7 @@ skills:
     source_path: skills/domain-grilling-with-docs
     local_path: core/domain-grilling-with-docs
     adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
     required_files:
       - SKILL.md
       - README.md
@@ -150,6 +159,7 @@ skills:
     source_path: skills/domain-grilling-with-docs-context-45
     local_path: core/domain-grilling-with-docs-context-45
     adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
     required_files:
       - SKILL.md
       - README.md
@@ -171,6 +181,7 @@ skills:
     source_path: skills/mermaid-diagrams
     local_path: core/mermaid-diagrams
     adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
     required_files:
       - SKILL.md
       - README.md
@@ -184,6 +195,7 @@ skills:
     source_path: skills/plantuml-diagrams
     local_path: core/plantuml-diagrams
     adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
     required_files:
       - SKILL.md
       - README.md
@@ -197,6 +209,7 @@ skills:
     source_path: skills/prd-to-implementation-plan
     local_path: core/prd-to-implementation-plan
     adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
     required_files:
       - SKILL.md
       - README.md
@@ -210,6 +223,7 @@ skills:
     source_path: .codex/skills/skill-import-generalizer
     local_path: core/skill-import-generalizer
     adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
     required_files:
       - SKILL.md
       - README.md
@@ -223,6 +237,7 @@ skills:
     source_path: skills/technical-writing-quality-gate
     local_path: core/technical-writing-quality-gate
     adaptation_status: adapter_shell
+    lifecycle_status: adapter_shell
     required_files:
       - SKILL.md
       - README.md

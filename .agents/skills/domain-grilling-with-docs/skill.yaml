@@ -1,6 +1,7 @@
 skill_id: domain-grilling-with-docs
 version: 0.1.0
 status: active
+lifecycle_status: adapted_runtime_active
 canonical_path: .agents/skills/domain-grilling-with-docs
 summary: Documentation-aware decision interrogation for sys-for-ai-dev terminology, ADRs, source hierarchy, and domain rules.
 scope:

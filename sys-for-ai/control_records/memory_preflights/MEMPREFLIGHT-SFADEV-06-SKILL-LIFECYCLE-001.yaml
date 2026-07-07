@@ -1,0 +1,110 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-06-SKILL-LIFECYCLE-001
+schema_version: 0.1.0
+agentjob_id: AJ-SFADEV-06-SKILL-LIFECYCLE-001
+created_at: "2026-07-07T04:34:28Z"
+status: PASS_WITH_WARNINGS
+commands_run:
+  - command: cd sys-for-ai && make continue-preflight
+    result: pass_with_warnings
+  - command: cd sys-for-ai && make continue-select
+    result: blocked_director_decision_required
+  - command: rg memory quick pass for skill lifecycle governance routing
+    result: pass_memory_hits_checked_against_source
+queries:
+  - query: source-first memory continue handoff AgentJob
+    returned_object_ids:
+      - SRC-REG-CONTROL-RECORDS
+      - SRC-CLI-PHASE1
+      - SRC-SELFHOST-MEMORY-CONTINUE-PLAN
+      - der_configuration_control_yaml
+      - SRC-CONTROL-LOOP-FINALIZATION
+      - SRC-SKILL-SOURCE-FIRST-MEMORY-RUNTIME-MANIFEST
+      - SRC-CONTROL-LOOP-JOB-SELECTION
+      - SRC-TEMP-HANDOFF-0010
+      - SRC-REG-REQ-TRACE
+      - SRC-MEMORY-REGISTRY-CATALOG
+  - query: skill lifecycle governance lifecycle status registry validation
+    returned_object_ids:
+      - SRC-ALL-RECS-IMPLEMENTATION-PLAN
+      - SRC-REG-SKILL-LIFECYCLE
+      - SRC-DEV-SKILL-REGISTRY
+      - SRC-SKILL-MANIFEST-VALIDATOR
+      - SRC-PRODUCT-SKILL-REGISTRY
+      - SRC-PRODUCT-CORE-SKILL-MANIFEST
+      - SRC-SCHEMA-RUNTIME-SKILL-MANIFEST
+canonical_sources_inspected:
+  - path: implementation_plans/self_hosting_boundary_decision_record.md
+    registry: source_registry.csv
+    row_id: SRC-SELFHOST-BOUNDARY-DECISION
+    inspected_sections:
+      - Decision
+      - Rules
+  - path: sys-for-ai/control_records/program_state.yaml
+    registry: source_registry.csv
+    row_id: SRC-PROGRAM-STATE
+    inspected_sections:
+      - latest_handoff_id
+      - allowed_next_actions
+  - path: sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-04-ROLE-GOVERNANCE-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-HANDOFF-ROLE-GOVERNANCE-001
+    inspected_sections:
+      - next_agentjob_id
+      - phase_boundary_notes
+  - path: temp_handoff/handoff-0016.md
+    registry: source_registry.csv
+    row_id: SRC-TEMP-HANDOFF-0016
+    inspected_sections:
+      - Next logical step
+  - path: implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+    registry: source_registry.csv
+    row_id: SRC-ALL-RECS-IMPLEMENTATION-PLAN
+    inspected_sections:
+      - AJ-06 Skill Lifecycle Governance
+      - AJ-07 Core Skill Scaffold Batch 1
+  - path: sys-for-ai/registries/skill_lifecycle_status_registry.csv
+    registry: source_registry.csv
+    row_id: SRC-REG-SKILL-LIFECYCLE
+    inspected_sections:
+      - status vocabulary
+  - path: .agents/skill_registry/SKILL_REGISTRY.yaml
+    registry: source_registry.csv
+    row_id: SRC-DEV-SKILL-REGISTRY
+    inspected_sections:
+      - runtime entries
+      - migration_phase
+      - lifecycle_status
+  - path: sys-for-ai/skills/core_skill_manifest.yaml
+    registry: source_registry.csv
+    row_id: SRC-PRODUCT-CORE-SKILL-MANIFEST
+    inspected_sections:
+      - product scaffold entries
+      - adaptation_status
+      - lifecycle_status
+registry_rows_inspected:
+  - registry: source_registry.csv
+    row_id: SRC-ALL-RECS-IMPLEMENTATION-PLAN
+    purpose: Confirm AJ-06 authority and AJ-07 next-step boundary.
+  - registry: source_registry.csv
+    row_id: SRC-REG-SKILL-LIFECYCLE
+    purpose: Confirm controlled lifecycle vocabulary authority.
+  - registry: source_registry.csv
+    row_id: SRC-DEV-SKILL-REGISTRY
+    purpose: Confirm active development runtime skill registry authority.
+  - registry: source_registry.csv
+    row_id: SRC-PRODUCT-CORE-SKILL-MANIFEST
+    purpose: Confirm product scaffold manifest authority.
+  - registry: source_registry.csv
+    row_id: SRC-PRODUCT-SKILL-REGISTRY
+    purpose: Confirm product skill registry authority.
+  - registry: derivative_registry.csv
+    row_id: der_configuration_control_yaml
+    purpose: Confirm generated derivatives remain navigation only.
+stale_context_risks:
+  - risk_id: MEMPREFLIGHT-SFADEV-06-RISK-001
+    status: observed
+    notes: Continue selection required a Director decision because no active AgentJob was set.
+  - risk_id: MEMPREFLIGHT-SFADEV-06-RISK-002
+    status: mitigated
+    notes: Runtime skill authority and product scaffold references were checked separately before lifecycle validation.
+usable_for_routing: true

@@ -22,6 +22,17 @@ required_fields:
       - imported_unadapted
       - adapted
       - deprecated
+  lifecycle_status:
+    type: enum
+    values:
+      - proposed
+      - imported_unadapted
+      - adapter_shell
+      - adapted_runtime_active
+      - product_scaffold_reference
+      - deprecated
+      - superseded
+      - blocked
   required_files:
     type: list[string]
     default:

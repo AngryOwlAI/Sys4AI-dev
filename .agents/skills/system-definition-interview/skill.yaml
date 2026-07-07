@@ -1,6 +1,7 @@
 skill_id: system-definition-interview
 version: 0.1.0
 status: active
+lifecycle_status: adapted_runtime_active
 canonical_path: .agents/skills/system-definition-interview
 summary: Stakeholder elicitation for sys-for-ai-dev system intent, boundaries, actors, scenarios, candidate requirements, and verification seeds.
 scope:

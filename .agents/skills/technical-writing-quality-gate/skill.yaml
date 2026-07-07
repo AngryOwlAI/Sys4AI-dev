@@ -1,6 +1,7 @@
 skill_id: technical-writing-quality-gate
 version: 0.1.0
 status: active
+lifecycle_status: adapted_runtime_active
 canonical_path: .agents/skills/technical-writing-quality-gate
 summary: Source-grounded technical prose review and repair for sys-for-ai-dev with explicit pass, repair, or block outcomes.
 scope:

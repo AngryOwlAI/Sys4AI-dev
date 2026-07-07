@@ -1,6 +1,7 @@
 skill_id: prd-to-implementation-plan
 version: 0.1.0
 status: active
+lifecycle_status: adapted_runtime_active
 canonical_path: .agents/skills/prd-to-implementation-plan
 summary: Convert accepted sys-for-ai-dev PRDs, specs, or issues into bounded implementation plans and task packets.
 scope:

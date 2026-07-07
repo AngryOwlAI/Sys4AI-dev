@@ -1,6 +1,7 @@
 skill_id: skill-import-generalizer
 version: 0.1.0
 status: active
+lifecycle_status: adapted_runtime_active
 canonical_path: .agents/skills/skill-import-generalizer
 summary: Adapt project-specific skills into reusable or project-fit sys-for-ai-dev runtime skills while preserving authority boundaries.
 scope:

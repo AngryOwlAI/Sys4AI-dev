@@ -31,6 +31,17 @@ VALIDATOR_CLASSES = {
     "domain_validation",
     "claim_validation",
 }
+LIFECYCLE_STATUSES = {
+    "proposed",
+    "imported_unadapted",
+    "adapter_shell",
+    "adapted_runtime_active",
+    "product_scaffold_reference",
+    "deprecated",
+    "superseded",
+    "blocked",
+}
+EXECUTABLE_RUNTIME_LIFECYCLES = {"adapted_runtime_active"}
 
 
 @dataclass(frozen=True)
@@ -259,6 +270,7 @@ def validate_skill_manifest(data: Any, path: Path, repo_root: Path) -> list[Find
         "skill_id",
         "version",
         "status",
+        "lifecycle_status",
         "canonical_path",
         "summary",
         "scope",
@@ -287,8 +299,15 @@ def validate_skill_manifest(data: Any, path: Path, repo_root: Path) -> list[Find
         findings.append(Finding(path, kind, "version must be semantic versioning"))
     if data["status"] not in {"candidate", "draft", "template", "active", "deprecated", "shim"}:
         findings.append(Finding(path, kind, "status is not an allowed lifecycle value"))
+    lifecycle_status = data.get("lifecycle_status")
+    if lifecycle_status not in LIFECYCLE_STATUSES:
+        findings.append(Finding(path, kind, "lifecycle_status is not in the controlled vocabulary"))
+    elif data["status"] == "active" and lifecycle_status not in EXECUTABLE_RUNTIME_LIFECYCLES:
+        findings.append(Finding(path, kind, "active skill manifests must use adapted_runtime_active lifecycle_status"))
     if not relative_path_is_safe(data["canonical_path"]):
         findings.append(Finding(path, kind, "canonical_path must be a relative path"))
+    elif str(data["canonical_path"]).startswith(".codex/"):
+        findings.append(Finding(path, kind, "canonical_path must not point at a compatibility shim"))
     if not is_non_empty_string(data["summary"]):
         findings.append(Finding(path, kind, "summary must be a non-empty string"))
 
@@ -445,15 +464,30 @@ def validate_registry(data: Any, path: Path, repo_root: Path) -> tuple[list[Find
         if skill_id in skill_ids:
             findings.append(Finding(path, kind, f"duplicate skill_id: {skill_id}"))
         skill_ids.add(skill_id)
+        lifecycle_status = entry.get("lifecycle_status")
+        migration_phase = entry.get("migration_phase")
+        if lifecycle_status not in LIFECYCLE_STATUSES:
+            findings.append(Finding(path, kind, f"{skill_id}: lifecycle_status is not in the controlled vocabulary"))
+        if migration_phase is not None and lifecycle_status is not None and migration_phase != lifecycle_status:
+            findings.append(Finding(path, kind, f"{skill_id}: migration_phase must match lifecycle_status during transition"))
+        if entry.get("status") == "active" and lifecycle_status not in EXECUTABLE_RUNTIME_LIFECYCLES:
+            findings.append(Finding(path, kind, f"{skill_id}: active registry entry must use adapted_runtime_active lifecycle_status"))
         skill_path = entry.get("canonical_path") or entry.get("template_path")
         if not relative_path_is_safe(skill_path):
             findings.append(Finding(path, kind, f"{skill_id}: canonical_path must be relative"))
+        elif str(skill_path).startswith(".codex/"):
+            findings.append(Finding(path, kind, f"{skill_id}: canonical_path must not point at .codex compatibility shim"))
         else:
             resolved = repo_root / str(skill_path)
             if not resolved.exists():
                 findings.append(Finding(path, kind, f"{skill_id}: path does not exist: {skill_path}"))
             elif not (resolved / "SKILL.md").exists():
                 findings.append(Finding(path, kind, f"{skill_id}: SKILL.md missing at {skill_path}"))
+        for shim_path in entry.get("compatibility_shims", []):
+            if not isinstance(shim_path, str) or not shim_path.startswith(".codex/"):
+                findings.append(Finding(path, kind, f"{skill_id}: compatibility_shims must point under .codex"))
+            if shim_path == skill_path:
+                findings.append(Finding(path, kind, f"{skill_id}: compatibility shim cannot be canonical_path"))
         manifest_path = entry.get("manifest_path")
         if manifest_path is not None:
             if not relative_path_is_safe(manifest_path):

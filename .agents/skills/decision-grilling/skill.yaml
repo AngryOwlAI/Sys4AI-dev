@@ -1,6 +1,7 @@
 skill_id: decision-grilling
 version: 0.1.0
 status: active
+lifecycle_status: adapted_runtime_active
 canonical_path: .agents/skills/decision-grilling
 summary: One-decision-at-a-time interrogation for sys-for-ai-dev plans, requirements, and implementation choices.
 scope:

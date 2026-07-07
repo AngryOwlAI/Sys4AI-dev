@@ -1,6 +1,7 @@
 skill_id: codex-usage-metrics
 version: 0.1.0
 status: active
+lifecycle_status: adapted_runtime_active
 canonical_path: .agents/skills/codex-usage-metrics
 summary: Codex App context and token metric collection for sys-for-ai-dev runtime sessions without exporting conversation content.
 scope:

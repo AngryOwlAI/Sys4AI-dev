@@ -1,0 +1,122 @@
+agentjob_id: AJ-SFADEV-06-SKILL-LIFECYCLE-001
+schema_version: 0.2.0
+status: completed
+objective: >
+  Add controlled skill lifecycle fields and validators across the active
+  sys-for-ai-dev runtime skill registry, runtime skill manifests, product
+  scaffold manifest, product skill registry, and aggregate validation.
+lifecycle_stage: implementation_initialization
+role_binding:
+  role_id: documentation_librarian
+  binding_type: registered_role
+  authority_scope: all-recommendations skill lifecycle governance implementation
+  expires_with_agentjob: true
+required_inputs:
+  - implementation_plans/sys-for-ai-dev_all_recommendations_implementation_plan.md
+  - implementation_plans/self_hosting_boundary_decision_record.md
+  - sys-for-ai/control_records/program_state.yaml
+  - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-04-ROLE-GOVERNANCE-001.yaml
+  - .agents/skill_registry/SKILL_REGISTRY.yaml
+  - .agents/skills/*/skill.yaml
+  - sys-for-ai/skills/core_skill_manifest.yaml
+  - sys-for-ai/registries/skill_registry.csv
+  - sys-for-ai/registries/skill_lifecycle_status_registry.csv
+  - scripts/skills/validate_skill_manifest.py
+allowed_reads:
+  - PRDs/**
+  - implementation_plans/**
+  - temp_handoff/**
+  - .agents/**
+  - .codex/**
+  - scripts/skills/**
+  - sys-for-ai/**
+allowed_writes:
+  - .agents/skill_registry/SKILL_REGISTRY.yaml
+  - .agents/skills/*/skill.yaml
+  - scripts/skills/validate_skill_manifest.py
+  - sys-for-ai/skills/core_skill_manifest.yaml
+  - sys-for-ai/registries/skill_registry.csv
+  - sys-for-ai/registries/skill_lifecycle_status_registry.csv
+  - sys-for-ai/registries/source_registry.csv
+  - sys-for-ai/registries/control_record_registry.csv
+  - sys-for-ai/registries/agentjob_registry.csv
+  - sys-for-ai/registries/director_decision_registry.csv
+  - sys-for-ai/registries/completion_receipt_registry.csv
+  - sys-for-ai/registries/handoff_registry.csv
+  - sys-for-ai/registries/memory_preflight_receipt_registry.csv
+  - sys-for-ai/sys_for_ai/validators.py
+  - sys-for-ai/sys_for_ai/cli.py
+  - sys-for-ai/Makefile
+  - sys-for-ai/schemas/skill.schema.yaml
+  - sys-for-ai/control_records/director_decisions/DDR-SFADEV-06-SKILL-LIFECYCLE-001.yaml
+  - sys-for-ai/control_records/agentjobs/AJ-SFADEV-06-SKILL-LIFECYCLE-001.yaml
+  - sys-for-ai/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-06-SKILL-LIFECYCLE-001.yaml
+  - sys-for-ai/control_records/completions/RECEIPT-SFADEV-06-SKILL-LIFECYCLE-001.yaml
+  - sys-for-ai/control_records/handoffs/HANDOFF-SFADEV-06-SKILL-LIFECYCLE-001.yaml
+  - sys-for-ai/control_records/program_state.yaml
+  - sys-for-ai/docs/generated/configuration_control/**
+  - sys-for-ai/tests/test_agentjob_boundaries.py
+  - sys-for-ai/tests/test_program_state.py
+  - sys-for-ai/tests/test_self_hosting_acceptance.py
+  - temp_handoff/handoff-0017.md
+generated_paths:
+  - sys-for-ai/docs/generated/configuration_control/**
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - sys-for-ai/.venv/**
+  - PRDs/**
+  - sys-for-ai/docs/generated/** as canonical source
+forbidden_actions:
+  - Make adapter shells runtime-authoritative without approval.
+  - Treat product scaffold skills as active development runtime authority.
+  - Treat generated derivatives as canonical.
+  - Remove transitional migration_phase compatibility.
+  - Execute more than one all-recommendations AgentJob in one continuation invocation.
+memory_preflight:
+  required: true
+  minimum_queries:
+    - skill lifecycle governance
+    - lifecycle status registry validation
+  required_evidence:
+    - self-hosting boundary decision record inspection
+    - latest controlled handoff inspection
+    - all-recommendations plan AJ-06 inspection
+    - current runtime and product skill manifest inspection
+expected_outputs:
+  - Runtime registry entries declare lifecycle_status.
+  - Runtime skill manifests declare lifecycle_status.
+  - Product scaffold manifest declares lifecycle_status without runtime authority promotion.
+  - Product skill registry declares lifecycle_status.
+  - Validators enforce lifecycle status consistency.
+  - Completion receipt and handoff evidence.
+validators:
+  - make validate-dev-skills
+  - cd sys-for-ai && make validate-skill-lifecycle
+  - cd sys-for-ai && make validate-check-diff
+  - cd sys-for-ai && make validate
+completion_evidence_required:
+  - changed_artifacts
+  - command_results
+  - validation_status
+  - residual_risk
+handoff_policy:
+  create_handoff_when:
+    - skill lifecycle governance implementation completes
+    - next AgentJob is recommended
+authority_boundary:
+  may_modify_runtime_skill_registry: true
+  may_modify_product_scaffold: true
+  may_modify_skill_validators: true
+  may_promote_adapter_shells_to_runtime_authority: false
+  may_modify_canonical_prds: false
+stop_conditions:
+  - Validator change breaks existing skill manifests without migration path.
+  - Adapter shells become active runtime authority.
+  - Required write is outside allowlist.
+  - More than one AgentJob is required.
+created_at: "2026-07-07T04:26:49Z"
+activated_at: "2026-07-07T04:26:49Z"
+completed_at: "2026-07-07T04:26:49Z"
