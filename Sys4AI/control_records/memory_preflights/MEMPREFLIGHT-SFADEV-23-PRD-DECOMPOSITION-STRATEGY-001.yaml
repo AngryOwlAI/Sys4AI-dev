@@ -1,0 +1,132 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
+schema_version: 0.1.0
+agentjob_id: AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
+created_at: "2026-07-08T22:22:08Z"
+status: PASS_WITH_WARNINGS
+commands_run:
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-preflight --json
+    result: pass_with_warnings_known_source_hash_backlog
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-select --json
+    result: selected_AJ_SFADEV_23_ready
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli memory preflight --agentjob AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001 --handoff HANDOFF-SFADEV-22-WALKING-SKELETON-DEMO-001 --query "PRD decomposition strategy" --query "requirement ownership boundaries" --json
+    result: pass_with_warnings_no_auto_receipt_written
+  - command: inspect latest handoff walking skeleton acceptance report canonical PRDs requirement trace registry and AJ23 boundary
+    result: pass
+queries:
+  - query: PRD decomposition strategy
+    returned_object_ids:
+      - SRC-REG-REQ-TRACE
+      - SRC-NEXT-SCOPE-FULL-IMPLEMENTATION-PLAN
+      - AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
+      - SRC-AJ-PRD-DECOMPOSITION-STRATEGY-001
+      - ctrl_prd_decomposition_strategy_agentjob
+      - SRC-SKILL-SYSDEF-CONTEXT45-RUNTIME
+      - SRC-PRD-P2-WALKING-SKELETON
+      - SRC-SKILL-SYSDEF-CONTEXT45-PRODUCT
+      - SRC-COMPLETION-PHASE2-WALKING-SKELETON-PRD-001
+      - SRC-RDR-PHASE2-WALKING-SKELETON-001
+  - query: requirement ownership boundaries
+    returned_object_ids:
+      - SRC-PRD-P0
+      - SRC-RDR-PHASE2-WALKING-SKELETON-001
+      - SRC-DEV-SKILL-REGISTRY
+      - SRC-PRD-P2-WALKING-SKELETON
+      - SRC-REG-ROLE-SKILL-CROSSWALK
+      - SRC-REG-ARTIFACT-CONTRACTS
+      - SRC-ALL-RECS-IMPLEMENTATION-PLAN
+      - SRC-REG-ROLES
+      - SRC-RDR-DISCOVERY-GATE-SMOKE-001
+      - SRC-SKILL-INIT
+canonical_sources_inspected:
+  - path: implementation_plans/self_hosting_boundary_decision_record.md
+    registry: source_registry.csv
+    row_id: SRC-SELFHOST-BOUNDARY-DECISION
+    inspected_sections:
+      - self-hosting authority boundary
+      - generated derivative noncanonical rule
+  - path: Sys4AI/control_records/program_state.yaml
+    registry: source_registry.csv
+    row_id: SRC-PROGRAM-STATE
+    inspected_sections:
+      - latest_handoff_id
+      - allowed_next_actions
+      - blocked_actions
+  - path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-HANDOFF-WALKING-SKELETON-DEMO-001
+    inspected_sections:
+      - phase_boundary_notes
+      - required_next_queries
+      - control_loop_notes
+  - path: Sys4AI/control_records/agentjobs/AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-AJ-PRD-DECOMPOSITION-STRATEGY-001
+    inspected_sections:
+      - allowed_writes
+      - authority_boundary
+      - stop_conditions
+  - path: implementation_plans/Sys4AI_next_scope_full_implementation_plan.md
+    registry: source_registry.csv
+    row_id: SRC-NEXT-SCOPE-FULL-IMPLEMENTATION-PLAN
+    inspected_sections:
+      - WS-23 required sections
+      - proposed sub-PRD set
+      - proposed validator
+      - WS-24 route
+  - path: implementation_plans/acceptance_reports/PHASE2-WALKING-SKELETON-DEMO-SFADEV-22.md
+    registry: source_registry.csv
+    row_id: SRC-PHASE2-WALKING-SKELETON-DEMO-REPORT
+    inspected_sections:
+      - structural acceptance
+      - unresolved semantic limitations
+  - path: PRDs/Sys4AI_phase-0_product_system_design_prd.md
+    registry: source_registry.csv
+    row_id: SRC-PRD-P0
+    inspected_sections:
+      - requirement families
+      - authority role
+  - path: PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+    registry: source_registry.csv
+    row_id: SRC-PRD-P1
+    inspected_sections:
+      - implementation initialization requirements
+      - validation surface
+  - path: PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+    registry: source_registry.csv
+    row_id: SRC-PRD-P2-WALKING-SKELETON
+    inspected_sections:
+      - walking skeleton capability boundaries
+      - non-goals
+  - path: Sys4AI/registries/requirement_trace_registry.csv
+    registry: source_registry.csv
+    row_id: SRC-REG-REQ-TRACE
+    inspected_sections:
+      - requirement ownership evidence
+      - trace validation surface
+registry_rows_inspected:
+  - registry: agentjob_registry.csv
+    row_id: AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
+    purpose: Confirm the selected AgentJob and role.
+  - registry: source_registry.csv
+    row_id: SRC-NEXT-SCOPE-FULL-IMPLEMENTATION-PLAN
+    purpose: Confirm controlled implementation plan source for WS23.
+  - registry: source_registry.csv
+    row_id: SRC-AJ-PRD-DECOMPOSITION-STRATEGY-001
+    purpose: Confirm selected AgentJob source row.
+  - registry: control_record_registry.csv
+    row_id: ctrl_prd_decomposition_strategy_agentjob
+    purpose: Confirm selected AgentJob control-record row.
+  - registry: source_registry.csv
+    row_id: SRC-PRD-P2-WALKING-SKELETON
+    purpose: Confirm Phase 2 PRD boundary before decomposition strategy.
+stale_context_risks:
+  - risk_id: MEMPREFLIGHT-SFADEV-23-RISK-001
+    status: mitigated
+    notes: Memory hits were used for navigation only and checked against source files.
+  - risk_id: MEMPREFLIGHT-SFADEV-23-RISK-002
+    status: accepted_nonblocking
+    notes: Source hash warnings remain a known registry backlog.
+  - risk_id: MEMPREFLIGHT-SFADEV-23-RISK-003
+    status: mitigated
+    notes: Planned module rows do not claim canonical authority and do not require sub-PRD files in AJ23.
+usable_for_routing: true

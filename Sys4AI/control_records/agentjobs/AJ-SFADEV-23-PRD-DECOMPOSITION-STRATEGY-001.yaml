@@ -1,6 +1,6 @@
 agentjob_id: AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
 schema_version: 0.2.0
-status: pending
+status: completed
 objective: Create a governed strategy for decomposing canonical PRDs into modular sub-PRDs.
 lifecycle_stage: develop
 role_binding:
@@ -33,9 +33,14 @@ allowed_writes:
   - Sys4AI/schemas/contracts/prd_module_registry_row.schema.json
   - Sys4AI/sys_for_ai/prd_modules.py
   - Sys4AI/sys_for_ai/cli.py
+  - Sys4AI/sys_for_ai/validators.py
   - Sys4AI/Makefile
   - Sys4AI/tests/test_prd_modules.py
+  - Sys4AI/tests/test_continue_packet.py
+  - Sys4AI/tests/test_program_state.py
+  - Sys4AI/tests/test_self_hosting_acceptance.py
   - Sys4AI/control_records/agentjobs/AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-24-SUBPRD-DRAFTS-001.yaml
   - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
   - Sys4AI/control_records/completions/RECEIPT-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
   - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
@@ -48,8 +53,10 @@ allowed_writes:
   - Sys4AI/registries/source_registry.csv
   - Sys4AI/registries/control_record_registry.csv
   - Sys4AI/registries/validation_contract_registry.csv
+  - Sys4AI/docs/generated/**
   - temp_handoff/handoff-0033.md
-generated_paths: []
+generated_paths:
+  - Sys4AI/docs/generated/**
 forbidden_paths:
   - LICENSE
   - NOTICE
@@ -68,13 +75,14 @@ expected_outputs:
   - PRD module registry schema contract.
   - PRD module validator and CLI command.
   - Validator tests.
+  - Pending AJ24 sub-PRD draft generation route.
   - Completion receipt and handoff recommending AJ24.
 validators:
   - cd Sys4AI && make validate-prd-modules
   - cd Sys4AI && make validate-requirement-trace
   - cd Sys4AI && make validate-registry-graph
   - cd Sys4AI && .venv/bin/python -m unittest discover -s tests
-  - cd Sys4AI && make validate
+  - cd Sys4AI && make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
   - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001 --json
   - git diff --check
 completion_evidence_required:
@@ -97,11 +105,13 @@ authority_boundary:
   may_create_prd_decomposition_strategy: true
   may_create_prd_module_registry: true
   may_create_validator: true
+  may_create_next_subprd_drafts_agentjob_route: true
   may_create_sub_prd_drafts: false
   may_promote_sub_prds: false
   may_supersede_canonical_prds: false
   may_modify_program_state: true
   may_modify_registries: true
+  may_refresh_generated_derivatives: true
 handoff_policy:
   create_handoff_when:
     - decomposition strategy exists
@@ -113,5 +123,5 @@ stop_conditions:
   - Strategy work requires drafting or promoting sub-PRDs.
   - Any write outside the allowed boundary is required.
 created_at: "2026-07-08T22:11:45Z"
-activated_at: null
-completed_at: null
+activated_at: "2026-07-08T22:26:00Z"
+completed_at: "2026-07-08T22:31:22Z"

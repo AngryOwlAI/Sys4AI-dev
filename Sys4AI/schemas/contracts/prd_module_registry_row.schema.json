@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/Sys4AI/schemas/contracts/prd_module_registry_row.schema.json",
+  "title": "PRD module registry row",
+  "type": "object",
+  "required": [
+    "prd_module_id",
+    "path",
+    "title",
+    "status",
+    "subject_layer",
+    "authority_scope",
+    "owns_requirement_prefixes",
+    "references_source_prds",
+    "supersedes",
+    "source_authority_status",
+    "owner_role",
+    "validation_status",
+    "source_hash",
+    "last_validated_at",
+    "notes"
+  ],
+  "properties": {
+    "prd_module_id": { "type": "string", "pattern": "^PRD-MOD-[A-Z0-9-]+$" },
+    "path": { "type": "string", "minLength": 1, "pattern": "^(?!/).*$" },
+    "title": { "type": "string", "minLength": 1 },
+    "status": {
+      "enum": ["planned", "draft", "controlled", "canonical_draft", "canonical", "superseded"]
+    },
+    "subject_layer": {
+      "enum": [
+        "development_system",
+        "framework_product",
+        "target_system_template",
+        "target_system_instance",
+        "derivative_surface"
+      ]
+    },
+    "authority_scope": { "type": "string", "minLength": 1 },
+    "owns_requirement_prefixes": { "type": "string", "minLength": 1 },
+    "references_source_prds": { "type": "string", "minLength": 1 },
+    "source_authority_status": {
+      "enum": [
+        "derivative_draft",
+        "controlled",
+        "canonical_draft",
+        "canonical",
+        "superseded",
+        "historical_reference"
+      ]
+    },
+    "owner_role": { "type": "string", "minLength": 1 },
+    "validation_status": { "enum": ["planned", "not_run", "pending", "validated", "warning", "failed", "todo", "waived"] }
+  },
+  "additionalProperties": { "type": "string" }
+}

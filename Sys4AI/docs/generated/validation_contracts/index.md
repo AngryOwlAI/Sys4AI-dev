@@ -42,6 +42,7 @@ page_metadata:
     - contract_artifact_contract_registry_row
     - contract_core_skill_proposal_registry_row
     - contract_skill_lifecycle_status_registry_row
+    - contract_prd_module_registry_row
   generated_at: 2026-07-06T00:00:00Z
   generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
   stale_or_orphan_status: current
@@ -100,6 +101,7 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_artifact_contract_registry_row | schemas/contracts/artifact_contract_registry_row.schema.json | 2020-12 | csv | artifact_contract_registry_row | registries/artifact_contract_registry.csv | Sys4AI validate-artifact-contracts | implementation_initialization | controlled | pending | pending |
 | contract_core_skill_proposal_registry_row | schemas/contracts/core_skill_proposal_registry_row.schema.json | 2020-12 | csv | core_skill_proposal_registry_row | registries/core_skill_proposal_registry.csv | Sys4AI validate-core-skill-proposals | implementation_initialization | controlled | pending | pending |
 | contract_skill_lifecycle_status_registry_row | schemas/contracts/skill_lifecycle_status_registry_row.schema.json | 2020-12 | csv | skill_lifecycle_status_registry_row | registries/skill_lifecycle_status_registry.csv | Sys4AI validate-skill-lifecycle | implementation_initialization | controlled | pending | pending |
+| contract_prd_module_registry_row | schemas/contracts/prd_module_registry_row.schema.json | 2020-12 | csv | prd_module_registry_row | registries/prd_module_registry.csv | Sys4AI validate-prd-modules | requirements_manager | controlled | pending | pending |
 
 ## Known Limitations
 

@@ -1,0 +1,110 @@
+agentjob_id: AJ-SFADEV-24-SUBPRD-DRAFTS-001
+schema_version: 0.2.0
+status: pending
+objective: Generate modular sub-PRD drafts from canonical PRDs and walking skeleton evidence.
+lifecycle_stage: develop
+role_binding:
+  role_id: requirements_manager
+  binding_type: registered_role
+  authority_scope: subprd draft generation
+  expires_with_agentjob: true
+required_inputs:
+  - PRDs/Sys4AI_phase-0_product_system_design_prd.md
+  - PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+  - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+  - PRDs/Sys4AI_phase-0_prd.md
+  - PRDs/PRD_decomposition_strategy.md
+  - implementation_plans/acceptance_reports/PHASE2-WALKING-SKELETON-DEMO-SFADEV-22.md
+  - Sys4AI/registries/prd_module_registry.csv
+  - Sys4AI/registries/requirement_trace_registry.csv
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
+allowed_reads:
+  - PRDs/**
+  - implementation_plans/**
+  - Sys4AI/control_records/**
+  - Sys4AI/registries/**
+  - Sys4AI/schemas/**
+  - Sys4AI/sys_for_ai/**
+  - Sys4AI/tests/**
+  - Sys4AI/Makefile
+allowed_writes:
+  - PRDs/modules/**
+  - Sys4AI/registries/prd_module_registry.csv
+  - Sys4AI/registries/source_registry.csv
+  - Sys4AI/registries/object_relationship_registry.csv
+  - Sys4AI/registries/requirement_trace_registry.csv
+  - Sys4AI/registries/agentjob_registry.csv
+  - Sys4AI/registries/completion_receipt_registry.csv
+  - Sys4AI/registries/handoff_registry.csv
+  - Sys4AI/registries/memory_preflight_receipt_registry.csv
+  - Sys4AI/registries/control_record_registry.csv
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-24-SUBPRD-DRAFTS-001.yaml
+  - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-24-SUBPRD-DRAFTS-001.yaml
+  - Sys4AI/control_records/completions/RECEIPT-SFADEV-24-SUBPRD-DRAFTS-001.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-24-SUBPRD-DRAFTS-001.yaml
+  - Sys4AI/control_records/program_state.yaml
+  - Sys4AI/docs/generated/**
+  - temp_handoff/handoff-0034.md
+generated_paths:
+  - Sys4AI/docs/generated/**
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - Sys4AI/.venv/**
+forbidden_actions:
+  - Mark sub-PRDs canonical.
+  - Supersede canonical PRDs.
+  - Delete or rewrite superseded historical PRDs.
+  - Resolve ambiguous requirement ownership by duplicating ownership.
+  - Promote generated derivatives without a source-authority workflow.
+expected_outputs:
+  - Modular sub-PRD draft files under PRDs/modules/.
+  - Updated PRD module registry rows with draft status.
+  - Trace and source registry updates for module drafts.
+  - Completion receipt and handoff recommending promotion or routing work.
+validators:
+  - cd Sys4AI && make validate-prd-modules
+  - cd Sys4AI && make validate-requirement-trace
+  - cd Sys4AI && make validate-registry-graph
+  - cd Sys4AI && make validate-generated-derivatives
+  - cd Sys4AI && make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-24-SUBPRD-DRAFTS-001
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-24-SUBPRD-DRAFTS-001 --json
+  - git diff --check
+completion_evidence_required:
+  - list of sub-PRD drafts
+  - PRD module registry status
+  - validator output
+  - closeout receipt
+  - handoff to promotion or routing
+memory_preflight:
+  required: true
+  minimum_queries:
+    - sub-PRD draft generation
+    - PRD module ownership trace
+  required_evidence:
+    - PRD decomposition strategy inspection
+    - canonical PRD inspection
+    - walking skeleton acceptance report inspection
+    - prd module registry inspection
+authority_boundary:
+  may_create_sub_prd_drafts: true
+  may_mark_sub_prds_canonical: false
+  may_supersede_canonical_prds: false
+  may_modify_module_registry: true
+  may_modify_requirement_trace: true
+  may_refresh_generated_derivatives: true
+handoff_policy:
+  create_handoff_when:
+    - sub-PRD drafts exist
+    - PRD module registry validates
+    - packet closes with no active AgentJob
+stop_conditions:
+  - PRD decomposition strategy is absent.
+  - Draft generation requires canonical promotion.
+  - Requirement ownership cannot be represented without ambiguity.
+  - Any write outside the allowed boundary is required.
+created_at: "2026-07-08T22:31:22Z"
+activated_at: null
+completed_at: null

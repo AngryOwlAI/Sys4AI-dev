@@ -25,6 +25,7 @@ from .derivatives import (
 from .memory import bootstrap_registries
 from .memory import hash_path as memory_hash_path
 from .memory import lookup_memory, memory_status, run_memory_preflight, search_memory, update_hashes, validate_hashes
+from .prd_modules import validate_prd_modules
 from .walking_skeleton import (
     validate_walking_skeleton_flow,
     walking_skeleton_status,
@@ -171,6 +172,7 @@ def build_parser() -> argparse.ArgumentParser:
     validate.add_argument("--skill-lifecycle", default="registries/skill_lifecycle_status_registry.csv")
     validate.add_argument("--validation-contracts", default="registries/validation_contract_registry.csv")
     validate.add_argument("--requirement-trace", default="registries/requirement_trace_registry.csv")
+    validate.add_argument("--prd-modules", default="registries/prd_module_registry.csv")
     validate.add_argument("--contracts-root", default="schemas/contracts")
     validate.add_argument("--generated-docs", default="docs/generated")
 
@@ -333,6 +335,9 @@ def build_parser() -> argparse.ArgumentParser:
     validate_trace.add_argument("path", default="registries/requirement_trace_registry.csv", nargs="?")
     validate_trace.add_argument("--phase0-prd", default="PRDs/Sys4AI_phase-0_product_system_design_prd.md")
     validate_trace.add_argument("--phase1-prd", default="PRDs/Sys4AI_phase-1_implementation_initialization_prd.md")
+
+    validate_prd_module_rows = sub.add_parser("validate-prd-modules", help="Validate PRD module registry rows")
+    validate_prd_module_rows.add_argument("path", default="registries/prd_module_registry.csv", nargs="?")
 
     generate_cc = sub.add_parser("generate-config-control-wiki", help="Generate Configuration and Control Wiki pages")
     generate_cc_mode = generate_cc.add_mutually_exclusive_group()
@@ -512,6 +517,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "validate-requirement-trace":
         return print_result(validate_requirement_trace(args.path, args.phase0_prd, args.phase1_prd))
 
+    if args.command == "validate-prd-modules":
+        return print_result(validate_prd_modules(args.path))
+
     if args.command == "generate-config-control-wiki":
         return print_result(write_config_control_wiki() if args.write else check_config_control_wiki())
 
@@ -566,6 +574,7 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_one_active_agentjob())
         result.extend(validate_control_loop())
         result.extend(validate_requirement_trace(args.requirement_trace))
+        result.extend(validate_prd_modules(args.prd_modules))
         result.extend(check_governance_generated_docs())
         result.extend(validate_generated_derivatives(args.generated_docs, "registries/derivative_registry.csv"))
         return print_result(result)

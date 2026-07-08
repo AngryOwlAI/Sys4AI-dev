@@ -342,5 +342,15 @@ SRC-PHASE2-WALKING-SKELETON-DEMO-REPORT,implementation_plans/acceptance_reports/
 SRC-MEMORY-PREFLIGHT-WALKING-SKELETON-DEMO-001,Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml,memory_preflight_receipt,controlled,source_first_memory,2026-07-08,Memory preflight receipt for Phase 2 walking skeleton demo.
 SRC-COMPLETION-WALKING-SKELETON-DEMO-001,Sys4AI/control_records/completions/RECEIPT-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml,completion_receipt,controlled,framework_product,2026-07-08,Completion receipt for Phase 2 walking skeleton demo.
 SRC-HANDOFF-WALKING-SKELETON-DEMO-001,Sys4AI/control_records/handoffs/HANDOFF-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml,handoff,controlled,framework_product,2026-07-08,Handoff for Phase 2 walking skeleton demo.
-SRC-AJ-PRD-DECOMPOSITION-STRATEGY-001,Sys4AI/control_records/agentjobs/AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml,agentjob,controlled,framework_product,2026-07-08,Pending AgentJob for PRD decomposition strategy.
+SRC-AJ-PRD-DECOMPOSITION-STRATEGY-001,Sys4AI/control_records/agentjobs/AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml,agentjob,controlled,framework_product,2026-07-08,Completed AgentJob for PRD decomposition strategy.
 SRC-TEMP-HANDOFF-0032,temp_handoff/handoff-0032.md,handoff,controlled,control_loop,2026-07-08,Temp handoff closing Phase 2 walking skeleton demo.
+SRC-PRD-DECOMPOSITION-STRATEGY,PRDs/PRD_decomposition_strategy.md,prd_strategy,controlled,framework_product,2026-07-08,Controlled PRD decomposition strategy.
+SRC-REG-PRD-MODULES,Sys4AI/registries/prd_module_registry.csv,registry,controlled,framework_product,2026-07-08,Registry for planned and promoted PRD modules.
+SRC-SCHEMA-PRD-MODULE-REGISTRY-ROW,Sys4AI/schemas/contracts/prd_module_registry_row.schema.json,schema_contract,controlled,framework_product,2026-07-08,JSON Schema contract for PRD module registry rows.
+SRC-VALIDATOR-PRD-MODULES,Sys4AI/sys_for_ai/prd_modules.py,validator,controlled,framework_product,2026-07-08,Validator for PRD module registry and ownership boundaries.
+SRC-TEST-PRD-MODULES,Sys4AI/tests/test_prd_modules.py,test,controlled,framework_product,2026-07-08,Unit tests for PRD module validator.
+SRC-MEMORY-PREFLIGHT-PRD-DECOMPOSITION-STRATEGY-001,Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml,memory_preflight_receipt,controlled,source_first_memory,2026-07-08,Memory preflight receipt for PRD decomposition strategy.
+SRC-COMPLETION-PRD-DECOMPOSITION-STRATEGY-001,Sys4AI/control_records/completions/RECEIPT-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml,completion_receipt,controlled,framework_product,2026-07-08,Completion receipt for PRD decomposition strategy.
+SRC-HANDOFF-PRD-DECOMPOSITION-STRATEGY-001,Sys4AI/control_records/handoffs/HANDOFF-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml,handoff,controlled,framework_product,2026-07-08,Handoff for PRD decomposition strategy.
+SRC-AJ-SUBPRD-DRAFTS-001,Sys4AI/control_records/agentjobs/AJ-SFADEV-24-SUBPRD-DRAFTS-001.yaml,agentjob,controlled,framework_product,2026-07-08,Pending AgentJob for sub-PRD draft generation.
+SRC-TEMP-HANDOFF-0033,temp_handoff/handoff-0033.md,handoff,controlled,control_loop,2026-07-08,Temp handoff closing PRD decomposition strategy.

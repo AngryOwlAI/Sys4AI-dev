@@ -1,0 +1,167 @@
+completion_receipt_id: RECEIPT-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
+schema_version: 0.2.0
+agentjob_id: AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
+role: requirements_manager
+result: PASS
+summary: >
+  Completed one controlled PRD decomposition strategy packet. The packet
+  created the strategy, planned module registry, registry row contract,
+  deterministic validator, CLI and Makefile wiring, focused tests, and the
+  pending AJ24 route without drafting or promoting sub-PRDs.
+changed_artifacts:
+  - path: PRDs/PRD_decomposition_strategy.md
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/registries/prd_module_registry.csv
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/schemas/contracts/prd_module_registry_row.schema.json
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/sys_for_ai/prd_modules.py
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/sys_for_ai/cli.py
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/sys_for_ai/validators.py
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/Makefile
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/tests/test_prd_modules.py
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/tests/test_continue_packet.py
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/tests/test_program_state.py
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/tests/test_self_hosting_acceptance.py
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/control_records/agentjobs/AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
+    change_type: modified_to_completed
+    authority_status: controlled
+  - path: Sys4AI/control_records/agentjobs/AJ-SFADEV-24-SUBPRD-DRAFTS-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/completions/RECEIPT-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/program_state.yaml
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/agentjob_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/completion_receipt_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/handoff_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/memory_preflight_receipt_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/source_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/control_record_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/validation_contract_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/docs/generated/**
+    change_type: regenerated
+    authority_status: generated_derivative
+  - path: temp_handoff/handoff-0033.md
+    change_type: added
+    authority_status: controlled
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
+validation_evidence:
+  commands_run:
+    - command: cd Sys4AI && make validate-prd-modules
+      result: PASS
+    - command: cd Sys4AI && make validate-requirement-trace
+      result: PASS
+    - command: cd Sys4AI && make validate-registry-graph
+      result: PASS
+    - command: cd Sys4AI && .venv/bin/python -m unittest discover -s tests
+      result: PASS
+    - command: cd Sys4AI && make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
+      result: PASS
+    - command: make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
+      result: PASS
+    - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001 --json
+      result: PASS
+    - command: git diff --check
+      result: PASS
+  validators:
+    - validator_id: prd-module-registry
+      target_path: Sys4AI/registries/prd_module_registry.csv
+      result: pass
+      notes: Validator accepts planned rows without requiring module files and rejects duplicate canonical ownership.
+    - validator_id: requirement-trace
+      target_path: Sys4AI/registries/requirement_trace_registry.csv
+      result: pass
+      notes: Existing requirement trace registry remains structurally valid.
+    - validator_id: validate-check-diff
+      target_path: AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
+      result: pass
+      notes: Current diff remains inside the selected PRD decomposition strategy packet.
+format_profile_changes:
+  added:
+    - path: PRDs/PRD_decomposition_strategy.md
+      profile_id: fmt_markdown_controlled_report
+      registry_row_id: SRC-PRD-DECOMPOSITION-STRATEGY
+    - path: Sys4AI/registries/prd_module_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-PRD-MODULES
+    - path: Sys4AI/schemas/contracts/prd_module_registry_row.schema.json
+      profile_id: fmt_jsonschema_contract
+      registry_row_id: SRC-SCHEMA-PRD-MODULE-REGISTRY-ROW
+  modified:
+    - path: Sys4AI/registries/validation_contract_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: contract_prd_module_registry_row
+    - path: Sys4AI/docs/generated/**
+      profile_id: fmt_markdown_generated_derivative
+      registry_row_id: multiple
+authority_changes:
+  completed:
+    - agentjob_id: AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
+      reason: PRD decomposition strategy and validator exist and required validators pass.
+  routed:
+    - agentjob_id: AJ-SFADEV-24-SUBPRD-DRAFTS-001
+      reason: Next-scope plan requires sub-PRD drafts after decomposition strategy acceptance.
+  not_promoted:
+    - path: PRDs/modules/**
+      reason: Module drafts were not created or promoted in AJ23.
+    - path: Sys4AI/docs/generated/**
+      reason: Generated derivatives remain noncanonical.
+unresolved_issues:
+  - issue_id: OPEN-PRD-MODULE-DRAFTS
+    status: deferred
+    notes: Planned module paths do not exist until AJ24 creates derivative draft sub-PRDs.
+  - issue_id: OPEN-PRD-MODULE-PROMOTION
+    status: deferred
+    notes: Canonical promotion and supersession are out of scope for AJ23.
+open_issues:
+  - OPEN-PRD-MODULE-DRAFTS
+  - OPEN-PRD-MODULE-PROMOTION
+next_recommendation: >
+  Stop after this bounded packet. The next logical AgentJob is
+  AJ-SFADEV-24-SUBPRD-DRAFTS-001, which should generate derivative draft
+  sub-PRDs without promoting them to canonical status.
+next_handoff_id: HANDOFF-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
+completed_at: "2026-07-08T22:31:22Z"
