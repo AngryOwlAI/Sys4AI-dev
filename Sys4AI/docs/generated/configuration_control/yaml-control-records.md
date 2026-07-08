@@ -166,6 +166,9 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_walking_skeleton_flow_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
 | ctrl_walking_skeleton_flow_completion | control_records/completions/RECEIPT-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml | completion_receipt_v0_2 | controlled | framework_product | contract_completion_receipt_v0_2 | pending |
 | ctrl_walking_skeleton_flow_handoff | control_records/handoffs/HANDOFF-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml | handoff_v0_2 | controlled | framework_product | contract_handoff_v0_2 | pending |
+| ctrl_target_package_smoke_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
+| ctrl_target_package_smoke_completion | control_records/completions/RECEIPT-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml | completion_receipt_v0_2 | controlled | framework_product | contract_completion_receipt_v0_2 | pending |
+| ctrl_target_package_smoke_handoff | control_records/handoffs/HANDOFF-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml | handoff_v0_2 | controlled | framework_product | contract_handoff_v0_2 | pending |
 
 ## Validation Contract Trace
 

@@ -1,0 +1,119 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-21-TARGET-PACKAGE-SMOKE-001
+schema_version: 0.1.0
+agentjob_id: AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001
+created_at: "2026-07-08T21:55:57Z"
+status: PASS_WITH_WARNINGS
+commands_run:
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-preflight --json
+    result: pass_with_warnings_adhoc_receipt_usable
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-select --json
+    result: selected_AJ_SFADEV_21_ready
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli memory preflight --agentjob AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001 --handoff HANDOFF-SFADEV-20-WALKING-SKELETON-FLOW-001 --query "target package smoke surface" --query "package authority boundary" --json
+    result: pass_with_warnings_no_auto_receipt_written
+  - command: inspect latest handoff Phase 2 plans PRD target package command surface and validator design
+    result: pass
+queries:
+  - query: target package smoke surface
+    returned_object_ids:
+      - der_validation_contracts_by_target
+      - SRC-P2-WALKING-SKELETON-IMPLEMENTATION-PLAN
+      - SRC-REG-ROLE-SKILL-CROSSWALK
+      - AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001
+      - SRC-AJ-TARGET-PACKAGE-SMOKE-001
+      - ctrl_target_package_smoke_agentjob
+      - SRC-RDR-PHASE2-WALKING-SKELETON-001
+      - SRC-PRD-P2-WALKING-SKELETON
+      - SRC-PRD-P0
+      - SRC-REG-ROLES
+  - query: package authority boundary
+    returned_object_ids:
+      - SRC-RDR-PHASE2-WALKING-SKELETON-001
+      - SRC-P2-WALKING-SKELETON-IMPLEMENTATION-PLAN
+      - AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001
+      - SRC-AJ-TARGET-PACKAGE-SMOKE-001
+      - ctrl_target_package_smoke_agentjob
+      - SRC-WALKING-SKELETON-FLOW-MODULE
+      - SRC-COMPLETION-END-TO-END-ACCEPTANCE-001
+      - ctrl_end_to_end_acceptance_completion
+      - RECEIPT-SFADEV-10-END-TO-END-ACCEPTANCE-001
+      - SRC-PRD-P2-WALKING-SKELETON
+canonical_sources_inspected:
+  - path: implementation_plans/self_hosting_boundary_decision_record.md
+    registry: source_registry.csv
+    row_id: SRC-SELFHOST-BOUNDARY-DECISION
+    inspected_sections:
+      - Rules
+      - Consequences
+  - path: Sys4AI/control_records/program_state.yaml
+    registry: source_registry.csv
+    row_id: SRC-PROGRAM-STATE
+    inspected_sections:
+      - allowed_next_actions
+      - latest_handoff_id
+      - active_agentjob_id
+  - path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-HANDOFF-WALKING-SKELETON-FLOW-001
+    inspected_sections:
+      - control_loop_notes
+      - phase_boundary_notes
+      - stop_conditions
+  - path: implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+    registry: source_registry.csv
+    row_id: SRC-P2-WALKING-SKELETON-IMPLEMENTATION-PLAN
+    inspected_sections:
+      - Open Questions
+      - Requirement Traceability Matrix
+      - AJ-21 task packet
+  - path: PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+    registry: source_registry.csv
+    row_id: SRC-PRD-P2-WALKING-SKELETON
+    inspected_sections:
+      - open issues
+      - package smoke constraints
+  - path: Sys4AI/control_records/agentjobs/AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-AJ-TARGET-PACKAGE-SMOKE-001
+    inspected_sections:
+      - allowed_writes
+      - expected_outputs
+      - authority_boundary
+  - path: Sys4AI/sys_for_ai/cli.py
+    registry: source_registry.csv
+    row_id: SRC-CLI-PHASE1
+    inspected_sections:
+      - command registration
+      - target-package command dispatch
+  - path: Sys4AI/Makefile
+    registry: source_registry.csv
+    row_id: SRC-MAKE-PHASE1
+    inspected_sections:
+      - validate target list
+      - target-package smoke target
+registry_rows_inspected:
+  - registry: source_registry.csv
+    row_id: SRC-P2-WALKING-SKELETON-IMPLEMENTATION-PLAN
+    purpose: Confirm controlled implementation plan source for AJ21.
+  - registry: source_registry.csv
+    row_id: SRC-RDR-PHASE2-WALKING-SKELETON-001
+    purpose: Confirm RDR source for package manifest source trace.
+  - registry: source_registry.csv
+    row_id: SRC-PRD-P2-WALKING-SKELETON
+    purpose: Confirm PRD source for package manifest source trace.
+  - registry: source_registry.csv
+    row_id: SRC-AJ-TARGET-PACKAGE-SMOKE-001
+    purpose: Confirm selected package smoke AgentJob.
+  - registry: derivative_registry.csv
+    row_id: der_validation_contracts_by_target
+    purpose: Confirm derivative memory hit was navigation only.
+stale_context_risks:
+  - risk_id: MEMPREFLIGHT-SFADEV-21-RISK-001
+    status: mitigated
+    notes: Derivative memory hits were used only as navigation and checked against source files.
+  - risk_id: MEMPREFLIGHT-SFADEV-21-RISK-002
+    status: mitigated
+    notes: Source hash warnings are known registry backlog and do not block routing.
+  - risk_id: MEMPREFLIGHT-SFADEV-21-RISK-003
+    status: mitigated
+    notes: Package authority remains derivative draft target-system instance smoke evidence.
+usable_for_routing: true

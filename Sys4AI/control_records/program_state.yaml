@@ -6,14 +6,14 @@ system_context:
   target_system: Sys4AI
   self_hosting_mode: true
   reflection_depth: 1
-current_phase: phase2_walking_skeleton_flow
+current_phase: phase2_target_package_smoke
 lifecycle_stage: develop
-active_task_id: TASK-SFADEV-WALKING-SKELETON-FLOW-001
+active_task_id: TASK-SFADEV-TARGET-PACKAGE-SMOKE-001
 active_director_decision_id: null
 active_agentjob_id: null
-latest_completion_receipt_id: RECEIPT-SFADEV-20-WALKING-SKELETON-FLOW-001
-latest_handoff_id: HANDOFF-SFADEV-20-WALKING-SKELETON-FLOW-001
-latest_memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-20-WALKING-SKELETON-FLOW-001
+latest_completion_receipt_id: RECEIPT-SFADEV-21-TARGET-PACKAGE-SMOKE-001
+latest_handoff_id: HANDOFF-SFADEV-21-TARGET-PACKAGE-SMOKE-001
+latest_memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-21-TARGET-PACKAGE-SMOKE-001
 state_status: complete
 blocked_reason: null
 human_gate_required: false
@@ -22,14 +22,14 @@ allowed_next_actions:
 - inspect_latest_handoff
 - open_new_director_decision_for_future_work
 - validate_acceptance_receipt
-- continue_with_target_package_smoke
+- continue_with_walking_skeleton_demo
 blocked_actions:
 - execute_multiple_agentjobs
 - use_chat_memory_as_authority
 - treat_generated_derivative_as_canonical
 - mutate_activated_control_record_without_supersession
 validation_status:
-  last_validated_at: '2026-07-08T21:41:39Z'
+  last_validated_at: '2026-07-08T21:56:48Z'
   validators:
   - make validate
   - validate-generated-derivatives

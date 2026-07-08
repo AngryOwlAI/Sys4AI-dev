@@ -1,0 +1,6 @@
+requirement_id,source_artifact,target_artifact,coverage_status,evidence_path,notes
+RSS-FR-001,requirements-discovery-record.md,task-packets/TASK-001-read-only-repo-inspection.md,covered,task-packets/TASK-001-read-only-repo-inspection.md,Read-only inspection task defined for smoke package.
+RSS-FR-002,product-requirements.md,task-packets/TASK-002-current-state-baseline.md,covered,task-packets/TASK-002-current-state-baseline.md,Current-state baseline task defined for smoke package.
+RSS-FR-003,product-requirements.md,task-packets/TASK-003-governed-next-action-plan.md,covered,task-packets/TASK-003-governed-next-action-plan.md,Governed next-action planning task defined for smoke package.
+RSS-NFR-001,product-requirements.md,registries/artifact-index.csv,covered,registries/artifact-index.csv,Package-local registries provide structural trace.
+RSS-NFR-002,product-requirements.md,target-system-manifest.yaml,covered,target-system-manifest.yaml,Manifest and README preserve derivative draft authority.

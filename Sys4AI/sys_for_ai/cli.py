@@ -30,6 +30,7 @@ from .walking_skeleton import (
     walking_skeleton_status,
     write_walking_skeleton_flow_report,
 )
+from .target_package import target_package_status, validate_target_package
 from .control_loop import (
     continue_packet,
     continue_preflight,
@@ -364,6 +365,17 @@ def build_parser() -> argparse.ArgumentParser:
     walking_report = walking_sub.add_parser("write-report", help="Write the generated walking-skeleton flow report")
     walking_report.add_argument("--json", action="store_true")
 
+    target_package = sub.add_parser("target-package", help="Target package smoke commands")
+    target_package_sub = target_package.add_subparsers(dest="target_package_command", required=True)
+
+    target_package_status_parser = target_package_sub.add_parser("status", help="Report target package status")
+    target_package_status_parser.add_argument("package_root", nargs="?", default="examples/target_systems/repo_steward_agent_package")
+    target_package_status_parser.add_argument("--json", action="store_true")
+
+    target_package_validate = target_package_sub.add_parser("validate", help="Validate a target package smoke surface")
+    target_package_validate.add_argument("package_root", nargs="?", default="examples/target_systems/repo_steward_agent_package")
+    target_package_validate.add_argument("--json", action="store_true")
+
     return parser
 
 
@@ -409,6 +421,9 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "walking-skeleton":
         return _handle_walking_skeleton_command(args)
+
+    if args.command == "target-package":
+        return _handle_target_package_command(args)
 
     if args.command == "validate-format-profiles":
         return print_result(validate_format_profiles(args.path))
@@ -567,6 +582,14 @@ def _handle_walking_skeleton_command(args: argparse.Namespace) -> int:
     if args.walking_command == "write-report":
         result = write_walking_skeleton_flow_report()
         return print_result(result)
+    return 2
+
+
+def _handle_target_package_command(args: argparse.Namespace) -> int:
+    if args.target_package_command == "status":
+        return _emit_payload(target_package_status(args.package_root), args.json)
+    if args.target_package_command == "validate":
+        return _emit_payload(validate_target_package(args.package_root), args.json)
     return 2
 
 

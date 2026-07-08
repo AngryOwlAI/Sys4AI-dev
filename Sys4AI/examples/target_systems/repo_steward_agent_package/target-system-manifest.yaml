@@ -1,0 +1,23 @@
+schema_version: "0.1.0"
+target_system_id: repo_steward_agent_sample
+name: Repo Steward Agent Sample Package
+package_status: smoke_example
+subject_layer: target_system_instance
+source_authority_status: derivative_draft
+generated_by: Sys4AI Phase 2 walking skeleton
+source_trace:
+  - Sys4AI/control_records/system_definition/phase2_walking_skeleton_requirements_discovery_record.md
+  - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+  - implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+contents:
+  rdr: requirements-discovery-record.md
+  prd: product-requirements.md
+  implementation_plan: implementation-plan.md
+  task_packet_root: task-packets
+  requirement_trace: registries/requirement-trace.csv
+validation:
+  status: pass
+  commands:
+    - python -m sys_for_ai.cli target-package validate examples/target_systems/repo_steward_agent_package --json
+authority_notice: >
+  This package is a smoke example and derivative draft. It is not a production target system.

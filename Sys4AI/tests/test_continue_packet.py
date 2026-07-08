@@ -16,7 +16,7 @@ class ContinuePacketTests(unittest.TestCase):
         self.assertTrue(payload["ok"])
         self.assertEqual(payload["packet_type"], "execution_packet")
         self.assertEqual(payload["status"], "READY")
-        self.assertEqual(payload["agentjob_id"], "AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001")
+        self.assertEqual(payload["agentjob_id"], "AJ-SFADEV-22-WALKING-SKELETON-DEMO-001")
         self.assertEqual(payload["selection_reason"], "latest_handoff_next_agentjob")
 
     def test_missing_director_decision_blocks(self) -> None:

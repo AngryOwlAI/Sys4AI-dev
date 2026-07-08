@@ -1,6 +1,6 @@
 agentjob_id: AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001
 schema_version: 0.2.0
-status: pending
+status: completed
 objective: Add a sample target-system package smoke surface and validator.
 lifecycle_stage: develop
 role_binding:
@@ -25,7 +25,11 @@ allowed_writes:
   - Sys4AI/sys_for_ai/cli.py
   - Sys4AI/Makefile
   - Sys4AI/tests/test_target_package.py
+  - Sys4AI/tests/test_continue_packet.py
+  - Sys4AI/tests/test_program_state.py
+  - Sys4AI/tests/test_self_hosting_acceptance.py
   - Sys4AI/examples/target_systems/repo_steward_agent_package/**
+  - Sys4AI/docs/generated/**
   - Sys4AI/control_records/agentjobs/AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml
   - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml
   - Sys4AI/control_records/completions/RECEIPT-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml
@@ -43,6 +47,7 @@ allowed_writes:
   - temp_handoff/handoff-0031.md
 generated_paths:
   - Sys4AI/examples/target_systems/repo_steward_agent_package/**
+  - Sys4AI/docs/generated/**
 forbidden_paths:
   - LICENSE
   - NOTICE
@@ -97,5 +102,5 @@ stop_conditions:
   - Package authority cannot be expressed without confusing framework and target-system layers.
   - Smoke package requires production dependencies or external services.
 created_at: "2026-07-08T21:25:01Z"
-activated_at: null
-completed_at: null
+activated_at: "2026-07-08T21:56:48Z"
+completed_at: "2026-07-08T21:56:48Z"

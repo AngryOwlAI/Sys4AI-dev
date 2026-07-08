@@ -1,0 +1,11 @@
+artifact_id,path,artifact_type,authority_status,subject_layer,notes
+repo-steward-readme,README.md,package_readme,derivative_draft,target_system_instance,Smoke example package overview and boundary.
+repo-steward-manifest,target-system-manifest.yaml,target_system_manifest,derivative_draft,target_system_instance,Package manifest with source trace and authority notice.
+repo-steward-rdr,requirements-discovery-record.md,requirements_discovery_record,derivative_draft,target_system_instance,Target-system discovery summary.
+repo-steward-prd,product-requirements.md,prd,derivative_draft,target_system_instance,Target-system smoke requirements.
+repo-steward-plan,implementation-plan.md,implementation_plan,derivative_draft,target_system_instance,Target-system smoke implementation plan.
+repo-steward-task-001,task-packets/TASK-001-read-only-repo-inspection.md,task_packet,derivative_draft,target_system_instance,Read-only repository inspection task packet.
+repo-steward-task-002,task-packets/TASK-002-current-state-baseline.md,task_packet,derivative_draft,target_system_instance,Current-state baseline task packet.
+repo-steward-task-003,task-packets/TASK-003-governed-next-action-plan.md,task_packet,derivative_draft,target_system_instance,Governed next-action plan task packet.
+repo-steward-trace,registries/requirement-trace.csv,trace_registry,derivative_draft,target_system_instance,Package-local requirement trace.
+repo-steward-validation,validation/validation-summary.md,validation_summary,derivative_draft,target_system_instance,Package smoke validation summary.

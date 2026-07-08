@@ -26,3 +26,5 @@ REL-DOCUMENT-SPINE-USES-INIT,SRC-SYSTEM-DOCUMENT-SPINE,routes_to,init,Sys4AI/doc
 REL-INIT-SKILL-USES-SYSDEF,init,routes_to,system-definition-interview-context-45,.agents/skills/init/SKILL.md,Init routes long discovery to the context-protected system-definition interview.
 REL-INIT-SKILL-USES-CSB-TEMPLATE,init,uses,SRC-TEMPLATE-CURRENT-STATE-BASELINE,.agents/skills/init/SKILL.md,Init uses the current-state baseline template for approved brownfield evidence capture.
 REL-AJ-INIT-AUTHORIZES-SKILL,SRC-AJ-INIT-FRONTDOOR-001,authorizes,init,Sys4AI/control_records/agentjobs/AJ-SFADEV-11-INIT-FRONTDOOR-001.yaml,AgentJob authorizes adding the init front-door skill surfaces and governance wiring.
+REL-TARGET-PACKAGE-VALIDATOR-VALIDATES-SMOKE,SRC-TARGET-PACKAGE-VALIDATOR,validates,der_repo_steward_agent_package,Sys4AI/sys_for_ai/target_package.py,Validator checks package structure source trace and authority boundary.
+REL-TARGET-PACKAGE-TRACES-PRD,der_repo_steward_agent_package,traces_to,SRC-PRD-P2-WALKING-SKELETON,Sys4AI/examples/target_systems/repo_steward_agent_package/target-system-manifest.yaml,Package manifest source trace points to the Phase 2 walking skeleton PRD.
