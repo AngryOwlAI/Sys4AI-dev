@@ -135,6 +135,11 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_plan_completion_audit_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-14-PLAN-COMPLETION-AUDIT-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
 | ctrl_plan_completion_audit_completion | control_records/completions/RECEIPT-SFADEV-14-PLAN-COMPLETION-AUDIT-001.yaml | completion_receipt_v0_2 | controlled | implementation_initialization | contract_completion_receipt_v0_2 | pending |
 | ctrl_plan_completion_audit_handoff | control_records/handoffs/HANDOFF-SFADEV-14-PLAN-COMPLETION-AUDIT-001.yaml | handoff_v0_2 | controlled | implementation_initialization | contract_handoff_v0_2 | pending |
+| ctrl_next_scope_selection_director_decision | control_records/director_decisions/DDR-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml | director_decision | controlled | implementation_initialization | contract_director_decision | pending |
+| ctrl_next_scope_selection_agentjob | control_records/agentjobs/AJ-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml | agentjob_v0_2 | controlled | implementation_initialization | contract_agentjob_v0_2 | pending |
+| ctrl_next_scope_selection_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
+| ctrl_next_scope_selection_completion | control_records/completions/RECEIPT-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml | completion_receipt_v0_2 | controlled | implementation_initialization | contract_completion_receipt_v0_2 | pending |
+| ctrl_next_scope_selection_handoff | control_records/handoffs/HANDOFF-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml | handoff_v0_2 | controlled | implementation_initialization | contract_handoff_v0_2 | pending |
 
 ## Validation Contract Trace
 

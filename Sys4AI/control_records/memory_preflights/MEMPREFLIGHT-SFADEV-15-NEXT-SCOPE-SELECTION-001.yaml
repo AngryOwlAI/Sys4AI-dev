@@ -1,0 +1,86 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-15-NEXT-SCOPE-SELECTION-001
+schema_version: 0.1.0
+agentjob_id: AJ-SFADEV-15-NEXT-SCOPE-SELECTION-001
+created_at: "2026-07-08T20:29:00Z"
+status: PASS_WITH_WARNINGS
+commands_run:
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-preflight --json
+    result: pass_with_warnings_adhoc_receipt_usable
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-select --json
+    result: director_decision_required_before_WS15_selection
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-packet --json
+    result: director_decision_required_before_WS15_selection
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli memory preflight --agentjob AJ-SFADEV-15-NEXT-SCOPE-SELECTION-001 --handoff HANDOFF-SFADEV-14-PLAN-COMPLETION-AUDIT-001 --query "next scope selection plan adoption" --query "Phase 2 walking skeleton PRD decomposition" --json
+    result: pass_with_warnings_no_auto_receipt_written
+  - command: inspect self-hosting boundary latest handoff program state next-scope plan and registries
+    result: pass
+queries:
+  - query: next scope selection plan adoption
+    returned_object_ids:
+      - SRC-HANDOFF-PLAN-COMPLETION-AUDIT-001
+      - HANDOFF-SFADEV-14-PLAN-COMPLETION-AUDIT-001
+      - SRC-PLAN-COMPLETION-AUDIT-001
+      - SRC-HANDOFF-PLAN-CONTROL-001
+  - query: Phase 2 walking skeleton PRD decomposition
+    returned_object_ids:
+      - SRC-REG-REQ-TRACE
+      - SRC-REG-SOURCES
+      - SRC-REG-AGENTJOBS
+      - SRC-REG-CONTROL-RECORDS
+canonical_sources_inspected:
+  - path: implementation_plans/self_hosting_boundary_decision_record.md
+    registry: source_registry.csv
+    row_id: SRC-SELFHOST-BOUNDARY-DECISION
+    inspected_sections:
+      - Rules
+      - Consequences
+  - path: Sys4AI/control_records/program_state.yaml
+    registry: source_registry.csv
+    row_id: SRC-PROGRAM-STATE
+    inspected_sections:
+      - active_director_decision_id
+      - active_agentjob_id
+      - allowed_next_actions
+      - latest_handoff_id
+  - path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-14-PLAN-COMPLETION-AUDIT-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-HANDOFF-PLAN-COMPLETION-AUDIT-001
+    inspected_sections:
+      - control_loop_notes
+      - phase_boundary_notes
+      - stop_conditions
+  - path: implementation_plans/Sys4AI_next_scope_full_implementation_plan.md
+    registry: source_registry.csv
+    row_id: SRC-NEXT-SCOPE-FULL-IMPLEMENTATION-PLAN
+    inspected_sections:
+      - Executive Summary
+      - Execution Protocol
+      - Recommended Workstream Order
+      - WS-15 Scope Selection and Plan Adoption
+  - path: Sys4AI/registries/agentjob_registry.csv
+    registry: source_registry.csv
+    row_id: SRC-REG-AGENTJOBS
+    inspected_sections:
+      - current completed rows
+      - legacy pending rows
+registry_rows_inspected:
+  - registry: agentjob_registry.csv
+    row_id: AJ-SFADEV-14-PLAN-COMPLETION-AUDIT-001
+    purpose: Confirm the prior plan-completion audit is completed.
+  - registry: handoff_registry.csv
+    row_id: HANDOFF-SFADEV-14-PLAN-COMPLETION-AUDIT-001
+    purpose: Confirm the latest handoff requires a new scope.
+  - registry: source_registry.csv
+    row_id: SRC-PLAN-COMPLETION-AUDIT-001
+    purpose: Confirm the completion audit is registered controlled evidence.
+  - registry: source_registry.csv
+    row_id: SRC-REG-AGENTJOBS
+    purpose: Confirm the registry surface with legacy pending rows.
+stale_context_risks:
+  - risk_id: MEMPREFLIGHT-SFADEV-15-RISK-001
+    status: observed
+    notes: Memory status still reports many pending source_hash fields by Phase 1 convention.
+  - risk_id: MEMPREFLIGHT-SFADEV-15-RISK-002
+    status: mitigated
+    notes: Routing used live program state handoff plan and registry evidence rather than memory alone.
+usable_for_routing: true

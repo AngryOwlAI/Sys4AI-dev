@@ -1,0 +1,119 @@
+agentjob_id: AJ-SFADEV-15-NEXT-SCOPE-SELECTION-001
+schema_version: 0.2.0
+status: completed
+objective: >
+  Select the next controlled scope after completion of the all-recommendations
+  Phase 1 plan and adopt the next-scope implementation plan as the active
+  roadmap for later /continue invocations.
+lifecycle_stage: implementation_initialization
+role_binding:
+  role_id: system_director
+  binding_type: registered_role
+  authority_scope: next scope selection and plan adoption
+  expires_with_agentjob: true
+required_inputs:
+  - implementation_plans/self_hosting_boundary_decision_record.md
+  - implementation_plans/Sys4AI_next_scope_full_implementation_plan.md
+  - implementation_plans/completion_audits/PLAN-COMPLETION-AUDIT-SFADEV-14.md
+  - Sys4AI/control_records/program_state.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-14-PLAN-COMPLETION-AUDIT-001.yaml
+  - Sys4AI/registries/agentjob_registry.csv
+allowed_reads:
+  - README.md
+  - PRDs/**
+  - implementation_plans/**
+  - temp_handoff/**
+  - Sys4AI/control_records/program_state.yaml
+  - Sys4AI/control_records/handoffs/**
+  - Sys4AI/registries/**
+  - .agents/skills/continue/SKILL.md
+allowed_writes:
+  - implementation_plans/Sys4AI-dev_next_scope_full_implementation_plan.md
+  - Sys4AI/control_records/director_decisions/DDR-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml
+  - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml
+  - Sys4AI/control_records/completions/RECEIPT-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml
+  - Sys4AI/control_records/program_state.yaml
+  - Sys4AI/registries/agentjob_registry.csv
+  - Sys4AI/registries/director_decision_registry.csv
+  - Sys4AI/registries/completion_receipt_registry.csv
+  - Sys4AI/registries/handoff_registry.csv
+  - Sys4AI/registries/memory_preflight_receipt_registry.csv
+  - Sys4AI/registries/control_record_registry.csv
+  - Sys4AI/registries/source_registry.csv
+  - Sys4AI/docs/generated/**
+  - temp_handoff/handoff-0025.md
+generated_paths:
+  - Sys4AI/docs/generated/**
+forbidden_paths:
+  - .git/**
+  - .venv/**
+  - Sys4AI/.venv/**
+  - PRDs/**
+  - Sys4AI/docs/generated/** as canonical source
+forbidden_actions:
+  - Reopen the completed all-recommendations implementation plan.
+  - Treat compatibility pointer files as active plan authority.
+  - Create sub-PRDs before scope selection is recorded.
+  - Execute more than one AgentJob in this packet.
+  - Promote generated derivatives to canonical authority.
+expected_outputs:
+  - Director Decision selecting the next-scope plan.
+  - Controlled copy of the selected next-scope plan at the WS-15 path.
+  - Memory preflight receipt with source-first evidence.
+  - Completion receipt and controlled handoff.
+  - Registry rows for all new control records and source evidence.
+  - Program state returned to complete with this packet as latest evidence.
+validators:
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-director-decisions control_records/director_decisions
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-memory-preflight control_records/memory_preflights
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-agentjob-registry registries/agentjob_registry.csv
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-director-decision-registry registries/director_decision_registry.csv
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-completion-receipt-registry registries/completion_receipt_registry.csv
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-handoff-registry registries/handoff_registry.csv
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-15-NEXT-SCOPE-SELECTION-001 --json
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-control-loop
+  - make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-15-NEXT-SCOPE-SELECTION-001
+  - git diff --check
+completion_evidence_required:
+  - director_decision
+  - memory_preflight
+  - selected_plan_path
+  - changed_artifacts
+  - validation_status
+  - closeout_handoff
+memory_preflight:
+  required: true
+  minimum_queries:
+    - next scope selection plan adoption
+    - Phase 2 walking skeleton PRD decomposition
+  required_evidence:
+    - self-hosting boundary decision record inspection
+    - latest plan-completion audit handoff inspection
+    - current program state inspection
+    - selected next-scope plan inspection
+    - AgentJob registry inspection
+authority_boundary:
+  may_select_next_scope_plan: true
+  may_modify_control_closeout_records: true
+  may_modify_program_state: true
+  may_modify_registries: true
+  may_refresh_generated_derivatives: true
+  may_reopen_completed_prior_plan: false
+  may_execute_multiple_agentjobs: false
+  may_create_sub_prds: false
+  may_promote_generated_derivatives: false
+handoff_policy:
+  create_handoff_when:
+    - scope selection is recorded
+    - packet closes with the next bounded workstream identified
+stop_conditions:
+  - Latest program state is not complete before selection.
+  - Another AgentJob is active.
+  - Branch is ahead of upstream without push evidence.
+  - Any required write falls outside allowed_writes.
+created_at: "2026-07-08T20:29:00Z"
+activated_at: "2026-07-08T20:29:00Z"
+completed_at: "2026-07-08T20:29:00Z"

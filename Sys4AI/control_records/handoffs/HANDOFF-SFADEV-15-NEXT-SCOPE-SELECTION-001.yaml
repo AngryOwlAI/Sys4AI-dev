@@ -1,0 +1,89 @@
+handoff_id: HANDOFF-SFADEV-15-NEXT-SCOPE-SELECTION-001
+schema_version: 0.2.0
+framework_name: Sys4AI
+target_agentic_system: Sys4AI-dev
+artifact_name: Next Scope Selection Handoff
+artifact_type: operational_handoff
+artifact_version: 0.2.0
+producing_role: system_director
+artifact_status: completed
+summary: >
+  The next-scope implementation plan has been selected as the controlled
+  roadmap after the completed all-recommendations plan. The prior plan remains
+  closed. Future /continue invocations should proceed one bounded AgentJob at
+  a time, beginning with legacy pending AgentJob reconciliation.
+source_artifacts:
+  - implementation_plans/self_hosting_boundary_decision_record.md
+  - implementation_plans/Sys4AI_next_scope_full_implementation_plan.md
+  - implementation_plans/Sys4AI-dev_next_scope_full_implementation_plan.md
+  - implementation_plans/completion_audits/PLAN-COMPLETION-AUDIT-SFADEV-14.md
+  - Sys4AI/control_records/program_state.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-14-PLAN-COMPLETION-AUDIT-001.yaml
+traceability:
+  agentjob_id: AJ-SFADEV-15-NEXT-SCOPE-SELECTION-001
+  director_decision_id: DDR-SFADEV-15-NEXT-SCOPE-SELECTION-001
+  completion_receipt_id: RECEIPT-SFADEV-15-NEXT-SCOPE-SELECTION-001
+  selected_plan_source_id: SRC-NEXT-SCOPE-FULL-IMPLEMENTATION-PLAN
+control_loop_notes:
+  previous_handoff_id: HANDOFF-SFADEV-14-PLAN-COMPLETION-AUDIT-001
+  next_agentjob_id: AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+  next_agentjob_status: proposed_by_selected_plan_not_yet_created
+  selection_basis: WS-15 selected the next-scope plan and stopped after one bounded AgentJob.
+memory_preflight:
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-15-NEXT-SCOPE-SELECTION-001
+  usable_for_routing: true
+  required_next_queries:
+    - legacy pending AgentJob reconciliation
+    - AJ-P1 self-hosting pending rows
+format_profile_evidence:
+  controlled_sources_added:
+    - implementation_plans/Sys4AI-dev_next_scope_full_implementation_plan.md
+    - Sys4AI/control_records/director_decisions/DDR-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml
+    - Sys4AI/control_records/agentjobs/AJ-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml
+    - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml
+    - Sys4AI/control_records/completions/RECEIPT-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml
+    - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml
+    - temp_handoff/handoff-0025.md
+  registry_surfaces_modified:
+    - Sys4AI/registries/agentjob_registry.csv
+    - Sys4AI/registries/director_decision_registry.csv
+    - Sys4AI/registries/completion_receipt_registry.csv
+    - Sys4AI/registries/handoff_registry.csv
+    - Sys4AI/registries/memory_preflight_receipt_registry.csv
+    - Sys4AI/registries/control_record_registry.csv
+    - Sys4AI/registries/source_registry.csv
+  generated_derivatives_refreshed:
+    - Sys4AI/docs/generated/configuration_control/index.md
+    - Sys4AI/docs/generated/configuration_control/yaml-control-records.md
+    - Sys4AI/docs/generated/registry_catalog/index.md
+source_authority_evidence:
+  canonical_sources_checked:
+    - implementation_plans/self_hosting_boundary_decision_record.md
+    - Sys4AI/control_records/program_state.yaml
+    - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-14-PLAN-COMPLETION-AUDIT-001.yaml
+    - implementation_plans/Sys4AI_next_scope_full_implementation_plan.md
+    - Sys4AI/registries/agentjob_registry.csv
+  authority_boundary: >
+    This packet selects the next scope and registers the selected plan. It does
+    not create sub-PRDs, execute the walking skeleton, reconcile legacy rows,
+    or promote generated derivatives.
+derivative_surface_evidence:
+  generated_derivatives_changed: true
+  changed_derivatives:
+    - Sys4AI/docs/generated/configuration_control/index.md
+    - Sys4AI/docs/generated/configuration_control/yaml-control-records.md
+    - Sys4AI/docs/generated/registry_catalog/index.md
+  notes: Generated governance pages were refreshed from canonical registries and remain noncanonical.
+security_evidence:
+  secret_scan_scope: Markdown plan files YAML control records CSV registries and generated Markdown.
+  new_secret_material: false
+recommended_next_role: requirements_verifier
+phase_boundary_notes: >
+  WS-15 is complete. The next bounded task is WS-16 legacy pending AgentJob
+  reconciliation. Do not begin Phase 2 walking-skeleton work until the legacy
+  pending rows are classified or intentionally deferred.
+stop_conditions:
+  - A future task treats this handoff as permission to execute multiple AgentJobs.
+  - A future task reopens the completed all-recommendations plan without supersession.
+  - A future task begins Phase 2 walking-skeleton work before reconciling legacy pending rows.
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-15-NEXT-SCOPE-SELECTION-001
