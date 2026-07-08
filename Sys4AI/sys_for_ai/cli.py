@@ -25,6 +25,11 @@ from .derivatives import (
 from .memory import bootstrap_registries
 from .memory import hash_path as memory_hash_path
 from .memory import lookup_memory, memory_status, run_memory_preflight, search_memory, update_hashes, validate_hashes
+from .walking_skeleton import (
+    validate_walking_skeleton_flow,
+    walking_skeleton_status,
+    write_walking_skeleton_flow_report,
+)
 from .control_loop import (
     continue_packet,
     continue_preflight,
@@ -347,6 +352,18 @@ def build_parser() -> argparse.ArgumentParser:
     validate_generated.add_argument("docs_root", default="docs/generated", nargs="?")
     validate_generated.add_argument("derivative_registry", default="registries/derivative_registry.csv", nargs="?")
 
+    walking = sub.add_parser("walking-skeleton", help="Phase 2 walking-skeleton commands")
+    walking_sub = walking.add_subparsers(dest="walking_command", required=True)
+
+    walking_status = walking_sub.add_parser("status", help="Report walking-skeleton flow status")
+    walking_status.add_argument("--json", action="store_true")
+
+    walking_validate = walking_sub.add_parser("validate-flow", help="Validate the walking-skeleton flow")
+    walking_validate.add_argument("--json", action="store_true")
+
+    walking_report = walking_sub.add_parser("write-report", help="Write the generated walking-skeleton flow report")
+    walking_report.add_argument("--json", action="store_true")
+
     return parser
 
 
@@ -389,6 +406,9 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "memory":
         return _handle_memory_command(args)
+
+    if args.command == "walking-skeleton":
+        return _handle_walking_skeleton_command(args)
 
     if args.command == "validate-format-profiles":
         return print_result(validate_format_profiles(args.path))
@@ -536,6 +556,17 @@ def main(argv: list[str] | None = None) -> int:
         return print_result(result)
 
     parser.error(f"Unknown command: {args.command}")
+    return 2
+
+
+def _handle_walking_skeleton_command(args: argparse.Namespace) -> int:
+    if args.walking_command == "status":
+        return _emit_payload(walking_skeleton_status(), args.json)
+    if args.walking_command == "validate-flow":
+        return _emit_payload(validate_walking_skeleton_flow(), args.json)
+    if args.walking_command == "write-report":
+        result = write_walking_skeleton_flow_report()
+        return print_result(result)
     return 2
 
 

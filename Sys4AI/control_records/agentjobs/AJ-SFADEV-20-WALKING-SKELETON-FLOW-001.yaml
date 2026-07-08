@@ -1,6 +1,6 @@
 agentjob_id: AJ-SFADEV-20-WALKING-SKELETON-FLOW-001
 schema_version: 0.2.0
-status: pending
+status: completed
 objective: >
   Implement a deterministic walking-skeleton flow validator connecting RDR,
   PRD, implementation plan, AgentJobs, and package outputs.
@@ -29,7 +29,11 @@ allowed_writes:
   - Sys4AI/sys_for_ai/cli.py
   - Sys4AI/Makefile
   - Sys4AI/tests/test_walking_skeleton.py
+  - Sys4AI/tests/test_continue_packet.py
+  - Sys4AI/tests/test_program_state.py
+  - Sys4AI/tests/test_self_hosting_acceptance.py
   - Sys4AI/docs/generated/governance/walking-skeleton-flow.md
+  - Sys4AI/docs/generated/**
   - Sys4AI/control_records/agentjobs/AJ-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml
   - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml
   - Sys4AI/control_records/completions/RECEIPT-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml
@@ -46,6 +50,7 @@ allowed_writes:
   - temp_handoff/handoff-0030.md
 generated_paths:
   - Sys4AI/docs/generated/governance/walking-skeleton-flow.md
+  - Sys4AI/docs/generated/**
 forbidden_paths:
   - LICENSE
   - NOTICE
@@ -105,5 +110,5 @@ stop_conditions:
   - Flow requires missing approved artifacts from prior workstreams.
   - Any implementation requires target package creation.
 created_at: "2026-07-08T21:25:01Z"
-activated_at: null
-completed_at: null
+activated_at: "2026-07-08T21:41:39Z"
+completed_at: "2026-07-08T21:41:39Z"

@@ -1,0 +1,106 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-20-WALKING-SKELETON-FLOW-001
+schema_version: 0.1.0
+agentjob_id: AJ-SFADEV-20-WALKING-SKELETON-FLOW-001
+created_at: "2026-07-08T21:39:57Z"
+status: PASS_WITH_WARNINGS
+commands_run:
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-preflight --json
+    result: pass_with_warnings_adhoc_receipt_usable
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-select --json
+    result: selected_AJ_SFADEV_20_ready
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli memory preflight --agentjob AJ-SFADEV-20-WALKING-SKELETON-FLOW-001 --handoff HANDOFF-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001 --query "walking skeleton flow validator" --query "Phase 2 implementation plan flow trace" --json
+    result: pass_with_warnings_no_auto_receipt_written
+  - command: inspect latest handoff implementation plan current CLI Makefile and validator surfaces
+    result: pass
+queries:
+  - query: walking skeleton flow validator
+    returned_object_ids:
+      - SRC-P2-WALKING-SKELETON-IMPLEMENTATION-PLAN
+      - SRC-COMPLETION-PHASE2-WALKING-SKELETON-PLAN-001
+      - ctrl_phase2_walking_skeleton_plan_completion
+      - RECEIPT-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001
+      - SRC-RDR-PHASE2-WALKING-SKELETON-001
+      - SRC-HANDOFF-PHASE2-WALKING-SKELETON-PLAN-001
+      - ctrl_phase2_walking_skeleton_plan_handoff
+      - HANDOFF-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001
+      - AJ-SFADEV-20-WALKING-SKELETON-FLOW-001
+      - SRC-AJ-WALKING-SKELETON-FLOW-001
+  - query: Phase 2 implementation plan flow trace
+    returned_object_ids:
+      - SRC-REG-REQ-TRACE
+      - SRC-REG-AGENTJOBS
+      - SRC-RDR-PHASE2-WALKING-SKELETON-001
+      - SRC-PRD-P2-WALKING-SKELETON
+      - SRC-REG-SOURCES
+      - SRC-REG-CONTROL-RECORDS
+      - SRC-P2-WALKING-SKELETON-IMPLEMENTATION-PLAN
+      - SRC-REG-ROLE-SKILL-CROSSWALK
+      - SRC-NEXT-SCOPE-FULL-IMPLEMENTATION-PLAN
+      - SRC-REG-MEMORY-PREFLIGHT-RECEIPTS
+canonical_sources_inspected:
+  - path: implementation_plans/self_hosting_boundary_decision_record.md
+    registry: source_registry.csv
+    row_id: SRC-SELFHOST-BOUNDARY-DECISION
+    inspected_sections:
+      - Rules
+      - Consequences
+  - path: Sys4AI/control_records/program_state.yaml
+    registry: source_registry.csv
+    row_id: SRC-PROGRAM-STATE
+    inspected_sections:
+      - allowed_next_actions
+      - latest_handoff_id
+      - active_agentjob_id
+  - path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-HANDOFF-PHASE2-WALKING-SKELETON-PLAN-001
+    inspected_sections:
+      - control_loop_notes
+      - phase_boundary_notes
+      - stop_conditions
+  - path: implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+    registry: source_registry.csv
+    row_id: SRC-P2-WALKING-SKELETON-IMPLEMENTATION-PLAN
+    inspected_sections:
+      - Requirement Traceability Matrix
+      - Implementation Phases
+      - Validation Plan
+  - path: Sys4AI/sys_for_ai/cli.py
+    registry: source_registry.csv
+    row_id: SRC-CLI-PHASE1
+    inspected_sections:
+      - command registration
+      - validation command dispatch
+  - path: Sys4AI/Makefile
+    registry: source_registry.csv
+    row_id: SRC-MAKE-PHASE1
+    inspected_sections:
+      - validate target list
+      - validation command targets
+registry_rows_inspected:
+  - registry: source_registry.csv
+    row_id: SRC-P2-WALKING-SKELETON-IMPLEMENTATION-PLAN
+    purpose: Confirm controlled implementation plan source for AJ20.
+  - registry: source_registry.csv
+    row_id: SRC-RDR-PHASE2-WALKING-SKELETON-001
+    purpose: Confirm RDR source for walking skeleton flow.
+  - registry: source_registry.csv
+    row_id: SRC-PRD-P2-WALKING-SKELETON
+    purpose: Confirm PRD source for walking skeleton flow.
+  - registry: source_registry.csv
+    row_id: SRC-REG-REQ-TRACE
+    purpose: Confirm trace registry continuity surface.
+  - registry: source_registry.csv
+    row_id: SRC-REG-AGENTJOBS
+    purpose: Confirm AgentJob registry lifecycle surface.
+stale_context_risks:
+  - risk_id: MEMPREFLIGHT-SFADEV-20-RISK-001
+    status: not_observed
+    notes: No generated derivative was used as source authority.
+  - risk_id: MEMPREFLIGHT-SFADEV-20-RISK-002
+    status: mitigated
+    notes: Source hash warnings are known registry backlog and do not block routing.
+  - risk_id: MEMPREFLIGHT-SFADEV-20-RISK-003
+    status: mitigated
+    notes: Package smoke and demo artifacts remain deferred to AJ21 and AJ22.
+usable_for_routing: true

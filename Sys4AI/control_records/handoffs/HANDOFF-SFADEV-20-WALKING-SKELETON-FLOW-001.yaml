@@ -1,0 +1,97 @@
+handoff_id: HANDOFF-SFADEV-20-WALKING-SKELETON-FLOW-001
+schema_version: 0.2.0
+framework_name: Sys4AI
+target_agentic_system: Sys4AI-dev
+artifact_name: Phase 2 Walking Skeleton Flow Handoff
+artifact_type: operational_handoff
+artifact_version: 0.2.0
+producing_role: implementation_initialization_agent
+artifact_status: completed
+summary: >
+  One bounded walking-skeleton flow packet is complete. Sys4AI now has an
+  offline CLI validator that checks the Phase 2 RDR to PRD to implementation
+  plan to AgentJob flow and produces a derivative flow report.
+source_artifacts:
+  - implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+  - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+  - Sys4AI/control_records/system_definition/phase2_walking_skeleton_requirements_discovery_record.md
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001.yaml
+  - Sys4AI/sys_for_ai/walking_skeleton.py
+  - Sys4AI/sys_for_ai/trace_flow.py
+  - Sys4AI/docs/generated/governance/walking-skeleton-flow.md
+traceability:
+  agentjob_id: AJ-SFADEV-20-WALKING-SKELETON-FLOW-001
+  completion_receipt_id: RECEIPT-SFADEV-20-WALKING-SKELETON-FLOW-001
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-20-WALKING-SKELETON-FLOW-001
+  implementation_plan_source_id: SRC-P2-WALKING-SKELETON-IMPLEMENTATION-PLAN
+  validator_source_id: SRC-WALKING-SKELETON-FLOW-MODULE
+  report_derivative_id: der_walking_skeleton_flow
+control_loop_notes:
+  previous_handoff_id: HANDOFF-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001
+  next_agentjob_id: AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001
+  next_agentjob_status: pending
+  selection_basis: AJ20 completed the flow validator and stopped before package smoke work.
+memory_preflight:
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-20-WALKING-SKELETON-FLOW-001
+  usable_for_routing: true
+  required_next_queries:
+    - target package smoke surface
+    - package authority boundary
+format_profile_evidence:
+  controlled_sources_added:
+    - Sys4AI/sys_for_ai/walking_skeleton.py
+    - Sys4AI/sys_for_ai/trace_flow.py
+    - Sys4AI/tests/test_walking_skeleton.py
+    - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml
+    - Sys4AI/control_records/completions/RECEIPT-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml
+    - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml
+    - temp_handoff/handoff-0030.md
+  generated_derivatives_added:
+    - Sys4AI/docs/generated/governance/walking-skeleton-flow.md
+  registry_surfaces_modified:
+    - Sys4AI/registries/agentjob_registry.csv
+    - Sys4AI/registries/completion_receipt_registry.csv
+    - Sys4AI/registries/handoff_registry.csv
+    - Sys4AI/registries/memory_preflight_receipt_registry.csv
+    - Sys4AI/registries/source_registry.csv
+    - Sys4AI/registries/derivative_registry.csv
+    - Sys4AI/registries/control_record_registry.csv
+    - Sys4AI/registries/requirement_trace_registry.csv
+  generated_derivatives_refreshed:
+    - Sys4AI/docs/generated/configuration_control/index.md
+    - Sys4AI/docs/generated/configuration_control/yaml-control-records.md
+    - Sys4AI/docs/generated/registry_catalog/index.md
+source_authority_evidence:
+  canonical_sources_checked:
+    - implementation_plans/self_hosting_boundary_decision_record.md
+    - Sys4AI/control_records/program_state.yaml
+    - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001.yaml
+    - implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+    - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+    - Sys4AI/sys_for_ai/cli.py
+    - Sys4AI/Makefile
+  authority_boundary: >
+    The flow validator proves structural connectivity and report drift only.
+    It does not create the sample package and does not make semantic or
+    production-readiness claims.
+derivative_surface_evidence:
+  generated_derivatives_changed: true
+  changed_derivatives:
+    - Sys4AI/docs/generated/governance/walking-skeleton-flow.md
+    - Sys4AI/docs/generated/configuration_control/index.md
+    - Sys4AI/docs/generated/configuration_control/yaml-control-records.md
+    - Sys4AI/docs/generated/registry_catalog/index.md
+  notes: Generated flow report remains noncanonical.
+security_evidence:
+  secret_scan_scope: Python modules tests generated docs YAML control records CSV registries and diff checks.
+  new_secret_material: false
+recommended_next_role: implementation_initialization_agent
+phase_boundary_notes: >
+  AJ20 is complete. The next bounded task is AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001.
+  Do not run acceptance demo work before the package smoke validator and sample
+  package surface exist and validate.
+stop_conditions:
+  - A future task skips AJ21 and starts acceptance work directly.
+  - A future task treats the flow validator as semantic proof.
+  - A future task executes multiple AgentJobs in one /continue invocation.
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-20-WALKING-SKELETON-FLOW-001
