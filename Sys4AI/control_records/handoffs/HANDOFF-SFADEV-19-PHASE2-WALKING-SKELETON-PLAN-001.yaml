@@ -1,0 +1,104 @@
+handoff_id: HANDOFF-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001
+schema_version: 0.2.0
+framework_name: Sys4AI
+target_agentic_system: Sys4AI-dev
+artifact_name: Phase 2 Walking Skeleton Implementation Plan Handoff
+artifact_type: operational_handoff
+artifact_version: 0.2.0
+producing_role: implementation_initialization_agent
+artifact_status: completed
+summary: >
+  One bounded Phase 2 implementation planning packet is complete. The walking
+  skeleton now has a controlled implementation plan and three pending bounded
+  AgentJobs for flow validation, package smoke output, and acceptance demo.
+source_artifacts:
+  - implementation_plans/Sys4AI-dev_next_scope_full_implementation_plan.md
+  - implementation_plans/Sys4AI_next_scope_full_implementation_plan.md
+  - implementation_plans/self_hosting_boundary_decision_record.md
+  - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+  - Sys4AI/control_records/system_definition/phase2_walking_skeleton_requirements_discovery_record.md
+  - Sys4AI/control_records/program_state.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-18-PHASE2-WALKING-SKELETON-PRD-001.yaml
+  - implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+  - Sys4AI/registries/requirement_trace_registry.csv
+traceability:
+  agentjob_id: AJ-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001
+  director_decision_id: DDR-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001
+  completion_receipt_id: RECEIPT-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001
+  prd_source_id: SRC-PRD-P2-WALKING-SKELETON
+  implementation_plan_source_id: SRC-P2-WALKING-SKELETON-IMPLEMENTATION-PLAN
+  next_agentjob_ids:
+    - AJ-SFADEV-20-WALKING-SKELETON-FLOW-001
+    - AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001
+    - AJ-SFADEV-22-WALKING-SKELETON-DEMO-001
+control_loop_notes:
+  previous_handoff_id: HANDOFF-SFADEV-18-PHASE2-WALKING-SKELETON-PRD-001
+  next_agentjob_id: AJ-SFADEV-20-WALKING-SKELETON-FLOW-001
+  next_agentjob_status: pending
+  selection_basis: WS-19 created the implementation plan and stopped before implementation.
+memory_preflight:
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001
+  usable_for_routing: true
+  required_next_queries:
+    - walking skeleton flow validator
+    - Phase 2 implementation plan flow trace
+format_profile_evidence:
+  controlled_sources_added:
+    - implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+    - Sys4AI/control_records/director_decisions/DDR-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001.yaml
+    - Sys4AI/control_records/agentjobs/AJ-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001.yaml
+    - Sys4AI/control_records/agentjobs/AJ-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml
+    - Sys4AI/control_records/agentjobs/AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml
+    - Sys4AI/control_records/agentjobs/AJ-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+    - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001.yaml
+    - Sys4AI/control_records/completions/RECEIPT-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001.yaml
+    - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001.yaml
+    - temp_handoff/handoff-0029.md
+  registry_surfaces_modified:
+    - Sys4AI/registries/agentjob_registry.csv
+    - Sys4AI/registries/director_decision_registry.csv
+    - Sys4AI/registries/completion_receipt_registry.csv
+    - Sys4AI/registries/handoff_registry.csv
+    - Sys4AI/registries/memory_preflight_receipt_registry.csv
+    - Sys4AI/registries/requirement_trace_registry.csv
+    - Sys4AI/registries/source_registry.csv
+    - Sys4AI/registries/control_record_registry.csv
+  generated_derivatives_refreshed:
+    - Sys4AI/docs/generated/configuration_control/index.md
+    - Sys4AI/docs/generated/configuration_control/yaml-control-records.md
+    - Sys4AI/docs/generated/registry_catalog/index.md
+source_authority_evidence:
+  canonical_sources_checked:
+    - implementation_plans/self_hosting_boundary_decision_record.md
+    - Sys4AI/control_records/program_state.yaml
+    - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-18-PHASE2-WALKING-SKELETON-PRD-001.yaml
+    - implementation_plans/Sys4AI-dev_next_scope_full_implementation_plan.md
+    - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+    - .agents/skills/continue/SKILL.md
+    - .agents/skills/prd-to-implementation-plan/SKILL.md
+  authority_boundary: >
+    The accepted PRD and this implementation plan are controlled sources for
+    Phase 2 walking-skeleton work. Generated derivatives remain noncanonical
+    and later code or package work must be separately authorized by pending
+    AgentJobs.
+derivative_surface_evidence:
+  generated_derivatives_changed: true
+  changed_derivatives:
+    - Sys4AI/docs/generated/configuration_control/index.md
+    - Sys4AI/docs/generated/configuration_control/yaml-control-records.md
+    - Sys4AI/docs/generated/registry_catalog/index.md
+  notes: Generated governance pages were refreshed from canonical registries and remain noncanonical.
+security_evidence:
+  secret_scan_scope: Implementation plan YAML control records CSV registries generated docs and diff checks.
+  new_secret_material: false
+recommended_next_role: implementation_initialization_agent
+phase_boundary_notes: >
+  WS-19 is complete. The next bounded task is AJ-SFADEV-20-WALKING-SKELETON-FLOW-001.
+  Do not create target-system package smoke artifacts or run acceptance demo work before
+  the walking-skeleton flow validator packet is complete and validated.
+stop_conditions:
+  - A future task skips AJ-20 and starts package smoke or acceptance work directly.
+  - A future task treats package smoke evidence as production readiness.
+  - A future task executes multiple AgentJobs in one /continue invocation.
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001

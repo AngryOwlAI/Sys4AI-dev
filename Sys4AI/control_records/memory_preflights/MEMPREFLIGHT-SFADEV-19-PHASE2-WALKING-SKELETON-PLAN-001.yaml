@@ -1,0 +1,107 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001
+schema_version: 0.1.0
+agentjob_id: AJ-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001
+created_at: "2026-07-08T21:24:57Z"
+status: PASS_WITH_WARNINGS
+commands_run:
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-preflight --json
+    result: pass_with_warnings_adhoc_receipt_usable
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-select --json
+    result: director_decision_required_before_WS19_selection
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli memory preflight --agentjob AJ-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001 --handoff HANDOFF-SFADEV-18-PHASE2-WALKING-SKELETON-PRD-001 --query "Phase 2 walking skeleton implementation plan" --query "PRD to AgentJob trace planning" --json
+    result: pass_with_warnings_no_auto_receipt_written
+  - command: inspect WS-19 plan latest handoff Phase 2 PRD continue skill and prd-to-implementation-plan skill
+    result: pass
+queries:
+  - query: Phase 2 walking skeleton implementation plan
+    returned_object_ids:
+      - SRC-RDR-PHASE2-WALKING-SKELETON-001
+      - SRC-REG-AGENTJOBS
+      - SRC-PRD-P2-WALKING-SKELETON
+      - SRC-REG-REQ-TRACE
+      - SRC-REG-SOURCES
+      - SRC-REG-CONTROL-RECORDS
+      - SRC-NEXT-SCOPE-FULL-IMPLEMENTATION-PLAN
+  - query: PRD to AgentJob trace planning
+    returned_object_ids:
+      - SRC-PRD-P2-WALKING-SKELETON
+      - SRC-REG-REQ-TRACE
+      - SRC-REG-AGENTJOBS
+      - SRC-REG-SOURCES
+      - SRC-NEXT-SCOPE-FULL-IMPLEMENTATION-PLAN
+canonical_sources_inspected:
+  - path: implementation_plans/self_hosting_boundary_decision_record.md
+    registry: source_registry.csv
+    row_id: SRC-SELFHOST-BOUNDARY-DECISION
+    inspected_sections:
+      - self-hosting rules
+      - generated derivative boundary
+  - path: Sys4AI/control_records/program_state.yaml
+    registry: source_registry.csv
+    row_id: SRC-PROGRAM-STATE
+    inspected_sections:
+      - allowed_next_actions
+      - latest_handoff_id
+      - active_agentjob_id
+  - path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-18-PHASE2-WALKING-SKELETON-PRD-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-HANDOFF-PHASE2-WALKING-SKELETON-PRD-001
+    inspected_sections:
+      - control_loop_notes
+      - phase_boundary_notes
+      - stop_conditions
+  - path: implementation_plans/Sys4AI-dev_next_scope_full_implementation_plan.md
+    registry: source_registry.csv
+    row_id: SRC-NEXT-SCOPE-FULL-IMPLEMENTATION-PLAN
+    inspected_sections:
+      - WS-19 Phase 2 Implementation Plan and AgentJobs
+      - WS-20 Walking Skeleton Flow Implementation
+      - WS-21 Target-System Package Smoke Surface
+      - WS-22 Walking Skeleton Demonstration and Validation
+  - path: PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+    registry: source_registry.csv
+    row_id: SRC-PRD-P2-WALKING-SKELETON
+    inspected_sections:
+      - Functional Requirements
+      - Non-Functional Requirements
+      - Traceability Requirements
+      - Deferred Items
+  - path: .agents/skills/continue/SKILL.md
+    registry: source_registry.csv
+    row_id: SRC-SKILL-CONTINUE-RUNTIME
+    inspected_sections:
+      - Rules
+      - Procedure
+  - path: .agents/skills/prd-to-implementation-plan/SKILL.md
+    registry: source_registry.csv
+    row_id: SRC-SKILL-PRD-TO-IMPLEMENTATION-PLAN
+    inspected_sections:
+      - Procedure
+      - Output requirements
+registry_rows_inspected:
+  - registry: source_registry.csv
+    row_id: SRC-PRD-P2-WALKING-SKELETON
+    purpose: Confirm controlled Phase 2 PRD source for planning.
+  - registry: source_registry.csv
+    row_id: SRC-REG-REQ-TRACE
+    purpose: Confirm requirement trace registry contract scope before continuity updates.
+  - registry: source_registry.csv
+    row_id: SRC-REG-AGENTJOBS
+    purpose: Confirm AgentJob registry lifecycle vocabulary before adding pending follow-on AgentJobs.
+  - registry: source_registry.csv
+    row_id: SRC-REG-SOURCES
+    purpose: Confirm source authority rows for new plan and control records.
+  - registry: source_registry.csv
+    row_id: SRC-REG-CONTROL-RECORDS
+    purpose: Confirm control-record registry rows for new YAML control records.
+stale_context_risks:
+  - risk_id: MEMPREFLIGHT-SFADEV-19-RISK-001
+    status: observed
+    notes: Memory preflight returned generated derivative context that was used only as navigation.
+  - risk_id: MEMPREFLIGHT-SFADEV-19-RISK-002
+    status: mitigated
+    notes: Planning content uses live PRD RDR plan handoff skill registry and validation contracts as source evidence.
+  - risk_id: MEMPREFLIGHT-SFADEV-19-RISK-003
+    status: mitigated
+    notes: Code implementation and package smoke artifacts are explicitly deferred to AJ-20 and AJ-21.
+usable_for_routing: true

@@ -1,0 +1,144 @@
+agentjob_id: AJ-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001
+schema_version: 0.2.0
+status: completed
+objective: >
+  Convert the Phase 2 walking skeleton PRD into a detailed implementation plan
+  and bounded AgentJobs without implementing walking-skeleton code or package
+  smoke artifacts.
+lifecycle_stage: develop
+role_binding:
+  role_id: implementation_initialization_agent
+  binding_type: registered_role
+  authority_scope: phase2 walking skeleton implementation planning
+  expires_with_agentjob: true
+required_inputs:
+  - README.md
+  - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+  - Sys4AI/control_records/system_definition/phase2_walking_skeleton_requirements_discovery_record.md
+  - implementation_plans/Sys4AI-dev_next_scope_full_implementation_plan.md
+  - implementation_plans/Sys4AI_next_scope_full_implementation_plan.md
+  - implementation_plans/self_hosting_boundary_decision_record.md
+  - Sys4AI/control_records/program_state.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-18-PHASE2-WALKING-SKELETON-PRD-001.yaml
+  - .agents/skills/continue/SKILL.md
+  - .agents/skills/prd-to-implementation-plan/SKILL.md
+allowed_reads:
+  - README.md
+  - PRDs/**
+  - implementation_plans/**
+  - temp_handoff/**
+  - .agents/skills/continue/**
+  - .agents/skills/prd-to-implementation-plan/**
+  - Sys4AI/Makefile
+  - Sys4AI/control_records/**
+  - Sys4AI/registries/**
+  - Sys4AI/schemas/**
+  - Sys4AI/sys_for_ai/**
+  - Sys4AI/templates/**
+allowed_writes:
+  - implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+  - Sys4AI/control_records/director_decisions/DDR-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001.yaml
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001.yaml
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+  - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001.yaml
+  - Sys4AI/control_records/completions/RECEIPT-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001.yaml
+  - Sys4AI/control_records/program_state.yaml
+  - Sys4AI/registries/agentjob_registry.csv
+  - Sys4AI/registries/director_decision_registry.csv
+  - Sys4AI/registries/completion_receipt_registry.csv
+  - Sys4AI/registries/handoff_registry.csv
+  - Sys4AI/registries/memory_preflight_receipt_registry.csv
+  - Sys4AI/registries/requirement_trace_registry.csv
+  - Sys4AI/registries/source_registry.csv
+  - Sys4AI/registries/control_record_registry.csv
+  - Sys4AI/docs/generated/**
+  - temp_handoff/handoff-0029.md
+generated_paths:
+  - Sys4AI/docs/generated/**
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - Sys4AI/.venv/**
+  - Sys4AI/sys_for_ai/walking_skeleton.py
+  - Sys4AI/sys_for_ai/target_package.py
+  - Sys4AI/sys_for_ai/trace_flow.py
+  - Sys4AI/examples/target_systems/**
+forbidden_actions:
+  - Implement code during planning.
+  - Generate package or export smoke artifacts during planning.
+  - Generate tasks without PRD trace.
+  - Create tasks too large for one AgentJob.
+  - Execute more than one AgentJob in this packet.
+  - Treat generated derivatives or memory hits as source authority.
+expected_outputs:
+  - Director Decision selecting the Phase 2 implementation planning route.
+  - Memory preflight receipt with source-first evidence.
+  - Controlled Phase 2 walking skeleton implementation plan.
+  - Three bounded pending Phase 2 AgentJobs.
+  - Source registry and control registry rows for the new artifacts.
+  - Requirement trace continuity evidence.
+  - Completion receipt, handoff, and temp handoff evidence.
+  - Program state returned to complete with no active AgentJob.
+validators:
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001.yaml
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-director-decisions control_records/director_decisions
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-agentjob-registry registries/agentjob_registry.csv
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-requirement-trace registries/requirement_trace_registry.csv
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-registry-graph registries
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-control-loop
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001 --json
+  - make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001
+  - git diff --check
+completion_evidence_required:
+  - director_decision
+  - memory_preflight
+  - implementation plan path
+  - three follow-on AgentJob paths
+  - source registry rows
+  - requirement trace continuity evidence
+  - validation status
+  - closeout handoff
+memory_preflight:
+  required: true
+  minimum_queries:
+    - Phase 2 walking skeleton implementation plan
+    - PRD to AgentJob trace planning
+  required_evidence:
+    - self-hosting boundary decision record inspection
+    - latest handoff inspection
+    - WS-19 plan inspection
+    - Phase 2 PRD inspection
+    - prd-to-implementation-plan skill inspection
+authority_boundary:
+  may_create_phase2_implementation_plan: true
+  may_create_future_pending_agentjobs: true
+  may_implement_walking_skeleton_code: false
+  may_generate_target_system_package: false
+  may_modify_control_closeout_records: true
+  may_modify_program_state: true
+  may_modify_registries: true
+  may_refresh_generated_derivatives: true
+  may_promote_generated_derivatives: false
+handoff_policy:
+  create_handoff_when:
+    - Phase 2 implementation plan is produced and validated
+    - Future pending AgentJobs are registered
+    - Packet closes with no active AgentJob
+stop_conditions:
+  - Phase 2 PRD is absent or not accepted as controlled source.
+  - Requirements cannot be mapped to bounded tasks.
+  - Implementation work becomes necessary to complete planning.
+  - Package or export smoke artifact creation becomes required.
+  - Any write outside the allowed boundary is required.
+  - More than one AgentJob would be required.
+created_at: "2026-07-08T21:25:01Z"
+activated_at: "2026-07-08T21:25:01Z"
+completed_at: "2026-07-08T21:25:01Z"

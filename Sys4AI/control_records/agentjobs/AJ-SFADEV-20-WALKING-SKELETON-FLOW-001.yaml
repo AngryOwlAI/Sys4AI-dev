@@ -1,0 +1,109 @@
+agentjob_id: AJ-SFADEV-20-WALKING-SKELETON-FLOW-001
+schema_version: 0.2.0
+status: pending
+objective: >
+  Implement a deterministic walking-skeleton flow validator connecting RDR,
+  PRD, implementation plan, AgentJobs, and package outputs.
+lifecycle_stage: develop
+role_binding:
+  role_id: implementation_initialization_agent
+  binding_type: registered_role
+  authority_scope: walking skeleton flow validation
+  expires_with_agentjob: true
+required_inputs:
+  - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+  - implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+  - Sys4AI/control_records/system_definition/phase2_walking_skeleton_requirements_discovery_record.md
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001.yaml
+allowed_reads:
+  - PRDs/**
+  - implementation_plans/**
+  - Sys4AI/control_records/**
+  - Sys4AI/registries/**
+  - Sys4AI/sys_for_ai/**
+  - Sys4AI/tests/**
+  - Sys4AI/Makefile
+allowed_writes:
+  - Sys4AI/sys_for_ai/walking_skeleton.py
+  - Sys4AI/sys_for_ai/trace_flow.py
+  - Sys4AI/sys_for_ai/cli.py
+  - Sys4AI/Makefile
+  - Sys4AI/tests/test_walking_skeleton.py
+  - Sys4AI/docs/generated/governance/walking-skeleton-flow.md
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml
+  - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml
+  - Sys4AI/control_records/completions/RECEIPT-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml
+  - Sys4AI/control_records/program_state.yaml
+  - Sys4AI/registries/agentjob_registry.csv
+  - Sys4AI/registries/completion_receipt_registry.csv
+  - Sys4AI/registries/handoff_registry.csv
+  - Sys4AI/registries/memory_preflight_receipt_registry.csv
+  - Sys4AI/registries/source_registry.csv
+  - Sys4AI/registries/derivative_registry.csv
+  - Sys4AI/registries/control_record_registry.csv
+  - Sys4AI/registries/requirement_trace_registry.csv
+  - temp_handoff/handoff-0030.md
+generated_paths:
+  - Sys4AI/docs/generated/governance/walking-skeleton-flow.md
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - Sys4AI/.venv/**
+  - Sys4AI/examples/target_systems/**
+forbidden_actions:
+  - Call external services.
+  - Generate production target-system code.
+  - Treat validator pass as semantic proof.
+  - Execute AJ-21 or AJ-22 work in this packet.
+expected_outputs:
+  - Walking-skeleton flow validator module.
+  - Trace-flow helper module.
+  - CLI command for walking-skeleton validation.
+  - Unit tests for pass and failure cases.
+  - Makefile target for walking-skeleton validation.
+  - Generated derivative flow report.
+  - Completion receipt and handoff recommending AJ-21.
+validators:
+  - cd Sys4AI && make doctor
+  - cd Sys4AI && .venv/bin/python -m unittest discover -s tests
+  - cd Sys4AI && make validate-walking-skeleton
+  - cd Sys4AI && make validate
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-20-WALKING-SKELETON-FLOW-001 --json
+  - git diff --check
+completion_evidence_required:
+  - CLI command output
+  - unit test output
+  - generated derivative flow report
+  - closeout receipt
+  - handoff to AJ-21
+memory_preflight:
+  required: true
+  minimum_queries:
+    - walking skeleton flow validator
+    - Phase 2 implementation plan flow trace
+  required_evidence:
+    - latest handoff inspection
+    - implementation plan inspection
+    - current CLI and Makefile inspection
+authority_boundary:
+  may_implement_walking_skeleton_flow_validator: true
+  may_create_target_package: false
+  may_run_phase2_acceptance_demo: false
+  may_claim_semantic_correctness: false
+  may_modify_program_state: true
+  may_modify_registries: true
+  may_refresh_generated_derivatives: true
+handoff_policy:
+  create_handoff_when:
+    - walking-skeleton validator exists and passes
+    - packet closes with no active AgentJob
+stop_conditions:
+  - CLI cannot be made deterministic offline.
+  - Flow requires missing approved artifacts from prior workstreams.
+  - Any implementation requires target package creation.
+created_at: "2026-07-08T21:25:01Z"
+activated_at: null
+completed_at: null

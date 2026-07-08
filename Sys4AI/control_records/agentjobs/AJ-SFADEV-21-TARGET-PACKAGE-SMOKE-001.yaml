@@ -1,0 +1,101 @@
+agentjob_id: AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001
+schema_version: 0.2.0
+status: pending
+objective: Add a sample target-system package smoke surface and validator.
+lifecycle_stage: develop
+role_binding:
+  role_id: implementation_initialization_agent
+  binding_type: registered_role
+  authority_scope: target package smoke example
+  expires_with_agentjob: true
+required_inputs:
+  - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+  - implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml
+allowed_reads:
+  - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+  - implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+  - Sys4AI/templates/**
+  - Sys4AI/sys_for_ai/**
+  - Sys4AI/tests/**
+  - Sys4AI/control_records/**
+  - Sys4AI/registries/**
+allowed_writes:
+  - Sys4AI/sys_for_ai/target_package.py
+  - Sys4AI/sys_for_ai/cli.py
+  - Sys4AI/Makefile
+  - Sys4AI/tests/test_target_package.py
+  - Sys4AI/examples/target_systems/repo_steward_agent_package/**
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml
+  - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml
+  - Sys4AI/control_records/completions/RECEIPT-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml
+  - Sys4AI/control_records/program_state.yaml
+  - Sys4AI/registries/agentjob_registry.csv
+  - Sys4AI/registries/completion_receipt_registry.csv
+  - Sys4AI/registries/handoff_registry.csv
+  - Sys4AI/registries/memory_preflight_receipt_registry.csv
+  - Sys4AI/registries/source_registry.csv
+  - Sys4AI/registries/derivative_registry.csv
+  - Sys4AI/registries/object_relationship_registry.csv
+  - Sys4AI/registries/control_record_registry.csv
+  - Sys4AI/registries/requirement_trace_registry.csv
+  - temp_handoff/handoff-0031.md
+generated_paths:
+  - Sys4AI/examples/target_systems/repo_steward_agent_package/**
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - Sys4AI/.venv/**
+forbidden_actions:
+  - Claim the sample package is production ready.
+  - Treat package artifacts as canonical framework requirements.
+  - Install runtime dependencies not justified by the Phase 2 PRD.
+  - Execute AJ-22 acceptance work in this packet.
+expected_outputs:
+  - Target package validator module.
+  - CLI command for target-package validation.
+  - Local sample package under Sys4AI/examples.
+  - Unit tests for package validation.
+  - Source and derivative registry updates.
+  - Completion receipt and handoff recommending AJ-22.
+validators:
+  - cd Sys4AI && make validate-target-package-smoke
+  - cd Sys4AI && .venv/bin/python -m unittest discover -s tests
+  - cd Sys4AI && make validate
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-21-TARGET-PACKAGE-SMOKE-001 --json
+  - git diff --check
+completion_evidence_required:
+  - sample package path
+  - package validator output
+  - unit test output
+  - closeout receipt
+  - handoff to AJ-22
+memory_preflight:
+  required: true
+  minimum_queries:
+    - target package smoke surface
+    - package authority boundary
+  required_evidence:
+    - latest handoff inspection
+    - implementation plan inspection
+    - target package validator design inspection
+authority_boundary:
+  may_create_smoke_package: true
+  may_create_package_validator: true
+  may_claim_production_readiness: false
+  may_promote_package_to_canonical_framework_source: false
+  may_modify_program_state: true
+  may_modify_registries: true
+handoff_policy:
+  create_handoff_when:
+    - target package smoke validator passes
+    - packet closes with no active AgentJob
+stop_conditions:
+  - Package authority cannot be expressed without confusing framework and target-system layers.
+  - Smoke package requires production dependencies or external services.
+created_at: "2026-07-08T21:25:01Z"
+activated_at: null
+completed_at: null

@@ -1,0 +1,100 @@
+agentjob_id: AJ-SFADEV-22-WALKING-SKELETON-DEMO-001
+schema_version: 0.2.0
+status: pending
+objective: Run the Phase 2 walking skeleton demonstration and produce acceptance evidence.
+lifecycle_stage: develop
+role_binding:
+  role_id: requirements_verifier
+  binding_type: registered_role
+  authority_scope: phase2 walking skeleton acceptance
+  expires_with_agentjob: true
+required_inputs:
+  - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+  - implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+  - Sys4AI/control_records/system_definition/phase2_walking_skeleton_requirements_discovery_record.md
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml
+  - Sys4AI/examples/target_systems/repo_steward_agent_package/**
+allowed_reads:
+  - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+  - implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+  - Sys4AI/control_records/system_definition/phase2_walking_skeleton_requirements_discovery_record.md
+  - Sys4AI/control_records/**
+  - Sys4AI/examples/target_systems/repo_steward_agent_package/**
+  - Sys4AI/registries/**
+  - Sys4AI/docs/generated/**
+allowed_writes:
+  - implementation_plans/acceptance_reports/PHASE2-WALKING-SKELETON-DEMO-SFADEV-22.md
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+  - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+  - Sys4AI/control_records/completions/RECEIPT-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+  - Sys4AI/control_records/program_state.yaml
+  - Sys4AI/registries/agentjob_registry.csv
+  - Sys4AI/registries/completion_receipt_registry.csv
+  - Sys4AI/registries/handoff_registry.csv
+  - Sys4AI/registries/memory_preflight_receipt_registry.csv
+  - Sys4AI/registries/source_registry.csv
+  - Sys4AI/registries/control_record_registry.csv
+  - temp_handoff/handoff-0032.md
+generated_paths: []
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - Sys4AI/.venv/**
+forbidden_actions:
+  - Change requirements while validating acceptance.
+  - Convert warnings into pass without evidence.
+  - Omit limitations.
+  - Claim semantic correctness of a target system.
+  - Claim production runtime readiness.
+expected_outputs:
+  - Phase 2 walking skeleton demo acceptance report.
+  - Validator command evidence.
+  - Claims proven and claims not proven sections.
+  - Completion receipt and handoff routing to PRD decomposition strategy.
+validators:
+  - cd Sys4AI && make validate-walking-skeleton
+  - cd Sys4AI && make validate-target-package-smoke
+  - cd Sys4AI && make validate-requirement-trace
+  - cd Sys4AI && make validate-generated-derivatives
+  - cd Sys4AI && make validate
+  - make validate
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-22-WALKING-SKELETON-DEMO-001 --json
+  - git diff --check
+completion_evidence_required:
+  - acceptance report
+  - walking skeleton validator output
+  - target package smoke validator output
+  - aggregate validation output
+  - closeout receipt
+  - handoff to next-scope PRD decomposition strategy
+memory_preflight:
+  required: true
+  minimum_queries:
+    - Phase 2 walking skeleton acceptance
+    - structural versus semantic validation claims
+  required_evidence:
+    - latest handoff inspection
+    - implementation plan inspection
+    - package smoke validation evidence inspection
+authority_boundary:
+  may_create_acceptance_report: true
+  may_change_requirements: false
+  may_claim_semantic_correctness: false
+  may_claim_production_readiness: false
+  may_modify_program_state: true
+  may_modify_registries: true
+handoff_policy:
+  create_handoff_when:
+    - demo report exists
+    - walking skeleton and package smoke validators pass
+    - packet closes with no active AgentJob
+stop_conditions:
+  - Any required Phase 2 walking skeleton artifact is missing.
+  - Aggregate validation fails without an approved exception.
+  - The report cannot distinguish proven from not-proven claims.
+created_at: "2026-07-08T21:25:01Z"
+activated_at: null
+completed_at: null
