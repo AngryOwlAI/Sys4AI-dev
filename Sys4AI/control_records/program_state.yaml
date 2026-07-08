@@ -6,14 +6,14 @@ system_context:
   target_system: Sys4AI
   self_hosting_mode: true
   reflection_depth: 1
-current_phase: subprd_drafts
+current_phase: subprd_promotion_or_routing
 lifecycle_stage: develop
-active_task_id: TASK-SFADEV-SUBPRD-DRAFTS-001
+active_task_id: TASK-SFADEV-SUBPRD-PROMOTION-001
 active_director_decision_id: null
 active_agentjob_id: null
-latest_completion_receipt_id: RECEIPT-SFADEV-24-SUBPRD-DRAFTS-001
-latest_handoff_id: HANDOFF-SFADEV-24-SUBPRD-DRAFTS-001
-latest_memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-24-SUBPRD-DRAFTS-001
+latest_completion_receipt_id: RECEIPT-SFADEV-25-SUBPRD-PROMOTION-001
+latest_handoff_id: HANDOFF-SFADEV-25-SUBPRD-PROMOTION-001
+latest_memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-25-SUBPRD-PROMOTION-001
 state_status: complete
 blocked_reason: null
 human_gate_required: false
@@ -22,19 +22,21 @@ allowed_next_actions:
 - inspect_latest_handoff
 - open_new_director_decision_for_future_work
 - validate_acceptance_receipt
-- open_subprd_promotion_or_routing_decision
+- open_next_scope_acceptance_decision
 blocked_actions:
 - execute_multiple_agentjobs
 - use_chat_memory_as_authority
 - treat_generated_derivative_as_canonical
 - mutate_activated_control_record_without_supersession
 - promote_subprd_without_director_decision
+- run_final_acceptance_without_director_decision
 validation_status:
-  last_validated_at: '2026-07-08T22:57:00Z'
+  last_validated_at: '2026-07-08T23:18:35Z'
   validators:
   - make validate-prd-modules
   - make validate-requirement-trace
   - make validate-registry-graph
   - make validate-generated-derivatives
+  - make validate-control-records
   - make validate
   - validate-check-diff

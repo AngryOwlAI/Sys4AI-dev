@@ -180,6 +180,11 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_subprd_drafts_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-24-SUBPRD-DRAFTS-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
 | ctrl_subprd_drafts_completion | control_records/completions/RECEIPT-SFADEV-24-SUBPRD-DRAFTS-001.yaml | completion_receipt_v0_2 | controlled | framework_product | contract_completion_receipt_v0_2 | pending |
 | ctrl_subprd_drafts_handoff | control_records/handoffs/HANDOFF-SFADEV-24-SUBPRD-DRAFTS-001.yaml | handoff_v0_2 | controlled | framework_product | contract_handoff_v0_2 | pending |
+| ctrl_subprd_promotion_director_decision | control_records/director_decisions/DDR-SFADEV-25-SUBPRD-PROMOTION-001.yaml | director_decision | controlled | framework_product | contract_director_decision | pending |
+| ctrl_subprd_promotion_agentjob | control_records/agentjobs/AJ-SFADEV-25-SUBPRD-PROMOTION-001.yaml | agentjob_v0_2 | controlled | framework_product | contract_agentjob_v0_2 | pending |
+| ctrl_subprd_promotion_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-25-SUBPRD-PROMOTION-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
+| ctrl_subprd_promotion_completion | control_records/completions/RECEIPT-SFADEV-25-SUBPRD-PROMOTION-001.yaml | completion_receipt_v0_2 | controlled | framework_product | contract_completion_receipt_v0_2 | pending |
+| ctrl_subprd_promotion_handoff | control_records/handoffs/HANDOFF-SFADEV-25-SUBPRD-PROMOTION-001.yaml | handoff_v0_2 | controlled | framework_product | contract_handoff_v0_2 | pending |
 
 ## Validation Contract Trace
 

@@ -1,0 +1,147 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-25-SUBPRD-PROMOTION-001
+schema_version: 0.1.0
+agentjob_id: AJ-SFADEV-25-SUBPRD-PROMOTION-001
+created_at: '2026-07-08T23:07:39Z'
+status: PASS_WITH_WARNINGS
+commands_run:
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-preflight --json
+    result: pass_with_warnings_known_source_hash_backlog
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-select --json
+    result: director_decision_required_for_WS25_before_DDR_creation
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli memory preflight --agentjob AJ-SFADEV-25-SUBPRD-PROMOTION-001 --handoff HANDOFF-SFADEV-24-SUBPRD-DRAFTS-001 --query "sub-PRD promotion or routing" --query "PRD module canonical authority decision" --json
+    result: pass_with_warnings_no_auto_receipt_written
+  - command: inspect latest handoff program state decomposition strategy module registry and sub-PRD drafts
+    result: pass
+queries:
+  - query: sub-PRD promotion or routing
+    returned_object_ids:
+      - SRC-DDR-SUBPRD-PROMOTION-001
+      - AJ-SFADEV-25-SUBPRD-PROMOTION-001
+      - SRC-AJ-SUBPRD-PROMOTION-001
+      - SRC-HANDOFF-SUBPRD-DRAFTS-001
+      - HANDOFF-SFADEV-24-SUBPRD-DRAFTS-001
+      - SRC-REG-PRD-MODULES
+      - SRC-PRD-MODULES-README
+      - SRC-NEXT-SCOPE-FULL-IMPLEMENTATION-PLAN
+      - ctrl_subprd_promotion_agentjob
+      - ctrl_subprd_drafts_handoff
+  - query: PRD module canonical authority decision
+    returned_object_ids:
+      - SRC-DDR-SUBPRD-PROMOTION-001
+      - SRC-PRD-README
+      - SRC-REG-PRD-MODULES
+      - SRC-PRD-DECOMPOSITION-STRATEGY
+      - SRC-REG-REQ-TRACE
+      - SRC-PRD-P0
+      - SRC-PRD-P1
+      - SRC-PRD-P2-WALKING-SKELETON
+      - SRC-VALIDATOR-PRD-MODULES
+      - SRC-TEST-PRD-MODULES
+canonical_sources_inspected:
+  - path: implementation_plans/self_hosting_boundary_decision_record.md
+    registry: source_registry.csv
+    row_id: SRC-SELFHOST-BOUNDARY-DECISION
+    inspected_sections:
+      - one AgentJob per continue invocation
+      - generated derivative noncanonical rule
+  - path: Sys4AI/control_records/program_state.yaml
+    registry: source_registry.csv
+    row_id: SRC-PROGRAM-STATE
+    inspected_sections:
+      - current_phase
+      - allowed_next_actions
+      - blocked_actions
+  - path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-24-SUBPRD-DRAFTS-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-HANDOFF-SUBPRD-DRAFTS-001
+    inspected_sections:
+      - control_loop_notes
+      - phase_boundary_notes
+      - authority_boundary
+  - path: PRDs/PRD_decomposition_strategy.md
+    registry: source_registry.csv
+    row_id: SRC-PRD-DECOMPOSITION-STRATEGY
+    inspected_sections:
+      - requirement ownership rules
+      - canonical promotion workflow
+      - proposed sub-PRD index
+  - path: implementation_plans/Sys4AI-dev_next_scope_full_implementation_plan.md
+    registry: source_registry.csv
+    row_id: SRC-NEXT-SCOPE-FULL-IMPLEMENTATION-PLAN
+    inspected_sections:
+      - WS-25 promotion decision options
+      - WS-25 acceptance criteria
+      - WS-26 separation
+  - path: implementation_plans/Sys4AI_next_scope_full_implementation_plan.md
+    registry: source_registry.csv
+    row_id: SRC-NEXT-SCOPE-FULL-IMPLEMENTATION-PLAN
+    inspected_sections:
+      - WS-25 promotion decision options
+      - WS-25 acceptance criteria
+  - path: PRDs/modules/README.md
+    registry: source_registry.csv
+    row_id: SRC-PRD-MODULES-README
+    inspected_sections:
+      - authority notice
+      - draft module index
+      - promotion rule
+  - path: Sys4AI/registries/prd_module_registry.csv
+    registry: source_registry.csv
+    row_id: SRC-REG-PRD-MODULES
+    inspected_sections:
+      - module rows
+      - draft authority status
+  - path: Sys4AI/registries/requirement_trace_registry.csv
+    registry: source_registry.csv
+    row_id: SRC-REG-REQ-TRACE
+    inspected_sections:
+      - module ID trace mentions
+      - semantic review verdicts
+  - path: PRDs/Sys4AI_phase-0_product_system_design_prd.md
+    registry: source_registry.csv
+    row_id: SRC-PRD-P0
+    inspected_sections:
+      - canonical product baseline
+  - path: PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+    registry: source_registry.csv
+    row_id: SRC-PRD-P1
+    inspected_sections:
+      - initialization baseline
+  - path: PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+    registry: source_registry.csv
+    row_id: SRC-PRD-P2-WALKING-SKELETON
+    inspected_sections:
+      - accepted Phase 2 baseline
+registry_rows_inspected:
+  - registry: handoff_registry.csv
+    row_id: HANDOFF-SFADEV-24-SUBPRD-DRAFTS-001
+    purpose: Confirm WS-25 recommendation and no AJ25 record created by AJ24.
+  - registry: agentjob_registry.csv
+    row_id: AJ-SFADEV-24-SUBPRD-DRAFTS-001
+    purpose: Confirm AJ24 closeout and derivative draft boundary.
+  - registry: prd_module_registry.csv
+    row_id: PRD-MOD-INIT-DISCOVERY
+    purpose: Confirm representative module row was draft derivative before routing.
+  - registry: prd_module_registry.csv
+    row_id: PRD-MOD-DOMAIN-PACK
+    purpose: Confirm final module row was draft derivative before routing.
+  - registry: source_registry.csv
+    row_id: SRC-PRD-MODULE-INIT-DISCOVERY
+    purpose: Confirm representative module source row is derivative_draft.
+  - registry: source_registry.csv
+    row_id: SRC-PRD-MODULE-DOMAIN-PACK
+    purpose: Confirm final module source row is derivative_draft.
+  - registry: director_decision_registry.csv
+    row_id: DDR-SFADEV-25-SUBPRD-PROMOTION-001
+    purpose: Confirm WS-25 Director Decision row.
+stale_context_risks:
+  - risk_id: MEMPREFLIGHT-SFADEV-25-RISK-001
+    status: mitigated
+    notes: Memory hits were used for navigation only and checked against source files.
+  - risk_id: MEMPREFLIGHT-SFADEV-25-RISK-002
+    status: accepted_nonblocking
+    notes: Source hash warnings remain a known registry backlog.
+  - risk_id: MEMPREFLIGHT-SFADEV-25-RISK-003
+    status: mitigated
+    notes: Sub-PRD modules remain derivative_draft and are not promoted.
+usable_for_routing: true

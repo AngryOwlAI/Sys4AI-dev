@@ -1,0 +1,178 @@
+completion_receipt_id: RECEIPT-SFADEV-25-SUBPRD-PROMOTION-001
+schema_version: 0.2.0
+agentjob_id: AJ-SFADEV-25-SUBPRD-PROMOTION-001
+role: system_director
+result: PASS
+summary: >
+  Completed one controlled sub-PRD promotion/routing packet. All twelve AJ24
+  sub-PRDs received an explicit keep_as_derivative_draft decision, PRDs/README.md
+  now explains current PRD authority, and no canonical PRD or module authority was
+  promoted or superseded.
+changed_artifacts:
+  - path: PRDs/README.md
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/director_decisions/DDR-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/agentjobs/AJ-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+    change_type: added_completed
+    authority_status: controlled
+  - path: Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/completions/RECEIPT-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/program_state.yaml
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/prd_module_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/source_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/object_relationship_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/director_decision_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/agentjob_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/completion_receipt_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/handoff_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/memory_preflight_receipt_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/control_record_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/tests/test_continue_packet.py
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/tests/test_program_state.py
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/tests/test_self_hosting_acceptance.py
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/docs/generated/**
+    change_type: regenerated
+    authority_status: generated_derivative
+  - path: temp_handoff/handoff-0035.md
+    change_type: added
+    authority_status: controlled
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-25-SUBPRD-PROMOTION-001
+validation_evidence:
+  commands_run:
+    - command: cd Sys4AI && make validate-prd-modules
+      result: PASS
+    - command: cd Sys4AI && make validate-requirement-trace
+      result: PASS
+    - command: cd Sys4AI && make validate-registry-graph
+      result: PASS
+    - command: cd Sys4AI && make validate-control-records
+      result: PASS
+    - command: cd Sys4AI && make validate-director-decisions
+      result: PASS
+    - command: cd Sys4AI && make validate-agentjob-registry
+      result: PASS
+    - command: cd Sys4AI && make validate-director-decision-registry
+      result: PASS
+    - command: cd Sys4AI && make validate-handoff-registry
+      result: PASS
+    - command: cd Sys4AI && make validate-completion-receipt-registry
+      result: PASS
+    - command: cd Sys4AI && make validate-memory-preflight-registry
+      result: PASS
+    - command: cd Sys4AI && make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-25-SUBPRD-PROMOTION-001
+      result: PASS
+    - command: make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-25-SUBPRD-PROMOTION-001
+      result: PASS
+    - command: cd Sys4AI && .venv/bin/python -m unittest discover -s tests
+      result: PASS
+    - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-25-SUBPRD-PROMOTION-001 --json
+      result: PASS
+    - command: git diff --check
+      result: PASS
+  validators:
+    - validator_id: prd-module-registry
+      target_path: Sys4AI/registries/prd_module_registry.csv
+      result: pass
+      notes: Expected to validate explicit derivative draft routing and no canonical owner conflicts.
+    - validator_id: requirement-trace
+      target_path: Sys4AI/registries/requirement_trace_registry.csv
+      result: pass
+      notes: Expected to remain valid without canonical ownership changes.
+    - validator_id: validate-check-diff
+      target_path: AJ-SFADEV-25-SUBPRD-PROMOTION-001
+      result: pass
+      notes: Expected to show diff inside AJ25 allowed writes.
+  validated_at: '2026-07-08T23:18:35Z'
+format_profile_changes:
+  added:
+    - path: PRDs/README.md
+      profile_id: fmt_markdown_controlled_report
+      registry_row_id: SRC-PRD-README
+    - path: Sys4AI/control_records/director_decisions/DDR-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+      profile_id: fmt_yaml_control_record
+      registry_row_id: SRC-DDR-SUBPRD-PROMOTION-001
+    - path: Sys4AI/control_records/agentjobs/AJ-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+      profile_id: fmt_yaml_control_record
+      registry_row_id: SRC-AJ-SUBPRD-PROMOTION-001
+    - path: Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+      profile_id: fmt_yaml_control_record
+      registry_row_id: SRC-MEMORY-PREFLIGHT-SUBPRD-PROMOTION-001
+    - path: Sys4AI/control_records/completions/RECEIPT-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+      profile_id: fmt_yaml_control_record
+      registry_row_id: SRC-COMPLETION-SUBPRD-PROMOTION-001
+    - path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+      profile_id: fmt_yaml_control_record
+      registry_row_id: SRC-HANDOFF-SUBPRD-PROMOTION-001
+  modified:
+    - path: Sys4AI/registries/prd_module_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-PRD-MODULES
+    - path: Sys4AI/registries/source_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: SRC-REG-SOURCES
+    - path: Sys4AI/docs/generated/**
+      profile_id: fmt_markdown_generated_derivative
+      registry_row_id: multiple
+authority_changes:
+  completed:
+    - agentjob_id: AJ-SFADEV-25-SUBPRD-PROMOTION-001
+      reason: All intended sub-PRD routing decisions are recorded.
+  routed_without_promotion:
+    - path: PRDs/modules/**
+      decision: keep_as_derivative_draft
+      reason: Draft modules remain useful views but are not canonical replacements.
+  not_promoted:
+    - path: PRDs/modules/**
+      reason: No module was promoted to canonical authority in WS-25.
+  not_superseded:
+    - path: PRDs/Sys4AI_phase-0_product_system_design_prd.md
+      reason: Canonical PRDs remain controlling sources.
+    - path: PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+      reason: Phase 1 PRD authority remains unchanged.
+    - path: PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+      reason: Phase 2 PRD authority remains unchanged.
+unresolved_issues:
+  - issue_id: OPEN-NEXT-SCOPE-FINAL-ACCEPTANCE
+    status: deferred
+    notes: WS-26 final acceptance remains a separate bounded continuation packet.
+open_issues:
+  - OPEN-NEXT-SCOPE-FINAL-ACCEPTANCE
+next_recommendation: Stop after this bounded packet. The next logical step is a system-director decision for WS-26 final acceptance and handoff.
+next_handoff_id: HANDOFF-SFADEV-25-SUBPRD-PROMOTION-001
+completed_at: '2026-07-08T23:07:39Z'

@@ -21,11 +21,11 @@ class SelfHostingAcceptanceTests(unittest.TestCase):
         self.assertIsNone(state["active_agentjob_id"])
         self.assertIsNone(state["active_director_decision_id"])
         self.assertEqual(
-            "RECEIPT-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001",
+            "RECEIPT-SFADEV-25-SUBPRD-PROMOTION-001",
             state["latest_completion_receipt_id"],
         )
         self.assertEqual(
-            "HANDOFF-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001",
+            "HANDOFF-SFADEV-25-SUBPRD-PROMOTION-001",
             state["latest_handoff_id"],
         )
 
@@ -37,6 +37,8 @@ class SelfHostingAcceptanceTests(unittest.TestCase):
         self.assertIn("RECEIPT-SFADEV-21-TARGET-PACKAGE-SMOKE-001", completion_rows)
         self.assertIn("RECEIPT-SFADEV-22-WALKING-SKELETON-DEMO-001", completion_rows)
         self.assertIn("RECEIPT-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001", completion_rows)
+        self.assertIn("RECEIPT-SFADEV-24-SUBPRD-DRAFTS-001", completion_rows)
+        self.assertIn("RECEIPT-SFADEV-25-SUBPRD-PROMOTION-001", completion_rows)
         self.assertIn("HANDOFF-P1-SELFHOST-ACCEPTANCE-001", handoff_rows)
         self.assertIn("HANDOFF-SFADEV-05-RUNTIME-SKILL-RECONCILIATION-001", handoff_rows)
         self.assertIn("HANDOFF-SFADEV-01-PRD-INTEGRATION-001", handoff_rows)
@@ -52,6 +54,8 @@ class SelfHostingAcceptanceTests(unittest.TestCase):
         self.assertIn("HANDOFF-SFADEV-21-TARGET-PACKAGE-SMOKE-001", handoff_rows)
         self.assertIn("HANDOFF-SFADEV-22-WALKING-SKELETON-DEMO-001", handoff_rows)
         self.assertIn("HANDOFF-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001", handoff_rows)
+        self.assertIn("HANDOFF-SFADEV-24-SUBPRD-DRAFTS-001", handoff_rows)
+        self.assertIn("HANDOFF-SFADEV-25-SUBPRD-PROMOTION-001", handoff_rows)
 
     def test_acceptance_receipt_and_handoff_are_registered(self) -> None:
         receipt = load_yaml(PRODUCT_ROOT / "control_records/completions/RECEIPT-P1-SELFHOST-ACCEPTANCE-001.yaml")

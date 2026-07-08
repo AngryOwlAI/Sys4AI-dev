@@ -11,13 +11,12 @@ from sys_for_ai.yaml_io import dump_yaml
 
 
 class ContinuePacketTests(unittest.TestCase):
-    def test_continue_packet_reports_current_next_agentjob(self) -> None:
+    def test_continue_packet_reports_current_decision_gate(self) -> None:
         payload = continue_packet()
-        self.assertTrue(payload["ok"])
-        self.assertEqual(payload["packet_type"], "execution_packet")
-        self.assertEqual(payload["status"], "READY")
-        self.assertEqual(payload["agentjob_id"], "AJ-SFADEV-24-SUBPRD-DRAFTS-001")
-        self.assertEqual(payload["selection_reason"], "latest_handoff_next_agentjob")
+        self.assertFalse(payload["ok"])
+        self.assertEqual(payload["packet_type"], "director_decision_required")
+        self.assertEqual(payload["status"], "BLOCKED")
+        self.assertEqual(payload["reason"], "No active AgentJob and no active Director decision authorizes creation.")
 
     def test_missing_director_decision_blocks(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

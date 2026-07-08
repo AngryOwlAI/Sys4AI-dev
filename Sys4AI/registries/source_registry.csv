@@ -91,7 +91,7 @@ SRC-MEMORY-PREFLIGHT-EXAMPLE,Sys4AI/control_records/memory_preflights/memory_pre
 SRC-CONTROL-LOOP-INIT,Sys4AI/sys_for_ai/control_loop/__init__.py,control_loop_module,controlled,control_loop,2026-07-06,Public API for generic continue control-loop kernel.
 SRC-CONTROL-LOOP-MODEL,Sys4AI/sys_for_ai/control_loop/model.py,control_loop_model,controlled,control_loop,2026-07-06,Dataclasses for program state AgentJob Director decision and selection evidence.
 SRC-CONTROL-LOOP-STATE,Sys4AI/sys_for_ai/control_loop/state.py,control_loop_state,controlled,control_loop,2026-07-06,Program state loading and JSON status helpers.
-SRC-PROGRAM-STATE,Sys4AI/control_records/program_state.yaml,program_state,controlled,control_loop,2026-07-08,Current tracked continuation program state after AJ24 sub-PRD drafts.
+SRC-PROGRAM-STATE,Sys4AI/control_records/program_state.yaml,program_state,controlled,control_loop,2026-07-08,Current tracked continuation program state after AJ25 sub-PRD promotion routing.
 SRC-CONTROL-LOOP-DIRECTOR,Sys4AI/sys_for_ai/control_loop/director.py,control_loop_director,controlled,control_loop,2026-07-06,Director decision loading helpers.
 SRC-CONTROL-LOOP-JOB-SELECTION,Sys4AI/sys_for_ai/control_loop/job_selection.py,control_loop_selection,controlled,control_loop,2026-07-06,One-AgentJob selection implementation.
 SRC-CONTROL-LOOP-EXECUTION-PACKET,Sys4AI/sys_for_ai/control_loop/execution_packet.py,control_loop_packet,controlled,control_loop,2026-07-06,Continue status preflight selection and execution packet generation.
@@ -371,3 +371,10 @@ SRC-MEMORY-PREFLIGHT-SUBPRD-DRAFTS-001,Sys4AI/control_records/memory_preflights/
 SRC-COMPLETION-SUBPRD-DRAFTS-001,Sys4AI/control_records/completions/RECEIPT-SFADEV-24-SUBPRD-DRAFTS-001.yaml,completion_receipt,controlled,framework_product,2026-07-08,Completion receipt for sub-PRD draft generation.
 SRC-HANDOFF-SUBPRD-DRAFTS-001,Sys4AI/control_records/handoffs/HANDOFF-SFADEV-24-SUBPRD-DRAFTS-001.yaml,handoff,controlled,framework_product,2026-07-08,Handoff for sub-PRD draft generation and promotion/routing recommendation.
 SRC-TEMP-HANDOFF-0034,temp_handoff/handoff-0034.md,temporary_handoff,controlled,control_loop,2026-07-08,Human-readable temporary handoff for AJ24 closeout.
+SRC-DDR-SUBPRD-PROMOTION-001,Sys4AI/control_records/director_decisions/DDR-SFADEV-25-SUBPRD-PROMOTION-001.yaml,director_decision,controlled,framework_product,2026-07-08,Director decision routing all AJ24 sub-PRDs as derivative drafts.
+SRC-AJ-SUBPRD-PROMOTION-001,Sys4AI/control_records/agentjobs/AJ-SFADEV-25-SUBPRD-PROMOTION-001.yaml,agentjob,controlled,framework_product,2026-07-08,Completed AgentJob for sub-PRD promotion and routing.
+SRC-PRD-README,PRDs/README.md,prd_authority_index,controlled,framework_product,2026-07-08,Controlled PRD authority index after WS25 sub-PRD routing.
+SRC-MEMORY-PREFLIGHT-SUBPRD-PROMOTION-001,Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-25-SUBPRD-PROMOTION-001.yaml,memory_preflight_receipt,controlled,source_first_memory,2026-07-08,Memory preflight receipt for sub-PRD promotion and routing.
+SRC-COMPLETION-SUBPRD-PROMOTION-001,Sys4AI/control_records/completions/RECEIPT-SFADEV-25-SUBPRD-PROMOTION-001.yaml,completion_receipt,controlled,framework_product,2026-07-08,Completion receipt for sub-PRD promotion and routing.
+SRC-HANDOFF-SUBPRD-PROMOTION-001,Sys4AI/control_records/handoffs/HANDOFF-SFADEV-25-SUBPRD-PROMOTION-001.yaml,handoff,controlled,framework_product,2026-07-08,Handoff for sub-PRD promotion routing and WS26 recommendation.
+SRC-TEMP-HANDOFF-0035,temp_handoff/handoff-0035.md,temporary_handoff,controlled,control_loop,2026-07-08,Human-readable temporary handoff for AJ25 closeout.

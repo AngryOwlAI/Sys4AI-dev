@@ -1,0 +1,97 @@
+handoff_id: HANDOFF-SFADEV-25-SUBPRD-PROMOTION-001
+schema_version: 0.2.0
+framework_name: Sys4AI
+target_agentic_system: Sys4AI-dev
+artifact_name: Sub-PRD Promotion and Routing Handoff
+artifact_type: operational_handoff
+artifact_version: 0.2.0
+producing_role: system_director
+artifact_status: completed
+summary: >
+  One bounded sub-PRD promotion/routing packet is complete. Each AJ24 module has
+  an explicit keep_as_derivative_draft decision. PRDs/README.md now states the
+  current PRD authority hierarchy. No module was promoted and no canonical PRD was
+  superseded.
+source_artifacts:
+  - PRDs/README.md
+  - Sys4AI/control_records/director_decisions/DDR-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+  - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+  - Sys4AI/control_records/completions/RECEIPT-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+  - Sys4AI/registries/prd_module_registry.csv
+  - PRDs/modules/README.md
+  - PRDs/PRD_decomposition_strategy.md
+traceability:
+  agentjob_id: AJ-SFADEV-25-SUBPRD-PROMOTION-001
+  director_decision_id: DDR-SFADEV-25-SUBPRD-PROMOTION-001
+  completion_receipt_id: RECEIPT-SFADEV-25-SUBPRD-PROMOTION-001
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-25-SUBPRD-PROMOTION-001
+  previous_handoff_id: HANDOFF-SFADEV-24-SUBPRD-DRAFTS-001
+  module_registry_source_id: SRC-REG-PRD-MODULES
+  prd_authority_index_source_id: SRC-PRD-README
+  next_recommended_plan_section: WS-26 Final Acceptance and Handoff
+control_loop_notes:
+  previous_handoff_id: HANDOFF-SFADEV-24-SUBPRD-DRAFTS-001
+  next_agentjob_id: null
+  next_agentjob_status: not_created_by_AJ25
+  selection_basis: >
+    AJ25 completed WS-25 routing. WS-26 is the next ordered workstream but should
+    be opened by a separate Director Decision to preserve the one-AgentJob boundary.
+memory_preflight:
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-25-SUBPRD-PROMOTION-001
+  usable_for_routing: true
+  required_next_queries:
+    - next-scope final acceptance and handoff
+    - final validation for sub-PRD routing
+format_profile_evidence:
+  controlled_sources_added:
+    - PRDs/README.md
+    - Sys4AI/control_records/director_decisions/DDR-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+    - Sys4AI/control_records/agentjobs/AJ-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+    - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+    - Sys4AI/control_records/completions/RECEIPT-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+    - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+    - temp_handoff/handoff-0035.md
+  registry_surfaces_modified:
+    - Sys4AI/registries/prd_module_registry.csv
+    - Sys4AI/registries/source_registry.csv
+    - Sys4AI/registries/object_relationship_registry.csv
+    - Sys4AI/registries/director_decision_registry.csv
+    - Sys4AI/registries/agentjob_registry.csv
+    - Sys4AI/registries/completion_receipt_registry.csv
+    - Sys4AI/registries/handoff_registry.csv
+    - Sys4AI/registries/memory_preflight_receipt_registry.csv
+    - Sys4AI/registries/control_record_registry.csv
+  generated_derivatives_refreshed:
+    - Sys4AI/docs/generated/**
+source_authority_evidence:
+  canonical_sources_checked:
+    - implementation_plans/self_hosting_boundary_decision_record.md
+    - Sys4AI/control_records/program_state.yaml
+    - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-24-SUBPRD-DRAFTS-001.yaml
+    - PRDs/PRD_decomposition_strategy.md
+    - PRDs/Sys4AI_phase-0_product_system_design_prd.md
+    - PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+    - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+    - PRDs/modules/README.md
+  authority_boundary: >
+    AJ25 authorizes routing decisions and authority indexing only. It does not
+    authorize canonical module promotion, canonical PRD supersession, or WS-26
+    final acceptance execution.
+derivative_surface_evidence:
+  generated_derivatives_changed: true
+  changed_derivatives:
+    - Sys4AI/docs/generated/**
+  notes: Generated derivatives remain noncanonical and must trace back to registered sources.
+security_evidence:
+  secret_scan_scope: Markdown YAML and CSV artifacts in the AJ25 diff.
+  new_secret_material: false
+recommended_next_role: requirements_verifier
+phase_boundary_notes: >
+  Sub-PRD routing is complete. The next bounded task should create WS-26 final
+  acceptance evidence only after a separate Director Decision authorizes that packet.
+stop_conditions:
+  - A future task treats derivative draft modules as canonical without a promotion decision.
+  - A future task executes WS-26 acceptance without a Director Decision.
+  - A future task creates duplicate canonical requirement ownership.
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-25-SUBPRD-PROMOTION-001

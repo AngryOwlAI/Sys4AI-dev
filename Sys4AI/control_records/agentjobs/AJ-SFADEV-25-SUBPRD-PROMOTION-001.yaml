@@ -1,0 +1,134 @@
+agentjob_id: AJ-SFADEV-25-SUBPRD-PROMOTION-001
+schema_version: 0.2.0
+status: completed
+objective: Decide promotion, deferral, or draft status for generated sub-PRDs and
+  update authority surfaces without promoting derivative drafts.
+lifecycle_stage: develop
+role_binding:
+  role_id: system_director
+  binding_type: registered_role
+  authority_scope: subprd authority promotion and routing
+  expires_with_agentjob: true
+required_inputs:
+  - PRDs/modules/**
+  - PRDs/PRD_decomposition_strategy.md
+  - PRDs/Sys4AI_phase-0_product_system_design_prd.md
+  - PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+  - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+  - implementation_plans/Sys4AI-dev_next_scope_full_implementation_plan.md
+  - implementation_plans/Sys4AI_next_scope_full_implementation_plan.md
+  - Sys4AI/registries/prd_module_registry.csv
+  - Sys4AI/registries/requirement_trace_registry.csv
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-24-SUBPRD-DRAFTS-001.yaml
+allowed_reads:
+  - PRDs/**
+  - implementation_plans/**
+  - Sys4AI/control_records/**
+  - Sys4AI/registries/**
+  - Sys4AI/schemas/**
+  - Sys4AI/sys_for_ai/**
+  - Sys4AI/tests/**
+  - Sys4AI/Makefile
+  - Makefile
+allowed_writes:
+  - PRDs/README.md
+  - Sys4AI/control_records/director_decisions/DDR-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+  - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+  - Sys4AI/control_records/completions/RECEIPT-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-25-SUBPRD-PROMOTION-001.yaml
+  - Sys4AI/control_records/program_state.yaml
+  - Sys4AI/registries/prd_module_registry.csv
+  - Sys4AI/registries/source_registry.csv
+  - Sys4AI/registries/object_relationship_registry.csv
+  - Sys4AI/registries/requirement_trace_registry.csv
+  - Sys4AI/registries/director_decision_registry.csv
+  - Sys4AI/registries/agentjob_registry.csv
+  - Sys4AI/registries/completion_receipt_registry.csv
+  - Sys4AI/registries/handoff_registry.csv
+  - Sys4AI/registries/memory_preflight_receipt_registry.csv
+  - Sys4AI/registries/control_record_registry.csv
+  - Sys4AI/tests/test_continue_packet.py
+  - Sys4AI/tests/test_program_state.py
+  - Sys4AI/tests/test_self_hosting_acceptance.py
+  - Sys4AI/docs/generated/**
+  - temp_handoff/handoff-0035.md
+generated_paths:
+  - Sys4AI/docs/generated/**
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - Sys4AI/.venv/**
+forbidden_actions:
+  - Mark any AJ24 sub-PRD canonical.
+  - Supersede canonical Phase 0, Phase 1, or Phase 2 PRDs.
+  - Delete or rewrite superseded historical PRDs.
+  - Resolve ambiguous requirement ownership by duplicating canonical ownership.
+  - Promote generated derivatives without a source-authority workflow.
+  - Execute WS-26 final acceptance in the same bounded packet.
+expected_outputs:
+  - Director Decision with one explicit routing decision per sub-PRD.
+  - PRDs/README.md authority index.
+  - Updated PRD module registry notes reflecting WS-25 decisions.
+  - Registry rows for the WS-25 control records and handoff.
+  - Completion receipt and handoff recommending WS-26 final acceptance.
+validators:
+  - cd Sys4AI && make validate-prd-modules
+  - cd Sys4AI && make validate-requirement-trace
+  - cd Sys4AI && make validate-registry-graph
+  - cd Sys4AI && make validate-control-records
+  - cd Sys4AI && make validate-director-decisions
+  - cd Sys4AI && make validate-agentjob-registry
+  - cd Sys4AI && make validate-director-decision-registry
+  - cd Sys4AI && make validate-handoff-registry
+  - cd Sys4AI && make validate-completion-receipt-registry
+  - cd Sys4AI && make validate-memory-preflight-registry
+  - cd Sys4AI && make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-25-SUBPRD-PROMOTION-001
+  - make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-25-SUBPRD-PROMOTION-001
+  - cd Sys4AI && .venv/bin/python -m unittest discover -s tests
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-25-SUBPRD-PROMOTION-001 --json
+  - git diff --check
+completion_evidence_required:
+  - director decision with module routing table
+  - PRDs README authority index
+  - PRD module registry status
+  - validator output
+  - closeout receipt
+  - handoff to final acceptance
+memory_preflight:
+  required: true
+  minimum_queries:
+    - sub-PRD promotion or routing
+    - PRD module canonical authority decision
+  required_evidence:
+    - latest handoff inspection
+    - program state inspection
+    - decomposition strategy inspection
+    - sub-PRD draft inspection
+    - PRD module registry inspection
+authority_boundary:
+  may_route_subprd_modules: true
+  may_keep_modules_as_derivative_drafts: true
+  may_mark_sub_prds_canonical: false
+  may_supersede_canonical_prds: false
+  may_modify_module_registry: true
+  may_modify_requirement_trace: true
+  may_refresh_generated_derivatives: true
+  may_update_tests_for_current_control_state: true
+handoff_policy:
+  create_handoff_when:
+    - every sub-PRD has an explicit promotion or routing decision
+    - PRDs README states the current authority hierarchy
+    - module registry validates
+    - packet closes with no active AgentJob
+stop_conditions:
+  - Any module requires canonical promotion.
+  - Promotion would create conflicting canonical requirement ownership.
+  - Maintainer approval is required for promotion.
+  - A write outside the allowed boundary is required.
+  - WS-26 final acceptance would be executed in the same packet.
+created_at: '2026-07-08T23:07:39Z'
+activated_at: '2026-07-08T23:07:39Z'
+completed_at: '2026-07-08T23:07:39Z'
