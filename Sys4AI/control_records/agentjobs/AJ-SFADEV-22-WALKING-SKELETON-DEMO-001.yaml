@@ -1,6 +1,6 @@
 agentjob_id: AJ-SFADEV-22-WALKING-SKELETON-DEMO-001
 schema_version: 0.2.0
-status: pending
+status: completed
 objective: Run the Phase 2 walking skeleton demonstration and produce acceptance evidence.
 lifecycle_stage: develop
 role_binding:
@@ -25,6 +25,7 @@ allowed_reads:
 allowed_writes:
   - implementation_plans/acceptance_reports/PHASE2-WALKING-SKELETON-DEMO-SFADEV-22.md
   - Sys4AI/control_records/agentjobs/AJ-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
   - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
   - Sys4AI/control_records/completions/RECEIPT-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
   - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
@@ -35,8 +36,10 @@ allowed_writes:
   - Sys4AI/registries/memory_preflight_receipt_registry.csv
   - Sys4AI/registries/source_registry.csv
   - Sys4AI/registries/control_record_registry.csv
+  - Sys4AI/docs/generated/**
   - temp_handoff/handoff-0032.md
-generated_paths: []
+generated_paths:
+  - Sys4AI/docs/generated/**
 forbidden_paths:
   - LICENSE
   - NOTICE
@@ -54,13 +57,14 @@ expected_outputs:
   - Validator command evidence.
   - Claims proven and claims not proven sections.
   - Completion receipt and handoff routing to PRD decomposition strategy.
+  - Generated derivative refresh when registry closeout changes reader surfaces.
 validators:
   - cd Sys4AI && make validate-walking-skeleton
   - cd Sys4AI && make validate-target-package-smoke
   - cd Sys4AI && make validate-requirement-trace
   - cd Sys4AI && make validate-generated-derivatives
-  - cd Sys4AI && make validate
-  - make validate
+  - cd Sys4AI && make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-22-WALKING-SKELETON-DEMO-001
+  - make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-22-WALKING-SKELETON-DEMO-001
   - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-22-WALKING-SKELETON-DEMO-001 --json
   - git diff --check
 completion_evidence_required:
@@ -86,6 +90,8 @@ authority_boundary:
   may_claim_production_readiness: false
   may_modify_program_state: true
   may_modify_registries: true
+  may_create_next_prd_decomposition_agentjob_route: true
+  may_refresh_generated_derivatives: true
 handoff_policy:
   create_handoff_when:
     - demo report exists
@@ -96,5 +102,5 @@ stop_conditions:
   - Aggregate validation fails without an approved exception.
   - The report cannot distinguish proven from not-proven claims.
 created_at: "2026-07-08T21:25:01Z"
-activated_at: null
-completed_at: null
+activated_at: "2026-07-08T22:11:45Z"
+completed_at: "2026-07-08T22:11:45Z"

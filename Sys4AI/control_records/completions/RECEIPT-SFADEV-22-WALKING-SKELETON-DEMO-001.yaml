@@ -1,0 +1,141 @@
+completion_receipt_id: RECEIPT-SFADEV-22-WALKING-SKELETON-DEMO-001
+schema_version: 0.2.0
+agentjob_id: AJ-SFADEV-22-WALKING-SKELETON-DEMO-001
+role: requirements_verifier
+result: PASS
+summary: >
+  Completed one controlled Phase 2 walking skeleton demo packet. The packet
+  produced the acceptance report, recorded memory preflight evidence, closed
+  AJ22, and routed the next bounded packet for PRD decomposition strategy
+  without executing that future work.
+changed_artifacts:
+  - path: implementation_plans/acceptance_reports/PHASE2-WALKING-SKELETON-DEMO-SFADEV-22.md
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/agentjobs/AJ-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+    change_type: modified_to_completed
+    authority_status: controlled
+  - path: Sys4AI/control_records/agentjobs/AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/completions/RECEIPT-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/program_state.yaml
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/agentjob_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/completion_receipt_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/handoff_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/memory_preflight_receipt_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/source_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries/control_record_registry.csv
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/docs/generated/**
+    change_type: regenerated
+    authority_status: generated_derivative
+  - path: temp_handoff/handoff-0032.md
+    change_type: added
+    authority_status: controlled
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-22-WALKING-SKELETON-DEMO-001
+validation_evidence:
+  commands_run:
+    - command: cd Sys4AI && make validate-walking-skeleton
+      result: PASS
+    - command: cd Sys4AI && make validate-target-package-smoke
+      result: PASS
+    - command: cd Sys4AI && make validate-requirement-trace
+      result: PASS
+    - command: cd Sys4AI && make validate-generated-derivatives
+      result: PASS
+    - command: cd Sys4AI && make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-22-WALKING-SKELETON-DEMO-001
+      result: PASS
+    - command: make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-22-WALKING-SKELETON-DEMO-001
+      result: PASS
+    - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-22-WALKING-SKELETON-DEMO-001 --json
+      result: PASS
+    - command: git diff --check
+      result: PASS
+  validators:
+    - validator_id: walking-skeleton-validate-flow
+      target_path: Sys4AI
+      result: pass
+      notes: Validator checks RDR PRD implementation plan AgentJobs package smoke evidence and derivative boundary status.
+    - validator_id: target-package-validate
+      target_path: Sys4AI/examples/target_systems/repo_steward_agent_package
+      result: pass
+      notes: Package validates as derivative draft smoke evidence only.
+    - validator_id: requirement-trace
+      target_path: Sys4AI/registries/requirement_trace_registry.csv
+      result: pass
+      notes: Requirement trace registry remains structurally valid.
+    - validator_id: validate-check-diff
+      target_path: AJ-SFADEV-22-WALKING-SKELETON-DEMO-001
+      result: pass
+      notes: Current diff remains inside the selected Phase 2 walking skeleton demo packet.
+format_profile_changes:
+  added:
+    - path: implementation_plans/acceptance_reports/PHASE2-WALKING-SKELETON-DEMO-SFADEV-22.md
+      profile_id: fmt_markdown_controlled_report
+      registry_row_id: SRC-PHASE2-WALKING-SKELETON-DEMO-REPORT
+    - path: Sys4AI/control_records/agentjobs/AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
+      profile_id: fmt_yaml_control_record
+      registry_row_id: SRC-AJ-PRD-DECOMPOSITION-STRATEGY-001
+  modified:
+    - path: Sys4AI/registries/agentjob_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: AJ-SFADEV-22-WALKING-SKELETON-DEMO-001
+    - path: Sys4AI/registries/source_registry.csv
+      profile_id: fmt_csv_registry
+      registry_row_id: multiple
+    - path: Sys4AI/docs/generated/**
+      profile_id: fmt_markdown_generated_derivative
+      registry_row_id: multiple
+authority_changes:
+  completed:
+    - agentjob_id: AJ-SFADEV-22-WALKING-SKELETON-DEMO-001
+      reason: Walking skeleton demo evidence exists and required validators pass.
+  routed:
+    - agentjob_id: AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
+      reason: Next-scope plan requires PRD decomposition strategy after walking skeleton acceptance.
+  not_promoted:
+    - path: Sys4AI/examples/target_systems/repo_steward_agent_package
+      reason: Package remains derivative draft smoke evidence and not production target-system authority.
+    - path: Sys4AI/docs/generated/**
+      reason: Generated derivatives remain noncanonical.
+  deferred:
+    - workstream: WS-23 PRD decomposition strategy
+      reason: Routed but not executed in AJ22.
+unresolved_issues:
+  - issue_id: OPEN-P2-SEMANTIC-VALIDITY
+    status: deferred
+    notes: Structural acceptance does not prove target-system semantic correctness.
+  - issue_id: OPEN-P2-PRODUCTION-READINESS
+    status: deferred
+    notes: Production runtime readiness is out of scope for AJ22.
+open_issues:
+  - OPEN-P2-SEMANTIC-VALIDITY
+  - OPEN-P2-PRODUCTION-READINESS
+next_recommendation: >
+  Stop after this bounded packet. The next logical AgentJob is
+  AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001, which should create the PRD
+  decomposition strategy without treating generated sub-PRDs as canonical.
+next_handoff_id: HANDOFF-SFADEV-22-WALKING-SKELETON-DEMO-001
+completed_at: "2026-07-08T22:11:45Z"

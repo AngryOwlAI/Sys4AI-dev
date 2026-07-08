@@ -1,0 +1,101 @@
+handoff_id: HANDOFF-SFADEV-22-WALKING-SKELETON-DEMO-001
+schema_version: 0.2.0
+framework_name: Sys4AI
+target_agentic_system: Sys4AI-dev
+artifact_name: Phase 2 Walking Skeleton Demo Handoff
+artifact_type: operational_handoff
+artifact_version: 0.2.0
+producing_role: requirements_verifier
+artifact_status: completed
+summary: >
+  One bounded walking-skeleton demo packet is complete. The evidence proves the
+  declared structural flow and explicitly does not prove semantic correctness,
+  production readiness, autonomous safety, or domain-specific validity.
+source_artifacts:
+  - implementation_plans/acceptance_reports/PHASE2-WALKING-SKELETON-DEMO-SFADEV-22.md
+  - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+  - implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+  - Sys4AI/control_records/system_definition/phase2_walking_skeleton_requirements_discovery_record.md
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml
+  - Sys4AI/examples/target_systems/repo_steward_agent_package
+traceability:
+  agentjob_id: AJ-SFADEV-22-WALKING-SKELETON-DEMO-001
+  completion_receipt_id: RECEIPT-SFADEV-22-WALKING-SKELETON-DEMO-001
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-22-WALKING-SKELETON-DEMO-001
+  acceptance_report_source_id: SRC-PHASE2-WALKING-SKELETON-DEMO-REPORT
+  implementation_plan_source_id: SRC-P2-WALKING-SKELETON-IMPLEMENTATION-PLAN
+  package_source_id: SRC-EXAMPLE-REPO-STEWARD-PACKAGE
+  next_agentjob_source_id: SRC-AJ-PRD-DECOMPOSITION-STRATEGY-001
+control_loop_notes:
+  previous_handoff_id: HANDOFF-SFADEV-21-TARGET-PACKAGE-SMOKE-001
+  next_agentjob_id: AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
+  next_agentjob_status: pending
+  selection_basis: >
+    AJ22 completed the walking skeleton demo evidence. The selected next-scope
+    plan orders PRD decomposition strategy after walking skeleton acceptance,
+    and the control loop requires a selectable pending packet for the next
+    /continue invocation.
+memory_preflight:
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-22-WALKING-SKELETON-DEMO-001
+  usable_for_routing: true
+  required_next_queries:
+    - PRD decomposition strategy
+    - requirement ownership boundaries
+format_profile_evidence:
+  controlled_sources_added:
+    - implementation_plans/acceptance_reports/PHASE2-WALKING-SKELETON-DEMO-SFADEV-22.md
+    - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+    - Sys4AI/control_records/completions/RECEIPT-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+    - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+    - Sys4AI/control_records/agentjobs/AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
+    - temp_handoff/handoff-0032.md
+  derivative_drafts_confirmed:
+    - Sys4AI/examples/target_systems/repo_steward_agent_package
+  registry_surfaces_modified:
+    - Sys4AI/registries/agentjob_registry.csv
+    - Sys4AI/registries/completion_receipt_registry.csv
+    - Sys4AI/registries/handoff_registry.csv
+    - Sys4AI/registries/memory_preflight_receipt_registry.csv
+    - Sys4AI/registries/source_registry.csv
+    - Sys4AI/registries/control_record_registry.csv
+  generated_derivatives_refreshed:
+    - Sys4AI/docs/generated/governance/walking-skeleton-flow.md
+    - Sys4AI/docs/generated/configuration_control/index.md
+    - Sys4AI/docs/generated/configuration_control/yaml-control-records.md
+    - Sys4AI/docs/generated/registry_catalog/index.md
+source_authority_evidence:
+  canonical_sources_checked:
+    - implementation_plans/self_hosting_boundary_decision_record.md
+    - Sys4AI/control_records/program_state.yaml
+    - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml
+    - implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+    - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+    - Sys4AI/control_records/system_definition/phase2_walking_skeleton_requirements_discovery_record.md
+    - Sys4AI/control_records/agentjobs/AJ-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+    - Sys4AI/examples/target_systems/repo_steward_agent_package
+  authority_boundary: >
+    AJ22 proves structural trace and package smoke behavior only. The demo
+    does not authorize semantic correctness claims production runtime claims
+    autonomous operation claims or canonical promotion of generated derivatives.
+derivative_surface_evidence:
+  generated_derivatives_changed: true
+  changed_derivatives:
+    - Sys4AI/docs/generated/governance/walking-skeleton-flow.md
+    - Sys4AI/docs/generated/configuration_control/index.md
+    - Sys4AI/docs/generated/configuration_control/yaml-control-records.md
+    - Sys4AI/docs/generated/registry_catalog/index.md
+  notes: Generated derivative validators pass and generated docs remain noncanonical.
+security_evidence:
+  secret_scan_scope: Markdown YAML CSV control records registries validators and target package smoke files in the AJ22 diff.
+  new_secret_material: false
+recommended_next_role: requirements_manager
+phase_boundary_notes: >
+  Phase 2 walking skeleton acceptance is complete within declared structural
+  limits. The next bounded task is WS-23 PRD decomposition strategy. AJ23 must
+  define decomposition rules and authority controls before any sub-PRDs are
+  drafted or promoted.
+stop_conditions:
+  - A future task treats this structural demo as semantic proof.
+  - A future task makes production readiness claims from package smoke evidence.
+  - A future task creates canonical sub-PRDs before a source-authority workflow.
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-22-WALKING-SKELETON-DEMO-001

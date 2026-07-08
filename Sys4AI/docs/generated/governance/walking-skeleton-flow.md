@@ -31,7 +31,7 @@ This page is a generated reader surface. It is not canonical.
 | prior-planning-handoff | handoff | controlled | present | Sys4AI/control_records/handoffs/HANDOFF-SFADEV-19-PHASE2-WALKING-SKELETON-PLAN-001.yaml |
 | walking-skeleton-flow-report | generated_derivative | generated_derivative | present | Sys4AI/docs/generated/governance/walking-skeleton-flow.md |
 | planned-target-package | planned_target_package | planned_derivative_draft | present | Sys4AI/examples/target_systems/repo_steward_agent_package |
-| planned-demo-receipt | planned_completion_receipt | planned_controlled | planned | Sys4AI/control_records/completions/RECEIPT-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml |
+| planned-demo-receipt | planned_completion_receipt | planned_controlled | present | Sys4AI/control_records/completions/RECEIPT-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml |
 
 ## Pending Artifacts
 

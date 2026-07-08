@@ -1,0 +1,117 @@
+agentjob_id: AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001
+schema_version: 0.2.0
+status: pending
+objective: Create a governed strategy for decomposing canonical PRDs into modular sub-PRDs.
+lifecycle_stage: develop
+role_binding:
+  role_id: requirements_manager
+  binding_type: registered_role
+  authority_scope: prd decomposition strategy
+  expires_with_agentjob: true
+required_inputs:
+  - PRDs/Sys4AI_phase-0_product_system_design_prd.md
+  - PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+  - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+  - implementation_plans/Sys4AI_next_scope_full_implementation_plan.md
+  - implementation_plans/acceptance_reports/PHASE2-WALKING-SKELETON-DEMO-SFADEV-22.md
+  - Sys4AI/registries/requirement_trace_registry.csv
+  - Sys4AI/registries/source_registry.csv
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+allowed_reads:
+  - PRDs/**
+  - implementation_plans/**
+  - Sys4AI/control_records/**
+  - Sys4AI/registries/**
+  - Sys4AI/schemas/**
+  - Sys4AI/sys_for_ai/**
+  - Sys4AI/tests/**
+  - Sys4AI/Makefile
+allowed_writes:
+  - PRDs/PRD_decomposition_strategy.md
+  - implementation_plans/PRD_decomposition_strategy_implementation_plan.md
+  - Sys4AI/registries/prd_module_registry.csv
+  - Sys4AI/schemas/contracts/prd_module_registry_row.schema.json
+  - Sys4AI/sys_for_ai/prd_modules.py
+  - Sys4AI/sys_for_ai/cli.py
+  - Sys4AI/Makefile
+  - Sys4AI/tests/test_prd_modules.py
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
+  - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
+  - Sys4AI/control_records/completions/RECEIPT-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001.yaml
+  - Sys4AI/control_records/program_state.yaml
+  - Sys4AI/registries/agentjob_registry.csv
+  - Sys4AI/registries/completion_receipt_registry.csv
+  - Sys4AI/registries/handoff_registry.csv
+  - Sys4AI/registries/memory_preflight_receipt_registry.csv
+  - Sys4AI/registries/requirement_trace_registry.csv
+  - Sys4AI/registries/source_registry.csv
+  - Sys4AI/registries/control_record_registry.csv
+  - Sys4AI/registries/validation_contract_registry.csv
+  - temp_handoff/handoff-0033.md
+generated_paths: []
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - Sys4AI/.venv/**
+forbidden_actions:
+  - Create sub-PRDs as canonical without promotion.
+  - Supersede canonical Phase 0 Phase 1 or Phase 2 PRDs during strategy work.
+  - Delete historical PRDs.
+  - Treat generated derivatives as canonical sources.
+  - Execute AJ24 sub-PRD draft work in this packet.
+expected_outputs:
+  - PRD decomposition strategy document.
+  - PRD module registry.
+  - PRD module registry schema contract.
+  - PRD module validator and CLI command.
+  - Validator tests.
+  - Completion receipt and handoff recommending AJ24.
+validators:
+  - cd Sys4AI && make validate-prd-modules
+  - cd Sys4AI && make validate-requirement-trace
+  - cd Sys4AI && make validate-registry-graph
+  - cd Sys4AI && .venv/bin/python -m unittest discover -s tests
+  - cd Sys4AI && make validate
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-23-PRD-DECOMPOSITION-STRATEGY-001 --json
+  - git diff --check
+completion_evidence_required:
+  - decomposition strategy
+  - prd module registry
+  - validator output
+  - closeout receipt
+  - handoff to sub-PRD draft generation
+memory_preflight:
+  required: true
+  minimum_queries:
+    - PRD decomposition strategy
+    - requirement ownership boundaries
+  required_evidence:
+    - latest handoff inspection
+    - walking skeleton acceptance report inspection
+    - canonical PRD inspection
+    - requirement trace registry inspection
+authority_boundary:
+  may_create_prd_decomposition_strategy: true
+  may_create_prd_module_registry: true
+  may_create_validator: true
+  may_create_sub_prd_drafts: false
+  may_promote_sub_prds: false
+  may_supersede_canonical_prds: false
+  may_modify_program_state: true
+  may_modify_registries: true
+handoff_policy:
+  create_handoff_when:
+    - decomposition strategy exists
+    - PRD module registry validates
+    - packet closes with no active AgentJob
+stop_conditions:
+  - Walking skeleton evidence is absent.
+  - Requirement ownership cannot be represented without ambiguity.
+  - Strategy work requires drafting or promoting sub-PRDs.
+  - Any write outside the allowed boundary is required.
+created_at: "2026-07-08T22:11:45Z"
+activated_at: null
+completed_at: null

@@ -1,0 +1,133 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-22-WALKING-SKELETON-DEMO-001
+schema_version: 0.1.0
+agentjob_id: AJ-SFADEV-22-WALKING-SKELETON-DEMO-001
+created_at: "2026-07-08T22:07:35Z"
+status: PASS_WITH_WARNINGS
+commands_run:
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-preflight --json
+    result: pass_with_warnings_known_source_hash_backlog
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-select --json
+    result: selected_AJ_SFADEV_22_ready
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli memory preflight --agentjob AJ-SFADEV-22-WALKING-SKELETON-DEMO-001 --handoff HANDOFF-SFADEV-21-TARGET-PACKAGE-SMOKE-001 --query "Phase 2 walking skeleton acceptance" --query "structural versus semantic validation claims" --json
+    result: pass_with_warnings_no_auto_receipt_written
+  - command: inspect latest handoff Phase 2 plan PRD RDR package smoke evidence validators and authority boundary
+    result: pass
+queries:
+  - query: Phase 2 walking skeleton acceptance
+    returned_object_ids:
+      - SRC-REG-AGENTJOBS
+      - SRC-RDR-PHASE2-WALKING-SKELETON-001
+      - SRC-REG-REQ-TRACE
+      - SRC-PRD-P2-WALKING-SKELETON
+      - SRC-REG-MEMORY-PREFLIGHT-RECEIPTS
+      - SRC-WALKING-SKELETON-FLOW-MODULE
+      - SRC-REG-SOURCES
+      - SRC-P2-WALKING-SKELETON-IMPLEMENTATION-PLAN
+      - SRC-REG-HANDOFFS
+      - SRC-REG-CONTROL-RECORDS
+  - query: structural versus semantic validation claims
+    returned_object_ids:
+      - SRC-PRD-P1
+      - SRC-DERIVATIVES-VALIDATION-CONTRACTS
+      - SRC-REG-SOURCES
+      - SRC-P2-WALKING-SKELETON-IMPLEMENTATION-PLAN
+      - SRC-PRD-P2-WALKING-SKELETON
+      - der_validation_contracts_index
+      - SRC-PRD-P0
+      - SRC-VALIDATOR-CORE
+      - SRC-DERIVATIVE-GENERATION
+      - SRC-SELFHOST-MEMORY-CONTINUE-PLAN
+canonical_sources_inspected:
+  - path: implementation_plans/self_hosting_boundary_decision_record.md
+    registry: source_registry.csv
+    row_id: SRC-SELFHOST-BOUNDARY-DECISION
+    inspected_sections:
+      - self-hosting authority boundary
+      - generated derivative noncanonical rule
+  - path: Sys4AI/control_records/program_state.yaml
+    registry: source_registry.csv
+    row_id: SRC-PROGRAM-STATE
+    inspected_sections:
+      - latest_handoff_id
+      - allowed_next_actions
+      - blocked_actions
+  - path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-HANDOFF-TARGET-PACKAGE-SMOKE-001
+    inspected_sections:
+      - control_loop_notes
+      - authority_boundary
+      - phase_boundary_notes
+  - path: Sys4AI/control_records/agentjobs/AJ-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-AJ-WALKING-SKELETON-DEMO-001
+    inspected_sections:
+      - allowed_writes
+      - expected_outputs
+      - authority_boundary
+  - path: PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+    registry: source_registry.csv
+    row_id: SRC-PRD-P2-WALKING-SKELETON
+    inspected_sections:
+      - acceptance boundaries
+      - non-goals
+  - path: implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+    registry: source_registry.csv
+    row_id: SRC-P2-WALKING-SKELETON-IMPLEMENTATION-PLAN
+    inspected_sections:
+      - WS-22 acceptance report requirements
+      - WS-23 ordering dependency
+  - path: Sys4AI/control_records/system_definition/phase2_walking_skeleton_requirements_discovery_record.md
+    registry: source_registry.csv
+    row_id: SRC-RDR-PHASE2-WALKING-SKELETON-001
+    inspected_sections:
+      - requirement discovery scope
+      - limitations
+  - path: Sys4AI/examples/target_systems/repo_steward_agent_package
+    registry: source_registry.csv
+    row_id: SRC-EXAMPLE-REPO-STEWARD-PACKAGE
+    inspected_sections:
+      - derivative draft package boundary
+      - smoke validation surface
+  - path: Sys4AI/Makefile
+    registry: source_registry.csv
+    row_id: SRC-MAKE-PHASE1
+    inspected_sections:
+      - validation targets
+      - aggregate validation sequence
+  - path: Sys4AI/sys_for_ai/walking_skeleton.py
+    registry: source_registry.csv
+    row_id: SRC-WALKING-SKELETON-FLOW-MODULE
+    inspected_sections:
+      - structural validation claims
+      - target package status checks
+registry_rows_inspected:
+  - registry: agentjob_registry.csv
+    row_id: AJ-SFADEV-22-WALKING-SKELETON-DEMO-001
+    purpose: Confirm the selected AgentJob and its role.
+  - registry: source_registry.csv
+    row_id: SRC-P2-WALKING-SKELETON-IMPLEMENTATION-PLAN
+    purpose: Confirm controlled implementation plan source for AJ22.
+  - registry: source_registry.csv
+    row_id: SRC-EXAMPLE-REPO-STEWARD-PACKAGE
+    purpose: Confirm package smoke surface remains derivative draft.
+  - registry: requirement_trace_registry.csv
+    row_id: TRACE-SFA-CORE-TRACE-001
+    purpose: Confirm trace validator has registered requirement relationships.
+  - registry: derivative_registry.csv
+    row_id: der_walking_skeleton_flow
+    purpose: Confirm generated derivatives remain noncanonical.
+stale_context_risks:
+  - risk_id: MEMPREFLIGHT-SFADEV-22-RISK-001
+    status: mitigated
+    notes: Memory hits were used for navigation only and checked against source files.
+  - risk_id: MEMPREFLIGHT-SFADEV-22-RISK-002
+    status: accepted_nonblocking
+    notes: Source hash warnings remain a known registry backlog.
+  - risk_id: MEMPREFLIGHT-SFADEV-22-RISK-003
+    status: mitigated
+    notes: Acceptance report separates structural validation from semantic target-system validity.
+  - risk_id: MEMPREFLIGHT-SFADEV-22-RISK-004
+    status: mitigated
+    notes: PRD decomposition is routed as a future packet and not executed in AJ22.
+usable_for_routing: true
