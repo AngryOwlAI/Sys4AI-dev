@@ -1,0 +1,89 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+schema_version: 0.1.0
+agentjob_id: AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+created_at: "2026-07-08T20:38:12Z"
+status: PASS_WITH_WARNINGS
+commands_run:
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-preflight --json
+    result: pass_with_warnings_adhoc_receipt_usable
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli continue-select --json
+    result: director_decision_required_before_WS16_selection
+  - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli memory preflight --agentjob AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001 --handoff HANDOFF-SFADEV-15-NEXT-SCOPE-SELECTION-001 --query "legacy pending AgentJob reconciliation" --query "AJ-P1 self-hosting pending rows" --json
+    result: pass_with_warnings_no_auto_receipt_written
+  - command: inspect WS-16 plan latest handoff AgentJob registry legacy AgentJobs and replacement evidence
+    result: pass
+queries:
+  - query: legacy pending AgentJob reconciliation
+    returned_object_ids:
+      - SRC-REG-CONTROL-RECORDS
+      - SRC-REG-AGENTJOBS
+      - SRC-REG-VALIDATION-CONTRACTS
+      - SRC-REG-ROLES
+  - query: AJ-P1 self-hosting pending rows
+    returned_object_ids:
+      - SRC-REG-CONTROL-RECORDS
+      - SRC-DERIVATIVE-GENERATION
+      - SRC-REG-VALIDATION-CONTRACTS
+      - SRC-REG-ROLES
+canonical_sources_inspected:
+  - path: implementation_plans/self_hosting_boundary_decision_record.md
+    registry: source_registry.csv
+    row_id: SRC-SELFHOST-BOUNDARY-DECISION
+    inspected_sections:
+      - Rules
+      - Consequences
+  - path: Sys4AI/control_records/program_state.yaml
+    registry: source_registry.csv
+    row_id: SRC-PROGRAM-STATE
+    inspected_sections:
+      - allowed_next_actions
+      - latest_handoff_id
+      - active_agentjob_id
+  - path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-HANDOFF-NEXT-SCOPE-SELECTION-001
+    inspected_sections:
+      - control_loop_notes
+      - phase_boundary_notes
+      - stop_conditions
+  - path: implementation_plans/Sys4AI-dev_next_scope_full_implementation_plan.md
+    registry: source_registry.csv
+    row_id: SRC-NEXT-SCOPE-FULL-IMPLEMENTATION-PLAN
+    inspected_sections:
+      - WS-16 Legacy Pending AgentJob Reconciliation
+  - path: implementation_plans/self_hosting_memory_continue_acceptance_report.md
+    registry: source_registry.csv
+    row_id: SRC-SELFHOST-ACCEPTANCE-REPORT
+    inspected_sections:
+      - Acceptance Checklist
+      - Conclusion
+  - path: Sys4AI/control_records/completions/RECEIPT-P1-SELFHOST-ACCEPTANCE-001.yaml
+    registry: source_registry.csv
+    row_id: SRC-COMPLETION-SELFHOST-ACCEPTANCE-001
+    inspected_sections:
+      - summary
+      - validation_evidence
+registry_rows_inspected:
+  - registry: agentjob_registry.csv
+    row_id: AJ-P1-SELFHOST-CONTINUE-KERNEL-001
+    purpose: Reconcile pending legacy row.
+  - registry: agentjob_registry.csv
+    row_id: AJ-P1-BOUNDARY-VALIDATORS-001
+    purpose: Reconcile pending legacy row.
+  - registry: agentjob_registry.csv
+    row_id: AJ-P1-DERIVATIVE-GENERATORS-001
+    purpose: Reconcile pending legacy row.
+  - registry: agentjob_registry.csv
+    row_id: AJ-P1-CONTINUE-SKILLS-001
+    purpose: Reconcile pending legacy row.
+  - registry: agentjob_registry.csv
+    row_id: AJ-P1-DISCOVERY-GATE-SMOKE-001
+    purpose: Confirm existing supersession remains consistent.
+stale_context_risks:
+  - risk_id: MEMPREFLIGHT-SFADEV-16-RISK-001
+    status: observed
+    notes: Memory search returned generated derivative hits that were used only as navigation.
+  - risk_id: MEMPREFLIGHT-SFADEV-16-RISK-002
+    status: mitigated
+    notes: Reconciliation verdicts use live registry rows and controlled acceptance evidence.
+usable_for_routing: true

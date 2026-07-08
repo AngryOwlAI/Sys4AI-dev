@@ -1,0 +1,119 @@
+agentjob_id: AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+schema_version: 0.2.0
+status: completed
+objective: >
+  Reconcile legacy pending AgentJob rows so future continuation selection is
+  not ambiguous.
+lifecycle_stage: implementation_initialization
+role_binding:
+  role_id: requirements_verifier
+  binding_type: registered_role
+  authority_scope: agentjob registry hygiene
+  expires_with_agentjob: true
+required_inputs:
+  - implementation_plans/Sys4AI-dev_next_scope_full_implementation_plan.md
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml
+  - Sys4AI/registries/agentjob_registry.csv
+  - Sys4AI/control_records/agentjobs/AJ-P1-SELFHOST-CONTINUE-KERNEL-001.yaml
+  - Sys4AI/control_records/agentjobs/AJ-P1-BOUNDARY-VALIDATORS-001.yaml
+  - Sys4AI/control_records/agentjobs/AJ-P1-DERIVATIVE-GENERATORS-001.yaml
+  - Sys4AI/control_records/agentjobs/AJ-P1-CONTINUE-SKILLS-001.yaml
+  - Sys4AI/control_records/agentjobs/AJ-P1-DISCOVERY-GATE-SMOKE-001.yaml
+  - implementation_plans/self_hosting_memory_continue_acceptance_report.md
+allowed_reads:
+  - PRDs/**
+  - implementation_plans/**
+  - temp_handoff/**
+  - Sys4AI/control_records/agentjobs/**
+  - Sys4AI/control_records/completions/**
+  - Sys4AI/control_records/handoffs/**
+  - Sys4AI/registries/**
+  - Sys4AI/docs/generated/**
+allowed_writes:
+  - implementation_plans/reconciliation_reports/LEGACY-PENDING-AGENTJOB-RECONCILIATION-SFADEV-16.md
+  - Sys4AI/control_records/director_decisions/DDR-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml
+  - Sys4AI/control_records/agentjobs/AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml
+  - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml
+  - Sys4AI/control_records/completions/RECEIPT-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml
+  - Sys4AI/control_records/program_state.yaml
+  - Sys4AI/registries/agentjob_registry.csv
+  - Sys4AI/registries/source_registry.csv
+  - Sys4AI/registries/control_record_registry.csv
+  - Sys4AI/registries/director_decision_registry.csv
+  - Sys4AI/registries/completion_receipt_registry.csv
+  - Sys4AI/registries/handoff_registry.csv
+  - Sys4AI/registries/memory_preflight_receipt_registry.csv
+  - Sys4AI/docs/generated/**
+  - temp_handoff/handoff-0026.md
+generated_paths:
+  - Sys4AI/docs/generated/**
+forbidden_paths:
+  - LICENSE
+  - NOTICE
+  - .git/**
+  - .venv/**
+  - Sys4AI/.venv/**
+  - PRDs/**
+  - Sys4AI/docs/generated/** as canonical source
+forbidden_actions:
+  - Delete historical AgentJob records.
+  - Rewrite completed AgentJob files without supersession.
+  - Select a legacy pending AgentJob for execution during this reconciliation.
+  - Change product requirements.
+  - Execute more than one AgentJob in this packet.
+expected_outputs:
+  - Reconciliation report.
+  - Updated AgentJob registry statuses.
+  - Director Decision for this bounded packet.
+  - Memory preflight receipt.
+  - Completion receipt and handoff.
+  - Generated derivative refresh where registry updates require it.
+validators:
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-agentjob-registry registries/agentjob_registry.csv
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-one-active-agentjob
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-control-loop
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-registry-graph registries
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-control-records registries/control_record_registry.csv
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001 --json
+  - make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+  - git diff --check
+completion_evidence_required:
+  - reconciliation_table
+  - registry_diff
+  - validation_output
+  - completion_receipt
+  - closeout_handoff
+memory_preflight:
+  required: true
+  minimum_queries:
+    - legacy pending AgentJob reconciliation
+    - AJ-P1 self-hosting pending rows
+  required_evidence:
+    - latest handoff inspection
+    - selected plan WS-16 inspection
+    - AgentJob registry inspection
+    - replacement evidence inspection
+authority_boundary:
+  may_modify_agentjob_registry: true
+  may_add_reconciliation_report: true
+  may_modify_control_closeout_records: true
+  may_modify_program_state: true
+  may_modify_registries: true
+  may_refresh_generated_derivatives: true
+  may_delete_historical_rows: false
+  may_modify_completed_agentjob_files: false
+  may_modify_product_requirements: false
+  may_execute_multiple_agentjobs: false
+handoff_policy:
+  create_handoff_when:
+    - reconciliation report is recorded
+    - registry statuses are updated
+stop_conditions:
+  - Any pending row maps to active work not covered by a new Director Decision.
+  - Validator rejects the chosen reconciliation status vocabulary.
+  - A required write falls outside allowed_writes.
+  - More than one AgentJob is required.
+created_at: "2026-07-08T20:38:12Z"
+activated_at: "2026-07-08T20:38:12Z"
+completed_at: "2026-07-08T20:38:12Z"

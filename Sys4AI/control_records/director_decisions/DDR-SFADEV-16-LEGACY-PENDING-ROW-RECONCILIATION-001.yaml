@@ -1,0 +1,62 @@
+director_decision_id: DDR-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+schema_version: 0.1.0
+decision_status: completed
+created_at: "2026-07-08T20:38:12Z"
+completed_at: "2026-07-08T20:38:12Z"
+director_role: system_director
+decision_context:
+  trigger: legacy_pending_agentjob_reconciliation
+  program_state_id: SYS4AI-PROGRAM-STATE-001
+  latest_handoff_id: HANDOFF-SFADEV-15-NEXT-SCOPE-SELECTION-001
+  user_request: >
+    Continue implementing the next-scope plan one /continue task at a time.
+  observed_evidence:
+    - HANDOFF-SFADEV-15-NEXT-SCOPE-SELECTION-001 recommends AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.
+    - Sys4AI/control_records/program_state.yaml allows continue_with_legacy_pending_agentjob_reconciliation.
+    - implementation_plans/Sys4AI-dev_next_scope_full_implementation_plan.md defines WS-16 as the next ordered workstream.
+    - The /continue resolver returned director_decision_required because the WS-16 AgentJob did not yet exist.
+selected_route:
+  route_id: reconcile_legacy_pending_agentjob_rows
+  rationale: >
+    Legacy pending self-hosting AgentJob rows can confuse future /continue
+    selection. The selected route reconciles only those legacy rows and
+    records replacement or supersession evidence without deleting historical
+    records or starting Phase 2 implementation work.
+  selected_role: requirements_verifier
+  creates_agentjob_id: AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+rejected_routes:
+  - route_id: start_phase2_walking_skeleton
+    reason: WS-15 handoff requires legacy pending row reconciliation before Phase 2 walking-skeleton work.
+  - route_id: execute_legacy_pending_agentjob
+    reason: The legacy rows require reconciliation rather than execution under the next-scope plan.
+  - route_id: delete_historical_agentjob_rows
+    reason: Historical trace must be preserved.
+  - route_id: batch_reconcile_and_start_next_phase
+    reason: The self-hosting boundary and /continue contract allow at most one AgentJob per invocation.
+authority_boundary:
+  may_create_agentjob: true
+  may_execute_selected_agentjob: true
+  may_modify_agentjob_registry: true
+  may_add_reconciliation_report: true
+  may_modify_program_state: true
+  may_modify_registries: true
+  may_refresh_generated_derivatives: true
+  may_delete_historical_rows: false
+  may_rewrite_completed_control_records: false
+  may_change_product_requirements: false
+  may_execute_multiple_agentjobs: false
+validators:
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-director-decisions control_records/director_decisions
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-agentjob-registry registries/agentjob_registry.csv
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-one-active-agentjob
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-control-loop
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-registry-graph registries
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-control-records registries/control_record_registry.csv
+  - cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001 --json
+  - make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+  - git diff --check
+completion_evidence:
+  completion_receipt_id: RECEIPT-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+  handoff_id: HANDOFF-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+  notes: Legacy pending AgentJob rows reconciled; next bounded workstream is Phase 2 walking-skeleton RDR.

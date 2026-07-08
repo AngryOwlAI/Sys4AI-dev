@@ -140,6 +140,11 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_next_scope_selection_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
 | ctrl_next_scope_selection_completion | control_records/completions/RECEIPT-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml | completion_receipt_v0_2 | controlled | implementation_initialization | contract_completion_receipt_v0_2 | pending |
 | ctrl_next_scope_selection_handoff | control_records/handoffs/HANDOFF-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml | handoff_v0_2 | controlled | implementation_initialization | contract_handoff_v0_2 | pending |
+| ctrl_legacy_pending_reconciliation_director_decision | control_records/director_decisions/DDR-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml | director_decision | controlled | implementation_initialization | contract_director_decision | pending |
+| ctrl_legacy_pending_reconciliation_agentjob | control_records/agentjobs/AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml | agentjob_v0_2 | controlled | implementation_initialization | contract_agentjob_v0_2 | pending |
+| ctrl_legacy_pending_reconciliation_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
+| ctrl_legacy_pending_reconciliation_completion | control_records/completions/RECEIPT-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml | completion_receipt_v0_2 | controlled | implementation_initialization | contract_completion_receipt_v0_2 | pending |
+| ctrl_legacy_pending_reconciliation_handoff | control_records/handoffs/HANDOFF-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml | handoff_v0_2 | controlled | implementation_initialization | contract_handoff_v0_2 | pending |
 
 ## Validation Contract Trace
 

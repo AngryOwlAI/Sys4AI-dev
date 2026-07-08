@@ -1,0 +1,88 @@
+handoff_id: HANDOFF-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+schema_version: 0.2.0
+framework_name: Sys4AI
+target_agentic_system: Sys4AI-dev
+artifact_name: Legacy Pending AgentJob Reconciliation Handoff
+artifact_type: operational_handoff
+artifact_version: 0.2.0
+producing_role: requirements_verifier
+artifact_status: completed
+summary: >
+  Legacy pending AgentJob rows have been reconciled. Four obsolete self-hosting
+  rows now point to terminal self-hosting acceptance evidence, and the existing
+  discovery gate smoke supersession remains consistent.
+source_artifacts:
+  - implementation_plans/Sys4AI-dev_next_scope_full_implementation_plan.md
+  - implementation_plans/reconciliation_reports/LEGACY-PENDING-AGENTJOB-RECONCILIATION-SFADEV-16.md
+  - implementation_plans/self_hosting_memory_continue_acceptance_report.md
+  - Sys4AI/control_records/completions/RECEIPT-P1-SELFHOST-ACCEPTANCE-001.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml
+traceability:
+  agentjob_id: AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+  director_decision_id: DDR-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+  completion_receipt_id: RECEIPT-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+  reconciliation_report_id: LEGACY-PENDING-AGENTJOB-RECONCILIATION-SFADEV-16
+control_loop_notes:
+  previous_handoff_id: HANDOFF-SFADEV-15-NEXT-SCOPE-SELECTION-001
+  next_agentjob_id: AJ-SFADEV-17-PHASE2-WALKING-SKELETON-RDR-001
+  next_agentjob_status: proposed_by_selected_plan_not_yet_created
+  selection_basis: WS-16 reconciled legacy rows and stopped after one bounded AgentJob.
+memory_preflight:
+  memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+  usable_for_routing: true
+  required_next_queries:
+    - Phase 2 walking skeleton RDR
+    - target-system package planning discovery
+format_profile_evidence:
+  controlled_sources_added:
+    - implementation_plans/reconciliation_reports/LEGACY-PENDING-AGENTJOB-RECONCILIATION-SFADEV-16.md
+    - Sys4AI/control_records/director_decisions/DDR-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml
+    - Sys4AI/control_records/agentjobs/AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml
+    - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml
+    - Sys4AI/control_records/completions/RECEIPT-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml
+    - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml
+    - temp_handoff/handoff-0026.md
+  registry_surfaces_modified:
+    - Sys4AI/registries/agentjob_registry.csv
+    - Sys4AI/registries/director_decision_registry.csv
+    - Sys4AI/registries/completion_receipt_registry.csv
+    - Sys4AI/registries/handoff_registry.csv
+    - Sys4AI/registries/memory_preflight_receipt_registry.csv
+    - Sys4AI/registries/control_record_registry.csv
+    - Sys4AI/registries/source_registry.csv
+  generated_derivatives_refreshed:
+    - Sys4AI/docs/generated/configuration_control/index.md
+    - Sys4AI/docs/generated/configuration_control/yaml-control-records.md
+    - Sys4AI/docs/generated/registry_catalog/index.md
+source_authority_evidence:
+  canonical_sources_checked:
+    - implementation_plans/self_hosting_boundary_decision_record.md
+    - Sys4AI/control_records/program_state.yaml
+    - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-15-NEXT-SCOPE-SELECTION-001.yaml
+    - implementation_plans/Sys4AI-dev_next_scope_full_implementation_plan.md
+    - implementation_plans/self_hosting_memory_continue_acceptance_report.md
+    - Sys4AI/registries/agentjob_registry.csv
+  authority_boundary: >
+    This packet only reconciles legacy AgentJob registry rows. It does not
+    delete historical records, alter product requirements, start Phase 2, or
+    promote generated derivatives.
+derivative_surface_evidence:
+  generated_derivatives_changed: true
+  changed_derivatives:
+    - Sys4AI/docs/generated/configuration_control/index.md
+    - Sys4AI/docs/generated/configuration_control/yaml-control-records.md
+    - Sys4AI/docs/generated/registry_catalog/index.md
+  notes: Generated governance pages were refreshed from canonical registries and remain noncanonical.
+security_evidence:
+  secret_scan_scope: Markdown report YAML control records CSV registries and generated Markdown.
+  new_secret_material: false
+recommended_next_role: user_wants_elicitor
+phase_boundary_notes: >
+  WS-16 is complete. The next bounded task is WS-17 Phase 2 walking-skeleton
+  RDR. Do not begin PRD drafting before the Phase 2 RDR is created and
+  validated.
+stop_conditions:
+  - A future task treats superseded P1 rows as executable pending work.
+  - A future task skips the Phase 2 RDR and creates PRDs directly.
+  - A future task executes multiple AgentJobs in one /continue invocation.
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001

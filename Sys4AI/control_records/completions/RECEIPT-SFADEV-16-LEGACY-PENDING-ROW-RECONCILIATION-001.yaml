@@ -1,0 +1,118 @@
+completion_receipt_id: RECEIPT-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+schema_version: 0.2.0
+agentjob_id: AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+role: requirements_verifier
+result: PASS
+summary: >
+  Completed one bounded legacy pending AgentJob reconciliation packet. Four
+  obsolete pending self-hosting rows were marked superseded by terminal
+  self-hosting acceptance evidence, and the already-superseded discovery gate
+  smoke row was reviewed for consistency.
+changed_artifacts:
+  - path: implementation_plans/reconciliation_reports/LEGACY-PENDING-AGENTJOB-RECONCILIATION-SFADEV-16.md
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/director_decisions/DDR-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml
+    change_type: added_then_completed
+    authority_status: controlled
+  - path: Sys4AI/control_records/agentjobs/AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml
+    change_type: added_then_completed
+    authority_status: controlled
+  - path: Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/completions/RECEIPT-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001.yaml
+    change_type: added
+    authority_status: controlled
+  - path: Sys4AI/control_records/program_state.yaml
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/registries
+    change_type: modified
+    authority_status: controlled
+  - path: Sys4AI/docs/generated
+    change_type: regenerated
+    authority_status: generated_derivative
+  - path: temp_handoff/handoff-0026.md
+    change_type: added
+    authority_status: controlled
+memory_preflight_receipt_id: MEMPREFLIGHT-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+validation_evidence:
+  commands_run:
+    - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-agentjob-registry registries/agentjob_registry.csv
+      result: PASS
+    - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-one-active-agentjob
+      result: PASS
+    - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-control-loop
+      result: PASS
+    - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-registry-graph registries
+      result: PASS
+    - command: cd Sys4AI && .venv/bin/python -m sys_for_ai.cli validate-check-diff --agentjob AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001 --json
+      result: PASS
+    - command: make validate CHECK_DIFF_AGENTJOB=AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+      result: PASS
+    - command: git diff --check
+      result: PASS
+  validators:
+    - validator_id: validate-agentjob-registry
+      target_path: Sys4AI/registries/agentjob_registry.csv
+      result: pass
+      notes: Legacy rows changed from pending to superseded.
+    - validator_id: validate-registry-graph
+      target_path: Sys4AI/registries
+      result: pass
+      notes: Registry references remain connected after reconciliation.
+    - validator_id: validate-control-loop
+      target_path: Sys4AI/control_records/program_state.yaml
+      result: pass
+      notes: No active AgentJob remains after the bounded packet.
+    - validator_id: validate-check-diff
+      target_path: AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+      result: pass
+      notes: Current diff remains inside the selected reconciliation packet.
+    - validator_id: make-validate
+      target_path: Sys4AI-dev
+      result: pass
+      notes: Root aggregate validation passed after generated derivative refresh.
+format_profile_changes:
+  added:
+    - path: implementation_plans/reconciliation_reports/LEGACY-PENDING-AGENTJOB-RECONCILIATION-SFADEV-16.md
+      profile_id: fmt_markdown_source
+      registry_row_id: SRC-LEGACY-PENDING-AGENTJOB-RECONCILIATION-SFADEV-16
+  modified:
+    - path: Sys4AI/registries/**
+      profile_id: fmt_csv_registry
+      registry_row_id: multiple
+    - path: Sys4AI/docs/generated/**
+      profile_id: fmt_markdown_generated_derivative
+      registry_row_id: multiple
+authority_changes:
+  promoted: []
+  superseded:
+    - agentjob_id: AJ-P1-SELFHOST-CONTINUE-KERNEL-001
+      replacement_evidence: AJ-P1-SELFHOST-ACCEPTANCE-001
+    - agentjob_id: AJ-P1-BOUNDARY-VALIDATORS-001
+      replacement_evidence: AJ-P1-SELFHOST-ACCEPTANCE-001
+    - agentjob_id: AJ-P1-DERIVATIVE-GENERATORS-001
+      replacement_evidence: AJ-P1-SELFHOST-ACCEPTANCE-001
+    - agentjob_id: AJ-P1-CONTINUE-SKILLS-001
+      replacement_evidence: AJ-P1-SELFHOST-ACCEPTANCE-001
+  completed:
+    - agentjob_id: AJ-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+      reason: Legacy pending row reconciliation completed and validated.
+    - director_decision_id: DDR-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+      reason: Selected AgentJob completed.
+  not_promoted:
+    - path: Sys4AI/docs/generated/**
+      reason: Generated docs remain derivative navigation surfaces.
+unresolved_issues: []
+open_issues: []
+next_recommendation: >
+  Stop after this bounded packet. The next logical AgentJob is
+  AJ-SFADEV-17-PHASE2-WALKING-SKELETON-RDR-001, which should create the Phase 2
+  walking-skeleton Requirements Discovery Record.
+next_handoff_id: HANDOFF-SFADEV-16-LEGACY-PENDING-ROW-RECONCILIATION-001
+completed_at: "2026-07-08T20:38:12Z"
