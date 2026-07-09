@@ -5,12 +5,12 @@
 ## Role
 
 - Role ID: `system_definition_template_agent`
-- Role class: `temporary_agentjob_role`
+- Role class: `temporary_legacy_role`
 - System layer scope: `development_system;framework_product`
-- Primary mission: Maintain temporary system definition template AgentJob compatibility
+- Primary mission: Maintain system definition template compatibility
 - Primary outputs: `template-update`
 - Allowed artifact classes: `templates;discovery`
-- May create AgentJobs: `false`
+- Legacy AgentJob creation enabled: `false`
 - Requires Director decision: `true`
 
 ## Registry Skills
@@ -25,8 +25,8 @@ No role-skill crosswalk bindings are registered for this role.
 
 ## Execution Bindings
 
-| Binding ID | Allowed AgentJob Types | Required Validators | Expiry Policy |
+| Binding ID | Binding Scope | Required Validators | Expiry Policy |
 |---|---|---|---|
-| bind_system_definition_template_agent | legacy_system_definition_template | validate-discovery-template;validate-discovery-records | expires with Phase 1 legacy system definition template AgentJobs |
+| bind_system_definition_template_agent | legacy_system_definition_template | validate-discovery-template;validate-discovery-records | expires with Phase 1 legacy system definition template evidence |
 
 Canonical inputs remain the three role registries listed in the notice.

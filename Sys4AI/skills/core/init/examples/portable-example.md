@@ -25,5 +25,5 @@ Expected behavior:
 1. Inspect the repository in read-only mode.
 2. Summarize existing evidence, risks, missing authority, and likely Sys4AI adoption route.
 3. Ask before writing a Current-State Baseline or Requirements Discovery Record.
-4. Ask before creating an implementation plan or AgentJob for governance adoption.
+4. Ask before creating an implementation plan for governance adoption.
 

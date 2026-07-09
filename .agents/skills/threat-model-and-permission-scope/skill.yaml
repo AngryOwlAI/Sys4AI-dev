@@ -56,7 +56,7 @@ authority:
   may_read:
     - System boundaries, tool manifests, data flows, permissions, and policy artifacts.
   may_write:
-    - Threat model or permission records only when the active AgentJob authorizes those paths.
+    - Threat model or permission records only when explicit project authority permits those paths.
   may_not:
     - Approve risky permissions without recorded controls and owner acceptance.
 validation:

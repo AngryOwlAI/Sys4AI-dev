@@ -4,20 +4,6 @@ source_repo: https://github.com/AngryOwlAI/ai-skills-for-sys
 local_root: skills/core
 policy: All listed skills are core product-scaffold requirements for the project being developed; Phase 1 includes adapter shells and provenance records. The active Sys4AI-dev runtime surface is the root .agents/skills layer, with .codex/skills as compatibility shims.
 skills:
-  - id: continue
-    name: Continue
-    family: continuation_control
-    source_repo: local
-    source_path: .agents/skills/continue
-    local_path: core/continue
-    adaptation_status: scaffold_template
-    lifecycle_status: product_scaffold_reference
-    required_files:
-      - SKILL.md
-      - README.md
-      - AGENTS.md
-      - examples/portable-example.md
-    description: "Generic target-system continuation template for tracked state, latest handoff inspection, memory preflight, one bounded AgentJob, validation, and next handoff."
   - id: source-first-memory
     name: Source First Memory
     family: source_first_memory
@@ -436,20 +422,6 @@ skills:
       - AGENTS.md
       - examples/portable-example.md
     description: "Manage baselines, supersession, migrations, rollback, and change evidence."
-  - id: agentjob-task-packet-author
-    name: Agentjob Task Packet Author
-    family: agentjob_authoring
-    source_repo: local
-    source_path: .agents/skills/agentjob-task-packet-author
-    local_path: core/agentjob-task-packet-author
-    adaptation_status: adapter_shell
-    lifecycle_status: adapter_shell
-    required_files:
-      - SKILL.md
-      - README.md
-      - AGENTS.md
-      - examples/portable-example.md
-    description: "Convert implementation plans into bounded AgentJobs and task packets."
   - id: operations-and-maintenance-planner
     name: Operations And Maintenance Planner
     family: operations_maintenance

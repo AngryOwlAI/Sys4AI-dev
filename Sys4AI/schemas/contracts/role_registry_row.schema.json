@@ -35,7 +35,7 @@
         "verification",
         "maintenance",
         "runtime_control",
-        "temporary_agentjob_role",
+        "temporary_legacy_role",
         "project_specific"
       ]
     },

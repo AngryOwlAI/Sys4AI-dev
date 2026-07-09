@@ -10,7 +10,7 @@
 - Primary mission: Define source control and derivative surfaces
 - Primary outputs: `SVCDA`
 - Allowed artifact classes: `source_control;derivatives`
-- May create AgentJobs: `false`
+- Legacy AgentJob creation enabled: `false`
 - Requires Director decision: `false`
 
 ## Registry Skills

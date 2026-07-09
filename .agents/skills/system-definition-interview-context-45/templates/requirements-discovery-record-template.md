@@ -13,7 +13,7 @@
 - Subject system ID: <SYSTEM_ID>
 - Subject layer: <development_system | framework_product | target_system_template | target_system_instance | derivative_surface>
 - Discovery gate: system-definition-interview-context-45
-- Producer AgentJob: <AGENTJOB_ID_OR_DIRECTOR_DECISION_ID>
+- Producer authority: <AUTHORITY_ID_OR_DIRECTOR_DECISION_ID>
 - Discovery registry row: <discovery_record_registry.csv row ID>
 - Downstream artifact status: <no USRD yet | USRD proposed | USRD created | discovery waived>
 

@@ -16,7 +16,7 @@ The adapter produces a traceable `requirements-discovery-record.md` or chat-only
 
 ## When to use
 
-Use this skill when an authorized AgentJob or System Director decision requires front-door system-definition elicitation for:
+Use this skill when an explicit project authorization or System Director decision requires front-door system-definition elicitation for:
 
 - a new target agentic system,
 - an existing target system,
@@ -34,7 +34,7 @@ Do not use this adapter to generate final formal PRDs, SRDs, SyRS, SRS, ARDs, SE
 
 ## Inputs
 
-- Current authorized AgentJob or System Director decision.
+- Current explicit project authorization or System Director decision.
 - User prompt, stakeholder notes, interview transcript, source summary, or current project context.
 - Relevant canonical sources from the source registry.
 - Optional existing repository evidence for the target system.
@@ -58,11 +58,11 @@ Do not use this adapter to generate final formal PRDs, SRDs, SyRS, SRS, ARDs, SE
 - Assumptions, risks, and constraints.
 - Source and provenance notes.
 - Downstream routing recommendation.
-- Completion receipt if required by the AgentJob.
+- Completion receipt if required by explicit project authority.
 
 ## Procedure
 
-1. Confirm the current AgentJob or Director decision authorizes this skill.
+1. Confirm the current project authorization or Director decision authorizes this skill.
 2. Identify the system-of-interest and classify the request as new system, existing system, partially built system, or documentation recovery.
 3. Read canonical sources before generated derivatives.
 4. Inspect available repository or documentation evidence before asking questions that local evidence can answer.
@@ -77,7 +77,7 @@ Do not use this adapter to generate final formal PRDs, SRDs, SyRS, SRS, ARDs, SE
 13. Extract quality attributes as `NFR-CAND-*`.
 14. Extract architecture drivers, interface candidates, data flows, assumptions, constraints, risks, and dependency questions.
 15. Seed verification and validation with `VVE-*` entries.
-16. Write or update the discovery record using `templates/system_definition/requirements-discovery-record-template.md` unless the AgentJob specifies another template.
+16. Write or update the discovery record using `templates/system_definition/requirements-discovery-record-template.md` unless the project authority specifies another template.
 17. Route unresolved material:
     - `decision-grilling-context-45` for unresolved scope or design choices.
     - `domain-grilling-with-docs-context-45` for terminology, glossary, documentation, or ADR-worthy conflicts.
@@ -109,7 +109,7 @@ When a discovery record is produced and the optional validator exists, also run:
 
 ## Known failure modes
 
-- Using the skill without an authorized AgentJob or Director decision.
+- Using the skill without explicit project authority or Director decision.
 - Generating a PRD before system intent and boundary are stable.
 - Treating candidate requirements as approved requirements.
 - Asking a large questionnaire instead of focused, decision-relevant questions.
@@ -119,7 +119,7 @@ When a discovery record is produced and the optional validator exists, also run:
 
 ## Provenance
 
-Adapted from `AngryOwlAI/ai-skills-for-sys/skills/system-definition-interview` as a local `Sys4AI` adapter. Upstream template behavior is preserved where compatible with `Sys4AI` source-first authority, AgentJob, registry, and validation rules.
+Adapted from `AngryOwlAI/ai-skills-for-sys/skills/system-definition-interview` as a local `Sys4AI` adapter. Upstream template behavior is preserved where compatible with `Sys4AI` source-first authority, explicit project authority, registry, and validation rules.
 
 ## Adaptation work remaining
 
@@ -127,4 +127,4 @@ Adapted from `AngryOwlAI/ai-skills-for-sys/skills/system-definition-interview` a
 2. Replace any unresolved placeholders with local paths, commands, and authority rules.
 3. Add project-specific validators.
 4. Record validation evidence.
-5. Mark as `adapted` only after a skill-import AgentJob and review receipt.
+5. Mark as `adapted` only after a skill-import review receipt.

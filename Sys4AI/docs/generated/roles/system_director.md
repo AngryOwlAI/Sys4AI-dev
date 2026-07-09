@@ -10,7 +10,7 @@
 - Primary mission: Orchestrate phases gates handoffs and artifact governance
 - Primary outputs: `system-design-run-manifest;artifact-registry;traceability-ledger;open-issues-register;design-phase-readiness-report`
 - Allowed artifact classes: `control_records;requirements;handoffs`
-- May create AgentJobs: `true`
+- Legacy AgentJob creation enabled: `false`
 - Requires Director decision: `true`
 
 ## Registry Skills
@@ -31,8 +31,8 @@
 
 ## Execution Bindings
 
-| Binding ID | Allowed AgentJob Types | Required Validators | Expiry Policy |
+| Binding ID | Binding Scope | Required Validators | Expiry Policy |
 |---|---|---|---|
-| bind_system_director | director_decision;agentjob_selection | validate-control-loop;validate-registry-graph | registered role no expiry |
+| bind_system_director | director_decision;legacy_control_review | validate-registry-graph | registered role no expiry |
 
 Canonical inputs remain the three role registries listed in the notice.

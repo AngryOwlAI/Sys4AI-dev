@@ -5,12 +5,12 @@
 ## Role
 
 - Role ID: `validator_engineer`
-- Role class: `temporary_agentjob_role`
+- Role class: `temporary_legacy_role`
 - System layer scope: `development_system;framework_product`
-- Primary mission: Maintain temporary validation AgentJob compatibility
+- Primary mission: Maintain validation evidence compatibility
 - Primary outputs: `validator-update;diff-check`
 - Allowed artifact classes: `validators;tests`
-- May create AgentJobs: `true`
+- Legacy AgentJob creation enabled: `false`
 - Requires Director decision: `true`
 
 ## Registry Skills
@@ -25,8 +25,8 @@ No role-skill crosswalk bindings are registered for this role.
 
 ## Execution Bindings
 
-| Binding ID | Allowed AgentJob Types | Required Validators | Expiry Policy |
+| Binding ID | Binding Scope | Required Validators | Expiry Policy |
 |---|---|---|---|
-| bind_validator_engineer | legacy_validation | make validate;validate-check-diff | expires with self hosting legacy AgentJob family |
+| bind_validator_engineer | legacy_validation | make validate | expires with self hosting legacy control records |
 
 Canonical inputs remain the three role registries listed in the notice.

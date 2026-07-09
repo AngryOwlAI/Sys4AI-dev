@@ -396,7 +396,7 @@ def _role_governance_summary_page(
                     "role_class",
                     "required_skills",
                     "optional_skills",
-                    "may_create_agentjobs",
+                    "legacy_agentjob_creation_enabled",
                     "requires_director_decision",
                 ],
                 [
@@ -428,7 +428,7 @@ def _role_governance_summary_page(
             ),
             "## Execution Binding Rows",
             markdown_table(
-                ["role_id", "binding_id", "allowed_agentjob_types", "required_validators", "completion_evidence"],
+                ["role_id", "binding_id", "binding_scope", "required_validators", "completion_evidence"],
                 [
                     [
                         row.get("role_id", ""),

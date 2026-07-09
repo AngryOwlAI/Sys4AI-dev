@@ -7,10 +7,10 @@
 - Role ID: `software_engineer`
 - Role class: `implementation`
 - System layer scope: `development_system;framework_product;target_system_template;target_system_instance`
-- Primary mission: Implement code changes under bounded AgentJobs
+- Primary mission: Implement code changes under explicit project authority
 - Primary outputs: `code-change`
 - Allowed artifact classes: `code;tests`
-- May create AgentJobs: `true`
+- Legacy AgentJob creation enabled: `false`
 - Requires Director decision: `true`
 
 ## Registry Skills
@@ -25,8 +25,8 @@ No role-skill crosswalk bindings are registered for this role.
 
 ## Execution Bindings
 
-| Binding ID | Allowed AgentJob Types | Required Validators | Expiry Policy |
+| Binding ID | Binding Scope | Required Validators | Expiry Policy |
 |---|---|---|---|
-| bind_software_engineer | implementation | make validate;validate-check-diff | registered role no expiry |
+| bind_software_engineer | implementation | make validate | registered role no expiry |
 
 Canonical inputs remain the three role registries listed in the notice.

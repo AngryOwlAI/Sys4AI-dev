@@ -31,21 +31,21 @@ in live working context or an authorized derivative note, and refresh only
 
 ## When to use
 
-Use this skill when a `Sys4AI` AgentJob requires the `decision_clarification` capability and the governing PRD or implementation plan authorizes skill use.
+Use this skill when a `Sys4AI` project authority requires the `decision_clarification` capability and the governing PRD or implementation plan authorizes skill use.
 
 ## Inputs
 
-- Current AgentJob.
+- Current project authorization.
 - Relevant canonical sources.
 - Applicable registries.
-- Any local validator commands named by the AgentJob.
+- Any local validator commands named by explicit project authority.
 
 ## Outputs
 
 - A bounded result appropriate to the skill family.
 - Source and provenance notes.
 - Validation notes or a pass/repair/block decision when applicable.
-- Handoff or completion evidence when the AgentJob requires it.
+- Handoff or completion evidence when the project authority requires it.
 - `skills/core/decision-grilling-context-45/usage-metrics.txt` when metrics can be collected.
 - `skills/core/decision-grilling-context-45/temp_prd.md` only when context used is at least 45 percent, context left is at most 55 percent, metrics are unavailable or unknown, or the user explicitly requests a handoff.
 - `skills/core/decision-grilling-context-45/archived_temp_prd/temp_prd_date_yyyy-mm-dd-hh-mm-ss.md` when the user confirms an existing checkpoint is from a prior context-45 run and should be archived before a fresh session.
@@ -54,7 +54,7 @@ Use this skill when a `Sys4AI` AgentJob requires the `decision_clarification` ca
 
 ## Procedure
 
-1. Confirm the AgentJob authorizes this skill.
+1. Confirm the project authority authorizes this skill.
 2. When invoked with `temp_prd`, skip the archive preflight and read `skills/core/decision-grilling-context-45/temp_prd.md` first.
 3. On normal invocation without `temp_prd`, run the archive preflight:
 
@@ -133,7 +133,7 @@ cd Sys4AI && make validate-skills
 
 ## Known failure modes
 
-- Using the skill without an authorized AgentJob.
+- Using the skill without explicit project authority.
 - Treating upstream placeholders as local facts.
 - Producing output that is not traceable to canonical sources.
 - Marking the adapter as fully adapted before local review.

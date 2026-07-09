@@ -57,7 +57,7 @@ in the discovery record, live working context, or chat summary, and refresh only
 - Do not create a PRD automatically.
 - Ask explicitly whether to create a PRD only after the discovery state is
   coherent enough for downstream synthesis.
-- When operating inside an AgentJob flow, create or recommend a completion
+- When operating inside an explicit project-authority flow, create or recommend a completion
   record and handoff route instead of relying on chat memory.
 
 ## When To Use

@@ -55,7 +55,7 @@ authority:
   may_read:
     - Runtime requirements, validation outputs, incidents, and deployment notes.
   may_write:
-    - Operations plans only when the active AgentJob authorizes those paths.
+    - Operations plans only when explicit project authority permits those paths.
   may_not:
     - Claim operational readiness without owner and evidence coverage.
 validation:

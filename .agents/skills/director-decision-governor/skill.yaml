@@ -22,11 +22,11 @@ required_role_posture:
   - system_director
 activation:
   triggers:
-    - No active AgentJob authorizes the next route.
+    - No active project authorization authorizes the next route.
     - A task needs authority expansion.
     - A completed decision must be superseded.
   when_not_to_use:
-    - Do not use to skip a human gate or run multiple AgentJobs.
+    - Do not use to skip a human gate or act beyond explicit project authority.
   preconditions:
     - Program state and latest handoff have been inspected.
 inputs:
@@ -36,7 +36,7 @@ inputs:
     - Source evidence for selected route.
   optional:
     - Existing Director decisions.
-    - Proposed AgentJob.
+    - Proposed project authorization boundary.
 outputs:
   primary:
     - Director decision record or stop recommendation.
@@ -56,11 +56,11 @@ dependencies:
     - make
 authority:
   may_read:
-    - Program state, handoffs, implementation plans, registries, AgentJobs, and Director decisions.
+    - Program state, handoffs, implementation plans, registries, legacy control records, and Director decisions.
   may_write:
     - Director decision records only when the current route authorizes decision creation.
   may_not:
-    - Authorize work outside the selected AgentJob boundary.
+    - Authorize work outside the explicit project authority.
     - Mutate completed decisions without supersession.
 validation:
   commands:

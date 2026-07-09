@@ -2,7 +2,7 @@
 
 - Preserve provenance to `skills/domain-grilling-with-docs-context-45`.
 - Do not remove authority-boundary language.
-- Do not mark this skill as `adapted` without a skill-import AgentJob and validation receipt.
+- Do not mark this skill as `adapted` without a skill-import review and validation receipt.
 - Keep examples portable and free of private project assumptions.
 - Do not create, overwrite, or refresh `temp_prd.md` after each question when context is still safe.
 - Preserve the normal-invocation archive preflight and the `temp_prd` resume bypass.

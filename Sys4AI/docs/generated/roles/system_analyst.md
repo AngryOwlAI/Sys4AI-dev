@@ -10,7 +10,7 @@
 - Primary mission: Compatibility analysis role used by current skill manifests
 - Primary outputs: `analysis;requirements`
 - Allowed artifact classes: `analysis;requirements`
-- May create AgentJobs: `false`
+- Legacy AgentJob creation enabled: `false`
 - Requires Director decision: `false`
 
 ## Registry Skills

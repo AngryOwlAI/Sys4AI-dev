@@ -56,7 +56,7 @@ authority:
   may_read:
     - Domain-pack registries, requirements, ontology notes, and handoffs.
   may_write:
-    - Routing records only when the active AgentJob authorizes those paths.
+    - Routing records only when explicit project authority permits those paths.
   may_not:
     - Embed project-specific domain constraints into core skill instructions.
 validation:

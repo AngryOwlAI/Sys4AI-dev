@@ -10,20 +10,19 @@
 - Primary mission: Convert requirements and architecture into buildable technical requirements
 - Primary outputs: `TRP`
 - Allowed artifact classes: `requirements;implementation_plans`
-- May create AgentJobs: `false`
+- Legacy AgentJob creation enabled: `false`
 - Requires Director decision: `false`
 
 ## Registry Skills
 
 - Required skills: `prd-to-implementation-plan;verification-validation-planner`
-- Optional skills: `agentjob-task-packet-author`
+- Optional skills: ``
 - Forbidden skills: ``
 
 ## Crosswalk Bindings
 
 | Skill ID | Binding Type | Required When | System Layer Scope | Evidence Path |
 |---|---|---|---|---|
-| agentjob-task-packet-author | optional | when technical plans need task packet boundaries | framework_product;target_system_template;target_system_instance | implementation_plans/Sys4AI-dev_all_recommendations_implementation_plan.md |
 | prd-to-implementation-plan | required | when technical plan is needed | framework_product;target_system_template;target_system_instance | PRDs/Sys4AI_phase-0_product_system_design_prd.md |
 | verification-validation-planner | required | when verification evidence is needed | framework_product;target_system_template;target_system_instance | implementation_plans/Sys4AI-dev_all_recommendations_implementation_plan.md |
 

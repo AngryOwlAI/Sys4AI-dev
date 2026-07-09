@@ -26,7 +26,7 @@ activation:
     - A generated derivative might be mistaken for source authority.
     - Runtime and product scaffold surfaces might be confused.
   when_not_to_use:
-    - Do not use as approval to write outside the selected AgentJob boundary.
+    - Do not use as approval to write outside the explicit project authority.
   preconditions:
     - The relevant system or artifact paths are known.
 inputs:
@@ -53,9 +53,9 @@ dependencies:
     - make
 authority:
   may_read:
-    - System layer registries, boundary decisions, AgentJobs, handoffs, source registries, and artifact paths.
+    - System layer registries, boundary decisions, legacy control records, handoffs, source registries, and artifact paths.
   may_write:
-    - Layer classification notes or registries only when the active AgentJob authorizes those paths.
+    - Layer classification notes or registries only when explicit project authority permits those paths.
   may_not:
     - Promote product scaffold or generated derivatives to runtime authority.
 validation:

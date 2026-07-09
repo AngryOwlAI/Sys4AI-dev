@@ -53,7 +53,7 @@ inputs:
 outputs:
   primary:
     - Chat-visible situation classification and evidence summary.
-    - Approval prompt before writing controlled discovery, requirements, planning, AgentJob, or scaffold artifacts.
+    - Approval prompt before writing controlled discovery, requirements, planning, or scaffold artifacts.
   secondary:
     - Downstream route recommendation to existing Sys4AI skills.
     - Assumptions, unresolved questions, skipped checks, and recommended next step.
@@ -92,7 +92,7 @@ authority:
     - Generated discovery or planning artifacts only after explicit approval and only in project-approved locations.
   may_not:
     - Mutate a brownfield repository during first-pass inspection.
-    - Create PRDs, requirements documents, implementation plans, AgentJobs, or scaffolds without explicit approval.
+    - Create PRDs, requirements documents, implementation plans, scaffolds without explicit approval.
     - Treat Sys4AI/skills/core as the active runtime authority for Sys4AI-dev.
     - Treat candidate requirements as baselined requirements.
     - Import .DS_Store, __pycache__, pyc files, usage-metrics receipts, temp_prd checkpoints, secrets, or local operational state as source.
@@ -106,7 +106,7 @@ authority:
   human_gates:
     - Approval before writing controlled discovery evidence.
     - Approval before Product Requirements Document synthesis.
-    - Approval before system requirements, implementation plans, AgentJobs, scaffolds, or brownfield governance installation.
+    - Approval before system requirements, implementation plans, scaffolds, or brownfield governance installation.
 validation:
   commands:
     - command: python3 scripts/skills/validate_skill_manifest.py --manifest .agents/skills/init/skill.yaml
@@ -155,4 +155,3 @@ failure_modes:
     recovery: Relabel as derivative or obtain explicit approval before treating the artifact as project authority.
 compatibility_shims:
   - .codex/skills/init/SKILL.md
-

@@ -5,17 +5,17 @@
 ## Role
 
 - Role ID: `control_loop_engineer`
-- Role class: `temporary_agentjob_role`
+- Role class: `temporary_legacy_role`
 - System layer scope: `development_system;framework_product`
-- Primary mission: Maintain temporary self hosting continue loop implementation compatibility
-- Primary outputs: `control-loop-kernel;program-state-update`
+- Primary mission: Maintain legacy self hosting control evidence compatibility
+- Primary outputs: `legacy-control-record-review`
 - Allowed artifact classes: `control_records;validators`
-- May create AgentJobs: `true`
+- Legacy AgentJob creation enabled: `false`
 - Requires Director decision: `true`
 
 ## Registry Skills
 
-- Required skills: `continue;source-first-memory`
+- Required skills: `source-first-memory`
 - Optional skills: `codex-usage-metrics`
 - Forbidden skills: ``
 
@@ -25,8 +25,8 @@ No role-skill crosswalk bindings are registered for this role.
 
 ## Execution Bindings
 
-| Binding ID | Allowed AgentJob Types | Required Validators | Expiry Policy |
+| Binding ID | Binding Scope | Required Validators | Expiry Policy |
 |---|---|---|---|
-| bind_control_loop_engineer | legacy_selfhost_control_loop | validate-control-loop;validate-check-diff | expires with self hosting legacy AgentJob family |
+| bind_control_loop_engineer | legacy_selfhost_control_loop | make validate | expires with self hosting legacy control records |
 
 Canonical inputs remain the three role registries listed in the notice.

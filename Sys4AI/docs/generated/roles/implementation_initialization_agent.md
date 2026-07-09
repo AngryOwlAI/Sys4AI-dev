@@ -10,7 +10,7 @@
 - Primary mission: Initialize implementation scaffold
 - Primary outputs: `implementation-scaffold`
 - Allowed artifact classes: `code;registries;schemas;validators`
-- May create AgentJobs: `true`
+- Legacy AgentJob creation enabled: `false`
 - Requires Director decision: `true`
 
 ## Registry Skills
@@ -25,7 +25,7 @@ No role-skill crosswalk bindings are registered for this role.
 
 ## Execution Bindings
 
-| Binding ID | Allowed AgentJob Types | Required Validators | Expiry Policy |
+| Binding ID | Binding Scope | Required Validators | Expiry Policy |
 |---|---|---|---|
 | bind_implementation_initialization_agent | implementation_initialization | make validate | registered role no expiry |
 

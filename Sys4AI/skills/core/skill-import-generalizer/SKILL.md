@@ -14,25 +14,25 @@ Convert project-specific skills into reusable templates and maintain import/adap
 
 ## When to use
 
-Use this skill when a `Sys4AI` AgentJob requires the `skill_library_maintenance` capability and the governing PRD or implementation plan authorizes skill use.
+Use this skill when a `Sys4AI` project authority requires the `skill_library_maintenance` capability and the governing PRD or implementation plan authorizes skill use.
 
 ## Inputs
 
-- Current AgentJob.
+- Current project authorization.
 - Relevant canonical sources.
 - Applicable registries.
-- Any local validator commands named by the AgentJob.
+- Any local validator commands named by explicit project authority.
 
 ## Outputs
 
 - A bounded result appropriate to the skill family.
 - Source and provenance notes.
 - Validation notes or a pass/repair/block decision when applicable.
-- Handoff or completion evidence when the AgentJob requires it.
+- Handoff or completion evidence when the project authority requires it.
 
 ## Procedure
 
-1. Confirm the AgentJob authorizes this skill.
+1. Confirm the project authority authorizes this skill.
 2. Read canonical sources before generated derivatives.
 3. Apply the upstream skill procedure after local adaptation is completed.
 4. Preserve source provenance and document assumptions.
@@ -54,7 +54,7 @@ cd Sys4AI && make validate-skills
 
 ## Known failure modes
 
-- Using the skill without an authorized AgentJob.
+- Using the skill without explicit project authority.
 - Treating upstream placeholders as local facts.
 - Producing output that is not traceable to canonical sources.
 - Marking the adapter as fully adapted before local review.

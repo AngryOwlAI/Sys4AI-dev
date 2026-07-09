@@ -10,7 +10,7 @@
 - Primary mission: Derive architecture drivers views and decisions
 - Primary outputs: `ARD`
 - Allowed artifact classes: `architecture;diagrams`
-- May create AgentJobs: `false`
+- Legacy AgentJob creation enabled: `false`
 - Requires Director decision: `false`
 
 ## Registry Skills

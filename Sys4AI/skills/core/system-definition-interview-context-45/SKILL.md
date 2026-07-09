@@ -33,7 +33,7 @@ in the discovery record, live working context, or chat summary, and refresh only
 <OUTPUT_DIRECTORY>  -> control_records/system_definition
 ```
 
-Repository-root invocation should run from `Sys4AI/` unless the AgentJob states another working directory.
+Repository-root invocation should run from `Sys4AI/` unless explicit project authority states another working directory.
 
 ## When to use
 
@@ -51,7 +51,7 @@ Do not use this adapter for short clarifications that do not need continuation p
 
 ## Inputs
 
-- Current authorized AgentJob or System Director decision.
+- Current explicit project authorization or System Director decision.
 - User prompt, stakeholder notes, transcript, source summary, or prior `temp_prd.md`.
 - Optional repository or documentation evidence.
 - Local `codex-usage-metrics` adapter.
@@ -72,7 +72,7 @@ Do not use this adapter for short clarifications that do not need continuation p
 
 ## Procedure
 
-1. Confirm the AgentJob authorizes this skill.
+1. Confirm the project authority authorizes this skill.
 2. When invoked with `temp_prd`, skip the archive preflight and read `skills/core/system-definition-interview-context-45/temp_prd.md` first.
 3. If `temp_prd.md` is missing during resume, state that no continuation file was found and proceed from the current prompt only if authorized.
 4. On normal invocation without `temp_prd`, run the archive preflight:
@@ -168,7 +168,7 @@ If the metrics script does not exist, fails, returns no context section, returns
 - `temp_prd.md` is resumable context, not final authority.
 - Candidate requirements remain candidates.
 - Metrics receipts are point-in-time evidence only.
-- The adapter may write only paths authorized by the AgentJob.
+- The adapter may write only paths authorized by explicit project authority.
 - It must not export conversation content through the metrics script.
 
 ## Validation
@@ -206,7 +206,7 @@ If discovery-record validator exists:
 
 ## Provenance
 
-Adapted from `AngryOwlAI/ai-skills-for-sys/skills/system-definition-interview-context-45` as a local `Sys4AI` adapter. Upstream template behavior is preserved where compatible with `Sys4AI` AgentJob, source-first authority, and validation rules.
+Adapted from `AngryOwlAI/ai-skills-for-sys/skills/system-definition-interview-context-45` as a local `Sys4AI` adapter. Upstream template behavior is preserved where compatible with `Sys4AI` explicit project authority, source-first authority, and validation rules.
 
 ## Adaptation work remaining
 

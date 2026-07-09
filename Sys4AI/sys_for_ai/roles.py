@@ -16,10 +16,10 @@ ROLE_CLASSES = {
     "verification",
     "maintenance",
     "runtime_control",
-    "temporary_agentjob_role",
+    "temporary_legacy_role",
     "project_specific",
 }
-TEMPORARY_ROLE_CLASS = "temporary_agentjob_role"
+TEMPORARY_ROLE_CLASS = "temporary_legacy_role"
 GENERATED_ROLE_DOC_NOTICE = (
     "> Generated derivative. Canonical role authority remains with "
     "`registries/role_registry.csv`, `registries/role_skill_crosswalk.csv`, and "
@@ -120,7 +120,7 @@ def expected_role_doc_text(
         f"- Primary mission: {role.get('primary_mission', '')}",
         f"- Primary outputs: `{role.get('primary_outputs', '')}`",
         f"- Allowed artifact classes: `{role.get('allowed_artifact_classes', '')}`",
-        f"- May create AgentJobs: `{role.get('may_create_agentjobs', '')}`",
+        f"- Legacy AgentJob creation enabled: `{role.get('may_create_agentjobs', '')}`",
         f"- Requires Director decision: `{role.get('requires_director_decision', '')}`",
         "",
         "## Registry Skills",
@@ -159,7 +159,7 @@ def expected_role_doc_text(
     if execution_binding_rows:
         lines.extend(
             [
-                "| Binding ID | Allowed AgentJob Types | Required Validators | Expiry Policy |",
+                "| Binding ID | Binding Scope | Required Validators | Expiry Policy |",
                 "|---|---|---|---|",
             ]
         )

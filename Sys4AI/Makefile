@@ -5,9 +5,8 @@ PIP := $(VENV)/bin/pip
 SYNC_REMOTE ?= origin
 SYNC_BRANCH ?= main
 SYNC_CHECK_HASHES ?= 0
-CHECK_DIFF_AGENTJOB ?= AJ-SFADEV-12-DISCOVERY-GATE-SMOKE-001
 
-.PHONY: venv install doctor sync-check continue-status continue-preflight continue-select continue-packet continue-finalize validate validate-agentjob validate-agentjobs validate-skills validate-dev-skills validate-metrics validate-discovery-template bootstrap-memory validate-format-profiles validate-config-sources validate-control-records validate-system-layers validate-discovery-records validate-roles validate-artifact-contracts validate-core-skill-proposals validate-skill-lifecycle validate-program-state validate-director-decisions validate-agentjob-registry validate-director-decision-registry validate-handoff-registry validate-completion-receipt-registry validate-memory-preflight-registry validate-handoffs validate-completion-receipts validate-state-snapshots validate-memory-preflight validate-agentjob-boundaries validate-check-diff validate-one-active-agentjob validate-control-loop validate-validation-contract-registry validate-toml-config validate-jsonschema-contracts validate-registry-graph validate-requirement-trace validate-prd-modules validate-walking-skeleton validate-target-package-smoke generate-config-control-wiki generate-validation-contracts-catalog generate-governance-docs validate-generated-derivatives clean-local
+.PHONY: venv install doctor sync-check validate validate-skills validate-dev-skills validate-metrics validate-discovery-template bootstrap-memory validate-format-profiles validate-config-sources validate-control-records validate-system-layers validate-discovery-records validate-roles validate-artifact-contracts validate-core-skill-proposals validate-skill-lifecycle validate-program-state validate-director-decisions validate-director-decision-registry validate-handoff-registry validate-completion-receipt-registry validate-memory-preflight-registry validate-handoffs validate-completion-receipts validate-state-snapshots validate-memory-preflight validate-validation-contract-registry validate-toml-config validate-jsonschema-contracts validate-registry-graph validate-requirement-trace validate-prd-modules validate-walking-skeleton validate-target-package-smoke generate-config-control-wiki generate-validation-contracts-catalog generate-governance-docs validate-generated-derivatives clean-local
 
 venv:
 	$(PY) -m venv $(VENV)
@@ -34,56 +33,11 @@ sync-check:
 	fi; \
 	echo "Git sync check passed: HEAD matches $$target_ref"
 	$(PYTHON) -m sys_for_ai.cli memory status --json
-	$(PYTHON) -m sys_for_ai.cli continue-status --json
 	@if [ "$(SYNC_CHECK_HASHES)" = "1" ]; then \
 		$(PYTHON) -m sys_for_ai.cli memory validate-hashes --json; \
 	else \
 		echo "Hash validation skipped. Run: make sync-check SYNC_CHECK_HASHES=1"; \
 	fi
-
-continue-status:
-	$(PYTHON) -m sys_for_ai.cli continue-status --json
-
-continue-preflight:
-	$(PYTHON) -m sys_for_ai.cli continue-preflight --json
-
-continue-select:
-	$(PYTHON) -m sys_for_ai.cli continue-select --json
-
-continue-packet:
-	$(PYTHON) -m sys_for_ai.cli continue-packet --json
-
-continue-finalize:
-	$(PYTHON) -m sys_for_ai.cli continue-finalize --completion control_records/completions/completion_receipt.example.v0_2.yaml --json
-
-validate-agentjob:
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/examples/phase1_smoke_agentjob.yaml
-
-validate-agentjobs:
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/examples/phase1_smoke_agentjob.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-SKILL-SYNC-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-CODEX-METRICS-ADAPT-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-SYSTEM-DEFINITION-TEMPLATE-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-SELFHOST-CONTINUE-KERNEL-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-BOUNDARY-VALIDATORS-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-DERIVATIVE-GENERATORS-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-CONTINUE-SKILLS-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-SELFHOST-ACCEPTANCE-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-05-RUNTIME-SKILL-RECONCILIATION-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-01-PRD-INTEGRATION-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-02-REGISTRY-SCHEMA-EXPANSION-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-03-DISCOVERY-GATE-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-04-ROLE-GOVERNANCE-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-06-SKILL-LIFECYCLE-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-07-CORE-SKILLS-BATCH-1-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-08-CORE-SKILLS-BATCH-2-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-09-GENERATED-DOCS-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-10-END-TO-END-ACCEPTANCE-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SYS4AI-DEV-NAME-MIGRATION-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-11-INIT-FRONTDOOR-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-WS00-BASELINE-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-P1-DISCOVERY-GATE-SMOKE-001.yaml
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob control_records/agentjobs/AJ-SFADEV-12-DISCOVERY-GATE-SMOKE-001.yaml
 
 validate-skills:
 	$(PYTHON) -m sys_for_ai.cli validate-skills skills/core_skill_manifest.yaml
@@ -133,9 +87,6 @@ validate-program-state:
 validate-director-decisions:
 	$(PYTHON) -m sys_for_ai.cli validate-director-decisions control_records/director_decisions
 
-validate-agentjob-registry:
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob-registry registries/agentjob_registry.csv
-
 validate-director-decision-registry:
 	$(PYTHON) -m sys_for_ai.cli validate-director-decision-registry registries/director_decision_registry.csv
 
@@ -159,18 +110,6 @@ validate-state-snapshots:
 
 validate-memory-preflight:
 	$(PYTHON) -m sys_for_ai.cli validate-memory-preflight control_records/memory_preflights
-
-validate-agentjob-boundaries:
-	$(PYTHON) -m sys_for_ai.cli validate-agentjob-boundaries --agentjob $(CHECK_DIFF_AGENTJOB) --git --json
-
-validate-check-diff:
-	$(PYTHON) -m sys_for_ai.cli validate-check-diff --agentjob $(CHECK_DIFF_AGENTJOB) --json
-
-validate-one-active-agentjob:
-	$(PYTHON) -m sys_for_ai.cli validate-one-active-agentjob
-
-validate-control-loop:
-	$(PYTHON) -m sys_for_ai.cli validate-control-loop
 
 validate-validation-contract-registry:
 	$(PYTHON) -m sys_for_ai.cli validate-validation-contract-registry registries/validation_contract_registry.csv
@@ -208,7 +147,7 @@ generate-governance-docs:
 validate-generated-derivatives:
 	$(PYTHON) -m sys_for_ai.cli validate-generated-derivatives docs/generated registries/derivative_registry.csv
 
-validate: doctor validate-agentjobs validate-skills validate-dev-skills validate-metrics validate-discovery-template bootstrap-memory validate-format-profiles validate-config-sources validate-control-records validate-system-layers validate-discovery-records validate-roles validate-artifact-contracts validate-core-skill-proposals validate-skill-lifecycle validate-program-state validate-agentjob-registry validate-director-decision-registry validate-handoff-registry validate-completion-receipt-registry validate-memory-preflight-registry validate-handoffs validate-completion-receipts validate-state-snapshots validate-memory-preflight validate-validation-contract-registry validate-toml-config validate-jsonschema-contracts validate-registry-graph validate-check-diff validate-one-active-agentjob validate-control-loop validate-requirement-trace validate-prd-modules validate-walking-skeleton validate-target-package-smoke generate-config-control-wiki generate-validation-contracts-catalog generate-governance-docs validate-generated-derivatives
+validate: doctor validate-skills validate-dev-skills validate-metrics validate-discovery-template bootstrap-memory validate-format-profiles validate-config-sources validate-control-records validate-system-layers validate-discovery-records validate-roles validate-artifact-contracts validate-core-skill-proposals validate-skill-lifecycle validate-director-decision-registry validate-handoff-registry validate-completion-receipt-registry validate-memory-preflight-registry validate-handoffs validate-completion-receipts validate-state-snapshots validate-validation-contract-registry validate-toml-config validate-jsonschema-contracts validate-registry-graph validate-requirement-trace validate-prd-modules validate-walking-skeleton validate-target-package-smoke generate-config-control-wiki generate-validation-contracts-catalog generate-governance-docs validate-generated-derivatives
 
 clean-local:
 	rm -rf .pytest_cache __pycache__ sys_for_ai/__pycache__ .local/receipts

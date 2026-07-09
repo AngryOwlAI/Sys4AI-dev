@@ -10,7 +10,7 @@
 - Primary mission: Review risk controls and compliance obligations
 - Primary outputs: `risk-review`
 - Allowed artifact classes: `security;validation`
-- May create AgentJobs: `false`
+- Legacy AgentJob creation enabled: `false`
 - Requires Director decision: `false`
 
 ## Registry Skills

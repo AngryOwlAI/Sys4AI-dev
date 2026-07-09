@@ -8,7 +8,7 @@ Compatibility shim path: `.codex/skills/init/SKILL.md`
 
 Use `/init` as the reversible, gated front door for Sys4AI system definition and adoption.
 
-`/init` classifies the user's situation, inspects available evidence before asking questions, summarizes the current route, and asks for explicit approval before creating controlled discovery records, Product Requirements Documents, system requirements, implementation plans, AgentJobs, or scaffolding.
+`/init` classifies the user's situation, inspects available evidence before asking questions, summarizes the current route, and asks for explicit approval before creating controlled discovery records, Product Requirements Documents, system requirements, implementation plans, or scaffolding.
 
 ## Sys4AI-dev Authority Rules
 
@@ -54,7 +54,7 @@ Do not use `/init` to mutate a repository, generate final requirements, install 
 - Identified system-of-interest and subject layer.
 - Lifecycle intent: `build`, `improve`, `maintain`, `operate`, `migrate`, or `recover`.
 - Recommended branch: `greenfield`, `brownfield`, `partially_built`, or `documentation_recovery`.
-- Approval prompt before writing a Requirements Discovery Record, Current-State Baseline, Product Requirements Document, system requirements document, implementation plan, AgentJob, or scaffold.
+- Approval prompt before writing a Requirements Discovery Record, Current-State Baseline, Product Requirements Document, system requirements document, implementation plan, or scaffold.
 - Downstream routing recommendation to existing skills after approval.
 
 ## Procedure
@@ -88,7 +88,7 @@ Discovery is complete. Should I create a Product Requirements Document with `/co
 13. Ask the required approval prompt before brownfield governance adoption planning:
 
 ```text
-For this brownfield project, should I create an implementation plan or AgentJob for Sys4AI governance adoption?
+For this brownfield project, should I create an implementation plan for Sys4AI governance adoption?
 ```
 
 14. Route downstream only after the relevant approval:
@@ -116,7 +116,7 @@ Inspect only. Do not write files during the first pass.
 - No Current-State Baseline file without explicit approval.
 - No Product Requirements Document without explicit approval.
 - No system requirements document without explicit approval.
-- No implementation plan or AgentJob without explicit approval.
+- No implementation plan without explicit approval.
 - No scaffold generation or governance-surface installation without explicit approval.
 
 ## Validation
@@ -138,4 +138,3 @@ When a discovery record is created, also run the project-local discovery validat
 - Treating candidate requirements as baselined requirements.
 - Treating generated derivative material as authority.
 - Confusing the active development runtime surface with the product-scaffold reference surface.
-

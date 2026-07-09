@@ -12,9 +12,9 @@ Use this skill when work could blur the development workspace, framework impleme
 1. Identify the subject system and all affected layers.
 2. Classify each artifact as development-system, framework, product scaffold, generated target, or derivative.
 3. Check the system layer registry and self-hosting boundary rules.
-4. Recommend the smallest authorized write surface for the active AgentJob.
+4. Recommend the smallest authorized write surface for the active project authorization.
 5. Document uncertain classifications as risks instead of silently promoting authority.
 
 ## Boundary
 
-Layer classification does not grant write authority. It informs routing and must defer to the active AgentJob, Director decision, or registry policy.
+Layer classification does not grant write authority. It informs routing and must defer to the active project authorization, Director decision, or registry policy.

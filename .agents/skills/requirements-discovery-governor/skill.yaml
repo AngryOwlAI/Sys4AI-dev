@@ -58,7 +58,7 @@ authority:
   may_read:
     - Discovery records, templates, PRDs, stakeholder notes, and validation output.
   may_write:
-    - Discovery governance records only when the active AgentJob authorizes those paths.
+    - Discovery governance records only when explicit project authority permits those paths.
   may_not:
     - Promote discovery output to requirements baseline without readiness evidence.
 validation:

@@ -10,12 +10,16 @@ WORKSPACE_ROOT = Path(__file__).resolve().parents[2]
 
 
 class SkillSurfaceTests(unittest.TestCase):
-    def test_active_runtime_continue_skill_exists(self) -> None:
-        text = _read(".agents/skills/continue/SKILL.md")
-
-        self.assertIn("name: continue", text)
-        self.assertIn("advance at most one authorized AgentJob", text)
-        self.assertIn("Write a completion receipt and handoff", text)
+    def test_continue_and_agentjob_runtime_surfaces_are_removed(self) -> None:
+        for relative in [
+            ".agents/skills/continue",
+            ".codex/skills/continue",
+            ".agents/skills/agentjob-task-packet-author",
+            ".codex/skills/agentjob-task-packet-author",
+            "Sys4AI/skills/core/continue",
+            "Sys4AI/skills/core/agentjob-task-packet-author",
+        ]:
+            self.assertFalse((WORKSPACE_ROOT / relative).exists(), relative)
 
     def test_active_runtime_source_first_memory_skill_exists(self) -> None:
         text = _read(".agents/skills/source-first-memory/SKILL.md")
@@ -25,11 +29,8 @@ class SkillSurfaceTests(unittest.TestCase):
         self.assertIn("Inspect the canonical source path or registry row", text)
 
     def test_codex_shims_point_to_agents_runtime_skills(self) -> None:
-        continue_text = _read(".codex/skills/continue/SKILL.md")
         memory_text = _read(".codex/skills/source-first-memory/SKILL.md")
 
-        self.assertIn(".agents/skills/continue/SKILL.md", continue_text)
-        self.assertIn("compatibility shim", continue_text)
         self.assertIn(".agents/skills/source-first-memory/SKILL.md", memory_text)
         self.assertIn("compatibility shim", memory_text)
 
@@ -94,10 +95,6 @@ class SkillSurfaceTests(unittest.TestCase):
 
     def test_product_scaffold_skills_are_generic(self) -> None:
         for relative in [
-            "Sys4AI/skills/core/continue/SKILL.md",
-            "Sys4AI/skills/core/continue/README.md",
-            "Sys4AI/skills/core/continue/AGENTS.md",
-            "Sys4AI/skills/core/continue/examples/portable-example.md",
             "Sys4AI/skills/core/source-first-memory/SKILL.md",
             "Sys4AI/skills/core/source-first-memory/README.md",
             "Sys4AI/skills/core/source-first-memory/AGENTS.md",

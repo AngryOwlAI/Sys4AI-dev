@@ -49,7 +49,6 @@ This generated page summarizes product scaffold skills and proposed core organiz
 | prd-to-implementation-plan | implementation_planning | adapter_shell | adapter_shell | skills/core/prd-to-implementation-plan |
 | skill-import-generalizer | skill_library_maintenance | adapter_shell | adapter_shell | skills/core/skill-import-generalizer |
 | technical-writing-quality-gate | technical_writing_verification | adapter_shell | adapter_shell | skills/core/technical-writing-quality-gate |
-| continue | continuation_control | scaffold_template | product_scaffold_reference | skills/core/continue |
 | source-first-memory | source_first_memory | scaffold_template | product_scaffold_reference | skills/core/source-first-memory |
 | role-catalog-governance | role_governance | adapter_shell | adapter_shell | skills/core/role-catalog-governance |
 | system-layer-classifier | system_layer_governance | adapter_shell | adapter_shell | skills/core/system-layer-classifier |
@@ -63,7 +62,6 @@ This generated page summarizes product scaffold skills and proposed core organiz
 | threat-model-and-permission-scope | safety_security_privacy | adapter_shell | adapter_shell | skills/core/threat-model-and-permission-scope |
 | evaluation-harness-designer | evaluation_design | adapter_shell | adapter_shell | skills/core/evaluation-harness-designer |
 | baseline-change-manager | change_control | adapter_shell | adapter_shell | skills/core/baseline-change-manager |
-| agentjob-task-packet-author | agentjob_authoring | adapter_shell | adapter_shell | skills/core/agentjob-task-packet-author |
 | operations-and-maintenance-planner | operations_maintenance | adapter_shell | adapter_shell | skills/core/operations-and-maintenance-planner |
 | project-ontology-and-glossary | ontology_glossary | adapter_shell | adapter_shell | skills/core/project-ontology-and-glossary |
 | domain-pack-router | domain_routing | adapter_shell | adapter_shell | skills/core/domain-pack-router |
@@ -86,7 +84,6 @@ This generated page summarizes product scaffold skills and proposed core organiz
 | proposal_threat_model_permission_scope | threat-model-and-permission-scope | 9 | scaffolded | security_safety_privacy_compliance_reviewer | .agents/skills/threat-model-and-permission-scope | make validate |
 | proposal_evaluation_harness_designer | evaluation-harness-designer | 10 | scaffolded | runtime_maintenance_planner;verification_engineer | .agents/skills/evaluation-harness-designer | make validate |
 | proposal_baseline_change_manager | baseline-change-manager | 11 | scaffolded | svc_documentation_surface_architect | .agents/skills/baseline-change-manager | validate-registry-graph |
-| proposal_agentjob_task_packet_author | agentjob-task-packet-author | 12 | scaffolded | control_loop_agentjob_planner;technical_requirements_engineer | .agents/skills/agentjob-task-packet-author | validate-agentjobs |
 | proposal_operations_maintenance_planner | operations-and-maintenance-planner | 13 | scaffolded | runtime_maintenance_planner | .agents/skills/operations-and-maintenance-planner | make validate |
 | proposal_project_ontology_glossary | project-ontology-and-glossary | 14 | scaffolded | documentation_librarian | .agents/skills/project-ontology-and-glossary | make validate |
 | proposal_domain_pack_router | domain-pack-router | 15 | scaffolded | domain_specialist;system_director | .agents/skills/domain-pack-router | make validate |

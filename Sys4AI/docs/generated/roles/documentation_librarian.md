@@ -10,7 +10,7 @@
 - Primary mission: Maintain artifact index IDs derivative policy and source authority
 - Primary outputs: `artifact-index;configuration-control`
 - Allowed artifact classes: `documentation;registries;generated_derivatives`
-- May create AgentJobs: `false`
+- Legacy AgentJob creation enabled: `false`
 - Requires Director decision: `false`
 
 ## Registry Skills
@@ -29,7 +29,7 @@
 
 ## Execution Bindings
 
-| Binding ID | Allowed AgentJob Types | Required Validators | Expiry Policy |
+| Binding ID | Binding Scope | Required Validators | Expiry Policy |
 |---|---|---|---|
 | bind_documentation_librarian | configuration_control;runtime_skill_reconciliation | validate-generated-derivatives;validate-registry-graph | registered role no expiry |
 

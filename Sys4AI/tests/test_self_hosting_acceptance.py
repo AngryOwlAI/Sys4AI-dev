@@ -1,4 +1,4 @@
-"""Acceptance wiring tests for the self-hosting memory and continue plan."""
+"""Acceptance wiring tests for retained self-hosting memory evidence."""
 
 from __future__ import annotations
 
@@ -113,7 +113,6 @@ class SelfHostingAcceptanceTests(unittest.TestCase):
         self.assertIn("git fetch", makefile)
         self.assertIn("HEAD does not match", makefile)
         self.assertIn("memory status --json", makefile)
-        self.assertIn("continue-status --json", makefile)
         self.assertIn("memory validate-hashes --json", makefile)
 
 

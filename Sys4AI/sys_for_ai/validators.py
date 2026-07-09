@@ -79,13 +79,11 @@ AGENTJOB_REQUIRED_FIELDS = {
 }
 
 SKILL_MANIFEST_REQUIRED_SKILLS = {
-    "agentjob-task-packet-author",
     "artifact-contract-governance",
     "assurance-case-builder",
     "baseline-change-manager",
     "codex-usage-metrics",
     "context-window-and-handoff-manager",
-    "continue",
     "director-decision-governor",
     "domain-pack-router",
     "init",
@@ -1037,7 +1035,7 @@ def validate_control_records(path: str | Path) -> ValidationResult:
 
 
 def validate_program_state(path: str | Path = "control_records/program_state.yaml") -> ValidationResult:
-    """Validate tracked /continue program state."""
+    """Validate legacy tracked program state."""
 
     target = Path(path)
     messages: list[str] = []

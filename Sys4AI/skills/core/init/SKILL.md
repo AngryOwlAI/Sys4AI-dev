@@ -22,7 +22,7 @@ Use this skill when:
 - an existing system or repository needs read-only classification before Sys4AI governance adoption,
 - the system-of-interest, subject layer, lifecycle goal, evidence base, or downstream route is unclear.
 
-Do not use this skill to generate final Product Requirements Documents, system requirements, implementation plans, AgentJobs, or scaffolds without explicit approval.
+Do not use this skill to generate final Product Requirements Documents, system requirements, implementation plans, scaffolds without explicit approval.
 
 ## Inputs
 
@@ -65,7 +65,7 @@ Discovery is complete. Should I create a Product Requirements Document with `/co
 11. Ask before brownfield governance adoption planning:
 
 ```text
-For this brownfield project, should I create an implementation plan or AgentJob for Sys4AI governance adoption?
+For this brownfield project, should I create an implementation plan for Sys4AI governance adoption?
 ```
 
 12. Route to downstream skills only after approval.
@@ -80,7 +80,7 @@ The first brownfield pass is read-only. Inspect repository structure, README, Pr
 - Current-State Baselines and Requirements Discovery Records are draft evidence unless promoted.
 - Candidate requirements are not baselined requirements.
 - Generated derivatives do not authorize source changes.
-- Product Requirements Document synthesis, system requirements, implementation plans, AgentJobs, and scaffolds require explicit approval.
+- Product Requirements Document synthesis, system requirements, implementation plans, scaffolds require explicit approval.
 
 ## Validation
 

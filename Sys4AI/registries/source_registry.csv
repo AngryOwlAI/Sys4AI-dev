@@ -60,7 +60,6 @@ SRC-SELFHOST-MODE-POLICY,Sys4AI/docs/self_hosting_mode_policy.md,policy,controll
 SRC-CONFIG-SELFHOST-MODE,Sys4AI/configs/self_hosting_mode.toml,config_source,controlled,implementation_initialization,2026-07-07,Self-hosting mode TOML configuration source.
 SRC-CONTRACT-SELFHOST-MODE,Sys4AI/schemas/contracts/self_hosting_mode.schema.json,validation_contract,controlled,implementation_initialization,2026-07-07,JSON Schema contract for self-hosting mode TOML configuration.
 SRC-MEMORY-RETRIEVAL-POLICY,Sys4AI/docs/memory_retrieval_policy.md,policy,controlled,implementation_initialization,2026-07-06,Policy defining memory retrieval as navigation rather than authority.
-SRC-CONTINUE-LOOP-POLICY,Sys4AI/docs/continue_loop_policy.md,policy,controlled,implementation_initialization,2026-07-06,Policy defining one-AgentJob continue-loop behavior.
 SRC-REG-AGENTJOBS,Sys4AI/registries/agentjob_registry.csv,agentjob_registry,controlled,control_loop,2026-07-06,Operational registry for AgentJob lifecycle rows.
 SRC-REG-DIRECTOR-DECISIONS,Sys4AI/registries/director_decision_registry.csv,director_decision_registry,controlled,control_loop,2026-07-06,Operational registry for Director Decision Records.
 SRC-REG-HANDOFFS,Sys4AI/registries/handoff_registry.csv,handoff_registry,controlled,control_loop,2026-07-06,Operational registry for handoff records.
@@ -88,25 +87,13 @@ SRC-MEMORY-GRAPH,Sys4AI/sys_for_ai/memory/graph.py,memory_graph,controlled,sourc
 SRC-MEMORY-PREFLIGHT-SCAFFOLD,Sys4AI/sys_for_ai/memory/preflight.py,memory_preflight_scaffold,controlled,source_first_memory,2026-07-06,Phase 3 scaffold for Phase 4 memory preflight behavior.
 SRC-MEMORY-RECEIPTS-SCAFFOLD,Sys4AI/sys_for_ai/memory/receipts.py,memory_receipts_scaffold,controlled,source_first_memory,2026-07-06,Phase 3 scaffold for Phase 4 memory receipt behavior.
 SRC-MEMORY-PREFLIGHT-EXAMPLE,Sys4AI/control_records/memory_preflights/memory_preflight_receipt.example.yaml,memory_preflight_receipt,controlled,source_first_memory,2026-07-06,Example memory preflight receipt with source and registry inspection evidence.
-SRC-CONTROL-LOOP-INIT,Sys4AI/sys_for_ai/control_loop/__init__.py,control_loop_module,controlled,control_loop,2026-07-06,Public API for generic continue control-loop kernel.
-SRC-CONTROL-LOOP-MODEL,Sys4AI/sys_for_ai/control_loop/model.py,control_loop_model,controlled,control_loop,2026-07-06,Dataclasses for program state AgentJob Director decision and selection evidence.
-SRC-CONTROL-LOOP-STATE,Sys4AI/sys_for_ai/control_loop/state.py,control_loop_state,controlled,control_loop,2026-07-06,Program state loading and JSON status helpers.
 SRC-PROGRAM-STATE,Sys4AI/control_records/program_state.yaml,program_state,controlled,control_loop,2026-07-08,Current tracked continuation program state after AJ25 sub-PRD promotion routing.
-SRC-CONTROL-LOOP-DIRECTOR,Sys4AI/sys_for_ai/control_loop/director.py,control_loop_director,controlled,control_loop,2026-07-06,Director decision loading helpers.
-SRC-CONTROL-LOOP-JOB-SELECTION,Sys4AI/sys_for_ai/control_loop/job_selection.py,control_loop_selection,controlled,control_loop,2026-07-06,One-AgentJob selection implementation.
-SRC-CONTROL-LOOP-EXECUTION-PACKET,Sys4AI/sys_for_ai/control_loop/execution_packet.py,control_loop_packet,controlled,control_loop,2026-07-06,Continue status preflight selection and execution packet generation.
-SRC-CONTROL-LOOP-HANDOFF,Sys4AI/sys_for_ai/control_loop/handoff.py,control_loop_handoff,controlled,control_loop,2026-07-06,Handoff lookup helper for continue selection.
-SRC-CONTROL-LOOP-VALIDATORS,Sys4AI/sys_for_ai/control_loop/validators.py,control_loop_validator,controlled,control_loop,2026-07-06,One-active-AgentJob and control-loop validation helpers.
 SRC-DDR-SELFHOST-001,Sys4AI/control_records/director_decisions/DDR-P1-SELFHOST-001.yaml,director_decision,controlled,control_loop,2026-07-06,Director decision selecting the Phase 5 continue packet kernel AgentJob.
 SRC-AJ-SELFHOST-CONTINUE-KERNEL-001,Sys4AI/control_records/agentjobs/AJ-P1-SELFHOST-CONTINUE-KERNEL-001.yaml,agentjob,controlled,control_loop,2026-07-06,Pending AgentJob for Phase 5 continue packet kernel.
-SRC-CONTROL-LOOP-FINALIZATION,Sys4AI/sys_for_ai/control_loop/finalization.py,control_loop_finalization,controlled,control_loop,2026-07-06,Deterministic continue finalization support for receipts handoffs snapshots and program state.
-SRC-CONTROL-LOOP-RECEIPTS,Sys4AI/sys_for_ai/control_loop/receipts.py,control_loop_receipts,controlled,control_loop,2026-07-06,Completion receipt loading and next handoff helpers.
 SRC-COMPLETION-SELFHOST-CONTINUE-KERNEL-001,Sys4AI/control_records/completions/completion_receipt.example.v0_2.yaml,completion_receipt,controlled,control_loop,2026-07-06,Operational completion receipt for continue kernel finalization.
 SRC-HANDOFF-SELFHOST-CONTINUE-KERNEL-001,Sys4AI/control_records/handoffs/handoff.example.v0_2.yaml,handoff,controlled,control_loop,2026-07-06,Operational handoff after continue kernel finalization.
 SRC-STATE-SNAPSHOT-SELFHOST-CONTINUE-KERNEL-001,Sys4AI/control_records/state_snapshots/state_snapshot.example.v0_2.yaml,state_snapshot,controlled,control_loop,2026-07-06,Bounded state snapshot after continue kernel finalization.
-SRC-CONTROL-LOOP-BOUNDARIES,Sys4AI/sys_for_ai/control_loop/boundaries.py,control_loop_boundary_validator,controlled,control_loop,2026-07-06,AgentJob boundary and Git diff validation implementation.
 SRC-AJ-BOUNDARY-VALIDATORS-001,Sys4AI/control_records/agentjobs/AJ-P1-BOUNDARY-VALIDATORS-001.yaml,agentjob,controlled,control_loop,2026-07-06,Pending AgentJob for Phase 7 boundary and diff validators.
-SRC-TEST-AGENTJOB-BOUNDARIES,Sys4AI/tests/test_agentjob_boundaries.py,test,controlled,control_loop,2026-07-06,Unit tests for AgentJob boundary and Git diff validators.
 SRC-DERIVATIVES-PACKAGE-INIT,Sys4AI/sys_for_ai/derivatives/__init__.py,derivative_generator_package,controlled,control_loop,2026-07-06,Public API for deterministic generated derivative builders.
 SRC-DERIVATIVES-TEMPLATES,Sys4AI/sys_for_ai/derivatives/templates.py,derivative_generator_template,controlled,control_loop,2026-07-06,Shared noncanonical generated page templates and check-write helpers.
 SRC-DERIVATIVES-CONFIG-CONTROL,Sys4AI/sys_for_ai/derivatives/config_control_wiki.py,derivative_generator,controlled,control_loop,2026-07-06,Configuration and Control Wiki deterministic generator.
@@ -114,12 +101,9 @@ SRC-DERIVATIVES-VALIDATION-CONTRACTS,Sys4AI/sys_for_ai/derivatives/validation_co
 SRC-AJ-DERIVATIVE-GENERATORS-001,Sys4AI/control_records/agentjobs/AJ-P1-DERIVATIVE-GENERATORS-001.yaml,agentjob,controlled,control_loop,2026-07-06,Pending AgentJob for Phase 8 generated derivative generators.
 SRC-TEST-GENERATED-DERIVATIVES,Sys4AI/tests/test_generated_derivatives.py,test,controlled,control_loop,2026-07-06,Unit tests for deterministic generated derivative check and write behavior.
 SRC-TEST-WALKING-SKELETON,Sys4AI/tests/test_walking_skeleton.py,test,controlled,framework_product,2026-07-08,Unit tests for the Phase 2 walking skeleton flow validator.
-SRC-SKILL-CONTINUE-RUNTIME,.agents/skills/continue/SKILL.md,runtime_skill,controlled,skill_governance,2026-07-06,Active runtime continue skill for Sys4AI-dev.
 SRC-SKILL-CONVERSATION-TO-PRD,.agents/skills/conversation-to-prd/SKILL.md,runtime_skill,controlled,skill_governance,2026-07-08,Active runtime conversation-to-prd skill used for WS18 PRD synthesis.
 SRC-SKILL-SOURCE-FIRST-MEMORY-RUNTIME,.agents/skills/source-first-memory/SKILL.md,runtime_skill,controlled,skill_governance,2026-07-06,Active runtime source-first memory skill for Sys4AI-dev.
-SRC-SKILL-CONTINUE-SHIM,.codex/skills/continue/SKILL.md,compatibility_shim,controlled,skill_governance,2026-07-06,Compatibility shim pointing to the .agents continue skill.
 SRC-SKILL-SOURCE-FIRST-MEMORY-SHIM,.codex/skills/source-first-memory/SKILL.md,compatibility_shim,controlled,skill_governance,2026-07-06,Compatibility shim pointing to the .agents source-first-memory skill.
-SRC-SKILL-CONTINUE-PRODUCT,Sys4AI/skills/core/continue/SKILL.md,skill_adapter,controlled,skill_governance,2026-07-06,Generic product scaffold continue skill template.
 SRC-SKILL-SOURCE-FIRST-MEMORY-PRODUCT,Sys4AI/skills/core/source-first-memory/SKILL.md,skill_adapter,controlled,skill_governance,2026-07-06,Generic product scaffold source-first-memory skill template.
 SRC-AJ-CONTINUE-SKILLS-001,Sys4AI/control_records/agentjobs/AJ-P1-CONTINUE-SKILLS-001.yaml,agentjob,controlled,skill_governance,2026-07-06,Pending AgentJob for Phase 9 continue and source-first memory skill surfaces.
 SRC-TEST-SKILL-SURFACES,Sys4AI/tests/test_skill_surfaces.py,test,controlled,skill_governance,2026-07-06,Unit tests for runtime shim and product scaffold skill surfaces.
@@ -131,12 +115,9 @@ SRC-COMPLETION-SELFHOST-ACCEPTANCE-001,Sys4AI/control_records/completions/RECEIP
 SRC-HANDOFF-SELFHOST-ACCEPTANCE-001,Sys4AI/control_records/handoffs/HANDOFF-P1-SELFHOST-ACCEPTANCE-001.yaml,handoff,controlled,control_loop,2026-07-06,Terminal acceptance handoff for self-hosting memory and continue implementation.
 SRC-SELFHOST-ACCEPTANCE-REPORT,implementation_plans/self_hosting_memory_continue_acceptance_report.md,acceptance_report,controlled,control_loop,2026-07-06,Acceptance report for the self-hosting memory and continue implementation plan.
 SRC-TEST-SELFHOST-ACCEPTANCE,Sys4AI/tests/test_self_hosting_acceptance.py,test,controlled,control_loop,2026-07-08,Unit tests for acceptance receipt handoff trace and advancing program state.
-SRC-TEST-CONTINUE-PACKET,Sys4AI/tests/test_continue_packet.py,test,controlled,control_loop,2026-07-08,Unit tests for current continue-packet routing and blocked selection cases.
-SRC-TEST-PROGRAM-STATE,Sys4AI/tests/test_program_state.py,test,controlled,control_loop,2026-07-08,Unit tests for current program state loading and continue-status reporting.
 SRC-ALL-RECS-IMPLEMENTATION-PLAN,implementation_plans/Sys4AI-dev_all_recommendations_implementation_plan.md,implementation_plan,controlled,implementation_initialization,2026-07-07,Controlled all-recommendations implementation plan for discovery gate self-hosting governance role validation runtime skill reconciliation and core skill expansion.
 SRC-DEV-SKILL-REGISTRY,.agents/skill_registry/SKILL_REGISTRY.yaml,runtime_skill_registry,controlled,skill_governance,2026-07-07,Active Sys4AI-dev runtime skill registry.
 SRC-DEV-FULL-RUNTIME-BUNDLE,.agents/skill_registry/SKILL_BUNDLES/full-development-runtime.yaml,runtime_skill_bundle,controlled,skill_governance,2026-07-07,Full development runtime bundle including active continuation and source-first memory skills.
-SRC-SKILL-CONTINUE-RUNTIME-MANIFEST,.agents/skills/continue/skill.yaml,runtime_skill_manifest,controlled,skill_governance,2026-07-07,Active runtime continue skill manifest.
 SRC-SKILL-SOURCE-FIRST-MEMORY-RUNTIME-MANIFEST,.agents/skills/source-first-memory/skill.yaml,runtime_skill_manifest,controlled,skill_governance,2026-07-07,Active runtime source-first-memory skill manifest.
 SRC-AJ-RUNTIME-SKILL-RECONCILIATION-001,Sys4AI/control_records/agentjobs/AJ-SFADEV-05-RUNTIME-SKILL-RECONCILIATION-001.yaml,agentjob,controlled,skill_governance,2026-07-07,Completed AgentJob for all-recommendations runtime skill reconciliation.
 SRC-MEMORY-PREFLIGHT-RUNTIME-SKILL-RECONCILIATION-001,Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-05-RUNTIME-SKILL-RECONCILIATION-001.yaml,memory_preflight_receipt,controlled,source_first_memory,2026-07-07,Memory preflight receipt for all-recommendations runtime skill reconciliation.
@@ -152,7 +133,7 @@ SRC-REG-SYSTEM-LAYERS,Sys4AI/registries/system_layer_registry.csv,system_layer_r
 SRC-REG-DISCOVERY-RECORDS,Sys4AI/registries/discovery_record_registry.csv,discovery_record_registry,controlled,implementation_initialization,2026-07-07,Registry for Requirements Discovery Record instances.
 SRC-REG-ROLES,Sys4AI/registries/role_registry.csv,role_registry,controlled,implementation_initialization,2026-07-07,Controlled role registry for Sys4AI roles.
 SRC-REG-ROLE-SKILL-CROSSWALK,Sys4AI/registries/role_skill_crosswalk.csv,role_skill_crosswalk,controlled,implementation_initialization,2026-07-07,Registry mapping controlled roles to required optional forbidden conditional and recommended skills.
-SRC-REG-ROLE-EXECUTION-BINDINGS,Sys4AI/registries/role_execution_binding_registry.csv,role_execution_binding_registry,controlled,implementation_initialization,2026-07-07,Registry defining role execution constraints for bounded AgentJobs.
+SRC-REG-ROLE-EXECUTION-BINDINGS,Sys4AI/registries/role_execution_binding_registry.csv,role_execution_binding_registry,controlled,implementation_initialization,2026-07-07,Registry defining role execution constraints for legacy control-record evidence.
 SRC-REG-ARTIFACT-CONTRACTS,Sys4AI/registries/artifact_contract_registry.csv,artifact_contract_registry,controlled,implementation_initialization,2026-07-07,Registry defining artifact producers consumers sections authority and validation contracts.
 SRC-REG-CORE-SKILL-PROPOSALS,Sys4AI/registries/core_skill_proposal_registry.csv,core_skill_proposal_registry,controlled,implementation_initialization,2026-07-07,Registry of proposed core organizational skills.
 SRC-REG-SKILL-LIFECYCLE,Sys4AI/registries/skill_lifecycle_status_registry.csv,skill_lifecycle_status_registry,controlled,implementation_initialization,2026-07-07,Registry of controlled skill lifecycle statuses.
@@ -224,7 +205,6 @@ SRC-SKILL-ASSURANCE-CASE-BUILDER,.agents/skills/assurance-case-builder/SKILL.md,
 SRC-SKILL-THREAT-MODEL-PERMISSION-SCOPE,.agents/skills/threat-model-and-permission-scope/SKILL.md,runtime_skill,controlled,skill_governance,2026-07-07,Active runtime threat-model-and-permission-scope skill instructions.
 SRC-SKILL-EVALUATION-HARNESS-DESIGNER,.agents/skills/evaluation-harness-designer/SKILL.md,runtime_skill,controlled,skill_governance,2026-07-07,Active runtime evaluation-harness-designer skill instructions.
 SRC-SKILL-BASELINE-CHANGE-MANAGER,.agents/skills/baseline-change-manager/SKILL.md,runtime_skill,controlled,skill_governance,2026-07-07,Active runtime baseline-change-manager skill instructions.
-SRC-SKILL-AGENTJOB-TASK-PACKET-AUTHOR,.agents/skills/agentjob-task-packet-author/SKILL.md,runtime_skill,controlled,skill_governance,2026-07-07,Active runtime agentjob-task-packet-author skill instructions.
 SRC-SKILL-OPERATIONS-MAINTENANCE-PLANNER,.agents/skills/operations-and-maintenance-planner/SKILL.md,runtime_skill,controlled,skill_governance,2026-07-07,Active runtime operations-and-maintenance-planner skill instructions.
 SRC-SKILL-PROJECT-ONTOLOGY-GLOSSARY,.agents/skills/project-ontology-and-glossary/SKILL.md,runtime_skill,controlled,skill_governance,2026-07-07,Active runtime project-ontology-and-glossary skill instructions.
 SRC-SKILL-DOMAIN-PACK-ROUTER,.agents/skills/domain-pack-router/SKILL.md,runtime_skill,controlled,skill_governance,2026-07-07,Active runtime domain-pack-router skill instructions.

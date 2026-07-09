@@ -57,7 +57,7 @@ authority:
   may_read:
     - Requirements, risks, validation outputs, policies, and completion evidence.
   may_write:
-    - Assurance case artifacts only when the active AgentJob authorizes those paths.
+    - Assurance case artifacts only when explicit project authority permits those paths.
   may_not:
     - Strengthen a claim beyond the cited evidence.
 validation:

@@ -196,7 +196,7 @@ Registered YAML control records are listed below. Their source files and registr
 | contract_id | path | target_format | target_artifact_type | validator_command |
 | --- | --- | --- | --- | --- |
 | contract_agentjob | schemas/contracts/agentjob.schema.json | yaml | agentjob | Sys4AI validate-jsonschema-contracts |
-| contract_agentjob_v0_2 | schemas/contracts/agentjob_v0_2.schema.json | yaml | agentjob_v0_2 | Sys4AI validate-agentjob |
+| contract_agentjob_v0_2 | schemas/contracts/agentjob_v0_2.schema.json | yaml | agentjob_v0_2 | archived-no-active-cli |
 | contract_completion_receipt | schemas/contracts/completion_receipt.schema.json | yaml | completion_receipt | Sys4AI validate-jsonschema-contracts |
 | contract_completion_receipt_v0_2 | schemas/contracts/completion_receipt_v0_2.schema.json | yaml | completion_receipt_v0_2 | Sys4AI validate-completion-receipts |
 | contract_director_decision | schemas/contracts/director_decision.schema.json | yaml | director_decision | Sys4AI validate-director-decisions |

@@ -15,7 +15,7 @@ Establish or reconstruct system intent, boundary, stakeholders, scenarios, candi
 
 ## Local authority
 
-This adapter is governed by `Sys4AI` AgentJobs, canonical PRDs, source registries, decision records, and validation commands.
+This adapter is governed by explicit project authority, canonical PRDs, source registries, decision records, and validation commands.
 
 Discovery records produced through this adapter are draft discovery evidence unless promoted by project authority. Candidate requirements remain candidates until baselined by an authorized source-authority workflow.
 

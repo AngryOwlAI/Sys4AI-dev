@@ -59,7 +59,7 @@ This generated page indexes registered CSV registries. It is a navigation surfac
 | registries/completion_receipt_registry.csv | SRC-REG-COMPLETION-RECEIPTS | completion_receipt_registry | controlled | 29 | control_loop |
 | registries/config_source_registry.csv | SRC-REG-CONFIG-SOURCES | config_source_registry | controlled | 4 | implementation_initialization |
 | registries/control_record_registry.csv | SRC-REG-CONTROL-RECORDS | control_record_registry | controlled | 153 | implementation_initialization |
-| registries/core_skill_proposal_registry.csv | SRC-REG-CORE-SKILL-PROPOSALS | core_skill_proposal_registry | controlled | 19 | implementation_initialization |
+| registries/core_skill_proposal_registry.csv | SRC-REG-CORE-SKILL-PROPOSALS | core_skill_proposal_registry | controlled | 18 | implementation_initialization |
 | registries/derivative_registry.csv | SRC-REG-DERIVATIVES | derivative_registry | controlled | 43 | implementation_initialization |
 | registries/director_decision_registry.csv | SRC-REG-DIRECTOR-DECISIONS | director_decision_registry | controlled | 22 | control_loop |
 | registries/discovery_record_registry.csv | SRC-REG-DISCOVERY-RECORDS | discovery_record_registry | controlled | 2 | implementation_initialization |
@@ -71,10 +71,10 @@ This generated page indexes registered CSV registries. It is a navigation surfac
 | registries/requirement_trace_registry.csv | SRC-REG-REQ-TRACE | requirement_trace_registry | controlled | 192 | implementation_initialization |
 | registries/role_execution_binding_registry.csv | SRC-REG-ROLE-EXECUTION-BINDINGS | role_execution_binding_registry | controlled | 15 | implementation_initialization |
 | registries/role_registry.csv | SRC-REG-ROLES | role_registry | controlled | 30 | implementation_initialization |
-| registries/role_skill_crosswalk.csv | SRC-REG-ROLE-SKILL-CROSSWALK | role_skill_crosswalk | controlled | 46 | implementation_initialization |
+| registries/role_skill_crosswalk.csv | SRC-REG-ROLE-SKILL-CROSSWALK | role_skill_crosswalk | controlled | 43 | implementation_initialization |
 | registries/skill_lifecycle_status_registry.csv | SRC-REG-SKILL-LIFECYCLE | skill_lifecycle_status_registry | controlled | 8 | implementation_initialization |
-| registries/skill_registry.csv | SRC-PRODUCT-SKILL-REGISTRY | skill_registry | controlled | 34 | skill_governance |
-| registries/source_registry.csv | SRC-REG-SOURCES | source_registry | controlled | 387 | implementation_initialization |
+| registries/skill_registry.csv | SRC-PRODUCT-SKILL-REGISTRY | skill_registry | controlled | 32 | skill_governance |
+| registries/source_registry.csv | SRC-REG-SOURCES | source_registry | controlled | 367 | implementation_initialization |
 | registries/system_layer_registry.csv | SRC-REG-SYSTEM-LAYERS | system_layer_registry | controlled | 5 | implementation_initialization |
 | registries/validation_contract_registry.csv | SRC-REG-VALIDATION-CONTRACTS | validation_contract_registry | controlled | 33 | implementation_initialization |
 

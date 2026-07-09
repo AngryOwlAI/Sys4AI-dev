@@ -25,7 +25,7 @@ activation:
   triggers:
     - Create or update role registry rows.
     - Review role-to-skill crosswalks.
-    - Validate role execution bindings for an AgentJob.
+    - Validate role execution bindings for explicit project authority.
   when_not_to_use:
     - Do not use to invent project-specific domain roles without a domain pack or Director decision.
   preconditions:
@@ -35,7 +35,7 @@ inputs:
     - Role registry or role change request.
     - Source authority for the role purpose.
   optional:
-    - Current AgentJob.
+    - Current project authorization.
     - Existing role-to-skill crosswalk rows.
 outputs:
   primary:
@@ -56,9 +56,9 @@ dependencies:
     - make
 authority:
   may_read:
-    - Role registries, role crosswalks, execution bindings, AgentJobs, handoffs, and source evidence.
+    - Role registries, role crosswalks, execution bindings, legacy control records, handoffs, and source evidence.
   may_write:
-    - Role registries and execution bindings only when the active AgentJob authorizes those paths.
+    - Role registries and execution bindings only when explicit project authority permits those paths.
   may_not:
     - Add project-specific domain constraints as core role policy.
     - Treat generated role docs as canonical role authority.

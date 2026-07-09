@@ -89,7 +89,7 @@ def _write_generated_fixture(root: Path) -> None:
         "contract_id,path,dialect,target_format,target_artifact_type,target_glob,authority_status,"
         "owner,validator_command,supersedes,source_hash,last_validated_at,notes\n"
         "contract_agentjob,schemas/contracts/agentjob.schema.json,2020-12,yaml,agentjob,"
-        "control_records/**/*.yaml,controlled,test,validate-agentjob,,pending,pending,fixture\n"
+        "control_records/**/*.yaml,controlled,test,validate-control-records,,pending,pending,fixture\n"
         "contract_toml,schemas/contracts/toml.schema.json,2020-12,toml,config,"
         "configs/**/*.toml,controlled,test,validate-toml,,pending,pending,fixture\n",
         encoding="utf-8",

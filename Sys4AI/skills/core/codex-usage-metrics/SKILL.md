@@ -16,13 +16,13 @@ This local adapter supports context-aware skills such as `system-definition-inte
 
 ## When to use
 
-Use this skill when a `Sys4AI` AgentJob requires the `runtime_session_accounting` capability and the governing PRD or implementation plan authorizes skill use.
+Use this skill when a `Sys4AI` project authority requires the `runtime_session_accounting` capability and the governing PRD or implementation plan authorizes skill use.
 
 Use it when a long-session adapter needs to know whether current Codex context state is safe to continue or should fail closed into a resumable handoff.
 
 ## Inputs
 
-- Current AgentJob or authorized adapter procedure.
+- Current project authorization or authorized adapter procedure.
 - Optional Codex rollout JSONL file via `--session-file`.
 - Optional session id via `--session-id`.
 - Optional Codex home directory via `--codex-home`.
@@ -38,7 +38,7 @@ Use it when a long-session adapter needs to know whether current Codex context s
 
 ## Procedure
 
-1. Confirm the AgentJob authorizes this skill.
+1. Confirm the project authority authorizes this skill.
 2. Use the local script path:
 
    ```bash
@@ -46,7 +46,7 @@ Use it when a long-session adapter needs to know whether current Codex context s
      --output skills/core/system-definition-interview-context-45/usage-metrics.txt
    ```
 
-3. Prefer `--session-file` or `--session-id` when an AgentJob names a specific Codex session.
+3. Prefer `--session-file` or `--session-id` when a project authority names a specific Codex session.
 4. Use the latest local session only when no more specific session selector is authorized.
 5. Read only the metrics receipt needed by the calling adapter.
 6. If the script fails, returns no context section, or cannot identify context left, the calling context-45 adapter must fail closed by writing `temp_prd.md` and stopping.
@@ -84,7 +84,7 @@ make validate-metrics
 
 ## Known failure modes
 
-- Using the skill without an authorized AgentJob.
+- Using the skill without explicit project authority.
 - Treating Codex app session metrics as OpenAI API billing or ChatGPT usage data.
 - Continuing a context-45 workflow when metrics cannot be collected.
 - Archiving or overwriting a context-45 `temp_prd.md` without explicit user confirmation.
@@ -99,4 +99,4 @@ Adapted from `AngryOwlAI/ai-skills-for-sys/skills/codex-usage-metrics` as a loca
 
 1. Review the upstream template and script for drift.
 2. Add more structured receipt validation if the context-45 adapters require it.
-3. Mark as `adapted` only after a skill-import AgentJob and validation receipt.
+3. Mark as `adapted` only after a skill-import review and validation receipt.

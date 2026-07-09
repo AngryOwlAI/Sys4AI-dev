@@ -10,7 +10,7 @@
 - Primary mission: Compatibility engineering role used by current skill manifests
 - Primary outputs: `requirements;implementation_plan`
 - Allowed artifact classes: `requirements;implementation_plans`
-- May create AgentJobs: `false`
+- Legacy AgentJob creation enabled: `false`
 - Requires Director decision: `false`
 
 ## Registry Skills
@@ -25,7 +25,7 @@ No role-skill crosswalk bindings are registered for this role.
 
 ## Execution Bindings
 
-| Binding ID | Allowed AgentJob Types | Required Validators | Expiry Policy |
+| Binding ID | Binding Scope | Required Validators | Expiry Policy |
 |---|---|---|---|
 | bind_system_engineer | prd_integration;requirements_trace | validate-requirement-trace | registered role no expiry |
 

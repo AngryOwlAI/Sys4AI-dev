@@ -10,7 +10,7 @@
 - Primary mission: Run discovery gate and capture user intent
 - Primary outputs: `RDR;USRD`
 - Allowed artifact classes: `requirements;discovery`
-- May create AgentJobs: `false`
+- Legacy AgentJob creation enabled: `false`
 - Requires Director decision: `false`
 
 ## Registry Skills
@@ -32,7 +32,7 @@
 
 ## Execution Bindings
 
-| Binding ID | Allowed AgentJob Types | Required Validators | Expiry Policy |
+| Binding ID | Binding Scope | Required Validators | Expiry Policy |
 |---|---|---|---|
 | bind_user_wants_elicitor | discovery_gate | validate-discovery-records | registered role no expiry |
 

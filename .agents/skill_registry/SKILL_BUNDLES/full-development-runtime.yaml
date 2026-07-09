@@ -4,7 +4,6 @@ status: active
 description: All retained skills installed as active project-fit Sys4AI-dev runtime skills.
 includes:
   skills:
-    - continue
     - source-first-memory
     - codex-usage-metrics
     - conversation-to-prd

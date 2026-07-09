@@ -58,7 +58,7 @@ authority:
   may_read:
     - Requirements, PRDs, implementation plans, registries, control records, validation outputs, and handoffs.
   may_write:
-    - Trace registries only when the active AgentJob authorizes those paths.
+    - Trace registries only when explicit project authority permits those paths.
   may_not:
     - Present missing or indirect evidence as proven completion.
 validation:

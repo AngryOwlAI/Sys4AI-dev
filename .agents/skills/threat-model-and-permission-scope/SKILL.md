@@ -5,7 +5,7 @@ description: Identify permissions, autonomy, tool, data risks, and controls.
 
 # Threat Model And Permission Scope
 
-Use this skill when a system, AgentJob, integration, memory surface, or tool gains new permissions, autonomy, or data exposure.
+Use this skill when a system, project authorization, integration, memory surface, or tool gains new permissions, autonomy, or data exposure.
 
 ## Procedure
 

@@ -44,7 +44,7 @@ existing checkpoint. Confirmed archives use
 
 ## Local authority
 
-This adapter is governed by `Sys4AI` AgentJobs, canonical PRDs, source registries, decision records, and validation commands.
+This adapter is governed by explicit project authority, canonical PRDs, source registries, decision records, and validation commands.
 
 The `temp_prd.md` file is resumable context, not canonical authority. Candidate requirements remain candidates until promoted through an authorized source-authority workflow.
 

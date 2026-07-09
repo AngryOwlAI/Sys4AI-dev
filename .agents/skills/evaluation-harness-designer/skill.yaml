@@ -56,7 +56,7 @@ authority:
   may_read:
     - Requirements, tests, incidents, validation results, and maintenance plans.
   may_write:
-    - Evaluation designs only when the active AgentJob authorizes those paths.
+    - Evaluation designs only when explicit project authority permits those paths.
   may_not:
     - Treat subjective impressions as measured evaluation results.
 validation:

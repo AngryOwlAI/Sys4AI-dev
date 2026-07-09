@@ -5,7 +5,7 @@ description: Maintain traceability from intent and requirements through implemen
 
 # Traceability Matrix Engine
 
-Use this skill when an AgentJob needs to add, repair, or audit trace rows linking user intent, requirements, implementation artifacts, validation evidence, and handoffs.
+Use this skill when an explicit project authority requires adding, repairing, or auditing trace rows linking user intent, requirements, implementation artifacts, validation evidence, and handoffs.
 
 ## Procedure
 

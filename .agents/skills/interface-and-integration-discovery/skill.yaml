@@ -56,7 +56,7 @@ authority:
   may_read:
     - Requirements, architecture, interface specs, data contracts, and diagrams.
   may_write:
-    - Interface discovery records only when the active AgentJob authorizes those paths.
+    - Interface discovery records only when explicit project authority permits those paths.
   may_not:
     - Treat assumed external behavior as a verified interface contract.
 validation:

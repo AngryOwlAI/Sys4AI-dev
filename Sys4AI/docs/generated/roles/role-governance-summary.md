@@ -35,14 +35,14 @@ This generated page summarizes role governance registries and execution binding 
 
 ## Role Rows
 
-| role_id | role_class | required_skills | optional_skills | may_create_agentjobs | requires_director_decision |
+| role_id | role_class | required_skills | optional_skills | legacy_agentjob_creation_enabled | requires_director_decision |
 | --- | --- | --- | --- | --- | --- |
-| system_director | framework_governance | director-decision-governor;system-layer-classifier | source-first-memory | true | true |
+| system_director | framework_governance | director-decision-governor;system-layer-classifier | source-first-memory | false | true |
 | user_wants_elicitor | system_design_core | system-definition-interview-context-45 | conversation-to-prd;decision-grilling-context-45 | false | false |
 | existing_system_analyst | system_design_support | domain-grilling-with-docs | source-first-memory | false | false |
 | requirements_manager | system_design_core | conversation-to-prd;technical-writing-quality-gate | decision-grilling;traceability-matrix-engine | false | false |
 | system_architect | system_design_core | decision-grilling;mermaid-diagrams;plantuml-diagrams | artifact-contract-governance;interface-and-integration-discovery | false | false |
-| technical_requirements_engineer | system_design_core | prd-to-implementation-plan;verification-validation-planner | agentjob-task-packet-author | false | false |
+| technical_requirements_engineer | system_design_core | prd-to-implementation-plan;verification-validation-planner | pending | false | false |
 | reconciliation_analyst | system_design_core | decision-grilling | traceability-matrix-engine | false | false |
 | reconciled_architecture_architect | system_design_core | mermaid-diagrams;decision-grilling | artifact-contract-governance | false | false |
 | final_system_requirements_packager | system_design_core | prd-to-implementation-plan;technical-writing-quality-gate | traceability-matrix-engine | false | false |
@@ -51,22 +51,22 @@ This generated page summarizes role governance registries and execution binding 
 | security_safety_privacy_compliance_reviewer | verification | threat-model-and-permission-scope;assurance-case-builder | verification-validation-planner | false | false |
 | documentation_librarian | framework_governance | source-authority-auditor;skill-import-generalizer | technical-writing-quality-gate | false | false |
 | runtime_maintenance_planner | maintenance | operations-and-maintenance-planner | evaluation-harness-designer | false | false |
-| control_loop_agentjob_planner | runtime_control | continue;agentjob-task-packet-author;context-window-and-handoff-manager | director-decision-governor | true | true |
+| control_loop_agentjob_planner | runtime_control | context-window-and-handoff-manager | director-decision-governor | false | true |
 | context_memory_knowledge_architect | system_design_support | source-first-memory;source-authority-auditor | artifact-contract-governance | false | false |
 | svc_documentation_surface_architect | system_design_support | source-authority-auditor;baseline-change-manager | technical-writing-quality-gate | false | false |
-| implementation_initialization_agent | implementation | prd-to-implementation-plan | source-first-memory | true | true |
+| implementation_initialization_agent | implementation | prd-to-implementation-plan | source-first-memory | false | true |
 | verification_engineer | verification | verification-validation-planner;technical-writing-quality-gate | evaluation-harness-designer | false | false |
-| software_engineer | implementation | prd-to-implementation-plan | source-first-memory | true | true |
+| software_engineer | implementation | prd-to-implementation-plan | source-first-memory | false | true |
 | system_engineer | system_design_core | prd-to-implementation-plan;technical-writing-quality-gate | decision-grilling | false | false |
 | system_analyst | system_design_core | decision-grilling;source-first-memory | conversation-to-prd | false | false |
-| control_loop_engineer | temporary_agentjob_role | continue;source-first-memory | codex-usage-metrics | true | true |
-| validator_engineer | temporary_agentjob_role | technical-writing-quality-gate;verification-validation-planner | source-first-memory | true | true |
-| derivative_generator_engineer | temporary_agentjob_role | source-authority-auditor;technical-writing-quality-gate | pending | true | true |
-| skill_surface_engineer | temporary_agentjob_role | skill-import-generalizer;technical-writing-quality-gate | source-first-memory | true | true |
-| acceptance_engineer | temporary_agentjob_role | verification-validation-planner;technical-writing-quality-gate | source-first-memory | true | true |
-| skill_dependency_adaptation_agent | temporary_agentjob_role | skill-import-generalizer;codex-usage-metrics | technical-writing-quality-gate | true | true |
-| skill_integration_agent | temporary_agentjob_role | skill-import-generalizer;source-first-memory | technical-writing-quality-gate | true | true |
-| system_definition_template_agent | temporary_agentjob_role | system-definition-interview;technical-writing-quality-gate | conversation-to-prd | false | true |
+| control_loop_engineer | temporary_legacy_role | source-first-memory | codex-usage-metrics | false | true |
+| validator_engineer | temporary_legacy_role | technical-writing-quality-gate;verification-validation-planner | source-first-memory | false | true |
+| derivative_generator_engineer | temporary_legacy_role | source-authority-auditor;technical-writing-quality-gate | pending | false | true |
+| skill_surface_engineer | temporary_legacy_role | skill-import-generalizer;technical-writing-quality-gate | source-first-memory | false | true |
+| acceptance_engineer | temporary_legacy_role | verification-validation-planner;technical-writing-quality-gate | source-first-memory | false | true |
+| skill_dependency_adaptation_agent | temporary_legacy_role | skill-import-generalizer;codex-usage-metrics | technical-writing-quality-gate | false | true |
+| skill_integration_agent | temporary_legacy_role | skill-import-generalizer;source-first-memory | technical-writing-quality-gate | false | true |
+| system_definition_template_agent | temporary_legacy_role | system-definition-interview;technical-writing-quality-gate | conversation-to-prd | false | true |
 
 ## Crosswalk Coverage Counts
 
@@ -77,7 +77,7 @@ This generated page summarizes role governance registries and execution binding 
 | existing_system_analyst | 2 | 0 | 0 | 0 | 0 |
 | requirements_manager | 2 | 2 | 0 | 0 | 0 |
 | system_architect | 3 | 2 | 0 | 0 | 0 |
-| technical_requirements_engineer | 2 | 1 | 0 | 0 | 0 |
+| technical_requirements_engineer | 2 | 0 | 0 | 0 | 0 |
 | reconciliation_analyst | 0 | 0 | 0 | 0 | 0 |
 | reconciled_architecture_architect | 0 | 0 | 0 | 0 | 0 |
 | final_system_requirements_packager | 0 | 0 | 0 | 0 | 0 |
@@ -86,7 +86,7 @@ This generated page summarizes role governance registries and execution binding 
 | security_safety_privacy_compliance_reviewer | 2 | 0 | 0 | 0 | 0 |
 | documentation_librarian | 3 | 0 | 0 | 0 | 0 |
 | runtime_maintenance_planner | 1 | 1 | 0 | 0 | 0 |
-| control_loop_agentjob_planner | 4 | 0 | 0 | 0 | 0 |
+| control_loop_agentjob_planner | 2 | 0 | 0 | 0 | 0 |
 | context_memory_knowledge_architect | 2 | 0 | 0 | 0 | 0 |
 | svc_documentation_surface_architect | 1 | 0 | 0 | 0 | 0 |
 | implementation_initialization_agent | 0 | 0 | 0 | 0 | 0 |
@@ -105,9 +105,9 @@ This generated page summarizes role governance registries and execution binding 
 
 ## Execution Binding Rows
 
-| role_id | binding_id | allowed_agentjob_types | required_validators | completion_evidence |
+| role_id | binding_id | binding_scope | required_validators | completion_evidence |
 | --- | --- | --- | --- | --- |
-| system_director | bind_system_director | director_decision;agentjob_selection | validate-control-loop;validate-registry-graph | decision record;handoff |
+| system_director | bind_system_director | director_decision;legacy_control_review | validate-registry-graph | decision record;handoff |
 | user_wants_elicitor | bind_user_wants_elicitor | discovery_gate | validate-discovery-records | RDR path;validation status |
 | existing_system_analyst | pending | pending | pending | pending |
 | requirements_manager | pending | pending | pending | pending |
@@ -121,19 +121,19 @@ This generated page summarizes role governance registries and execution binding 
 | security_safety_privacy_compliance_reviewer | pending | pending | pending | pending |
 | documentation_librarian | bind_documentation_librarian | configuration_control;runtime_skill_reconciliation | validate-generated-derivatives;validate-registry-graph | registry rows;generated derivative check |
 | runtime_maintenance_planner | pending | pending | pending | pending |
-| control_loop_agentjob_planner | bind_control_loop_agentjob_planner | agentjob_planning;handoff_planning | validate-control-loop;validate-agentjobs | AgentJob packet;handoff |
+| control_loop_agentjob_planner | bind_control_loop_agentjob_planner | legacy_control_review;handoff_planning | validate-handoffs;validate-registry-graph | authorization rationale;handoff |
 | context_memory_knowledge_architect | pending | pending | pending | pending |
 | svc_documentation_surface_architect | pending | pending | pending | pending |
 | implementation_initialization_agent | bind_implementation_initialization_agent | implementation_initialization | make validate | completion receipt;handoff |
 | verification_engineer | pending | pending | pending | pending |
-| software_engineer | bind_software_engineer | implementation | make validate;validate-check-diff | code change;test evidence |
+| software_engineer | bind_software_engineer | implementation | make validate | code change;test evidence |
 | system_engineer | bind_system_engineer | prd_integration;requirements_trace | validate-requirement-trace | trace rows;completion receipt |
 | system_analyst | pending | pending | pending | pending |
-| control_loop_engineer | bind_control_loop_engineer | legacy_selfhost_control_loop | validate-control-loop;validate-check-diff | completion receipt;handoff |
-| validator_engineer | bind_validator_engineer | legacy_validation | make validate;validate-check-diff | validation evidence;handoff |
+| control_loop_engineer | bind_control_loop_engineer | legacy_selfhost_control_loop | make validate | completion receipt;handoff |
+| validator_engineer | bind_validator_engineer | legacy_validation | make validate | validation evidence;handoff |
 | derivative_generator_engineer | bind_derivative_generator_engineer | legacy_derivative_generation | validate-generated-derivatives;validate-registry-graph | generated docs;registry rows |
 | skill_surface_engineer | bind_skill_surface_engineer | legacy_skill_surface | validate-dev-skills;validate-skills | skill manifests;registry rows |
-| acceptance_engineer | bind_acceptance_engineer | legacy_acceptance | make validate;validate-check-diff | acceptance report;completion receipt |
+| acceptance_engineer | bind_acceptance_engineer | legacy_acceptance | make validate | acceptance report;completion receipt |
 | skill_dependency_adaptation_agent | bind_skill_dependency_adaptation_agent | legacy_skill_dependency_adaptation | validate-dev-skills;validate-skills | adapter files;manifest rows |
 | skill_integration_agent | bind_skill_integration_agent | legacy_skill_integration | validate-dev-skills;validate-skills | manifest rows;adapter files |
 | system_definition_template_agent | bind_system_definition_template_agent | legacy_system_definition_template | validate-discovery-template;validate-discovery-records | template path;validation status |

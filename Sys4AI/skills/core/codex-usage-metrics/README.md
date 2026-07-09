@@ -26,7 +26,7 @@ make validate-metrics
 
 ## Local authority
 
-Metrics receipts are point-in-time implementation evidence. They do not override AgentJobs, canonical PRDs, source registries, decision records, or validators.
+Metrics receipts are point-in-time implementation evidence. They do not override explicit project authority, canonical PRDs, source registries, decision records, or validators.
 
 When a context-45 adapter cannot collect metrics or cannot determine context left, it must fail closed by writing resumable context and stopping.
 

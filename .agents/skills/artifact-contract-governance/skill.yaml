@@ -58,7 +58,7 @@ authority:
   may_read:
     - Artifact contracts, validation contracts, registries, schemas, templates, and controlled artifact examples.
   may_write:
-    - Artifact contract registries or templates only when the active AgentJob authorizes those paths.
+    - Artifact contract registries or templates only when explicit project authority permits those paths.
   may_not:
     - Treat generated derivative artifacts as canonical source authority.
 validation:

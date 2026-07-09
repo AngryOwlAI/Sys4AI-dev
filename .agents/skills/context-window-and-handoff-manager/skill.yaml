@@ -19,7 +19,7 @@ required_role_posture:
   - system_analyst
   - system_engineer
   - software_engineer
-  - control_loop_agentjob_planner
+  - system_director
 activation:
   triggers:
     - Long-running task needs a resumable checkpoint.
@@ -28,10 +28,10 @@ activation:
   when_not_to_use:
     - Do not use to replace required completion validation.
   preconditions:
-    - Current AgentJob or stop condition is known.
+    - Current project authorization or stop condition is known.
 inputs:
   required:
-    - Current AgentJob or route.
+    - Current project authorization or route.
     - Changed artifact list or blocker.
   optional:
     - Validation command results.
@@ -55,9 +55,9 @@ dependencies:
     - make
 authority:
   may_read:
-    - Program state, AgentJobs, handoffs, receipts, memory preflight receipts, changed files, and validation output.
+    - Program state, legacy control records, handoffs, receipts, memory preflight receipts, changed files, and validation output.
   may_write:
-    - Handoff artifacts only when the active AgentJob authorizes those paths.
+    - Handoff artifacts only when explicit project authority permits those paths.
   may_not:
     - Present a checkpoint as a completion receipt without validation evidence.
 validation:

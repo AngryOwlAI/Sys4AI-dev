@@ -58,7 +58,7 @@ authority:
   may_read:
     - Requirements, PRDs, trace rows, tests, validators, and completion receipts.
   may_write:
-    - Verification plans or trace rows only when the active AgentJob authorizes those paths.
+    - Verification plans or trace rows only when explicit project authority permits those paths.
   may_not:
     - Treat a planned check as executed evidence.
 validation:

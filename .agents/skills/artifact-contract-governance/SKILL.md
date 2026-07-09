@@ -5,7 +5,7 @@ description: Govern artifact contracts, required sections, producers, consumers,
 
 # Artifact Contract Governance
 
-Use this skill when an AgentJob creates, changes, or audits contracts for controlled artifacts such as PRDs, handoffs, receipts, registries, schemas, or generated derivatives.
+Use this skill when an explicit project authority creates, changes, or audits contracts for controlled artifacts such as PRDs, handoffs, receipts, registries, schemas, or generated derivatives.
 
 ## Procedure
 

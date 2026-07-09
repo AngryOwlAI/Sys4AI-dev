@@ -35,13 +35,13 @@ activation:
     - Do not use generated derivatives, local vaults, semantic extracts, or caches as canonical authority.
   preconditions:
     - Memory output can be checked against a canonical source path or controlled registry row.
-    - Stale-context risk can be recorded when memory affects routing, requirements, AgentJob boundaries, handoffs, permissions, or claims.
+    - Stale-context risk can be recorded when memory affects routing, requirements, project authority boundaries, handoffs, permissions, or claims.
 inputs:
   required:
     - Current question, route, claim, or continuation objective.
     - Memory query or object ID to inspect.
   optional:
-    - Program state, latest handoff, AgentJob, Director decision, PRD, registry row, or source path named by memory.
+    - Program state, latest handoff, project authorization, Director decision, PRD, registry row, or source path named by memory.
     - Prior receipt or handoff that records a memory preflight.
 outputs:
   primary:
@@ -78,7 +78,7 @@ authority:
   canonical_sources:
     - Registered source files and controlled registry rows named by memory lookup.
     - Root PRDs and implementation plans when they define requirements or routes.
-    - Program state, AgentJobs, Director decisions, completions, handoffs, and memory preflight receipts.
+    - Program state, legacy control records, Director decisions, completions, handoffs, and memory preflight receipts.
     - Explicit user decisions in the active task.
   generated_derivatives:
     - Generated docs, catalogs, temporary handoffs, memory search surfaces, summaries, and local caches.

@@ -154,13 +154,13 @@ def validate_role_graph(
 
     for path, role_id in _agentjob_role_references():
         if role_id and role_id not in role_ids:
-            messages.append(f"{path}: AgentJob role {role_id!r} is not in role registry")
+            messages.append(f"{path}: legacy control role {role_id!r} is not in role registry")
 
     binding_role_ids = {row.get("role_id", "") for row in load_execution_binding_rows(execution_bindings)}
     for role in roles:
         role_id = role.get("role_id", "")
         if role.get("may_create_agentjobs") == "true" and role_id not in binding_role_ids:
-            messages.append(f"{execution_bindings}: {role_id}: role may create AgentJobs but has no execution binding")
+            messages.append(f"{execution_bindings}: {role_id}: legacy AgentJob creation is enabled but no execution binding exists")
 
     return ValidationResult(not messages, messages or ["role graph validation passed"])
 
