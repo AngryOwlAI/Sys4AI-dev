@@ -6,7 +6,7 @@ SYNC_REMOTE ?= origin
 SYNC_BRANCH ?= main
 SYNC_CHECK_HASHES ?= 0
 
-.PHONY: venv install doctor sync-check validate validate-skills validate-dev-skills validate-metrics validate-discovery-template bootstrap-memory validate-format-profiles validate-config-sources validate-control-records validate-system-layers validate-discovery-records validate-roles validate-artifact-contracts validate-core-skill-proposals validate-skill-lifecycle validate-program-state validate-director-decisions validate-director-decision-registry validate-handoff-registry validate-completion-receipt-registry validate-memory-preflight-registry validate-handoffs validate-completion-receipts validate-state-snapshots validate-memory-preflight validate-validation-contract-registry validate-toml-config validate-jsonschema-contracts validate-registry-graph validate-requirement-trace validate-prd-modules validate-walking-skeleton validate-target-package-smoke generate-config-control-wiki generate-validation-contracts-catalog generate-governance-docs validate-generated-derivatives clean-local
+.PHONY: venv install doctor sync-check validate validate-skills validate-dev-skills validate-metrics validate-discovery-template bootstrap-memory validate-format-profiles validate-config-sources validate-control-records validate-system-layers validate-discovery-records validate-roles validate-artifact-contracts validate-core-skill-proposals validate-skill-lifecycle validate-program-state validate-director-decisions validate-director-decision-registry validate-handoff-registry validate-completion-receipt-registry validate-memory-preflight-registry validate-handoffs validate-completion-receipts validate-state-snapshots validate-memory-preflight validate-validation-contract-registry validate-host-capability-profiles validate-toml-config validate-jsonschema-contracts validate-registry-graph validate-requirement-trace validate-prd-modules validate-walking-skeleton validate-target-package-smoke generate-config-control-wiki generate-validation-contracts-catalog generate-governance-docs validate-generated-derivatives clean-local
 
 venv:
 	$(PY) -m venv $(VENV)
@@ -114,6 +114,9 @@ validate-memory-preflight:
 validate-validation-contract-registry:
 	$(PYTHON) -m sys_for_ai.cli validate-validation-contract-registry registries/validation_contract_registry.csv
 
+validate-host-capability-profiles:
+	$(PYTHON) -m sys_for_ai.cli validate-host-capability-profiles configs/host_profiles --schema schemas/contracts/host_capability_profile.schema.json
+
 validate-toml-config:
 	$(PYTHON) -m sys_for_ai.cli validate-toml-config registries/config_source_registry.csv
 
@@ -147,7 +150,7 @@ generate-governance-docs:
 validate-generated-derivatives:
 	$(PYTHON) -m sys_for_ai.cli validate-generated-derivatives docs/generated registries/derivative_registry.csv
 
-validate: doctor validate-skills validate-dev-skills validate-metrics validate-discovery-template bootstrap-memory validate-format-profiles validate-config-sources validate-control-records validate-system-layers validate-discovery-records validate-roles validate-artifact-contracts validate-core-skill-proposals validate-skill-lifecycle validate-director-decision-registry validate-handoff-registry validate-completion-receipt-registry validate-memory-preflight-registry validate-handoffs validate-completion-receipts validate-state-snapshots validate-validation-contract-registry validate-toml-config validate-jsonschema-contracts validate-registry-graph validate-requirement-trace validate-prd-modules validate-walking-skeleton validate-target-package-smoke generate-config-control-wiki generate-validation-contracts-catalog generate-governance-docs validate-generated-derivatives
+validate: doctor validate-skills validate-dev-skills validate-metrics validate-discovery-template bootstrap-memory validate-format-profiles validate-config-sources validate-control-records validate-system-layers validate-discovery-records validate-roles validate-artifact-contracts validate-core-skill-proposals validate-skill-lifecycle validate-director-decision-registry validate-handoff-registry validate-completion-receipt-registry validate-memory-preflight-registry validate-handoffs validate-completion-receipts validate-state-snapshots validate-validation-contract-registry validate-host-capability-profiles validate-toml-config validate-jsonschema-contracts validate-registry-graph validate-requirement-trace validate-prd-modules validate-walking-skeleton validate-target-package-smoke generate-config-control-wiki generate-validation-contracts-catalog generate-governance-docs validate-generated-derivatives
 
 clean-local:
 	rm -rf .pytest_cache __pycache__ sys_for_ai/__pycache__ .local/receipts

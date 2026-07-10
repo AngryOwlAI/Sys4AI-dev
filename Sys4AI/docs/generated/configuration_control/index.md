@@ -19,6 +19,7 @@ page_metadata:
     - contract_director_decision
     - contract_handoff
     - contract_handoff_v0_2
+    - contract_host_capability_profile
     - contract_memory_preflight_receipt
     - contract_program_state
     - contract_self_hosting_mode
@@ -59,7 +60,7 @@ This generated page indexes registered configuration and control surfaces. It is
 | surface | count | source_path |
 | --- | --- | --- |
 | format profiles | 5 | registries/format_profile_registry.csv |
-| configuration sources | 4 | registries/config_source_registry.csv |
+| configuration sources | 5 | registries/config_source_registry.csv |
 | control records | 156 | registries/control_record_registry.csv |
 
 ## Allowed Promotion Path

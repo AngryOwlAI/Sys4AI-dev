@@ -46,6 +46,7 @@ page_metadata:
     - contract_strategic_intent_common
     - contract_target_vision_statement
     - contract_target_core_values
+    - contract_host_capability_profile
   generated_at: 2026-07-06T00:00:00Z
   generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
   stale_or_orphan_status: current
@@ -204,6 +205,12 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | contract_sys4ai_config | schemas/contracts/sys4ai_config.schema.json | 2020-12 | toml | framework_config | pyproject.toml;configs/examples/sys4ai.example.toml | Sys4AI validate-toml-config | implementation_initialization | controlled | pending | pending |
+
+## toml / host_capability_profile
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_host_capability_profile | schemas/contracts/host_capability_profile.schema.json | 2020-12 | toml | host_capability_profile | configs/host_profiles/*.toml | Sys4AI validate-host-capability-profiles | verification_engineer | controlled | pending | pending |
 
 ## toml / self_hosting_mode
 

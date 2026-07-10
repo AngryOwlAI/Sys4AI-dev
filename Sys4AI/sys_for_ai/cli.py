@@ -22,6 +22,7 @@ from .derivatives import (
     write_config_control_wiki,
     write_validation_contracts_catalog,
 )
+from .host_profiles import validate_host_capability_profiles
 from .memory import bootstrap_registries
 from .memory import hash_path as memory_hash_path
 from .memory import lookup_memory, memory_status, run_memory_preflight, search_memory, update_hashes, validate_hashes
@@ -271,6 +272,17 @@ def build_parser() -> argparse.ArgumentParser:
     )
     validate_contract_registry.add_argument("path", default="registries/validation_contract_registry.csv", nargs="?")
 
+    validate_host_profiles = sub.add_parser(
+        "validate-host-capability-profiles",
+        help="Validate reference-host profiles structurally without satisfying G-07",
+    )
+    validate_host_profiles.add_argument("root", default="configs/host_profiles", nargs="?")
+    validate_host_profiles.add_argument(
+        "--schema",
+        default="schemas/contracts/host_capability_profile.schema.json",
+    )
+    validate_host_profiles.add_argument("--json", action="store_true")
+
     validate_toml = sub.add_parser("validate-toml-config", help="Validate registered TOML configuration sources")
     validate_toml.add_argument("path", default="registries/config_source_registry.csv", nargs="?")
 
@@ -424,6 +436,12 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "validate-validation-contract-registry":
         return print_result(validate_validation_contract_registry(args.path))
 
+    if args.command == "validate-host-capability-profiles":
+        return _emit_validation_result(
+            validate_host_capability_profiles(args.root, args.schema),
+            args.json,
+        )
+
     if args.command == "validate-toml-config":
         return print_result(validate_toml_config(args.path))
 
@@ -476,6 +494,7 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_completion_receipts())
         result.extend(validate_state_snapshots())
         result.extend(validate_validation_contract_registry(args.validation_contracts))
+        result.extend(validate_host_capability_profiles())
         result.extend(validate_toml_config(args.config_sources))
         result.extend(validate_jsonschema_contracts(args.contracts_root))
         result.extend(validate_registry_graph(args.registries))
@@ -549,6 +568,23 @@ def _emit_payload(payload: dict[str, object], json_output: bool) -> int:
         for warning in payload.get("warnings", []) if isinstance(payload.get("warnings", []), list) else []:
             print(warning)
     return 0 if payload.get("ok") else 1
+
+
+def _emit_validation_result(result: ValidationResult, json_output: bool) -> int:
+    if json_output:
+        print(
+            json.dumps(
+                {
+                    "messages": result.messages,
+                    "ok": result.ok,
+                    "status": "PASS" if result.ok else "FAIL",
+                },
+                indent=2,
+                sort_keys=True,
+            )
+        )
+        return 0 if result.ok else 1
+    return print_result(result)
 
 
 if __name__ == "__main__":

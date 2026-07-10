@@ -12,6 +12,7 @@ page_metadata:
     - registries/validation_contract_registry.csv
     - registries/format_profile_registry.csv
   validation_contracts:
+    - contract_host_capability_profile
     - contract_self_hosting_mode
     - contract_sys4ai_config
     - contract_target_project_config
@@ -34,11 +35,13 @@ Registered TOML configuration sources are listed below. Runtime values and secre
 | cfg_self_hosting_mode | configs/self_hosting_mode.toml | self_hosting_mode | controlled | implementation_initialization | contract_self_hosting_mode | pending |
 | cfg_sys4ai_example | configs/examples/sys4ai.example.toml | framework_example | controlled | implementation_initialization | contract_sys4ai_config | pending |
 | cfg_target_project_example | configs/examples/target_project.example.toml | target_project_template | controlled | implementation_initialization | contract_target_project_config | pending |
+| cfg_codex_app_reference | configs/host_profiles/codex_app_reference.toml | host_capability_profile | controlled | verification_engineer | contract_host_capability_profile | pending |
 
 ## Validation Contract Trace
 
 | contract_id | path | target_format | target_artifact_type | validator_command |
 | --- | --- | --- | --- | --- |
+| contract_host_capability_profile | schemas/contracts/host_capability_profile.schema.json | toml | host_capability_profile | Sys4AI validate-host-capability-profiles |
 | contract_self_hosting_mode | schemas/contracts/self_hosting_mode.schema.json | toml | self_hosting_mode | Sys4AI validate-system-layers |
 | contract_sys4ai_config | schemas/contracts/sys4ai_config.schema.json | toml | framework_config | Sys4AI validate-toml-config |
 | contract_target_project_config | schemas/contracts/target_project_config.schema.json | toml | target_project_config | Sys4AI validate-toml-config |
