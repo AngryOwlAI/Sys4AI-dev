@@ -1,5 +1,5 @@
 source_id,path,source_type,authority_status,owner,last_reviewed,notes
-SRC-PRD-P0,PRDs/Sys4AI_phase-0_product_system_design_prd.md,prd,canonical,product_system_design,2026-07-09,Canonical Phase 0 product and system-design baseline with the approved four-object identity and product statement migrated by TX-03 under the accepted decision; vision and core values remain unapproved.
+SRC-PRD-P0,PRDs/Sys4AI_phase-0_product_system_design_prd.md,prd,canonical,product_system_design,2026-07-09,Canonical Phase 0 product and system-design baseline with approved identity plus the TX-04 candidate vision and eight candidate core values; G-08 approval remains open.
 SRC-PRD-P1,PRDs/Sys4AI_phase-1_implementation_initialization_prd.md,prd,canonical_draft,implementation_initialization,2026-07-07,Phase 1 initialization baseline.
 SRC-SCHEMA-DISCOVERY-RECORD,Sys4AI/schemas/discovery_record.schema.yaml,schema,controlled,system_definition,2026-07-05,Schema-like Markdown contract for requirements discovery records created by system-definition skills.
 SRC-TEMPLATE-RDR,Sys4AI/templates/system_definition/requirements-discovery-record-template.md,template,controlled,system_definition,2026-07-05,Controlled template for requirements discovery records produced by system-definition skills.
@@ -353,7 +353,7 @@ SRC-HANDOFF-SUBPRD-DRAFTS-001,Sys4AI/control_records/handoffs/HANDOFF-SFADEV-24-
 SRC-TEMP-HANDOFF-0034,temp_handoff/handoff-0034.md,temporary_handoff,controlled,control_loop,2026-07-08,Human-readable temporary handoff for AJ24 closeout.
 SRC-DDR-SUBPRD-PROMOTION-001,Sys4AI/control_records/director_decisions/DDR-SFADEV-25-SUBPRD-PROMOTION-001.yaml,director_decision,controlled,framework_product,2026-07-08,Director decision routing all AJ24 sub-PRDs as derivative drafts.
 SRC-AJ-SUBPRD-PROMOTION-001,Sys4AI/control_records/agentjobs/AJ-SFADEV-25-SUBPRD-PROMOTION-001.yaml,agentjob,controlled,framework_product,2026-07-08,Completed AgentJob for sub-PRD promotion and routing.
-SRC-PRD-README,PRDs/README.md,prd_authority_index,controlled,framework_product,2026-07-08,Controlled PRD authority index after WS25 sub-PRD routing.
+SRC-PRD-README,PRDs/README.md,prd_authority_index,controlled,framework_product,2026-07-09,Controlled PRD authority index with product identity and strategic-intent ownership plus independent candidate approval and source-authority states.
 SRC-MEMORY-PREFLIGHT-SUBPRD-PROMOTION-001,Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-25-SUBPRD-PROMOTION-001.yaml,memory_preflight_receipt,controlled,source_first_memory,2026-07-08,Memory preflight receipt for sub-PRD promotion and routing.
 SRC-COMPLETION-SUBPRD-PROMOTION-001,Sys4AI/control_records/completions/RECEIPT-SFADEV-25-SUBPRD-PROMOTION-001.yaml,completion_receipt,controlled,framework_product,2026-07-08,Completion receipt for sub-PRD promotion and routing.
 SRC-HANDOFF-SUBPRD-PROMOTION-001,Sys4AI/control_records/handoffs/HANDOFF-SFADEV-25-SUBPRD-PROMOTION-001.yaml,handoff,controlled,framework_product,2026-07-08,Handoff for sub-PRD promotion routing and WS26 recommendation.

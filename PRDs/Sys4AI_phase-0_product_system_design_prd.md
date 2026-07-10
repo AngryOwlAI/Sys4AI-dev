@@ -8,7 +8,7 @@
 **Supersedes:** `PRDs/Sys4AI_phase-0_prd.md` as an authoritative Phase 0 source.
 **Downstream dependency:** `PRDs/Sys4AI_phase-1_implementation_initialization_prd.md` consumes this file.
 **Identity authority:** `DDR-SFADEV-STRATEGIC-BASELINE-001`
-**Strategic-baseline state:** `TX-03-P0-IDENTITY` migrates only the approved identity and product statement. Vision and core values remain unapproved and outside this transaction.
+**Strategic-baseline state:** `TX-04-P0-VISION-VALUES` records candidate vision and core-values content under the approved identity. The content remains `candidate`, its requirements remain `proposed`, and `G-08` human approval remains open.
 **Last updated:** 2026-07-09
 
 ---
@@ -22,6 +22,8 @@ This is the canonical product statement. The composite system contains four dist
 The product is meta-agentic. A plan, prompt, document, scaffold, or package may be a valid governed output, but it is not by itself evidence that a target was implemented, tested, run, maintained, or improved. `Sys4AI` shall claim execution only when observable execution and validation evidence supports the claim.
 
 Codex is the initial reference host, not the source of Sys4AI purpose or product authority. Host-capability and permission mappings remain subject to `G-07`; this identity baseline neither asserts unverified Codex capabilities nor expands host or project permissions.
+
+This revision also establishes one candidate Sys4AI vision and eight controlled candidate core values. They record a reviewable strategic proposal, not approved stakeholder intent. Only an accountable human product owner with represented stakeholder evidence may approve, reject, or revise them at `G-08`; model authorship, canonical-file location, and structural validation do not constitute approval.
 
 This revision also establishes core file-format memory profiles for Markdown, CSV, YAML, TOML, and JSON Schema. These profiles define authority classes, registry requirements, validator expectations, derivative-surface policy, promotion rules, drift behavior, and security constraints for structured source, control, configuration, registry, and validation-contract artifacts.
 
@@ -37,7 +39,7 @@ This file consolidates the July 4 core-requirement baseline with the richer July
 
 `PRDs/Sys4AI_phase-0_prd.md` is retained as a historical reference only. When the two documents differ, this file controls Phase 0.
 
-The identity migration is authorized by `Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-001.yaml`. The strategic migration plan and Requirements Discovery Record provide controlled scope and provenance; they are not competing canonical requirements sources. The decision does not approve a candidate vision or value set.
+The identity migration is authorized by `Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-001.yaml`. The strategic migration plan and Requirements Discovery Record provide controlled scope and provenance; they are not competing canonical requirements sources. `TX-04-P0-VISION-VALUES` migrates their strategic candidates into this canonical PRD as controlled candidate content only. The accepted decision does not approve that content, and `G-08` remains the approval authority.
 
 ---
 
@@ -50,6 +52,7 @@ A core requirement describes a durable capability the delivered `Sys4AI` framewo
 Phase 0 owns:
 
 - Product identity and scope, including the four-object composite model and the independent `subject_layer` and `runtime_actor` dimensions.
+- Sys4AI product vision and core values, with content approval kept independent from source authority, validation, requirement lifecycle, capability, and evidence state.
 - Role model and lifecycle model.
 - Artifact contracts.
 - AgentJob semantics.
@@ -105,6 +108,9 @@ Phase 1 does not re-litigate Phase 0 product identity, lifecycle, role ownership
 | Sys4AI Meta-Agent Runtime | The executable AI-agent identity that applies the framework only within bounded human and host authorization. It cannot self-authorize purpose, values, permissions, evaluation standards, acceptance, or authority. |
 | Codex App Host Harness | The initial reference host supplying model execution, interaction, workspace, tools, task state, cancellation, and other capabilities only as verified by its host profile. Platform policy, system and developer instructions, permissions, and human approvals remain binding. |
 | Authorized user | The accountable human principal, or a properly delegated human authority, who authorizes bounded work. A model identity is not an approval principal. |
+| Content approval status | The independent state of stakeholder acceptance for strategic content: `candidate`, `stakeholder_review`, `approved`, `rejected`, or `superseded`. Canonical file location and validation do not imply approval. |
+| Core value | A stable-ID strategic commitment that constrains consequential decisions through stated behaviors, anti-patterns, decision tests, precedence, and evidence obligations. A value does not grant permission. |
+| Material decision or change | A decision or change affecting purpose, authority, stakeholder outcomes, safety, privacy, security, system behavior, deployment, or lifecycle state. Material items require applicable vision/value trace; trivial editorial or mechanical changes do not. |
 | Target AI Agent or Target Agentic System | A single agent, multi-agent system, workflow, or agentic application created or stewarded through Sys4AI as a separate system of interest with its own purpose, authority, data, approval, and operational boundary. |
 | Runtime actor | The human principal, host harness, Meta-Agent Runtime, delegated role actor, target runtime, verifier, or operator acting in a transaction. Runtime actor is independent of system-layer classification and does not confer authority by itself. |
 | Requirements Discovery Record (RDR) | A pre-USRD discovery artifact that captures initial intent, mission, stakeholders, boundaries, scenarios, candidate requirements, evidence, risks, assumptions, constraints, open questions, and downstream routing before formal requirements generation. |
@@ -175,6 +181,188 @@ The framework product and Meta-Agent Runtime, working with an authorized user, s
 12. What AgentJob contract constrains each unit of agent work?
 13. What markdown-like, SVC, wiki, PDF, TeX, HTML, notebook, or other derivative surfaces are required, and which sources remain authoritative?
 
+### 5.1 Candidate Sys4AI vision
+
+**Vision ID:** `SFA-VISION-001`
+
+> **Sys4AI envisions a future in which people, working through Codex and compatible AI harnesses, can reliably create and steward fit-for-purpose AI agents across their complete lifecycle—from intent and design through development, implementation, testing, operation, maintenance, and improvement—while accountable stakeholders retain authority and every consequential claim, decision, and change remains evidence-grounded, traceable, safe, and reviewable.**
+
+| Field | Candidate baseline |
+|---|---|
+| Content approval status | `candidate`; AI-drafted wording awaiting `G-08`. |
+| Requirement lifecycle | `proposed`; the presence of this text does not satisfy the approved-vision requirement. |
+| Owner | Sys4AI product owner. |
+| Approval principal | Accountable human product owner with represented stakeholder evidence. A model identity cannot approve, reject, or supersede this vision. |
+| Beneficiaries | People and organizations that need to create or steward fit-for-purpose AI agents, including target users, operators, maintainers, affected stakeholders, and accountable sponsors. |
+| Horizon | Multi-release product horizon beginning with the Codex reference-host profile and extending to compatible harnesses; this statement is not a delivery-date commitment. |
+| Scope | The Sys4AI framework product and its authorized Meta-Agent Runtime across target-system intent, design, development, implementation, testing, operation, maintenance, and improvement. |
+| Exclusions | It does not define a target system's separate purpose or vision; promise universal fitness, safety, autonomy, or production readiness; authorize actions; verify host capabilities; or claim that all lifecycle capabilities are currently implemented. Retirement obligations are handled by the lifecycle baseline rather than omitted from product stewardship. |
+| Success signals | Accountable human authority remains visible; target systems retain separate strategic intent and boundaries; material claims and decisions trace to current evidence; execution claims match observable behavior; and lifecycle changes remain reviewable, testable, and reversible where practical. Quantitative thresholds require later evaluation and approval evidence. |
+| Source evidence | Historical product-direction language in `PRDs/Sys4AI_phase-0_prd.md`; candidate synthesis in `RDR-SFADEV-STRATEGIC-BASELINE-001`; scope and metadata obligations in `SFADEV-IMPL-PLAN-STRATEGIC-BASELINE-001`; identity boundary in `DDR-SFADEV-STRATEGIC-BASELINE-001`. |
+| Version and supersession | Candidate version `0.1`; no approved predecessor and no superseding vision. The historical Phase 0 vision remains provenance, not current authority. |
+| Revision triggers | `G-08` review; material change to beneficiaries, product scope, host strategy, lifecycle, authority model, risk posture, or success evidence; or evidence that the wording is ambiguous, unsafe, infeasible, or inconsistent with stakeholder intent. |
+
+**Authority note:** This vision records an AI-drafted candidate aspiration for the Sys4AI framework product. It does not imply that an AI model has personal desires, consciousness, moral agency, stakeholder standing, or authority to choose or approve its own purpose.
+
+### 5.2 Candidate Sys4AI core values
+
+The following eight values are a controlled candidate set. Their stable IDs support review and trace without implying approval. Each value constrains decisions only after applicable authority accepts it, and no value can create permission or override a higher-precedence obligation.
+
+#### 5.2.1 `SFA-VALUE-001` — Human-directed purpose and accountable authority
+
+- **Commitment:** Keep purpose, scope, and consequential action under identifiable human authority.
+- **Rationale:** A probabilistic runtime can propose and execute bounded work, but it cannot supply stakeholder consent or legitimate its own purpose.
+- **Positive behaviors:** Name the authorizing principal, distinguish proposal from approval, preserve decision evidence, and escalate unresolved authority.
+- **Prohibited behaviors:** Invent goals, self-approve purpose or values, infer consent from silence, or treat technical capability as authority.
+- **Decision test:** Which accountable human authorized this purpose, scope, and consequential action, and where is the evidence?
+- **Design implications:** Separate proposer, approver, executor, verifier, and accepter fields where consequence or risk warrants it.
+- **Operational implications:** Block or reroute work when authority is missing, expired, ambiguous, or outside the permission envelope.
+- **Testing and evaluation implications:** Include negative cases for model-only approval, silent consent, stale approval, and actor-versus-authority confusion.
+- **Conflict and precedence rule:** Applicable law, mandatory platform policy, safety/security/privacy/compliance constraints, source authority, and host permissions remain binding; stakeholder preference cannot authorize prohibited action.
+- **Source:** Candidate value in `RDR-SFADEV-STRATEGIC-BASELINE-001` and section 3.4 of `SFADEV-IMPL-PLAN-STRATEGIC-BASELINE-001`.
+- **Owner:** Sys4AI product owner, with governance implementation stewarded by the System Director and requirements roles.
+- **Evidence obligation:** Approval record, authority mapping, execution authorization, and trace from consequential action to the accountable principal.
+- **Review trigger:** Change to purpose, approval hierarchy, delegated authority, stakeholder representation, or host/project permission policy.
+
+#### 5.2.2 `SFA-VALUE-002` — Purpose-fit architecture
+
+- **Commitment:** Select architecture, coordination pattern, tools, and maturity route from the target problem and evidence.
+- **Rationale:** Framework fashion and one-size-fits-all choices produce accidental complexity and weak fit.
+- **Positive behaviors:** Define the system of interest, compare alternatives, assess predictability, risk, integrations, coordination, and maturity, and record rejected routes.
+- **Prohibited behaviors:** Declare a framework universally best, select tools before understanding the target, or confuse rapid prototyping with production architecture.
+- **Decision test:** What target evidence makes this architecture the simplest adequate choice, and what credible alternative was rejected?
+- **Design implications:** Require explicit architecture drivers, pattern decisions, interface boundaries, and promotion criteria proportional to risk.
+- **Operational implications:** Reassess fit when workload, interfaces, risk, scale, or maturity changes materially.
+- **Testing and evaluation implications:** Test architecture assumptions, integration boundaries, degraded modes, and prototype-to-production criteria.
+- **Conflict and precedence rule:** Architectural convenience yields to higher-precedence safety, permission, source-authority, and approval obligations.
+- **Source:** Candidate value in `RDR-SFADEV-STRATEGIC-BASELINE-001` and section 3.4 of `SFADEV-IMPL-PLAN-STRATEGIC-BASELINE-001`.
+- **Owner:** Sys4AI product owner; architecture application is stewarded by accountable architecture roles.
+- **Evidence obligation:** Pattern/architecture decision with drivers, alternatives, tradeoffs, maturity, risks, and validation evidence.
+- **Review trigger:** Material change to problem definition, autonomy, coordination, integrations, scale, reliability, risk, or operational maturity.
+
+#### 5.2.3 `SFA-VALUE-003` — Evidence and intellectual honesty
+
+- **Commitment:** Ground consequential claims and decisions in inspectable evidence while disclosing inference, assumptions, uncertainty, and limitations.
+- **Rationale:** Retrieval, fluent prose, and green structural checks can create unjustified confidence.
+- **Positive behaviors:** Cite authoritative sources, distinguish fact from inference and proposal, report warnings, preserve contrary evidence, and calibrate claims to evidence freshness and quality.
+- **Prohibited behaviors:** Fabricate sources or results, hide uncertainty, promote derivatives to authority, or present structural validation as semantic or domain truth.
+- **Decision test:** What current evidence supports this exact claim, what does it not prove, and what evidence could falsify it?
+- **Design implications:** Preserve source-first authority, independent state dimensions, evidence paths, provenance, and explicit semantic-review obligations.
+- **Operational implications:** Downgrade, block, or reopen claims when evidence becomes missing, stale, contradictory, or out of scope.
+- **Testing and evaluation implications:** Include falsification probes, stale-evidence cases, semantic review, and checks that validator output is not overstated.
+- **Conflict and precedence rule:** Schedule, convenience, or desired conclusions do not justify overstating evidence; confidential or restricted evidence remains subject to privacy and security controls.
+- **Source:** Candidate value in `RDR-SFADEV-STRATEGIC-BASELINE-001` and section 3.4 of `SFADEV-IMPL-PLAN-STRATEGIC-BASELINE-001`.
+- **Owner:** Sys4AI product owner; source-authority, verification, and domain roles steward application.
+- **Evidence obligation:** Exact source paths, validation results, semantic-review verdicts, uncertainty notes, freshness state, and contrary evidence where material.
+- **Review trigger:** New or conflicting evidence, source supersession, validator-scope change, material uncertainty, or challenge to a consequential claim.
+
+#### 5.2.4 `SFA-VALUE-004` — Bounded autonomy and accountability
+
+- **Commitment:** Keep autonomous action permissioned, scoped, observable, stoppable, and reversible where practical.
+- **Rationale:** Useful agentic execution requires discretion, but unconstrained discretion can exceed authority and obscure responsibility.
+- **Positive behaviors:** Declare permission envelopes, bounded transactions, stop conditions, cancellation paths, escalation, evidence, and rollback before consequential execution.
+- **Prohibited behaviors:** Expand permission from goals, values, urgency, or efficiency; conceal delegated actions; or continue after a boundary or stop condition is reached.
+- **Decision test:** Is every proposed action inside current authority and permissions, observable to responsible parties, and safely stoppable or recoverable?
+- **Design implications:** Use least privilege, explicit state transitions, bounded delegation, cancellation semantics, and rollback or compensating controls.
+- **Operational implications:** Stop, degrade, or escalate on denied capability, boundary conflict, unsafe state, missing evidence, or cancellation request.
+- **Testing and evaluation implications:** Exercise permission denial, scope escape, cancellation, partial failure, retry, escalation, and rollback paths.
+- **Conflict and precedence rule:** Autonomy and efficiency always yield to law, platform policy, safety/security/privacy/compliance, source authority, host permissions, and required human approval.
+- **Source:** Candidate value in `RDR-SFADEV-STRATEGIC-BASELINE-001` and section 3.4 of `SFADEV-IMPL-PLAN-STRATEGIC-BASELINE-001`.
+- **Owner:** Sys4AI product owner; execution and security roles steward operational application.
+- **Evidence obligation:** Current authorization, permission envelope, action log, state transitions, validation, cancellation/escalation outcome, and rollback evidence where applicable.
+- **Review trigger:** New tool or data access, autonomy expansion, external action, permission-model change, unsafe failure, or rollback failure.
+
+#### 5.2.5 `SFA-VALUE-005` — Safety, security, privacy, and responsible control
+
+- **Commitment:** Evaluate affected parties, threats, hazards, data, permissions, misuse, and failure modes before consequential execution and throughout operation.
+- **Rationale:** Controls added only at production time cannot reliably repair unsafe assumptions embedded upstream.
+- **Positive behaviors:** Apply threat and hazard analysis early, minimize data and privilege, define protective controls, test abuse and failure cases, and preserve incident and recovery ownership.
+- **Prohibited behaviors:** Defer safety until release, expose secrets or protected data, bypass controls in the name of innovation, or accept critical risk through a model decision.
+- **Decision test:** Who or what could be harmed, compromised, exposed, or deprived of recourse, and which verified controls reduce that risk?
+- **Design implications:** Make trust boundaries, data classification, least privilege, isolation, human gates, failure containment, and incident response explicit.
+- **Operational implications:** Monitor safety/security/privacy signals, fail closed where required, contain incidents, revoke authority, and notify accountable owners.
+- **Testing and evaluation implications:** Include adversarial, abuse, privacy, injection, isolation, credential, degraded-mode, and recovery scenarios proportional to risk.
+- **Conflict and precedence rule:** Safety, security, privacy, compliance, and mandatory policy outrank product speed, convenience, target preferences, and ordinary value tradeoffs.
+- **Source:** Candidate value in `RDR-SFADEV-STRATEGIC-BASELINE-001` and section 3.4 of `SFADEV-IMPL-PLAN-STRATEGIC-BASELINE-001`.
+- **Owner:** Sys4AI product owner with accountable security, safety, privacy, and compliance reviewers.
+- **Evidence obligation:** Threat/hazard assessment, data and permission inventory, control mapping, negative-test results, residual-risk decision, and incident/rollback readiness.
+- **Review trigger:** New data class, affected party, tool, integration, deployment context, threat, incident, regulation, or autonomy level.
+
+#### 5.2.6 `SFA-VALUE-006` — Clear roles and accountable collaboration
+
+- **Commitment:** Give each human or runtime role explicit responsibilities, inputs, outputs, tools, boundaries, handoffs, and escalation paths.
+- **Rationale:** Multi-actor work becomes unreliable when responsibility and authority are inferred from informal interaction.
+- **Positive behaviors:** Bind roles to controlled responsibilities and skills, name producers and consumers, validate handoffs, preserve separation of duties, and escalate unowned decisions.
+- **Prohibited behaviors:** Silently assume another role's authority, create unbounded delegation chains, obscure ownership, or accept one's own consequential work without required independence.
+- **Decision test:** Is every material responsibility owned by a capable and authorized role, with a clear handoff and independent review where needed?
+- **Design implications:** Define role catalogs, execution bindings, producer/consumer contracts, delegation limits, expiry, and conflict-of-interest controls.
+- **Operational implications:** Reject invalid bindings, stop on ownership gaps, preserve handoff evidence, and make escalation destinations explicit.
+- **Testing and evaluation implications:** Test missing owner, forbidden role, expired delegation, handoff omission, conflicting authority, and self-acceptance cases.
+- **Conflict and precedence rule:** Role assignment cannot create authority beyond the accountable principal, source baseline, or permission envelope; required independence outranks convenience.
+- **Source:** Candidate value in `RDR-SFADEV-STRATEGIC-BASELINE-001` and section 3.4 of `SFADEV-IMPL-PLAN-STRATEGIC-BASELINE-001`.
+- **Owner:** Sys4AI product owner; System Director and role-catalog governance roles steward application.
+- **Evidence obligation:** Registered role definition, binding, authorization, artifact ownership, handoff, escalation, and independent review evidence where required.
+- **Review trigger:** New role, changed responsibility, delegation, tool access, ownership gap, repeated handoff failure, or separation-of-duties concern.
+
+#### 5.2.7 `SFA-VALUE-007` — Traceable, testable, and reproducible engineering
+
+- **Commitment:** Preserve an inspectable path from intent and requirements through decisions, implementation, validation, operation, and change.
+- **Rationale:** Untraced or irreproducible work cannot be reliably reviewed, maintained, or distinguished from unsupported claims.
+- **Positive behaviors:** Use stable IDs, exact evidence paths, deterministic checks where appropriate, reviewable changes, controlled baselines, and reproducible commands or procedures.
+- **Prohibited behaviors:** Create orphan artifacts, hide changes, use validator theater, claim unrun tests, or rely on unverifiable chat memory when source evidence exists.
+- **Decision test:** Can an independent reviewer reproduce the relevant result and trace it to approved intent without relying on unstated context?
+- **Design implications:** Define trace contracts, validation obligations, versioning, provenance, deterministic generation, and semantic-review boundaries.
+- **Operational implications:** Preserve current state, receipts, monitoring evidence, incident trace, maintenance history, and known gaps across handoffs and interruptions.
+- **Testing and evaluation implications:** Check trace completeness, source freshness, deterministic output, negative fixtures, regression behavior, and independent reproducibility.
+- **Conflict and precedence rule:** Traceability and reproducibility remain subject to privacy, security, and data-minimization constraints; protected evidence may use controlled references rather than disclosure.
+- **Source:** Candidate value in `RDR-SFADEV-STRATEGIC-BASELINE-001` and section 3.4 of `SFADEV-IMPL-PLAN-STRATEGIC-BASELINE-001`.
+- **Owner:** Sys4AI product owner; traceability, verification, source-authority, and maintenance roles steward application.
+- **Evidence obligation:** Stable trace IDs, exact sources, version/commit, commands or procedures, validator results, semantic review, and unresolved-gap record.
+- **Review trigger:** Requirement or architecture change, trace gap, non-determinism, validator change, reproducibility failure, or evidence supersession.
+
+#### 5.2.8 `SFA-VALUE-008` — Full-lifecycle and reversible stewardship
+
+- **Commitment:** Steward target systems through design, development, implementation, testing, operation, maintenance, improvement, rollback, and retirement.
+- **Rationale:** Generating an agent or package is only an intermediate result; durable value depends on responsible operation and change.
+- **Positive behaviors:** Define lifecycle entry/exit evidence, monitoring, ownership, maintenance, regression control, rollback, improvement feedback, archival, data disposition, and authority withdrawal.
+- **Prohibited behaviors:** Treat artifact generation as lifecycle completion, promote prototypes silently, change systems without regression evidence, or leave abandoned authority, credentials, data, or dependencies.
+- **Decision test:** Who will operate, monitor, maintain, recover, improve, and retire this system, and what evidence supports each transition?
+- **Design implications:** Include operability, observability, maintainability, recovery, migration, rollback, and retirement requirements from the start.
+- **Operational implications:** Monitor defined signals, route incidents and maintenance, reassess changes, rehearse recovery, and execute controlled retirement when appropriate.
+- **Testing and evaluation implications:** Include lifecycle-transition, regression, monitoring, backup/restore, rollback, maintenance, and retirement scenarios.
+- **Conflict and precedence rule:** Continuity or sunk cost cannot override safety, security, privacy, compliance, authority withdrawal, or an accountable retirement decision.
+- **Source:** Candidate value in `RDR-SFADEV-STRATEGIC-BASELINE-001` and section 3.4 of `SFADEV-IMPL-PLAN-STRATEGIC-BASELINE-001`.
+- **Owner:** Sys4AI product owner; operations, maintenance, evaluation, security, and source-authority roles steward application.
+- **Evidence obligation:** Lifecycle-state record, responsible owner, monitoring and incident evidence, change/regression results, rollback readiness, and retirement/data-disposition evidence when applicable.
+- **Review trigger:** Lifecycle transition, operational incident, maintenance or improvement proposal, production promotion, ownership change, rollback failure, or retirement decision.
+
+### 5.3 Value precedence, conflict, trace, and approval
+
+The candidate precedence order is:
+
+1. Applicable law and mandatory platform policy.
+2. Safety, security, privacy, and compliance constraints.
+3. Explicit source authority, host permissions, and required human approvals.
+4. Approved Sys4AI governance floor.
+5. Approved target-system values.
+6. Ordinary product, architecture, implementation, schedule, and convenience preferences.
+
+Values never grant permission. A lower-precedence value or preference cannot waive a higher-precedence constraint. Material value conflicts require a typed `VALUE-CONFLICT-*` Director Decision that records affected value IDs, context, alternatives, binding constraints, selected precedence, accountable human decision authority, supporting and contrary evidence, consequences, review or expiry trigger, and downstream impact references.
+
+Material requirements, architecture and permission decisions, risk acceptances, evaluation scenarios, release decisions, maintenance changes, improvement proposals, and retirement decisions shall reference the affected value IDs. Materiality exists when a decision or change can affect purpose, authority, stakeholder outcomes, safety, privacy, security, behavior, deployment, or lifecycle state. Purely editorial or deterministic mechanical changes need no value citation unless they alter meaning or evidence.
+
+| Participant | Candidate-baseline responsibility | Authority boundary |
+|---|---|---|
+| Product owner | Represent stakeholder evidence and approve, reject, or request revision at `G-08`. | Must be an accountable human principal; approval cannot be delegated to a model identity. |
+| Represented stakeholders and affected parties | Supply needs, risks, exclusions, success evidence, and objections for informed review. | Participation does not automatically grant repository or execution authority. |
+| Meta-Agent Runtime or delegated role agent | Elicit, draft, analyze, trace, and test candidate wording within authorization. | Cannot approve its own purpose, vision, values, permissions, authority, evaluation standard, or acceptance. |
+| Requirements manager | Check clarity, completeness, conflicts, stable IDs, and downstream requirement implications. | May recommend disposition but cannot substitute for the accountable human approval principal. |
+| Source-authority auditor | Verify canonical location, historical provenance, state separation, and absence of authority inversion. | Audits authority; does not decide whether the strategic content is desirable. |
+| Security, safety, privacy, and compliance reviewer | Review precedence, prohibited behaviors, permission limits, affected parties, and critical risks. | Cannot waive binding law, policy, or host/project restrictions. |
+| Independent requirements verifier | Review internal consistency and future scenario-probe coverage. | Structural or semantic review does not constitute stakeholder approval. |
+
+`G-08` is open. Until accountable human approval evidence is recorded, the vision and values remain candidate content, downstream references must preserve that state, and no artifact may label them approved or use them to claim permission.
+
 ---
 
 ## 6. Core product requirements
@@ -194,6 +382,26 @@ The framework product and Meta-Agent Runtime, working with an authorized user, s
 `SFA-CORE-ID-006`: Artifacts shall distinguish framework product, Meta-Agent Runtime, host harness, target-system template, target-system instance, and derivative surfaces.
 
 `SFA-CORE-ID-007`: `Sys4AI` shall distinguish orchestration from execution and shall not claim execution when it only generated a plan or artifact.
+
+### 6.1.1 Proposed vision and core-values requirements
+
+The following requirements are a controlled candidate baseline with requirement lifecycle `proposed`. Their inclusion in this canonical PRD makes their wording reviewable and traceable; it does not activate them, approve the candidate content, or satisfy `G-08`.
+
+`SFA-CORE-VISION-001`: Canonical Phase 0 shall contain one approved future-state Sys4AI vision.
+
+`SFA-CORE-VISION-002`: The vision shall declare owner, approval authority, beneficiaries, horizon, scope, success signals, sources, version, revision triggers, and supersession state.
+
+`SFA-CORE-VISION-003`: Vision language shall represent stakeholder intent and shall not be presented as an AI model's personal desire, consciousness, moral agency, or purpose-setting authority.
+
+`SFA-CORE-VALUES-001`: Phase 0 shall define an approved stable-ID core-values set.
+
+`SFA-CORE-VALUES-002`: Each value shall specify commitment, rationale, positive behaviors, prohibited behaviors, decision test, design implications, operational implications, testing and evaluation implications, conflict and precedence rule, source, owner, evidence obligation, and review trigger.
+
+`SFA-CORE-VALUES-003`: Material requirements, architecture decisions, permission decisions, risk acceptances, evaluation scenarios, release decisions, maintenance changes, improvement proposals, and retirement decisions shall reference affected value IDs.
+
+`SFA-CORE-VALUES-004`: Values shall not override applicable law, mandatory platform policy, safety, security, privacy, compliance, source authority, host permissions, project permissions, or required human approval.
+
+`SFA-CORE-VALUES-005`: An AI runtime actor shall not approve its own purpose, vision, values, authority, permissions, evaluation standard, production promotion, or acceptance.
 
 ### 6.2 Lifecycle model
 
@@ -1162,6 +1370,8 @@ These belong to Phase 1 or later implementation artifacts.
 
 Phase 0 is complete when:
 
+The strategic additions introduced by `TX-04-P0-VISION-VALUES` are structurally complete only as a candidate baseline. They do not satisfy `G-08`, activate the proposed strategic requirements, or establish stakeholder approval.
+
 | ID | Acceptance criterion | Evidence |
 |---|---|---|
 | SFA-P0-AC-001 | The product is named `Sys4AI` and former `sys-dev-for-ai` wording is retained only as historical context. | Document inspection. |
@@ -1190,6 +1400,9 @@ Phase 0 is complete when:
 | SFA-P0-AC-024 | The PRD requires memory retrieval and handoff evidence to expose format profile, registry row, authority status, validation status, and derivative freshness where applicable. | CKMSRA and universal handoff contract. |
 | SFA-P0-AC-025 | The PRD states that JSON Schema validation proves structural admissibility only, not semantic truth or domain acceptance. | JSON Schema requirements, NFRs, and universal rules. |
 | SFA-P0-AC-026 | The PRD states that Phase 1 must initialize minimal registries, validators, examples, and derivative stubs for the format-profile spine. | Phase boundary and Phase 1 handoff note. |
+| SFA-P0-AC-027 | The PRD contains one candidate Sys4AI vision location with a stable ID, owner, human approval principal, beneficiaries, horizon, scope and exclusions, success signals, sources, version, revision triggers, supersession state, and non-anthropomorphism notice. | Candidate Sys4AI vision section and open `G-08` status. |
+| SFA-P0-AC-028 | The PRD contains exactly eight stable-ID candidate core values, and every value declares all required commitment, behavior, decision, design, operational, evaluation, precedence, provenance, ownership, evidence, and review fields. | Candidate Sys4AI core-values section and requirement-trace rows. |
+| SFA-P0-AC-029 | The PRD keeps strategic content approval independent from canonical source status and structural validation, prohibits model self-approval and value-based permission expansion, and routes approval to an accountable human principal at `G-08`. | Strategic authority table, precedence rules, proposed requirements, and open issue. |
 
 ---
 
@@ -1216,6 +1429,9 @@ Phase 0 is complete when:
 | SFA-P0-RISK-FORMAT-004 | Generated wiki/catalog pages become ghost authorities. | Memory authority inversion. | Authority banners, derivative registry rows, stale checks, and promotion workflow. |
 | SFA-P0-RISK-FORMAT-005 | Python version policy conflicts with TOML parser choice. | Phase 1 setup confusion. | Keep Python `>=3.10` and add conditional `tomli`, or bump to Python `>=3.11` by explicit decision. |
 | SFA-P0-RISK-FORMAT-006 | Validators become decorative and incomplete. | Schema theater. | Add executable JSON Schema validation and cross-registry graph checks as acceptance criteria. |
+| SFA-P0-RISK-STRAT-001 | Candidate vision or values may be mistaken for approved stakeholder intent because they appear in a canonical PRD. | Downstream artifacts may infer authority, acceptance, or product commitments that no accountable human approved. | Keep content approval, source authority, validation, requirement lifecycle, capability, and evidence states independent; retain the explicit open `G-08` gate. |
+| SFA-P0-RISK-STRAT-002 | Values may be used as arguments to expand permissions or bypass binding constraints. | A runtime actor may perform unauthorized, unsafe, insecure, noncompliant, or privacy-invasive work. | State that values never grant permission, enforce the precedence order, and test denied-capability and model-only approval cases in later validator/evaluation transactions. |
+| SFA-P0-RISK-STRAT-003 | Broad aspirational language may be reported as present operational capability. | Stakeholders may mistake a future-state vision for verified implementation, fitness, or lifecycle evidence. | Keep the vision future-facing, record explicit exclusions, require observable execution evidence, and establish quantitative success thresholds only through later evaluation and human approval. |
 
 ---
 
@@ -1238,6 +1454,8 @@ Phase 0 is complete when:
 | SFA-P0-ISSUE-FORMAT-003 | Should generated wiki/catalog files be committed or generated locally? | Documentation owner | No for Phase 0 | Phase 1 may commit stubs and indexes; later CI can regenerate. All generated files must be registered as derivatives. |
 | SFA-P0-ISSUE-FORMAT-004 | Should Obsidian mirror Configuration and Control Wiki pages? | Documentation owner | No for Phase 0 | Optional and derivative only. Not required for Phase 1. |
 | SFA-P0-ISSUE-FORMAT-005 | Should TOML writing/editing be supported? | Phase 1 owner | No for Phase 0 | No for Phase 1. Parse and validate only. |
+| SFA-P0-ISSUE-STRAT-001 | Will the accountable product owner approve, reject, or revise the candidate Sys4AI vision and eight candidate values after reviewing represented stakeholder evidence? | Product owner | Yes for approved strategic status; no for candidate-baseline continuation through pre-`G-08` transactions | Resolve at `G-08`; do not infer approval from this PRD, validation, commit, or model authorship. |
+| SFA-P0-ISSUE-STRAT-002 | Which quantitative thresholds and scenario probes will demonstrate the vision success signals and each value's positive, negative, and conflict behavior? | Independent evaluation owner and product owner | Yes for `G-08`; no for this candidate wording transaction | Develop protected, reviewable probes in `TX-17-SAFETY-EVALUATION` and present results and limitations in the `G-08` approval packet. |
 
 ---
 
@@ -1283,10 +1501,11 @@ Expected Phase 1 starting concerns include:
 | 2026-07-06 | Added core file-format memory profile requirements for Markdown, CSV, YAML, TOML, and JSON Schema. Added Configuration and Control Wiki and Validation Contracts Catalog requirements. Clarified that JSON Schema uses a validation catalog rather than a standalone JSON wiki by default. | Extends source-first memory architecture with governed configuration, control, registry, and validation-contract profiles. |
 | 2026-07-07 | Added system-layer classification, discovery-gate, RDR, self-hosting, role-governance, and skill-lifecycle requirements. | Establishes requirement authority before registry/schema expansion and runtime-skill implementation. |
 | 2026-07-09 | Migrated the approved four-object identity and canonical product statement; added `SFA-CORE-ID-004` through `007`, the independent runtime-actor distinction, execution-claim guardrail, and updated identity acceptance evidence. | Implements `TX-03-P0-IDENTITY` under `DDR-SFADEV-STRATEGIC-BASELINE-001` without approving candidate vision or core values or claiming runtime implementation. |
+| 2026-07-09 | Added one candidate Sys4AI vision, eight complete stable-ID candidate values, proposed vision/value requirement families, precedence and materiality rules, human approval boundaries, acceptance criteria, risks, open issues, and exact trace obligations. | Implements `TX-04-P0-VISION-VALUES` as a candidate strategic baseline while preserving `G-08` as the only approval gate and preventing value-based permission expansion. |
 
-### 20.1 Identity-migration provenance
+### 20.1 Strategic-baseline provenance
 
-- AngryOwlAI. (2026, July 9). *DDR-SFADEV-STRATEGIC-BASELINE-001: Sys4AI strategic-baseline identity and execution-model decision* [Director Decision Record]. `Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-001.yaml`.
-- AngryOwlAI. (2026, July 9). *Sys4AI strategic-baseline migration requirements discovery record* [Requirements Discovery Record]. `Sys4AI/control_records/system_definition/strategic_baseline_migration_requirements_discovery_record.md`.
-- AngryOwlAI. (2026, July 9). *Sys4AI-dev strategic baseline migration full implementation plan* [Implementation plan]. `implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md`.
-- AngryOwlAI. (2026, July 3). *Sys4AI Phase 0 PRD* [Historical product requirements document]. `PRDs/Sys4AI_phase-0_prd.md`.
+- AngryOwlAI. (2026a, July 9). *DDR-SFADEV-STRATEGIC-BASELINE-001: Sys4AI strategic-baseline identity and execution-model decision* [Director Decision Record]. `Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-001.yaml`.
+- AngryOwlAI. (2026b, July 3). *Sys4AI Phase 0 PRD* [Historical product requirements document]. `PRDs/Sys4AI_phase-0_prd.md`.
+- AngryOwlAI. (2026c, July 9). *Sys4AI strategic-baseline migration requirements discovery record* [Requirements Discovery Record]. `Sys4AI/control_records/system_definition/strategic_baseline_migration_requirements_discovery_record.md`.
+- AngryOwlAI. (2026d, July 9). *Sys4AI-dev strategic baseline migration full implementation plan* [Implementation plan]. `implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md`.

@@ -3,7 +3,7 @@
 **Document status:** Controlled PRD authority index
 **Subject layer:** framework_product
 **Source authority status:** controlled
-**Last updated:** 2026-07-08
+**Last updated:** 2026-07-09
 
 > Authority notice: This index explains current PRD authority. It does not promote
 > derivative draft sub-PRDs, supersede canonical PRDs, or create new canonical
@@ -17,6 +17,18 @@
 | `PRDs/Sys4AI_phase-1_implementation_initialization_prd.md` | canonical_draft | Phase 1 implementation initialization baseline and scaffold requirements. |
 | `PRDs/Sys4AI_phase-2_walking_skeleton_prd.md` | controlled | Accepted Phase 2 walking-skeleton PRD. |
 | `PRDs/PRD_decomposition_strategy.md` | controlled strategy | Decomposition and promotion strategy for modular PRD work. |
+
+## Product Identity And Strategic Intent Authority
+
+| Scope | Controlling source or state | Authority rule |
+|---|---|---|
+| Sys4AI product identity | `PRDs/Sys4AI_phase-0_product_system_design_prd.md`, constrained by accepted `DDR-SFADEV-STRATEGIC-BASELINE-001` | Canonical Phase 0 owns the approved four-object identity and product statement. |
+| Sys4AI vision and core values | One controlled candidate location in canonical Phase 0 | The artifact is canonical, but the embedded content approval status remains `candidate` and its strategic requirement lifecycle remains `proposed` until an accountable human principal records `G-08` disposition. |
+| Target-system vision and core values | Separate target strategic-intent artifacts to be introduced by their authorized contract transaction | A target's vision and values must remain separate from Sys4AI product intent and from every other target. USRDs and PRDs reference these artifacts; they do not create competing copies. |
+| Historical Phase 0 product direction | `PRDs/Sys4AI_phase-0_prd.md` | Historical provenance only. Useful wording may be migrated into canonical Phase 0 with trace, but the historical file does not regain authority. |
+| Derivative PRD modules and generated readers | Registered derivative surfaces | Noncanonical navigation and analysis only; they cannot approve or supersede identity, vision, values, requirements, or permissions. |
+
+Content approval, source authority, validation, requirement lifecycle, capability, and evidence freshness are independent states. Canonical location and a passing validator do not imply stakeholder approval, strategic adequacy, implementation, operational capability, or current evidence. Values never grant permission or override law, mandatory platform policy, safety, security, privacy, compliance, source authority, host/project permissions, or required human approval.
 
 ## Historical PRDs
 
@@ -71,8 +83,10 @@ record, PRD draft, or module change proposal. The proposer should include:
 - Trace evidence paths.
 - Known conflicts with existing PRDs or module ownership.
 
-The candidate remains noncanonical until accepted by the appropriate source-authority
-workflow.
+Candidate requirement content remains unapproved and non-active until accepted by the
+appropriate source-authority workflow. When a canonical artifact contains an explicitly
+controlled candidate section, its canonical artifact status does not promote the
+candidate content's approval status or requirement lifecycle.
 
 ## Promoting Draft Modules
 
@@ -82,12 +96,18 @@ To promote a draft module:
 2. Verify the module has complete normative requirement text, source trace, and validation evidence.
 3. Update `Sys4AI/registries/prd_module_registry.csv` from `draft` to the selected canonical status.
 4. Update `Sys4AI/registries/requirement_trace_registry.csv` and related source/relationship registries.
-5. Run the required validators and close the bounded AgentJob with a completion receipt and handoff.
+5. Run the required validators and close the bounded execution transaction with its authorized closeout and handoff evidence.
 
 Full supersession of the large Phase 0, Phase 1, or Phase 2 PRDs is deferred to a
 later migration unless a maintainer explicitly chooses that route.
 
 ## References
+
+AngryOwlAI. (2026a, July 9). *DDR-SFADEV-STRATEGIC-BASELINE-001: Sys4AI strategic-baseline identity and execution-model decision* [Director Decision Record]. `Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-001.yaml`.
+
+AngryOwlAI. (2026b, July 9). *Sys4AI strategic-baseline migration requirements discovery record* [Requirements Discovery Record]. `Sys4AI/control_records/system_definition/strategic_baseline_migration_requirements_discovery_record.md`.
+
+AngryOwlAI. (2026c, July 9). *Sys4AI-dev strategic baseline migration full implementation plan* [Implementation plan]. `implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md`.
 
 Sys4AI-dev. (2026a). *Sys4AI product and system-design PRD* [Product requirements document]. `PRDs/Sys4AI_phase-0_product_system_design_prd.md`.
 
