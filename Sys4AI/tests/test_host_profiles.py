@@ -25,6 +25,13 @@ class HostCapabilityProfileTests(unittest.TestCase):
         self.assertTrue(result.ok, result.messages)
         self.assertTrue(any("G-07 remains open" in message for message in result.messages))
 
+    def test_current_profile_binds_tx09_contract_without_enabling_execution(self) -> None:
+        data = load_toml(PROFILE_PATH)
+
+        self.assertEqual("1.0.0", data["profile"]["portable_execution_contract_version"])
+        self.assertFalse(data["profile"]["portable_execution_contract_executable"])
+        self.assertTrue(all(interface["execution_allowed"] is False for interface in data["interfaces"]))
+
     def test_missing_interface_fails(self) -> None:
         def mutate(data: dict[str, Any]) -> None:
             data["interfaces"].pop()
@@ -150,6 +157,7 @@ class HostCapabilityProfileTests(unittest.TestCase):
 
     def test_pending_tx09_contract_cannot_be_executable(self) -> None:
         def mutate(data: dict[str, Any]) -> None:
+            data["profile"]["portable_execution_contract_version"] = "pending_TX_09"
             data["profile"]["portable_execution_contract_executable"] = True
 
         self._assert_mutation_fails(mutate, "pending_TX_09 portable execution contract must not be executable")

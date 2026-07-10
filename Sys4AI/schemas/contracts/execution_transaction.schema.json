@@ -1,0 +1,1287 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/Sys4AI/schemas/contracts/execution_transaction.schema.json",
+  "title": "Sys4AI portable execution transaction",
+  "description": "Harness-neutral structural contract for a bounded, resumable execution transaction. Conformance does not grant authority, verify host capability, or prove execution occurred.",
+  "type": "object",
+  "required": [
+    "execution_transaction_id",
+    "contract_version",
+    "objective",
+    "source_requirement_ids",
+    "source_decision_ids",
+    "subject_system",
+    "subject_layer",
+    "runtime_actor",
+    "approval_principal",
+    "execution_authorization",
+    "permission_envelope",
+    "allowed_reads",
+    "allowed_writes",
+    "allowed_tools",
+    "allowed_external_actions",
+    "forbidden_actions",
+    "inputs",
+    "expected_outputs",
+    "validators",
+    "stop_conditions",
+    "host_capability_requirements",
+    "state",
+    "cancellation",
+    "escalation",
+    "resume_evidence",
+    "closeout_evidence",
+    "rollback",
+    "supersession"
+  ],
+  "properties": {
+    "execution_transaction_id": {
+      "type": "string",
+      "pattern": "^TX-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+    },
+    "contract_version": {
+      "const": "1.0.0"
+    },
+    "objective": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "source_requirement_ids": {
+      "$ref": "#/$defs/nonEmptyUniqueStringArray"
+    },
+    "source_decision_ids": {
+      "$ref": "#/$defs/nonEmptyUniqueStringArray"
+    },
+    "subject_system": {
+      "type": "object",
+      "required": [
+        "system_id",
+        "system_name"
+      ],
+      "properties": {
+        "system_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "system_name": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      },
+      "additionalProperties": false
+    },
+    "subject_layer": {
+      "enum": [
+        "development_system",
+        "framework_product",
+        "target_system_template",
+        "target_system_instance",
+        "derivative_surface"
+      ]
+    },
+    "runtime_actor": {
+      "type": "object",
+      "required": [
+        "actor_id",
+        "actor_type",
+        "role_ids",
+        "authority_source_ids"
+      ],
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "actor_type": {
+          "enum": [
+            "human_principal",
+            "host_harness",
+            "meta_agent_runtime",
+            "delegated_role_actor",
+            "target_runtime",
+            "verifier",
+            "operator"
+          ]
+        },
+        "role_ids": {
+          "$ref": "#/$defs/nonEmptyUniqueStringArray"
+        },
+        "authority_source_ids": {
+          "$ref": "#/$defs/nonEmptyUniqueStringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "approval_principal": {
+      "type": "object",
+      "required": [
+        "principal_id",
+        "principal_type",
+        "approval_scope",
+        "authorization_evidence_ids",
+        "model_self_approval"
+      ],
+      "properties": {
+        "principal_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "principal_type": {
+          "enum": [
+            "accountable_human",
+            "authorized_human_delegate"
+          ]
+        },
+        "approval_scope": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "authorization_evidence_ids": {
+          "$ref": "#/$defs/uniqueStringArray"
+        },
+        "model_self_approval": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "execution_authorization": {
+      "type": "object",
+      "required": [
+        "status",
+        "authorized_at",
+        "expires_at",
+        "authority_evidence_ids",
+        "self_authorized"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "proposed",
+            "authorized",
+            "denied",
+            "revoked",
+            "expired"
+          ]
+        },
+        "authorized_at": {
+          "$ref": "#/$defs/pendingOrRfc3339"
+        },
+        "expires_at": {
+          "$ref": "#/$defs/pendingRfc3339OrNotApplicable"
+        },
+        "authority_evidence_ids": {
+          "$ref": "#/$defs/uniqueStringArray"
+        },
+        "self_authorized": {
+          "const": false
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "authorized"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "authorized_at": {
+                "$ref": "#/$defs/rfc3339"
+              },
+              "expires_at": {
+                "$ref": "#/$defs/rfc3339"
+              },
+              "authority_evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "permission_envelope": {
+      "type": "object",
+      "required": [
+        "envelope_id",
+        "status",
+        "authority_source_ids",
+        "data_classes",
+        "resource_limits",
+        "valid_from",
+        "expires_at",
+        "sensitive_data_allowed",
+        "secrets_allowed",
+        "data_egress_allowed",
+        "external_side_effects_allowed",
+        "delegation_allowed",
+        "delegation_expires_at",
+        "permission_expansion_allowed"
+      ],
+      "properties": {
+        "envelope_id": {
+          "type": "string",
+          "pattern": "^[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+        },
+        "status": {
+          "enum": [
+            "proposed",
+            "current",
+            "denied",
+            "revoked",
+            "expired"
+          ]
+        },
+        "authority_source_ids": {
+          "$ref": "#/$defs/nonEmptyUniqueStringArray"
+        },
+        "data_classes": {
+          "$ref": "#/$defs/nonEmptyUniqueStringArray"
+        },
+        "resource_limits": {
+          "$ref": "#/$defs/nonEmptyUniqueStringArray"
+        },
+        "valid_from": {
+          "$ref": "#/$defs/pendingOrRfc3339"
+        },
+        "expires_at": {
+          "$ref": "#/$defs/pendingOrRfc3339"
+        },
+        "sensitive_data_allowed": {
+          "type": "boolean"
+        },
+        "secrets_allowed": {
+          "type": "boolean"
+        },
+        "data_egress_allowed": {
+          "type": "boolean"
+        },
+        "external_side_effects_allowed": {
+          "type": "boolean"
+        },
+        "delegation_allowed": {
+          "type": "boolean"
+        },
+        "delegation_expires_at": {
+          "$ref": "#/$defs/pendingRfc3339OrNotApplicable"
+        },
+        "permission_expansion_allowed": {
+          "const": false
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "current"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "valid_from": {
+                "$ref": "#/$defs/rfc3339"
+              },
+              "expires_at": {
+                "$ref": "#/$defs/rfc3339"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "delegation_allowed": {
+                "const": true
+              }
+            },
+            "required": [
+              "delegation_allowed"
+            ]
+          },
+          "then": {
+            "properties": {
+              "delegation_expires_at": {
+                "$ref": "#/$defs/rfc3339"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "delegation_expires_at": {
+                "const": "not_applicable"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "allowed_reads": {
+      "$ref": "#/$defs/nonEmptyUniqueStringArray"
+    },
+    "allowed_writes": {
+      "$ref": "#/$defs/uniqueStringArray"
+    },
+    "allowed_tools": {
+      "$ref": "#/$defs/uniqueStringArray"
+    },
+    "allowed_external_actions": {
+      "$ref": "#/$defs/uniqueStringArray"
+    },
+    "forbidden_actions": {
+      "$ref": "#/$defs/nonEmptyUniqueStringArray"
+    },
+    "inputs": {
+      "$ref": "#/$defs/nonEmptyUniqueStringArray"
+    },
+    "expected_outputs": {
+      "$ref": "#/$defs/nonEmptyUniqueStringArray"
+    },
+    "validators": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "validator_id",
+          "command_or_method",
+          "blocking",
+          "expected_evidence"
+        ],
+        "properties": {
+          "validator_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "command_or_method": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "blocking": {
+            "type": "boolean"
+          },
+          "expected_evidence": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "stop_conditions": {
+      "$ref": "#/$defs/nonEmptyUniqueStringArray"
+    },
+    "host_capability_requirements": {
+      "type": "object",
+      "required": [
+        "execution_profile_id",
+        "overall_status",
+        "required_capability_ids",
+        "evidence_ids",
+        "checked_at",
+        "values_or_goals_may_override"
+      ],
+      "properties": {
+        "execution_profile_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "overall_status": {
+          "enum": [
+            "unknown",
+            "verified_available",
+            "verified_unavailable",
+            "permission_dependent",
+            "environment_dependent",
+            "stale"
+          ]
+        },
+        "required_capability_ids": {
+          "$ref": "#/$defs/nonEmptyUniqueStringArray"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/uniqueStringArray"
+        },
+        "checked_at": {
+          "$ref": "#/$defs/pendingOrRfc3339"
+        },
+        "values_or_goals_may_override": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "state": {
+      "type": "object",
+      "required": [
+        "status",
+        "current_state_evidence_ids",
+        "continuation_state",
+        "continuation_evidence_ids",
+        "state_transition_evidence_ids"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "proposed",
+            "authorized",
+            "active",
+            "blocked",
+            "cancelled",
+            "completed",
+            "accepted",
+            "superseded"
+          ]
+        },
+        "current_state_evidence_ids": {
+          "$ref": "#/$defs/nonEmptyUniqueStringArray"
+        },
+        "continuation_state": {
+          "enum": [
+            "not_applicable",
+            "not_ready",
+            "ready",
+            "blocked",
+            "consumed"
+          ]
+        },
+        "continuation_evidence_ids": {
+          "$ref": "#/$defs/uniqueStringArray"
+        },
+        "state_transition_evidence_ids": {
+          "$ref": "#/$defs/uniqueStringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "cancellation": {
+      "type": "object",
+      "required": [
+        "state",
+        "requested_by",
+        "behavior",
+        "evidence_ids",
+        "uncertain_operations"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "not_requested",
+            "requested",
+            "acknowledged",
+            "safe_stop",
+            "rolled_back",
+            "incomplete"
+          ]
+        },
+        "requested_by": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "behavior": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/uniqueStringArray"
+        },
+        "uncertain_operations": {
+          "$ref": "#/$defs/uniqueStringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "escalation": {
+      "type": "object",
+      "required": [
+        "state",
+        "conditions",
+        "responsible_principal_id",
+        "required_decision",
+        "evidence_ids"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "not_required",
+            "required",
+            "pending",
+            "resolved"
+          ]
+        },
+        "conditions": {
+          "$ref": "#/$defs/nonEmptyUniqueStringArray"
+        },
+        "responsible_principal_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "required_decision": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/uniqueStringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "resume_evidence": {
+      "type": "object",
+      "required": [
+        "required",
+        "status",
+        "last_known_state",
+        "evidence_ids"
+      ],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "not_required",
+            "missing",
+            "current",
+            "stale",
+            "consumed"
+          ]
+        },
+        "last_known_state": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/uniqueStringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "closeout_evidence": {
+      "type": "object",
+      "required": [
+        "status",
+        "evidence_ids",
+        "changed_artifacts",
+        "validation_evidence_ids",
+        "acceptance_evidence_ids"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "not_required",
+            "missing",
+            "partial",
+            "complete",
+            "accepted"
+          ]
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/uniqueStringArray"
+        },
+        "changed_artifacts": {
+          "$ref": "#/$defs/uniqueStringArray"
+        },
+        "validation_evidence_ids": {
+          "$ref": "#/$defs/uniqueStringArray"
+        },
+        "acceptance_evidence_ids": {
+          "$ref": "#/$defs/uniqueStringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "rollback": {
+      "type": "object",
+      "required": [
+        "status",
+        "strategy",
+        "triggers",
+        "actions",
+        "evidence_ids"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "planned",
+            "not_required",
+            "available",
+            "executed",
+            "failed"
+          ]
+        },
+        "strategy": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "triggers": {
+          "$ref": "#/$defs/nonEmptyUniqueStringArray"
+        },
+        "actions": {
+          "$ref": "#/$defs/nonEmptyUniqueStringArray"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/uniqueStringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "supersession": {
+      "type": "object",
+      "required": [
+        "status",
+        "supersedes_transaction_ids",
+        "superseded_by",
+        "evidence_ids"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "current",
+            "superseded"
+          ]
+        },
+        "supersedes_transaction_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^TX-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+          }
+        },
+        "superseded_by": {
+          "oneOf": [
+            {
+              "const": "not_applicable"
+            },
+            {
+              "type": "string",
+              "pattern": "^TX-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+            }
+          ]
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/uniqueStringArray"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "allowed_external_actions": {
+            "minItems": 1
+          }
+        },
+        "required": [
+          "allowed_external_actions"
+        ]
+      },
+      "then": {
+        "properties": {
+          "permission_envelope": {
+            "properties": {
+              "external_side_effects_allowed": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "permission_envelope": {
+            "properties": {
+              "secrets_allowed": {
+                "const": true
+              }
+            },
+            "required": [
+              "secrets_allowed"
+            ]
+          }
+        },
+        "required": [
+          "permission_envelope"
+        ]
+      },
+      "then": {
+        "properties": {
+          "permission_envelope": {
+            "properties": {
+              "sensitive_data_allowed": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "properties": {
+              "status": {
+                "const": "proposed"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "state"
+        ]
+      },
+      "then": {
+        "properties": {
+          "execution_authorization": {
+            "properties": {
+              "status": {
+                "const": "proposed"
+              }
+            }
+          },
+          "permission_envelope": {
+            "properties": {
+              "status": {
+                "const": "proposed"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "execution_authorization": {
+            "properties": {
+              "status": {
+                "const": "authorized"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "execution_authorization"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_system": {
+            "properties": {
+              "system_id": {
+                "$ref": "#/$defs/nonPendingIdentifier"
+              }
+            }
+          },
+          "runtime_actor": {
+            "properties": {
+              "actor_id": {
+                "$ref": "#/$defs/nonPendingIdentifier"
+              }
+            }
+          },
+          "approval_principal": {
+            "properties": {
+              "principal_id": {
+                "$ref": "#/$defs/nonPendingIdentifier"
+              },
+              "authorization_evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "authorized",
+                  "active"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "state"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_system": {
+            "properties": {
+              "system_id": {
+                "$ref": "#/$defs/nonPendingIdentifier"
+              }
+            }
+          },
+          "runtime_actor": {
+            "properties": {
+              "actor_id": {
+                "$ref": "#/$defs/nonPendingIdentifier"
+              }
+            }
+          },
+          "execution_authorization": {
+            "properties": {
+              "status": {
+                "const": "authorized"
+              }
+            }
+          },
+          "approval_principal": {
+            "properties": {
+              "principal_id": {
+                "$ref": "#/$defs/nonPendingIdentifier"
+              },
+              "authorization_evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              }
+            }
+          },
+          "permission_envelope": {
+            "properties": {
+              "status": {
+                "const": "current"
+              }
+            }
+          },
+          "state": {
+            "properties": {
+              "state_transition_evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "properties": {
+              "status": {
+                "const": "active"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "state"
+        ]
+      },
+      "then": {
+        "properties": {
+          "host_capability_requirements": {
+            "properties": {
+              "execution_profile_id": {
+                "allOf": [
+                  {
+                    "$ref": "#/$defs/nonEmptyString"
+                  },
+                  {
+                    "not": {
+                      "pattern": "^pending_"
+                    }
+                  }
+                ]
+              },
+              "overall_status": {
+                "const": "verified_available"
+              },
+              "evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              },
+              "checked_at": {
+                "$ref": "#/$defs/rfc3339"
+              }
+            }
+          },
+          "state": {
+            "properties": {
+              "state_transition_evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "properties": {
+              "status": {
+                "const": "blocked"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "state"
+        ]
+      },
+      "then": {
+        "properties": {
+          "state": {
+            "properties": {
+              "continuation_state": {
+                "const": "blocked"
+              },
+              "state_transition_evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              }
+            }
+          },
+          "escalation": {
+            "properties": {
+              "state": {
+                "enum": [
+                  "required",
+                  "pending",
+                  "resolved"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "properties": {
+              "status": {
+                "const": "cancelled"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "state"
+        ]
+      },
+      "then": {
+        "properties": {
+          "cancellation": {
+            "properties": {
+              "state": {
+                "enum": [
+                  "requested",
+                  "acknowledged",
+                  "safe_stop",
+                  "rolled_back",
+                  "incomplete"
+                ]
+              },
+              "evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              }
+            }
+          },
+          "state": {
+            "properties": {
+              "state_transition_evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "completed",
+                  "accepted"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "state"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_system": {
+            "properties": {
+              "system_id": {
+                "$ref": "#/$defs/nonPendingIdentifier"
+              }
+            }
+          },
+          "runtime_actor": {
+            "properties": {
+              "actor_id": {
+                "$ref": "#/$defs/nonPendingIdentifier"
+              }
+            }
+          },
+          "execution_authorization": {
+            "properties": {
+              "status": {
+                "const": "authorized"
+              }
+            }
+          },
+          "approval_principal": {
+            "properties": {
+              "principal_id": {
+                "$ref": "#/$defs/nonPendingIdentifier"
+              },
+              "authorization_evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              }
+            }
+          },
+          "permission_envelope": {
+            "properties": {
+              "valid_from": {
+                "$ref": "#/$defs/rfc3339"
+              },
+              "expires_at": {
+                "$ref": "#/$defs/rfc3339"
+              }
+            }
+          },
+          "host_capability_requirements": {
+            "properties": {
+              "execution_profile_id": {
+                "allOf": [
+                  {
+                    "$ref": "#/$defs/nonEmptyString"
+                  },
+                  {
+                    "not": {
+                      "pattern": "^pending_"
+                    }
+                  }
+                ]
+              },
+              "overall_status": {
+                "enum": [
+                  "verified_available",
+                  "stale"
+                ]
+              },
+              "evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              },
+              "checked_at": {
+                "$ref": "#/$defs/rfc3339"
+              }
+            }
+          },
+          "closeout_evidence": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "complete",
+                  "accepted"
+                ]
+              },
+              "evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              },
+              "validation_evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              }
+            }
+          },
+          "state": {
+            "properties": {
+              "continuation_state": {
+                "enum": [
+                  "not_applicable",
+                  "consumed"
+                ]
+              },
+              "state_transition_evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "properties": {
+              "status": {
+                "const": "accepted"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "state"
+        ]
+      },
+      "then": {
+        "properties": {
+          "closeout_evidence": {
+            "properties": {
+              "status": {
+                "const": "accepted"
+              },
+              "acceptance_evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "properties": {
+              "status": {
+                "const": "superseded"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "state"
+        ]
+      },
+      "then": {
+        "properties": {
+          "supersession": {
+            "properties": {
+              "status": {
+                "const": "superseded"
+              },
+              "superseded_by": {
+                "type": "string",
+                "pattern": "^TX-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+              },
+              "evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              }
+            }
+          },
+          "state": {
+            "properties": {
+              "state_transition_evidence_ids": {
+                "$ref": "#/$defs/nonEmptyUniqueStringArray"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nonPendingIdentifier": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "not": {
+        "pattern": "^(?:pending_|replace_me$)"
+      }
+    },
+    "uniqueStringArray": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "nonEmptyUniqueStringArray": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "rfc3339": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]+)?(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+    },
+    "pendingOrRfc3339": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^pending_[a-z0-9_]+$"
+        },
+        {
+          "$ref": "#/$defs/rfc3339"
+        }
+      ]
+    },
+    "pendingRfc3339OrNotApplicable": {
+      "oneOf": [
+        {
+          "const": "not_applicable"
+        },
+        {
+          "type": "string",
+          "pattern": "^pending_[a-z0-9_]+$"
+        },
+        {
+          "$ref": "#/$defs/rfc3339"
+        }
+      ]
+    }
+  }
+}

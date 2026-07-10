@@ -1,0 +1,132 @@
+# Controlled portable template. Copy this file and replace every example value.
+# A structurally valid proposed transaction is not execution authorization.
+execution_transaction_id: TX-EXAMPLE-REPLACE-ME-001
+contract_version: 1.0.0
+objective: Replace with one bounded objective and its measurable completion condition.
+source_requirement_ids:
+  - SFA-P1-INIT-EXEC-001
+source_decision_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-001
+subject_system:
+  system_id: replace_me
+  system_name: Replace with the governed subject system name
+subject_layer: framework_product
+runtime_actor:
+  actor_id: pending_runtime_actor
+  actor_type: meta_agent_runtime
+  role_ids:
+    - implementation_initialization_agent
+  authority_source_ids:
+    - DDR-SFADEV-STRATEGIC-BASELINE-001
+approval_principal:
+  principal_id: pending_accountable_human
+  principal_type: accountable_human
+  approval_scope: Replace with the exact action and artifact scope the principal may authorize.
+  authorization_evidence_ids: []
+  model_self_approval: false
+execution_authorization:
+  status: proposed
+  authorized_at: pending_authorization
+  expires_at: pending_authorization
+  authority_evidence_ids: []
+  self_authorized: false
+permission_envelope:
+  envelope_id: PERMISSION-ENVELOPE-REPLACE-ME-001
+  status: proposed
+  authority_source_ids:
+    - DDR-SFADEV-STRATEGIC-BASELINE-001
+  data_classes:
+    - repository_controlled_artifacts
+  resource_limits:
+    - No runtime resources are authorized by this template.
+  valid_from: pending_permission
+  expires_at: pending_permission
+  sensitive_data_allowed: false
+  secrets_allowed: false
+  data_egress_allowed: false
+  external_side_effects_allowed: false
+  delegation_allowed: false
+  delegation_expires_at: not_applicable
+  permission_expansion_allowed: false
+allowed_reads:
+  - PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+  - Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-001.yaml
+allowed_writes: []
+allowed_tools: []
+allowed_external_actions: []
+forbidden_actions:
+  - Treat this template or structural validation as execution authorization.
+  - Expand permissions from the objective, role, values, urgency, or runtime capability.
+  - Execute while a required host capability or permission remains unknown, denied, or stale.
+  - Claim completion, acceptance, or host capability without retained evidence.
+inputs:
+  - Replace with exact source-backed input artifacts and versions.
+expected_outputs:
+  - Replace with exact output artifacts and acceptance evidence.
+validators:
+  - validator_id: execution_transaction_schema
+    command_or_method: Validate the parsed YAML against execution_transaction.schema.json.
+    blocking: true
+    expected_evidence: Retained schema-validation result for this transaction version.
+stop_conditions:
+  - Required authority, permission, source, capability, or validation evidence is missing or stale.
+  - A requested action falls outside the declared reads, writes, tools, external actions, or objective.
+  - Cancellation is requested or the safe completion state of an action becomes uncertain.
+host_capability_requirements:
+  execution_profile_id: pending_host_profile
+  overall_status: unknown
+  required_capability_ids:
+    - workspace_filesystem
+    - terminal_and_tests
+  evidence_ids: []
+  checked_at: pending_host_verification
+  values_or_goals_may_override: false
+state:
+  status: proposed
+  current_state_evidence_ids:
+    - PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+    - Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-001.yaml
+  continuation_state: not_ready
+  continuation_evidence_ids: []
+  state_transition_evidence_ids: []
+cancellation:
+  state: not_requested
+  requested_by: not_applicable
+  behavior: Stop at the nearest safe boundary, begin no new side effect, retain uncertain-operation evidence, and escalate.
+  evidence_ids: []
+  uncertain_operations: []
+escalation:
+  state: pending
+  conditions:
+    - Authorization or permission is absent, ambiguous, expired, denied, or outside the declared envelope.
+    - A required capability is unknown, unavailable, permission-dependent, environment-dependent, or stale.
+    - The transaction would change purpose, values, authority, permissions, acceptance criteria, or production state.
+  responsible_principal_id: pending_accountable_human
+  required_decision: Authorize, reject, narrow, reroute, cancel, or supersede this proposed transaction.
+  evidence_ids: []
+resume_evidence:
+  required: true
+  status: missing
+  last_known_state: proposed
+  evidence_ids: []
+closeout_evidence:
+  status: missing
+  evidence_ids: []
+  changed_artifacts: []
+  validation_evidence_ids: []
+  acceptance_evidence_ids: []
+rollback:
+  status: planned
+  strategy: Revert the bounded write set or apply declared compensating actions without altering historical evidence.
+  triggers:
+    - A blocking validator fails or retained evidence contradicts the claimed state.
+    - An authorized write or external side effect escapes the permission envelope.
+  actions:
+    - Stop new work and preserve the current diff, action log, and uncertain-operation state.
+    - Apply the transaction-specific reversal or compensating action after authority is confirmed.
+  evidence_ids: []
+supersession:
+  status: current
+  supersedes_transaction_ids: []
+  superseded_by: not_applicable
+  evidence_ids: []

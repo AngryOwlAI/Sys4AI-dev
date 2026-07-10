@@ -1,9 +1,9 @@
 [profile]
 profile_id = "codex_app_reference"
-profile_version = "0.1.0"
+profile_version = "0.2.0"
 host_name = "Codex App"
 host_variant = "desktop_reference"
-portable_execution_contract_version = "pending_TX_09"
+portable_execution_contract_version = "1.0.0"
 portable_execution_contract_executable = false
 verification_state = "draft_pending_G_07"
 verification_gate = "G-07"
@@ -26,13 +26,13 @@ evidence_capture = "Retain structural validation and transaction evidence; obser
 known_limitations = [
   "No Codex capability has been verified by this profile.",
   "Host permissions and available mechanisms can vary by environment and task.",
-  "The portable execution contract does not exist until TX-09 completes.",
+  "The portable execution contract exists structurally, but this profile cannot execute it until G-07 capabilities and permissions are verified.",
   "Structural validation cannot prove host behavior, safety, or operational completeness.",
 ]
 review_trigger = [
   "G-07 observable verification begins or is superseded.",
   "Codex host behavior, permissions, tools, task state, or cancellation changes.",
-  "TX-09 creates or changes the portable execution contract.",
+  "The portable execution contract version or required capability set changes.",
   "A required interface obtains new, stale, denied, or conflicting evidence.",
 ]
 purpose_authority = false

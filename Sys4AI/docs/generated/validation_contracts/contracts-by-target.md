@@ -47,6 +47,7 @@ page_metadata:
     - contract_target_vision_statement
     - contract_target_core_values
     - contract_host_capability_profile
+    - contract_execution_transaction
   generated_at: 2026-07-06T00:00:00Z
   generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
   stale_or_orphan_status: current
@@ -253,6 +254,12 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | contract_director_decision | schemas/contracts/director_decision.schema.json | 2020-12 | yaml | director_decision | control_records/director_decisions/*.yaml | Sys4AI validate-director-decisions | control_loop | controlled | pending | pending |
+
+## yaml / execution_transaction
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_execution_transaction | schemas/contracts/execution_transaction.schema.json | 2020-12 | yaml | execution_transaction | templates/project/execution-transaction-template.yaml;control_records/execution_transactions/*.yaml | .venv/bin/python -m unittest discover -s tests -p test_execution_transactions.py | verification_engineer | controlled | pending | pending |
 
 ## yaml / handoff
 

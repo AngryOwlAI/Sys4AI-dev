@@ -47,6 +47,7 @@ page_metadata:
     - contract_target_vision_statement
     - contract_target_core_values
     - contract_host_capability_profile
+    - contract_execution_transaction
   generated_at: 2026-07-06T00:00:00Z
   generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
   stale_or_orphan_status: current
@@ -110,6 +111,7 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_target_vision_statement | schemas/contracts/target_vision_statement.schema.json | 2020-12 | markdown | target_vision_statement | templates/governance/target-vision-statement-template.md;examples/strategic_intent/*/vision-statement.md | Sys4AI validate-strategic-intent | verification_engineer | controlled | pending | pending |
 | contract_target_core_values | schemas/contracts/target_core_values.schema.json | 2020-12 | markdown | target_core_values | templates/governance/target-core-values-template.md;examples/strategic_intent/*/core-values.md | Sys4AI validate-strategic-intent | verification_engineer | controlled | pending | pending |
 | contract_host_capability_profile | schemas/contracts/host_capability_profile.schema.json | 2020-12 | toml | host_capability_profile | configs/host_profiles/*.toml | Sys4AI validate-host-capability-profiles | verification_engineer | controlled | pending | pending |
+| contract_execution_transaction | schemas/contracts/execution_transaction.schema.json | 2020-12 | yaml | execution_transaction | templates/project/execution-transaction-template.yaml;control_records/execution_transactions/*.yaml | .venv/bin/python -m unittest discover -s tests -p test_execution_transactions.py | verification_engineer | controlled | pending | pending |
 
 ## Known Limitations
 

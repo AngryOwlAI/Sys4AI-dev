@@ -2,9 +2,9 @@
 
 - Status: Controlled structural draft pending `G-07`
 - Profile ID: `codex_app_reference`
-- Profile version: `0.1.0`
+- Profile version: `0.2.0`
 - Verification scope: Structural contract only
-- Portable execution binding: `pending_TX_09`, non-executable
+- Portable execution binding: `1.0.0`, non-executable pending `G-07`
 - Authority source: `DDR-SFADEV-STRATEGIC-BASELINE-G04-001`
 
 ## 1. Purpose And Authority Boundary
@@ -66,9 +66,9 @@ capability cannot authorize execution. Conditional capabilities default to
 non-executable until their permission and environment conditions are evaluated
 within a later authorized execution transaction.
 
-The checked-in profile uses these controlled pending representations:
+The checked-in profile uses these controlled fail-closed representations:
 
-| Field | Pending value | Meaning |
+| Field | Controlled value | Meaning |
 |---|---|---|
 | `verification_state` | `draft_pending_G_07` | Contract exists; observable host conformance is not accepted |
 | `verification_decision` | `pending_G_07` | No accepted G-07 Director Decision is claimed |
@@ -76,8 +76,8 @@ The checked-in profile uses these controlled pending representations:
 | `verified_by` | `pending_G_07` | No verifier identity is fabricated |
 | `evidence_status` | `pending_G_07` | Plan and decision evidence define the obligation but do not prove behavior |
 | Safe probes | `pending_G_07` | Positive and denial-or-absence probes have not been accepted |
-| `portable_execution_contract_version` | `pending_TX_09` | No portable execution contract has been created |
-| `portable_execution_contract_executable` | `false` | The pending reference cannot be used for execution |
+| `portable_execution_contract_version` | `1.0.0` | The profile binds the TX-09 portable structural contract |
+| `portable_execution_contract_executable` | `false` | The binding cannot be used for host execution before G-07 capability evidence is accepted |
 
 Structural validation may accept these pending values because they fail closed.
 It must reject any attempt to combine them with an available or executable
@@ -189,7 +189,7 @@ The focused validator checks:
 - registered JSON Schema conformance;
 - the exact unique eight-interface set;
 - fixed permission precedence;
-- pending `G-07` and `TX-09` truthfulness;
+- pending `G-07` and portable execution-binding truthfulness;
 - registry and YAML resolution of a completed human-authorized G-07 Director
   Decision before any `verified_G_07` profile can pass;
 - non-executable unknown, unavailable, conditional, stale, and deprecated

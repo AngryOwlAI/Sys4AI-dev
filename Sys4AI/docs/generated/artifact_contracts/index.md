@@ -16,6 +16,7 @@ page_metadata:
     - contract_completion_receipt_v0_2
     - contract_director_decision
     - contract_discovery_record_registry_row
+    - contract_execution_transaction
     - contract_handoff_v0_2
     - contract_memory_preflight_receipt
     - contract_role_registry_row
@@ -70,6 +71,7 @@ Validation contracts prove structural conformance only. They do not prove semant
 | artifact_generated_validation_contracts_catalog | GeneratedValidationContractsCatalog | documentation_librarian | all_agents | derivative | pending | none | Promotion requires source authority decision |
 | artifact_target_vision | TargetVisionStatement | user_wants_elicitor;requirements_manager | requirements_manager;requirements_verifier;system_architect;verification_engineer;runtime_maintenance_planner | controlled_candidate | contract_target_vision_statement | target_package;strategic_intent_contract_index | Promote only with accountable human evidence stable VISION ID current hash validation impact review and registered active-version relationships |
 | artifact_target_core_values | TargetCoreValues | user_wants_elicitor;requirements_manager | requirements_manager;requirements_verifier;system_architect;verification_engineer;runtime_maintenance_planner | controlled_candidate | contract_target_core_values | target_package;strategic_intent_contract_index | Promote only with accountable human evidence stable VALUE IDs current hash validation impact review and registered active-version relationships |
+| artifact_execution_transaction | ExecutionTransaction | system_director;implementation_initialization_agent | software_engineer;verification_engineer;system_director | controlled | contract_execution_transaction | configuration_control_wiki | Activate only with current human authorization a current permission envelope verified required capabilities and registered state evidence |
 
 ## Allowed Promotion Path
 

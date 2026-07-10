@@ -177,9 +177,6 @@
               "verified_by": {
                 "const": "pending_G_07"
               },
-              "portable_execution_contract_version": {
-                "const": "pending_TX_09"
-              },
               "portable_execution_contract_executable": {
                 "const": false
               }
