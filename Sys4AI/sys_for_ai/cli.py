@@ -10,6 +10,7 @@ import sys
 from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
 
+from .capability_migration import validate_capability_migration
 from .discovery import validate_discovery_record
 from .derivative_generation import (
     check_governance_generated_docs,
@@ -145,6 +146,7 @@ def build_parser() -> argparse.ArgumentParser:
     validate.add_argument("--requirement-trace", default="registries/requirement_trace_registry.csv")
     validate.add_argument("--prd-modules", default="registries/prd_module_registry.csv")
     validate.add_argument("--contracts-root", default="schemas/contracts")
+    validate.add_argument("--capability-migration-manifest", default="configs/capability_migration.toml")
     validate.add_argument("--generated-docs", default="docs/generated")
 
     validate_skills = sub.add_parser("validate-skills", help="Validate the core skill manifest")
@@ -282,6 +284,18 @@ def build_parser() -> argparse.ArgumentParser:
         default="schemas/contracts/host_capability_profile.schema.json",
     )
     validate_host_profiles.add_argument("--json", action="store_true")
+
+    validate_capability = sub.add_parser(
+        "validate-capability-migration",
+        help="Validate the G-05 retired-capability boundary inventory",
+    )
+    validate_capability.add_argument(
+        "manifest",
+        default="configs/capability_migration.toml",
+        nargs="?",
+    )
+    validate_capability.add_argument("--repository-root")
+    validate_capability.add_argument("--json", action="store_true")
 
     validate_toml = sub.add_parser("validate-toml-config", help="Validate registered TOML configuration sources")
     validate_toml.add_argument("path", default="registries/config_source_registry.csv", nargs="?")
@@ -442,6 +456,12 @@ def main(argv: list[str] | None = None) -> int:
             args.json,
         )
 
+    if args.command == "validate-capability-migration":
+        return _emit_validation_result(
+            validate_capability_migration(args.manifest, args.repository_root),
+            args.json,
+        )
+
     if args.command == "validate-toml-config":
         return print_result(validate_toml_config(args.path))
 
@@ -498,6 +518,7 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_toml_config(args.config_sources))
         result.extend(validate_jsonschema_contracts(args.contracts_root))
         result.extend(validate_registry_graph(args.registries))
+        result.extend(validate_capability_migration(args.capability_migration_manifest))
         result.extend(validate_requirement_trace(args.requirement_trace))
         result.extend(validate_prd_modules(args.prd_modules))
         result.extend(check_governance_generated_docs())

@@ -1,0 +1,218 @@
+director_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G05-001
+schema_version: 0.1.0
+decision_status: completed
+created_at: "2026-07-10T13:26:21Z"
+completed_at: "2026-07-10T13:26:21Z"
+director_role: system_director
+human_authorization:
+  principal_name: Alex Omegapy
+  principal_role: repository_maintainer_and_product_owner
+  authority_basis: >
+    The accountable human repository maintainer and product owner supplied the
+    TX-09 closeout evidence and explicitly directed execution of the logical
+    next step: the G-05 capability-migration safety disposition including stale
+    active-reference classification and resolution of the pre-migration scanner
+    versus TX-13 sequencing tension.
+  approval_evidence: >
+    Human-issued Codex task instruction dated 2026-07-10: execute the G-05
+    capability-migration safety disposition; classify stale active references
+    and resolve the required boundary scanner before TX-10 against the broader
+    validator work assigned to TX-13.
+  approval_scope:
+    - accept the exact capability-reference classes and transaction routing recorded below
+    - authorize the minimal configuration-driven G-05 boundary scanner slice
+    - authorize TX-10-ACTIVE-SURFACE-MIGRATION only after the scanner and gate validators pass
+    - preserve the broader semantic validator suite for TX-13
+    - preserve historical evidence and the separate G-06 G-07 and G-08 gates
+  model_self_approval: false
+decision_context:
+  trigger: capability_migration_safety_gate_disposition
+  transaction_id: G-05-DISPOSITION
+  gate_id: G-05
+  program_state_id: SYS4AI-PROGRAM-STATE-001
+  plan_source_id: SRC-STRATEGIC-BASELINE-MIGRATION-PLAN
+  requirements_discovery_record_id: RDR-SFADEV-STRATEGIC-BASELINE-001
+  governing_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-001
+  artifact_contract_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G04-001
+  execution_contract_source_id: SRC-SCHEMA-EXECUTION-TRANSACTION
+  execution_contract_receipt_id: SRC-STRATEGIC-BASELINE-TX09-RECEIPT
+  reviewed_head_commit: 6cde56448e9f3fd3b30f7ceba028ace6210aa1c2
+  reviewed_transaction: TX-09-EXECUTION-CONTRACT
+  memory_preflight_status: PASS_WITH_WARNINGS
+  memory_preflight_evidence: >
+    Source-first navigation identified the post-retraction migration chain and
+    the live checkout was then inspected directly. HEAD matched origin/main at
+    6cde564 and the worktree was clean before G-05 writes. Existing warnings are
+    the pending-hash backlog and do not authorize use of memory as source authority.
+  observed_evidence:
+    - TX-09 provides the versioned harness-neutral ExecutionTransaction contract required for G-05 entry.
+    - The removed runtime skill and control-loop paths remain absent and the absence regression test remains active.
+    - The WS-00 inventory classified retired execution references conservatively but had no executable boundary scanner.
+    - Current canonical state role policy registry schema memory test and PRD surfaces still contain unresolved active AgentJob or /continue semantics.
+    - Accepted historical records and Phase 2 evidence contain retired terms that must not be rewritten merely to make current semantics appear consistent.
+    - The plan requires the migration scanner at G-05 and TX-10 exit but assigns the broader focused validator family to TX-13 after TX-12.
+selected_route:
+  route_id: split_boundary_scanner_from_broader_TX13_semantics
+  route_name: accept G-05 with a minimal fail-closed pre-TX-10 scanner
+  rationale: >
+    G-05 cannot truthfully unblock TX-10 without executable protection and TX-13
+    cannot occur before TX-10 through TX-12. The smallest dependency-correct
+    resolution is to implement the configuration schema inventory scanner direct
+    command Make target aggregate hook and boundary tests now while reserving
+    requirement capability evidence and package semantics for TX-13.
+  immediate_effect: >
+    G-05 is accepted when the controlled manifest schema scanner tests registries
+    and full validation pass. TX-10 then becomes eligible but does not begin in
+    this disposition. Any new changed restored or unclassified retired-runtime
+    reference fails the boundary before TX-10 or a later migration packet.
+sequencing_disposition:
+  tension: >
+    G-05 requires a migration validator before TX-10 while the backlog places
+    TX-13-VALIDATORS after TX-07 through TX-12.
+  G_05_phase_A_boundary_slice:
+    - controlled capability_migration.toml classification and inventory fingerprints
+    - versioned capability_migration.schema.json
+    - focused capability_migration.py text boundary scanner
+    - direct validate-capability-migration CLI command
+    - focused Make target and aggregate validation integration
+    - negative tests for unclassified drift fingerprint drift restored paths and post-TX-10 stale state
+  TX_13_phase_B_semantic_expansion:
+    - requirement and capability state agreement
+    - implemented claims resolve existing implementation paths
+    - historical evidence cannot be consumed as current capability evidence
+    - optional profiles cannot become mandatory by implication
+    - current program state uses portable fields and generated readers reflect source classifications
+    - remaining mandatory positive and negative fixtures plus complete limitation reporting
+  non_duplication_rule: >
+    TX-13 shall extend the same sys_for_ai.capability_migration module command and
+    Make target. It shall not create a competing validator or remove the G-05
+    inventory lock without a superseding decision and migration evidence.
+  TX_10_transition_rule: >
+    TX-10 must migrate every reference in active_surface_tx10 atomically with its
+    schemas rows code tests policies and generated impacts. Before TX-10 closes it
+    must update the manifest to post_tx10 mode reclassify or eliminate the resolved
+    inventory and pass the scanner. Authority-deferred and historical classes do
+    not constitute current capability evidence.
+capability_reference_disposition:
+  active_valid_migration_control:
+    state: active_valid
+    treatment: Retain only explicit migration prohibition or absence-test references.
+    transaction: none
+  legacy_schema_compatibility:
+    state: legacy_compatibility
+    treatment: Preserve read-only historical validation and remove any current execution-authority interpretation in TX-10.
+    transaction: TX-10-ACTIVE-SURFACE-MIGRATION
+  active_surface_tx10:
+    state: active_but_stale
+    treatment: Migrate as one rollback-coherent packet including residual canonical Phase 0 and Phase 1 execution semantics.
+    transaction: TX-10-ACTIVE-SURFACE-MIGRATION
+  trace_migration_deferred:
+    state: authority_deferred
+    treatment: Quarantine until versioned trace migration preserves IDs counts evidence and review state.
+    transaction: TX-11-TRACE-SCHEMA and TX-12-TRACE-DATA
+  phase2_authority_deferred:
+    state: authority_deferred
+    treatment: Preserve accepted Phase 2 unchanged and require G-06 plus an addendum or successor.
+    transaction: G-06 and TX-14-PHASE2
+  target_package_deferred:
+    state: authority_deferred
+    treatment: Treat smoke package surfaces as nonproduction derivative evidence.
+    transaction: TX-15-TARGET-PACKAGE
+  walking_skeleton_deferred:
+    state: authority_deferred
+    treatment: Preserve the accepted demonstration until Phase 2 and package authority exist.
+    transaction: TX-16-WALKING-SKELETON
+  prd_derivative_migration_deferred:
+    state: generated_derivative
+    treatment: Keep module PRDs and navigation noncanonical until G-08 and TX-19.
+    transaction: TX-19-MODULES
+  generated_reader_migration_deferred:
+    state: generated_derivative
+    treatment: Regenerate only from migrated sources and generators.
+    transaction: TX-20-GENERATED-DOCS
+  historical_control_evidence:
+    state: historical
+    treatment: Preserve activated plans decisions receipts handoffs discovery records snapshots and AgentJob-era records.
+    transaction: none
+scanner_baseline:
+  manifest_id: capability_migration_g05
+  manifest_version: 1.0.0
+  mode: pre_tx10
+  reviewed_commit: 6cde56448e9f3fd3b30f7ceba028ace6210aa1c2
+  classification_count: 10
+  classified_file_count: 352
+  retired_reference_count: 4400
+  unclassified_reference_count: 0
+  restored_removed_path_count: 0
+  fingerprint_rule: >
+    Each class hashes normalized repository path retired term and occurrence count.
+    A count path term or classification change requires reviewed manifest evidence.
+  limitation: >
+    Text classification and structural validation do not prove semantic truth
+    runtime capability host conformance migration completeness or authority.
+rejected_routes:
+  - route_id: defer_all_scanner_work_to_TX13
+    reason: It leaves G-05 unable to protect TX-10 and violates the gate exit condition.
+  - route_id: implement_the_entire_TX13_suite_at_G05
+    reason: Trace package and evidence semantics depend on TX-10 through TX-12 and would cross the bounded gate transaction.
+  - route_id: hard_code_exceptions_in_python
+    reason: Scattered exceptions would obscure classification authority and make migration drift difficult to review.
+  - route_id: rewrite_historical_records_to_remove_terms
+    reason: Activated control history and accepted evidence must be preserved and superseded rather than silently rewritten.
+  - route_id: treat_all_textual_references_as_equivalent
+    reason: Active requirements historical records derivatives compatibility contracts and negative tests have different authority and migration obligations.
+authority_boundary:
+  human_authority_recorded: true
+  accepts_gate_G_05: true
+  may_execute_G_05_boundary_scanner_slice: true
+  may_execute_TX_10_ACTIVE_SURFACE_MIGRATION_after_validation: true
+  may_begin_TX_10_in_this_disposition: false
+  may_claim_TX_10_complete: false
+  may_claim_TX_13_complete: false
+  may_rewrite_historical_control_evidence: false
+  may_treat_authority_deferred_or_generated_references_as_current_capability_evidence: false
+  may_restore_AgentJob_or_continue_runtime: false
+  may_claim_host_capability_or_satisfy_G_07: false
+  may_approve_Sys4AI_vision_or_values_or_satisfy_G_08: false
+  may_expand_permissions_or_authorize_production: false
+rollback_and_review:
+  rollback_class: additive_gate_infrastructure_and_superseding_decision
+  rollback_scope: >
+    Revert the G-05 decision manifest schema scanner tests CLI Make registry and
+    generated-derivative packet together. Do not roll back only the manifest or
+    only the scanner and do not alter protected historical evidence.
+  supersession_rule: >
+    Do not mutate this completed decision in place. A change to classification
+    authority transaction routing scanner mode or fingerprint policy requires a
+    new accepted Director Decision with impact and rollback evidence.
+  review_triggers:
+    - any inventory fingerprint changes
+    - TX-10 requests post_tx10 mode
+    - a retired runtime path reappears
+    - G-02 or the ExecutionTransaction contract is superseded
+    - TX-13 proposes a competing capability-migration validator
+  expiry: none; remains controlling until explicitly superseded
+evidence_references:
+  - implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+  - implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-WS00-001.md
+  - implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX09-001.md
+  - Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-001.yaml
+  - Sys4AI/schemas/contracts/execution_transaction.schema.json
+  - Sys4AI/configs/capability_migration.toml
+  - Sys4AI/schemas/contracts/capability_migration.schema.json
+  - Sys4AI/sys_for_ai/capability_migration.py
+  - Sys4AI/tests/test_capability_migration.py
+validators:
+  - cd Sys4AI && make validate-capability-migration
+  - cd Sys4AI && .venv/bin/python -m unittest tests.test_capability_migration -v
+  - cd Sys4AI && make validate-validation-contract-registry
+  - cd Sys4AI && make validate-config-sources
+  - cd Sys4AI && make validate-toml-config
+  - cd Sys4AI && make validate-jsonschema-contracts
+  - cd Sys4AI && make validate-director-decisions
+  - cd Sys4AI && make validate-director-decision-registry
+  - cd Sys4AI && make validate-control-records
+  - cd Sys4AI && make validate-registry-graph
+  - cd Sys4AI && make validate-generated-derivatives
+  - make validate
+  - git diff --check

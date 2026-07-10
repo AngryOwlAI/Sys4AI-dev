@@ -193,6 +193,7 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_strategic_baseline_director_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-001.yaml | director_decision | controlled | framework_product | contract_director_decision | pending |
 | ctrl_strategic_baseline_g03_director_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G03-001.yaml | director_decision | controlled | framework_product | contract_director_decision | pending |
 | ctrl_strategic_baseline_g04_director_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G04-001.yaml | director_decision | controlled | framework_product | contract_director_decision | pending |
+| ctrl_strategic_baseline_g05_director_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G05-001.yaml | director_decision | controlled | framework_product | contract_director_decision | pending |
 
 ## Validation Contract Trace
 

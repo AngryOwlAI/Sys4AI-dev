@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/Sys4AI/schemas/contracts/capability_migration.schema.json",
+  "title": "Sys4AI capability migration boundary manifest",
+  "description": "Controlled G-05 classification and fingerprint contract for retired runtime references. Conformance does not complete the migrations assigned to TX-10 through TX-20.",
+  "type": "object",
+  "required": ["manifest", "classifications"],
+  "properties": {
+    "manifest": {
+      "type": "object",
+      "required": [
+        "manifest_id",
+        "manifest_version",
+        "schema_path",
+        "gate_id",
+        "mode",
+        "reviewed_head_commit",
+        "owner",
+        "replacement_capability",
+        "legacy_terms",
+        "scan_roots",
+        "text_extensions",
+        "excluded_paths",
+        "removed_paths",
+        "review_triggers",
+        "limitation"
+      ],
+      "properties": {
+        "manifest_id": { "const": "capability_migration_g05" },
+        "manifest_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+        "schema_path": { "const": "Sys4AI/schemas/contracts/capability_migration.schema.json" },
+        "gate_id": { "const": "G-05" },
+        "mode": { "enum": ["pre_tx10", "post_tx10"] },
+        "reviewed_head_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "owner": { "const": "baseline_change_manager" },
+        "replacement_capability": { "const": "ExecutionTransaction" },
+        "legacy_terms": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonEmptyString" }
+        },
+        "scan_roots": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/repositoryRelativePath" }
+        },
+        "text_extensions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^\\.[a-z0-9]+$" }
+        },
+        "excluded_paths": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/repositoryRelativePath" }
+        },
+        "removed_paths": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/repositoryRelativePath" }
+        },
+        "review_triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/nonEmptyString" }
+        },
+        "limitation": { "$ref": "#/$defs/nonEmptyString" }
+      },
+      "additionalProperties": false
+    },
+    "classifications": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "classification_id",
+          "priority",
+          "state",
+          "paths",
+          "path_globs",
+          "disposition",
+          "owner",
+          "replacement_capability",
+          "blocking_transaction",
+          "allowed_modes",
+          "expected_files",
+          "expected_references",
+          "expected_inventory_sha256"
+        ],
+        "properties": {
+          "classification_id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+          "priority": { "type": "integer", "minimum": 0 },
+          "state": {
+            "enum": [
+              "active_valid",
+              "legacy_compatibility",
+              "active_but_stale",
+              "authority_deferred",
+              "generated_derivative",
+              "historical"
+            ]
+          },
+          "paths": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "$ref": "#/$defs/repositoryRelativePath" }
+          },
+          "path_globs": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "$ref": "#/$defs/repositoryRelativePath" }
+          },
+          "disposition": { "$ref": "#/$defs/nonEmptyString" },
+          "owner": { "$ref": "#/$defs/nonEmptyString" },
+          "replacement_capability": { "$ref": "#/$defs/nonEmptyString" },
+          "blocking_transaction": { "$ref": "#/$defs/nonEmptyString" },
+          "allowed_modes": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "enum": ["pre_tx10", "post_tx10"] }
+          },
+          "expected_files": { "type": "integer", "minimum": 0 },
+          "expected_references": { "type": "integer", "minimum": 0 },
+          "expected_inventory_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        },
+        "anyOf": [
+          { "properties": { "paths": { "minItems": 1 } } },
+          { "properties": { "path_globs": { "minItems": 1 } } }
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "nonEmptyString": { "type": "string", "minLength": 1 },
+    "repositoryRelativePath": {
+      "type": "string",
+      "minLength": 1,
+      "not": { "pattern": "^(?:/|.*(?:^|/)\\.\\.(?:/|$))" }
+    }
+  }
+}

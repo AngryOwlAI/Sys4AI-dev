@@ -14,6 +14,7 @@ page_metadata:
   validation_contracts:
     - contract_agentjob
     - contract_agentjob_v0_2
+    - contract_capability_migration_manifest
     - contract_completion_receipt
     - contract_completion_receipt_v0_2
     - contract_director_decision
@@ -60,8 +61,8 @@ This generated page indexes registered configuration and control surfaces. It is
 | surface | count | source_path |
 | --- | --- | --- |
 | format profiles | 5 | registries/format_profile_registry.csv |
-| configuration sources | 5 | registries/config_source_registry.csv |
-| control records | 156 | registries/control_record_registry.csv |
+| configuration sources | 6 | registries/config_source_registry.csv |
+| control records | 157 | registries/control_record_registry.csv |
 
 ## Allowed Promotion Path
 

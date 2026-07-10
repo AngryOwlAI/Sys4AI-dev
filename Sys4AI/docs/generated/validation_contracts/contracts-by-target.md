@@ -48,6 +48,7 @@ page_metadata:
     - contract_target_core_values
     - contract_host_capability_profile
     - contract_execution_transaction
+    - contract_capability_migration_manifest
   generated_at: 2026-07-06T00:00:00Z
   generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
   stale_or_orphan_status: current
@@ -200,6 +201,12 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | contract_target_vision_statement | schemas/contracts/target_vision_statement.schema.json | 2020-12 | markdown | target_vision_statement | templates/governance/target-vision-statement-template.md;examples/strategic_intent/*/vision-statement.md | Sys4AI validate-strategic-intent | verification_engineer | controlled | pending | pending |
+
+## toml / capability_migration_manifest
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_capability_migration_manifest | schemas/contracts/capability_migration.schema.json | 2020-12 | toml | capability_migration_manifest | configs/capability_migration.toml | Sys4AI validate-capability-migration | baseline_change_manager | controlled | pending | pending |
 
 ## toml / framework_config
 
