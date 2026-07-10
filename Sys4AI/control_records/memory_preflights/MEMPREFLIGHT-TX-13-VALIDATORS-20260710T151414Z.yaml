@@ -1,0 +1,93 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-13-VALIDATORS-20260710T151414Z
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-13-VALIDATORS
+created_at: '2026-07-10T15:14:14Z'
+status: PASS_WITH_WARNINGS
+commands_run:
+- command: python -m sys_for_ai.cli memory status --json
+  result: pass
+- command: python -m sys_for_ai.cli memory lookup TX-13-VALIDATORS --json
+  result: warn
+- command: python -m sys_for_ai.cli memory lookup HANDOFF-SFADEV-STRATEGIC-BASELINE-TX12-001
+    --json
+  result: pass
+- command: python -m sys_for_ai.cli memory search 'TX-13-VALIDATORS' --limit 10 --json
+  result: pass
+- command: python -m sys_for_ai.cli memory search 'implementation paths optional-profile
+    consistency' --limit 10 --json
+  result: pass
+- command: python -m sys_for_ai.cli memory search 'program-state alignment evidence
+    freshness generated-source authority' --limit 10 --json
+  result: pass
+queries:
+- query: TX-13-VALIDATORS
+  returned_object_ids:
+  - SRC-CONFIG-CAPABILITY-MIGRATION
+  - cfg_capability_migration
+  - DDR-SFADEV-STRATEGIC-BASELINE-G05-001
+  - SRC-COMPLETION-STRATEGIC-BASELINE-TX12
+  - SRC-DDR-STRATEGIC-BASELINE-G05-001
+  - SRC-HANDOFF-STRATEGIC-BASELINE-TX12
+  - SRC-REG-HANDOFFS
+  - SRC-STRATEGIC-BASELINE-TX12-RECEIPT
+  - SRC-TRACE-SCHEMA-MIGRATION-PROFILE
+  - SRC-TRACE-SEMANTIC-REVIEW-TX12
+- query: implementation paths optional-profile consistency
+  returned_object_ids:
+  - SRC-REG-ROLE-SKILL-CROSSWALK
+  - SRC-REG-SOURCES
+  - SRC-REG-CONTROL-RECORDS
+  - SRC-NEXT-SCOPE-FULL-IMPLEMENTATION-PLAN
+  - der_configuration_control_yaml
+  - SRC-REG-REQ-TRACE
+  - SRC-REG-HANDOFFS
+  - SRC-VALIDATOR-TRACE-MIGRATION
+  - SRC-PLAN-COMPLETION-AUDIT-001
+  - SRC-STRATEGIC-BASELINE-WS00-RECEIPT
+- query: program-state alignment evidence freshness generated-source authority
+  returned_object_ids:
+  - SRC-HOST-PROFILE-CODEX-APP-REFERENCE
+  - cfg_codex_app_reference
+  - DDR-SFADEV-STRATEGIC-BASELINE-001
+  - SRC-DDR-STRATEGIC-BASELINE-001
+  - ctrl_strategic_baseline_director_decision
+  - SRC-STRATEGIC-BASELINE-MIGRATION-PLAN
+  - SRC-DOC-CODEX-HOST-INTEGRATION-PROFILE
+  - SRC-RDR-STRATEGIC-BASELINE-001
+  - SRC-RDR-DISCOVERY-GATE-SMOKE-001
+  - SRC-RDR-PHASE2-WALKING-SKELETON-001
+canonical_sources_inspected:
+- path: Sys4AI/configs/capability_migration.toml
+  registry: source_registry.csv
+  row_id: SRC-CONFIG-CAPABILITY-MIGRATION
+  inspected_sections:
+  - registered source metadata
+- path: Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX12-001.yaml
+  registry: source_registry.csv
+  row_id: SRC-COMPLETION-STRATEGIC-BASELINE-TX12
+  inspected_sections:
+  - registered source metadata
+- path: Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G05-001.yaml
+  registry: source_registry.csv
+  row_id: SRC-DDR-STRATEGIC-BASELINE-G05-001
+  inspected_sections:
+  - registered source metadata
+registry_rows_inspected:
+- path: configs/capability_migration.toml
+  registry: config_source_registry.csv
+  row_id: cfg_capability_migration
+  purpose: Confirm memory hit registry evidence.
+- path: control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G05-001.yaml
+  registry: director_decision_registry.csv
+  row_id: DDR-SFADEV-STRATEGIC-BASELINE-G05-001
+  purpose: Confirm memory hit registry evidence.
+- path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX12-001.yaml
+  registry: source_registry.csv
+  row_id: SRC-HANDOFF-STRATEGIC-BASELINE-TX12
+  purpose: Confirm memory hit registry evidence.
+stale_context_risks:
+- risk_id: MEMPREFLIGHT-RISK-001
+  status: observed
+  notes: Derivative hit der_configuration_control_yaml requires source inspection.
+usable_for_routing: true

@@ -906,6 +906,16 @@ def validate_requirement_trace(
             f"{', '.join(trace_ids)}"
         )
 
+    semantic_messages: list[str] = []
+    if rows and all(row.get("schema_version") == "2.0.0" for row in rows):
+        from .trace_validation import validate_generalized_trace_semantics
+
+        semantic_result = validate_generalized_trace_semantics(target)
+        if semantic_result.ok:
+            semantic_messages.extend(semantic_result.messages)
+        else:
+            messages.extend(semantic_result.messages)
+
     if messages:
         return ValidationResult(False, messages)
     return ValidationResult(
@@ -918,7 +928,8 @@ def validate_requirement_trace(
             f"capability: {_format_named_counts(capability_status_counts)}; "
             f"verification: {_format_named_counts(verification_status_counts)}; "
             f"evidence: {_format_named_counts(evidence_status_counts)}; "
-            f"semantic review: {_format_semantic_review_counts(semantic_review_counts)})"
+            f"semantic review: {_format_semantic_review_counts(semantic_review_counts)})",
+            *semantic_messages,
         ],
     )
 

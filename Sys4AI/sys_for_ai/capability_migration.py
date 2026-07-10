@@ -13,19 +13,14 @@ from typing import Any
 from .jsonschema_io import check_schema, load_json, validate_instance
 from .registry_io import resolve_registered_path
 from .toml_io import load_toml
+from .trace_validation import validate_generalized_trace_semantics
+from .validation_semantics import STRUCTURAL_LIMITATION
 from .validators import ValidationResult
 
 
 DEFAULT_MANIFEST_PATH = Path("configs/capability_migration.toml")
 DEFAULT_SCHEMA_PATH = Path("Sys4AI/schemas/contracts/capability_migration.schema.json")
 MAX_SCANNED_TEXT_BYTES = 2_000_000
-
-STRUCTURAL_LIMITATION = (
-    "Structural validation does not prove strategic quality, ethical correctness, "
-    "stakeholder consensus, behavioral alignment, production readiness, or domain truth. "
-    "Those claims require accountable review and additional evidence."
-)
-
 
 @dataclass(frozen=True)
 class ClassificationSnapshot:
@@ -128,6 +123,21 @@ def validate_capability_migration(
                 f"{classification_id}: state {classification['state']!r} is not allowed in mode {mode!r}"
             )
 
+    trace_messages: list[str] = []
+    trace_policy = data.get("trace_validation")
+    if isinstance(trace_policy, dict):
+        trace_result = validate_generalized_trace_semantics(
+            root / trace_policy["trace_registry_path"],
+            program_state=root / trace_policy["program_state_path"],
+            source_registry=root / trace_policy["source_registry_path"],
+            derivative_registry=root / trace_policy["derivative_registry_path"],
+            policy_path=target,
+        )
+        if trace_result.ok:
+            trace_messages.extend(trace_result.messages)
+        else:
+            messages.extend(trace_result.messages)
+
     if messages:
         return ValidationResult(False, messages + _snapshot_messages(snapshots))
 
@@ -139,6 +149,7 @@ def validate_capability_migration(
             f"{target}: G-05 boundary inventory passed in {mode} mode; "
             f"{total_references} references across {total_files} classified files",
             *_snapshot_messages(snapshots),
+            *trace_messages,
             STRUCTURAL_LIMITATION,
         ],
     )

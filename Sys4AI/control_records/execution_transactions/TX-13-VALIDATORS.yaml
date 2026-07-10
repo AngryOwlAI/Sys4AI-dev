@@ -1,0 +1,229 @@
+execution_transaction_id: TX-13-VALIDATORS
+contract_version: 1.0.0
+objective: Implement and close the focused TX-13 strategic baseline validators while preserving every reviewed TX-12 trace classification and stopping before TX-14.
+source_requirement_ids:
+- SFA-P1-INIT-STRAT-005
+- SFA-P1-INIT-SEM-001
+- SFA-P1-INIT-LIFE-006
+- SFA-P1-INIT-HOST-003
+- SFA-P1-INIT-CAPMIG-001
+- SFA-P1-INIT-EVID-002
+source_decision_ids:
+- DDR-SFADEV-STRATEGIC-BASELINE-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G03-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G04-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G05-001
+subject_system:
+  system_id: sys4ai_dev
+  system_name: Sys4AI development system and framework product
+subject_layer: development_system
+runtime_actor:
+  actor_id: codex_meta_agent_runtime
+  actor_type: meta_agent_runtime
+  role_ids:
+  - bounded_execution_planner
+  - verification_engineer
+  - requirements_verifier
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-10-TX13
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX12-001
+approval_principal:
+  principal_id: alex_omegapy
+  principal_type: accountable_human
+  approval_scope: Execute and close TX-13-VALIDATORS only; do not begin TX-14.
+  authorization_evidence_ids:
+  - HUMAN-TASK-2026-07-10-TX13
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX12-001
+  model_self_approval: false
+execution_authorization:
+  status: authorized
+  authorized_at: '2026-07-10T15:14:14Z'
+  expires_at: '2026-07-11T15:14:14Z'
+  authority_evidence_ids:
+  - HUMAN-TASK-2026-07-10-TX13
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX12-001
+  self_authorized: false
+permission_envelope:
+  envelope_id: PERMISSION-ENVELOPE-TX-13-VALIDATORS
+  status: current
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-10-TX13
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX12-001
+  data_classes:
+  - repository_controlled_artifacts
+  - local_validation_evidence
+  resource_limits:
+  - One bounded TX-13 validator packet; do not begin TX-14.
+  - Keep the reviewed 214-row trace CSV byte-for-byte unchanged.
+  - Preserve seven needs_evidence verdicts and 200 planned verification states unless exact new evidence exists.
+  valid_from: '2026-07-10T15:14:14Z'
+  expires_at: '2026-07-11T15:14:14Z'
+  sensitive_data_allowed: false
+  secrets_allowed: false
+  data_egress_allowed: true
+  external_side_effects_allowed: true
+  delegation_allowed: false
+  delegation_expires_at: not_applicable
+  permission_expansion_allowed: false
+allowed_reads:
+- .agents/**
+- .codex/**
+- PRDs/**
+- Sys4AI/**
+- implementation_plans/**
+allowed_writes:
+- Sys4AI/sys_for_ai/strategic_intent.py
+- Sys4AI/sys_for_ai/prd_semantics.py
+- Sys4AI/sys_for_ai/lifecycle_patterns.py
+- Sys4AI/sys_for_ai/trace_validation.py
+- Sys4AI/sys_for_ai/validation_semantics.py
+- Sys4AI/sys_for_ai/capability_migration.py
+- Sys4AI/sys_for_ai/host_profiles.py
+- Sys4AI/sys_for_ai/validators.py
+- Sys4AI/sys_for_ai/cli.py
+- Sys4AI/tests/**
+- Sys4AI/Makefile
+- Sys4AI/configs/capability_migration.toml
+- Sys4AI/schemas/contracts/capability_migration.schema.json
+- Sys4AI/control_records/**
+- Sys4AI/registries/**
+- Sys4AI/docs/generated/**
+- implementation_plans/completion_receipts/**
+allowed_tools:
+- repository file inspection
+- apply_patch
+- repository-native validation commands
+- deterministic generated-document writers
+- git status diff add commit and push
+allowed_external_actions:
+- Push the validated TX-13 commit to origin main.
+forbidden_actions:
+- Modify Sys4AI/registries/requirement_trace_registry.csv.
+- Begin TX-14 or any later transaction.
+- Promote any needs_evidence or planned row without exact current evidence.
+- Treat generated derivatives or historical AgentJob or /continue evidence as current capability authority.
+- Rewrite activated historical control records.
+- Expand permission or self-approve new authority.
+inputs:
+- implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX12-001.yaml
+- Sys4AI/registries/requirement_trace_registry.csv
+- Sys4AI/configs/capability_migration.toml
+- PRDs/Sys4AI_phase-0_product_system_design_prd.md
+- PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+expected_outputs:
+- Focused strategic-intent PRD lifecycle-pattern host capability and capability-migration validators.
+- Generalized trace enforcement for implementation paths optional profiles program state freshness and generated authority.
+- Direct CLI and Make targets integrated into aggregate validation in dependency-safe order.
+- Positive and mandatory negative test evidence with the structural limitation notice.
+- Registered completion and a TX-14-only handoff.
+validators:
+- validator_id: focused_tx13_suite
+  command_or_method: .venv/bin/python -m unittest tests.test_strategic_intent tests.test_lifecycle_patterns tests.test_prd_semantics tests.test_trace_semantics tests.test_host_profiles tests.test_capability_migration -v
+  blocking: true
+  expected_evidence: All positive and negative validator fixtures pass.
+- validator_id: named_validator_targets
+  command_or_method: make validate-strategic-intent validate-prd-semantics validate-host-capability-profiles validate-lifecycle-and-patterns validate-capability-migration validate-requirement-trace
+  blocking: true
+  expected_evidence: Every required CLI and Make surface passes and reports semantic limitations.
+- validator_id: product_unit_suite
+  command_or_method: .venv/bin/python -m unittest discover -s tests
+  blocking: true
+  expected_evidence: All retained and new product tests pass.
+- validator_id: aggregate_validation
+  command_or_method: make validate at product and repository roots
+  blocking: true
+  expected_evidence: Product and development-system validation pass.
+- validator_id: trace_preservation
+  command_or_method: sha256 requirement_trace_registry.csv and inspect git diff
+  blocking: true
+  expected_evidence: TX-12 generalized SHA-256 remains b76dd57a8e5be11703213e57661690d7219e3a62eec9971fea633328e9003f97 and the CSV has no diff.
+- validator_id: diff_integrity
+  command_or_method: git diff --check
+  blocking: true
+  expected_evidence: No whitespace or patch-integrity errors.
+stop_conditions:
+- The trace registry changes or the seven needs_evidence and 200 planned gaps are silently promoted.
+- Any mandatory negative fixture fails to reject the invalid condition.
+- Program state generated authority or optional-profile semantics cannot fail closed.
+- A blocking validator fails after TX-13-scoped repair is exhausted.
+- Required work expands into TX-14 Phase 2 authority.
+host_capability_requirements:
+  execution_profile_id: codex_local_observed_subset
+  overall_status: verified_available
+  required_capability_ids:
+  - workspace_filesystem
+  - terminal_and_tests
+  - git_local_and_push
+  evidence_ids:
+  - HOST-CODEX-LOCAL-OBSERVATION-2026-07-10
+  checked_at: '2026-07-10T15:14:14Z'
+  values_or_goals_may_override: false
+state:
+  status: completed
+  current_state_evidence_ids:
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX13-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX13-001
+  continuation_state: consumed
+  continuation_evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX12-001
+  state_transition_evidence_ids:
+  - HUMAN-TASK-2026-07-10-TX13
+  - TX13-VALIDATION-SUMMARY-001
+cancellation:
+  state: not_requested
+  requested_by: not_applicable
+  behavior: Stop at the nearest safe boundary preserve the complete validator packet and leave trace classifications unchanged.
+  evidence_ids: []
+  uncertain_operations: []
+escalation:
+  state: not_required
+  conditions:
+  - Authority permission source or validation evidence becomes absent ambiguous expired denied or stale.
+  - A validator requires changing reviewed TX-12 classifications without exact evidence.
+  responsible_principal_id: alex_omegapy
+  required_decision: Narrow reroute cancel or explicitly authorize a superseding bounded transaction.
+  evidence_ids: []
+resume_evidence:
+  required: true
+  status: consumed
+  last_known_state: TX-12 closed on the shared baseline and handed off only to TX-13 broader validators.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX12-001
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX12-001
+  - MEMPREFLIGHT-TX-13-VALIDATORS-20260710T151414Z
+closeout_evidence:
+  status: complete
+  evidence_ids:
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX13-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX13-001
+  - CR-SFADEV-STRATEGIC-BASELINE-TX13-001
+  changed_artifacts:
+  - focused validator modules and shared semantic limitation
+  - generalized trace semantic enforcement and controlled gap policy
+  - CLI Make and positive-negative regression harness
+  validation_evidence_ids:
+  - TX13-FOCUSED-77-PASS
+  - TX13-UNIT-184-PASS
+  - TX13-NAMED-VALIDATORS-PASS
+  - TX13-PRODUCT-VALIDATE-PASS
+  - TX13-ROOT-VALIDATE-PASS
+  - TX13-TRACE-UNCHANGED-PASS
+  - TX13-DIFF-CHECK-PASS
+  acceptance_evidence_ids: []
+rollback:
+  status: available
+  strategy: Revert the complete TX-13 code test CLI Make policy registry control and generated-reader packet while retaining the unchanged TX-12 trace registry and historical evidence.
+  triggers:
+  - Any focused validator or aggregate regression fails.
+  - A semantic check is shown to overstate authority or mutate reviewed trace state.
+  actions:
+  - Stop later work and preserve the complete diff and validation evidence.
+  - Revert or supersede the complete TX-13 commit without modifying activated history or the TX-12 trace CSV.
+  evidence_ids:
+  - TX12-GENERALIZED-SHA256-B76DD57A
+supersession:
+  status: current
+  supersedes_transaction_ids: []
+  superseded_by: not_applicable
+  evidence_ids: []

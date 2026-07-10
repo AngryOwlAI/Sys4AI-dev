@@ -54,6 +54,16 @@ review_triggers = [
 ]
 limitation = "This scanner classifies and fingerprints textual references. It does not establish semantic truth, runtime capability, authority, migration completion, or host conformance."
 
+[trace_validation]
+trace_registry_path = "Sys4AI/registries/requirement_trace_registry.csv"
+program_state_path = "Sys4AI/control_records/program_state.yaml"
+source_registry_path = "Sys4AI/registries/source_registry.csv"
+derivative_registry_path = "Sys4AI/registries/derivative_registry.csv"
+max_current_evidence_age_days = 30
+expected_needs_evidence = 7
+expected_planned_verification = 200
+expected_operational_capability = 0
+
 [[classifications]]
 classification_id = "active_valid_migration_control"
 priority = 10
@@ -62,7 +72,10 @@ paths = [
   "implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md",
   "Sys4AI/docs/skill_integration_policy.md",
   "Sys4AI/sys_for_ai/capability_migration.py",
+  "Sys4AI/sys_for_ai/prd_semantics.py",
+  "Sys4AI/sys_for_ai/trace_validation.py",
   "Sys4AI/tests/test_capability_migration.py",
+  "Sys4AI/tests/test_prd_semantics.py",
   "Sys4AI/tests/test_active_surface_migration.py",
   "Sys4AI/tests/test_execution_transactions.py",
   "Sys4AI/tests/test_skill_surfaces.py",
@@ -74,6 +87,11 @@ paths = [
   "Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX12-001.yaml",
   "Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX12-001.yaml",
   "implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX12-001.md",
+  "Sys4AI/control_records/execution_transactions/TX-13-VALIDATORS.yaml",
+  "Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-13-VALIDATORS-20260710T151414Z.yaml",
+  "Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX13-001.yaml",
+  "Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX13-001.yaml",
+  "implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX13-001.md",
 ]
 path_globs = []
 disposition = "Retired terms are used only to define migration controls, negative tests, or explicit absence; they do not assert capability."
@@ -81,9 +99,9 @@ owner = "baseline_change_manager"
 replacement_capability = "ExecutionTransaction"
 blocking_transaction = "none"
 allowed_modes = ["pre_tx10", "post_tx10"]
-expected_files = 12
-expected_references = 130
-expected_inventory_sha256 = "e7befcb917522c3d8c12ffd5c98ae5840fa8c0ff6384c76be7d560dfc48269e2"
+expected_files = 16
+expected_references = 139
+expected_inventory_sha256 = "d5cd1fe88c2fb282041958ebdf06e8219a0be6edfeeac14cd6290a8f78520ff2"
 
 [[classifications]]
 classification_id = "canonical_legacy_context"

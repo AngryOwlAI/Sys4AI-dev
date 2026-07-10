@@ -6,51 +6,56 @@ system_context:
   target_system: Sys4AI
   self_hosting_mode: true
   reflection_depth: 1
-current_phase: strategic_baseline_migration_after_TX_12
+current_phase: strategic_baseline_migration_after_TX_13
 lifecycle_stage: develop
 active_task_id: null
 active_director_decision_id: null
 active_execution_transaction_id: null
 execution_profile_id: portable_execution_transaction_v1
 current_state_evidence:
-- TX-12-TRACE-DATA
-- RECEIPT-SFADEV-STRATEGIC-BASELINE-TX12-001
-- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX12-001
+- TX-13-VALIDATORS
+- RECEIPT-SFADEV-STRATEGIC-BASELINE-TX13-001
+- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX13-001
 continuation_state: ready
 cancellation_state: not_requested
 escalation_state: not_required
-latest_closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX12-001
-latest_handoff_evidence_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX12-001
-latest_memory_preflight_receipt_id: MEMPREFLIGHT-TX-12-TRACE-DATA-20260710T145240Z
+latest_closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX13-001
+latest_handoff_evidence_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX13-001
+latest_memory_preflight_receipt_id: MEMPREFLIGHT-TX-13-VALIDATORS-20260710T151414Z
 capability_status_summary:
   portable_execution_contract: implemented
   current_state_model: implemented
   historical_compatibility: implemented
   removed_runtime_surfaces: absent
-  broader_semantic_validation: deferred
+  broader_semantic_validation: implemented
 state_status: active
 blocked_reason: null
 human_gate_required: false
 allowed_next_actions:
 - run_memory_preflight
 - inspect_latest_handoff
-- execute_TX_13_VALIDATORS_only_after_TX_12_shared_baseline
+- execute_TX_14_PHASE2_only_after_TX_13_shared_baseline
 blocked_actions:
 - execute_multiple_transactions_without_concurrency_authorization
 - use_chat_memory_as_authority
 - treat_generated_derivative_as_canonical
 - mutate_activated_control_record_without_supersession
 - treat_historical_execution_evidence_as_current_capability
-- begin_TX_14_before_TX_13_closes
-- claim_TX_13_semantic_validation_complete
+- begin_TX_15_before_TX_14_closes
+- treat_structural_validation_as_G_08_or_domain_acceptance
 validation_status:
-  last_validated_at: '2026-07-10T15:05:16Z'
+  last_validated_at: '2026-07-10T15:37:20Z'
   validators:
   - make validate-program-state
   - make validate-capability-migration
+  - make validate-strategic-intent
+  - make validate-prd-semantics
+  - make validate-host-capability-profiles
+  - make validate-lifecycle-and-patterns
   - make validate-roles
   - make validate-control-records
   - make validate-registry-graph
+  - make validate-requirement-trace
   - make validate-requirement-trace-migration
   - make validate-generated-derivatives
   - make validate

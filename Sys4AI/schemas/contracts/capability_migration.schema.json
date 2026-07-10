@@ -72,6 +72,30 @@
       },
       "additionalProperties": false
     },
+    "trace_validation": {
+      "type": "object",
+      "required": [
+        "trace_registry_path",
+        "program_state_path",
+        "source_registry_path",
+        "derivative_registry_path",
+        "max_current_evidence_age_days",
+        "expected_needs_evidence",
+        "expected_planned_verification",
+        "expected_operational_capability"
+      ],
+      "properties": {
+        "trace_registry_path": { "$ref": "#/$defs/repositoryRelativePath" },
+        "program_state_path": { "$ref": "#/$defs/repositoryRelativePath" },
+        "source_registry_path": { "$ref": "#/$defs/repositoryRelativePath" },
+        "derivative_registry_path": { "$ref": "#/$defs/repositoryRelativePath" },
+        "max_current_evidence_age_days": { "type": "integer", "minimum": 1 },
+        "expected_needs_evidence": { "type": "integer", "minimum": 0 },
+        "expected_planned_verification": { "type": "integer", "minimum": 0 },
+        "expected_operational_capability": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
     "classifications": {
       "type": "array",
       "minItems": 1,

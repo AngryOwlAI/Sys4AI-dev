@@ -10,6 +10,7 @@ from .jsonschema_io import check_schema, load_json, validate_instance
 from .registry_io import read_registry_rows, resolve_registered_path
 from .security_checks import find_secret_like_values
 from .toml_io import load_toml
+from .validation_semantics import STRUCTURAL_LIMITATION
 from .validators import ValidationResult
 from .yaml_io import load_yaml
 
@@ -139,7 +140,8 @@ def validate_host_capability_profiles(
         True,
         [
             f"{profile_root}: host capability profile structural contract passed; "
-            "G-07 remains open and this result does not verify host capability"
+            "G-07 remains open and this result does not verify host capability",
+            STRUCTURAL_LIMITATION,
         ],
     )
 

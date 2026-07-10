@@ -1,0 +1,37 @@
+handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX13-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+producing_execution_transaction_id: TX-13-VALIDATORS
+next_execution_transaction_id: TX-14-PHASE2
+status: ready
+producing_role: verification_engineer
+recommended_next_role: requirements_manager
+summary: TX-13 closes with focused semantic validators and unchanged reviewed trace data; TX-14 controlled Phase 2 work alone is next.
+source_ids:
+- SRC-STRATEGIC-BASELINE-MIGRATION-PLAN
+- SRC-VALIDATOR-STRATEGIC-INTENT
+- SRC-VALIDATOR-PRD-SEMANTICS
+- SRC-VALIDATOR-LIFECYCLE-PATTERNS
+- SRC-VALIDATOR-TRACE-SEMANTICS
+- SRC-VALIDATOR-CAPABILITY-MIGRATION
+- SRC-REG-REQ-TRACE
+- SRC-STRATEGIC-BASELINE-TX13-RECEIPT
+closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX13-001
+current_state_evidence:
+- Sys4AI/control_records/program_state.yaml
+- TX13-FOCUSED-77-PASS
+- TX13-UNIT-184-PASS
+- TX13-TRACE-UNCHANGED-PASS
+validation_evidence:
+  focused_tests: PASS_77_OF_77
+  product_suite: PASS_184_OF_184
+  named_validators: PASS
+  product_and_root_validate: PASS
+  trace_registry_sha256: b76dd57a8e5be11703213e57661690d7219e3a62eec9971fea633328e9003f97
+  reviewed_gap_counts: NEEDS_EVIDENCE_7_PLANNED_200
+stop_conditions:
+- TX-14 must create a controlled Phase 2 addendum or successor without rewriting accepted Phase 2 evidence.
+- The seven needs_evidence rows and 200 planned verification rows remain explicit until exact evidence supports change.
+- Do not treat structural validation as stakeholder acceptance domain truth production readiness or G-08 approval.
+- Do not modify accepted historical control records.
+- Do not begin TX-15 or later work before TX-14 closes.

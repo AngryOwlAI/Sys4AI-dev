@@ -24,10 +24,13 @@ from .derivatives import (
     write_validation_contracts_catalog,
 )
 from .host_profiles import validate_host_capability_profiles
+from .lifecycle_patterns import validate_lifecycle_and_patterns
 from .memory import bootstrap_registries
 from .memory import hash_path as memory_hash_path
 from .memory import lookup_memory, memory_status, run_memory_preflight, search_memory, update_hashes, validate_hashes
 from .prd_modules import validate_prd_modules
+from .prd_semantics import validate_prd_semantics
+from .strategic_intent import validate_strategic_intent
 from .walking_skeleton import (
     validate_walking_skeleton_flow,
     walking_skeleton_status,
@@ -286,6 +289,35 @@ def build_parser() -> argparse.ArgumentParser:
     )
     validate_host_profiles.add_argument("--json", action="store_true")
 
+    validate_strategic = sub.add_parser(
+        "validate-strategic-intent",
+        help="Validate target vision and core-values artifacts and approval boundaries",
+    )
+    validate_strategic.add_argument("path", nargs="?")
+
+    validate_prd_semantic = sub.add_parser(
+        "validate-prd-semantics",
+        help="Validate canonical PRD identity, execution, lifecycle, and authority semantics",
+    )
+    validate_prd_semantic.add_argument(
+        "--phase0-prd",
+        default="PRDs/Sys4AI_phase-0_product_system_design_prd.md",
+    )
+    validate_prd_semantic.add_argument(
+        "--phase1-prd",
+        default="PRDs/Sys4AI_phase-1_implementation_initialization_prd.md",
+    )
+
+    validate_lifecycle = sub.add_parser(
+        "validate-lifecycle-and-patterns",
+        help="Validate lifecycle stages, transitions, coordination patterns, and maturity",
+    )
+    validate_lifecycle.add_argument(
+        "path",
+        default="PRDs/Sys4AI_phase-0_product_system_design_prd.md",
+        nargs="?",
+    )
+
     validate_capability = sub.add_parser(
         "validate-capability-migration",
         help="Validate the G-05 retired-capability boundary inventory",
@@ -471,6 +503,15 @@ def main(argv: list[str] | None = None) -> int:
             args.json,
         )
 
+    if args.command == "validate-strategic-intent":
+        return print_result(validate_strategic_intent(args.path))
+
+    if args.command == "validate-prd-semantics":
+        return print_result(validate_prd_semantics(args.phase0_prd, args.phase1_prd))
+
+    if args.command == "validate-lifecycle-and-patterns":
+        return print_result(validate_lifecycle_and_patterns(args.path))
+
     if args.command == "validate-capability-migration":
         return _emit_validation_result(
             validate_capability_migration(args.manifest, args.repository_root),
@@ -532,10 +573,13 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_completion_receipts())
         result.extend(validate_state_snapshots())
         result.extend(validate_validation_contract_registry(args.validation_contracts))
-        result.extend(validate_host_capability_profiles())
         result.extend(validate_toml_config(args.config_sources))
         result.extend(validate_jsonschema_contracts(args.contracts_root))
         result.extend(validate_registry_graph(args.registries))
+        result.extend(validate_strategic_intent())
+        result.extend(validate_host_capability_profiles())
+        result.extend(validate_lifecycle_and_patterns())
+        result.extend(validate_prd_semantics())
         result.extend(validate_capability_migration(args.capability_migration_manifest))
         result.extend(validate_requirement_trace(args.requirement_trace))
         result.extend(validate_requirement_trace_migration(args.requirement_trace))
