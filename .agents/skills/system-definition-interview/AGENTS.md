@@ -48,6 +48,8 @@ requirements-analysis, or systems-document work.
   baselines them.
 - Keep candidate requirements labeled as candidates until target-project
   authority approves them.
+- Keep vision and core-value candidates labeled `VISION-CAND-*` and `VALUE-CAND-*`; record anti-values, missing stakeholders, accountable approval identity, conflicts, waivers, and review cadence.
+- Do not treat silence, model authorship, controlled-file location, or structural validation as approval.
 - Avoid assumptions about framework, package manager, operating system, file
   layout, organization, or domain.
 

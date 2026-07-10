@@ -19,6 +19,8 @@ page_metadata:
     - contract_handoff_v0_2
     - contract_memory_preflight_receipt
     - contract_role_registry_row
+    - contract_target_core_values
+    - contract_target_vision_statement
   generated_at: 2026-07-06T00:00:00Z
   generator: sys_for_ai.derivative_generation.governance_generated_docs:0.1.0
   stale_or_orphan_status: current
@@ -66,6 +68,8 @@ Validation contracts prove structural conformance only. They do not prove semant
 | artifact_validation_contract | ValidationContract | verification_engineer | all_agents | controlled | pending | validation_contracts_catalog | Controlled contract update |
 | artifact_generated_configuration_control_wiki | GeneratedConfigurationControlWiki | documentation_librarian | all_agents | derivative | pending | none | Promotion requires source authority decision |
 | artifact_generated_validation_contracts_catalog | GeneratedValidationContractsCatalog | documentation_librarian | all_agents | derivative | pending | none | Promotion requires source authority decision |
+| artifact_target_vision | TargetVisionStatement | user_wants_elicitor;requirements_manager | requirements_manager;requirements_verifier;system_architect;verification_engineer;runtime_maintenance_planner | controlled_candidate | contract_target_vision_statement | target_package;strategic_intent_contract_index | Promote only with accountable human evidence stable VISION ID current hash validation impact review and registered active-version relationships |
+| artifact_target_core_values | TargetCoreValues | user_wants_elicitor;requirements_manager | requirements_manager;requirements_verifier;system_architect;verification_engineer;runtime_maintenance_planner | controlled_candidate | contract_target_core_values | target_package;strategic_intent_contract_index | Promote only with accountable human evidence stable VALUE IDs current hash validation impact review and registered active-version relationships |
 
 ## Allowed Promotion Path
 

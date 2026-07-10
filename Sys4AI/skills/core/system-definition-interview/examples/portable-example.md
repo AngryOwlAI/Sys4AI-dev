@@ -2,16 +2,16 @@
 
 ## Scenario
 
-A root AI agent receives an AgentJob to define a target agentic system for coordinating maintenance requests. Stakeholders know pain points but have not established boundary, scenarios, candidate requirements, or V&V seeds.
+A root AI agent receives a bounded project authorization to define a target agentic system for coordinating maintenance requests. Stakeholders know pain points but have not established vision, values, authority, boundary, scenarios, candidate requirements, or V&V seeds.
 
 ## Minimal use
 
-1. Confirm AgentJob authorization.
+1. Confirm the bounded project authorization or Director decision.
 2. Read canonical sources first.
 3. Classify the situation as new, existing, partially built, or documentation recovery.
 4. Ask one focused question about the success criterion.
 5. Record the answer in a discovery record.
-6. Extract `NEED-*`, `STK-*`, `SCN-*`, `REQ-CAND-*`, and `VVE-*` entries.
+6. Extract `NEED-*`, `STK-*`, `SCN-*`, `VISION-CAND-*`, `VALUE-CAND-*`, `REQ-CAND-*`, and `VVE-*` entries; record missing approval authority and conflicts.
 7. Route unresolved decisions to decision grilling.
 
 ## Example output shape
@@ -24,6 +24,8 @@ Candidate IDs created:
 - NEED-001
 - STK-001
 - SCN-001
+- VISION-CAND-001
+- VALUE-CAND-001
 - REQ-CAND-001
 - VVE-001
 Validation:

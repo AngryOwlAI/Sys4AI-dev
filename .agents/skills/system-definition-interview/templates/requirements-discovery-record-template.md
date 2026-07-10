@@ -36,6 +36,26 @@
 |---|---|---|
 | NEED-002 | <criterion> | <source> |
 
+## Strategic Intent Candidates
+
+Candidate strategic intent is discovery evidence. Use `VISION-CAND-*`, `VALUE-CAND-*`, and `WAIVER-CAND-*` until an accountable human approves separate registered artifacts. Silence, model authorship, controlled-file location, and structural validation are not approval.
+
+| Field | Candidate value | Source | Evidence or approval state |
+|---|---|---|---|
+| Mission versus vision | <distinction> | <source> | stated / inferred / missing |
+| Future-state vision | VISION-CAND-001: <statement> | <source> | candidate / stakeholder_review / rejected |
+| Intended users and beneficiaries | <stakeholders> | <source> | represented / missing |
+| Core values | VALUE-CAND-001: <commitment> | <source> | candidate / stakeholder_review / rejected |
+| Anti-values and prohibited behaviors | <anti-values> | <source> | stated / inferred / missing |
+| Conflicts and precedence | <rule or OPEN-*> | <source> | candidate / unresolved |
+| Accountable approval principal | <human role or missing> | <source> | identified / missing |
+| Inherited constraints | <constraints> | <source> | binding / candidate / unknown |
+| Waiver | <WAIVER-CAND-* or none> | <authority> | proposed / active / expired / superseded / none |
+| Review cadence and triggers | <cadence> | <owner> | candidate |
+| Pattern and operational maturity | <pattern and maturity> | <source> | stated / inferred / missing |
+| Autonomy, integrations, and communication | <boundary and interfaces> | <source> | stated / inferred / missing |
+| Monitoring, degraded mode, and promotion evidence | <evidence> | <source> | candidate / missing |
+
 ## Stakeholders And Roles
 
 | ID | Class | Role In System | Primary Need | Evidence |

@@ -22,6 +22,9 @@ required_sections:
   - Open Questions
   - Downstream Routing Recommendation
   - Completion Evidence
+conditional_required_sections:
+  new_or_substantially_changed_target_system:
+    - Strategic Intent Candidates
 id_prefixes:
   needs: NEED-
   stakeholders: STK-
@@ -32,6 +35,34 @@ id_prefixes:
   interfaces: IF-
   verification_validation: VVE-
   open_questions: OPEN-
+  vision_candidates: VISION-CAND-
+  value_candidates: VALUE-CAND-
+  waiver_candidates: WAIVER-CAND-
+strategic_intent_policy:
+  required_fields:
+    - mission_versus_vision
+    - future_state_candidate
+    - intended_users_and_beneficiaries
+    - value_candidates_and_anti_values
+    - source_and_inference_state
+    - missing_stakeholders
+    - approval_principal
+    - inherited_constraints
+    - conflicts_and_precedence
+    - waiver_state
+    - review_cadence
+    - coordination_pattern_candidate
+    - operational_maturity
+    - autonomy
+    - integrations
+    - communication
+    - monitoring
+    - degraded_mode
+    - promotion_evidence
+  candidate_ids_required_until_human_approval: true
+  silence_is_not_consent: true
+  model_self_approval_forbidden: true
+  content_approval_independent_from_source_authority_and_validation: true
 authority_policy:
   default_status: draft_discovery_evidence
   source_authority_status: derivative_draft
@@ -49,3 +80,5 @@ forbidden_authority_inversions:
   - Treating discovery records as canonical requirements without promotion.
   - Removing REQ-CAND or NFR-CAND labels before approval.
   - Citing generated discovery text as the only authority when canonical sources exist.
+  - Treating candidate vision or value content as approved because it is structurally valid or stored in a controlled path.
+  - Treating silence, missing stakeholders, or model authorship as approval.

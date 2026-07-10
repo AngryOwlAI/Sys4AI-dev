@@ -34,6 +34,14 @@ assignment.
 |---|---|---|---|
 | NEED-001 | Reduce lost maintenance requests and make triage ownership visible. | Operations lead interview | stated |
 
+## Strategic Intent Candidates
+
+| ID | Candidate | Source | Evidence Status |
+|---|---|---|---|
+| VISION-CAND-001 | Every accepted request remains visible, owned, and recoverable. | Operations lead interview | stated; unapproved |
+| VALUE-CAND-001 | Visible ownership | Operations lead interview | stated; unapproved |
+| VALUE-CAND-002 | Speed above evidence integrity | Agent inference | rejected_candidate |
+
 ## Stakeholders And Roles
 
 | ID | Class | Role In System | Primary Need | Evidence |
@@ -75,5 +83,6 @@ assignment.
 
 - The example records intent before PRD creation.
 - Candidate requirements remain labeled as candidates.
+- Candidate vision and values remain unapproved until accountable human evidence exists.
 - Each candidate can trace back to a need or scenario.
 - Verification thinking begins early without claiming final acceptance tests.

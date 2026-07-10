@@ -16,6 +16,7 @@ domain_emphasis:
   - system_definition
   - brownfield_adoption
   - requirements_discovery
+  - strategic_intent_discovery
   - system_layer_classification
   - source_first_memory
 required_role_posture:
@@ -56,6 +57,7 @@ outputs:
     - Approval prompt before writing controlled discovery, requirements, planning, or scaffold artifacts.
   secondary:
     - Downstream route recommendation to existing Sys4AI skills.
+    - Candidate strategic-intent and approval-gap summary for new or substantially changed targets.
     - Assumptions, unresolved questions, skipped checks, and recommended next step.
   evidence:
     - Source files, validators, registries, user decisions, and repository observations used.
@@ -105,6 +107,7 @@ authority:
     - Generated Current-State Baselines, Requirements Discovery Records, PRDs, implementation plans, diagrams, warning reports, metrics receipts, temporary handoffs, and completion receipts.
   human_gates:
     - Approval before writing controlled discovery evidence.
+    - Accountable human approval before candidate vision or core values become approved target intent.
     - Approval before Product Requirements Document synthesis.
     - Approval before system requirements, implementation plans, scaffolds, or brownfield governance installation.
 validation:

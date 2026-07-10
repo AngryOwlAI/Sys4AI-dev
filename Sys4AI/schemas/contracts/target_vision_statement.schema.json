@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/Sys4AI/schemas/contracts/target_vision_statement.schema.json",
+  "title": "Target vision statement metadata",
+  "description": "Contract for parsed YAML front matter in governance/vision-statement.md. Required Markdown headings are governed by artifact_target_vision.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_type",
+    "vision_id",
+    "target_system_id",
+    "subject_layer",
+    "content_approval_state",
+    "source_authority_state",
+    "validation_state",
+    "approval",
+    "version",
+    "source_hash",
+    "waiver",
+    "impact_analysis",
+    "supersession"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "artifact_type": { "const": "target_vision_statement" },
+    "vision_id": { "type": "string", "pattern": "^VISION-(CAND-)?[A-Z0-9][A-Z0-9-]*$" },
+    "target_system_id": { "type": "string", "minLength": 1 },
+    "subject_layer": { "$ref": "strategic_intent_common.schema.json#/$defs/subject_layer" },
+    "content_approval_state": { "$ref": "strategic_intent_common.schema.json#/$defs/content_approval_state" },
+    "source_authority_state": { "$ref": "strategic_intent_common.schema.json#/$defs/source_authority_state" },
+    "validation_state": { "$ref": "strategic_intent_common.schema.json#/$defs/validation_state" },
+    "approval": { "$ref": "strategic_intent_common.schema.json#/$defs/approval" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "source_hash": { "type": "string", "pattern": "^(pending|sha256:[a-f0-9]{64})$" },
+    "waiver": { "$ref": "strategic_intent_common.schema.json#/$defs/waiver" },
+    "impact_analysis": { "$ref": "strategic_intent_common.schema.json#/$defs/impact_analysis" },
+    "supersession": { "$ref": "strategic_intent_common.schema.json#/$defs/supersession" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "content_approval_state": { "const": "approved" } },
+        "required": ["content_approval_state"]
+      },
+      "then": {
+        "properties": {
+          "vision_id": { "pattern": "^VISION-(?!CAND-)[A-Z0-9][A-Z0-9-]*$" },
+          "approval": { "$ref": "strategic_intent_common.schema.json#/$defs/approved_human_approval" },
+          "source_hash": { "pattern": "^sha256:[a-f0-9]{64}$" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "content_approval_state": { "enum": ["candidate", "stakeholder_review", "rejected"] }
+        },
+        "required": ["content_approval_state"]
+      },
+      "then": {
+        "properties": {
+          "vision_id": { "pattern": "^VISION-CAND-[A-Z0-9][A-Z0-9-]*$" },
+          "approval": { "$ref": "strategic_intent_common.schema.json#/$defs/not_approved" }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

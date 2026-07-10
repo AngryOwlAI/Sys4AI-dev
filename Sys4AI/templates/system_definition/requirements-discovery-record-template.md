@@ -4,11 +4,11 @@
 **Status:** draft_discovery_evidence
 **System name:** <system name>
 **Prepared by role:** <role or agent>
-**Authorized by AgentJob:** <AgentJob ID or Director decision ID>
+**Authorized by:** <Explicit project authorization, Director decision ID, or portable transaction ID>
 **Subject system ID:** <system ID>
 **Subject layer:** development_system / framework_product / target_system_template / target_system_instance / derivative_surface
 **Discovery gate:** system-definition-interview-context-45
-**Producer AgentJob:** <AgentJob ID or Director decision ID>
+**Producer authority:** <Explicit project authorization, Director decision ID, or portable transaction ID>
 **Discovery registry row:** <discovery_record_registry.csv row ID>
 **Downstream artifact status:** no USRD yet / USRD proposed / USRD created / discovery waived
 **Source authority status:** derivative_draft
@@ -68,6 +68,47 @@ Candidate requirements must remain labeled as `REQ-CAND-*` or `NFR-CAND-*` until
 | System type | new / existing / partially built / documentation recovery | <source> | stated / inferred / missing |
 | Success criteria | <text> | <source> | stated / inferred / missing |
 | Primary constraints | <text> | <source> | stated / inferred / missing |
+
+---
+
+## Strategic Intent Candidates
+
+Candidate strategic intent is discovery evidence, not approval. Use `VISION-CAND-*`, `VALUE-CAND-*`, and `WAIVER-CAND-*` labels until an accountable human approves a separately registered target artifact.
+
+### Mission Versus Vision And Future State
+
+| ID | Candidate future-state statement | Mission distinction | Intended users and beneficiaries | Desired condition and impact | Horizon | Scope and non-goals | Success signals | Source | Evidence status |
+|---|---|---|---|---|---|---|---|---|---|
+| VISION-CAND-001 | <candidate future state> | <difference from mission> | <stakeholders> | <condition and impact> | <horizon> | <scope> | <signals> | <source> | stated / inferred / missing |
+
+### Core-Value Candidates Anti-Values And Conflicts
+
+| ID | Candidate commitment | Rationale | Positive behavior | Prohibited behavior or anti-value | Decision test | Conflict or precedence | Source and owner | Evidence status |
+|---|---|---|---|---|---|---|---|---|
+| VALUE-CAND-001 | <commitment> | <why> | <behavior> | <prohibition> | <test> | <rule or OPEN-*> | <source and owner> | stated / inferred / missing |
+
+### Authority Inheritance Waiver And Review
+
+| Field | Candidate value | Source or authority | Status / blocking effect |
+|---|---|---|---|
+| Missing or unrepresented stakeholders | <classes> | <source> | none / review required / blocks approval |
+| Accountable approval principal | <human role or missing> | <source> | identified / missing |
+| Inherited Sys4AI constraints | <constraints> | <source> | binding / candidate / unknown |
+| Waiver candidate | <WAIVER-CAND-* or none> | <authority> | proposed / active / expired / superseded / none |
+| Review cadence and triggers | <cadence> | <owner> | candidate |
+
+### Pattern Operations And Promotion Context
+
+| Field | Candidate value | Source | Evidence status / open issue |
+|---|---|---|---|
+| Coordination pattern | hierarchical / flat_multi_agent / blackboard / market_or_contract_net / hybrid / unknown | <source> | stated / inferred / missing |
+| Operational maturity | conceptual / planned / prototype / test_run / staging / production / maintenance / retired / unknown | <source> | stated / inferred / missing |
+| Autonomy and permission boundary | <boundary> | <source> | stated / inferred / missing |
+| Integrations and interfaces | <systems> | <source> | stated / inferred / missing |
+| Communication and handoffs | <channels> | <source> | stated / inferred / missing |
+| Monitoring and review | <signals and cadence> | <source> | stated / inferred / missing |
+| Degraded or blocked behavior | <behavior> | <source> | stated / inferred / missing |
+| Promotion evidence | <required evidence> | <source> | candidate / missing |
 
 ---
 
@@ -227,7 +268,7 @@ Candidate requirements must remain labeled as `REQ-CAND-*` or `NFR-CAND-*` until
 
 | Evidence item | Value |
 |---|---|
-| AgentJob ID | <ID> |
+| Authorization or transaction ID | <ID> |
 | Sources inspected | <list> |
 | Questions asked | <count/list> |
 | Candidate requirements created | <count/list> |

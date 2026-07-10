@@ -63,6 +63,8 @@ USRD, PRD, SRD, ARD, TRP, or SRP generation.
   baselines them.
 - Keep candidate requirements labeled as candidates until target-project
   authority approves them.
+- Keep candidate strategic intent labeled `VISION-CAND-*` and `VALUE-CAND-*`; checkpoint anti-values, missing stakeholders, human approval identity, conflicts, waiver state, and review cadence.
+- Do not treat silence, model authorship, controlled-file location, or structural validation as approval.
 
 ## Validation Requirements
 

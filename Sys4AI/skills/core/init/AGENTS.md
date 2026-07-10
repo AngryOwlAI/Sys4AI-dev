@@ -10,3 +10,5 @@ Required behavior:
 - Keep brownfield first pass read-only.
 - Ask explicit approval before creating controlled artifacts or scaffolds.
 - Preserve `REQ-CAND-*` and `NFR-CAND-*` labels until promotion.
+- Preserve `VISION-CAND-*` and `VALUE-CAND-*` labels and record missing stakeholders, human approval identity, anti-values, conflicts, waivers, and review cadence.
+- Never treat silence or model authorship as strategic-content approval.

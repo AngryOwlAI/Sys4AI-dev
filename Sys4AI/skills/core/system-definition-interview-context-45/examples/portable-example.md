@@ -6,11 +6,11 @@ A system-definition interview spans multiple sessions. The agent captures user a
 
 ## Minimal use
 
-1. Confirm AgentJob authorization.
+1. Confirm the bounded project authorization or Director decision.
 2. On normal invocation without `temp_prd`, run `archive_temp_prd.py --check`; if a prior checkpoint exists, ask before archiving it.
 3. When invoked with `temp_prd`, skip the archive preflight and resume from the checkpoint.
 4. Ask one focused system-definition question.
-5. Record the answer.
+5. Record the answer plus candidate vision, values, anti-values, missing stakeholders, human approval identity, conflicts, waiver state, and review cadence when applicable.
 6. Run the metrics checkpoint.
 7. Continue only if context left is known and greater than 55 percent.
 8. Do not create, overwrite, or refresh `temp_prd.md` after each question when context is still safe.
@@ -42,6 +42,7 @@ Discovery record: control_records/system_definition/requirements-discovery-recor
 Checkpoint file: skills/core/system-definition-interview-context-45/temp_prd.md
 Archive file: skills/core/system-definition-interview-context-45/archived_temp_prd/temp_prd_date_yyyy-mm-dd-hh-mm-ss.md
 PRD handoff: requires explicit user confirmation before `/conversation-to-prd`
+Strategic intent: candidate IDs remain unapproved without accountable human evidence
 Validation:
 - make validate-skills
 - collect_usage_metrics.py --help, if operational

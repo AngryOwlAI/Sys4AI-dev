@@ -49,6 +49,9 @@ Do not use this adapter to generate final formal PRDs, SRDs, SyRS, SRS, ARDs, SE
   - `NEED-*`
   - `STK-*`
   - `SCN-*`
+  - `VISION-CAND-*`
+  - `VALUE-CAND-*`
+  - `WAIVER-CAND-*`
   - `REQ-CAND-*`
   - `NFR-CAND-*`
   - `DRV-*`
@@ -69,16 +72,17 @@ Do not use this adapter to generate final formal PRDs, SRDs, SyRS, SRS, ARDs, SE
 5. Ask one focused question at a time when the answer affects scope, boundary, requirement meaning, stakeholder priority, or downstream routing.
 6. Use compact factual batches only for independent information that does not require deliberation.
 7. Elicit mission need, problem statement, desired outcome, value case, and feasibility constraints.
-8. Identify stakeholders, users, operators, maintainers, owners, affected parties, approvers, and downstream consumers.
-9. Define system boundary, including included capabilities, excluded capabilities, external systems, inputs, outputs, interfaces, operating environment, and lifecycle responsibilities.
-10. For existing or partially built systems, separate observed as-is behavior from desired to-be intent.
-11. Build ConOps seeds from concrete operational scenarios.
-12. Extract candidate functional requirements as `REQ-CAND-*`.
-13. Extract quality attributes as `NFR-CAND-*`.
-14. Extract architecture drivers, interface candidates, data flows, assumptions, constraints, risks, and dependency questions.
-15. Seed verification and validation with `VVE-*` entries.
-16. Write or update the discovery record using `templates/system_definition/requirements-discovery-record-template.md` unless the project authority specifies another template.
-17. Route unresolved material:
+8. For a new or substantially changed target, separate mission from future-state vision and capture vision and value candidates, anti-values, source or inference state, missing stakeholders, accountable human approval identity, inherited constraints, conflicts, waiver state, review cadence, pattern, maturity, autonomy, integrations, communication, monitoring, degraded mode, and promotion evidence.
+9. Identify stakeholders, users, operators, maintainers, owners, affected parties, approvers, and downstream consumers.
+10. Define system boundary, including included capabilities, excluded capabilities, external systems, inputs, outputs, interfaces, operating environment, and lifecycle responsibilities.
+11. For existing or partially built systems, separate observed as-is behavior from desired to-be intent.
+12. Build ConOps seeds from concrete operational scenarios.
+13. Extract candidate functional requirements as `REQ-CAND-*`.
+14. Extract quality attributes as `NFR-CAND-*`.
+15. Extract architecture drivers, interface candidates, data flows, assumptions, constraints, risks, and dependency questions.
+16. Seed verification and validation with `VVE-*` entries.
+17. Write or update the discovery record using `templates/system_definition/requirements-discovery-record-template.md` unless the project authority specifies another template.
+18. Route unresolved material:
     - `decision-grilling-context-45` for unresolved scope or design choices.
     - `domain-grilling-with-docs-context-45` for terminology, glossary, documentation, or ADR-worthy conflicts.
     - `conversation-to-prd` only when product requirements are ready to synthesize.
@@ -89,6 +93,7 @@ Do not use this adapter to generate final formal PRDs, SRDs, SyRS, SRS, ARDs, SE
 - This adapter does not override canonical PRDs, source registries, decision records, or validators.
 - Discovery records are draft discovery evidence unless promoted by project authority.
 - Candidate requirements are not baselined requirements.
+- Candidate vision and core values retain `VISION-CAND-*` and `VALUE-CAND-*` IDs until accountable human approval; silence, model authorship, controlled-file location, and structural validation are not approval.
 - Generated notes, summaries, and templates are derivative unless explicitly promoted.
 - Missing facts, thresholds, actors, owners, constraints, environments, evidence, or acceptance criteria must become open issues rather than silent inventions.
 

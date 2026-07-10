@@ -16,7 +16,9 @@ Support long-session system-definition interviews with a 45 percent context-used
 This adapter is also the default discovery gate for new or substantially changed
 system definitions. It classifies the subject layer, produces or updates the
 Requirements Discovery Record, preserves `REQ-CAND-*` and `NFR-CAND-*` labels,
-and keeps PRD creation behind explicit user confirmation.
+captures `VISION-CAND-*`, `VALUE-CAND-*`, anti-values, approval gaps, conflicts,
+waivers, review cadence, and operational context, and keeps PRD creation behind
+explicit user confirmation.
 
 This adapter checks context metrics after each user answer, but it writes
 `temp_prd.md` only at the handoff threshold, on unavailable/unknown metrics, or
@@ -47,6 +49,8 @@ existing checkpoint. Confirmed archives use
 This adapter is governed by explicit project authority, canonical PRDs, source registries, decision records, and validation commands.
 
 The `temp_prd.md` file is resumable context, not canonical authority. Candidate requirements remain candidates until promoted through an authorized source-authority workflow.
+
+Candidate strategic intent remains unapproved until accountable human evidence exists. Silence, model authorship, and structural validation are not approval.
 
 The Requirements Discovery Record is controlled discovery evidence, not a
 canonical requirements baseline. USRD, PRD, SRD, ARD, TRP, and SRP generation

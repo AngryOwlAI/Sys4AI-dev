@@ -42,7 +42,8 @@ generated.
 - `<OUTPUT_DIRECTORY>/requirements-discovery-record.md`.
 - A `System Intent Profile` inside that record.
 - Traceable entries using IDs such as `NEED-*`, `STK-*`, `SCN-*`,
-  `REQ-CAND-*`, `NFR-CAND-*`, `DRV-*`, `IF-*`, `VVE-*`, and `OPEN-*`.
+  `VISION-CAND-*`, `VALUE-CAND-*`, `WAIVER-CAND-*`, `REQ-CAND-*`,
+  `NFR-CAND-*`, `DRV-*`, `IF-*`, `VVE-*`, and `OPEN-*`.
 - Routing guidance for decision grilling, terminology review, PRD synthesis, or
   future systems-document generation.
 
@@ -80,5 +81,7 @@ A valid adaptation should satisfy these checks:
   inferences, and open questions.
 - Stakeholders, boundary, scenarios, candidate requirements, quality
   attributes, drivers, interfaces, and V&V seeds are traceable.
+- Candidate vision, values, anti-values, missing stakeholders, approval principal, inherited constraints, conflicts, waivers, review cadence, pattern, maturity, autonomy, integrations, communication, monitoring, degraded mode, and promotion evidence are explicit for new or substantially changed targets.
+- Structurally valid or model-authored strategic content remains unapproved without accountable human evidence.
 - Formal document generation is routed downstream rather than performed inside
   this skill.

@@ -43,6 +43,9 @@ page_metadata:
     - contract_core_skill_proposal_registry_row
     - contract_skill_lifecycle_status_registry_row
     - contract_prd_module_registry_row
+    - contract_strategic_intent_common
+    - contract_target_vision_statement
+    - contract_target_core_values
   generated_at: 2026-07-06T00:00:00Z
   generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
   stale_or_orphan_status: current
@@ -177,6 +180,24 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | contract_validation_contract_registry_row | schemas/contracts/validation_contract_registry_row.schema.json | 2020-12 | csv | validation_contract_registry_row | registries/validation_contract_registry.csv | Sys4AI validate-validation-contract-registry | implementation_initialization | controlled | pending | pending |
+
+## json / strategic_intent_shared_metadata
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_strategic_intent_common | schemas/contracts/strategic_intent_common.schema.json | 2020-12 | json | strategic_intent_shared_metadata | schemas/contracts/target_vision_statement.schema.json;schemas/contracts/target_core_values.schema.json | Sys4AI validate-jsonschema-contracts | verification_engineer | controlled | pending | pending |
+
+## markdown / target_core_values
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_target_core_values | schemas/contracts/target_core_values.schema.json | 2020-12 | markdown | target_core_values | templates/governance/target-core-values-template.md;examples/strategic_intent/*/core-values.md | Sys4AI validate-strategic-intent | verification_engineer | controlled | pending | pending |
+
+## markdown / target_vision_statement
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_target_vision_statement | schemas/contracts/target_vision_statement.schema.json | 2020-12 | markdown | target_vision_statement | templates/governance/target-vision-statement-template.md;examples/strategic_intent/*/vision-statement.md | Sys4AI validate-strategic-intent | verification_engineer | controlled | pending | pending |
 
 ## toml / framework_config
 

@@ -10,7 +10,8 @@ When the user invokes `/init`, `/init greenfield`, `/init brownfield`, or
 `/init temp_prd`, use `init` first. `init` is the user-facing front door that
 classifies the situation, inspects available evidence, summarizes the route,
 and asks for approval before any controlled discovery record, Product
-Requirements Document, implementation plan, AgentJob, or scaffold is created.
+Requirements Document, implementation plan, bounded execution artifact, or
+scaffold is created.
 
 For brownfield repositories, `/init` first pass is read-only inspection and
 classification only.
@@ -26,6 +27,19 @@ When target-system intent, boundary, stakeholders, operational scenarios, candid
 
 Use the earliest skill that can resolve the present uncertainty. Do not skip to Product Requirements Document synthesis when the system boundary or stakeholder intent is still unclear.
 
+## Strategic-intent workflow
+
+For every new or substantially changed target system:
+
+1. `/init` and the system-definition interview distinguish mission from future-state vision.
+2. Discovery records preserve `VISION-CAND-*`, `VALUE-CAND-*`, and optional `WAIVER-CAND-*` entries with source or inference labels, anti-values, missing stakeholders, approval identity, inherited constraints, conflicts, review cadence, pattern, maturity, autonomy, integrations, communication, monitoring, degraded behavior, and promotion evidence.
+3. Candidate strategic content remains discovery evidence until an accountable human approves separate registered `governance/vision-statement.md` and `governance/core-values.md` artifacts.
+4. Silence, model authorship, controlled-file location, structural validation, or implementation progress never constitutes content approval.
+5. USRD and PRD artifacts reference approved strategic-intent IDs and registered sources rather than duplicating normative wording.
+6. Material changes require impact analysis, a new version and hash, supersession evidence, and reapproval. An expired waiver blocks a new baseline or release.
+
+The development runtime and product-scaffold skills may elicit and draft candidates. They may not approve their own purpose, values, authority, permissions, evaluation standard, production promotion, or acceptance.
+
 `/init` must ask for explicit approval before creating downstream artifacts.
 The required approval prompts are:
 
@@ -38,7 +52,7 @@ Discovery is complete. Should I create a Product Requirements Document with `/co
 ```
 
 ```text
-For this brownfield project, should I create an implementation plan or AgentJob for Sys4AI governance adoption?
+For this brownfield project, should I create an implementation plan for Sys4AI governance adoption?
 ```
 
 ## Long-session rule
@@ -97,9 +111,9 @@ For `system-definition-interview-context-45`, the resume command is:
 
 ## Authority rule
 
-No skill output overrides canonical sources, registries, Product Requirements Documents, decision records, validators, or AgentJobs.
+No skill output overrides canonical sources, registries, Product Requirements Documents, decision records, validators, or explicit project authority.
 
-Discovery records and temporary handoff files are controlled evidence only when they are registered or authorized by an AgentJob. Candidate requirements must remain `REQ-CAND-*` or `NFR-CAND-*` until a source-authority workflow promotes them.
+Discovery records and temporary handoff files are controlled evidence only when they are registered or covered by explicit project authorization or a Director decision. Candidate requirements must remain `REQ-CAND-*` or `NFR-CAND-*` until a source-authority workflow promotes them.
 
 ## Integration rule
 
@@ -107,8 +121,8 @@ Upstream skills from `ai-skills-for-sys` must be adapted locally before they are
 
 ## Continuation and memory surfaces
 
-The active development-runtime surfaces for continuation and source-first memory live under `.agents/skills/continue/` and `.agents/skills/source-first-memory/`.
+The active development-runtime source-first memory surface lives under `.agents/skills/source-first-memory/`. Long-session continuation uses the `*-context-45` checkpoint and handoff contracts. The former `/continue` runtime skill is absent and historical references do not prove active capability.
 
-The matching `.codex/skills/*/SKILL.md` files are compatibility shims only. They point to the `.agents` runtime surfaces and should not carry independent behavior.
+Matching `.codex/skills/*/SKILL.md` files are compatibility shims only. They point to existing `.agents` runtime surfaces and should not carry independent behavior.
 
 The matching `Sys4AI/skills/core/*` folders are product-scaffold templates for future target systems. They must remain generic, portable, and not locked to one execution harness.

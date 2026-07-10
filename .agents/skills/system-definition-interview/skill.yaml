@@ -15,6 +15,7 @@ domain_emphasis:
   - system_definition
   - stakeholder_elicitation
   - requirements_discovery
+  - strategic_intent_discovery
   - traceability
 required_role_posture:
   - system_analyst
@@ -53,6 +54,7 @@ outputs:
     - Completion receipt or concise handoff when the task changes files or creates derivative material.
   secondary:
     - Assumptions, unresolved questions, skipped checks, and recommended next step.
+    - Candidate vision, values, anti-values, approval gaps, conflicts, waiver state, review cadence, and operational context for new or substantially changed targets.
   evidence:
     - Source files, validators, registries, user decisions, and repository observations used.
     - Distinction between canonical source, accepted project decision, generated derivative, and assumption.
@@ -95,6 +97,7 @@ authority:
     - Generated PRDs, implementation plans, diagrams, warning reports, metrics receipts, temporary handoffs, and completion receipts.
   human_gates:
     - Owner approval before generated requirements or plans become accepted scope.
+    - Accountable human approval before candidate vision or core values become approved target intent.
     - Owner approval before deleting scaffold adapters or changing project authority policy.
 validation:
   commands:

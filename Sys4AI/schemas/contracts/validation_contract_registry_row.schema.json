@@ -22,7 +22,7 @@
     "contract_id": { "type": "string", "pattern": "^contract_[a-z0-9_]+$" },
     "path": { "type": "string", "minLength": 1 },
     "dialect": { "enum": ["2020-12"] },
-    "target_format": { "enum": ["yaml", "toml", "csv", "json"] },
+    "target_format": { "enum": ["yaml", "toml", "csv", "json", "markdown"] },
     "authority_status": { "enum": ["controlled", "canonical", "canonical_draft", "draft"] }
   },
   "additionalProperties": { "type": "string" }

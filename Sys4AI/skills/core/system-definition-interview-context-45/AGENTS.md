@@ -9,6 +9,8 @@
 - Do not mark this skill as `adapted` without a skill-import review and validation receipt.
 - Keep examples portable and free of private project assumptions.
 - Candidate requirements produced by this skill remain candidates until promoted.
+- Candidate vision and values remain `VISION-CAND-*` and `VALUE-CAND-*`; preserve anti-values, missing stakeholders, human approval identity, conflicts, waivers, and review cadence across handoffs.
+- Do not treat silence, model authorship, or structural validation as approval.
 - If the upstream template changes, record the review date and adaptation decision.
 - Do not remove fail-closed context behavior.
 - Do not continue long interviews when metrics are unavailable or threshold is reached.

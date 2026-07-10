@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/Sys4AI/schemas/contracts/strategic_intent_common.schema.json",
+  "title": "Shared strategic-intent metadata definitions",
+  "description": "Reusable fail-closed metadata definitions for target vision and core-values Markdown front matter.",
+  "$defs": {
+    "subject_layer": {
+      "enum": ["target_system_template", "target_system_instance"]
+    },
+    "content_approval_state": {
+      "enum": ["candidate", "stakeholder_review", "approved", "rejected", "superseded"]
+    },
+    "source_authority_state": {
+      "enum": ["derivative_draft", "controlled_candidate", "controlled", "canonical"]
+    },
+    "validation_state": {
+      "enum": ["unvalidated", "schema_valid", "validated", "failed"]
+    },
+    "not_approved": {
+      "type": "object",
+      "required": ["status", "approved_by", "principal_role", "approved_at", "approval_evidence"],
+      "properties": {
+        "status": { "const": "not_approved" },
+        "approved_by": { "type": "null" },
+        "principal_role": { "type": "null" },
+        "approved_at": { "type": "null" },
+        "approval_evidence": { "type": "null" }
+      },
+      "additionalProperties": false
+    },
+    "approved_human_approval": {
+      "type": "object",
+      "required": ["status", "approved_by", "principal_role", "approved_at", "approval_evidence"],
+      "properties": {
+        "status": { "const": "approved" },
+        "approved_by": {
+          "type": "string",
+          "minLength": 1,
+          "allOf": [
+            { "not": { "enum": ["model", "Model", "MODEL", "ai", "AI", "Ai"] } },
+            { "not": { "pattern": "^(Meta-Agent|META-AGENT|meta-agent|Runtime|RUNTIME|runtime)([ _-].*)?$" } }
+          ]
+        },
+        "principal_role": { "type": "string", "minLength": 1 },
+        "approved_at": { "type": "string", "format": "date" },
+        "approval_evidence": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "approval": {
+      "oneOf": [
+        { "$ref": "#/$defs/not_approved" },
+        { "$ref": "#/$defs/approved_human_approval" }
+      ]
+    },
+    "waiver": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["status"],
+          "properties": { "status": { "const": "none" } },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "waiver_id",
+            "accountable_authority",
+            "missing_artifact_or_approval",
+            "reason",
+            "risk",
+            "scope",
+            "downstream_handling",
+            "expiry",
+            "revisit_trigger",
+            "affected_requirements_and_decisions",
+            "status"
+          ],
+          "properties": {
+            "waiver_id": { "type": "string", "pattern": "^WAIVER-[A-Z0-9][A-Z0-9-]*$" },
+            "accountable_authority": { "type": "string", "minLength": 1 },
+            "missing_artifact_or_approval": { "type": "string", "minLength": 1 },
+            "reason": { "type": "string", "minLength": 1 },
+            "risk": { "type": "string", "minLength": 1 },
+            "scope": { "type": "string", "minLength": 1 },
+            "downstream_handling": { "type": "string", "minLength": 1 },
+            "expiry": { "type": "string", "format": "date" },
+            "revisit_trigger": { "type": "string", "minLength": 1 },
+            "affected_requirements_and_decisions": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "minLength": 1 },
+              "uniqueItems": true
+            },
+            "status": { "enum": ["active", "expired", "superseded"] }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "impact_analysis": {
+      "type": "object",
+      "required": ["state", "reviewed_surfaces", "evidence"],
+      "properties": {
+        "state": { "enum": ["not_started", "pending", "complete", "blocked", "not_applicable"] },
+        "reviewed_surfaces": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "evidence": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "supersession": {
+      "type": "object",
+      "required": ["state", "supersedes", "superseded_by", "evidence"],
+      "properties": {
+        "state": { "enum": ["current", "superseded"] },
+        "supersedes": { "type": ["string", "null"] },
+        "superseded_by": { "type": ["string", "null"] },
+        "evidence": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -71,7 +71,8 @@ discovery record is coherent enough.
 - A `System Intent Profile` summarizing the system purpose, boundary, outcome,
   current state, target state, stakeholders, and success criteria.
 - Traceable discovery entries using stable IDs such as `NEED-*`, `STK-*`,
-  `SCN-*`, `REQ-CAND-*`, `NFR-CAND-*`, `DRV-*`, `IF-*`, `VVE-*`, and `OPEN-*`.
+  `SCN-*`, `VISION-CAND-*`, `VALUE-CAND-*`, `WAIVER-CAND-*`, `REQ-CAND-*`,
+  `NFR-CAND-*`, `DRV-*`, `IF-*`, `VVE-*`, and `OPEN-*`.
 - A routing recommendation for unresolved decisions, terminology conflicts,
   PRD creation, or future systems-document generation.
 
@@ -87,26 +88,27 @@ discovery record is coherent enough.
    stakeholder priority. Use compact batches only for independent factual data.
 4. Elicit the mission need, problem statement, desired outcome, value case, and
    feasibility constraints.
-5. Identify stakeholders, user groups, operators, maintainers, owners, affected
+5. For a new or substantially changed target, separate mission from future-state vision and elicit candidate vision, intended beneficiaries, value commitments, anti-values, conflicts and precedence, inherited constraints, missing stakeholders, accountable human approval identity, waiver state, and review cadence. Label statements as stated, inferred, or missing and keep `VISION-CAND-*` and `VALUE-CAND-*` IDs until approval.
+6. Identify stakeholders, user groups, operators, maintainers, owners, affected
    parties, approvers, and downstream consumers of the generated record.
-6. Define the system boundary: included capabilities, excluded capabilities,
+7. Define the system boundary: included capabilities, excluded capabilities,
    external systems, inputs, outputs, interfaces, operating environment, and
    lifecycle responsibilities.
-7. For existing or partially built systems, distinguish as-is behavior from
+8. For existing or partially built systems, distinguish as-is behavior from
    to-be intent. Mark observed facts separately from stakeholder preferences.
-8. Build ConOps seeds from concrete operational scenarios, including normal
+9. Build ConOps seeds from concrete operational scenarios, including normal
    use, exception paths, degraded operation, handoff points, and support paths.
-9. Extract candidate functional requirements as `REQ-CAND-*` entries and
+10. Extract candidate functional requirements as `REQ-CAND-*` entries and
    quality attributes as `NFR-CAND-*` entries. Do not overstate candidates as
    baselined requirements.
-10. Extract architecture drivers, interface candidates, data or information
+11. Extract architecture drivers, interface candidates, data or information
     flows, assumptions, constraints, risks, and dependency questions.
-11. Seed verification and validation thinking with `VVE-*` entries: observable
+12. Seed verification and validation thinking with `VVE-*` entries: observable
     acceptance checks, inspection evidence, analysis needs, test ideas, review
     gates, or human approval points.
-12. Write or update `requirements-discovery-record.md` using this skill's
+13. Write or update `requirements-discovery-record.md` using this skill's
     template unless the target project provides a local replacement.
-13. Route unresolved material:
+14. Route unresolved material:
     - Use `decision-grilling-context-45` for unresolved design or scope
       decisions.
     - Use `domain-grilling-with-docs-context-45` for terminology, glossary,
@@ -125,8 +127,10 @@ The discovery record must:
 - Separate observations, stakeholder statements, assumptions, inferences, and
   open questions.
 - Preserve trace IDs for needs, stakeholders, scenarios, candidate
-  requirements, quality attributes, drivers, interfaces, V&V seeds, and open
-  questions.
+  vision and values, waivers, requirements, quality attributes, drivers,
+  interfaces, V&V seeds, and open questions.
+- Record coordination-pattern candidates, operational maturity, autonomy, integrations, communication, monitoring, degraded mode, and promotion evidence when they affect strategic intent.
+- Treat silence, model authorship, controlled-file location, and structural validation as insufficient for strategic-content approval.
 - Mark candidate requirements as candidates until a target-project authority
   baselines them.
 - Name evidence sources or state that evidence is unavailable.

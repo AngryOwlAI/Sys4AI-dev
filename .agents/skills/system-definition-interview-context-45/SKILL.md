@@ -91,7 +91,7 @@ discovery record is coherent enough.
 
 - `<OUTPUT_DIRECTORY>/requirements-discovery-record.md`, unless the user asks
   for chat-only output or a different path.
-- A `System Intent Profile` and traceable discovery entries using stable IDs.
+- A `System Intent Profile` and traceable discovery entries using stable `VISION-CAND-*`, `VALUE-CAND-*`, `WAIVER-CAND-*`, requirement, evidence, and open-question IDs.
 - `usage-metrics.txt` in this skill folder after each context check.
 - `temp_prd.md` in this skill folder when context used is `>= 45%`, context
   left is `<= 55%`, metrics cannot be collected, context left is unknown, or
@@ -127,7 +127,8 @@ discovery record is coherent enough.
    If the user does not confirm or does not answer, stop; do not overwrite or
    archive the existing checkpoint.
 3. Initialize or refresh the working context: objective, situation
-   classification, System Intent Profile, stakeholders, boundary, as-is state,
+   classification, System Intent Profile, strategic-intent candidates, anti-values,
+   approval and waiver state, stakeholders, boundary, as-is state,
    to-be state, scenarios, candidate requirements, quality attributes, drivers,
    interfaces, V&V seeds, evidence, assumptions, risks, open questions, last
    exchange, and recommended next branch.
@@ -136,7 +137,9 @@ discovery record is coherent enough.
    `derivative_surface`. If that classification cannot be made from current
    evidence and `system-layer-classifier` is available, route there first.
 5. Produce or update `requirements-discovery-record.md` with the subject layer,
-   discovery-gate marker, registry row reference, candidate requirements,
+   discovery-gate marker, registry row reference, candidate vision and values,
+   source and inference labels, missing stakeholders, accountable approval identity,
+   inherited constraints, conflicts, waiver and review state, candidate requirements,
    evidence register, open questions, and downstream routing recommendation
    before any USRD, PRD, SRD, ARD, TRP, or SRP is created.
 6. Follow the `system-definition-interview` elicitation procedure. Inspect
@@ -214,6 +217,8 @@ When writing `temp_prd.md`, include these sections:
 
 ## System Intent Profile
 
+## Strategic Intent Candidates
+
 ## Stakeholders And Roles
 
 ## System Boundary
@@ -261,6 +266,8 @@ the prior content cannot be safely merged.
 ## Validation
 
 - The interview establishes system intent before document generation.
+- Candidate vision and values retain `VISION-CAND-*` and `VALUE-CAND-*` IDs; silence, model authorship, controlled-file location, and structural validation do not approve them.
+- Anti-values, conflicts, missing stakeholders, approval principal, inherited constraints, waivers, review cadence, pattern, maturity, autonomy, integrations, communication, monitoring, degraded mode, and promotion evidence are checkpointed when applicable.
 - The metrics checkpoint runs after each user answer.
 - On normal invocation without `temp_prd`, the archive preflight runs before
   any fresh-session work.

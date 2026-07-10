@@ -29,9 +29,10 @@ interviews with context checkpoints and resumable `temp_prd.md` handoff.
 
 In `Sys4AI-dev`, this skill is the default front-door discovery gate for
 new or substantially changed system definitions. It classifies the subject
-layer, produces or updates `requirements-discovery-record.md`, and keeps
-candidate requirements labeled before any USRD, PRD, SRD, ARD, TRP, or SRP is
-generated.
+layer, produces or updates `requirements-discovery-record.md`, captures candidate
+vision, values, anti-values, approval gaps, conflicts, waivers, review cadence,
+and operational context, and keeps all candidates labeled before any USRD, PRD,
+SRD, ARD, TRP, or SRP is generated.
 
 Do not create, overwrite, or refresh `temp_prd.md` after each question when
 context is still safe. Safe-context turns should update only the discovery
@@ -55,7 +56,8 @@ record or live working state and the point-in-time `usage-metrics.txt` receipt.
   the RDR.
 - A `System Intent Profile` inside that record.
 - Traceable entries using IDs such as `NEED-*`, `STK-*`, `SCN-*`,
-  `REQ-CAND-*`, `NFR-CAND-*`, `DRV-*`, `IF-*`, `VVE-*`, and `OPEN-*`.
+  `VISION-CAND-*`, `VALUE-CAND-*`, `WAIVER-CAND-*`, `REQ-CAND-*`,
+  `NFR-CAND-*`, `DRV-*`, `IF-*`, `VVE-*`, and `OPEN-*`.
 - `usage-metrics.txt` in this skill folder after each context check.
 - `temp_prd.md` in this skill folder only when context used reaches 45 percent,
   context left is 55 percent or lower, metrics are unavailable/unknown, or the
@@ -107,3 +109,4 @@ A valid adaptation should satisfy these checks:
 - PRD creation is explicitly user-gated and never automatic.
 - Candidate requirements remain `REQ-CAND-*` or `NFR-CAND-*` until project
   authority promotes them.
+- Candidate strategic intent remains `VISION-CAND-*` or `VALUE-CAND-*` until accountable human approval; silence, model authorship, and structural validation are not approval.

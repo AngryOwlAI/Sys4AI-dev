@@ -5,5 +5,7 @@
 - Do not mark this skill as `adapted` without a skill-import review and validation receipt.
 - Keep examples portable and free of private project assumptions.
 - Candidate requirements produced by this skill remain candidates until promoted.
+- Candidate vision and values remain `VISION-CAND-*` and `VALUE-CAND-*`; capture anti-values, missing stakeholders, human approval identity, conflicts, waivers, and review cadence.
+- Do not treat silence, model authorship, or structural validation as approval.
 - If the upstream template changes, record the review date and adaptation decision.
 - Do not use this skill to produce final formal PRDs, SRDs, SyRS, SRS, ARDs, SEMPs, or V&V plans directly.

@@ -45,6 +45,14 @@ without creating, overwriting, or refreshing `temp_prd.md`.
 |---|---|---|---|
 | NEED-001 | Reduce lost maintenance requests and make triage ownership visible. | Operations lead interview | stated |
 
+## Strategic Intent Candidates
+
+| ID | Candidate | Source | Evidence Status |
+|---|---|---|---|
+| VISION-CAND-001 | Every accepted request remains visible, owned, and recoverable. | Operations lead interview | stated; unapproved |
+| VALUE-CAND-001 | Visible ownership | Operations lead interview | stated; unapproved |
+| VALUE-CAND-002 | Speed above evidence integrity | Agent inference | rejected_candidate |
+
 ## Candidate Requirements
 
 | ID | Candidate Requirement | Source Scenario Or Need | Rationale | Status |
@@ -61,6 +69,7 @@ If `usage-metrics.txt` reports context left at `55%` or lower, the agent writes
 - objective,
 - situation classification,
 - System Intent Profile,
+- strategic-intent candidates, missing stakeholders, approval principal, conflicts, waiver and review state,
 - stakeholders,
 - boundary,
 - as-is and to-be state,

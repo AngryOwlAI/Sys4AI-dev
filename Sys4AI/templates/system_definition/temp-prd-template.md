@@ -27,6 +27,27 @@ new system / existing system / partially built system / documentation recovery /
 | Desired outcome | <text> | <source> | stated / inferred / missing |
 | System-of-interest | <text> | <source> | stated / inferred / missing |
 
+## Strategic Intent Candidates
+
+| Field | Value | Source | Evidence / approval status |
+|---|---|---|---|
+| Vision candidate ID and statement | VISION-CAND-001: <future state> | <source> | stated / inferred / missing; candidate only |
+| Mission-versus-vision distinction | <text> | <source> | stated / inferred / missing |
+| Intended users and beneficiaries | <stakeholders> | <source> | stated / inferred / missing |
+| Value candidate IDs and commitments | VALUE-CAND-001: <commitment> | <source> | stated / inferred / missing; candidate only |
+| Anti-values and prohibited behaviors | <anti-values> | <source> | stated / inferred / missing |
+| Conflicts and precedence | <rule or OPEN-*> | <source> | stated / inferred / missing |
+| Missing stakeholders | <classes> | <source> | none / review required / blocks approval |
+| Accountable approval principal | <human role or missing> | <source> | identified / missing; silence is not consent |
+| Inherited Sys4AI constraints | <constraints> | <source> | binding / candidate / unknown |
+| Waiver state | <WAIVER-CAND-* or none> | <authority> | proposed / active / expired / superseded / none |
+| Review cadence and triggers | <cadence> | <owner> | candidate |
+| Coordination pattern | <pattern or unknown> | <source> | stated / inferred / missing |
+| Operational maturity | <state or unknown> | <source> | stated / inferred / missing |
+| Autonomy and permissions | <boundary> | <source> | stated / inferred / missing |
+| Integrations communication monitoring and degraded mode | <summary> | <source> | stated / inferred / missing |
+| Promotion evidence | <required evidence> | <source> | candidate / missing |
+
 ## Stakeholders And Roles
 
 | ID | Stakeholder class | Role in system | Primary need | Decision authority | Source |
