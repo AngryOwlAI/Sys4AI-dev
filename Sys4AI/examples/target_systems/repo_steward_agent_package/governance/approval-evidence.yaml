@@ -1,0 +1,19 @@
+schema_version: 1.0.0
+approval_evidence_id: APPROVAL-REPO-STEWARD-DEMO-001
+target_system_id: repo_steward_agent_sample
+evidence_kind: fictional_demonstration
+fictional: true
+scope: Non-production demonstration content inside the derivative smoke package only.
+approved_by: Example Product Owner
+principal_type: accountable_human
+model_self_approval: false
+approved_at: '2026-07-10'
+vision_id: VISION-REPO-STEWARD-DEMO-001
+core_value_ids:
+- VALUE-REPO-STEWARD-DEMO-001
+- VALUE-REPO-STEWARD-DEMO-002
+content_approval_status: approved
+production_authority: false
+g08_satisfied: false
+domain_acceptance: false
+notes: Structural validation confirms fixture consistency but cannot convert fictional evidence into real stakeholder authority.

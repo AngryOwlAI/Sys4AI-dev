@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/Sys4AI/schemas/contracts/target_system_package_manifest.schema.json",
+  "title": "Target system package manifest",
+  "description": "Manifest-driven non-production target-package contract with strategic intent, approval or waiver, pattern, host, execution, trace, hash, and validation evidence.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "target_system_id",
+    "name",
+    "package_status",
+    "subject_layer",
+    "source_authority_status",
+    "vision_id",
+    "vision_path",
+    "vision_version",
+    "core_values_set_id",
+    "core_value_ids",
+    "core_values_path",
+    "core_values_version",
+    "content_approval_status",
+    "approval_evidence",
+    "waiver_id",
+    "coordination_pattern",
+    "operational_maturity",
+    "lifecycle_stage",
+    "pattern_decision",
+    "host_profile",
+    "host_requirements",
+    "execution_profile",
+    "impact_analysis",
+    "source_trace",
+    "contents",
+    "hashes",
+    "validation",
+    "authority_notice"
+  ],
+  "$defs": {
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "not": { "pattern": "^(?:/|[A-Za-z]:|.*(?:^|/)\\.\\.(?:/|$))" }
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    }
+  },
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "target_system_id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+    "name": { "type": "string", "minLength": 1 },
+    "package_status": {
+      "enum": ["candidate", "smoke_example", "scaffold_reference", "validated_prototype"]
+    },
+    "subject_layer": { "enum": ["target_system_template", "target_system_instance"] },
+    "source_authority_status": {
+      "enum": ["derivative_draft", "generated_derivative", "scaffold_reference", "controlled_candidate", "controlled", "canonical"]
+    },
+    "vision_id": { "type": "string", "pattern": "^VISION-(CAND-)?[A-Z0-9][A-Z0-9-]*$" },
+    "vision_path": { "$ref": "#/$defs/relativePath" },
+    "vision_version": { "$ref": "#/$defs/version" },
+    "core_values_set_id": { "type": "string", "pattern": "^VALUES-(CAND-)?[A-Z0-9][A-Z0-9-]*$" },
+    "core_value_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^VALUE-(CAND-)?[A-Z0-9][A-Z0-9-]*$" }
+    },
+    "core_values_path": { "$ref": "#/$defs/relativePath" },
+    "core_values_version": { "$ref": "#/$defs/version" },
+    "content_approval_status": { "enum": ["candidate", "stakeholder_review", "approved", "waived"] },
+    "approval_evidence": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": ["id", "path"],
+          "properties": {
+            "id": { "$ref": "#/$defs/id" },
+            "path": { "$ref": "#/$defs/relativePath" }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "waiver_id": { "type": ["string", "null"], "pattern": "^WAIVER-[A-Z0-9][A-Z0-9-]*$" },
+    "coordination_pattern": {
+      "enum": ["linear_workflow", "goal_directed_autonomous_agent", "role_based_multi_agent", "production_orchestration", "hybrid"]
+    },
+    "operational_maturity": {
+      "enum": ["concept", "prototype", "validated_prototype", "production_candidate", "production_approved", "operational", "maintenance", "retired"]
+    },
+    "lifecycle_stage": { "enum": ["design", "develop", "implement", "test", "blocked", "cancelled"] },
+    "pattern_decision": {
+      "type": "object",
+      "required": ["id", "path"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "path": { "$ref": "#/$defs/relativePath" }
+      },
+      "additionalProperties": false
+    },
+    "host_profile": { "type": "string", "minLength": 1 },
+    "host_requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["capability_id", "availability", "permission_source", "limitations", "degraded_behavior", "cancellation_behavior", "evidence_path"],
+        "properties": {
+          "capability_id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+          "availability": { "enum": ["available", "permission_dependent", "degraded", "blocked", "unknown"] },
+          "permission_source": { "type": "string", "minLength": 1 },
+          "limitations": { "type": "string", "minLength": 1 },
+          "degraded_behavior": { "type": "string", "minLength": 1 },
+          "cancellation_behavior": { "type": "string", "minLength": 1 },
+          "evidence_path": { "$ref": "#/$defs/relativePath" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "execution_profile": {
+      "type": "object",
+      "required": ["id", "transaction_root"],
+      "properties": {
+        "id": { "const": "portable_execution_transaction_v1" },
+        "transaction_root": { "$ref": "#/$defs/relativePath" }
+      },
+      "additionalProperties": false
+    },
+    "impact_analysis": {
+      "type": "object",
+      "required": ["state", "evidence"],
+      "properties": {
+        "state": { "enum": ["not_started", "pending", "complete", "blocked", "not_applicable"] },
+        "evidence": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "source_trace": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "contents": {
+      "type": "object",
+      "required": [
+        "readme",
+        "rdr",
+        "vision",
+        "core_values",
+        "pattern_decision",
+        "approval_evidence",
+        "prd",
+        "implementation_plan",
+        "execution_root",
+        "requirement_trace",
+        "artifact_index",
+        "validation_summary",
+        "strategic_intent_summary",
+        "host_capability_summary",
+        "test_and_evaluation_summary"
+      ],
+      "additionalProperties": { "$ref": "#/$defs/relativePath" }
+    },
+    "hashes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": { "$ref": "#/$defs/relativePath" },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "validation": {
+      "type": "object",
+      "required": ["status", "commands", "summary_paths"],
+      "properties": {
+        "status": { "enum": ["not_run", "pass", "warn", "fail"] },
+        "commands": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "summary_paths": {
+          "type": "array",
+          "minItems": 4,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/relativePath" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "authority_notice": { "type": "string", "minLength": 1 }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "package_status": { "const": "smoke_example" } }, "required": ["package_status"] },
+      "then": {
+        "properties": {
+          "source_authority_status": { "enum": ["derivative_draft", "generated_derivative", "scaffold_reference"] },
+          "operational_maturity": { "enum": ["concept", "prototype", "validated_prototype"] }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "content_approval_status": { "const": "approved" } }, "required": ["content_approval_status"] },
+      "then": {
+        "properties": {
+          "approval_evidence": { "type": "object" },
+          "waiver_id": { "type": "null" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "content_approval_status": { "const": "waived" } }, "required": ["content_approval_status"] },
+      "then": {
+        "properties": {
+          "approval_evidence": { "type": "null" },
+          "waiver_id": { "type": "string", "pattern": "^WAIVER-[A-Z0-9][A-Z0-9-]*$" }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

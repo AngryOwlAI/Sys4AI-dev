@@ -1,0 +1,241 @@
+execution_transaction_id: TX-15-TARGET-PACKAGE
+contract_version: 1.0.0
+objective: Implement and verify the generic manifest-driven non-production target-package schema example validator and tests while stopping before TX-16 walking-skeleton work.
+source_requirement_ids:
+- SFA-P1-INIT-STRAT-004
+- SFA-P1-INIT-PATTERN-001
+- SFA-P1-INIT-PACKAGE-001
+- SFA-P1-INIT-PACKAGE-002
+- SFA-P1-INIT-SEM-001
+- SFA-P2-ADD-PACKAGE-001
+- SFA-P2-ADD-SEM-001
+source_decision_ids:
+- DDR-SFADEV-STRATEGIC-BASELINE-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G04-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G05-001
+subject_system:
+  system_id: sys4ai
+  system_name: Sys4AI framework product
+subject_layer: framework_product
+runtime_actor:
+  actor_id: codex_meta_agent_runtime
+  actor_type: meta_agent_runtime
+  role_ids:
+  - bounded_execution_planner
+  - implementation_initialization_agent
+  - verification_engineer
+  - trace_owner
+  - baseline_change_manager
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-10-TX15
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX14-001
+approval_principal:
+  principal_id: alex_omegapy
+  principal_type: accountable_human
+  approval_scope: Execute and close TX-15-TARGET-PACKAGE only; preserve protected Phase 2 sources and do not begin TX-16.
+  authorization_evidence_ids:
+  - HUMAN-TASK-2026-07-10-TX15
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX14-001
+  model_self_approval: false
+execution_authorization:
+  status: authorized
+  authorized_at: '2026-07-10T16:57:33Z'
+  expires_at: '2026-07-11T16:57:33Z'
+  authority_evidence_ids:
+  - HUMAN-TASK-2026-07-10-TX15
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX14-001
+  self_authorized: false
+permission_envelope:
+  envelope_id: PERMISSION-ENVELOPE-TX-15-TARGET-PACKAGE
+  status: current
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-10-TX15
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX14-001
+  data_classes:
+  - repository_controlled_artifacts
+  - local_validation_evidence
+  resource_limits:
+  - One bounded TX-15 package contract example validator test and closeout packet.
+  - Preserve accepted Phase 2 PRD and draft byte-for-byte.
+  - Keep the seven needs_evidence and 200 planned TX-12 states unchanged.
+  - Advance only additive rows with exact target-package evidence.
+  - Do not modify walking-skeleton flow code or begin TX-16.
+  valid_from: '2026-07-10T16:57:33Z'
+  expires_at: '2026-07-11T16:57:33Z'
+  sensitive_data_allowed: false
+  secrets_allowed: false
+  data_egress_allowed: true
+  external_side_effects_allowed: true
+  delegation_allowed: false
+  delegation_expires_at: not_applicable
+  permission_expansion_allowed: false
+allowed_reads:
+- .agents/**
+- .codex/**
+- PRDs/**
+- Sys4AI/**
+- implementation_plans/**
+allowed_writes:
+- Sys4AI/schemas/contracts/target_system_package_manifest.schema.json
+- Sys4AI/sys_for_ai/target_package.py
+- Sys4AI/sys_for_ai/cli.py
+- Sys4AI/sys_for_ai/trace_validation.py
+- Sys4AI/tests/test_target_package.py
+- Sys4AI/tests/test_trace_schema_migration.py
+- Sys4AI/tests/test_self_hosting_acceptance.py
+- Sys4AI/examples/target_systems/repo_steward_agent_package/**
+- Sys4AI/configs/capability_migration.toml
+- Sys4AI/control_records/**
+- Sys4AI/registries/**
+- Sys4AI/docs/generated/**
+- implementation_plans/completion_receipts/**
+allowed_tools:
+- repository file inspection
+- apply_patch
+- repository-native validation commands
+- deterministic generated-document writers
+- git status diff add commit and push
+allowed_external_actions:
+- Push the validated TX-15 commit to origin main.
+forbidden_actions:
+- Modify PRDs/Sys4AI_phase-2_walking_skeleton_prd.md.
+- Modify PRDs/drafts/Sys4AI_phase-2_walking_skeleton_prd.draft.md.
+- Modify Sys4AI/sys_for_ai/walking_skeleton.py or Sys4AI/sys_for_ai/trace_flow.py.
+- Begin TX-16 or any later transaction.
+- Change the seven needs_evidence or 200 planned TX-12 trace states.
+- Treat fictional package approval as G-08 stakeholder approval or domain acceptance.
+- Claim production readiness operational capability or verified G-07 host behavior.
+- Restore retired runtime surfaces.
+inputs:
+- implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX14-001.yaml
+- PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+- PRDs/Sys4AI_phase-2_strategic_baseline_addendum.md
+- Sys4AI/sys_for_ai/target_package.py
+- Sys4AI/examples/target_systems/repo_steward_agent_package
+expected_outputs:
+- Registered target-system package manifest JSON Schema and artifact contract.
+- Generic manifest-driven target-package validator with actionable failure paths and semantic limitation output.
+- Non-production derivative smoke example with strategic intent fictional approval pattern host requirements portable transactions trace hashes and four validation summaries.
+- Positive and mandatory negative package tests.
+- Exact trace evidence for package and semantic requirements with all other gaps preserved.
+- Registered completion and TX-16-only handoff.
+validators:
+- validator_id: target_package_contract
+  command_or_method: make validate-target-package-smoke validate-validation-contract-registry validate-jsonschema-contracts validate-artifact-contracts
+  blocking: true
+  expected_evidence: Generic schema example and contract rows pass.
+- validator_id: focused_package_trace_tests
+  command_or_method: .venv/bin/python -m unittest tests.test_target_package tests.test_trace_schema_migration tests.test_trace_semantics -v
+  blocking: true
+  expected_evidence: Positive and mandatory negative package probes plus preserved trace invariants pass.
+- validator_id: capability_boundary
+  command_or_method: make validate-capability-migration
+  blocking: true
+  expected_evidence: TX-15 package surfaces are active-valid and active stale inventory remains empty.
+- validator_id: product_unit_suite
+  command_or_method: .venv/bin/python -m unittest discover -s tests
+  blocking: true
+  expected_evidence: All retained and new product tests pass.
+- validator_id: aggregate_validation
+  command_or_method: make validate at product and repository roots
+  blocking: true
+  expected_evidence: Product and development-system validation pass.
+- validator_id: protected_phase2
+  command_or_method: sha256 and git diff checks for accepted Phase 2 source and draft
+  blocking: true
+  expected_evidence: Protected hashes remain 98567cf4 and 9e290964 with zero diff.
+- validator_id: diff_integrity
+  command_or_method: git diff --check
+  blocking: true
+  expected_evidence: No whitespace or patch-integrity errors.
+stop_conditions:
+- Either protected Phase 2 hash changes or either protected file has a Git diff.
+- Package validation would require walking-skeleton implementation or G-07 or G-08 approval.
+- Any TX-12 reviewed gap changes without exact current evidence.
+- A blocking validator fails after TX-15-scoped repair is exhausted.
+- Required work expands into TX-16 or later scope.
+host_capability_requirements:
+  execution_profile_id: codex_local_observed_subset
+  overall_status: verified_available
+  required_capability_ids:
+  - workspace_filesystem
+  - terminal_and_tests
+  - git_local_and_push
+  evidence_ids:
+  - HOST-CODEX-LOCAL-OBSERVATION-2026-07-10
+  - SRC-HOST-PROFILE-CODEX-APP-REFERENCE
+  checked_at: '2026-07-10T16:57:33Z'
+  values_or_goals_may_override: false
+state:
+  status: completed
+  current_state_evidence_ids:
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX15-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX15-001
+  continuation_state: consumed
+  continuation_evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX14-001
+  state_transition_evidence_ids:
+  - HUMAN-TASK-2026-07-10-TX15
+  - TX15-VALIDATION-SUMMARY-001
+cancellation:
+  state: not_requested
+  requested_by: not_applicable
+  behavior: Stop at the nearest safe boundary preserve complete package evidence and leave walking-skeleton code unchanged.
+  evidence_ids: []
+  uncertain_operations: []
+escalation:
+  state: not_required
+  conditions:
+  - Authority permission source or validation evidence becomes absent ambiguous expired denied or stale.
+  - A package requires real approval waiver production or domain authority beyond the derivative smoke example.
+  - Any protected Phase 2 source or TX-16 code would require modification.
+  responsible_principal_id: alex_omegapy
+  required_decision: Narrow reroute cancel or explicitly authorize a later bounded transaction.
+  evidence_ids: []
+resume_evidence:
+  required: true
+  status: consumed
+  last_known_state: TX-14 closed on the shared baseline and handed off only to TX-15 target-package work.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX14-001
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX14-001
+  - MEMPREFLIGHT-TX-15-TARGET-PACKAGE-20260710T165733Z
+closeout_evidence:
+  status: complete
+  evidence_ids:
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX15-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX15-001
+  - CR-SFADEV-STRATEGIC-BASELINE-TX15-001
+  changed_artifacts:
+  - generic target-package schema artifact contract validator and tests
+  - derivative smoke package strategic host pattern execution trace and validation evidence
+  - capability migration trace state and TX-16-only handoff
+  validation_evidence_ids:
+  - TX15-FOCUSED-VALIDATION-PASS
+  - TX15-UNIT-PASS
+  - TX15-PRODUCT-VALIDATE-PASS
+  - TX15-ROOT-VALIDATE-PASS
+  - TX15-PHASE2-PRESERVATION-PASS
+  - TX15-DIFF-CHECK-PASS
+  acceptance_evidence_ids:
+  - HUMAN-TASK-2026-07-10-TX15
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX14-001
+rollback:
+  status: available
+  strategy: Revert the complete TX-15 schema package validator test trace registry control state and generated-reader packet while preserving accepted Phase 2 sources and activated history.
+  triggers:
+  - Any focused validator or aggregate regression fails.
+  - The package contract is shown to overstate authority or accept stale or unsafe evidence.
+  - Either protected Phase 2 source changes.
+  actions:
+  - Stop later work and preserve the complete diff and validation evidence.
+  - Revert or supersede the complete TX-15 commit without rewriting protected or activated history.
+  evidence_ids:
+  - PHASE2-ACCEPTED-SHA256-98567CF4
+  - PHASE2-DRAFT-SHA256-9E290964
+supersession:
+  status: current
+  supersedes_transaction_ids: []
+  superseded_by: not_applicable
+  evidence_ids: []

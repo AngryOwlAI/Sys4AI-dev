@@ -21,6 +21,7 @@ page_metadata:
     - contract_memory_preflight_receipt
     - contract_role_registry_row
     - contract_target_core_values
+    - contract_target_system_package_manifest
     - contract_target_vision_statement
   generated_at: 2026-07-06T00:00:00Z
   generator: sys_for_ai.derivative_generation.governance_generated_docs:0.1.0
@@ -73,6 +74,7 @@ Validation contracts prove structural conformance only. They do not prove semant
 | artifact_target_core_values | TargetCoreValues | user_wants_elicitor;requirements_manager | requirements_manager;requirements_verifier;system_architect;verification_engineer;runtime_maintenance_planner | controlled_candidate | contract_target_core_values | target_package;strategic_intent_contract_index | Promote only with accountable human evidence stable VALUE IDs current hash validation impact review and registered active-version relationships |
 | artifact_execution_transaction | ExecutionTransaction | system_director;implementation_initialization_agent | software_engineer;verification_engineer;system_director | controlled | contract_execution_transaction | configuration_control_wiki | Activate only with current human authorization a current permission envelope verified required capabilities and registered state evidence |
 | artifact_bera | BoundedExecutionRequirementsAnnex | bounded_execution_planner | final_system_requirements_packager;implementation_initialization_agent | controlled | pending | markdown_derivative | Baseline through requirements authority and bind execution only through an authorized transaction |
+| artifact_target_system_package_manifest | TargetSystemPackageManifest | implementation_initialization_agent | requirements_verifier;verification_engineer;system_architect;runtime_maintenance_planner | derivative | contract_target_system_package_manifest | target_package;registry_catalog | Promote only through accountable source authority with current strategic approval impact trace hashes validation and production evidence where claimed |
 
 ## Allowed Promotion Path
 

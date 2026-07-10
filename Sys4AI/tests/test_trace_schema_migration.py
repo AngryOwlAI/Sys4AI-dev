@@ -179,13 +179,15 @@ class TraceSchemaMigrationTests(unittest.TestCase):
         self.assertEqual(32, len(affected))
         self.assertTrue(all(row["capability_status"] != "operational" for row in affected))
 
-    def test_additive_phase2_rows_are_reviewed_without_changing_tx12_counts(self) -> None:
+    def test_additive_phase2_rows_record_only_exact_tx15_package_evidence(self) -> None:
         self.assertEqual(13, len(self.additive_rows))
         self.assertTrue(
             all(row["requirement_source_id"] == "SRC-PRD-P2-STRATEGIC-BASELINE-ADDENDUM" for row in self.additive_rows)
         )
         self.assertTrue(all(row["semantic_review_owner"] == "requirements_manager" for row in self.additive_rows))
-        self.assertTrue(all(row["verification_status"] == "not_run" for row in self.additive_rows))
+        passed = {row["requirement_id"] for row in self.additive_rows if row["verification_status"] == "pass"}
+        self.assertEqual({"SFA-P2-ADD-PACKAGE-001", "SFA-P2-ADD-SEM-001"}, passed)
+        self.assertEqual(11, sum(row["verification_status"] == "not_run" for row in self.additive_rows))
 
     def test_atomic_writer_migrates_exact_legacy_copy(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

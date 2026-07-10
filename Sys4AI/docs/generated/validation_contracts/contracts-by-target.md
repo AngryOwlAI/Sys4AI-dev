@@ -52,6 +52,7 @@ page_metadata:
     - contract_memory_preflight_receipt_v0_1
     - contract_completion_receipt_v1_0
     - contract_handoff_v1_0
+    - contract_target_system_package_manifest
   generated_at: 2026-07-06T00:00:00Z
   generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
   stale_or_orphan_status: current
@@ -308,6 +309,12 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | contract_state_snapshot | schemas/contracts/state_snapshot.schema.json | 2020-12 | yaml | state_snapshot | control_records/**/*.yaml | Sys4AI validate-jsonschema-contracts | implementation_initialization | historical | pending | pending |
+
+## yaml / target_system_package_manifest
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_target_system_package_manifest | schemas/contracts/target_system_package_manifest.schema.json | 2020-12 | yaml | target_system_package_manifest | examples/target_systems/*/target-system-manifest.yaml | Sys4AI target-package validate | verification_engineer | controlled | pending | pending |
 
 ## Known Limitations
 

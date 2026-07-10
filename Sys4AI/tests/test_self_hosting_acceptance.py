@@ -21,11 +21,11 @@ class SelfHostingAcceptanceTests(unittest.TestCase):
         self.assertIsNone(state["active_execution_transaction_id"])
         self.assertIsNone(state["active_director_decision_id"])
         self.assertEqual(
-            "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX14-001",
+            "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX15-001",
             state["latest_closeout_evidence_id"],
         )
         self.assertEqual(
-            "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX14-001",
+            "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX15-001",
             state["latest_handoff_evidence_id"],
         )
         self.assertEqual("ready", state["continuation_state"])

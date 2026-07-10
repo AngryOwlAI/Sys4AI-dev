@@ -8,18 +8,27 @@ Subject layer: `target_system_instance`
 
 This package is a smoke example and derivative draft. It is not a production target system.
 
-## Task Sequence
+## Portable Transaction Sequence
 
-1. Run `TASK-001-read-only-repo-inspection.md`.
-2. Run `TASK-002-current-state-baseline.md`.
-3. Run `TASK-003-governed-next-action-plan.md`.
+1. Review `execution-transactions/TX-001-read-only-repo-inspection.md`.
+2. Review `execution-transactions/TX-002-current-state-baseline.md`.
+3. Review `execution-transactions/TX-003-governed-next-action-plan.md`.
+
+The packets are instructional evidence. They do not authorize execution outside a
+current human-approved permission envelope.
 
 ## Validation
-
-The structural smoke validator is:
 
 ```bash
 python -m sys_for_ai.cli target-package validate examples/target_systems/repo_steward_agent_package --json
 ```
 
-The validator checks package shape, manifest fields, task packet count, package-local registries, source trace, and authority boundaries.
+The validator checks the registered schema, manifest-driven content, strategic
+intent, approval or waiver evidence, active versions, hashes, pattern and maturity,
+host requirements, portable transaction language, package-local trace, and
+authority boundaries.
+
+## Stop Condition
+
+Stop on missing authority, permission, source evidence, required artifact, current
+hash, active version, or validation evidence. Do not infer production or domain acceptance.

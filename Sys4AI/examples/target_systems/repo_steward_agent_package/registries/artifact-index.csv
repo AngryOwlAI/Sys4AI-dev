@@ -1,11 +1,20 @@
 artifact_id,path,artifact_type,authority_status,subject_layer,notes
-repo-steward-readme,README.md,package_readme,derivative_draft,target_system_instance,Smoke example package overview and boundary.
-repo-steward-manifest,target-system-manifest.yaml,target_system_manifest,derivative_draft,target_system_instance,Package manifest with source trace and authority notice.
-repo-steward-rdr,requirements-discovery-record.md,requirements_discovery_record,derivative_draft,target_system_instance,Target-system discovery summary.
+repo-steward-readme,README.md,package_readme,derivative_draft,target_system_instance,Smoke example package overview and authority boundary.
+repo-steward-manifest,target-system-manifest.yaml,target_system_manifest,derivative_draft,target_system_instance,Manifest-driven package contract pointers and hashes.
+repo-steward-rdr,requirements-discovery-record.md,requirements_discovery_record,derivative_draft,target_system_instance,Target-system discovery and strategic-intent candidates.
+repo-steward-vision,governance/vision-statement.md,target_vision,derivative_draft,target_system_instance,Fictionally approved demonstration vision.
+repo-steward-values,governance/core-values.md,target_core_values,derivative_draft,target_system_instance,Fictionally approved demonstration values and conflict rule.
+repo-steward-approval,governance/approval-evidence.yaml,approval_evidence,derivative_draft,target_system_instance,Explicit fictional non-production approval fixture.
+repo-steward-pattern,governance/agentic-system-pattern-decision.yaml,pattern_decision,derivative_draft,target_system_instance,Linear-workflow validated-prototype pattern decision.
 repo-steward-prd,product-requirements.md,prd,derivative_draft,target_system_instance,Target-system smoke requirements.
 repo-steward-plan,implementation-plan.md,implementation_plan,derivative_draft,target_system_instance,Target-system smoke implementation plan.
-repo-steward-task-001,task-packets/TASK-001-read-only-repo-inspection.md,task_packet,derivative_draft,target_system_instance,Read-only repository inspection task packet.
-repo-steward-task-002,task-packets/TASK-002-current-state-baseline.md,task_packet,derivative_draft,target_system_instance,Current-state baseline task packet.
-repo-steward-task-003,task-packets/TASK-003-governed-next-action-plan.md,task_packet,derivative_draft,target_system_instance,Governed next-action plan task packet.
+repo-steward-transactions,execution-transactions,execution_transaction_root,derivative_draft,target_system_instance,Portable demonstration transaction root.
+repo-steward-tx-001,execution-transactions/TX-001-read-only-repo-inspection.md,execution_transaction,derivative_draft,target_system_instance,Read-only repository inspection packet.
+repo-steward-tx-002,execution-transactions/TX-002-current-state-baseline.md,execution_transaction,derivative_draft,target_system_instance,Current-state baseline packet.
+repo-steward-tx-003,execution-transactions/TX-003-governed-next-action-plan.md,execution_transaction,derivative_draft,target_system_instance,Governed next-action proposal packet.
 repo-steward-trace,registries/requirement-trace.csv,trace_registry,derivative_draft,target_system_instance,Package-local requirement trace.
-repo-steward-validation,validation/validation-summary.md,validation_summary,derivative_draft,target_system_instance,Package smoke validation summary.
+repo-steward-index,registries/artifact-index.csv,artifact_index,derivative_draft,target_system_instance,Package-local artifact index.
+repo-steward-validation,validation/validation-summary.md,validation_summary,derivative_draft,target_system_instance,Aggregate package validation summary.
+repo-steward-strategic-summary,validation/strategic-intent-summary.md,validation_summary,derivative_draft,target_system_instance,Strategic-intent validation summary.
+repo-steward-host-summary,validation/host-capability-summary.md,validation_summary,derivative_draft,target_system_instance,Host requirement and permission summary.
+repo-steward-test-summary,validation/test-and-evaluation-summary.md,validation_summary,derivative_draft,target_system_instance,Separate test verification validation and evaluation summary.

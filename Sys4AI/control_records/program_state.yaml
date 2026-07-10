@@ -6,22 +6,22 @@ system_context:
   target_system: Sys4AI
   self_hosting_mode: true
   reflection_depth: 1
-current_phase: strategic_baseline_migration_after_TX_14
+current_phase: strategic_baseline_migration_after_TX_15
 lifecycle_stage: develop
 active_task_id: null
 active_director_decision_id: null
 active_execution_transaction_id: null
 execution_profile_id: portable_execution_transaction_v1
 current_state_evidence:
-- TX-14-PHASE2
-- RECEIPT-SFADEV-STRATEGIC-BASELINE-TX14-001
-- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX14-001
+- TX-15-TARGET-PACKAGE
+- RECEIPT-SFADEV-STRATEGIC-BASELINE-TX15-001
+- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX15-001
 continuation_state: ready
 cancellation_state: not_requested
 escalation_state: not_required
-latest_closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX14-001
-latest_handoff_evidence_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX14-001
-latest_memory_preflight_receipt_id: MEMPREFLIGHT-TX-14-PHASE2-20260710T155212Z
+latest_closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX15-001
+latest_handoff_evidence_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX15-001
+latest_memory_preflight_receipt_id: MEMPREFLIGHT-TX-15-TARGET-PACKAGE-20260710T165733Z
 capability_status_summary:
   portable_execution_contract: implemented
   current_state_model: implemented
@@ -34,17 +34,17 @@ human_gate_required: false
 allowed_next_actions:
 - run_memory_preflight
 - inspect_latest_handoff
-- execute_TX_15_TARGET_PACKAGE_only_after_TX_14_shared_baseline
+- execute_TX_16_WALKING_SKELETON_only_after_TX_15_shared_baseline
 blocked_actions:
 - execute_multiple_transactions_without_concurrency_authorization
 - use_chat_memory_as_authority
 - treat_generated_derivative_as_canonical
 - mutate_activated_control_record_without_supersession
 - treat_historical_execution_evidence_as_current_capability
-- begin_TX_16_before_TX_15_closes
+- begin_TX_17_before_TX_16_closes
 - treat_structural_validation_as_G_08_or_domain_acceptance
 validation_status:
-  last_validated_at: '2026-07-10T16:20:00Z'
+  last_validated_at: '2026-07-10T16:57:33Z'
   validators:
   - make validate-program-state
   - make validate-capability-migration

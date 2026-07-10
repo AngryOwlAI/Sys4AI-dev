@@ -1,0 +1,62 @@
+completion_receipt_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX15-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-15-TARGET-PACKAGE
+role: implementation_initialization_agent
+result: PASS
+summary: TX-15 replaced hard-coded retired target-package assumptions with a registered generic manifest contract validator derivative smoke example and positive-negative evidence while leaving walking-skeleton execution for TX-16.
+changed_artifacts:
+- path: Sys4AI/schemas/contracts/target_system_package_manifest.schema.json;Sys4AI/registries/artifact_contract_registry.csv;Sys4AI/registries/validation_contract_registry.csv
+  change_summary: Added the registered manifest-driven strategic approval pattern host execution trace hash validation and authority contract.
+- path: Sys4AI/sys_for_ai/target_package.py;Sys4AI/sys_for_ai/cli.py
+  change_summary: Replaced one-target fixed-file retired packet checks with generic manifest-driven fail-closed validation and limitation output.
+- path: Sys4AI/tests/test_target_package.py
+  change_summary: Added thirteen positive and mandatory negative package probes including arbitrary target IDs and a valid active-waiver route.
+- path: Sys4AI/examples/target_systems/repo_steward_agent_package
+  change_summary: Migrated the derivative smoke example to strategic intent fictional approval pattern host portable execution trace hashes and four validation summaries.
+- path: Sys4AI/configs/capability_migration.toml
+  change_summary: Classified TX-15 validator and negative fixtures as active-valid while retaining separate target-project compatibility evidence as deferred.
+- path: Sys4AI/registries/requirement_trace_registry.csv;Sys4AI/tests/test_trace_schema_migration.py
+  change_summary: Advanced only SFA-P2-ADD-PACKAGE-001 and SFA-P2-ADD-SEM-001 to pass and retained the other eleven additive rows as not_run.
+- path: Sys4AI/sys_for_ai/trace_validation.py;Sys4AI/control_records/program_state.yaml;Sys4AI/tests/test_self_hosting_acceptance.py
+  change_summary: Advanced portable state only to the post-TX-15 boundary and routed next work solely to TX-16.
+- path: Sys4AI/control_records/**;Sys4AI/registries/*.csv;Sys4AI/docs/generated/**
+  change_summary: Recorded portable transaction memory completion handoff and regenerated noncanonical readers.
+- path: implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX15-001.md
+  change_summary: Recorded human-readable scope validation trace preservation authority limitations and rollback evidence.
+validation_evidence:
+  focused_package_trace_suite: PASS_49_OF_49
+  product_unit_suite: PASS_197_OF_197
+  named_validator_targets: PASS
+  product_aggregate_validation: PASS
+  root_aggregate_validation: PASS
+  requirement_trace_rows: 227
+  preserved_tx12_rows: 214
+  additive_phase2_rows: 13
+  additive_package_semantic_pass: 2
+  additive_not_run: 11
+  preserved_needs_evidence: 7
+  preserved_planned_verification: 200
+  preserved_tx11_rollback_sha256: 95e59cf5befc4f9fd29d857d1f609a4c0d2c321c1b3adf1efca1a69cdb01b28c
+  accepted_phase2_sha256: 98567cf4f4af8ca99650a6220a78d840dae5e11195891fc808c69c4828528038
+  accepted_phase2_draft_sha256: 9e290964200137329827a0164f50c2d3e97dc194fac65dd086c8b1dd7e57d84f
+  protected_phase2_git_diff: ZERO
+  generated_derivatives: PASS
+  diff_check: PASS
+  memory_status: PASS_WITH_WARNINGS_915_OBJECTS_395_WARNINGS_ZERO_AUTHORITY_INVERSIONS
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-15-TARGET-PACKAGE-20260710T165733Z
+authority_changes:
+  target_package_manifest_contract: controlled
+  target_package_validator: controlled_generic
+  smoke_example: derivative_draft
+  fictional_approval_real_authority: false
+  g07_approved: false
+  g08_approved: false
+  production_readiness_claimed: false
+  tx16_started: false
+unresolved_issues:
+- Seven preserved TX-12 rows remain needs_evidence because exact current implementation evidence is absent.
+- Two hundred preserved TX-12 rows remain planned rather than passing requirement-level verification.
+- Eleven additive Phase 2 requirements remain not_run until exact walking-skeleton or later evidence exists.
+- G-07 G-08 production readiness and domain acceptance remain open.
+next_recommendation: Commit and push TX-15 as one rollback-coherent packet then execute TX-16-WALKING-SKELETON in a new bounded transaction.

@@ -1,0 +1,87 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-15-TARGET-PACKAGE-20260710T165733Z
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-15-TARGET-PACKAGE
+created_at: '2026-07-10T16:57:33Z'
+status: PASS_WITH_WARNINGS
+commands_run:
+- command: python -m sys_for_ai.cli memory status --json
+  result: pass
+- command: python -m sys_for_ai.cli memory lookup TX-15-TARGET-PACKAGE --json
+  result: warn
+- command: python -m sys_for_ai.cli memory search target package --json
+  result: pass
+queries:
+- query: TX-15-TARGET-PACKAGE
+  returned_object_ids: []
+- query: target package
+  returned_object_ids:
+  - SRC-TARGET-PACKAGE-VALIDATOR
+  - SRC-COMPLETION-TARGET-PACKAGE-SMOKE-001
+  - SRC-P2-WALKING-SKELETON-IMPLEMENTATION-PLAN
+  - SRC-HANDOFF-TARGET-PACKAGE-SMOKE-001
+canonical_sources_inspected:
+- path: implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+  registry: source_registry.csv
+  row_id: SRC-STRATEGIC-BASELINE-MIGRATION-PLAN
+  inspected_sections:
+  - WS-10 target-package validator changes
+  - WS-12 target-package contents manifest and generic validation
+  - TX-15 backlog row and transaction closeout rule
+- path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX14-001.yaml
+  registry: source_registry.csv
+  row_id: SRC-HANDOFF-STRATEGIC-BASELINE-TX14
+  inspected_sections:
+  - TX-15-only route and stop conditions
+- path: PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+  registry: source_registry.csv
+  row_id: SRC-PRD-P1
+  inspected_sections:
+  - strategic intent package pattern host execution trace and semantic requirements
+- path: PRDs/Sys4AI_phase-2_strategic_baseline_addendum.md
+  registry: source_registry.csv
+  row_id: SRC-PRD-P2-STRATEGIC-BASELINE-ADDENDUM
+  inspected_sections:
+  - SFA-P2-ADD package and semantic requirements
+  - non-production and later walking-skeleton boundaries
+- path: Sys4AI/sys_for_ai/target_package.py
+  registry: source_registry.csv
+  row_id: SRC-TARGET-PACKAGE-VALIDATOR
+  inspected_sections:
+  - hard-coded target ID fixed files retired packet wording and current boundary checks
+- path: Sys4AI/examples/target_systems/repo_steward_agent_package
+  registry: source_registry.csv
+  row_id: SRC-EXAMPLE-REPO-STEWARD-PACKAGE
+  inspected_sections:
+  - manifest package-local trace task packets and validation summary
+- path: Sys4AI/registries/system_layer_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-SYSTEM-LAYERS
+  inspected_sections:
+  - framework product target instance and derivative boundaries
+- path: Sys4AI/registries/validation_contract_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-VALIDATION-CONTRACTS
+  inspected_sections:
+  - JSON Schema registration and generated-reader obligations
+registry_rows_inspected:
+- path: registries/source_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-SOURCES
+  purpose: Confirm current target-package validator example plan PRD and handoff authority.
+- path: registries/artifact_contract_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-ARTIFACT-CONTRACTS
+  purpose: Confirm narrow package-manifest artifact-contract registration surface.
+- path: registries/requirement_trace_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-REQ-TRACE
+  purpose: Preserve TX-12 gaps and advance only exact TX-15 package and semantic rows.
+stale_context_risks:
+- risk_id: MEMPREFLIGHT-RISK-001
+  status: observed
+  notes: Direct TX-15 lookup returned no object because the transaction had not yet been registered; the live plan and TX-14 handoff controlled routing.
+- risk_id: MEMPREFLIGHT-RISK-002
+  status: observed
+  notes: Legacy target-package receipt and handoff hits describe retired packet semantics and were inspected only as migration history not current routing authority.
+usable_for_routing: true

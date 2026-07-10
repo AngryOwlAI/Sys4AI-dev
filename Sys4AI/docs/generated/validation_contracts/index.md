@@ -52,6 +52,7 @@ page_metadata:
     - contract_memory_preflight_receipt_v0_1
     - contract_completion_receipt_v1_0
     - contract_handoff_v1_0
+    - contract_target_system_package_manifest
   generated_at: 2026-07-06T00:00:00Z
   generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
   stale_or_orphan_status: current
@@ -120,6 +121,7 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_memory_preflight_receipt_v0_1 | schemas/contracts/memory_preflight_receipt_v0_1.schema.json | 2020-12 | yaml | historical_memory_preflight_receipt | control_records/memory_preflights/*.yaml | Sys4AI validate-memory-preflight | source_first_memory | historical | pending | pending |
 | contract_completion_receipt_v1_0 | schemas/contracts/completion_receipt_v1_0.schema.json | 2020-12 | yaml | completion_receipt | control_records/completions/*.yaml | Sys4AI validate-completion-receipts | verification_engineer | controlled | pending | pending |
 | contract_handoff_v1_0 | schemas/contracts/handoff_v1_0.schema.json | 2020-12 | yaml | handoff | control_records/handoffs/*.yaml | Sys4AI validate-handoffs | bounded_execution_planner | controlled | pending | pending |
+| contract_target_system_package_manifest | schemas/contracts/target_system_package_manifest.schema.json | 2020-12 | yaml | target_system_package_manifest | examples/target_systems/*/target-system-manifest.yaml | Sys4AI target-package validate | verification_engineer | controlled | pending | pending |
 
 ## Known Limitations
 

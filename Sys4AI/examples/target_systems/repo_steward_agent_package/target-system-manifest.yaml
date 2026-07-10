@@ -1,23 +1,119 @@
-schema_version: "0.1.0"
+schema_version: 1.0.0
 target_system_id: repo_steward_agent_sample
 name: Repo Steward Agent Sample Package
 package_status: smoke_example
 subject_layer: target_system_instance
 source_authority_status: derivative_draft
-generated_by: Sys4AI Phase 2 walking skeleton
+vision_id: VISION-REPO-STEWARD-DEMO-001
+vision_path: governance/vision-statement.md
+vision_version: 1.0.0
+core_values_set_id: VALUES-REPO-STEWARD-DEMO-001
+core_value_ids:
+- VALUE-REPO-STEWARD-DEMO-001
+- VALUE-REPO-STEWARD-DEMO-002
+core_values_path: governance/core-values.md
+core_values_version: 1.0.0
+content_approval_status: approved
+approval_evidence:
+  id: APPROVAL-REPO-STEWARD-DEMO-001
+  path: governance/approval-evidence.yaml
+waiver_id: null
+coordination_pattern: linear_workflow
+operational_maturity: validated_prototype
+lifecycle_stage: test
+pattern_decision:
+  id: PATTERN-REPO-STEWARD-DEMO-001
+  path: governance/agentic-system-pattern-decision.yaml
+host_profile: Sys4AI/configs/host_profiles/codex_app_reference.toml
+host_requirements:
+- capability_id: workspace_filesystem
+  availability: permission_dependent
+  permission_source: Explicit user authorization for the selected repository scope.
+  limitations: Read-only inspection in the demonstration transaction.
+  degraded_behavior: Stop and report denied or unavailable repository access.
+  cancellation_behavior: Preserve the last accepted evidence and stop at the nearest safe boundary.
+  evidence_path: validation/host-capability-summary.md
+- capability_id: local_validation
+  availability: available
+  permission_source: Repository-local validation command authorized by the bounded transaction.
+  limitations: Structural checks only; no domain or production claim.
+  degraded_behavior: Mark validation failed and do not advance package status.
+  cancellation_behavior: Retain completed results and record the interrupted check.
+  evidence_path: validation/host-capability-summary.md
+execution_profile:
+  id: portable_execution_transaction_v1
+  transaction_root: execution-transactions
+impact_analysis:
+  state: complete
+  evidence: validation/test-and-evaluation-summary.md
 source_trace:
-  - Sys4AI/control_records/system_definition/phase2_walking_skeleton_requirements_discovery_record.md
-  - PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
-  - implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+- Sys4AI/control_records/system_definition/phase2_walking_skeleton_requirements_discovery_record.md
+- PRDs/Sys4AI_phase-2_walking_skeleton_prd.md
+- PRDs/Sys4AI_phase-2_strategic_baseline_addendum.md
+- implementation_plans/Sys4AI_phase-2_walking_skeleton_implementation_plan.md
+- Sys4AI/schemas/contracts/execution_transaction.schema.json
 contents:
+  readme: README.md
   rdr: requirements-discovery-record.md
+  vision: governance/vision-statement.md
+  core_values: governance/core-values.md
+  pattern_decision: governance/agentic-system-pattern-decision.yaml
+  approval_evidence: governance/approval-evidence.yaml
   prd: product-requirements.md
   implementation_plan: implementation-plan.md
-  task_packet_root: task-packets
+  execution_root: execution-transactions
   requirement_trace: registries/requirement-trace.csv
+  artifact_index: registries/artifact-index.csv
+  validation_summary: validation/validation-summary.md
+  strategic_intent_summary: validation/strategic-intent-summary.md
+  host_capability_summary: validation/host-capability-summary.md
+  test_and_evaluation_summary: validation/test-and-evaluation-summary.md
+hashes:
+- path: README.md
+  sha256: 4238d6408f857852f3ca977f46305f7377e91df85880d316b5c9683cf1187bdd
+- path: requirements-discovery-record.md
+  sha256: 7bba2ac524074fbe740c10c13ccccc7942b121c9e0bc4f6d7412feef9f2739e3
+- path: governance/vision-statement.md
+  sha256: 25f3f199682b4b1f91c7d5dd6b92f695400116c9901bfa44651d2ea0bb1f6d2d
+- path: governance/core-values.md
+  sha256: 4b8a1e71397d818e07753bfcaa5ba97224187f8c5b1dcb80546150494861865c
+- path: governance/agentic-system-pattern-decision.yaml
+  sha256: e85e3b696aa24100d71e7945889d76922ee35df9a6e9f113e9294903588b53dd
+- path: governance/approval-evidence.yaml
+  sha256: 0b1cfd030c5b440d49c9042c2695e33ab4c98e366ea22f3f8a5cab48334a499b
+- path: product-requirements.md
+  sha256: 9273cd6d51b0441f7f5596a14e814f340d14a306602ac78d8c0a8217d31627f9
+- path: implementation-plan.md
+  sha256: 02f7266618a85c325ed71074f6f7bf48434e01aa3297e5f83deecf4084105c29
+- path: execution-transactions/TX-001-read-only-repo-inspection.md
+  sha256: 29960425047eef3e0b26db3cdad5463f9f3f05b4d2c459f84fae9aa73ed9bf50
+- path: execution-transactions/TX-002-current-state-baseline.md
+  sha256: 863b5b4c1b312afd98f30a9ab67d1b52551a4b799e26f42ee5ebd5896a3b56e0
+- path: execution-transactions/TX-003-governed-next-action-plan.md
+  sha256: b2598e800ef2d3e21a80a2abdb786f7b9a3d484b675417ca4b1c25278f709b6d
+- path: registries/requirement-trace.csv
+  sha256: 651d9f0551aacafef206eccb5ded45b690b923e0607b938f02c5c0885ee5f465
+- path: registries/artifact-index.csv
+  sha256: f8cb2fec66942a9ed39456c7185f3fb2a6ba1890a2ae23be8f0a786a1b09bed9
+- path: validation/validation-summary.md
+  sha256: 5e520230e67e7da667608e95f4f5ac34a74c81af3e588cbc1c5139721321c3b0
+- path: validation/strategic-intent-summary.md
+  sha256: 81979550ce16d5d62b03eabb8a6708262f8a200e89b47587a5e10418b59bc7ea
+- path: validation/host-capability-summary.md
+  sha256: f2a802a980630328e4f091e10395d47f7a368d289bb9c6d538e2ecd5ba510363
+- path: validation/test-and-evaluation-summary.md
+  sha256: 14ee45b48dd7240617fcd143f118768dd2d435da10af95b9b25de00e189ec972
 validation:
   status: pass
   commands:
-    - python -m sys_for_ai.cli target-package validate examples/target_systems/repo_steward_agent_package --json
-authority_notice: >
+  - python -m sys_for_ai.cli target-package validate examples/target_systems/repo_steward_agent_package --json
+  - python -m unittest tests.test_target_package -v
+  summary_paths:
+  - validation/validation-summary.md
+  - validation/strategic-intent-summary.md
+  - validation/host-capability-summary.md
+  - validation/test-and-evaluation-summary.md
+authority_notice: >-
   This package is a smoke example and derivative draft. It is not a production target system.
+  Its fictional demonstration approval applies only to package content and does not satisfy G-08,
+  production readiness, operational authority, stakeholder consensus, or domain acceptance.

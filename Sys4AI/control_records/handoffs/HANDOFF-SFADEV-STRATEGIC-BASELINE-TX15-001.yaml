@@ -1,0 +1,42 @@
+handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX15-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+producing_execution_transaction_id: TX-15-TARGET-PACKAGE
+next_execution_transaction_id: TX-16-WALKING-SKELETON
+status: ready
+producing_role: implementation_initialization_agent
+recommended_next_role: system_engineer
+summary: TX-15 closes with a generic validated target-package contract and derivative smoke example; TX-16 walking-skeleton flow work alone is next.
+source_ids:
+- SRC-SCHEMA-TARGET-SYSTEM-PACKAGE
+- SRC-TARGET-PACKAGE-VALIDATOR
+- SRC-TEST-TARGET-PACKAGE
+- SRC-EXAMPLE-REPO-STEWARD-PACKAGE
+- SRC-PRD-P2-STRATEGIC-BASELINE-ADDENDUM
+- SRC-REG-REQ-TRACE
+- SRC-STRATEGIC-BASELINE-TX15-RECEIPT
+closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX15-001
+current_state_evidence:
+- Sys4AI/control_records/program_state.yaml
+- TX15-TARGET-PACKAGE-CONTRACT-PASS
+- TX15-TARGET-PACKAGE-NEGATIVE-PROBES-PASS
+- TX15-TRACE-214-PLUS-13-PRESERVED
+validation_evidence:
+  focused_tests: PASS_49_OF_49
+  product_suite: PASS_197_OF_197
+  named_validators: PASS
+  product_and_root_validate: PASS
+  trace_rows: 227
+  preserved_tx12_rows: 214
+  additive_phase2_rows: 13
+  additive_pass: PACKAGE_AND_SEMANTIC_2
+  additive_not_run: 11
+  preserved_gap_counts: NEEDS_EVIDENCE_7_PLANNED_200
+  accepted_phase2_sha256: 98567cf4f4af8ca99650a6220a78d840dae5e11195891fc808c69c4828528038
+  accepted_phase2_draft_sha256: 9e290964200137329827a0164f50c2d3e97dc194fac65dd086c8b1dd7e57d84f
+stop_conditions:
+- TX-16 may modify only walking-skeleton flow graph trace report and tests authorized by the plan.
+- The accepted Phase 2 source and draft remain protected and must not be rewritten.
+- The eleven additive not_run rows and all preserved TX-12 gaps remain explicit until exact evidence supports change.
+- Do not treat fictional package approval or structural validation as G-07 G-08 stakeholder acceptance domain truth production readiness or operational capability.
+- Do not begin TX-17 or later work before TX-16 closes.

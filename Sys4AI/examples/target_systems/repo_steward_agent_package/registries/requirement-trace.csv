@@ -1,6 +1,12 @@
 requirement_id,source_artifact,target_artifact,coverage_status,evidence_path,notes
-RSS-FR-001,requirements-discovery-record.md,task-packets/TASK-001-read-only-repo-inspection.md,covered,task-packets/TASK-001-read-only-repo-inspection.md,Read-only inspection task defined for smoke package.
-RSS-FR-002,product-requirements.md,task-packets/TASK-002-current-state-baseline.md,covered,task-packets/TASK-002-current-state-baseline.md,Current-state baseline task defined for smoke package.
-RSS-FR-003,product-requirements.md,task-packets/TASK-003-governed-next-action-plan.md,covered,task-packets/TASK-003-governed-next-action-plan.md,Governed next-action planning task defined for smoke package.
+RSS-FR-001,requirements-discovery-record.md,execution-transactions/TX-001-read-only-repo-inspection.md,covered,execution-transactions/TX-001-read-only-repo-inspection.md,Read-only inspection transaction is defined for the smoke package.
+RSS-FR-002,product-requirements.md,execution-transactions/TX-002-current-state-baseline.md,covered,execution-transactions/TX-002-current-state-baseline.md,Current-state baseline transaction is defined.
+RSS-FR-003,product-requirements.md,execution-transactions/TX-003-governed-next-action-plan.md,covered,execution-transactions/TX-003-governed-next-action-plan.md,Governed next-action proposal transaction is defined.
+RSS-FR-004,product-requirements.md,governance/vision-statement.md,covered,governance/vision-statement.md,Stable vision ID version hash and fictional approval evidence are packaged.
+RSS-FR-005,product-requirements.md,governance/core-values.md,covered,governance/core-values.md,Stable values decision tests conflict precedence version and hash are packaged.
+RSS-FR-006,product-requirements.md,governance/approval-evidence.yaml,covered,governance/agentic-system-pattern-decision.yaml,Fictional approval and pattern evidence are independently recorded.
+RSS-FR-007,product-requirements.md,validation/host-capability-summary.md,covered,validation/host-capability-summary.md,Permission-dependent host degraded and cancellation behavior are explicit.
+RSS-FR-008,product-requirements.md,execution-transactions,covered,execution-transactions/TX-001-read-only-repo-inspection.md,Portable execution-transaction language replaces retired packet semantics.
 RSS-NFR-001,product-requirements.md,registries/artifact-index.csv,covered,registries/artifact-index.csv,Package-local registries provide structural trace.
-RSS-NFR-002,product-requirements.md,target-system-manifest.yaml,covered,target-system-manifest.yaml,Manifest and README preserve derivative draft authority.
+RSS-NFR-002,product-requirements.md,target-system-manifest.yaml,covered,target-system-manifest.yaml,Manifest and summaries preserve derivative non-production authority.
+RSS-NFR-003,product-requirements.md,validation/validation-summary.md,covered,validation/validation-summary.md,All validation summaries include the semantic limitation statement.

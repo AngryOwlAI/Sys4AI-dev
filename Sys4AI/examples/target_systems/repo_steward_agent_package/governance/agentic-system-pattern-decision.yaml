@@ -1,0 +1,36 @@
+schema_version: 1.0.0
+pattern_decision_id: PATTERN-REPO-STEWARD-DEMO-001
+target_system_id: repo_steward_agent_sample
+target_problem: Produce a source-backed repository state and governed next-action proposal.
+system_of_interest: repo_steward_agent_sample target-system instance
+coordination_pattern: linear_workflow
+operational_maturity: validated_prototype
+predictability: The three-stage demonstration flow is ordered and bounded.
+role_specialization: One runtime may perform distinct inspector planner and verifier responsibilities without claiming independent agents.
+autonomy: Proposal-only within explicit repository and transaction authority.
+interfaces:
+- authorized local repository filesystem
+- package-local validation command
+communication_protocol: File-backed inputs outputs validation results and handoff evidence.
+task_and_state_model: Three portable execution transactions with source-backed transition evidence.
+monitoring: Validator output and package-local summaries expose current structural state.
+failure_and_degraded_behavior: Stop on denied permission unknown capability stale evidence or validation failure.
+reliability_and_recovery: Preserve the last accepted artifact and rerun only the failed bounded transaction after repair.
+security_and_data_boundaries: Read-only repository inspection no secrets no external service calls and no permission expansion.
+human_oversight: An accountable human authorizes repository scope and reviews any proposed mutation separately.
+promotion_criteria: Separate evaluation security integration ownership rollback monitoring incident response service threshold and human production approval evidence.
+rejected_alternatives:
+- alternative: goal_directed_autonomous_agent
+  rationale: Unnecessary autonomy would widen the demonstration risk and authority surface.
+- alternative: production_orchestration
+  rationale: The package has no operational deployment or production evidence.
+rationale: A linear workflow is the smallest pattern that demonstrates the target-package contract.
+owner: Example Product Owner
+review_triggers:
+- changed target intent or values
+- changed repository permission boundary
+- changed coordination pattern or maturity
+supersession:
+  state: current
+  supersedes: null
+  superseded_by: null

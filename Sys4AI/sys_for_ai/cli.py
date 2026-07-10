@@ -395,14 +395,14 @@ def build_parser() -> argparse.ArgumentParser:
     walking_report = walking_sub.add_parser("write-report", help="Write the generated walking-skeleton flow report")
     walking_report.add_argument("--json", action="store_true")
 
-    target_package = sub.add_parser("target-package", help="Target package smoke commands")
+    target_package = sub.add_parser("target-package", help="Manifest-driven target package commands")
     target_package_sub = target_package.add_subparsers(dest="target_package_command", required=True)
 
     target_package_status_parser = target_package_sub.add_parser("status", help="Report target package status")
     target_package_status_parser.add_argument("package_root", nargs="?", default="examples/target_systems/repo_steward_agent_package")
     target_package_status_parser.add_argument("--json", action="store_true")
 
-    target_package_validate = target_package_sub.add_parser("validate", help="Validate a target package smoke surface")
+    target_package_validate = target_package_sub.add_parser("validate", help="Validate a manifest-driven target package")
     target_package_validate.add_argument("package_root", nargs="?", default="examples/target_systems/repo_steward_agent_package")
     target_package_validate.add_argument("--json", action="store_true")
 

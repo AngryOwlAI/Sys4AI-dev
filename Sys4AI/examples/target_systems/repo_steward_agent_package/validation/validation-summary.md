@@ -14,11 +14,12 @@ python -m sys_for_ai.cli target-package validate examples/target_systems/repo_st
 
 The package is a smoke example and derivative draft. It is not a production target system.
 
-The validator checks required files, manifest fields, package-local registry headers, source trace existence, task packet count, and authority boundary text.
+The validator checks the registered manifest schema, declared artifacts, hashes,
+active versions, fictional approval, pattern and maturity, host requirements,
+portable execution packets, trace, validation summaries, and authority boundaries.
 
-## Claims Not Made
+## Limitation
 
-- No production readiness claim.
-- No autonomous operation readiness claim.
-- No domain correctness claim.
-- No semantic correctness claim.
+Structural validation does not prove strategic quality, ethical correctness,
+stakeholder consensus, behavioral alignment, production readiness, or domain truth.
+Those claims require accountable review and additional evidence.

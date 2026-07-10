@@ -232,21 +232,39 @@ state = "authority_deferred"
 paths = [
   "Sys4AI/configs/examples/target_project.example.toml",
   "Sys4AI/schemas/contracts/target_project_config.schema.json",
-  "Sys4AI/sys_for_ai/target_package.py",
 ]
-path_globs = ["Sys4AI/examples/target_systems/**"]
-disposition = "Treat the package and smoke example as nonproduction derivative evidence until the manifest-driven package contract replaces mandatory retired vocabulary."
+path_globs = []
+disposition = "Retain the older target-project configuration example as deferred compatibility evidence; TX-15 migrates the package validator and smoke example but does not redesign this separate configuration contract."
 owner = "implementation_initialization_agent"
 replacement_capability = "ExecutionTransaction"
-blocking_transaction = "TX-15-TARGET-PACKAGE"
+blocking_transaction = "future target-project configuration migration"
 allowed_modes = ["pre_tx10", "post_tx10"]
-expected_files = 7
-expected_references = 9
-expected_inventory_sha256 = "babfad9242b10f22cd0fadffb3b14721964dfca27a9511068c401251e2fa81e8"
+expected_files = 2
+expected_references = 3
+expected_inventory_sha256 = "5fd68ebd2512b27630439003752acfbe2c8117505471fbdd4923534f20d3d044"
+
+[[classifications]]
+classification_id = "target_package_tx15_active"
+priority = 23
+state = "active_valid"
+paths = [
+  "Sys4AI/schemas/contracts/target_system_package_manifest.schema.json",
+  "Sys4AI/sys_for_ai/target_package.py",
+  "Sys4AI/tests/test_target_package.py",
+]
+path_globs = ["Sys4AI/examples/target_systems/**"]
+disposition = "TX-15 implements the manifest-driven nonproduction package contract; retained retired terms occur only in explicit rejection logic and negative fixtures."
+owner = "implementation_initialization_agent"
+replacement_capability = "ExecutionTransaction"
+blocking_transaction = "none"
+allowed_modes = ["post_tx10"]
+expected_files = 2
+expected_references = 4
+expected_inventory_sha256 = "f058c61a70be8259a6c3e5b5041536231de0782370ba2fba1da9b89bfb17bf13"
 
 [[classifications]]
 classification_id = "walking_skeleton_deferred"
-priority = 23
+priority = 24
 state = "authority_deferred"
 paths = [
   "Sys4AI/sys_for_ai/walking_skeleton.py",
@@ -264,7 +282,7 @@ expected_inventory_sha256 = "d333eb95892786c7825df592fb8f82457a7ecc5538c9dd69b11
 
 [[classifications]]
 classification_id = "prd_derivative_migration_deferred"
-priority = 24
+priority = 25
 state = "generated_derivative"
 paths = [
   "PRDs/PRD_decomposition_strategy.md",
@@ -284,7 +302,7 @@ expected_inventory_sha256 = "2d9fe847faa939109280e76f3880d9aa49bc246bfffbd0d7613
 
 [[classifications]]
 classification_id = "generated_reader_migration_deferred"
-priority = 25
+priority = 26
 state = "generated_derivative"
 paths = [
   "Sys4AI/registries/derivative_registry.csv",
