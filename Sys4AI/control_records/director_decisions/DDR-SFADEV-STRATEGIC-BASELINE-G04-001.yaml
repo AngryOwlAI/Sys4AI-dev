@@ -1,0 +1,352 @@
+director_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G04-001
+schema_version: 0.1.0
+decision_status: completed
+created_at: "2026-07-10T05:05:00Z"
+completed_at: "2026-07-10T05:05:00Z"
+director_role: system_director
+human_authorization:
+  principal_name: Alex Omegapy
+  principal_role: repository_maintainer_and_product_owner
+  authority_basis: >
+    The accountable human repository maintainer and product owner issued the
+    current task instruction after reviewing the accepted G-03 and completed
+    TX-06 baseline and explicitly directed that the G-04 artifact-and-interface
+    disposition be recorded and that TX-07 proceed once accepted.
+  approval_evidence: >
+    Human-issued Codex task instruction dated 2026-07-09: record the G-04
+    artifact-and-interface-contract disposition and, once accepted, implement
+    TX-07 templates, schemas, registry contracts, examples, and validation
+    obligations.
+  approval_scope:
+    - accept the strategic-intent artifact contracts defined below
+    - accept the reference-host interface contract family defined below
+    - authorize TX-07-STRATEGIC-CONTRACTS
+    - make TX-08-HOST-PROFILE eligible for a later bounded transaction
+    - preserve G-07 host verification and G-08 strategic approval as open gates
+  model_self_approval: false
+decision_context:
+  trigger: artifact_and_interface_contract_gate_disposition
+  transaction_id: G-04-DISPOSITION
+  gate_id: G-04
+  program_state_id: SYS4AI-PROGRAM-STATE-001
+  latest_handoff_id: HANDOFF-SFADEV-26-NEXT-SCOPE-ACCEPTANCE-001
+  memory_preflight_status: PASS_WITH_WARNINGS
+  memory_preflight_evidence: >
+    The source-first status and targeted searches were run before the decision.
+    Registered plan, Phase 0, Phase 1, G-02, G-03, layer, artifact-contract,
+    validation-contract, source, relationship, and trace surfaces were then
+    inspected directly. No authority inversion was reported; warnings were the
+    existing pending-hash backlog. A formal receipt was not retained because
+    the current receipt contract still requires a historical AgentJob ID and
+    TX-07 is a portable transaction, not an AgentJob.
+  plan_source_id: SRC-STRATEGIC-BASELINE-MIGRATION-PLAN
+  requirements_discovery_record_id: RDR-SFADEV-STRATEGIC-BASELINE-001
+  governing_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-001
+  normative_baseline_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G03-001
+  phase0_source_id: SRC-PRD-P0
+  phase1_source_id: SRC-PRD-P1
+  reviewed_head_commit: c788f06bf5080554484089dbcbeb5172f2049101
+  reviewed_transaction: TX-06-P1-BASELINE
+  observed_evidence:
+    - G-03 is accepted and G-08 remains open.
+    - TX-06 defines exact strategic-intent and host-profile implementation obligations without creating the gated contracts.
+    - The existing artifact contract registry supports producer consumer layer authority section validation registry derivative promotion and hash fields.
+    - Existing source object-relationship validation-contract discovery and requirement-trace registries can represent the approved contract graph without a new strategic-intent registry.
+    - Existing roles can cover elicitation custody verification approval impact analysis validation and maintenance without adding a new role.
+    - The worktree was clean at c788f06 and HEAD matched origin/main before the memory-preflight receipt was created.
+selected_route:
+  route_id: approve_bounded_artifact_and_interface_contracts
+  route_name: accept G-04 with fail-closed strategic and host boundaries
+  rationale: >
+    The approved contract families assign existing roles, keep source authority
+    independent from content approval and structural validation, and define
+    explicit failure behavior. They are narrow enough for TX-07 and future
+    TX-08 implementation while leaving host capability verification and
+    strategic-content approval to G-07 and G-08.
+  immediate_effect: >
+    G-04 is accepted. TX-07 may create and update only the approved
+    strategic-intent templates, metadata schemas, registry contracts,
+    noncanonical examples, discovery surfaces, and validation obligations.
+    TX-08 becomes dependency-ready but is not executed by this disposition.
+artifact_contract_disposition:
+  target_vision:
+    artifact_contract_id: artifact_target_vision
+    artifact_type: TargetVisionStatement
+    canonical_filename: governance/vision-statement.md
+    template_path: Sys4AI/templates/governance/target-vision-statement-template.md
+    producer_roles:
+      - user_wants_elicitor
+      - requirements_manager
+    consumer_roles:
+      - requirements_manager
+      - requirements_verifier
+      - system_architect
+      - verification_engineer
+      - runtime_maintenance_planner
+    subject_layers:
+      - target_system_template
+      - target_system_instance
+    authority_default: controlled_candidate
+    required_sections:
+      - Metadata
+      - Target System And Subject Layer
+      - Authority And Non-Anthropomorphism Notice
+      - Mission Versus Vision
+      - Future-State Statement
+      - Intended Users And Beneficiaries
+      - Desired Condition And Impact
+      - Time Horizon
+      - Scope Exclusions And Non-Goals
+      - Success Signals
+      - Source Evidence And RDR Candidates
+      - Assumptions Tensions And Open Questions
+      - Approval Principal And Evidence
+      - Independent State Model
+      - Waiver And Baseline Exception
+      - Impact Analysis
+      - Revision Version Hash And Supersession
+    metadata_schema_id: contract_target_vision_statement
+    schema_owner: verification_engineer
+    registry_requirements:
+      - artifact_contract_registry.csv
+      - source_registry.csv for every approved version
+      - object_relationship_registry.csv for evidence active-version and supersession links
+      - requirement_trace_registry.csv for material downstream obligations
+    derivative_surfaces:
+      - target package governance/vision-statement.md
+      - generated strategic-intent contract index after WS-15
+  target_core_values:
+    artifact_contract_id: artifact_target_core_values
+    artifact_type: TargetCoreValues
+    canonical_filename: governance/core-values.md
+    template_path: Sys4AI/templates/governance/target-core-values-template.md
+    producer_roles:
+      - user_wants_elicitor
+      - requirements_manager
+    consumer_roles:
+      - requirements_manager
+      - requirements_verifier
+      - system_architect
+      - verification_engineer
+      - runtime_maintenance_planner
+    subject_layers:
+      - target_system_template
+      - target_system_instance
+    authority_default: controlled_candidate
+    required_sections:
+      - Metadata And Target Identity
+      - Governance Floor
+      - Stable Value Inventory
+      - Per-Value Commitment And Rationale
+      - Positive And Prohibited Behaviors
+      - Decision Tests
+      - Design And Operational Implications
+      - Testing And Evaluation Implications
+      - Conflict And Precedence Rules
+      - Source Owner And Evidence
+      - Inherited Sys4AI Constraints
+      - Target-Specific Commitments
+      - Known Tensions And Escalation
+      - Downstream Trace
+      - Approval And Review Cadence
+      - Waiver And Baseline Exception
+      - Impact Analysis
+      - Revision Version Hash And Supersession
+    metadata_schema_id: contract_target_core_values
+    schema_owner: verification_engineer
+    registry_requirements:
+      - artifact_contract_registry.csv
+      - source_registry.csv for every approved version
+      - object_relationship_registry.csv for evidence active-version and supersession links
+      - requirement_trace_registry.csv for material downstream obligations
+    derivative_surfaces:
+      - target package governance/core-values.md
+      - generated strategic-intent contract index after WS-15
+  shared_waiver_contract:
+    representation: inline strategic-intent metadata pending evidence that a separate registered artifact is required
+    required_fields:
+      - waiver_id
+      - accountable_authority
+      - missing_artifact_or_approval
+      - reason
+      - risk
+      - scope
+      - downstream_handling
+      - expiry
+      - revisit_trigger
+      - affected_requirements_and_decisions
+      - status
+    rule: An expired waiver blocks a new baseline or release and cannot promote content to approved.
+approval_and_promotion_rules:
+  allowed_content_states:
+    - candidate
+    - stakeholder_review
+    - approved
+    - rejected
+    - superseded
+  approval_principal: accountable human sponsor or product owner represented by system_director decision evidence
+  approval_requirements:
+    - approved content uses stable VISION-* or VALUE-* identifiers rather than candidate identifiers
+    - approval includes the human principal identity role date and source-backed evidence
+    - content approval source authority and structural validation remain independent states
+    - silence missing response canonical file location structural validation and model authorship are not consent
+  prohibited_approvers:
+    - model
+    - ai
+    - Meta-Agent Runtime acting as sole principal
+  promotion_rule: >
+    A controlled candidate may become an approved registered source only after
+    accountable human approval, complete evidence, stable IDs, current version
+    and hash, impact analysis where applicable, and successful validation.
+  supersession_rule: >
+    Never overwrite an approved artifact in place. Register the new version,
+    record active and superseded relationships, retain prior evidence, and
+    review affected requirements architecture permissions data threat models
+    tests releases operations maintenance improvement and retirement duties.
+failure_behavior:
+  fail_closed_conditions:
+    - missing or unverified approval principal date or evidence
+    - approved state paired with candidate identifiers
+    - candidate content represented as canonical approval
+    - model or runtime-actor self-approval
+    - expired waiver used for a new baseline or release
+    - stale hash duplicate active version missing supersession link or incomplete impact analysis
+    - unknown host capability treated as available
+    - missing host permission source or degraded behavior
+  required_result: >
+    Preserve the artifact as candidate, rejected, superseded, blocked, or
+    structurally invalid as appropriate. Never infer approval, permission,
+    capability, production readiness, or stakeholder consent.
+host_interface_contract_disposition:
+  profile_artifact:
+    path: Sys4AI/configs/host_profiles/codex_app_reference.toml
+    schema_path: Sys4AI/schemas/contracts/host_capability_profile.schema.json
+    controlled_profile_path: Sys4AI/docs/codex_host_integration_profile.md
+    producer_roles:
+      - system_engineer
+      - verification_engineer
+    consumer_roles:
+      - implementation_initialization_agent
+      - system_architect
+      - requirements_verifier
+    schema_owner: verification_engineer
+  required_profile_fields:
+    - profile_id
+    - profile_version
+    - host_name
+    - host_variant
+    - portable_execution_contract_version
+    - verified_at
+    - verified_by
+    - source_evidence
+    - environment_scope
+    - capability_status
+    - permission_source
+    - degraded_behavior
+    - cancellation_behavior
+    - evidence_capture
+    - known_limitations
+    - review_trigger
+  required_interfaces:
+    - user interaction
+    - workspace filesystem
+    - terminal and tests
+    - tools connectors and network
+    - sub-agents
+    - task and thread state
+    - memory and retrieval
+    - target runtime
+  allowed_capability_states:
+    - verified_available
+    - verified_unavailable
+    - permission_dependent
+    - environment_dependent
+    - unknown
+    - deprecated
+  permission_precedence: platform and system constraints -> host permissions -> project authorization -> bounded transaction permission envelope -> task objective
+  approval_rule: Host claims require observable or official evidence plus safe positive and denial or absence checks; G-07 remains the verification gate.
+  failure_rule: Unknown stale denied or unverified capability is unavailable and produces explicit blocked degraded or rerouted state.
+validation_obligations:
+  TX_07_contract_validation:
+    - make validate-artifact-contracts
+    - make validate-discovery-template
+    - make validate-skills
+    - make validate-dev-skills
+    - make validate-validation-contract-registry
+    - make validate-jsonschema-contracts
+    - make validate-registry-graph
+    - make validate-requirement-trace
+    - make validate-generated-derivatives
+  deferred_to_TX_13:
+    - focused validate-strategic-intent parser and validator
+    - direct CLI and Make targets
+    - aggregate make validate integration
+    - positive and mandatory negative executable fixtures
+    - model self-approval candidate-as-approved waiver-expiry stale-hash supersession and impact-analysis tests
+  deferred_to_TX_08_and_TX_13:
+    - host capability profile implementation and observable evidence
+    - validate-host-capability-profiles
+    - permission precedence and degraded-mode tests
+  limitation: >
+    TX-07 contract validation can prove registered fields schemas headings
+    examples and assigned obligations. It cannot prove strategic desirability,
+    stakeholder consent, host capability, implementation completeness, or
+    runtime safety.
+rejected_routes:
+  - route_id: approve_templates_without_exact_contracts
+    reason: It would leave producer consumer authority schema promotion and failure behavior ambiguous.
+  - route_id: create_a_strategic_intent_registry_now
+    reason: Existing source relationship artifact discovery and trace registries can represent the required state; a new registry requires evidence of an unenforceable query gap.
+  - route_id: treat_structural_validation_as_content_approval
+    reason: Structural conformance cannot establish stakeholder consent or strategic legitimacy.
+  - route_id: implement_TX_08_inside_TX_07
+    reason: Host profile evidence and reviewers differ materially and the transaction backlog keeps these writes separately reviewable.
+  - route_id: restore_AgentJob_or_continue_runtime
+    reason: G-02 selected harness-neutral execution and any restoration requires a separate explicit decision threat model plan tests and product-owner approval.
+authority_boundary:
+  human_authority_recorded: true
+  accepts_gate_G_04: true
+  may_execute_TX_07_STRATEGIC_CONTRACTS: true
+  makes_TX_08_dependency_ready: true
+  may_create_approved_TX_07_templates_schemas_examples_and_rows: true
+  may_update_approved_discovery_and_skill_surfaces: true
+  may_implement_focused_TX_13_validators: false
+  may_claim_host_capability_or_satisfy_G_07: false
+  may_approve_Sys4AI_vision_or_values_or_satisfy_G_08: false
+  may_create_canonical_target_strategic_content_without_separate_human_approval: false
+  may_add_new_roles_or_a_new_strategic_registry: false
+  may_restore_AgentJob_or_continue_runtime: false
+  may_expand_permissions_or_authorize_production: false
+rollback_and_review:
+  rollback_class: superseding_contract_decision
+  before_dependent_implementation: A new accepted Director Decision may revise or reject this disposition; do not mutate this completed record in place.
+  after_dependent_implementation: >
+    Require impact analysis across templates schemas registries discovery skills
+    examples validators host profiles packages and generated derivatives before
+    accepting a superseding disposition.
+  review_triggers:
+    - evidence that existing registries cannot enforce active-version supersession or waiver queries
+    - discovery of role authority ambiguity
+    - schema or validator behavior that conflates structural and content approval
+    - host capability or permission model change
+    - proposed restoration of removed execution surfaces
+    - material change to G-02 or G-03
+  expiry: none; remains controlling until explicitly superseded
+evidence_references:
+  - implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+  - PRDs/Sys4AI_phase-0_product_system_design_prd.md
+  - PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+  - Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-001.yaml
+  - Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G03-001.yaml
+  - Sys4AI/control_records/system_definition/strategic_baseline_migration_requirements_discovery_record.md
+  - Sys4AI/registries/artifact_contract_registry.csv
+  - Sys4AI/registries/validation_contract_registry.csv
+  - Sys4AI/registries/system_layer_registry.csv
+validators:
+  - cd Sys4AI && make validate-director-decisions
+  - cd Sys4AI && make validate-director-decision-registry
+  - cd Sys4AI && make validate-control-records
+  - cd Sys4AI && make validate-registry-graph
+  - cd Sys4AI && make validate-generated-derivatives
+  - make validate
+  - git diff --check

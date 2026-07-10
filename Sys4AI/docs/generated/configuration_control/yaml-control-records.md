@@ -192,6 +192,7 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_next_scope_acceptance_handoff | control_records/handoffs/HANDOFF-SFADEV-26-NEXT-SCOPE-ACCEPTANCE-001.yaml | handoff_v0_2 | controlled | framework_product | contract_handoff_v0_2 | pending |
 | ctrl_strategic_baseline_director_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-001.yaml | director_decision | controlled | framework_product | contract_director_decision | pending |
 | ctrl_strategic_baseline_g03_director_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G03-001.yaml | director_decision | controlled | framework_product | contract_director_decision | pending |
+| ctrl_strategic_baseline_g04_director_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G04-001.yaml | director_decision | controlled | framework_product | contract_director_decision | pending |
 
 ## Validation Contract Trace
 
