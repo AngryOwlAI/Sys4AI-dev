@@ -163,6 +163,7 @@ def _validate_strategic_approval_state(
     if state.get("current_phase") not in {
         "strategic_baseline_migration_after_TX_18",
         "strategic_baseline_migration_after_TX_19",
+        "strategic_baseline_migration_after_TX_20",
     }:
         return []
 

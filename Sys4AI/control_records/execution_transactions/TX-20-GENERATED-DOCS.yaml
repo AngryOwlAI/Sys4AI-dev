@@ -1,0 +1,262 @@
+execution_transaction_id: TX-20-GENERATED-DOCS
+contract_version: 1.0.0
+objective: Regenerate the five named strategic governance readers and applicable existing reader indexes from registered controlled sources, correct the historical pre-G-08 walking-skeleton warning, preserve every generated surface as noncanonical, close G-09 derivative regeneration, and stop before TX-21.
+source_requirement_ids:
+- SFA-P1-INIT-DERIV-001
+- SFA-P1-INIT-DERIV-002
+- SFA-P2-ADD-TRACE-001
+source_decision_ids:
+- DDR-SFADEV-STRATEGIC-BASELINE-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G04-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G05-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G08-001
+subject_system:
+  system_id: sys4ai
+  system_name: Sys4AI framework product
+subject_layer: derivative_surface
+runtime_actor:
+  actor_id: codex_meta_agent_runtime
+  actor_type: meta_agent_runtime
+  role_ids:
+  - bounded_execution_planner
+  - svc_documentation_surface_architect
+  - documentation_librarian
+  - source_authority_auditor
+  - verification_engineer
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-11-TX20-GENERATED-DOCS
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX19-001
+approval_principal:
+  principal_id: alex_omegapy
+  principal_type: accountable_human
+  approval_scope: Execute TX-20 generated strategic reader regeneration only, preserve noncanonical authority and protected baselines, correct the stale G-08 derivative warning, close G-09, and stop before TX-21 G-07 G-10 production or operational authority.
+  authorization_evidence_ids:
+  - HUMAN-TASK-2026-07-11-TX20-GENERATED-DOCS
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX19-001
+  model_self_approval: false
+execution_authorization:
+  status: authorized
+  authorized_at: '2026-07-11T14:12:24Z'
+  expires_at: '2026-07-12T14:12:24Z'
+  authority_evidence_ids:
+  - HUMAN-TASK-2026-07-11-TX20-GENERATED-DOCS
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX19-001
+  self_authorized: false
+permission_envelope:
+  envelope_id: PERMISSION-ENVELOPE-TX-20-GENERATED-DOCS
+  status: current
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-11-TX20-GENERATED-DOCS
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX19-001
+  data_classes:
+  - repository_controlled_artifacts
+  - generated_noncanonical_readers
+  - local_validation_evidence
+  resource_limits:
+  - One bounded TX-20 generator registry generated-page and closeout packet.
+  - Create only the five named WS-15 strategic governance readers and refresh applicable existing registered readers deterministically.
+  - Correct only the historical open-G-08 generated warning; preserve G-07 target validation production operations stakeholder and domain boundaries.
+  - Preserve canonical PRDs accepted Phase 2 G-08 TX-17 holdouts thresholds requirement trace and activated history unchanged.
+  - Register every new derivative with controlled source provenance and generated noncanonical authority.
+  - Stop before TX-21 and do not claim G-10 final acceptance.
+  valid_from: '2026-07-11T14:12:24Z'
+  expires_at: '2026-07-12T14:12:24Z'
+  sensitive_data_allowed: false
+  secrets_allowed: false
+  data_egress_allowed: true
+  external_side_effects_allowed: true
+  delegation_allowed: false
+  delegation_expires_at: not_applicable
+  permission_expansion_allowed: false
+allowed_reads:
+- .agents/**
+- .codex/**
+- PRDs/**
+- Sys4AI/**
+- implementation_plans/**
+allowed_writes:
+- Sys4AI/sys_for_ai/derivative_generation.py
+- Sys4AI/sys_for_ai/derivatives/templates.py
+- Sys4AI/sys_for_ai/walking_skeleton.py
+- Sys4AI/sys_for_ai/trace_validation.py
+- Sys4AI/sys_for_ai/prd_semantics.py
+- Sys4AI/tests/test_generated_derivatives.py
+- Sys4AI/tests/test_walking_skeleton.py
+- Sys4AI/tests/test_trace_semantics.py
+- Sys4AI/tests/test_self_hosting_acceptance.py
+- Sys4AI/schemas/contracts/program_state.schema.json
+- Sys4AI/configs/capability_migration.toml
+- Sys4AI/registries/derivative_registry.csv
+- Sys4AI/registries/source_registry.csv
+- Sys4AI/registries/object_relationship_registry.csv
+- Sys4AI/registries/control_record_registry.csv
+- Sys4AI/registries/memory_preflight_receipt_registry.csv
+- Sys4AI/registries/completion_receipt_registry.csv
+- Sys4AI/registries/handoff_registry.csv
+- Sys4AI/control_records/**
+- Sys4AI/docs/generated/**
+- implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX20-001.md
+allowed_tools:
+- repository file inspection
+- apply_patch
+- repository-native validation commands
+- deterministic generated-document writers
+- git status diff add commit and push
+allowed_external_actions:
+- Push the validated TX-20 commit to origin main.
+forbidden_actions:
+- Modify canonical Phase 0 Phase 1 accepted Phase 2 or strategic addendum requirement wording or status.
+- Modify the G-08 decision TX-17 assurance packet protected holdouts thresholds or requirement trace rows.
+- Hand-edit generated pages as source authority or promote any generated page to canonical authority.
+- Restore active AgentJob slash-continue control-loop or removed runtime semantics.
+- Begin TX-21 final acceptance or accept G-10.
+- Claim G-07 host verification target validation production readiness operational authority broad stakeholder consensus autonomous capability or domain truth.
+- Expand host project transaction or target-system permissions.
+- Rewrite activated control history.
+inputs:
+- implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX19-001.yaml
+- Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G08-001.yaml
+- Sys4AI/registries/derivative_registry.csv
+- Sys4AI/registries/source_registry.csv
+- Sys4AI/registries/artifact_contract_registry.csv
+- Sys4AI/registries/requirement_trace_registry.csv
+- Sys4AI/sys_for_ai/derivative_generation.py
+- Sys4AI/sys_for_ai/walking_skeleton.py
+- Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-20-GENERATED-DOCS-20260711T141224Z.yaml
+expected_outputs:
+- Five deterministic registered noncanonical strategic governance pages for strategic-intent contracts evidence graph host profile lifecycle and patterns and capability migration status.
+- Refreshed applicable artifact contract core skill registry role system layer validation configuration and walking-skeleton readers with no authority promotion.
+- A walking-skeleton reader that records framework G-08 as accepted while preserving independent target G-07 production operational stakeholder and domain gaps.
+- Focused drift noncanonical gate and permission boundary tests.
+- Registered completion evidence and a TX-21-only handoff that preserves all final-acceptance boundaries.
+validators:
+- validator_id: focused_generated_reader_suite
+  command_or_method: .venv/bin/python -m unittest tests.test_generated_derivatives tests.test_walking_skeleton -v
+  blocking: true
+  expected_evidence: Deterministic readers registry rows stale-G-08 correction and noncanonical boundaries pass.
+- validator_id: generated_derivative_drift
+  command_or_method: make generate-config-control-wiki generate-validation-contracts-catalog generate-governance-docs validate-generated-derivatives validate-walking-skeleton
+  blocking: true
+  expected_evidence: All registered generated pages are current and deterministic with no orphan or authority inversion.
+- validator_id: source_contract_and_gate_checks
+  command_or_method: make validate-artifact-contracts validate-registry-graph validate-strategic-intent validate-host-capability-profiles validate-lifecycle-and-patterns validate-capability-migration
+  blocking: true
+  expected_evidence: Readers resolve registered sources while G-08 is accepted and G-07 production operations permissions and domain claims remain open.
+- validator_id: protected_trace
+  command_or_method: make validate-requirement-trace validate-requirement-trace-migration and sha256 comparison
+  blocking: true
+  expected_evidence: All 227 trace rows and the b868e4d2 rollback hash remain byte-for-byte unchanged.
+- validator_id: control_and_artifact_contracts
+  command_or_method: make validate-control-records validate-handoffs validate-completion-receipts validate-memory-preflight validate-artifact-contracts validate-jsonschema-contracts
+  blocking: true
+  expected_evidence: Portable transaction preflight completion handoff and generated artifact contracts conform.
+- validator_id: product_unit_suite
+  command_or_method: .venv/bin/python -m unittest discover -s tests
+  blocking: true
+  expected_evidence: All product tests pass.
+- validator_id: aggregate_validation
+  command_or_method: make validate at product and repository roots
+  blocking: true
+  expected_evidence: Product and development-system validation pass.
+- validator_id: protected_baselines
+  command_or_method: sha256 and Git diff checks for canonical PRDs G-08 accepted Phase 2 TX-17 safety holdouts and requirement trace
+  blocking: true
+  expected_evidence: Protected hashes remain unchanged with zero Git diff.
+- validator_id: diff_integrity
+  command_or_method: git diff --check
+  blocking: true
+  expected_evidence: No whitespace or patch-integrity errors.
+stop_conditions:
+- A canonical PRD G-08 decision protected Phase 2 source TX-17 safety artifact holdout threshold or requirement trace changes.
+- A reader cannot be generated deterministically from registered controlled sources.
+- A generated page becomes canonical orphaned stale or an active pointer to superseded evidence.
+- The G-08 correction would imply target-system approval G-07 production operational stakeholder domain or permission authority.
+- A blocking validator fails after TX-20-scoped repair is exhausted.
+host_capability_requirements:
+  execution_profile_id: codex_local_observed_subset
+  overall_status: verified_available
+  required_capability_ids:
+  - workspace_filesystem
+  - terminal_and_tests
+  - git_local_and_push
+  evidence_ids:
+  - HOST-CODEX-LOCAL-OBSERVATION-2026-07-11
+  - SRC-HOST-PROFILE-CODEX-APP-REFERENCE
+  checked_at: '2026-07-11T14:12:24Z'
+  values_or_goals_may_override: false
+state:
+  status: completed
+  current_state_evidence_ids:
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX20-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX20-001
+  continuation_state: consumed
+  continuation_evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX19-001
+  state_transition_evidence_ids:
+  - HUMAN-TASK-2026-07-11-TX20-GENERATED-DOCS
+cancellation:
+  state: not_requested
+  requested_by: not_applicable
+  behavior: Stop at the nearest safe boundary preserve the approved strategic and protected trace baselines retain the complete diagnostic diff and do not begin TX-21.
+  evidence_ids: []
+  uncertain_operations: []
+escalation:
+  state: not_required
+  conditions:
+  - A named reader requires canonical source mutation or authority promotion.
+  - Generated state cannot distinguish accepted framework G-08 from target host production stakeholder or domain evidence.
+  responsible_principal_id: alex_omegapy
+  required_decision: Select a separately bounded source-authority route or preserve the current reader boundary; never infer promotion or authority expansion.
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G08-001
+resume_evidence:
+  required: true
+  status: consumed
+  last_known_state: TX-19 closed on the shared baseline with twelve noncanonical modules validated and handed off only to TX-20 strategic reader regeneration.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX19-001
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX19-001
+  - MEMPREFLIGHT-TX-20-GENERATED-DOCS-20260711T141224Z
+closeout_evidence:
+  status: complete
+  evidence_ids:
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX20-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX20-001
+  - CR-SFADEV-STRATEGIC-BASELINE-TX20-001
+  changed_artifacts:
+  - five named strategic governance readers and applicable existing generated readers
+  - deterministic generators derivative rows focused tests program state and portable closeout evidence
+  validation_evidence_ids:
+  - TX20-FOCUSED-GENERATED-READER-16-PASS
+  - TX20-NAMED-VALIDATORS-PASS
+  - TX20-PRODUCT-VALIDATE-PASS
+  - TX20-ROOT-VALIDATE-PASS
+  - TX20-PROTECTED-BASELINES-PASS
+  - TX20-DIFF-CHECK-PASS
+  acceptance_evidence_ids:
+  - HUMAN-TASK-2026-07-11-TX20-GENERATED-DOCS
+rollback:
+  status: available
+  strategy: Before publication revert the complete TX-20 generator registry generated-page test capability classification and closeout packet; after publication or downstream dependency supersede TX-20 rather than rewriting accepted history.
+  triggers:
+  - Any generated drift source provenance authority gate protected-baseline or aggregate validator fails.
+  - A page overstates G-08 G-07 production operations stakeholder domain or permission authority.
+  actions:
+  - Stop TX-21 and preserve failure evidence.
+  - Revert the unshared TX-20 packet or create an explicit superseding bounded transaction after sharing.
+  - Restore the TX-19 generator rows readers program state and catalogs together and rerun all blocking checks.
+  evidence_ids:
+  - PHASE0-APPROVED-SHA256-A507153A
+  - PHASE1-ACCEPTED-SHA256-54CE5BF0
+  - PHASE2-ADDENDUM-SHA256-B4CF2097
+  - PHASE2-ACCEPTED-SHA256-98567CF4
+  - PHASE2-DRAFT-SHA256-9E290964
+  - TX17-SAFETY-SHA256-D04F7510
+  - HOLDOUT-SHA256-8128AE1A
+  - TRACE-SHA256-B868E4D2
+supersession:
+  status: current
+  supersedes_transaction_ids: []
+  superseded_by: not_applicable
+  evidence_ids: []

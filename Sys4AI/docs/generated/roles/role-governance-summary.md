@@ -16,8 +16,8 @@ page_metadata:
     - contract_role_registry_row
     - contract_role_skill_crosswalk_row
     - contract_role_execution_binding_registry_row
-  generated_at: 2026-07-06T00:00:00Z
-  generator: sys_for_ai.derivative_generation.governance_generated_docs:0.1.0
+  generated_at: 2026-07-11T14:12:24Z
+  generator: sys_for_ai.derivative_generation.governance_generated_docs:0.2.0
   stale_or_orphan_status: current
   source_hashes:
     - pending
@@ -31,7 +31,7 @@ This generated page summarizes role governance registries and execution binding 
 
 | derivative_id | path | source_ids | generation_method | status |
 | --- | --- | --- | --- | --- |
-| der_role_governance_summary | docs/generated/roles/role-governance-summary.md | SRC-REG-ROLES;SRC-REG-ROLE-SKILL-CROSSWALK;SRC-REG-ROLE-EXECUTION-BINDINGS;SRC-DERIVATIVE-GENERATION | sys_for_ai.derivative_generation.governance_generated_docs:0.1.0 | generated_derivative |
+| der_role_governance_summary | docs/generated/roles/role-governance-summary.md | SRC-REG-ROLES;SRC-REG-ROLE-SKILL-CROSSWALK;SRC-REG-ROLE-EXECUTION-BINDINGS;SRC-DERIVATIVE-GENERATION | sys_for_ai.derivative_generation.governance_generated_docs:0.2.0 | generated_derivative |
 
 ## Role Rows
 

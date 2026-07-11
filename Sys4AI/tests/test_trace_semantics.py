@@ -57,27 +57,25 @@ class TraceSemanticTests(unittest.TestCase):
         self.assertFalse(result.ok)
         self.assertTrue(any("unsupported strategic-baseline program phase" in item for item in result.messages))
 
-    def test_post_tx19_state_requires_exact_tx20_route(self) -> None:
+    def test_post_tx20_state_requires_exact_tx21_route(self) -> None:
         def mutate_state(state):
             state["allowed_next_actions"] = [
                 item
                 for item in state["allowed_next_actions"]
-                if item != "execute_TX_20_GENERATED_DOCS_only_after_TX_19_shared_baseline"
+                if item != "execute_TX_21_FINAL_ACCEPTANCE_only_after_TX_20_shared_baseline"
             ]
 
         result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
         self.assertFalse(result.ok)
-        self.assertTrue(any("exact TX-20 generated-docs route" in item for item in result.messages))
+        self.assertTrue(any("exact TX-21 final-acceptance route" in item for item in result.messages))
 
-    def test_post_tx19_state_keeps_g09_open_until_tx20(self) -> None:
+    def test_post_tx20_state_requires_g09_completion(self) -> None:
         def mutate_state(state):
-            state["blocked_actions"] = [
-                item for item in state["blocked_actions"] if item != "claim_G_09_complete_before_TX_20_closes"
-            ]
+            state["capability_status_summary"].pop("derivative_regeneration")
 
         result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
         self.assertFalse(result.ok)
-        self.assertTrue(any("keep G-09 open" in item for item in result.messages))
+        self.assertTrue(any("derivative_regeneration complete_G_09" in item for item in result.messages))
 
     def test_current_evidence_freshness_fails_against_controlled_state_date(self) -> None:
         def mutate_state(state):

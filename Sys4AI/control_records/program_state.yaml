@@ -6,7 +6,7 @@ system_context:
   target_system: Sys4AI
   self_hosting_mode: true
   reflection_depth: 1
-current_phase: strategic_baseline_migration_after_TX_19
+current_phase: strategic_baseline_migration_after_TX_20
 lifecycle_stage: test
 active_task_id: null
 active_director_decision_id: null
@@ -20,12 +20,15 @@ current_state_evidence:
 - TX-19-MODULES
 - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX19-001
 - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX19-001
+- TX-20-GENERATED-DOCS
+- RECEIPT-SFADEV-STRATEGIC-BASELINE-TX20-001
+- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX20-001
 continuation_state: ready
 cancellation_state: not_requested
 escalation_state: not_required
-latest_closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX19-001
-latest_handoff_evidence_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX19-001
-latest_memory_preflight_receipt_id: MEMPREFLIGHT-TX-19-MODULES-20260710T193535Z
+latest_closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX20-001
+latest_handoff_evidence_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX20-001
+latest_memory_preflight_receipt_id: MEMPREFLIGHT-TX-20-GENERATED-DOCS-20260711T141224Z
 capability_status_summary:
   portable_execution_contract: implemented
   current_state_model: implemented
@@ -34,29 +37,29 @@ capability_status_summary:
   broader_semantic_validation: implemented
   safety_evaluation_controls: implemented
   strategic_approval: accepted_G_08
+  derivative_regeneration: complete_G_09
 state_status: active
 blocked_reason: null
 human_gate_required: false
 allowed_next_actions:
 - run_memory_preflight
 - inspect_latest_handoff
-- execute_TX_20_GENERATED_DOCS_only_after_TX_19_shared_baseline
+- execute_TX_21_FINAL_ACCEPTANCE_only_after_TX_20_shared_baseline
 blocked_actions:
 - execute_multiple_transactions_without_concurrency_authorization
 - use_chat_memory_as_authority
 - treat_generated_derivative_as_canonical
 - mutate_activated_control_record_without_supersession
 - treat_historical_execution_evidence_as_current_capability
-- begin_TX_20_before_TX_19_shared_baseline
-- begin_TX_21_before_TX_20_closes
-- claim_G_09_complete_before_TX_20_closes
+- begin_TX_21_before_TX_20_shared_baseline
+- claim_G_10_before_TX_21_acceptance
 - treat_TX_19_module_validation_as_G_07_G_09_G_10_or_production_acceptance
 - treat_TX_17_structural_or_holdout_validation_as_G_07_or_domain_acceptance
 - use_G_08_approval_to_expand_permissions
 - claim_broad_stakeholder_consensus_or_domain_truth_from_G_08
 - claim_production_readiness_or_operational_authority
 validation_status:
-  last_validated_at: '2026-07-10T19:51:05Z'
+  last_validated_at: '2026-07-11T14:25:01Z'
   validators:
   - make validate-program-state
   - make validate-capability-migration

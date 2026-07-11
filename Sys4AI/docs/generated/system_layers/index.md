@@ -12,8 +12,8 @@ page_metadata:
     - registries/derivative_registry.csv
   validation_contracts:
     - contract_system_layer_registry_row
-  generated_at: 2026-07-06T00:00:00Z
-  generator: sys_for_ai.derivative_generation.governance_generated_docs:0.1.0
+  generated_at: 2026-07-11T14:12:24Z
+  generator: sys_for_ai.derivative_generation.governance_generated_docs:0.2.0
   stale_or_orphan_status: current
   source_hashes:
     - pending
@@ -27,7 +27,7 @@ This generated page summarizes registered system layers and their authority boun
 
 | derivative_id | path | source_ids | generation_method | status |
 | --- | --- | --- | --- | --- |
-| der_system_layers_index | docs/generated/system_layers/index.md | SRC-REG-SYSTEM-LAYERS;SRC-DERIVATIVE-GENERATION | sys_for_ai.derivative_generation.governance_generated_docs:0.1.0 | generated_derivative |
+| der_system_layers_index | docs/generated/system_layers/index.md | SRC-REG-SYSTEM-LAYERS;SRC-DERIVATIVE-GENERATION | sys_for_ai.derivative_generation.governance_generated_docs:0.2.0 | generated_derivative |
 
 ## Layer Rows
 

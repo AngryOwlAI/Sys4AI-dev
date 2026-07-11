@@ -25,8 +25,8 @@ page_metadata:
     - contract_target_core_values
     - contract_target_system_package_manifest
     - contract_target_vision_statement
-  generated_at: 2026-07-06T00:00:00Z
-  generator: sys_for_ai.derivative_generation.governance_generated_docs:0.1.0
+  generated_at: 2026-07-11T14:12:24Z
+  generator: sys_for_ai.derivative_generation.governance_generated_docs:0.2.0
   stale_or_orphan_status: current
   source_hashes:
     - pending
@@ -40,7 +40,7 @@ This generated page summarizes artifact contracts, producers, consumers, derivat
 
 | derivative_id | path | source_ids | generation_method | status |
 | --- | --- | --- | --- | --- |
-| der_artifact_contracts_index | docs/generated/artifact_contracts/index.md | SRC-REG-ARTIFACT-CONTRACTS;SRC-DERIVATIVE-GENERATION | sys_for_ai.derivative_generation.governance_generated_docs:0.1.0 | generated_derivative |
+| der_artifact_contracts_index | docs/generated/artifact_contracts/index.md | SRC-REG-ARTIFACT-CONTRACTS;SRC-DERIVATIVE-GENERATION | sys_for_ai.derivative_generation.governance_generated_docs:0.2.0 | generated_derivative |
 
 ## Structural Versus Semantic Warning
 

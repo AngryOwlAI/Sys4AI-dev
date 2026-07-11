@@ -23,7 +23,7 @@ from .yaml_io import YamlLoadError, load_yaml
 FLOW_ID = "SFA-P2-STRATEGIC-WALKING-SKELETON-001"
 REPORT_DERIVATIVE_ID = "der_walking_skeleton_flow"
 REPORT_PATH = Path("docs/generated/governance/walking-skeleton-flow.md")
-REPORT_GENERATOR = "sys_for_ai.walking_skeleton:0.2.0"
+REPORT_GENERATOR = "sys_for_ai.walking_skeleton:0.3.0"
 GENERATED_NOTICE = "This page is a generated reader surface. It is not canonical."
 
 TX16_PATH = "Sys4AI/control_records/execution_transactions/TX-16-WALKING-SKELETON.yaml"
@@ -278,7 +278,7 @@ def build_walking_skeleton_flow_report(
     warnings.extend(
         (
             "G-07 host verification remains open.",
-            "G-08 strategic approval remains open.",
+            "G-08 framework strategic approval is accepted; target-system approval and domain acceptance remain independent.",
             "Production readiness, operational authority, stakeholder consensus, and domain acceptance remain open.",
         )
     )
@@ -410,7 +410,7 @@ def expected_walking_skeleton_report_markdown(root: str | Path = ".") -> str:
         "",
         "- Test execution: repository-local unit, CLI, and aggregate checks.",
         "- Requirements verification: generalized framework trace plus package-local trace.",
-        "- Stakeholder or system validation: not run; G-08 and domain acceptance remain open.",
+        "- Stakeholder or system validation: not run; framework G-08 is accepted, while target-system validation and domain acceptance remain open.",
         "- Behavioral or performance evaluation: not run; TX-17 and production evidence remain later work.",
         "",
         "## Historical Evidence Appendix",
@@ -438,7 +438,7 @@ def expected_walking_skeleton_report_markdown(root: str | Path = ".") -> str:
         "",
         STRUCTURAL_LIMITATION,
         "",
-        "The example remains a derivative smoke package at validated_prototype maturity. Fictional demonstration approval does not satisfy G-07, G-08, production readiness, operational authority, stakeholder consensus, or domain acceptance.",
+        "The example remains a derivative smoke package at validated_prototype maturity. Its fictional demonstration approval does not establish target-system validation, G-07, production readiness, operational authority, stakeholder consensus, or domain acceptance; framework G-08 is independently accepted.",
         "",
     ]
     return "\n".join(lines)

@@ -1,0 +1,47 @@
+handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX20-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+producing_execution_transaction_id: TX-20-GENERATED-DOCS
+next_execution_transaction_id: TX-21-FINAL-ACCEPTANCE
+status: ready
+producing_role: svc_documentation_surface_architect
+recommended_next_role: requirements_verifier
+summary: TX-20 closes G-09 with five registered noncanonical strategic readers current existing indexes and corrected framework G-08 status; TX-21 final acceptance alone is next after shared-baseline publication.
+source_ids:
+- SRC-TX20-EXECUTION-TRANSACTION
+- SRC-MEMPREFLIGHT-STRATEGIC-BASELINE-TX20
+- SRC-COMPLETION-STRATEGIC-BASELINE-TX20
+- SRC-STRATEGIC-BASELINE-TX20-RECEIPT
+- SRC-REG-DERIVATIVES
+- SRC-DERIVATIVE-GENERATION
+- SRC-WALKING-SKELETON-FLOW-MODULE
+- SRC-DDR-STRATEGIC-BASELINE-G08-001
+- SRC-REG-REQ-TRACE
+closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX20-001
+current_state_evidence:
+- Sys4AI/control_records/program_state.yaml
+- TX20-FIVE-STRATEGIC-READERS-CURRENT
+- TX20-ZERO-CANONICAL-DERIVATIVES
+- TX20-G08-WARNING-CORRECTED
+- TX20-G09-COMPLETE
+- TX20-PROTECTED-BASELINES-UNCHANGED
+validation_evidence:
+  focused_generated_reader_suite: PASS_16_OF_16
+  named_validators: PASS
+  product_and_root_validate: PASS
+  named_strategic_readers: 5
+  generated_noncanonical_rows_added: 5
+  canonical_derivative_rows: 0
+  capability_migration_inventory: PASS_16_FILES_298_REFERENCES_FD1608BE
+  trace_rows: 227
+  generalized_trace_sha256: b868e4d201bf1a5908cd87357f51214be9081684e56c04f9cd48850653958138
+  generated_derivatives: PASS
+  diff_check: PASS
+  memory_status: PASS_WITH_WARNINGS_991_OBJECTS_434_WARNINGS_ZERO_AUTHORITY_INVERSIONS
+stop_conditions:
+- TX-21 must consume registered controlled sources and TX-20 readers without treating any generated page as canonical authority.
+- G-09 is complete only for deterministic derivative regeneration; it does not imply G-07 G-10 production operational stakeholder domain or permission authority.
+- G-07 remains open and no host-dependent execution claim may be promoted.
+- TX-21 must run full regression semantic review rollback and final evidence before any G-10 disposition.
+- Values do not grant permission and may not override law policy safety security privacy source authority host permissions project permissions or required human approval.
+- Canonical Phase 0 accepted Phase 1 protected Phase 2 G-08 TX-17 holdouts thresholds the 227-row trace and activated history may change only through explicit bounded supersession.

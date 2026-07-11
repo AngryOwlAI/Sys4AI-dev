@@ -145,8 +145,8 @@ replacement_capability = "ExecutionTransaction"
 blocking_transaction = "TX-13-VALIDATORS"
 allowed_modes = ["post_tx10"]
 expected_files = 14
-expected_references = 560
-expected_inventory_sha256 = "ea5cc666326468032b5517499ea1bfba06ed6ef012bcec9208e2607cd2e187e4"
+expected_references = 559
+expected_inventory_sha256 = "6e7efb18024406392f4430d0ef2960cd1f7b8301811730641c6ca1604622067b"
 
 [[classifications]]
 classification_id = "legacy_schema_compatibility"
@@ -320,23 +320,28 @@ expected_references = 75
 expected_inventory_sha256 = "c05812ef03f9144c6f6c29e680a38420a0d1d1ea69c09a864971a2e8851835f5"
 
 [[classifications]]
-classification_id = "generated_reader_migration_deferred"
+classification_id = "generated_reader_migration_tx20"
 priority = 27
 state = "generated_derivative"
 paths = [
   "Sys4AI/registries/derivative_registry.csv",
   "Sys4AI/sys_for_ai/derivative_generation.py",
   "Sys4AI/tests/test_generated_derivatives.py",
+  "Sys4AI/control_records/execution_transactions/TX-20-GENERATED-DOCS.yaml",
+  "Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-20-GENERATED-DOCS-20260711T141224Z.yaml",
+  "Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX20-001.yaml",
+  "Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX20-001.yaml",
+  "implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX20-001.md",
 ]
 path_globs = ["Sys4AI/docs/generated/**"]
-disposition = "Generated readers remain noncanonical and may change only through their source registries and generators in TX-20."
+disposition = "TX-20 regenerated the named strategic governance readers from registered controlled sources. The pages remain noncanonical navigation, and later changes must occur through their source registries and generators."
 owner = "verification_engineer"
 replacement_capability = "source-classified portable execution documentation"
-blocking_transaction = "TX-20-GENERATED-DOCS"
+blocking_transaction = "none"
 allowed_modes = ["pre_tx10", "post_tx10"]
-expected_files = 14
-expected_references = 288
-expected_inventory_sha256 = "26265b3c1115cfc15c2e8a6437ed07f35e7c752ac5f3151dd280728861e2930d"
+expected_files = 16
+expected_references = 298
+expected_inventory_sha256 = "fd1608bee6e58915a51c064c133063f5ae59f7736bd94e0567a7aa64580fb37e"
 
 [[classifications]]
 classification_id = "active_surface_tx10"

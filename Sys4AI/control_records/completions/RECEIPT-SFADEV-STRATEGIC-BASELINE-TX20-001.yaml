@@ -1,0 +1,75 @@
+completion_receipt_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX20-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-20-GENERATED-DOCS
+role: svc_documentation_surface_architect
+result: PASS
+summary: TX-20 deterministically regenerates and registers the five named strategic governance readers, refreshes applicable existing readers, corrects the stale pre-G-08 walking-skeleton warning, preserves every derivative as noncanonical, closes G-09, and stops before TX-21.
+changed_artifacts:
+- path: Sys4AI/sys_for_ai/derivative_generation.py;Sys4AI/tests/test_generated_derivatives.py
+  change_summary: Added source-driven generators and fail-closed tests for the five named strategic governance readers with noncanonical gate and permission boundaries.
+- path: Sys4AI/docs/generated/governance/*.md
+  change_summary: Added strategic intent contract evidence graph host profile lifecycle and pattern capability migration readers and corrected the walking-skeleton G-08 status.
+- path: Sys4AI/docs/generated/artifact_contracts/index.md;Sys4AI/docs/generated/core_skills/index.md;Sys4AI/docs/generated/registry_catalog/index.md;Sys4AI/docs/generated/roles/role-governance-summary.md;Sys4AI/docs/generated/system_layers/index.md
+  change_summary: Refreshed applicable existing deterministic readers after registry and generator changes.
+- path: Sys4AI/registries/derivative_registry.csv;Sys4AI/registries/source_registry.csv
+  change_summary: Registered five new noncanonical derivatives and current generator and walking-skeleton provenance.
+- path: Sys4AI/configs/capability_migration.toml
+  change_summary: Closed the generated-reader migration classification with current fail-closed inventory evidence without restoring retired runtime capability.
+- path: Sys4AI/sys_for_ai/walking_skeleton.py;Sys4AI/tests/test_walking_skeleton.py
+  change_summary: Replaced the obsolete open-G-08 warning with accepted framework G-08 and explicit independent target host production stakeholder and domain boundaries.
+- path: Sys4AI/control_records/**;Sys4AI/registries/*registry.csv
+  change_summary: Recorded the portable TX-20 authorization source-first preflight completion state and TX-21-only handoff.
+- path: implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX20-001.md
+  change_summary: Records the human-readable scope validation limitations rollback protected sources and exact TX-21 boundary.
+validation_evidence:
+  focused_generated_reader_suite: PASS_16_OF_16
+  product_unit_suite: PASS_244_OF_244
+  named_validator_targets: PASS_TX20_FOCUSED_TARGETS
+  product_aggregate_validation: PASS
+  root_aggregate_validation: PASS
+  named_strategic_readers: 5
+  generated_noncanonical_rows_added: 5
+  canonical_derivative_rows: 0
+  walking_skeleton_g08_warning: RESOLVED_TO_ACCEPTED_FRAMEWORK_G08
+  g07_status: OPEN
+  g09_status: COMPLETE
+  g10_status: OPEN
+  capability_migration_inventory: PASS_16_FILES_298_REFERENCES_FD1608BE
+  requirement_trace_rows: 227
+  generalized_trace_sha256: b868e4d201bf1a5908cd87357f51214be9081684e56c04f9cd48850653958138
+  approved_phase0_sha256: a507153a19e7ba77b26e8a7012026c8bc96adc4ffdbf1ecaf7a05f63a875a016
+  accepted_phase1_sha256: 54ce5bf028ca83d7d647d5d5c95e19a5f79850f3474d322bac0e287a7e52bdcb
+  strategic_addendum_sha256: b4cf20974357a1cd2534050e0a552c162716266d180e5e90d6813c7ae9ef8f11
+  accepted_phase2_sha256: 98567cf4f4af8ca99650a6220a78d840dae5e11195891fc808c69c4828528038
+  accepted_phase2_draft_sha256: 9e290964200137329827a0164f50c2d3e97dc194fac65dd086c8b1dd7e57d84f
+  g08_decision_sha256: af03bfbf1245e3af8441f057ed0fbd00ddaceaf1ac192bbd7c1303ef6232302a
+  tx17_safety_packet_sha256: d04f7510b48e2ccf619ffbeecd1397fea4c516d70d1a6fd2379a8ab1b4cae1be
+  protected_holdout_sha256: 8128ae1aa3464cef89ccf9bd536e14c4d39cfcff7e8034ee0cc64cfec447fcda
+  protected_artifact_git_diff: ZERO
+  generated_derivatives: PASS
+  diff_check: PASS
+  memory_status: PASS_WITH_WARNINGS_991_OBJECTS_434_WARNINGS_ZERO_AUTHORITY_INVERSIONS
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-20-GENERATED-DOCS-20260711T141224Z
+authority_changes:
+  generated_reader_inventory: FIVE_NEW_STRATEGIC_READERS_PLUS_REFRESHED_EXISTING_READERS
+  generated_reader_authority_status: generated_noncanonical
+  canonical_derivative_count: 0
+  framework_g08_status: accepted
+  target_system_approval_inferred: false
+  g07_approved: false
+  g09_complete: true
+  g10_approved: false
+  canonical_prds_changed: false
+  g08_decision_changed: false
+  requirement_trace_changed: false
+  production_readiness_claimed: false
+  operational_authority_granted: false
+  broad_stakeholder_consensus_claimed: false
+  domain_truth_or_acceptance_claimed: false
+  permission_expansion_granted: false
+unresolved_issues:
+- G-07 observable host verification remains open and no host-dependent capability claim is promoted.
+- G-10 final acceptance production readiness operational authority broad stakeholder consensus autonomous capability and domain truth remain open or unclaimed.
+- Seven needs-evidence rows 200 planned verifications quantitative vision measures confidential independent holdouts and real-host operational evidence remain future obligations.
+next_recommendation: Commit and push TX-20 as one rollback-coherent shared baseline then route only to TX-21-FINAL-ACCEPTANCE; do not claim G-07 G-10 production or operational acceptance before its separate evidence and accountable gate.

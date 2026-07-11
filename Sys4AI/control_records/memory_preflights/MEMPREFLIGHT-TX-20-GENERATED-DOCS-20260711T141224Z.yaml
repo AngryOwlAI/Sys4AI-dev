@@ -1,0 +1,71 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-20-GENERATED-DOCS-20260711T141224Z
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-20-GENERATED-DOCS
+created_at: '2026-07-11T14:12:24Z'
+status: PASS_WITH_WARNINGS
+commands_run:
+- command: python -m sys_for_ai.cli memory status --json
+  result: pass
+- command: rg TX-20 GENERATED-DOCS G-08 strategic-baseline MEMORY.md
+  result: pass
+- command: rg TX-20-GENERATED-DOCS generated reader G-08 implementation plan handoff registries generators
+  result: pass
+queries:
+- query: TX-20 generated strategic reader G-08 bounded derivative regeneration
+  returned_object_ids:
+  - SRC-STRATEGIC-BASELINE-MIGRATION-PLAN
+  - SRC-HANDOFF-STRATEGIC-BASELINE-TX19
+  - SRC-REG-DERIVATIVES
+  - SRC-DERIVATIVE-GENERATION
+  - SRC-DDR-STRATEGIC-BASELINE-G08-001
+  - SRC-WALKING-SKELETON-FLOW-MODULE
+canonical_sources_inspected:
+- path: implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+  registry: source_registry.csv
+  row_id: SRC-STRATEGIC-BASELINE-MIGRATION-PLAN
+  inspected_sections:
+  - WS-15 generated documentation and navigation
+  - TX-20 backlog row and closeout rule
+- path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX19-001.yaml
+  registry: source_registry.csv
+  row_id: SRC-HANDOFF-STRATEGIC-BASELINE-TX19
+  inspected_sections:
+  - TX-20-only route
+  - protected baselines and later-gate stop conditions
+- path: Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G08-001.yaml
+  registry: source_registry.csv
+  row_id: SRC-DDR-STRATEGIC-BASELINE-G08-001
+  inspected_sections:
+  - accepted exact framework strategic baseline
+  - host production operational stakeholder domain and permission limits
+- path: Sys4AI/sys_for_ai/derivative_generation.py
+  registry: source_registry.csv
+  row_id: SRC-DERIVATIVE-GENERATION
+  inspected_sections:
+  - deterministic governance writers
+  - derivative validation boundary
+- path: Sys4AI/sys_for_ai/walking_skeleton.py
+  registry: source_registry.csv
+  row_id: SRC-WALKING-SKELETON-FLOW-MODULE
+  inspected_sections:
+  - generated report warnings
+  - deterministic report writer
+registry_rows_inspected:
+- path: Sys4AI/registries/derivative_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-DERIVATIVES
+  purpose: Confirm existing generated pages and the five missing WS-15 strategic reader rows.
+- path: Sys4AI/registries/source_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-SOURCES
+  purpose: Resolve canonical controlled and generated authority classes.
+- path: Sys4AI/registries/artifact_contract_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-ARTIFACT-CONTRACTS
+  purpose: Resolve strategic artifact producers consumers contracts and promotion rules.
+stale_context_risks:
+- risk_id: MEMPREFLIGHT-RISK-TX20-001
+  status: observed
+  notes: Memory and the TX-16 generated report predate G-08 acceptance; the live Phase 0 PRD G-08 decision TX-19 handoff and registries control current routing.
+usable_for_routing: true

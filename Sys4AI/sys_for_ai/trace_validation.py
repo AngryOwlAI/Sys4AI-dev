@@ -281,6 +281,23 @@ def _validate_program_state_alignment(path: Path, state: dict[str, Any]) -> list
             messages.append(f"{path}: post-TX-19 state is not aligned to the TX-19 handoff")
         if state.get("state_status") != "active" or state.get("human_gate_required") is not False:
             messages.append(f"{path}: post-TX-19 state must remain active without claiming a new human gate")
+    elif phase == "strategic_baseline_migration_after_TX_20":
+        if summary.get("broader_semantic_validation") != "implemented":
+            messages.append(f"{path}: post-TX-20 state must retain broader_semantic_validation implemented")
+        if summary.get("strategic_approval") != "accepted_G_08":
+            messages.append(f"{path}: post-TX-20 state must retain strategic_approval accepted_G_08")
+        if summary.get("derivative_regeneration") != "complete_G_09":
+            messages.append(f"{path}: post-TX-20 state must mark derivative_regeneration complete_G_09")
+        if "execute_TX_21_FINAL_ACCEPTANCE_only_after_TX_20_shared_baseline" not in allowed:
+            messages.append(f"{path}: post-TX-20 state does not allow the exact TX-21 final-acceptance route")
+        if "claim_G_10_before_TX_21_acceptance" not in blocked:
+            messages.append(f"{path}: post-TX-20 state must block premature G-10 acceptance")
+        if state.get("latest_closeout_evidence_id") != "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX20-001":
+            messages.append(f"{path}: post-TX-20 state is not aligned to the TX-20 completion")
+        if state.get("latest_handoff_evidence_id") != "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX20-001":
+            messages.append(f"{path}: post-TX-20 state is not aligned to the TX-20 handoff")
+        if state.get("state_status") != "active" or state.get("human_gate_required") is not False:
+            messages.append(f"{path}: post-TX-20 state must remain active without claiming final acceptance")
     else:
         messages.append(f"{path}: unsupported strategic-baseline program phase {phase!r}")
     return messages

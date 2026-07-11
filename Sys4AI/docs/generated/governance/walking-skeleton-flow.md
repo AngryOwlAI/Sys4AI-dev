@@ -4,7 +4,7 @@ page_metadata:
   derivative_id: der_walking_skeleton_flow
   derivative_type: walking_skeleton_flow_report
   authority_status: generated_noncanonical
-  generator: sys_for_ai.walking_skeleton:0.2.0
+  generator: sys_for_ai.walking_skeleton:0.3.0
   flow_id: SFA-P2-STRATEGIC-WALKING-SKELETON-001
   target_system_id: repo_steward_agent_sample
 
@@ -61,7 +61,7 @@ The active flow contains portable execution transactions and no retired packet n
 
 - Test execution: repository-local unit, CLI, and aggregate checks.
 - Requirements verification: generalized framework trace plus package-local trace.
-- Stakeholder or system validation: not run; G-08 and domain acceptance remain open.
+- Stakeholder or system validation: not run; framework G-08 is accepted, while target-system validation and domain acceptance remain open.
 - Behavioral or performance evaluation: not run; TX-17 and production evidence remain later work.
 
 ## Historical Evidence Appendix
@@ -81,7 +81,7 @@ Historical packet-era artifacts remain available as activated evidence. They are
 ## Warnings And Open Gates
 
 - G-07 host verification remains open.
-- G-08 strategic approval remains open.
+- G-08 framework strategic approval is accepted; target-system approval and domain acceptance remain independent.
 - Production readiness, operational authority, stakeholder consensus, and domain acceptance remain open.
 - Target package evidence is structural and derivative-only.
 
@@ -97,4 +97,4 @@ Historical packet-era artifacts remain available as activated evidence. They are
 
 Structural validation does not prove strategic quality, ethical correctness, stakeholder consensus, behavioral alignment, production readiness, or domain truth. Those claims require accountable review and additional evidence.
 
-The example remains a derivative smoke package at validated_prototype maturity. Fictional demonstration approval does not satisfy G-07, G-08, production readiness, operational authority, stakeholder consensus, or domain acceptance.
+The example remains a derivative smoke package at validated_prototype maturity. Its fictional demonstration approval does not establish target-system validation, G-07, production readiness, operational authority, stakeholder consensus, or domain acceptance; framework G-08 is independently accepted.

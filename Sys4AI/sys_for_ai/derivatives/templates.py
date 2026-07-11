@@ -8,7 +8,7 @@ from typing import Iterable
 from ..registry_io import read_registry_rows
 from ..validators import ValidationResult
 
-GENERATED_AT = "2026-07-06T00:00:00Z"
+GENERATED_AT = "2026-07-11T14:12:24Z"
 NOTICE = (
     "> **Generated derivative notice**\n"
     ">\n"

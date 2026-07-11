@@ -31,7 +31,7 @@ page_metadata:
     - contract_state_snapshot
     - contract_sys4ai_config
     - contract_target_project_config
-  generated_at: 2026-07-06T00:00:00Z
+  generated_at: 2026-07-11T14:12:24Z
   generator: sys_for_ai.derivatives.config_control_wiki:0.1.0
   stale_or_orphan_status: current
   source_hashes:
@@ -66,7 +66,7 @@ This generated page indexes registered configuration and control surfaces. It is
 | --- | --- | --- |
 | format profiles | 5 | registries/format_profile_registry.csv |
 | configuration sources | 6 | registries/config_source_registry.csv |
-| control records | 198 | registries/control_record_registry.csv |
+| control records | 202 | registries/control_record_registry.csv |
 
 ## Allowed Promotion Path
 

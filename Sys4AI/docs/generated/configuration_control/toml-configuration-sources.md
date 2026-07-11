@@ -17,7 +17,7 @@ page_metadata:
     - contract_self_hosting_mode
     - contract_sys4ai_config
     - contract_target_project_config
-  generated_at: 2026-07-06T00:00:00Z
+  generated_at: 2026-07-11T14:12:24Z
   generator: sys_for_ai.derivatives.config_control_wiki:0.1.0
   stale_or_orphan_status: current
   source_hashes:

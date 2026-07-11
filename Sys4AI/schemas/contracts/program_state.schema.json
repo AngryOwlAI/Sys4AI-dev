@@ -83,7 +83,8 @@
         "removed_runtime_surfaces": { "enum": ["absent", "present", "unknown"] },
         "broader_semantic_validation": { "enum": ["implemented", "partial", "deferred", "removed"] },
         "safety_evaluation_controls": { "enum": ["implemented", "partial", "deferred", "removed"] },
-        "strategic_approval": { "enum": ["candidate", "accepted_G_08", "rejected", "revision_requested"] }
+        "strategic_approval": { "enum": ["candidate", "accepted_G_08", "rejected", "revision_requested"] },
+        "derivative_regeneration": { "enum": ["pending_G_09", "complete_G_09"] }
       },
       "additionalProperties": false
     },

@@ -6,7 +6,10 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from sys_for_ai.derivative_generation import validate_generated_derivatives
+from sys_for_ai.derivative_generation import (
+    expected_governance_generated_docs,
+    validate_generated_derivatives,
+)
 from sys_for_ai.derivatives import (
     check_config_control_wiki,
     check_validation_contracts_catalog,
@@ -19,6 +22,34 @@ class GeneratedDerivativeTests(unittest.TestCase):
     def test_current_generated_derivatives_validate(self) -> None:
         result = validate_generated_derivatives("docs/generated", "registries/derivative_registry.csv")
         self.assertTrue(result.ok, result.messages)
+
+    def test_strategic_governance_readers_are_generated_and_noncanonical(self) -> None:
+        pages = expected_governance_generated_docs()
+        names = {path.name for path in pages if path.parent.name == "governance"}
+        self.assertEqual(
+            {
+                "capability-migration-status.md",
+                "host-capability-profile.md",
+                "lifecycle-and-patterns.md",
+                "strategic-intent-contracts.md",
+                "strategic-intent-evidence-graph.md",
+            },
+            names,
+        )
+        for path, text in pages.items():
+            if path.parent.name != "governance":
+                continue
+            self.assertIn("authority_status: generated_noncanonical", text)
+            self.assertIn("stale_or_orphan_status: current", text)
+            self.assertNotIn("authority_status: canonical", text)
+
+    def test_strategic_readers_preserve_gate_and_permission_boundaries(self) -> None:
+        pages = expected_governance_generated_docs()
+        combined = "\n".join(text for path, text in pages.items() if path.parent.name == "governance")
+        self.assertIn("G-08 approves only the exact framework vision and values", combined)
+        self.assertIn("G-07 remains open", combined)
+        self.assertIn("Values do not grant permission", combined)
+        self.assertNotIn("G-08 strategic approval remains open", combined)
 
     def test_config_control_check_fails_on_drift_and_write_repairs(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:

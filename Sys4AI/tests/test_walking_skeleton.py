@@ -150,7 +150,8 @@ class WalkingSkeletonTests(unittest.TestCase):
         self.assertNotIn("agentjob", active_section.lower())
         self.assertIn("agentjob", historical_section.lower())
         self.assertIn("G-07 host verification remains open", report)
-        self.assertIn("G-08 strategic approval remains open", report)
+        self.assertIn("G-08 framework strategic approval is accepted", report)
+        self.assertNotIn("G-08 strategic approval remains open", report)
         self.assertIn("Production readiness, operational authority, stakeholder consensus, and domain acceptance remain open", report)
 
     def test_every_addendum_requirement_is_in_the_framework_trace(self) -> None:

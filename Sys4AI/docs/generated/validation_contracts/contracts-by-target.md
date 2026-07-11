@@ -55,7 +55,7 @@ page_metadata:
     - contract_target_system_package_manifest
     - contract_self_change_safety_evaluation
     - contract_self_change_holdout_suite
-  generated_at: 2026-07-06T00:00:00Z
+  generated_at: 2026-07-11T14:12:24Z
   generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
   stale_or_orphan_status: current
   source_hashes:

@@ -26,7 +26,7 @@ page_metadata:
     - contract_memory_preflight_receipt_v0_1
     - contract_program_state
     - contract_state_snapshot
-  generated_at: 2026-07-06T00:00:00Z
+  generated_at: 2026-07-11T14:12:24Z
   generator: sys_for_ai.derivatives.config_control_wiki:0.1.0
   stale_or_orphan_status: current
   source_hashes:
@@ -239,6 +239,10 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_strategic_baseline_tx19_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-19-MODULES-20260710T193535Z.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
 | ctrl_strategic_baseline_tx19_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX19-001.yaml | completion_receipt | controlled | requirements_manager | contract_completion_receipt_v1_0 | pending |
 | ctrl_strategic_baseline_tx19_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX19-001.yaml | handoff | controlled | requirements_manager | contract_handoff_v1_0 | pending |
+| ctrl_strategic_baseline_tx20_execution_transaction | control_records/execution_transactions/TX-20-GENERATED-DOCS.yaml | execution_transaction | controlled | bounded_execution_planner | contract_execution_transaction | pending |
+| ctrl_strategic_baseline_tx20_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-20-GENERATED-DOCS-20260711T141224Z.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
+| ctrl_strategic_baseline_tx20_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX20-001.yaml | completion_receipt | controlled | svc_documentation_surface_architect | contract_completion_receipt_v1_0 | pending |
+| ctrl_strategic_baseline_tx20_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX20-001.yaml | handoff | controlled | svc_documentation_surface_architect | contract_handoff_v1_0 | pending |
 
 ## Validation Contract Trace
 
