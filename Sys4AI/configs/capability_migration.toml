@@ -145,8 +145,8 @@ replacement_capability = "ExecutionTransaction"
 blocking_transaction = "TX-13-VALIDATORS"
 allowed_modes = ["post_tx10"]
 expected_files = 14
-expected_references = 559
-expected_inventory_sha256 = "6e7efb18024406392f4430d0ef2960cd1f7b8301811730641c6ca1604622067b"
+expected_references = 558
+expected_inventory_sha256 = "a56c1c3ffa56bfa2bbb592d649990d7a25519c3ddfc39dcd9f31c387130d3b75"
 
 [[classifications]]
 classification_id = "legacy_schema_compatibility"
