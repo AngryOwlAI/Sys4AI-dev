@@ -41,7 +41,7 @@ This graph is a generated navigation view over registered evidence. Status label
 | requirements | current_mixed_capability | SRC-REG-REQ-TRACE | absent=5; implemented=85; scaffolded=137 |
 | architecture | current_design_basis | SRC-PRD-P0 | Pattern and maturity remain independent |
 | permissions | bounded | SRC-SCHEMA-EXECUTION-TRANSACTION | Values do not grant permission |
-| tests | current_local_evidence | SRC-TEST-SAFETY-EVALUATION | pass=42; planned=185 |
+| tests | current_local_evidence | SRC-TEST-SAFETY-EVALUATION | pass=52; planned=175 |
 | evaluations | current_with_gaps | SRC-SAFETY-EVALUATION-PACKET-TX17 | current=227 |
 | operations | planned_not_operational | SRC-SAFETY-EVALUATION-PACKET-TX17 | No operational authority |
 | maintenance | planned | SRC-PRD-P0 | Requires current operational evidence |

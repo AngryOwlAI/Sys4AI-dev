@@ -1,0 +1,93 @@
+director_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-005
+schema_version: 0.1.0
+decision_status: completed
+created_at: '2026-07-11T18:11:09Z'
+completed_at: '2026-07-11T18:11:09Z'
+director_role: system_director
+human_authorization:
+  principal_name: Alex Omegapy
+  principal_role: repository_maintainer_and_product_owner
+  authority_basis: The accountable human authorized another bounded family among the 52 remaining local verifications or separate external-evidence scoping after TX-27.
+  approval_evidence: 'Human-issued Codex task instruction dated 2026-07-11: I authorize another bounded family among the remaining 52 local verifications or for external-evidence scoping. Cross-version Python 3.10-3.13 CI remains separate and was not included in TX-27.'
+  approval_scope:
+  - select the bounded local route and execute exactly the ten-row core format-governance family
+  - advance verification state only where exact current local evidence passes
+  - repair only the selected-family format policy and memory-inspectability gaps
+  - preserve the frozen TX-23 ledger and all 410 TX-25 future-work dispositions
+  - preserve cross-version CI external evidence waiver G-10 production operational stakeholder domain target-runtime and permission gates
+  model_self_approval: false
+decision_context:
+  trigger: accountable_local_evidence_family_selection
+  transaction_id: TX-28-LOCAL-EVIDENCE-FORMAT-GOVERNANCE
+  gate_id: G-11-EVIDENCE-SCOPE
+  program_state_id: SYS4AI-PROGRAM-STATE-001
+  latest_handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX27-001
+  plan_source_id: SRC-EVIDENCE-CLOSURE-PLAN-TX23
+  governing_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+  prior_gate_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-004
+  reviewed_head_commit: 12a8c018e703df907fcbf328caaae3aac3376127
+  memory_preflight_receipt_id: MEMPREFLIGHT-TX-28-LOCAL-EVIDENCE-FORMAT-GOVERNANCE-20260711T181109Z
+  observed_evidence:
+  - TX-27 is complete and leaves exactly 52 locally executable verification obligations.
+  - The ten selected rows are the first remaining locally executable family in frozen trace order and share one format registry policy retrieval and reviewer surface.
+  - Pre-acceptance inspection found missing derivative-freshness output and an under-specified project-specific profile extension workflow.
+  - The repaired surface passes exact five-profile policy memory lookup authority freshness and negative checks.
+selected_route:
+  route_id: authorize_bounded_TX_28_format_governance_verification
+  route_name: Execute the ten-row core format-profile governance and memory-inspectability family
+  rationale: This is the earliest dependency-ready coherent family after TX-27 with one rollback surface and one reviewer class.
+  immediate_effect: TX-28 may record exactly ten planned-to-pass verification transitions with executed evidence. No other trace state waiver plan interpretation or authority changes.
+rejected_routes:
+- route_id: execute_all_52_local_verifications
+  reason: A bulk packet would cross CSV Markdown TOML JSON Schema and generated-catalog families and obscure review and rollback.
+- route_id: scope_external_evidence_now
+  reason: The selected bounded local family is dependency-ready; external metrics stakeholder independent domain and operational evidence remain separately gated.
+- route_id: add_cross_version_python_CI
+  reason: The human explicitly kept Python 3.10 through 3.13 CI separate from TX-27 and this format family.
+- route_id: accept_G10_or_promote_to_production
+  reason: Local format-governance checks do not satisfy retained external operational or final reacceptance gates.
+authority_boundary:
+  human_authority_recorded: true
+  accepts_gate_G_11_local_family_route: true
+  authorizes_TX_28_format_governance_verification: true
+  authorized_local_obligations: 10
+  authorizes_remaining_local_verification_obligations: false
+  changes_410_plan_interpretations: false
+  accepts_any_waiver: false
+  accepts_gate_G_10: false
+  may_claim_production_readiness: false
+  may_grant_operational_authority: false
+  may_claim_broad_stakeholder_consensus: false
+  may_claim_domain_truth_or_domain_acceptance: false
+  may_expand_permissions: false
+  may_rewrite_activated_control_history: false
+supersession:
+  supersedes_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-004
+  scope: Supersedes only the prior prohibition on beginning another local evidence family without separate authorization; preserves completed TX-27 evidence and every other boundary.
+  preserves:
+  - completed TX-24 TX-26 and TX-27 evidence
+  - frozen TX-23 ledger
+  - all 410 TX-25 future-work dispositions
+  - G-10 defer production operational stakeholder domain target-runtime permission and cross-version-CI boundaries
+rollback_and_review:
+  rollback_class: activating_bounded_verification_scope_decision
+  rollback_scope: Before publication revert the atomic G-11-005 and TX-28 packet. After publication preserve this decision and supersede it only through a new accountable decision.
+  supersession_rule: Any later local family external evidence waiver lifecycle change or G-10 reconsideration requires separate accountable authority.
+  review_triggers:
+  - an eleventh local verification obligation is proposed
+  - format profile authority policy memory exposure or derivative freshness behavior changes
+  - a waiver lifecycle capability coverage operational or cross-version-CI claim is proposed
+  expiry: remains current for this completed packet and grants no continuing authority
+evidence_references:
+- implementation_plans/STRATEGIC-BASELINE-MIGRATION-EVIDENCE-CLOSURE-PLAN-SFADEV-TX23.md
+- implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-LOCAL-EVIDENCE-FORMAT-GOVERNANCE-SFADEV-TX28.md
+- Sys4AI/registries/evidence_closure_plan_registry.csv
+- Sys4AI/registries/requirement_trace_registry.csv
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX27-001.yaml
+- Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-28-LOCAL-EVIDENCE-FORMAT-GOVERNANCE-20260711T181109Z.yaml
+validators:
+- cd Sys4AI && make validate-format-governance-surface
+- cd Sys4AI && make validate-local-evidence-execution
+- cd Sys4AI && make validate-requirement-trace-migration
+- make validate
+- git diff --check

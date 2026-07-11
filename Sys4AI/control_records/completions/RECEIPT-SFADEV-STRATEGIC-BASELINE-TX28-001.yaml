@@ -1,0 +1,50 @@
+completion_receipt_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX28-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-28-LOCAL-EVIDENCE-FORMAT-GOVERNANCE
+role: verification_engineer
+result: PASS
+summary: TX-28 verified exactly ten core format-profile governance and memory-inspectability obligations while preserving frozen planning history all 410 future-work dispositions and every later authority gate.
+changed_artifacts:
+- path: Sys4AI/sys_for_ai/format_governance_surface.py;Sys4AI/tests/test_format_governance_surface.py
+  change_summary: Adds focused fail-closed format-profile policy retrieval authority freshness and negative verification.
+- path: Sys4AI/docs/format_profile_policy.md;Sys4AI/sys_for_ai/memory/registry_catalog.py;Sys4AI/sys_for_ai/memory/search.py
+  change_summary: Closes the selected-family extension-workflow and retrieval-metadata gaps without changing canonical requirements.
+- path: Sys4AI/registries/local_evidence_execution_registry.csv;Sys4AI/registries/requirement_trace_registry.csv
+  change_summary: Adds exactly ten accepted evidence bindings and planned-to-pass transitions without changing capability coverage lifecycle or waiver fields.
+- path: implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-LOCAL-EVIDENCE-FORMAT-GOVERNANCE-SFADEV-TX28.md
+  change_summary: Records exact methods dispositions results limitations and rollback boundary.
+- path: Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-005.yaml;Sys4AI/control_records/execution_transactions/TX-28-LOCAL-EVIDENCE-FORMAT-GOVERNANCE.yaml
+  change_summary: Records accountable scope and the one-family transaction boundary.
+- path: Sys4AI/control_records/program_state.yaml;Sys4AI/registries;Sys4AI/docs/generated
+  change_summary: Advances only to completed TX-28 and reconciles controlled indexes plus noncanonical readers.
+- path: Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX28-001.yaml;Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX28-001.yaml;implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX28-001.md
+  change_summary: Closes TX-28 and stops at a new human gate.
+validation_evidence:
+  format_governance_requirements: PASS_10_OF_10
+  format_governance_tests: PASS_6_OF_6
+  trace_rows: 227
+  trace_verification: PASS_52_PLANNED_175
+  local_evidence_accepted: 32
+  remaining_local_verification_obligations: 42
+  frozen_tx23_ledger_sha256: 1e9e2b2a0a7bc4f589addd65b8d34642899a3f812e7ce35be6e62a2c0fcc6138
+  frozen_tx25_interpretation_sha256: 9ed89d6ff5872ee2fb2b740791c268d9048e97f31eae8ff7d3b4d2d8929d5f38
+  accepted_waivers: 0
+  g10_status: DEFERRED_NOT_ACCEPTED
+  repository_validation: PASS
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-28-LOCAL-EVIDENCE-FORMAT-GOVERNANCE-20260711T181109Z
+authority_changes:
+  accepts_G_11_005_bounded_format_family: true
+  advances_exact_verification_rows: 10
+  remaining_local_verifications: 42
+  changes_capability_or_coverage: false
+  changes_TX_23_or_TX_25_frozen_bytes: false
+  accepted_waiver: false
+  accepts_G_10: false
+  grants_production_or_operational_authority: false
+unresolved_issues:
+- Forty-two other local verification obligations remain separately gated.
+- Cross-version Python 3.10 through 3.13 CI remains outside TX-28.
+- External metric independent stakeholder domain and operational evidence remain unclaimed.
+- Memory retains known pending-hash warnings but no authority inversion.
+next_recommendation: Stop at the new human gate. An accountable human may select one later bounded local verification family or separately decide external evidence scope; TX-28 authorizes neither.

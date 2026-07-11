@@ -29,7 +29,7 @@ class TraceSemanticTests(unittest.TestCase):
         rows = self._read_rows(TRACE)
         self.assertEqual(0, sum(row["semantic_review_verdict"] == "needs_evidence" for row in rows))
         self.assertEqual(227, sum(row["semantic_review_verdict"] == "sufficient" for row in rows))
-        self.assertEqual(185, sum(row["verification_status"] == "planned" for row in rows))
+        self.assertEqual(175, sum(row["verification_status"] == "planned" for row in rows))
 
     def test_implemented_capability_with_missing_path_fails(self) -> None:
         result = self._mutated_trace(
@@ -172,10 +172,10 @@ class TraceSemanticTests(unittest.TestCase):
         self.assertFalse(result.ok)
         self.assertTrue(any("treat_TX_23_classification_as_executed_evidence" in item for item in result.messages))
 
-    def test_post_tx27_state_requires_separate_next_family_authorization(self) -> None:
+    def test_post_tx28_state_requires_separate_next_family_authorization(self) -> None:
         def mutate_state(state):
             state["allowed_next_actions"].remove(
-                "seek_separate_authorization_for_remaining_52_local_verification_obligations"
+                "seek_separate_authorization_for_remaining_42_local_verification_obligations"
             )
 
         result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
@@ -254,7 +254,7 @@ class TraceSemanticTests(unittest.TestCase):
                 f'trace_registry_path = "{(root / "trace.csv").as_posix()}"\n'
                 "max_current_evidence_age_days = 30\n"
                 "expected_needs_evidence = 0\n"
-                "expected_planned_verification = 185\n"
+                "expected_planned_verification = 175\n"
                 "expected_operational_capability = 0\n",
                 encoding="utf-8",
             )
@@ -265,7 +265,7 @@ class TraceSemanticTests(unittest.TestCase):
             self._write_rows(root / "trace.csv", rows)
             result = self._validate_fixture(root, policy=policy)
         self.assertFalse(result.ok)
-        self.assertTrue(any("expected planned=185, found 184" in item for item in result.messages))
+        self.assertTrue(any("expected planned=175, found 174" in item for item in result.messages))
 
     def _mutated_trace(self, mutation, *, state_mutation=None):
         with tempfile.TemporaryDirectory() as temporary:

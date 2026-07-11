@@ -8,7 +8,7 @@ from typing import Iterable
 
 from ..registry_io import read_registry, read_registry_rows, resolve_registered_path, rows_by_id
 from ..validators import REGISTRY_HEADERS, validate_registry_headers
-from .authority import required_next_action
+from .authority import classify_authority, required_next_action
 from .model import DerivativeEvidence, MemoryObject, RegistryEvidence, ValidationEvidence
 
 
@@ -113,6 +113,7 @@ def build_catalog(root: str | Path = ".") -> MemoryCatalog:
                 format_profiles=format_profiles,
                 validation_contracts=validation_contracts,
                 derivative_rows=derivative_rows,
+                root=base,
             )
             objects.append(memory_object)
             _record_path_warnings(base, memory_object, warnings)
@@ -153,12 +154,14 @@ def memory_object_to_dict(memory_object: MemoryObject) -> dict[str, object]:
         "path": memory_object.path,
         "artifact_class": memory_object.artifact_class,
         "authority_status": memory_object.authority_status,
+        "authority_class": classify_authority(memory_object),
         "format_profile_id": memory_object.format_profile_id,
         "registry": memory_object.registry_evidence.registry_name,
         "registry_row_id": memory_object.registry_evidence.row_id,
         "validation_status": memory_object.validation_evidence.validation_status,
         "validation_contract_id": memory_object.validation_evidence.validation_contract_id,
         "validator_command": memory_object.validation_evidence.validator_command,
+        "derivative_freshness": _derivative_freshness_value(memory_object),
         "required_next_action": required_next_action(memory_object),
         "source_hash": memory_object.source_hash,
     }
@@ -171,6 +174,7 @@ def _row_to_memory_object(
     format_profiles: dict[str, dict[str, str]],
     validation_contracts: dict[str, dict[str, str]],
     derivative_rows: dict[str, dict[str, str]],
+    root: Path,
 ) -> MemoryObject:
     object_id = row[id_field]
     path = row.get("path") or row.get("local_path") or row.get("target_glob") or ""
@@ -191,7 +195,7 @@ def _row_to_memory_object(
         derivative = DerivativeEvidence(
             derivative_id=object_id,
             source_ids=_split_semicolon(row.get("source_ids", "")),
-            stale_or_orphan_status=row.get("status") or None,
+            stale_or_orphan_status=_read_derivative_freshness(path, row, root),
             generation_method=row.get("generation_method") or None,
         )
     elif object_id in derivative_rows:
@@ -199,7 +203,7 @@ def _row_to_memory_object(
         derivative = DerivativeEvidence(
             derivative_id=object_id,
             source_ids=_split_semicolon(der_row.get("source_ids", "")),
-            stale_or_orphan_status=der_row.get("status") or None,
+            stale_or_orphan_status=_read_derivative_freshness(path, der_row, root),
             generation_method=der_row.get("generation_method") or None,
         )
 
@@ -244,6 +248,28 @@ def _read_index(path: Path, id_field: str) -> dict[str, dict[str, str]]:
     if not path.exists():
         return {}
     return rows_by_id(read_registry_rows(path), id_field)
+
+
+def _derivative_freshness_value(memory_object: MemoryObject) -> str:
+    evidence = memory_object.derivative_evidence
+    return evidence.stale_or_orphan_status if evidence and evidence.stale_or_orphan_status else "not_applicable"
+
+
+def _read_derivative_freshness(path: str, row: dict[str, str], root: Path) -> str:
+    resolved = resolve_registered_path(path, root)
+    if not resolved.exists():
+        return "orphaned"
+    if resolved.is_file():
+        try:
+            for line in resolved.read_text(encoding="utf-8").splitlines()[:80]:
+                if "stale_or_orphan_status:" in line:
+                    value = line.split(":", 1)[1].strip().strip("'\"")
+                    if value:
+                        return value
+        except (OSError, UnicodeDecodeError):
+            return "invalid"
+    generated_at = row.get("last_generated", "")
+    return "current" if generated_at and generated_at != "pending" else "unknown"
 
 
 def _guess_format_profile(path: str, format_profiles: dict[str, dict[str, str]]) -> str | None:

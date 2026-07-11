@@ -36,6 +36,10 @@ Phase 1 examples must not contain secret-bearing YAML or TOML values. Validators
 
 A governed artifact is invalid when its registry row points to a missing source, its declared validation contract is missing, or a generated derivative claims canonical authority. Later passes may replace pending source hashes with deterministic hash checks.
 
+## Project-Specific Profile Extension Workflow
+
+A project-specific profile requires an accountable PRD or Director Decision, an additive row in the controlled format-profile registry, an executable validation contract, and passing authority-boundary review before use. An extension shall not weaken the core authority hierarchy, relax source-first promotion, or permit a generated derivative, local vault, semantic cache, or wiki page to become canonical implicitly. Changes and rollback use a bounded registry-change transaction; existing activated profile history is superseded rather than rewritten.
+
 ## Phase 1 Limitations
 
 Phase 1 provides scaffold validation. It does not implement a production memory database, full wiki engine, TOML writing, or semantic acceptance validation.

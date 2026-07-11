@@ -1,0 +1,60 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-28-LOCAL-EVIDENCE-FORMAT-GOVERNANCE-20260711T181109Z
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-28-LOCAL-EVIDENCE-FORMAT-GOVERNANCE
+created_at: '2026-07-11T18:11:09Z'
+status: PASS_WITH_WARNINGS
+commands_run:
+- command: .venv/bin/python -m sys_for_ai.cli memory status --json
+  result: pass
+- command: .venv/bin/python -m sys_for_ai.cli memory lookup TX-27-LOCAL-EVIDENCE-YAML-CONTROL --json
+  result: pass
+- command: .venv/bin/python -m sys_for_ai.cli memory lookup HANDOFF-SFADEV-STRATEGIC-BASELINE-TX27-001 --json
+  result: pass
+- command: .venv/bin/python -m sys_for_ai.cli memory search SRC-REG-FORMAT-PROFILES --limit 10 --json
+  result: pass
+- command: .venv/bin/python -m sys_for_ai.cli memory search SRC-REG-REQ-TRACE --limit 10 --json
+  result: pass
+- command: .venv/bin/python -m sys_for_ai.cli memory search SRC-EVIDENCE-CLOSURE-PLAN-TX23 --limit 10 --json
+  result: pass
+queries:
+- query: SRC-REG-FORMAT-PROFILES
+  returned_object_ids:
+  - SRC-REG-FORMAT-PROFILES
+  - SRC-REG-DERIVATIVES
+- query: SRC-REG-REQ-TRACE
+  returned_object_ids:
+  - SRC-REG-REQ-TRACE
+- query: SRC-EVIDENCE-CLOSURE-PLAN-TX23
+  returned_object_ids:
+  - SRC-EVIDENCE-CLOSURE-PLAN-TX23
+canonical_sources_inspected:
+- path: Sys4AI/registries/format_profile_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-FORMAT-PROFILES
+  inspected_sections:
+  - five core profiles and all classification axes
+- path: Sys4AI/docs/format_profile_policy.md
+  registry: source_registry.csv
+  row_id: SRC-FORMAT-PROFILE-POLICY
+  inspected_sections:
+  - authority promotion drift security and extension rules
+- path: Sys4AI/registries/requirement_trace_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-REQ-TRACE
+  inspected_sections:
+  - ten implemented covered planned format-governance rows
+registry_rows_inspected:
+- path: control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX27-001.yaml
+  registry: handoff_registry.csv
+  row_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX27-001
+  purpose: Confirm exactly 52 remaining local obligations and the separate human gate.
+- path: registries/evidence_closure_plan_registry.csv
+  registry: evidence_closure_plan_registry.csv
+  row_id: CLOSE-SFA-CORE-FORMAT-001-VERIFICATION
+  purpose: Confirm the selected family is locally executable and still planned in frozen history.
+stale_context_risks:
+- risk_id: MEMPREFLIGHT-RISK-001
+  status: observed_and_mitigated
+  notes: Generated derivative hits were navigation only; canonical registries policies PRDs and the live trace were inspected directly.
+usable_for_routing: true

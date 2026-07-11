@@ -171,6 +171,7 @@ def _validate_strategic_approval_state(
         "strategic_baseline_migration_TX_25_plan_interpretation_complete",
         "strategic_baseline_migration_TX_26_python_package_verification_complete",
         "strategic_baseline_migration_TX_27_yaml_control_verification_complete",
+        "strategic_baseline_migration_TX_28_format_governance_verification_complete",
     }:
         return []
 

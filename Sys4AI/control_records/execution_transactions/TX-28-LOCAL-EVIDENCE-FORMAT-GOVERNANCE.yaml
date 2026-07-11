@@ -1,0 +1,231 @@
+execution_transaction_id: TX-28-LOCAL-EVIDENCE-FORMAT-GOVERNANCE
+contract_version: 1.0.0
+objective: Verify exactly ten implemented and covered core format-profile governance and memory-inspectability obligations with fail-closed registry policy authority freshness and negative-test evidence then stop at a new human gate.
+source_requirement_ids:
+- SFA-CORE-FORMAT-001
+- SFA-CORE-FORMAT-002
+- SFA-CORE-FORMAT-003
+- SFA-CORE-FORMAT-004
+- SFA-CORE-FORMAT-005
+- SFA-CORE-FORMAT-006
+- SFA-P0-FR-031
+- SFA-P0-FR-032
+- SFA-P0-FR-045
+- SFA-P0-NFR-014
+source_decision_ids:
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-005
+subject_system:
+  system_id: sys4ai
+  system_name: Sys4AI
+subject_layer: framework_product
+runtime_actor:
+  actor_id: codex_meta_agent_runtime
+  actor_type: meta_agent_runtime
+  role_ids:
+  - verification_engineer
+  - source_authority_auditor
+  - baseline_change_manager
+  authority_source_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-005
+approval_principal:
+  principal_id: alex_omegapy
+  principal_type: accountable_human
+  approval_scope: Execute one bounded local family; this transaction selects only the ten core format-governance obligations while cross-version CI and external evidence remain separate.
+  authorization_evidence_ids:
+  - HUMAN-TASK-2026-07-11-TX28-FORMAT-GOVERNANCE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-005
+  model_self_approval: false
+execution_authorization:
+  status: authorized
+  authorized_at: '2026-07-11T18:11:09Z'
+  expires_at: '2026-07-12T18:11:09Z'
+  authority_evidence_ids:
+  - HUMAN-TASK-2026-07-11-TX28-FORMAT-GOVERNANCE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-005
+  self_authorized: false
+permission_envelope:
+  envelope_id: PERMISSION-ENVELOPE-TX-28-LOCAL-EVIDENCE-FORMAT-GOVERNANCE
+  status: current
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-11-TX28-FORMAT-GOVERNANCE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-005
+  data_classes:
+  - repository_controlled_artifacts
+  - local_validation_evidence
+  resource_limits:
+  - One bounded ten-row core format-profile governance and memory-inspectability verification family.
+  - Repair only the selected format policy retrieval metadata focused validator and directly dependent evidence contracts.
+  - Preserve the frozen 484-row TX-23 ledger and 410-row TX-25 interpretation byte for byte.
+  - No external services cross-version CI target runtime production operations or delegated work.
+  valid_from: '2026-07-11T18:11:09Z'
+  expires_at: '2026-07-12T18:11:09Z'
+  sensitive_data_allowed: false
+  secrets_allowed: false
+  data_egress_allowed: false
+  external_side_effects_allowed: true
+  delegation_allowed: false
+  delegation_expires_at: not_applicable
+  permission_expansion_allowed: false
+allowed_reads:
+- PRDs/Sys4AI_phase-0_product_system_design_prd.md
+- PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+- Sys4AI/registries/evidence_closure_plan_registry.csv
+- Sys4AI/registries/plan_scope_interpretation_registry.csv
+- Sys4AI/registries/requirement_trace_registry.csv
+- Sys4AI/registries/format_profile_registry.csv
+- Sys4AI/registries/source_registry.csv
+- Sys4AI/registries/derivative_registry.csv
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX27-001.yaml
+allowed_writes:
+- Sys4AI/sys_for_ai/format_governance_surface.py
+- Sys4AI/tests/test_format_governance_surface.py
+- Sys4AI/sys_for_ai/memory/registry_catalog.py
+- Sys4AI/sys_for_ai/memory/search.py
+- Sys4AI/docs/format_profile_policy.md
+- Sys4AI/registries/local_evidence_execution_registry.csv
+- Sys4AI/registries/requirement_trace_registry.csv
+- Sys4AI/schemas/contracts/local_evidence_execution_registry_row.schema.json
+- Sys4AI/control_records/**TX28**
+- Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-005.yaml
+- Sys4AI/control_records/program_state.yaml
+- Sys4AI/registries/*.csv
+- Sys4AI/docs/generated/**
+- Sys4AI/Makefile
+- Sys4AI/sys_for_ai/cli.py
+- Sys4AI/sys_for_ai/evidence_closure.py
+- Sys4AI/sys_for_ai/trace_validation.py
+- Sys4AI/sys_for_ai/safety_evaluation.py
+- Sys4AI/tests/**
+- Sys4AI/configs/capability_migration.toml
+- Sys4AI/schemas/contracts/program_state.schema.json
+- implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-LOCAL-EVIDENCE-FORMAT-GOVERNANCE-SFADEV-TX28.md
+- implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX28-001.md
+allowed_tools:
+- repository filesystem reads and bounded writes
+- local Python and Make validators
+- git status diff add commit and push
+allowed_external_actions:
+- Push the atomic TX-28 commit to the existing origin main branch after validation.
+forbidden_actions:
+- Modify canonical PRDs frozen TX-23 ledger or frozen TX-25 interpretation bytes.
+- Execute any of the remaining 42 local obligations or external operational or final-acceptance evidence.
+- Add cross-version Python CI or reinterpret TX-26 or TX-27 evidence.
+- Issue a waiver accept G-10 or claim production operational stakeholder domain target-runtime or permission authority.
+- Rewrite activated TX-24 through TX-27 control history.
+- Spawn delegated workers or mutate other Codex tasks.
+inputs:
+- Human authorization dated 2026-07-11.
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-005.
+- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX27-001.
+- Frozen TX-23 evidence closure ledger and TX-25 interpretation.
+- Current format registry policy source-first memory retrieval and generated derivative evidence.
+expected_outputs:
+- Focused format-governance validator with positive and mandatory negative tests.
+- Explicit normalized authority class and derivative freshness in memory lookup and search output.
+- Controlled project-specific format extension workflow that cannot weaken core authority.
+- Exactly ten accepted local-evidence rows and ten planned-to-pass trace transitions.
+- Verification report receipt handoff state and registered evidence.
+validators:
+- validator_id: format_governance_surface
+  command_or_method: cd Sys4AI && make validate-format-governance-surface
+  blocking: true
+  expected_evidence: Ten of ten requirements pass and incomplete profile authority inversion missing freshness or uncontrolled extension behavior fails closed.
+- validator_id: local_evidence_execution
+  command_or_method: cd Sys4AI && make validate-local-evidence-execution
+  blocking: true
+  expected_evidence: Exactly 32 activated TX-24 TX-26 TX-27 and TX-28 closures align to live trace and frozen ledger.
+- validator_id: focused_tests
+  command_or_method: cd Sys4AI && .venv/bin/python -m unittest tests.test_format_governance_surface tests.test_memory_lookup tests.test_evidence_closure tests.test_trace_semantics tests.test_trace_schema_migration
+  blocking: true
+  expected_evidence: Focused format memory negative evidence trace and rollback tests pass.
+- validator_id: full_repository_validation
+  command_or_method: make validate
+  blocking: true
+  expected_evidence: Repository aggregate validation passes from the workspace root.
+- validator_id: diff_integrity
+  command_or_method: git diff --check
+  blocking: true
+  expected_evidence: No patch-integrity failures.
+stop_conditions:
+- Any selected row lacks exact current evidence or remains planned after acceptance.
+- Any unrelated trace capability coverage semantic waiver or lifecycle state changes.
+- Frozen TX-23 or TX-25 SHA-256 changes.
+- A generated derivative becomes authority or retrieval cannot expose current authority and freshness metadata.
+- Any action requires cross-version CI external evidence G-10 acceptance permission expansion or delegation.
+host_capability_requirements:
+  execution_profile_id: codex_app_reference
+  overall_status: verified_available
+  required_capability_ids:
+  - workspace_filesystem
+  - terminal_and_tests
+  - memory_and_retrieval
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G07-001
+  - MEMPREFLIGHT-TX-28-LOCAL-EVIDENCE-FORMAT-GOVERNANCE-20260711T181109Z
+  checked_at: '2026-07-11T18:11:09Z'
+  values_or_goals_may_override: false
+state:
+  status: completed
+  current_state_evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-005
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX28-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX28-001
+  continuation_state: not_applicable
+  continuation_evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX28-001
+  state_transition_evidence_ids:
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX28-001
+cancellation:
+  state: not_requested
+  requested_by: not_applicable
+  behavior: Stop at the nearest safe boundary retain the bounded diff and do not activate evidence.
+  evidence_ids: []
+  uncertain_operations: []
+escalation:
+  state: pending
+  conditions:
+  - Any later local family external evidence waiver cross-version CI or G-10 reconsideration is requested.
+  - The selected family cannot pass without changing canonical requirements or unrelated implementation.
+  responsible_principal_id: alex_omegapy
+  required_decision: Separately authorize another bounded family external scope cross-version CI or a later acceptance action.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX28-001
+resume_evidence:
+  required: true
+  status: current
+  last_known_state: TX-27 completed and stopped with 52 separately gated local verification obligations.
+  evidence_ids:
+  - MEMPREFLIGHT-TX-28-LOCAL-EVIDENCE-FORMAT-GOVERNANCE-20260711T181109Z
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX27-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX27-001
+closeout_evidence:
+  status: complete
+  evidence_ids:
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX28-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX28-001
+  changed_artifacts:
+  - TX-28 decision transaction validator tests policy and memory repairs ten evidence rows trace transitions state registries generated readers receipt and handoff.
+  validation_evidence_ids:
+  - TX28-FORMAT-GOVERNANCE-10-OF-10-PASS
+  - TX28-FOCUSED-TESTS-PASS
+  - TX28-ROOT-VALIDATE-PASS
+  acceptance_evidence_ids:
+  - HUMAN-TASK-2026-07-11-TX28-FORMAT-GOVERNANCE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-005
+rollback:
+  status: planned
+  strategy: Before publication revert the complete TX-28 packet; after publication preserve activated evidence and use a new additive transaction.
+  triggers:
+  - A blocking validator fails or frozen planning bytes change.
+  - Any write or claim escapes the ten-row permission envelope.
+  actions:
+  - Stop new work and preserve the diff and validation logs.
+  - Revert the unshared TX-28 packet or create controlled supersession after sharing.
+  evidence_ids:
+  - BASELINE-12A8C018E703
+supersession:
+  status: current
+  supersedes_transaction_ids: []
+  superseded_by: not_applicable
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-005

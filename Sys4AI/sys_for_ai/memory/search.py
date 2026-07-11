@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from ..registry_io import resolve_registered_path
-from .authority import required_next_action
+from .authority import classify_authority, required_next_action
 from .model import MemoryHit, MemoryObject
 from .registry_catalog import build_catalog
 
@@ -61,13 +61,35 @@ def _hit_to_dict(hit: MemoryHit) -> dict[str, object]:
         "snippet": hit.snippet,
         "score": hit.score,
         "authority_status": hit.authority_status,
+        "authority_class": classify_authority(_memory_object_from_hit(hit)),
         "format_profile_id": hit.format_profile_id,
         "registry": hit.registry_evidence.registry_name,
         "registry_row_id": hit.registry_evidence.row_id,
         "validation_status": hit.validation_evidence.validation_status,
         "required_next_action": hit.required_next_action,
         "derivative": hit.derivative_evidence is not None,
+        "derivative_freshness": (
+            hit.derivative_evidence.stale_or_orphan_status
+            if hit.derivative_evidence and hit.derivative_evidence.stale_or_orphan_status
+            else "not_applicable"
+        ),
     }
+
+
+def _memory_object_from_hit(hit: MemoryHit) -> MemoryObject:
+    return MemoryObject(
+        object_id=hit.object_id,
+        path=hit.path,
+        artifact_class="",
+        format_profile_id=hit.format_profile_id,
+        authority_status=hit.authority_status,
+        registry_evidence=hit.registry_evidence,
+        validation_evidence=hit.validation_evidence,
+        derivative_evidence=hit.derivative_evidence,
+        owner=None,
+        source_hash=None,
+        secrets_allowed=None,
+    )
 
 
 def _tokenize(query: str) -> list[str]:

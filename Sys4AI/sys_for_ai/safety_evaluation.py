@@ -475,11 +475,16 @@ def _validate_protected_baseline(label: str, packet: dict[str, Any]) -> list[str
             from .evidence_closure import (
                 TX26_PYTHON_PACKAGE_CLOSURES,
                 TX27_YAML_CONTROL_CLOSURES,
+                TX28_FORMAT_GOVERNANCE_CLOSURES,
                 validate_local_evidence_execution,
             )
 
             closure_result = validate_local_evidence_execution()
-            accepted_verifications = TX26_PYTHON_PACKAGE_CLOSURES | TX27_YAML_CONTROL_CLOSURES
+            accepted_verifications = (
+                TX26_PYTHON_PACKAGE_CLOSURES
+                | TX27_YAML_CONTROL_CLOSURES
+                | TX28_FORMAT_GOVERNANCE_CLOSURES
+            )
             if closure_result.ok and expected - value == len(accepted_verifications):
                 continue
         if expected != value:

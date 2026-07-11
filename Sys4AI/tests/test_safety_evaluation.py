@@ -235,7 +235,7 @@ class SafetyEvaluationTests(unittest.TestCase):
         result = self._mutated_validation(packet_mutation=mutate)
 
         self.assertFalse(result.ok)
-        self.assertTrue(any("planned_verification expected 199, found 185" in item for item in result.messages))
+        self.assertTrue(any("planned_verification expected 199, found 175" in item for item in result.messages))
 
     def test_human_acceptance_and_production_claims_remain_gaps(self) -> None:
         packet = load_yaml(PACKET)

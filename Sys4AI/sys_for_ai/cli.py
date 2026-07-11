@@ -30,6 +30,7 @@ from .evidence_closure import (
     write_evidence_closure_ledger,
     write_plan_interpretation_registry,
 )
+from .format_governance_surface import validate_format_governance_surface
 from .host_profiles import validate_host_capability_profiles
 from .lifecycle_patterns import validate_lifecycle_and_patterns
 from .memory import bootstrap_registries
@@ -428,6 +429,14 @@ def build_parser() -> argparse.ArgumentParser:
     validate_yaml_control.add_argument("--policy", default="docs/configuration_control_wiki_policy.md")
     validate_yaml_control.add_argument("--python-root", default="sys_for_ai")
 
+    validate_format_governance = sub.add_parser(
+        "validate-format-governance-surface",
+        help="Verify the bounded core format-profile governance and memory-inspectability family",
+    )
+    validate_format_governance.add_argument("--format-profiles", default="registries/format_profile_registry.csv")
+    validate_format_governance.add_argument("--policy", default="docs/format_profile_policy.md")
+    validate_format_governance.add_argument("--memory-root", default=".")
+
     validate_plan_scope = sub.add_parser(
         "validate-plan-interpretation",
         help="Validate the controlled 410-row G-11 future-work disposition",
@@ -670,6 +679,11 @@ def main(argv: list[str] | None = None) -> int:
             )
         )
 
+    if args.command == "validate-format-governance-surface":
+        return print_result(
+            validate_format_governance_surface(args.format_profiles, args.policy, args.memory_root)
+        )
+
     if args.command == "validate-plan-interpretation":
         return print_result(validate_plan_interpretation(args.trace, args.ledger, args.registry))
 
@@ -742,6 +756,7 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_requirement_trace_migration(args.requirement_trace))
         result.extend(validate_python_package_surface())
         result.extend(validate_yaml_control_surface())
+        result.extend(validate_format_governance_surface())
         result.extend(validate_prd_modules(args.prd_modules))
         result.extend(check_governance_generated_docs())
         result.extend(validate_generated_derivatives(args.generated_docs, "registries/derivative_registry.csv"))

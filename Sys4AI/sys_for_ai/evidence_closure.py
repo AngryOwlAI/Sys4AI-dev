@@ -101,6 +101,13 @@ TX27_YAML_CONTROL_CLOSURES = {
     *{f"CLOSE-SFA-CORE-YAML-{index:03d}-VERIFICATION" for index in range(1, 11)},
     "CLOSE-SFA-P0-FR-033-VERIFICATION",
 }
+TX28_FORMAT_GOVERNANCE_CLOSURES = {
+    *{f"CLOSE-SFA-CORE-FORMAT-{index:03d}-VERIFICATION" for index in range(1, 7)},
+    "CLOSE-SFA-P0-FR-031-VERIFICATION",
+    "CLOSE-SFA-P0-FR-032-VERIFICATION",
+    "CLOSE-SFA-P0-FR-045-VERIFICATION",
+    "CLOSE-SFA-P0-NFR-014-VERIFICATION",
+}
 
 
 def expected_evidence_closure_rows(trace_rows: list[dict[str, str]]) -> list[dict[str, str]]:
@@ -225,7 +232,7 @@ def validate_evidence_closure_plan(
         [
             _summary(actual),
             *execution_result.messages,
-            "TX-23 planning history is frozen; TX-24, TX-26, and TX-27 evidence is additive and grants no waiver, G-10, production, or operational authority.",
+            "TX-23 planning history is frozen; TX-24, TX-26, TX-27, and TX-28 evidence is additive and grants no waiver, G-10, production, or operational authority.",
         ],
     )
 
@@ -235,7 +242,7 @@ def validate_local_evidence_execution(
     ledger: str | Path = "registries/evidence_closure_plan_registry.csv",
     execution_registry: str | Path = "registries/local_evidence_execution_registry.csv",
 ) -> ValidationResult:
-    """Validate the exact activated TX-24, TX-26, and TX-27 local-evidence families."""
+    """Validate the exact activated TX-24, TX-26, TX-27, and TX-28 local-evidence families."""
 
     trace_path = resolve_registered_path(str(trace_registry))
     ledger_path = resolve_registered_path(str(ledger))
@@ -254,10 +261,15 @@ def validate_local_evidence_execution(
 
     ledger_by_id = {row.get("closure_id", ""): row for row in ledger_rows}
     trace_by_id = {row.get("trace_id", ""): row for row in trace_rows}
-    expected_closures = TX24_SEMANTIC_CLOSURES | TX26_PYTHON_PACKAGE_CLOSURES | TX27_YAML_CONTROL_CLOSURES
+    expected_closures = (
+        TX24_SEMANTIC_CLOSURES
+        | TX26_PYTHON_PACKAGE_CLOSURES
+        | TX27_YAML_CONTROL_CLOSURES
+        | TX28_FORMAT_GOVERNANCE_CLOSURES
+    )
     actual_closures = {row.get("closure_id", "") for row in execution_rows}
     if actual_closures != expected_closures or len(execution_rows) != len(expected_closures):
-        messages.append(f"{execution_path}: must contain exactly the 22 activated TX-24, TX-26, and TX-27 closures")
+        messages.append(f"{execution_path}: must contain exactly the 32 activated TX-24, TX-26, TX-27, and TX-28 closures")
 
     for index, row in enumerate(execution_rows, start=2):
         label = f"{execution_path}:{index}"
@@ -277,6 +289,7 @@ def validate_local_evidence_execution(
         semantic_family = row.get("closure_id") in TX24_SEMANTIC_CLOSURES
         python_family = row.get("closure_id") in TX26_PYTHON_PACKAGE_CLOSURES
         yaml_family = row.get("closure_id") in TX27_YAML_CONTROL_CLOSURES
+        format_family = row.get("closure_id") in TX28_FORMAT_GOVERNANCE_CLOSURES
         if semantic_family:
             if row.get("prior_state") != "needs_evidence" or row.get("resulting_state") != "sufficient":
                 messages.append(f"{label}: semantic state transition must be needs_evidence to sufficient")
@@ -304,6 +317,15 @@ def validate_local_evidence_execution(
                 messages.append(f"{label}: TX-27 transaction binding is invalid")
             if row.get("reviewer_role") != "verification_engineer":
                 messages.append(f"{label}: TX-27 reviewer role is invalid")
+        elif format_family:
+            if row.get("prior_state") != "planned" or row.get("resulting_state") != "pass":
+                messages.append(f"{label}: verification state transition must be planned to pass")
+            if row.get("evidence_family") != "core_format_profile_governance_and_memory_inspectability_verification":
+                messages.append(f"{label}: TX-28 evidence family binding is invalid")
+            if row.get("execution_transaction_id") != "TX-28-LOCAL-EVIDENCE-FORMAT-GOVERNANCE":
+                messages.append(f"{label}: TX-28 transaction binding is invalid")
+            if row.get("reviewer_role") != "verification_engineer":
+                messages.append(f"{label}: TX-28 reviewer role is invalid")
         else:
             messages.append(f"{label}: closure is outside the activated local families")
         if row.get("status") != "accepted" or row.get("review_date") != "2026-07-11":
@@ -325,7 +347,7 @@ def validate_local_evidence_execution(
                 messages.append(f"{label}: trace review identity is not aligned")
             if trace.get("capability_status") != "scaffolded" or trace.get("verification_status") != "planned":
                 messages.append(f"{label}: TX-24 improperly promoted capability or verification state")
-        elif python_family or yaml_family:
+        elif python_family or yaml_family or format_family:
             if trace.get("verification_status") != "pass":
                 messages.append(f"{label}: trace verification_status is not pass")
             if trace.get("capability_status") != "implemented" or trace.get("coverage_status") != "covered":
@@ -348,7 +370,7 @@ def validate_local_evidence_execution(
     return ValidationResult(
         True,
         [
-            "Local evidence: 7 TX-24 semantic reviews, 4 TX-26 Python/package verifications, and 11 TX-27 YAML/control verifications accepted; 52 local verification obligations remain. The 410 frozen plan-scope candidates retain their TX-25 interpretation.",
+            "Local evidence: 7 TX-24 semantic reviews, 4 TX-26 Python/package verifications, 11 TX-27 YAML/control verifications, and 10 TX-28 format-governance verifications accepted; 42 local verification obligations remain. The 410 frozen plan-scope candidates retain their TX-25 interpretation.",
         ],
     )
 

@@ -542,6 +542,50 @@ def _validate_program_state_alignment(path: Path, state: dict[str, Any]) -> list
             messages.append(f"{path}: post-TX-27 state must stop at a new bounded authorization gate")
         if state.get("state_status") != "human_gated" or state.get("human_gate_required") is not True:
             messages.append(f"{path}: post-TX-27 state must remain human gated")
+    elif phase == "strategic_baseline_migration_TX_28_format_governance_verification_complete":
+        required_summary = {
+            "strategic_approval": "accepted_G_08",
+            "derivative_regeneration": "complete_G_09",
+            "host_verification": "accepted_G_07_mixed_profile",
+            "semantic_review_evidence": "accepted_TX_24_7_of_7",
+            "plan_scope_interpretation": "accepted_TX_25_410_future_work",
+            "python_package_verification": "accepted_TX_26_4_of_4",
+            "yaml_control_verification": "accepted_TX_27_11_of_11",
+            "format_governance_verification": "accepted_TX_28_10_of_10",
+        }
+        for field, expected in required_summary.items():
+            if summary.get(field) != expected:
+                messages.append(f"{path}: post-TX-28 {field} must be {expected}")
+        for required_route in (
+            "seek_separate_authorization_for_remaining_42_local_verification_obligations",
+            "seek_accountable_external_evidence_scope",
+            "seek_accountable_G_10_reacceptance_only_after_retained_evidence_closure",
+        ):
+            if required_route not in allowed:
+                messages.append(f"{path}: post-TX-28 state omits controlled next route {required_route}")
+        for required_block in (
+            "begin_later_evidence_or_acceptance_work_without_separate_authorization",
+            "treat_410_future_work_dispositions_as_trace_completion_or_waivers",
+            "claim_G_10_after_TX_28_without_retained_evidence_closure",
+            "claim_production_readiness_or_operational_authority",
+        ):
+            if required_block not in blocked:
+                messages.append(f"{path}: post-TX-28 state omits blocked action {required_block}")
+        if state.get("latest_closeout_evidence_id") != "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX28-001":
+            messages.append(f"{path}: post-TX-28 state is not aligned to the TX-28 completion")
+        if state.get("latest_handoff_evidence_id") != "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX28-001":
+            messages.append(f"{path}: post-TX-28 state is not aligned to the TX-28 handoff")
+        for evidence_id in (
+            "DDR-SFADEV-STRATEGIC-BASELINE-G11-005",
+            "TX-28-LOCAL-EVIDENCE-FORMAT-GOVERNANCE",
+            "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX28-001",
+        ):
+            if evidence_id not in set(state.get("current_state_evidence", [])):
+                messages.append(f"{path}: post-TX-28 state omits {evidence_id}")
+        if state.get("continuation_state") != "blocked" or state.get("escalation_state") != "pending":
+            messages.append(f"{path}: post-TX-28 state must stop at a new bounded authorization gate")
+        if state.get("state_status") != "human_gated" or state.get("human_gate_required") is not True:
+            messages.append(f"{path}: post-TX-28 state must remain human gated")
     else:
         messages.append(f"{path}: unsupported strategic-baseline program phase {phase!r}")
     return messages

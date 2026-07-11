@@ -89,7 +89,8 @@
         "semantic_review_evidence": { "enum": ["pending", "accepted_TX_24_7_of_7"] },
         "plan_scope_interpretation": { "enum": ["pending", "accepted_TX_25_410_future_work"] },
         "python_package_verification": { "enum": ["pending", "accepted_TX_26_4_of_4"] },
-        "yaml_control_verification": { "enum": ["pending", "accepted_TX_27_11_of_11"] }
+        "yaml_control_verification": { "enum": ["pending", "accepted_TX_27_11_of_11"] },
+        "format_governance_verification": { "enum": ["pending", "accepted_TX_28_10_of_10"] }
       },
       "additionalProperties": false
     },
