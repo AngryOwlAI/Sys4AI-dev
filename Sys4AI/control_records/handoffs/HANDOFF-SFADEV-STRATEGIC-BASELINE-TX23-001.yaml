@@ -1,0 +1,41 @@
+handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+producing_execution_transaction_id: TX-23-EVIDENCE-CLOSURE-PLAN
+next_execution_transaction_id: null
+status: human_gated
+producing_role: verification_engineer
+recommended_next_role: system_director
+summary: TX-23 is complete as a classification packet; 74 local obligations and 410 plan-supersession candidates are explicit, while external waiver and blocked program dependencies remain open and no later transaction is authorized.
+source_ids:
+- SRC-EVIDENCE-CLOSURE-PLAN-TX23
+- SRC-REG-EVIDENCE-CLOSURE-PLAN
+- SRC-VALIDATOR-EVIDENCE-CLOSURE
+- SRC-TX23-EXECUTION-TRANSACTION
+- SRC-COMPLETION-STRATEGIC-BASELINE-TX23
+- SRC-REG-REQ-TRACE
+closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX23-001
+current_state_evidence:
+- Sys4AI/control_records/program_state.yaml
+- TX23-EVIDENCE-CLOSURE-LEDGER-PASS
+- TX23-TRACE-UNCHANGED
+- TX23-ROOT-VALIDATE-PASS
+validation_evidence:
+  trace_rows: 227
+  trace_sha256: b868e4d201bf1a5908cd87357f51214be9081684e56c04f9cd48850653958138
+  ledger_obligations: 484
+  locally_executable_evidence: 74
+  plan_supersession_candidates: 410
+  external_dependencies: OPEN
+  accountable_waiver_candidates: ONE_UNAPPROVED_SCOPE_LIMIT_CANDIDATE
+  blocked_operational_gap: OPEN
+  accepted_waivers: 0
+  trace_status_mutations: 0
+  g10_status: DEFERRED_NOT_ACCEPTED
+  next_authority_gate: G_11_EVIDENCE_SCOPE
+stop_conditions:
+- Do not start TX-24 TX-25 TX-26 TX-27 or any bulk evidence mutation from this handoff alone.
+- G-11 requires a new accountable human decision choosing the retained migration scope and any validly dispositioned future obligations.
+- Do not convert planned scaffolded absent partial or needs-evidence states from the TX-23 classification itself.
+- Do not approve a waiver supersede the plan accept G-10 or claim production operational stakeholder domain or permission authority without exact new evidence.
+- Reverify G-07 before reliance if its evidence expires or materially changes.

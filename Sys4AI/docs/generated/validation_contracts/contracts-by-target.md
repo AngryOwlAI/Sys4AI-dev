@@ -55,6 +55,7 @@ page_metadata:
     - contract_target_system_package_manifest
     - contract_self_change_safety_evaluation
     - contract_self_change_holdout_suite
+    - contract_evidence_closure_plan_registry_row
   generated_at: 2026-07-11T14:12:24Z
   generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
   stale_or_orphan_status: current
@@ -117,6 +118,12 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | contract_discovery_record_registry_row | schemas/contracts/discovery_record_registry_row.schema.json | 2020-12 | csv | discovery_record_registry_row | registries/discovery_record_registry.csv | Sys4AI validate-discovery-records | implementation_initialization | controlled | pending | pending |
+
+## csv / evidence_closure_plan_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_evidence_closure_plan_registry_row | schemas/contracts/evidence_closure_plan_registry_row.schema.json | 2020-12 | csv | evidence_closure_plan_registry_row | registries/evidence_closure_plan_registry.csv | Sys4AI validate-evidence-closure-plan | verification_engineer | controlled | pending | pending |
 
 ## csv / format_profile_registry_row
 

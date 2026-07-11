@@ -6,7 +6,7 @@ system_context:
   target_system: Sys4AI
   self_hosting_mode: true
   reflection_depth: 1
-current_phase: strategic_baseline_migration_G_07_accepted_evidence_closure_ready
+current_phase: strategic_baseline_migration_TX_23_evidence_closure_planned
 lifecycle_stage: test
 active_task_id: null
 active_director_decision_id: null
@@ -31,12 +31,15 @@ current_state_evidence:
 - DDR-SFADEV-STRATEGIC-BASELINE-G07-001
 - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX22-001
 - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX22-001
-continuation_state: ready
+- TX-23-EVIDENCE-CLOSURE-PLAN
+- RECEIPT-SFADEV-STRATEGIC-BASELINE-TX23-001
+- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001
+continuation_state: blocked
 cancellation_state: not_requested
-escalation_state: not_required
-latest_closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX22-001
-latest_handoff_evidence_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX22-001
-latest_memory_preflight_receipt_id: MEMPREFLIGHT-TX-22-G07-HOST-VERIFICATION-20260711T151753Z
+escalation_state: pending
+latest_closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX23-001
+latest_handoff_evidence_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001
+latest_memory_preflight_receipt_id: MEMPREFLIGHT-TX-23-EVIDENCE-CLOSURE-PLAN-20260711T155250Z
 capability_status_summary:
   portable_execution_contract: implemented
   current_state_model: implemented
@@ -47,13 +50,13 @@ capability_status_summary:
   strategic_approval: accepted_G_08
   derivative_regeneration: complete_G_09
   host_verification: accepted_G_07_mixed_profile
-state_status: active
-blocked_reason: G-10 remains deferred while the separately authorized evidence-closure program is active; G-07 itself is accepted for the exact current mixed profile.
-human_gate_required: false
+state_status: human_gated
+blocked_reason: TX-23 classification is complete; accountable G-11 evidence-scope selection is required before local evidence execution plan supersession waiver or later acceptance work.
+human_gate_required: true
 allowed_next_actions:
 - run_memory_preflight
 - inspect_latest_handoff
-- execute_TX_23_EVIDENCE_CLOSURE_PLAN_only
+- seek_accountable_G_11_EVIDENCE_SCOPE_decision
 - reverify_G_07_if_profile_evidence_becomes_stale_or_changes
 - supersede_G_10_defer_only_with_accountable_evidence
 blocked_actions:
@@ -68,13 +71,18 @@ blocked_actions:
 - treat_G_07_as_production_operational_target_runtime_or_permission_authority
 - mark_conditional_or_unavailable_host_interfaces_executable
 - begin_bulk_evidence_status_mutation_before_TX_23_classification
+- begin_TX_24_or_later_without_accountable_G_11_route_selection
+- begin_bulk_evidence_status_mutation_without_G_11_scope_decision
+- treat_TX_23_classification_as_executed_evidence
+- approve_evidence_waiver_from_TX_23_candidate_classification
+- supersede_the_plan_from_TX_23_candidate_classification
 - treat_TX_19_module_validation_as_G_07_G_09_G_10_or_production_acceptance
 - treat_TX_17_structural_or_holdout_validation_as_G_07_or_domain_acceptance
 - use_G_08_approval_to_expand_permissions
 - claim_broad_stakeholder_consensus_or_domain_truth_from_G_08
 - claim_production_readiness_or_operational_authority
 validation_status:
-  last_validated_at: '2026-07-11T15:19:10Z'
+  last_validated_at: '2026-07-11T16:03:48Z'
   validators:
   - make validate-program-state
   - make validate-capability-migration
@@ -89,5 +97,6 @@ validation_status:
   - make validate-registry-graph
   - make validate-requirement-trace
   - make validate-requirement-trace-migration
+  - make validate-evidence-closure-plan
   - make validate-generated-derivatives
   - make validate

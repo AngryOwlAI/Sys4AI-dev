@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/Sys4AI/schemas/contracts/evidence_closure_plan_registry_row.schema.json",
+  "title": "Evidence closure plan registry row",
+  "description": "TX-23 planning classification for one open requirement-trace state dimension. Conformance does not close evidence, approve a waiver, change trace state, or accept G-10.",
+  "type": "object",
+  "required": [
+    "closure_id", "trace_id", "requirement_id", "gap_dimension", "current_state",
+    "closure_route", "accountable_role", "prerequisite", "planned_evidence", "status", "notes"
+  ],
+  "properties": {
+    "closure_id": { "type": "string", "pattern": "^CLOSE-SFA-[A-Z0-9-]+-(?:VERIFICATION|CAPABILITY|COVERAGE|SEMANTIC-REVIEW)$" },
+    "trace_id": { "type": "string", "pattern": "^TRACE-SFA-[A-Z0-9-]+$" },
+    "requirement_id": { "type": "string", "pattern": "^SFA-[A-Z0-9]+(?:-[A-Z0-9]+)*$" },
+    "gap_dimension": { "enum": ["verification", "capability", "coverage", "semantic_review"] },
+    "current_state": { "enum": ["planned", "scaffolded", "absent", "partial", "needs_evidence"] },
+    "closure_route": {
+      "enum": [
+        "locally_executable_evidence", "external_dependency", "accountable_waiver_candidate",
+        "plan_supersession_candidate", "blocked_gap"
+      ]
+    },
+    "accountable_role": { "enum": ["verification_engineer", "system_director"] },
+    "prerequisite": { "type": "string", "minLength": 1 },
+    "planned_evidence": { "type": "string", "minLength": 1 },
+    "status": { "const": "planned" },
+    "notes": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": false
+}

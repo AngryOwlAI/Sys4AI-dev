@@ -253,6 +253,10 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_strategic_baseline_g07_director_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G07-001.yaml | director_decision | controlled | framework_product | contract_director_decision | pending |
 | ctrl_strategic_baseline_tx22_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX22-001.yaml | completion_receipt | controlled | interface_integration_owner | contract_completion_receipt_v1_0 | pending |
 | ctrl_strategic_baseline_tx22_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX22-001.yaml | handoff | controlled | interface_integration_owner | contract_handoff_v1_0 | pending |
+| ctrl_strategic_baseline_tx23_execution_transaction | control_records/execution_transactions/TX-23-EVIDENCE-CLOSURE-PLAN.yaml | execution_transaction | controlled | bounded_execution_planner | contract_execution_transaction | pending |
+| ctrl_strategic_baseline_tx23_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-23-EVIDENCE-CLOSURE-PLAN-20260711T155250Z.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
+| ctrl_strategic_baseline_tx23_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX23-001.yaml | completion_receipt | controlled | verification_engineer | contract_completion_receipt_v1_0 | pending |
+| ctrl_strategic_baseline_tx23_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001.yaml | handoff | controlled | verification_engineer | contract_handoff_v1_0 | pending |
 
 ## Validation Contract Trace
 

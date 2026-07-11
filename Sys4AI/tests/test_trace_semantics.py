@@ -81,6 +81,7 @@ class TraceSemanticTests(unittest.TestCase):
 
     def test_post_g07_state_blocks_unsupported_g10(self) -> None:
         def mutate_state(state):
+            self._as_post_g07(state)
             state["blocked_actions"] = [
                 item
                 for item in state["blocked_actions"]
@@ -93,6 +94,7 @@ class TraceSemanticTests(unittest.TestCase):
 
     def test_post_g07_state_requires_exact_tx23_planning_route(self) -> None:
         def mutate_state(state):
+            self._as_post_g07(state)
             state["allowed_next_actions"] = [
                 item
                 for item in state["allowed_next_actions"]
@@ -105,6 +107,7 @@ class TraceSemanticTests(unittest.TestCase):
 
     def test_post_g07_state_blocks_host_authority_expansion(self) -> None:
         def mutate_state(state):
+            self._as_post_g07(state)
             state["blocked_actions"] = [
                 item
                 for item in state["blocked_actions"]
@@ -150,6 +153,22 @@ class TraceSemanticTests(unittest.TestCase):
         )
         self.assertTrue(validate_generalized_trace_semantics(TRACE, policy_path=POLICY).ok)
 
+    def test_post_tx23_state_requires_accountable_scope_gate(self) -> None:
+        def mutate_state(state):
+            state["allowed_next_actions"].remove("seek_accountable_G_11_EVIDENCE_SCOPE_decision")
+
+        result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
+        self.assertFalse(result.ok)
+        self.assertTrue(any("accountable G-11 evidence-scope gate" in item for item in result.messages))
+
+    def test_post_tx23_state_blocks_classification_as_evidence(self) -> None:
+        def mutate_state(state):
+            state["blocked_actions"].remove("treat_TX_23_classification_as_executed_evidence")
+
+        result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
+        self.assertFalse(result.ok)
+        self.assertTrue(any("treat_TX_23_classification_as_executed_evidence" in item for item in result.messages))
+
     @staticmethod
     def _as_post_tx20(state):
         state["current_phase"] = "strategic_baseline_migration_after_TX_20"
@@ -158,6 +177,18 @@ class TraceSemanticTests(unittest.TestCase):
         state["latest_closeout_evidence_id"] = "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX20-001"
         state["latest_handoff_evidence_id"] = "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX20-001"
         state["allowed_next_actions"].append("execute_TX_21_FINAL_ACCEPTANCE_only_after_TX_20_shared_baseline")
+
+    @staticmethod
+    def _as_post_g07(state):
+        state["current_phase"] = "strategic_baseline_migration_G_07_accepted_evidence_closure_ready"
+        state["state_status"] = "active"
+        state["human_gate_required"] = False
+        state["continuation_state"] = "ready"
+        state["escalation_state"] = "not_required"
+        state["latest_closeout_evidence_id"] = "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX22-001"
+        state["latest_handoff_evidence_id"] = "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX22-001"
+        if "execute_TX_23_EVIDENCE_CLOSURE_PLAN_only" not in state["allowed_next_actions"]:
+            state["allowed_next_actions"].append("execute_TX_23_EVIDENCE_CLOSURE_PLAN_only")
 
     def test_derivative_requirement_source_fails(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

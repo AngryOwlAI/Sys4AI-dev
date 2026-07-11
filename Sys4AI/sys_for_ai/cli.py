@@ -23,6 +23,7 @@ from .derivatives import (
     write_config_control_wiki,
     write_validation_contracts_catalog,
 )
+from .evidence_closure import validate_evidence_closure_plan, write_evidence_closure_ledger
 from .host_profiles import validate_host_capability_profiles
 from .lifecycle_patterns import validate_lifecycle_and_patterns
 from .memory import bootstrap_registries
@@ -382,6 +383,21 @@ def build_parser() -> argparse.ArgumentParser:
         default="schemas/contracts/requirement_trace_registry_row.schema.json",
     )
 
+    validate_closure = sub.add_parser(
+        "validate-evidence-closure-plan",
+        help="Validate the TX-23 ledger against every open trace-state dimension",
+    )
+    validate_closure.add_argument("ledger", default="registries/evidence_closure_plan_registry.csv", nargs="?")
+    validate_closure.add_argument("--trace", default="registries/requirement_trace_registry.csv")
+
+    generate_closure = sub.add_parser(
+        "generate-evidence-closure-ledger",
+        help="Generate or check the deterministic TX-23 closure ledger",
+    )
+    generate_closure.add_argument("--trace", default="registries/requirement_trace_registry.csv")
+    generate_closure.add_argument("--ledger", default="registries/evidence_closure_plan_registry.csv")
+    generate_closure.add_argument("--write", action="store_true")
+
     validate_prd_module_rows = sub.add_parser("validate-prd-modules", help="Validate PRD module registry rows")
     validate_prd_module_rows.add_argument("path", default="registries/prd_module_registry.csv", nargs="?")
 
@@ -574,6 +590,17 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "validate-requirement-trace-migration":
         return print_result(validate_requirement_trace_migration(args.path, args.schema))
+
+    if args.command == "validate-evidence-closure-plan":
+        return print_result(validate_evidence_closure_plan(args.trace, args.ledger))
+
+    if args.command == "generate-evidence-closure-ledger":
+        result = (
+            write_evidence_closure_ledger(args.trace, args.ledger)
+            if args.write
+            else validate_evidence_closure_plan(args.trace, args.ledger)
+        )
+        return print_result(result)
 
     if args.command == "validate-prd-modules":
         return print_result(validate_prd_modules(args.path))

@@ -55,6 +55,7 @@ page_metadata:
     - contract_target_system_package_manifest
     - contract_self_change_safety_evaluation
     - contract_self_change_holdout_suite
+    - contract_evidence_closure_plan_registry_row
   generated_at: 2026-07-11T14:12:24Z
   generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
   stale_or_orphan_status: current
@@ -126,6 +127,7 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_target_system_package_manifest | schemas/contracts/target_system_package_manifest.schema.json | 2020-12 | yaml | target_system_package_manifest | examples/target_systems/*/target-system-manifest.yaml | Sys4AI target-package validate | verification_engineer | controlled | pending | pending |
 | contract_self_change_safety_evaluation | schemas/contracts/self_change_safety_evaluation.schema.json | 2020-12 | yaml | self_change_safety_evaluation | assurance/meta_agent_self_change_safety_evaluation.yaml | Sys4AI validate-safety-evaluation | verification_engineer | controlled | pending | pending |
 | contract_self_change_holdout_suite | schemas/contracts/self_change_holdout_suite.schema.json | 2020-12 | yaml | self_change_holdout_suite | assurance/holdouts/*.yaml | Sys4AI validate-safety-evaluation | verification_engineer | controlled | pending | pending |
+| contract_evidence_closure_plan_registry_row | schemas/contracts/evidence_closure_plan_registry_row.schema.json | 2020-12 | csv | evidence_closure_plan_registry_row | registries/evidence_closure_plan_registry.csv | Sys4AI validate-evidence-closure-plan | verification_engineer | controlled | pending | pending |
 
 ## Known Limitations
 

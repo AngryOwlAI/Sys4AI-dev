@@ -344,6 +344,36 @@ def _validate_program_state_alignment(path: Path, state: dict[str, Any]) -> list
             messages.append(f"{path}: post-G-07 state must be ready without a new authorization escalation")
         if state.get("state_status") != "active" or state.get("human_gate_required") is not False:
             messages.append(f"{path}: post-G-07 state must be active without a new human gate")
+    elif phase == "strategic_baseline_migration_TX_23_evidence_closure_planned":
+        if summary.get("strategic_approval") != "accepted_G_08":
+            messages.append(f"{path}: post-TX-23 state must retain strategic_approval accepted_G_08")
+        if summary.get("derivative_regeneration") != "complete_G_09":
+            messages.append(f"{path}: post-TX-23 state must retain derivative_regeneration complete_G_09")
+        if summary.get("host_verification") != "accepted_G_07_mixed_profile":
+            messages.append(f"{path}: post-TX-23 state must retain accepted G-07 mixed host evidence")
+        if "seek_accountable_G_11_EVIDENCE_SCOPE_decision" not in allowed:
+            messages.append(f"{path}: post-TX-23 state must expose the accountable G-11 evidence-scope gate")
+        for required_block in (
+            "begin_TX_24_or_later_without_accountable_G_11_route_selection",
+            "begin_bulk_evidence_status_mutation_without_G_11_scope_decision",
+            "treat_TX_23_classification_as_executed_evidence",
+            "approve_evidence_waiver_from_TX_23_candidate_classification",
+            "supersede_the_plan_from_TX_23_candidate_classification",
+            "claim_G_10_after_TX_21_audit_without_G_07_and_evidence_closure",
+            "treat_G_07_as_production_operational_target_runtime_or_permission_authority",
+        ):
+            if required_block not in blocked:
+                messages.append(f"{path}: post-TX-23 state omits blocked action {required_block}")
+        if state.get("latest_closeout_evidence_id") != "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX23-001":
+            messages.append(f"{path}: post-TX-23 state is not aligned to the TX-23 completion")
+        if state.get("latest_handoff_evidence_id") != "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001":
+            messages.append(f"{path}: post-TX-23 state is not aligned to the TX-23 handoff")
+        if "TX-23-EVIDENCE-CLOSURE-PLAN" not in set(state.get("current_state_evidence", [])):
+            messages.append(f"{path}: post-TX-23 state omits TX-23 transaction evidence")
+        if state.get("continuation_state") != "blocked" or state.get("escalation_state") != "pending":
+            messages.append(f"{path}: post-TX-23 state must remain blocked with G-11 escalation pending")
+        if state.get("state_status") != "human_gated" or state.get("human_gate_required") is not True:
+            messages.append(f"{path}: post-TX-23 state must remain human gated")
     else:
         messages.append(f"{path}: unsupported strategic-baseline program phase {phase!r}")
     return messages

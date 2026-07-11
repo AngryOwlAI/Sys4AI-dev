@@ -1,0 +1,199 @@
+execution_transaction_id: TX-23-EVIDENCE-CLOSURE-PLAN
+contract_version: 1.0.0
+objective: Classify every remaining trace and program-level evidence obligation into a truthful closure route, retain a controlled executable plan, and stop before evidence execution, bulk status mutation, waiver, plan supersession, or G-10 reconsideration.
+source_requirement_ids:
+- SFA-CORE-TRACE-001
+- SFA-P1-INIT-STATUS-001
+- SFA-P1-INIT-EVID-001
+- SFA-P1-INIT-EVID-002
+source_decision_ids:
+- DDR-SFADEV-STRATEGIC-BASELINE-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G07-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G08-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+subject_system:
+  system_id: sys4ai
+  system_name: Sys4AI framework product
+subject_layer: framework_product
+runtime_actor:
+  actor_id: codex_meta_agent_runtime
+  actor_type: meta_agent_runtime
+  role_ids:
+  - verification_engineer
+  - requirements_verifier
+  - source_authority_auditor
+  - baseline_change_manager
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-11-TX23-EVIDENCE-CLOSURE-PLAN
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX22-001
+approval_principal:
+  principal_id: alex_omegapy
+  principal_type: accountable_human
+  approval_scope: Execute the logical next step TX-23 evidence-closure planning packet to classify the 200 planned verifications 137 scaffolded capabilities 5 absent capabilities 135 partial rows and 7 needs-evidence verdicts before any bulk mutation or waiver.
+  authorization_evidence_ids:
+  - HUMAN-TASK-2026-07-11-TX23-EVIDENCE-CLOSURE-PLAN
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX22-001
+  model_self_approval: false
+execution_authorization:
+  status: authorized
+  authorized_at: '2026-07-11T15:52:50Z'
+  expires_at: '2026-07-12T15:52:50Z'
+  authority_evidence_ids:
+  - HUMAN-TASK-2026-07-11-TX23-EVIDENCE-CLOSURE-PLAN
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX22-001
+  self_authorized: false
+permission_envelope:
+  envelope_id: PERMISSION-ENVELOPE-TX-23-EVIDENCE-CLOSURE-PLAN
+  status: current
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-11-TX23-EVIDENCE-CLOSURE-PLAN
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX22-001
+  data_classes:
+  - repository_controlled_artifacts
+  - local_validation_evidence
+  resource_limits:
+  - One bounded TX-23 classification plan ledger validator closeout and human-gated handoff packet.
+  - Preserve all 227 requirement-trace rows and their current state fields byte for byte.
+  - Classify only; do not execute the later evidence program or make an accountable scope decision.
+  - Do not create sub-agents tasks deployments target runtimes connector mutations or external writes other than the final atomic Git push.
+  valid_from: '2026-07-11T15:52:50Z'
+  expires_at: '2026-07-12T15:52:50Z'
+  sensitive_data_allowed: false
+  secrets_allowed: false
+  data_egress_allowed: false
+  external_side_effects_allowed: true
+  delegation_allowed: false
+  delegation_expires_at: not_applicable
+  permission_expansion_allowed: false
+allowed_reads:
+- Repository canonical controlled historical and generated sources required to classify evidence obligations.
+- Current local Git validation memory and host-profile state.
+allowed_writes:
+- TX-23 plan ledger validator tests execution preflight state registry receipt handoff and generated-reader reconciliation.
+allowed_tools:
+- Repository search inspection patching deterministic ledger generation validation tests and Git commit and push.
+allowed_external_actions:
+- Push the atomic TX-23 packet after validation.
+forbidden_actions:
+- Spawn sub-agents or create mutate archive rename or hand off Codex tasks.
+- Change requirement-trace rows verification waivers canonical PRDs or accepted strategic wording.
+- Approve a waiver supersede the plan accept G-10 or authorize a later execution transaction.
+- Access confidential independent stakeholder domain production or operational evidence not already present in the repository.
+- Claim production readiness operational authority target-runtime availability broad stakeholder consensus domain truth or permission expansion.
+- Rewrite activated TX-21 TX-22 G-07 G-08 G-10 or other controlled history.
+inputs:
+- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX22-001
+- implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+- implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-FINAL-ACCEPTANCE-SFADEV-TX21.md
+- Sys4AI/registries/requirement_trace_registry.csv
+- Sys4AI/docs/requirement_trace_semantic_review_tx12.md
+expected_outputs:
+- A controlled human-readable evidence-closure plan with explicit route meanings dependencies gates and ordered future packets.
+- A machine-readable ledger classifying all 484 overlapping open trace-state obligations exactly once.
+- Deterministic validation and negative tests that reject omissions drift and premature status promotion.
+- A human-gated closeout that authorizes no later packet.
+validators:
+- validator_id: tx23_closure_ledger
+  command_or_method: cd Sys4AI and run make validate-evidence-closure-plan
+  blocking: true
+  expected_evidence: All 484 open state dimensions reconcile exactly with 74 local evidence and 410 plan-supersession candidates.
+- validator_id: tx23_closure_tests
+  command_or_method: cd Sys4AI and run .venv/bin/python -m unittest tests.test_evidence_closure tests.test_trace_semantics
+  blocking: true
+  expected_evidence: Positive exact-reconciliation and negative omission mutation and program-state tests pass.
+- validator_id: tx23_aggregate
+  command_or_method: make validate
+  blocking: true
+  expected_evidence: Repository aggregate validation passes on the final tree.
+- validator_id: tx23_diff_integrity
+  command_or_method: git diff --check
+  blocking: true
+  expected_evidence: No patch-integrity failures.
+stop_conditions:
+- The requirement trace hash or any current trace state changes.
+- A classification is used as executed evidence accepted waiver plan supersession or G-10 acceptance.
+- External confidential stakeholder domain production or operational evidence would be inferred rather than obtained.
+- A later transaction would be treated as authorized without a new accountable decision.
+host_capability_requirements:
+  execution_profile_id: codex_local_observed_subset
+  overall_status: verified_available
+  required_capability_ids:
+  - workspace_filesystem
+  - terminal_and_tests
+  - memory_and_retrieval
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G07-001
+  - HOST-G07-WORKSPACE-FILESYSTEM-POS-001
+  - HOST-G07-TERMINAL-TESTS-POS-001
+  - HOST-G07-MEMORY-RETRIEVAL-POS-001
+  checked_at: '2026-07-11T15:52:50Z'
+  values_or_goals_may_override: false
+state:
+  status: completed
+  current_state_evidence_ids:
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX23-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001
+  - SRC-EVIDENCE-CLOSURE-PLAN-TX23
+  - SRC-REG-EVIDENCE-CLOSURE-PLAN
+  continuation_state: not_applicable
+  continuation_evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001
+  state_transition_evidence_ids:
+  - HUMAN-TASK-2026-07-11-TX23-EVIDENCE-CLOSURE-PLAN
+cancellation:
+  state: not_requested
+  requested_by: not_applicable
+  behavior: Stop new classification edits preserve the last validated ledger retain unchanged trace state and record the incomplete route explicitly.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX22-001
+  uncertain_operations: []
+escalation:
+  state: required
+  conditions:
+  - Selecting whether 410 full-framework state obligations remain G-10 blockers requires accountable interpretation or plan supersession.
+  - Approving any waiver or later execution transaction requires separate human authority.
+  responsible_principal_id: alex_omegapy
+  required_decision: Select a bounded local evidence packet or decide G-11 evidence scope without inferring approval from TX-23.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001
+resume_evidence:
+  required: true
+  status: consumed
+  last_known_state: TX-22 accepted G-07 for the exact mixed profile and authorized only the bounded TX-23 classification plan before bulk status mutation or waiver.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX22-001
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX22-001
+  - MEMPREFLIGHT-TX-23-EVIDENCE-CLOSURE-PLAN-20260711T155250Z
+closeout_evidence:
+  status: complete
+  evidence_ids:
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX23-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001
+  - SRC-EVIDENCE-CLOSURE-PLAN-TX23
+  - SRC-REG-EVIDENCE-CLOSURE-PLAN
+  changed_artifacts:
+  - TX-23 plan ledger validator tests state registries receipt and human-gated handoff packet.
+  validation_evidence_ids:
+  - TX23-EVIDENCE-CLOSURE-LEDGER-PASS
+  - TX23-FOCUSED-TESTS-PASS
+  - TX23-ROOT-VALIDATE-PASS
+  acceptance_evidence_ids:
+  - HUMAN-TASK-2026-07-11-TX23-EVIDENCE-CLOSURE-PLAN
+rollback:
+  status: available
+  strategy: Before publication revert the complete TX-23 packet; after publication preserve the classification and supersede it with an evidence-backed ledger version and accountable decision.
+  triggers:
+  - Ledger counts drift from the trace.
+  - A route implies evidence execution waiver supersession acceptance or authority not granted here.
+  - A protected source changes unexpectedly.
+  actions:
+  - Stop later work and retain exact failure evidence.
+  - Revert the unshared TX-23 packet or create controlled supersession after sharing.
+  - Restore the post-TX-22 evidence-closure-ready state without altering activated history.
+  evidence_ids:
+  - BASELINE-946647DE
+supersession:
+  status: current
+  supersedes_transaction_ids: []
+  superseded_by: not_applicable
+  evidence_ids: []
