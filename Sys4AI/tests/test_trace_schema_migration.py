@@ -46,7 +46,10 @@ class TraceSchemaMigrationTests(unittest.TestCase):
                 if row["requirement_source_id"] != "SRC-PRD-P0"
             ]
             cls.legacy_rows = [reverse_generalized_trace_row(row) for row in cls.tx12_rows]
-            cls.generalized = cls.tx12_rows[0]
+            cls.generalized = next(
+                row for row in cls.tx12_rows
+                if not row["implementation_artifacts"] and not row["validation_evidence"]
+            )
         else:
             cls.legacy_rows = cls.live_rows
             cls.tx12_rows = []
@@ -64,7 +67,8 @@ class TraceSchemaMigrationTests(unittest.TestCase):
         self.assertEqual(GENERALIZED_HEADER, tuple(self.generalized))
 
     def test_generalized_row_is_exactly_reversible(self) -> None:
-        expected = {field: self.legacy_rows[0][field] for field in LEGACY_HEADER}
+        legacy = next(row for row in self.legacy_rows if row["trace_id"] == self.generalized["trace_id"])
+        expected = {field: legacy[field] for field in LEGACY_HEADER}
         self.assertEqual(expected, reverse_generalized_trace_row(self.generalized))
 
     def test_covered_does_not_imply_implemented(self) -> None:
@@ -155,7 +159,7 @@ class TraceSchemaMigrationTests(unittest.TestCase):
             self.assertNotEqual("not_run", row["verification_status"])
             self.assertNotEqual("missing", row["evidence_status"])
             self.assertEqual(TX12_REVIEW_OWNER, row["semantic_review_owner"])
-            self.assertEqual(TX12_REVIEW_DATE, row["semantic_review_date"])
+            self.assertIn(row["semantic_review_date"], {TX12_REVIEW_DATE, "2026-07-11"})
             self.assertNotEqual("not_reviewed", row["semantic_review_verdict"])
 
     def test_reviewed_dimension_counts_are_stable(self) -> None:
@@ -170,7 +174,7 @@ class TraceSchemaMigrationTests(unittest.TestCase):
         )
         self.assertEqual({"pass": 14, "planned": 200}, counts("verification_status"))
         self.assertEqual(
-            {"needs_evidence": 7, "sufficient": 207},
+            {"sufficient": 214},
             counts("semantic_review_verdict"),
         )
 

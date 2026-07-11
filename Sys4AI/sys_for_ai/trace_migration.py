@@ -21,6 +21,7 @@ TRACE_SCHEMA_VERSION = "2.0.0"
 TX11_LEGACY_SHA256 = "95e59cf5befc4f9fd29d857d1f609a4c0d2c321c1b3adf1efca1a69cdb01b28c"
 TX12_REVIEW_OWNER = "requirements_verifier"
 TX12_REVIEW_DATE = "2026-07-10"
+TX24_REVIEW_DATE = "2026-07-11"
 DEFAULT_TRACE_REGISTRY = Path("registries/requirement_trace_registry.csv")
 DEFAULT_TRACE_SCHEMA = Path("schemas/contracts/requirement_trace_registry_row.schema.json")
 
@@ -136,6 +137,37 @@ _LEGACY_RUNTIME_MARKERS = (
     "self_hosting_memory_continue",
 )
 
+_TX24_LEGACY_FIELDS = {
+    "TRACE-SFA-CORE-ID-001": {
+        "evidence_paths": "PRDs/Sys4AI_phase-0_product_system_design_prd.md;PRDs/Sys4AI_phase-1_implementation_initialization_prd.md;PRDs/modules/Sys4AI_system_layers_and_self_hosting_prd.md",
+        "notes": "Expanded from TRACE-P0-IDENTITY. Phase 1 preserves the Phase 0 authority surface outside the implementation package. AJ24 draft module owner: PRD-MOD-SYSTEM-LAYERS-SELF-HOSTING; not canonical.",
+    },
+    "TRACE-SFA-CORE-ID-002": {
+        "evidence_paths": "PRDs/Sys4AI_phase-0_product_system_design_prd.md;PRDs/Sys4AI_phase-1_implementation_initialization_prd.md;PRDs/modules/Sys4AI_system_layers_and_self_hosting_prd.md",
+        "notes": "Expanded from TRACE-P0-IDENTITY. Phase 1 preserves the Phase 0 authority surface outside the implementation package. AJ24 draft module owner: PRD-MOD-SYSTEM-LAYERS-SELF-HOSTING; not canonical.",
+    },
+    "TRACE-SFA-CORE-ID-003": {
+        "evidence_paths": "PRDs/Sys4AI_phase-0_product_system_design_prd.md;PRDs/Sys4AI_phase-1_implementation_initialization_prd.md;PRDs/modules/Sys4AI_system_layers_and_self_hosting_prd.md",
+        "notes": "Expanded from TRACE-P0-IDENTITY. Phase 1 preserves the Phase 0 authority surface outside the implementation package. AJ24 draft module owner: PRD-MOD-SYSTEM-LAYERS-SELF-HOSTING; not canonical.",
+    },
+    "TRACE-SFA-P0-FR-001": {
+        "evidence_paths": "PRDs/Sys4AI_phase-0_product_system_design_prd.md;PRDs/Sys4AI_phase-1_implementation_initialization_prd.md",
+        "notes": "Expanded from TRACE-P0-IDENTITY. Phase 1 preserves the Phase 0 authority surface outside the implementation package.",
+    },
+    "TRACE-SFA-P0-FR-002": {
+        "evidence_paths": "PRDs/Sys4AI_phase-0_product_system_design_prd.md;PRDs/Sys4AI_phase-1_implementation_initialization_prd.md",
+        "notes": "Expanded from TRACE-P0-IDENTITY. Phase 1 preserves the Phase 0 authority surface outside the implementation package.",
+    },
+    "TRACE-SFA-P0-FR-003": {
+        "evidence_paths": "PRDs/Sys4AI_phase-0_product_system_design_prd.md;PRDs/Sys4AI_phase-1_implementation_initialization_prd.md",
+        "notes": "Expanded from TRACE-P0-IDENTITY. Phase 1 preserves the Phase 0 authority surface outside the implementation package.",
+    },
+    "TRACE-SFA-P0-FR-004": {
+        "evidence_paths": "PRDs/Sys4AI_phase-0_product_system_design_prd.md;PRDs/Sys4AI_phase-1_implementation_initialization_prd.md;PRDs/modules/Sys4AI_domain_pack_prd.md",
+        "notes": "Expanded from TRACE-P0-IDENTITY. Phase 1 preserves the Phase 0 authority surface outside the implementation package. AJ24 draft module owner: PRD-MOD-DOMAIN-PACK; not canonical.",
+    },
+}
+
 
 def migrate_legacy_trace_row(row: Mapping[str, str]) -> dict[str, str]:
     """Map one legacy row to a conservative, reversible generalized draft row.
@@ -191,8 +223,7 @@ def migrate_legacy_trace_row(row: Mapping[str, str]) -> dict[str, str]:
 
 def reverse_generalized_trace_row(row: Mapping[str, str]) -> dict[str, str]:
     """Recover the exact legacy row fields retained by the v2 compatibility layer."""
-
-    return {
+    reversed_row = {
         "trace_id": row["trace_id"],
         "phase0_selector": row["phase0_selector"],
         "phase0_source": row["phase0_source"],
@@ -204,6 +235,12 @@ def reverse_generalized_trace_row(row: Mapping[str, str]) -> dict[str, str]:
         "evidence_paths": row["evidence_paths"],
         "notes": row["notes"],
     }
+    legacy = _TX24_LEGACY_FIELDS.get(row.get("trace_id", ""))
+    if legacy is not None and row.get("semantic_review_date") == TX24_REVIEW_DATE:
+        reversed_row["semantic_justification"] = ""
+        reversed_row["evidence_paths"] = legacy["evidence_paths"]
+        reversed_row["notes"] = legacy["notes"]
+    return reversed_row
 
 
 def review_legacy_trace_row(
@@ -560,7 +597,13 @@ def _validate_reviewed_rows(
             messages.append(f"{target}:{index}: {trace_id}: semantic review remains incomplete")
         if is_tx12_row and row.get("semantic_review_owner") != TX12_REVIEW_OWNER:
             messages.append(f"{target}:{index}: {trace_id}: unexpected semantic review owner")
-        if is_tx12_row and row.get("semantic_review_date") != TX12_REVIEW_DATE:
+        is_tx24_review = (
+            trace_id in _TX24_LEGACY_FIELDS
+            and "STRATEGIC-BASELINE-MIGRATION-LOCAL-EVIDENCE-SEMANTIC-REVIEW-SFADEV-TX24.md"
+            in row.get("evidence_paths", "")
+        )
+        expected_date = TX24_REVIEW_DATE if is_tx24_review else TX12_REVIEW_DATE
+        if is_tx12_row and row.get("semantic_review_date") != expected_date:
             messages.append(f"{target}:{index}: {trace_id}: unexpected semantic review date")
         for field in ("implementation_artifacts", "validation_evidence", "evidence_paths"):
             for path in _split_paths(row.get(field, "")):

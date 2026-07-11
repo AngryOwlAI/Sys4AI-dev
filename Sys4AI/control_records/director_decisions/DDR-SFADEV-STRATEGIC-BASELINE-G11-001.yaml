@@ -1,0 +1,83 @@
+director_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-001
+schema_version: 0.1.0
+decision_status: completed
+created_at: '2026-07-11T16:19:17Z'
+completed_at: '2026-07-11T16:19:17Z'
+director_role: system_director
+human_authorization:
+  principal_name: Alex Omegapy
+  principal_role: repository_maintainer_and_product_owner
+  authority_basis: The accountable human explicitly selected G-11-EVIDENCE-SCOPE and authorized a bounded TX-24 local-evidence packet after receiving the TX-23 human-gated handoff.
+  approval_evidence: 'Human-issued Codex task instruction dated 2026-07-11: Select a G-11-EVIDENCE-SCOPE, I authorize TX-24 local-evidence packet.'
+  approval_scope:
+  - select the locally executable evidence route at G-11
+  - execute one bounded first TX-24 evidence-family packet
+  - preserve the 410 plan-supersession candidates for a separate accountable decision
+  - preserve all waiver G-10 production operational stakeholder domain and permission boundaries
+  model_self_approval: false
+decision_context:
+  trigger: accountable_evidence_scope_selection
+  transaction_id: TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW
+  gate_id: G-11-EVIDENCE-SCOPE
+  program_state_id: SYS4AI-PROGRAM-STATE-001
+  latest_handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001
+  plan_source_id: SRC-EVIDENCE-CLOSURE-PLAN-TX23
+  governing_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+  reviewed_head_commit: 2912393155ea49788891f2445513752299377568
+  memory_preflight_receipt_id: MEMPREFLIGHT-TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW-20260711T161917Z
+  observed_evidence:
+  - TX-23 is complete and its handoff requires accountable G-11 route selection.
+  - The frozen ledger contains 74 locally executable obligations and 410 plan-supersession candidates.
+  - Seven semantic-review obligations form the earliest coherent local evidence family.
+  - Current local non-generated artifacts can support a bounded identity and system-boundary review without promoting capability or verification state.
+selected_route:
+  route_id: authorize_bounded_TX_24_local_semantic_review_evidence
+  route_name: Execute the seven-row identity and system-boundary semantic-review family
+  rationale: The selected family is dependency-ready coherent and locally inspectable. It can close exact semantic evidence gaps while preserving scaffolded capability planned verification and every unresolved plan-scope question.
+  immediate_effect: TX-24 may inspect execute review and accept evidence for exactly seven semantic-review obligations. The remaining 67 local verification obligations and 410 plan-scope candidates remain unauthorized for mutation in this packet.
+rejected_routes:
+- route_id: execute_all_74_local_obligations_as_one_bulk_mutation
+  reason: A bulk packet would obscure evidence-family boundaries and increase review and rollback risk.
+- route_id: supersede_or_reinterpret_the_410_candidates
+  reason: The human selected the local-evidence route and did not authorize plan supersession or full-framework scope interpretation.
+- route_id: approve_nonproduction_or_other_waiver
+  reason: No waiver scope rationale residual risk expiry monitoring or review trigger was authorized.
+- route_id: accept_G_10_or_promote_to_production
+  reason: Local semantic evidence does not satisfy retained final acceptance production operational stakeholder or domain obligations.
+authority_boundary:
+  human_authority_recorded: true
+  accepts_gate_G_11_local_evidence_route: true
+  authorizes_TX_24_semantic_review_family: true
+  authorized_local_obligations: 7
+  authorizes_remaining_local_verification_obligations: false
+  decides_410_plan_supersession_candidates: false
+  accepts_any_waiver: false
+  may_claim_G_10_final_acceptance: false
+  may_claim_production_readiness: false
+  may_grant_operational_authority: false
+  may_claim_broad_stakeholder_consensus: false
+  may_claim_domain_truth_or_domain_acceptance: false
+  may_expand_permissions: false
+  may_rewrite_activated_control_history: false
+rollback_and_review:
+  rollback_class: activating_bounded_evidence_scope_decision
+  rollback_scope: Before publication revert the atomic G-11 and TX-24 packet. After publication preserve this decision and supersede it only through a new accountable decision.
+  supersession_rule: Any expansion beyond the seven semantic-review obligations requires separate explicit human authority and a new bounded transaction.
+  review_triggers:
+  - a later local verification family is proposed
+  - plan interpretation supersession or waiver is proposed for any of the 410 candidates
+  - evidence conflicts with a reviewed trace row or exact artifact path
+  - G-10 production operations stakeholder domain or permission authority is proposed
+  expiry: remains current for this completed packet and grants no continuing authority
+evidence_references:
+- implementation_plans/STRATEGIC-BASELINE-MIGRATION-EVIDENCE-CLOSURE-PLAN-SFADEV-TX23.md
+- Sys4AI/registries/evidence_closure_plan_registry.csv
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001.yaml
+- Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW-20260711T161917Z.yaml
+validators:
+- cd Sys4AI && make validate-director-decisions
+- cd Sys4AI && make validate-director-decision-registry
+- cd Sys4AI && make validate-local-evidence-execution
+- cd Sys4AI && make validate-program-state
+- make validate
+- git diff --check

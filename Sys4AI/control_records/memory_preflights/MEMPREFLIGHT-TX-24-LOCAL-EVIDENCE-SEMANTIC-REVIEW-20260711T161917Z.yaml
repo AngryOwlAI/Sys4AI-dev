@@ -1,0 +1,72 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW-20260711T161917Z
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW
+created_at: '2026-07-11T16:19:17Z'
+status: PASS_WITH_WARNINGS
+commands_run:
+- command: python -m sys_for_ai.cli memory status --json
+  result: pass_with_460_known_hash_warnings_and_zero_authority_inversions
+- command: python -m sys_for_ai.cli memory lookup HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001 --json
+  result: pass_human_gated_handoff_resolved
+- command: python -m sys_for_ai.cli memory lookup SRC-REG-REQ-TRACE --json
+  result: pass_controlled_trace_resolved
+queries:
+- query: TX-24 local semantic review evidence identity system boundary
+  returned_object_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001
+  - SRC-REG-REQ-TRACE
+  - SRC-TRACE-SEMANTIC-REVIEW-TX12
+  - SRC-REG-SYSTEM-LAYERS
+  - SRC-SKILL-DOMAIN-PACK-ROUTER
+canonical_sources_inspected:
+- path: Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001.yaml
+  registry: source_registry.csv
+  row_id: SRC-HANDOFF-STRATEGIC-BASELINE-TX23
+  inspected_sections:
+  - human gate counts authority boundaries and stop conditions
+- path: Sys4AI/registries/evidence_closure_plan_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-EVIDENCE-CLOSURE-PLAN
+  inspected_sections:
+  - all seven local semantic-review rows and frozen ledger hash
+- path: Sys4AI/registries/requirement_trace_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-REQ-TRACE
+  inspected_sections:
+  - seven needs-evidence rows current fields and canonical mappings
+- path: Sys4AI/registries/system_layer_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-SYSTEM-LAYERS
+  inspected_sections:
+  - development framework template instance and derivative boundaries
+- path: .agents/skills/domain-pack-router/SKILL.md
+  registry: source_registry.csv
+  row_id: SRC-SKILL-DOMAIN-PACK-ROUTER
+  inspected_sections:
+  - domain-neutral routing procedure and authority boundary
+registry_rows_inspected:
+- path: control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001.yaml
+  registry: handoff_registry.csv
+  row_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001
+  purpose: Confirm G-11 is required and TX-24 was not previously authorized.
+- path: Sys4AI/registries/evidence_closure_plan_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-EVIDENCE-CLOSURE-PLAN
+  purpose: Select the earliest coherent local evidence family without rewriting the ledger.
+- path: Sys4AI/registries/requirement_trace_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-REQ-TRACE
+  purpose: Confirm exact trace rows and current states before review.
+- path: Sys4AI/registries/system_layer_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-SYSTEM-LAYERS
+  purpose: Limit writes to controlled framework and development-system evidence surfaces.
+stale_context_risks:
+- risk_id: MEMPREFLIGHT-TX24-RISK-001
+  status: observed
+  notes: Memory reported 460 known pending-hash warnings; live registered sources were inspected before routing.
+- risk_id: MEMPREFLIGHT-TX24-RISK-002
+  status: controlled
+  notes: TX-23 planning rows are not execution evidence and remain frozen; a separate execution registry records accepted closures.
+usable_for_routing: true

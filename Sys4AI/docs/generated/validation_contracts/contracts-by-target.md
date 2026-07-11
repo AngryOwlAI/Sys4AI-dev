@@ -56,6 +56,7 @@ page_metadata:
     - contract_self_change_safety_evaluation
     - contract_self_change_holdout_suite
     - contract_evidence_closure_plan_registry_row
+    - contract_local_evidence_execution_registry_row
   generated_at: 2026-07-11T14:12:24Z
   generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
   stale_or_orphan_status: current
@@ -136,6 +137,12 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | contract_handoff_registry_row | schemas/contracts/handoff_registry_row.schema.json | 2020-12 | csv | handoff_registry_row | registries/handoff_registry.csv | Sys4AI validate-handoff-registry | control_loop | controlled | pending | pending |
+
+## csv / local_evidence_execution_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_local_evidence_execution_registry_row | schemas/contracts/local_evidence_execution_registry_row.schema.json | 2020-12 | csv | local_evidence_execution_registry_row | registries/local_evidence_execution_registry.csv | Sys4AI validate-local-evidence-execution | requirements_verifier | controlled | pending | pending |
 
 ## csv / memory_preflight_receipt_registry_row
 

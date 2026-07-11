@@ -257,6 +257,11 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_strategic_baseline_tx23_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-23-EVIDENCE-CLOSURE-PLAN-20260711T155250Z.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
 | ctrl_strategic_baseline_tx23_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX23-001.yaml | completion_receipt | controlled | verification_engineer | contract_completion_receipt_v1_0 | pending |
 | ctrl_strategic_baseline_tx23_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001.yaml | handoff | controlled | verification_engineer | contract_handoff_v1_0 | pending |
+| ctrl_strategic_baseline_g11_director_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-001.yaml | director_decision | controlled | system_director | contract_director_decision | pending |
+| ctrl_strategic_baseline_tx24_execution_transaction | control_records/execution_transactions/TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW.yaml | execution_transaction | controlled | bounded_execution_planner | contract_execution_transaction | pending |
+| ctrl_strategic_baseline_tx24_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW-20260711T161917Z.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
+| ctrl_strategic_baseline_tx24_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX24-001.yaml | completion_receipt | controlled | requirements_verifier | contract_completion_receipt_v1_0 | pending |
+| ctrl_strategic_baseline_tx24_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX24-001.yaml | handoff | controlled | requirements_verifier | contract_handoff_v1_0 | pending |
 
 ## Validation Contract Trace
 

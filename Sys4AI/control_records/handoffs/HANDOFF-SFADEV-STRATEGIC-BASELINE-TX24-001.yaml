@@ -1,0 +1,44 @@
+handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX24-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+producing_execution_transaction_id: TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW
+next_execution_transaction_id: null
+status: human_gated
+producing_role: requirements_verifier
+recommended_next_role: system_director
+summary: TX-24 closed exactly seven local semantic-review obligations with accepted evidence; 67 local verification obligations and 410 plan-scope candidates remain and no later packet is authorized.
+source_ids:
+- SRC-DDR-STRATEGIC-BASELINE-G11-001
+- SRC-LOCAL-EVIDENCE-REPORT-TX24
+- SRC-REG-LOCAL-EVIDENCE-EXECUTION
+- SRC-TX24-EXECUTION-TRANSACTION
+- SRC-COMPLETION-STRATEGIC-BASELINE-TX24
+- SRC-REG-REQ-TRACE
+- SRC-REG-EVIDENCE-CLOSURE-PLAN
+closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX24-001
+current_state_evidence:
+- Sys4AI/control_records/program_state.yaml
+- TX24-LOCAL-EVIDENCE-7-OF-7-PASS
+- TX24-TX23-LEDGER-FROZEN
+- TX24-TRACE-SEMANTIC-SUFFICIENT-227
+- TX24-ROOT-VALIDATE-PASS
+validation_evidence:
+  trace_rows: 227
+  trace_semantic_review: SUFFICIENT_227_NEEDS_EVIDENCE_0
+  trace_verification: PASS_27_PLANNED_200
+  trace_capability: IMPLEMENTED_85_SCAFFOLDED_137_ABSENT_5
+  trace_coverage: COVERED_92_PARTIAL_135
+  frozen_tx23_ledger_obligations: 484
+  accepted_local_semantic_closures: 7
+  remaining_local_verification_obligations: 67
+  plan_supersession_candidates: 410
+  accepted_waivers: 0
+  g10_status: DEFERRED_NOT_ACCEPTED
+  next_authority_gate: SEPARATE_LOCAL_FAMILY_OR_PLAN_INTERPRETATION
+stop_conditions:
+- Do not start another local evidence family from this handoff alone.
+- Do not mutate any of the 410 plan candidates approve a waiver supersede the plan or accept G-10 without separate accountable authority.
+- Do not convert scaffolded planned partial or absent states from semantic-review evidence.
+- Do not rewrite the frozen TX-23 ledger or any activated G-11 and TX-24 record.
+- Do not claim production operational stakeholder domain target-runtime or permission authority.
+- Reverify G-07 before reliance if its evidence expires or materially changes.

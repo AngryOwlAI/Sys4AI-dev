@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/Sys4AI/schemas/contracts/local_evidence_execution_registry_row.schema.json",
+  "title": "Local evidence execution registry row",
+  "description": "Accepted evidence for one bounded locally executable TX-23 closure obligation. Conformance does not promote capability or verification state, approve a waiver, supersede the plan, or accept G-10.",
+  "type": "object",
+  "required": [
+    "execution_evidence_id", "closure_id", "trace_id", "requirement_id", "evidence_family",
+    "prior_state", "resulting_state", "evidence_report_path", "implementation_artifacts",
+    "validation_evidence", "reviewer_role", "review_date", "status",
+    "execution_transaction_id", "notes"
+  ],
+  "properties": {
+    "execution_evidence_id": { "type": "string", "pattern": "^EVID-TX24-SFA-[A-Z0-9-]+$" },
+    "closure_id": { "type": "string", "pattern": "^CLOSE-SFA-[A-Z0-9-]+-SEMANTIC-REVIEW$" },
+    "trace_id": { "type": "string", "pattern": "^TRACE-SFA-[A-Z0-9-]+$" },
+    "requirement_id": { "type": "string", "pattern": "^SFA-[A-Z0-9]+(?:-[A-Z0-9]+)*$" },
+    "evidence_family": { "const": "identity_and_system_boundary_semantic_review" },
+    "prior_state": { "const": "needs_evidence" },
+    "resulting_state": { "const": "sufficient" },
+    "evidence_report_path": { "type": "string", "minLength": 1 },
+    "implementation_artifacts": { "type": "string", "minLength": 1 },
+    "validation_evidence": { "type": "string", "minLength": 1 },
+    "reviewer_role": { "const": "requirements_verifier" },
+    "review_date": { "type": "string", "format": "date" },
+    "status": { "const": "accepted" },
+    "execution_transaction_id": { "const": "TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW" },
+    "notes": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": false
+}

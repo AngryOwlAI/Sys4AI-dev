@@ -22,12 +22,13 @@ PHASE1 = PRODUCT_ROOT.parent / "PRDs/Sys4AI_phase-1_implementation_initializatio
 
 
 class TraceSemanticTests(unittest.TestCase):
-    def test_live_tx13_semantics_pass_and_preserve_gaps(self) -> None:
+    def test_live_semantics_pass_with_tx24_review_evidence(self) -> None:
         result = validate_generalized_trace_semantics(TRACE, policy_path=POLICY)
         self.assertTrue(result.ok, result.messages)
         self.assertIn(STRUCTURAL_LIMITATION, result.messages)
         rows = self._read_rows(TRACE)
-        self.assertEqual(7, sum(row["semantic_review_verdict"] == "needs_evidence" for row in rows))
+        self.assertEqual(0, sum(row["semantic_review_verdict"] == "needs_evidence" for row in rows))
+        self.assertEqual(227, sum(row["semantic_review_verdict"] == "sufficient" for row in rows))
         self.assertEqual(200, sum(row["verification_status"] == "planned" for row in rows))
 
     def test_implemented_capability_with_missing_path_fails(self) -> None:
@@ -155,6 +156,7 @@ class TraceSemanticTests(unittest.TestCase):
 
     def test_post_tx23_state_requires_accountable_scope_gate(self) -> None:
         def mutate_state(state):
+            self._as_post_tx23(state)
             state["allowed_next_actions"].remove("seek_accountable_G_11_EVIDENCE_SCOPE_decision")
 
         result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
@@ -163,11 +165,22 @@ class TraceSemanticTests(unittest.TestCase):
 
     def test_post_tx23_state_blocks_classification_as_evidence(self) -> None:
         def mutate_state(state):
+            self._as_post_tx23(state)
             state["blocked_actions"].remove("treat_TX_23_classification_as_executed_evidence")
 
         result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
         self.assertFalse(result.ok)
         self.assertTrue(any("treat_TX_23_classification_as_executed_evidence" in item for item in result.messages))
+
+    def test_post_tx24_state_requires_separate_next_family_authorization(self) -> None:
+        def mutate_state(state):
+            state["allowed_next_actions"].remove(
+                "seek_separate_authorization_for_next_TX_24_local_verification_family"
+            )
+
+        result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
+        self.assertFalse(result.ok)
+        self.assertTrue(any("controlled next route" in item for item in result.messages))
 
     @staticmethod
     def _as_post_tx20(state):
@@ -189,6 +202,18 @@ class TraceSemanticTests(unittest.TestCase):
         state["latest_handoff_evidence_id"] = "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX22-001"
         if "execute_TX_23_EVIDENCE_CLOSURE_PLAN_only" not in state["allowed_next_actions"]:
             state["allowed_next_actions"].append("execute_TX_23_EVIDENCE_CLOSURE_PLAN_only")
+
+    @staticmethod
+    def _as_post_tx23(state):
+        state["current_phase"] = "strategic_baseline_migration_TX_23_evidence_closure_planned"
+        state["state_status"] = "human_gated"
+        state["human_gate_required"] = True
+        state["continuation_state"] = "blocked"
+        state["escalation_state"] = "pending"
+        state["latest_closeout_evidence_id"] = "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX23-001"
+        state["latest_handoff_evidence_id"] = "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001"
+        if "seek_accountable_G_11_EVIDENCE_SCOPE_decision" not in state["allowed_next_actions"]:
+            state["allowed_next_actions"].append("seek_accountable_G_11_EVIDENCE_SCOPE_decision")
 
     def test_derivative_requirement_source_fails(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -228,7 +253,7 @@ class TraceSemanticTests(unittest.TestCase):
                 "[trace_validation]\n"
                 f'trace_registry_path = "{(root / "trace.csv").as_posix()}"\n'
                 "max_current_evidence_age_days = 30\n"
-                "expected_needs_evidence = 7\n"
+                "expected_needs_evidence = 0\n"
                 "expected_planned_verification = 200\n"
                 "expected_operational_capability = 0\n",
                 encoding="utf-8",

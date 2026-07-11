@@ -23,7 +23,11 @@ from .derivatives import (
     write_config_control_wiki,
     write_validation_contracts_catalog,
 )
-from .evidence_closure import validate_evidence_closure_plan, write_evidence_closure_ledger
+from .evidence_closure import (
+    validate_evidence_closure_plan,
+    validate_local_evidence_execution,
+    write_evidence_closure_ledger,
+)
 from .host_profiles import validate_host_capability_profiles
 from .lifecycle_patterns import validate_lifecycle_and_patterns
 from .memory import bootstrap_registries
@@ -389,6 +393,19 @@ def build_parser() -> argparse.ArgumentParser:
     )
     validate_closure.add_argument("ledger", default="registries/evidence_closure_plan_registry.csv", nargs="?")
     validate_closure.add_argument("--trace", default="registries/requirement_trace_registry.csv")
+    validate_closure.add_argument("--execution-registry", default="registries/local_evidence_execution_registry.csv")
+
+    validate_local_evidence = sub.add_parser(
+        "validate-local-evidence-execution",
+        help="Validate the bounded TX-24 semantic-review evidence family",
+    )
+    validate_local_evidence.add_argument(
+        "execution_registry",
+        default="registries/local_evidence_execution_registry.csv",
+        nargs="?",
+    )
+    validate_local_evidence.add_argument("--trace", default="registries/requirement_trace_registry.csv")
+    validate_local_evidence.add_argument("--ledger", default="registries/evidence_closure_plan_registry.csv")
 
     generate_closure = sub.add_parser(
         "generate-evidence-closure-ledger",
@@ -592,7 +609,10 @@ def main(argv: list[str] | None = None) -> int:
         return print_result(validate_requirement_trace_migration(args.path, args.schema))
 
     if args.command == "validate-evidence-closure-plan":
-        return print_result(validate_evidence_closure_plan(args.trace, args.ledger))
+        return print_result(validate_evidence_closure_plan(args.trace, args.ledger, args.execution_registry))
+
+    if args.command == "validate-local-evidence-execution":
+        return print_result(validate_local_evidence_execution(args.trace, args.ledger, args.execution_registry))
 
     if args.command == "generate-evidence-closure-ledger":
         result = (
