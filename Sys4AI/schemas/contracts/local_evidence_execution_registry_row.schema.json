@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/Sys4AI/schemas/contracts/local_evidence_execution_registry_row.schema.json",
   "title": "Local evidence execution registry row",
-  "description": "Accepted evidence for one bounded locally executable TX-23 closure obligation. Conformance does not promote capability or verification state, approve a waiver, supersede the plan, or accept G-10.",
+  "description": "Accepted evidence for one bounded locally executable TX-23 closure obligation. Each row is bound to an activated evidence family; conformance does not approve a waiver, supersede the plan, accept G-10, or grant operational authority.",
   "type": "object",
   "required": [
     "execution_evidence_id", "closure_id", "trace_id", "requirement_id", "evidence_family",
@@ -11,21 +11,49 @@
     "execution_transaction_id", "notes"
   ],
   "properties": {
-    "execution_evidence_id": { "type": "string", "pattern": "^EVID-TX24-SFA-[A-Z0-9-]+$" },
-    "closure_id": { "type": "string", "pattern": "^CLOSE-SFA-[A-Z0-9-]+-SEMANTIC-REVIEW$" },
+    "execution_evidence_id": { "type": "string", "pattern": "^EVID-TX(?:24|26)-SFA-[A-Z0-9-]+$" },
+    "closure_id": { "type": "string", "pattern": "^CLOSE-SFA-[A-Z0-9-]+-(?:SEMANTIC-REVIEW|VERIFICATION)$" },
     "trace_id": { "type": "string", "pattern": "^TRACE-SFA-[A-Z0-9-]+$" },
     "requirement_id": { "type": "string", "pattern": "^SFA-[A-Z0-9]+(?:-[A-Z0-9]+)*$" },
-    "evidence_family": { "const": "identity_and_system_boundary_semantic_review" },
-    "prior_state": { "const": "needs_evidence" },
-    "resulting_state": { "const": "sufficient" },
+    "evidence_family": { "enum": ["identity_and_system_boundary_semantic_review", "python_reference_and_dependency_policy_verification"] },
+    "prior_state": { "enum": ["needs_evidence", "planned"] },
+    "resulting_state": { "enum": ["sufficient", "pass"] },
     "evidence_report_path": { "type": "string", "minLength": 1 },
     "implementation_artifacts": { "type": "string", "minLength": 1 },
     "validation_evidence": { "type": "string", "minLength": 1 },
-    "reviewer_role": { "const": "requirements_verifier" },
+    "reviewer_role": { "enum": ["requirements_verifier", "verification_engineer"] },
     "review_date": { "type": "string", "format": "date" },
     "status": { "const": "accepted" },
-    "execution_transaction_id": { "const": "TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW" },
+    "execution_transaction_id": { "enum": ["TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW", "TX-26-LOCAL-EVIDENCE-PYTHON-PACKAGE"] },
     "notes": { "type": "string", "minLength": 1 }
   },
+  "allOf": [
+    {
+      "if": { "properties": { "evidence_family": { "const": "identity_and_system_boundary_semantic_review" } }, "required": ["evidence_family"] },
+      "then": {
+        "properties": {
+          "execution_evidence_id": { "pattern": "^EVID-TX24-SFA-[A-Z0-9-]+$" },
+          "closure_id": { "pattern": "^CLOSE-SFA-[A-Z0-9-]+-SEMANTIC-REVIEW$" },
+          "prior_state": { "const": "needs_evidence" },
+          "resulting_state": { "const": "sufficient" },
+          "reviewer_role": { "const": "requirements_verifier" },
+          "execution_transaction_id": { "const": "TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "evidence_family": { "const": "python_reference_and_dependency_policy_verification" } }, "required": ["evidence_family"] },
+      "then": {
+        "properties": {
+          "execution_evidence_id": { "pattern": "^EVID-TX26-SFA-[A-Z0-9-]+$" },
+          "closure_id": { "pattern": "^CLOSE-SFA-[A-Z0-9-]+-VERIFICATION$" },
+          "prior_state": { "const": "planned" },
+          "resulting_state": { "const": "pass" },
+          "reviewer_role": { "const": "verification_engineer" },
+          "execution_transaction_id": { "const": "TX-26-LOCAL-EVIDENCE-PYTHON-PACKAGE" }
+        }
+      }
+    }
+  ],
   "additionalProperties": false
 }

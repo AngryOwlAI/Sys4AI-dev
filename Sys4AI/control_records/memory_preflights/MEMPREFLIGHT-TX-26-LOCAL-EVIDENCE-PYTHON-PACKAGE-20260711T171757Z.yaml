@@ -1,0 +1,108 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-26-LOCAL-EVIDENCE-PYTHON-PACKAGE-20260711T171757Z
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-26-LOCAL-EVIDENCE-PYTHON-PACKAGE
+created_at: '2026-07-11T17:17:57Z'
+status: PASS_WITH_WARNINGS
+commands_run:
+- command: python -m sys_for_ai.cli memory status --json
+  result: pass
+- command: python -m sys_for_ai.cli memory lookup TX-26-LOCAL-EVIDENCE-PYTHON-PACKAGE
+    --json
+  result: warn
+- command: python -m sys_for_ai.cli memory lookup HANDOFF-SFADEV-STRATEGIC-BASELINE-TX25-001
+    --json
+  result: pass
+- command: python -m sys_for_ai.cli memory search 'SRC-REG-REQ-TRACE' --limit 10 --json
+  result: pass
+- command: python -m sys_for_ai.cli memory search 'SRC-EVIDENCE-CLOSURE-PLAN-TX23'
+    --limit 10 --json
+  result: pass
+- command: python -m sys_for_ai.cli memory search 'SRC-PRD-P0' --limit 10 --json
+  result: pass
+- command: python -m sys_for_ai.cli memory search 'HANDOFF-SFADEV-STRATEGIC-BASELINE-TX25-001'
+    --limit 10 --json
+  result: pass
+queries:
+- query: SRC-REG-REQ-TRACE
+  returned_object_ids:
+  - SRC-REG-HANDOFFS
+  - SRC-MEMORY-PREFLIGHT-PRD-INTEGRATION-001
+  - SRC-MEMPREFLIGHT-STRATEGIC-BASELINE-TX24
+  - ctrl_strategic_baseline_tx24_memory_preflight
+  - MEMPREFLIGHT-SFADEV-01-PRD-INTEGRATION-001
+  - MEMPREFLIGHT-TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW-20260711T161917Z
+  - SRC-MEMORY-PREFLIGHT-PHASE2-WALKING-SKELETON-PLAN-001
+  - SRC-MEMORY-PREFLIGHT-PHASE2-WALKING-SKELETON-PRD-001
+  - SRC-MEMPREFLIGHT-STRATEGIC-BASELINE-TX23
+  - SRC-REG-DERIVATIVES
+- query: SRC-EVIDENCE-CLOSURE-PLAN-TX23
+  returned_object_ids:
+  - SRC-TX23-EXECUTION-TRANSACTION
+  - ctrl_strategic_baseline_tx23_execution_transaction
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-001
+  - SRC-DDR-STRATEGIC-BASELINE-G11-001
+  - SRC-EVIDENCE-CLOSURE-PLAN-TX23
+  - SRC-HANDOFF-STRATEGIC-BASELINE-TX23
+  - SRC-MEMPREFLIGHT-STRATEGIC-BASELINE-TX25
+  - ctrl_strategic_baseline_g11_director_decision
+  - ctrl_strategic_baseline_tx23_handoff
+  - ctrl_strategic_baseline_tx25_memory_preflight
+- query: SRC-PRD-P0
+  returned_object_ids:
+  - SRC-REG-REQ-TRACE
+  - SRC-REG-OBJECT-RELATIONSHIPS
+  - SRC-MEMORY-PREFLIGHT-INIT-FRONTDOOR-001
+  - SRC-MEMORY-PREFLIGHT-PRD-INTEGRATION-001
+  - SRC-PRD-P0
+  - SRC-REG-DERIVATIVES
+  - MEMPREFLIGHT-SFADEV-01-PRD-INTEGRATION-001
+  - MEMPREFLIGHT-SFADEV-11-INIT-FRONTDOOR-001
+  - SRC-CONTROL-HANDOFF-EXAMPLE
+  - SRC-MEMORY-PREFLIGHT-PHASE2-WALKING-SKELETON-PRD-001
+- query: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX25-001
+  returned_object_ids:
+  - SRC-TX25-EXECUTION-TRANSACTION
+  - ctrl_strategic_baseline_tx25_execution_transaction
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX25-001
+  - SRC-HANDOFF-STRATEGIC-BASELINE-TX25
+  - SRC-PROGRAM-STATE
+  - SRC-TEST-SELFHOST-ACCEPTANCE
+  - ctrl_program_state
+  - ctrl_strategic_baseline_tx25_handoff
+  - SRC-COMPLETION-STRATEGIC-BASELINE-TX25
+  - SRC-REG-COMPLETION-RECEIPTS
+canonical_sources_inspected:
+- path: Sys4AI/registries/handoff_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-HANDOFFS
+  inspected_sections:
+  - registered source metadata
+- path: Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-SFADEV-01-PRD-INTEGRATION-001.yaml
+  registry: source_registry.csv
+  row_id: SRC-MEMORY-PREFLIGHT-PRD-INTEGRATION-001
+  inspected_sections:
+  - registered source metadata
+- path: Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW-20260711T161917Z.yaml
+  registry: source_registry.csv
+  row_id: SRC-MEMPREFLIGHT-STRATEGIC-BASELINE-TX24
+  inspected_sections:
+  - registered source metadata
+registry_rows_inspected:
+- path: control_records/memory_preflights/MEMPREFLIGHT-TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW-20260711T161917Z.yaml
+  registry: control_record_registry.csv
+  row_id: ctrl_strategic_baseline_tx24_memory_preflight
+  purpose: Confirm memory hit registry evidence.
+- path: control_records/memory_preflights/MEMPREFLIGHT-SFADEV-01-PRD-INTEGRATION-001.yaml
+  registry: memory_preflight_receipt_registry.csv
+  row_id: MEMPREFLIGHT-SFADEV-01-PRD-INTEGRATION-001
+  purpose: Confirm memory hit registry evidence.
+- path: control_records/memory_preflights/MEMPREFLIGHT-TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW-20260711T161917Z.yaml
+  registry: memory_preflight_receipt_registry.csv
+  row_id: MEMPREFLIGHT-TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW-20260711T161917Z
+  purpose: Confirm memory hit registry evidence.
+stale_context_risks:
+- risk_id: MEMPREFLIGHT-RISK-001
+  status: not_observed
+  notes: No generated derivative was used as source authority.
+usable_for_routing: true

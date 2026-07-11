@@ -1,0 +1,44 @@
+handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX26-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+producing_execution_transaction_id: TX-26-LOCAL-EVIDENCE-PYTHON-PACKAGE
+next_execution_transaction_id: null
+status: human_gated
+producing_role: verification_engineer
+recommended_next_role: system_director
+summary: TX-26 verified exactly four Python/package obligations and stops with 63 local verification obligations plus all external operational and G-10 work separately gated.
+source_ids:
+- SRC-DDR-STRATEGIC-BASELINE-G11-003
+- SRC-LOCAL-EVIDENCE-PYTHON-PACKAGE-REPORT-TX26
+- SRC-REG-LOCAL-EVIDENCE-EXECUTION
+- SRC-VALIDATOR-PYTHON-PACKAGE-SURFACE
+- SRC-TEST-PYTHON-PACKAGE-SURFACE
+- SRC-TX26-EXECUTION-TRANSACTION
+- SRC-COMPLETION-STRATEGIC-BASELINE-TX26
+- SRC-REG-REQ-TRACE
+- SRC-REG-EVIDENCE-CLOSURE-PLAN
+- SRC-REG-PLAN-SCOPE-INTERPRETATION
+closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX26-001
+current_state_evidence:
+- TX26-PYTHON-PACKAGE-4-OF-4-PASS
+- TX26-LOCAL-EVIDENCE-11-ACTIVATED-PASS
+- TX26-TX23-LEDGER-FROZEN
+- TX26-TX25-INTERPRETATION-FROZEN
+- TX26-TRACE-PASS-31-PLANNED-196
+- TX26-ROOT-VALIDATE-PASS
+validation_evidence:
+  trace_rows: 227
+  trace_semantic_review: SUFFICIENT_227_NEEDS_EVIDENCE_0
+  trace_verification: PASS_31_PLANNED_196
+  local_evidence_accepted: 11
+  remaining_local_verification_obligations: 63
+  frozen_tx23_ledger_obligations: 484
+  accepted_plan_interpretations: 410
+  accepted_waivers: 0
+  g10_status: DEFERRED_NOT_ACCEPTED
+  next_authority_gate: SEPARATE_LOCAL_FAMILY_OR_EXTERNAL_SCOPE
+stop_conditions:
+- Do not start another local external operational or final-acceptance transaction from this handoff alone.
+- Do not modify the frozen TX-23 ledger TX-25 interpretation canonical PRDs or activated G-11/TX-24/TX-25/TX-26 history.
+- Do not accept G-10 or claim production operational stakeholder domain target-runtime or permission authority.
+- Reverify the Python package family if package metadata dependencies or interpreter behavior materially changes.

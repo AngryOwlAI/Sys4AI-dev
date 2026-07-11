@@ -38,7 +38,7 @@ class EvidenceClosureTests(unittest.TestCase):
         self.assertEqual(410, sum(row["closure_route"] == "plan_supersession_candidate" for row in rows))
         self.assertTrue(all(row["status"] == "planned" for row in rows))
         execution = self._read(EXECUTION)
-        self.assertEqual(7, len(execution))
+        self.assertEqual(11, len(execution))
         self.assertTrue(all(row["status"] == "accepted" for row in execution))
         self.assertTrue(validate_local_evidence_execution(TRACE, LEDGER, EXECUTION).ok)
 
@@ -57,8 +57,8 @@ class EvidenceClosureTests(unittest.TestCase):
 
     def test_current_open_builder_excludes_accepted_semantic_closures(self) -> None:
         expected = expected_evidence_closure_rows(self._read(TRACE))
-        self.assertEqual(477, len(expected))
-        self.assertEqual(200, sum(row["gap_dimension"] == "verification" for row in expected))
+        self.assertEqual(473, len(expected))
+        self.assertEqual(196, sum(row["gap_dimension"] == "verification" for row in expected))
         self.assertEqual(142, sum(row["gap_dimension"] == "capability" for row in expected))
         self.assertEqual(135, sum(row["gap_dimension"] == "coverage" for row in expected))
         self.assertEqual(0, sum(row["gap_dimension"] == "semantic_review" for row in expected))
@@ -117,7 +117,21 @@ class EvidenceClosureTests(unittest.TestCase):
                 writer.writerows(rows)
             result = validate_local_evidence_execution(TRACE, LEDGER, path)
         self.assertFalse(result.ok)
-        self.assertTrue(any("exactly the seven authorized" in item for item in result.messages))
+        self.assertTrue(any("exactly the 11 activated" in item for item in result.messages))
+
+    def test_python_verification_promotion_without_pass_fails(self) -> None:
+        rows = self._read(EXECUTION)
+        row = next(item for item in rows if item["execution_transaction_id"].startswith("TX-26"))
+        row["resulting_state"] = "planned"
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "local.csv"
+            with path.open("w", encoding="utf-8", newline="") as handle:
+                writer = csv.DictWriter(handle, fieldnames=rows[0].keys(), lineterminator="\n")
+                writer.writeheader()
+                writer.writerows(rows)
+            result = validate_local_evidence_execution(TRACE, LEDGER, path)
+        self.assertFalse(result.ok)
+        self.assertTrue(any("planned to pass" in item for item in result.messages))
 
     def _validate_rows(self, rows: list[dict[str, str]]):
         with tempfile.TemporaryDirectory() as temporary:

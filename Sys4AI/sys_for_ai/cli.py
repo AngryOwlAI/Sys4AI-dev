@@ -37,6 +37,7 @@ from .memory import hash_path as memory_hash_path
 from .memory import lookup_memory, memory_status, run_memory_preflight, search_memory, update_hashes, validate_hashes
 from .prd_modules import validate_prd_modules
 from .prd_semantics import validate_prd_semantics
+from .python_package_surface import validate_python_package_surface
 from .safety_evaluation import validate_safety_evaluation
 from .strategic_intent import validate_strategic_intent
 from .walking_skeleton import (
@@ -409,6 +410,13 @@ def build_parser() -> argparse.ArgumentParser:
     validate_local_evidence.add_argument("--trace", default="registries/requirement_trace_registry.csv")
     validate_local_evidence.add_argument("--ledger", default="registries/evidence_closure_plan_registry.csv")
 
+    validate_python_package = sub.add_parser(
+        "validate-python-package-surface",
+        help="Verify the bounded Python reference package and dependency-policy family",
+    )
+    validate_python_package.add_argument("--pyproject", default="pyproject.toml")
+    validate_python_package.add_argument("--requirements", default="requirements.txt")
+
     validate_plan_scope = sub.add_parser(
         "validate-plan-interpretation",
         help="Validate the controlled 410-row G-11 future-work disposition",
@@ -637,6 +645,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "validate-local-evidence-execution":
         return print_result(validate_local_evidence_execution(args.trace, args.ledger, args.execution_registry))
 
+    if args.command == "validate-python-package-surface":
+        return print_result(validate_python_package_surface(args.pyproject, args.requirements))
+
     if args.command == "validate-plan-interpretation":
         return print_result(validate_plan_interpretation(args.trace, args.ledger, args.registry))
 
@@ -707,6 +718,7 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_capability_migration(args.capability_migration_manifest))
         result.extend(validate_requirement_trace(args.requirement_trace))
         result.extend(validate_requirement_trace_migration(args.requirement_trace))
+        result.extend(validate_python_package_surface())
         result.extend(validate_prd_modules(args.prd_modules))
         result.extend(check_governance_generated_docs())
         result.extend(validate_generated_derivatives(args.generated_docs, "registries/derivative_registry.csv"))

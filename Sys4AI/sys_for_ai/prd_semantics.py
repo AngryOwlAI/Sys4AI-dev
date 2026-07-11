@@ -169,6 +169,7 @@ def _validate_strategic_approval_state(
         "strategic_baseline_migration_TX_23_evidence_closure_planned",
         "strategic_baseline_migration_TX_24_local_semantic_evidence_complete",
         "strategic_baseline_migration_TX_25_plan_interpretation_complete",
+        "strategic_baseline_migration_TX_26_python_package_verification_complete",
     }:
         return []
 

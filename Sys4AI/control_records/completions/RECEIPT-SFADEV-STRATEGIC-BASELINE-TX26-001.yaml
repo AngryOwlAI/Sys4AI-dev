@@ -1,0 +1,58 @@
+completion_receipt_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX26-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-26-LOCAL-EVIDENCE-PYTHON-PACKAGE
+role: verification_engineer
+result: PASS
+summary: TX-26 verified exactly four Python reference and dependency-policy obligations under supported Python 3.12 while preserving frozen planning history all 410 future-work dispositions and every later authority gate.
+changed_artifacts:
+- path: Sys4AI/sys_for_ai/python_package_surface.py;Sys4AI/tests/test_python_package_surface.py;Sys4AI/Makefile;Sys4AI/sys_for_ai/cli.py
+  change_summary: Adds the focused package metadata dependency parity reference-surface and two-mode interpreter validator with positive and negative tests.
+- path: Sys4AI/registries/local_evidence_execution_registry.csv;Sys4AI/registries/requirement_trace_registry.csv
+  change_summary: Appends four additive evidence bindings and advances only their verification states from planned to pass.
+- path: implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-LOCAL-EVIDENCE-PYTHON-PACKAGE-SFADEV-TX26.md
+  change_summary: Records exact evidence limitations interpreter correction and residual gates.
+- path: Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-003.yaml;Sys4AI/control_records/execution_transactions/TX-26-LOCAL-EVIDENCE-PYTHON-PACKAGE.yaml
+  change_summary: Records accountable bounded scope and portable execution authority.
+- path: Sys4AI/control_records/program_state.yaml;Sys4AI/registries/*registry.csv;Sys4AI/docs/generated/**
+  change_summary: Advances only to completed TX-26 and reconciles controlled indexes plus noncanonical readers.
+- path: Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX26-001.yaml;Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX26-001.yaml;implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX26-001.md
+  change_summary: Records machine and human closeout and a new gate for any later family or external scope.
+validation_evidence:
+  reviewed_baseline: 4fa003b068c41ec14a05e18a5b77b477b9f17603
+  python_runtime: PYTHON_3_12_13_SUPPORTED
+  python_package_family: PASS_4_OF_4
+  focused_tests: PASS_66_OF_66
+  product_unit_suite: PASS_266_OF_266
+  trace_rows: 227
+  trace_sha256: ab68cd46bececb8be0205dabe3aad6fb6eea372140617e703ac40c627f26aa00
+  trace_verification: PASS_31_PLANNED_196
+  remaining_local_verification_obligations: 63
+  tx23_ledger_sha256: 1e9e2b2a0a7bc4f589addd65b8d34642899a3f812e7ce35be6e62a2c0fcc6138
+  tx25_interpretation_sha256: 9ed89d6ff5872ee2fb2b740791c268d9048e97f31eae8ff7d3b4d2d8929d5f38
+  accepted_waivers: 0
+  g10_status: DEFERRED_NOT_ACCEPTED
+  root_aggregate_validation: PASS
+  production_readiness: NOT_CLAIMED
+  operational_authority: NOT_GRANTED
+  memory_status: PASS_WITH_WARNINGS_1097_OBJECTS_489_WARNINGS_ZERO_AUTHORITY_INVERSIONS
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-26-LOCAL-EVIDENCE-PYTHON-PACKAGE-20260711T171757Z
+authority_changes:
+  g11_local_family_selected: true
+  tx26_python_package_authorized: true
+  verification_rows_advanced: 4
+  remaining_local_verifications: 63
+  plan_interpretations_changed: 0
+  accepted_waivers: 0
+  g10_accepted: false
+  production_readiness_claimed: false
+  operational_authority_granted: false
+  permission_expansion_granted: false
+  canonical_prds_changed: false
+  frozen_tx23_ledger_changed: false
+  tx25_interpretation_changed: false
+unresolved_issues:
+- Sixty-three locally executable verification obligations remain open and require separately authorized evidence-family packets if retained for final reacceptance.
+- Quantitative strategic external independent confidential stakeholder target-domain and operational evidence remain separately gated.
+- G-10 remains deferred and not accepted.
+next_recommendation: Stop at the new human gate. An accountable human may select one later bounded local verification family or separately decide external evidence scope; TX-26 authorizes neither.

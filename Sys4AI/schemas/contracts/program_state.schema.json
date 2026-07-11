@@ -87,7 +87,8 @@
         "derivative_regeneration": { "enum": ["pending_G_09", "complete_G_09"] },
         "host_verification": { "enum": ["pending_G_07", "accepted_G_07_mixed_profile", "stale_G_07"] },
         "semantic_review_evidence": { "enum": ["pending", "accepted_TX_24_7_of_7"] },
-        "plan_scope_interpretation": { "enum": ["pending", "accepted_TX_25_410_future_work"] }
+        "plan_scope_interpretation": { "enum": ["pending", "accepted_TX_25_410_future_work"] },
+        "python_package_verification": { "enum": ["pending", "accepted_TX_26_4_of_4"] }
       },
       "additionalProperties": false
     },

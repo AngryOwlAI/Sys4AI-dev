@@ -82,6 +82,21 @@ PLAN_INTERPRETATION_REPORT = (
     "STRATEGIC-BASELINE-MIGRATION-PLAN-INTERPRETATION-SFADEV-TX25.md"
 )
 PLAN_INTERPRETATION_SHA256 = "9ed89d6ff5872ee2fb2b740791c268d9048e97f31eae8ff7d3b4d2d8929d5f38"
+TX24_SEMANTIC_CLOSURES = {
+    "CLOSE-SFA-CORE-ID-001-SEMANTIC-REVIEW",
+    "CLOSE-SFA-CORE-ID-002-SEMANTIC-REVIEW",
+    "CLOSE-SFA-CORE-ID-003-SEMANTIC-REVIEW",
+    "CLOSE-SFA-P0-FR-001-SEMANTIC-REVIEW",
+    "CLOSE-SFA-P0-FR-002-SEMANTIC-REVIEW",
+    "CLOSE-SFA-P0-FR-003-SEMANTIC-REVIEW",
+    "CLOSE-SFA-P0-FR-004-SEMANTIC-REVIEW",
+}
+TX26_PYTHON_PACKAGE_CLOSURES = {
+    "CLOSE-SFA-CORE-PY-001-VERIFICATION",
+    "CLOSE-SFA-CORE-PY-002-VERIFICATION",
+    "CLOSE-SFA-CORE-PY-003-VERIFICATION",
+    "CLOSE-SFA-P0-NFR-015-VERIFICATION",
+}
 
 
 def expected_evidence_closure_rows(trace_rows: list[dict[str, str]]) -> list[dict[str, str]]:
@@ -206,7 +221,7 @@ def validate_evidence_closure_plan(
         [
             _summary(actual),
             *execution_result.messages,
-            "TX-23 planning history is frozen; TX-24 changes only accepted semantic-review evidence and grants no waiver, G-10, production, or operational authority.",
+            "TX-23 planning history is frozen; TX-24 and TX-26 evidence is additive and grants no waiver, G-10, production, or operational authority.",
         ],
     )
 
@@ -216,7 +231,7 @@ def validate_local_evidence_execution(
     ledger: str | Path = "registries/evidence_closure_plan_registry.csv",
     execution_registry: str | Path = "registries/local_evidence_execution_registry.csv",
 ) -> ValidationResult:
-    """Validate the exact first TX-24 semantic-review evidence family."""
+    """Validate the exact activated TX-24 and TX-26 local-evidence families."""
 
     trace_path = resolve_registered_path(str(trace_registry))
     ledger_path = resolve_registered_path(str(ledger))
@@ -235,18 +250,10 @@ def validate_local_evidence_execution(
 
     ledger_by_id = {row.get("closure_id", ""): row for row in ledger_rows}
     trace_by_id = {row.get("trace_id", ""): row for row in trace_rows}
-    expected_closures = {
-        "CLOSE-SFA-CORE-ID-001-SEMANTIC-REVIEW",
-        "CLOSE-SFA-CORE-ID-002-SEMANTIC-REVIEW",
-        "CLOSE-SFA-CORE-ID-003-SEMANTIC-REVIEW",
-        "CLOSE-SFA-P0-FR-001-SEMANTIC-REVIEW",
-        "CLOSE-SFA-P0-FR-002-SEMANTIC-REVIEW",
-        "CLOSE-SFA-P0-FR-003-SEMANTIC-REVIEW",
-        "CLOSE-SFA-P0-FR-004-SEMANTIC-REVIEW",
-    }
+    expected_closures = TX24_SEMANTIC_CLOSURES | TX26_PYTHON_PACKAGE_CLOSURES
     actual_closures = {row.get("closure_id", "") for row in execution_rows}
     if actual_closures != expected_closures or len(execution_rows) != len(expected_closures):
-        messages.append(f"{execution_path}: TX-24 must contain exactly the seven authorized semantic closures")
+        messages.append(f"{execution_path}: must contain exactly the 11 activated TX-24 and TX-26 closures")
 
     for index, row in enumerate(execution_rows, start=2):
         label = f"{execution_path}:{index}"
@@ -255,16 +262,38 @@ def validate_local_evidence_execution(
         if closure is None:
             messages.append(f"{label}: closure_id is absent from the frozen TX-23 ledger")
             continue
-        if closure.get("closure_route") != "locally_executable_evidence" or closure.get("gap_dimension") != "semantic_review":
-            messages.append(f"{label}: closure is not an authorized local semantic-review route")
+        dimension = closure.get("gap_dimension")
+        if closure.get("closure_route") != "locally_executable_evidence" or dimension not in {
+            "semantic_review",
+            "verification",
+        }:
+            messages.append(f"{label}: closure is not an authorized local evidence route")
         if row.get("requirement_id") != closure.get("requirement_id") or row.get("trace_id") != closure.get("trace_id"):
             messages.append(f"{label}: closure trace and requirement binding drifted")
-        if row.get("prior_state") != "needs_evidence" or row.get("resulting_state") != "sufficient":
-            messages.append(f"{label}: semantic state transition must be needs_evidence to sufficient")
-        if row.get("status") != "accepted" or row.get("execution_transaction_id") != "TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW":
-            messages.append(f"{label}: execution status or transaction binding is invalid")
-        if row.get("reviewer_role") != "requirements_verifier" or row.get("review_date") != "2026-07-11":
-            messages.append(f"{label}: accountable review identity or date is invalid")
+        semantic_family = row.get("closure_id") in TX24_SEMANTIC_CLOSURES
+        python_family = row.get("closure_id") in TX26_PYTHON_PACKAGE_CLOSURES
+        if semantic_family:
+            if row.get("prior_state") != "needs_evidence" or row.get("resulting_state") != "sufficient":
+                messages.append(f"{label}: semantic state transition must be needs_evidence to sufficient")
+            if row.get("evidence_family") != "identity_and_system_boundary_semantic_review":
+                messages.append(f"{label}: TX-24 evidence family binding is invalid")
+            if row.get("execution_transaction_id") != "TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW":
+                messages.append(f"{label}: TX-24 transaction binding is invalid")
+            if row.get("reviewer_role") != "requirements_verifier":
+                messages.append(f"{label}: TX-24 reviewer role is invalid")
+        elif python_family:
+            if row.get("prior_state") != "planned" or row.get("resulting_state") != "pass":
+                messages.append(f"{label}: verification state transition must be planned to pass")
+            if row.get("evidence_family") != "python_reference_and_dependency_policy_verification":
+                messages.append(f"{label}: TX-26 evidence family binding is invalid")
+            if row.get("execution_transaction_id") != "TX-26-LOCAL-EVIDENCE-PYTHON-PACKAGE":
+                messages.append(f"{label}: TX-26 transaction binding is invalid")
+            if row.get("reviewer_role") != "verification_engineer":
+                messages.append(f"{label}: TX-26 reviewer role is invalid")
+        else:
+            messages.append(f"{label}: closure is outside the activated local families")
+        if row.get("status") != "accepted" or row.get("review_date") != "2026-07-11":
+            messages.append(f"{label}: execution status or review date is invalid")
         for field in ("evidence_report_path", "implementation_artifacts", "validation_evidence"):
             paths = _paths(row.get(field, ""))
             if not paths:
@@ -275,16 +304,25 @@ def validate_local_evidence_execution(
         if trace is None:
             messages.append(f"{label}: trace row is missing")
             continue
-        if trace.get("semantic_review_verdict") != "sufficient":
-            messages.append(f"{label}: trace semantic_review_verdict is not sufficient")
-        if trace.get("semantic_review_owner") != "requirements_verifier" or trace.get("semantic_review_date") != "2026-07-11":
-            messages.append(f"{label}: trace review identity is not aligned")
-        if trace.get("capability_status") != "scaffolded" or trace.get("verification_status") != "planned":
-            messages.append(f"{label}: TX-24 improperly promoted capability or verification state")
+        if semantic_family:
+            if trace.get("semantic_review_verdict") != "sufficient":
+                messages.append(f"{label}: trace semantic_review_verdict is not sufficient")
+            if trace.get("semantic_review_owner") != "requirements_verifier" or trace.get("semantic_review_date") != "2026-07-11":
+                messages.append(f"{label}: trace review identity is not aligned")
+            if trace.get("capability_status") != "scaffolded" or trace.get("verification_status") != "planned":
+                messages.append(f"{label}: TX-24 improperly promoted capability or verification state")
+        elif python_family:
+            if trace.get("verification_status") != "pass":
+                messages.append(f"{label}: trace verification_status is not pass")
+            if trace.get("capability_status") != "implemented" or trace.get("coverage_status") != "covered":
+                messages.append(f"{label}: TX-26 requires implemented and covered trace state")
+            if trace.get("verification_waiver_id"):
+                messages.append(f"{label}: TX-26 verification must not use a waiver")
         for field in ("implementation_artifacts", "validation_evidence"):
             if not set(_paths(row.get(field, ""))).issubset(set(_paths(trace.get(field, "")))):
                 messages.append(f"{label}: execution {field} is not preserved in the trace row")
-        if row.get("evidence_report_path") not in _paths(trace.get("evidence_paths", "")):
+        trace_report_field = "evidence_paths" if semantic_family else "validation_evidence"
+        if row.get("evidence_report_path") not in _paths(trace.get(trace_report_field, "")):
             messages.append(f"{label}: evidence report is not preserved in the trace row")
 
     verdict_counts = Counter(row.get("semantic_review_verdict") for row in trace_rows)
@@ -296,7 +334,7 @@ def validate_local_evidence_execution(
     return ValidationResult(
         True,
         [
-            "TX-24 local evidence: 7 semantic-review obligations accepted; 67 local verification obligations remain. The 410 frozen plan-scope candidates are governed by separate interpretation evidence.",
+            "Local evidence: 7 TX-24 semantic reviews and 4 TX-26 Python/package verifications accepted; 63 local verification obligations remain. The 410 frozen plan-scope candidates retain their TX-25 interpretation.",
         ],
     )
 
