@@ -1,0 +1,44 @@
+handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX25-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+producing_execution_transaction_id: TX-25-PLAN-INTERPRETATION
+next_execution_transaction_id: null
+status: human_gated
+producing_role: system_director
+recommended_next_role: system_director
+summary: TX-25 dispositioned all 410 plan-scope rows as active required future full-framework work outside the bounded G-10 migration blocker set; no later evidence or acceptance packet is authorized.
+source_ids:
+- SRC-DDR-STRATEGIC-BASELINE-G11-002
+- SRC-PLAN-INTERPRETATION-REPORT-TX25
+- SRC-REG-PLAN-SCOPE-INTERPRETATION
+- SRC-TX25-EXECUTION-TRANSACTION
+- SRC-COMPLETION-STRATEGIC-BASELINE-TX25
+- SRC-REG-REQ-TRACE
+- SRC-REG-EVIDENCE-CLOSURE-PLAN
+closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX25-001
+current_state_evidence:
+- Sys4AI/control_records/program_state.yaml
+- TX25-PLAN-INTERPRETATION-410-OF-410-PASS
+- TX25-TX23-LEDGER-FROZEN
+- TX25-TRACE-STATE-UNCHANGED
+- TX25-ROOT-VALIDATE-PASS
+validation_evidence:
+  trace_rows: 227
+  trace_semantic_review: SUFFICIENT_227_NEEDS_EVIDENCE_0
+  trace_verification: PASS_27_PLANNED_200
+  trace_capability: IMPLEMENTED_85_SCAFFOLDED_137_ABSENT_5
+  trace_coverage: COVERED_92_PARTIAL_135
+  frozen_tx23_ledger_obligations: 484
+  accepted_plan_interpretations: 410
+  plan_scope_interpretation_sha256: 9ed89d6ff5872ee2fb2b740791c268d9048e97f31eae8ff7d3b4d2d8929d5f38
+  unique_future_work_requirements: 142
+  remaining_local_verification_obligations: 67
+  accepted_waivers: 0
+  g10_status: DEFERRED_NOT_ACCEPTED
+  next_authority_gate: SEPARATE_LOCAL_FAMILY_OR_EXTERNAL_SCOPE
+stop_conditions:
+- Do not start a local external operational or final-acceptance transaction from this handoff alone.
+- Do not treat the 410 dispositions as implementation verification coverage completion waivers or requirement retirement.
+- Do not mutate the requirement trace controlled plan frozen TX-23 ledger or activated G-11 and TX-24/TX-25 records.
+- Do not accept G-10 or claim production operational stakeholder domain target-runtime or permission authority.
+- Reverify G-07 before reliance if its evidence expires or materially changes.

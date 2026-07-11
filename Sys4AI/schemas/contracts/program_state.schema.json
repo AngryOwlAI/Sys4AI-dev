@@ -86,7 +86,8 @@
         "strategic_approval": { "enum": ["candidate", "accepted_G_08", "rejected", "revision_requested"] },
         "derivative_regeneration": { "enum": ["pending_G_09", "complete_G_09"] },
         "host_verification": { "enum": ["pending_G_07", "accepted_G_07_mixed_profile", "stale_G_07"] },
-        "semantic_review_evidence": { "enum": ["pending", "accepted_TX_24_7_of_7"] }
+        "semantic_review_evidence": { "enum": ["pending", "accepted_TX_24_7_of_7"] },
+        "plan_scope_interpretation": { "enum": ["pending", "accepted_TX_25_410_future_work"] }
       },
       "additionalProperties": false
     },

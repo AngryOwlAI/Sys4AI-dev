@@ -1,4 +1,4 @@
-"""Deterministic TX-23 planning and TX-24 local-evidence validation."""
+"""Deterministic evidence-closure planning, execution, and scope validation."""
 
 from __future__ import annotations
 
@@ -55,6 +55,33 @@ LOCAL_EXECUTION_FIELDS = (
     "execution_transaction_id",
     "notes",
 )
+PLAN_INTERPRETATION_FIELDS = (
+    "disposition_id",
+    "closure_id",
+    "trace_id",
+    "requirement_id",
+    "gap_dimension",
+    "retained_trace_state",
+    "plan_interpretation",
+    "g10_migration_effect",
+    "requirement_lifecycle_effect",
+    "trace_mutation",
+    "waiver_id",
+    "decision_id",
+    "execution_transaction_id",
+    "evidence_report_path",
+    "reviewer_role",
+    "review_date",
+    "status",
+    "notes",
+)
+PLAN_INTERPRETATION_DECISION_ID = "DDR-SFADEV-STRATEGIC-BASELINE-G11-002"
+PLAN_INTERPRETATION_TRANSACTION_ID = "TX-25-PLAN-INTERPRETATION"
+PLAN_INTERPRETATION_REPORT = (
+    "implementation_plans/acceptance_reports/"
+    "STRATEGIC-BASELINE-MIGRATION-PLAN-INTERPRETATION-SFADEV-TX25.md"
+)
+PLAN_INTERPRETATION_SHA256 = "9ed89d6ff5872ee2fb2b740791c268d9048e97f31eae8ff7d3b4d2d8929d5f38"
 
 
 def expected_evidence_closure_rows(trace_rows: list[dict[str, str]]) -> list[dict[str, str]]:
@@ -269,7 +296,163 @@ def validate_local_evidence_execution(
     return ValidationResult(
         True,
         [
-            "TX-24 local evidence: 7 semantic-review obligations accepted; 67 local verification obligations and 410 plan-scope candidates remain.",
+            "TX-24 local evidence: 7 semantic-review obligations accepted; 67 local verification obligations remain. The 410 frozen plan-scope candidates are governed by separate interpretation evidence.",
+        ],
+    )
+
+
+def expected_plan_interpretation_rows(
+    ledger_rows: list[dict[str, str]],
+) -> list[dict[str, str]]:
+    """Build the exact G-11 disposition set without changing trace or TX-23 history."""
+
+    return [
+        {
+            "disposition_id": f"DISP-{row['closure_id'][6:]}",
+            "closure_id": row["closure_id"],
+            "trace_id": row["trace_id"],
+            "requirement_id": row["requirement_id"],
+            "gap_dimension": row["gap_dimension"],
+            "retained_trace_state": row["current_state"],
+            "plan_interpretation": "explicit_future_framework_work",
+            "g10_migration_effect": "not_a_strategic_baseline_migration_blocker",
+            "requirement_lifecycle_effect": "remains_active_required",
+            "trace_mutation": "none",
+            "waiver_id": "none",
+            "decision_id": PLAN_INTERPRETATION_DECISION_ID,
+            "execution_transaction_id": PLAN_INTERPRETATION_TRANSACTION_ID,
+            "evidence_report_path": PLAN_INTERPRETATION_REPORT,
+            "reviewer_role": "system_director",
+            "review_date": "2026-07-11",
+            "status": "accepted",
+            "notes": (
+                "Retain truthful full-framework maturity state as future work; "
+                "do not promote, waive, close, or use it as a G-10 migration blocker."
+            ),
+        }
+        for row in ledger_rows
+        if row.get("closure_route") == "plan_supersession_candidate"
+    ]
+
+
+def write_plan_interpretation_registry(
+    ledger: str | Path = "registries/evidence_closure_plan_registry.csv",
+    registry: str | Path = "registries/plan_scope_interpretation_registry.csv",
+) -> ValidationResult:
+    """Write the deterministic 410-row explicit-future-work disposition registry."""
+
+    ledger_path = resolve_registered_path(str(ledger))
+    registry_path = resolve_registered_path(str(registry))
+    if registry_path.exists() and registry_path.stat().st_size:
+        result = validate_plan_interpretation(ledger=ledger_path, registry=registry_path)
+        if result.ok:
+            return ValidationResult(
+                True,
+                [
+                    *result.messages,
+                    "Activated TX-25 interpretation registry is already current and was not rewritten.",
+                ],
+            )
+        return ValidationResult(
+            False,
+            [
+                f"{registry_path}: activated TX-25 interpretation registry cannot be regenerated in place",
+                *result.messages,
+            ],
+        )
+    try:
+        rows = expected_plan_interpretation_rows(read_registry_rows(ledger_path))
+        registry_path.parent.mkdir(parents=True, exist_ok=True)
+        with registry_path.open("w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(
+                handle,
+                fieldnames=PLAN_INTERPRETATION_FIELDS,
+                lineterminator="\n",
+            )
+            writer.writeheader()
+            writer.writerows(rows)
+    except (OSError, RuntimeError, KeyError) as exc:
+        return ValidationResult(False, [str(exc)])
+    return ValidationResult(
+        len(rows) == 410,
+        [
+            f"Plan interpretation registry: {len(rows)} explicit future-work dispositions.",
+            "Generation changes no requirement-trace state, waiver, or frozen TX-23 byte.",
+        ],
+    )
+
+
+def validate_plan_interpretation(
+    trace_registry: str | Path = "registries/requirement_trace_registry.csv",
+    ledger: str | Path = "registries/evidence_closure_plan_registry.csv",
+    registry: str | Path = "registries/plan_scope_interpretation_registry.csv",
+) -> ValidationResult:
+    """Validate exact disposition of all 410 plan-scope candidates."""
+
+    trace_path = resolve_registered_path(str(trace_registry))
+    ledger_path = resolve_registered_path(str(ledger))
+    registry_path = resolve_registered_path(str(registry))
+    try:
+        trace_rows = read_registry_rows(trace_path)
+        ledger_rows = read_registry_rows(ledger_path)
+        actual = read_registry_rows(registry_path)
+    except (OSError, RuntimeError) as exc:
+        return ValidationResult(False, [str(exc)])
+
+    messages: list[str] = []
+    if not actual or tuple(actual[0].keys()) != PLAN_INTERPRETATION_FIELDS:
+        return ValidationResult(False, [f"{registry_path}: unexpected or empty registry header"])
+    expected = expected_plan_interpretation_rows(ledger_rows)
+    expected_by_closure = {row["closure_id"]: row for row in expected}
+    trace_by_id = {row.get("trace_id", ""): row for row in trace_rows}
+    actual_closures = [row.get("closure_id", "") for row in actual]
+    if len(actual) != 410 or set(actual_closures) != set(expected_by_closure):
+        messages.append(f"{registry_path}: must disposition exactly all 410 plan-scope closures")
+    if len(actual_closures) != len(set(actual_closures)):
+        messages.append(f"{registry_path}: duplicate closure_id")
+
+    trace_fields = {
+        "verification": "verification_status",
+        "capability": "capability_status",
+        "coverage": "coverage_status",
+    }
+    for index, row in enumerate(actual, start=2):
+        label = f"{registry_path}:{index}"
+        expected_row = expected_by_closure.get(row.get("closure_id", ""))
+        if expected_row is None:
+            messages.append(f"{label}: closure is not a frozen TX-23 plan-scope candidate")
+            continue
+        for field in PLAN_INTERPRETATION_FIELDS:
+            if row.get(field) != expected_row.get(field):
+                messages.append(f"{label}: {field} drifted from the controlled interpretation")
+        trace = trace_by_id.get(row.get("trace_id", ""))
+        if trace is None:
+            messages.append(f"{label}: trace row is missing")
+            continue
+        state_field = trace_fields.get(row.get("gap_dimension", ""))
+        if state_field is None or trace.get(state_field) != row.get("retained_trace_state"):
+            messages.append(f"{label}: retained trace state no longer matches the live trace")
+        if trace.get("requirement_lifecycle") != "active" or trace.get("applicability_status") != "required":
+            messages.append(f"{label}: future-work requirement is no longer active and required")
+        if trace.get("verification_waiver_id"):
+            messages.append(f"{label}: plan interpretation must not create or consume a waiver")
+        if not resolve_registered_path(row.get("evidence_report_path", "")).exists():
+            messages.append(f"{label}: missing controlled interpretation report")
+
+    if hashlib.sha256(ledger_path.read_bytes()).hexdigest() != TX23_LEDGER_SHA256:
+        messages.append(f"{ledger_path}: activated TX-23 ledger bytes changed")
+    if hashlib.sha256(registry_path.read_bytes()).hexdigest() != PLAN_INTERPRETATION_SHA256:
+        messages.append(f"{registry_path}: activated TX-25 interpretation registry bytes changed")
+    if messages:
+        return ValidationResult(False, messages)
+    dimensions = Counter(row["gap_dimension"] for row in actual)
+    return ValidationResult(
+        True,
+        [
+            "Plan interpretation: 410/410 explicit future-work dispositions accepted; "
+            f"verification={dimensions['verification']}, capability={dimensions['capability']}, "
+            f"coverage={dimensions['coverage']}.",
+            "Trace states remain active, required, unwaived, and unchanged; G-10 remains separately gated.",
         ],
     )
 

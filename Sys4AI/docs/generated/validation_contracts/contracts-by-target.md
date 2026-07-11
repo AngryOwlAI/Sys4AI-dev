@@ -57,6 +57,7 @@ page_metadata:
     - contract_self_change_holdout_suite
     - contract_evidence_closure_plan_registry_row
     - contract_local_evidence_execution_registry_row
+    - contract_plan_scope_interpretation_registry_row
   generated_at: 2026-07-11T14:12:24Z
   generator: sys_for_ai.derivatives.validation_contracts_catalog:0.1.0
   stale_or_orphan_status: current
@@ -149,6 +150,12 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | contract_memory_preflight_receipt_registry_row | schemas/contracts/memory_preflight_receipt_registry_row.schema.json | 2020-12 | csv | memory_preflight_receipt_registry_row | registries/memory_preflight_receipt_registry.csv | Sys4AI validate-memory-preflight-registry | control_loop | controlled | pending | pending |
+
+## csv / plan_scope_interpretation_registry_row
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_plan_scope_interpretation_registry_row | schemas/contracts/plan_scope_interpretation_registry_row.schema.json | 2020-12 | csv | plan_scope_interpretation_registry_row | registries/plan_scope_interpretation_registry.csv | Sys4AI validate-plan-interpretation | system_director | controlled | pending | pending |
 
 ## csv / prd_module_registry_row
 

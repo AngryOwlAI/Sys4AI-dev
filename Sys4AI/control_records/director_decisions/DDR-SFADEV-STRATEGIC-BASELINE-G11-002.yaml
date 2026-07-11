@@ -1,0 +1,93 @@
+director_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-002
+schema_version: 0.1.0
+decision_status: completed
+created_at: '2026-07-11T16:45:26Z'
+completed_at: '2026-07-11T16:45:26Z'
+director_role: system_director
+human_authorization:
+  principal_name: Alex Omegapy
+  principal_role: repository_maintainer_and_product_owner
+  authority_basis: The accountable human explicitly authorized selection of the controlled plan-interpretation route for the 410 candidates after the completed TX-24 handoff.
+  approval_evidence: 'Human-issued Codex task instruction dated 2026-07-11: I authorize, you select the controlled plan-interpretation route for the 410 candidates.'
+  approval_scope:
+  - select one controlled interpretation for all 410 plan-scope candidates
+  - record exact row-level dispositions without changing truthful trace state
+  - preserve waiver G-10 production operational stakeholder domain target-runtime and permission gates
+  model_self_approval: false
+decision_context:
+  trigger: accountable_plan_scope_interpretation
+  transaction_id: TX-25-PLAN-INTERPRETATION
+  gate_id: G-11-EVIDENCE-SCOPE
+  program_state_id: SYS4AI-PROGRAM-STATE-001
+  latest_handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX24-001
+  plan_source_id: SRC-STRATEGIC-BASELINE-MIGRATION-PLAN
+  governing_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+  prior_gate_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-001
+  reviewed_head_commit: 652b0381a352e1e1ce44234addbcde25a03c6981
+  memory_preflight_receipt_id: MEMPREFLIGHT-TX-25-PLAN-INTERPRETATION-20260711T164526Z
+  observed_evidence:
+  - TX-24 is complete and stops before any interpretation of the 410 candidates.
+  - The frozen TX-23 ledger contains 133 verification 142 capability and 135 coverage plan-scope rows across 142 requirements.
+  - The controlled plan definition of done requires truthful state and explicit dispositions but does not require full implementation of every active framework requirement.
+  - Trace states are truthful active required and unwaived and can remain future full-framework obligations without becoming migration-completion claims.
+selected_route:
+  route_id: explicit_future_work_retention_for_410_plan_candidates
+  route_name: Retain all 410 trace dimensions as future full-framework work outside the bounded G-10 migration blocker set
+  rationale: This is the smallest interpretation consistent with the controlled plan transaction backlog and definition of done. It preserves every normative requirement and truthful maturity state while preventing the migration from silently expanding into full-framework implementation.
+  immediate_effect: TX-25 may record exactly 410 row-level future-work dispositions. No trace state waiver plan text G-10 acceptance production claim or operational authority changes.
+rejected_routes:
+- route_id: retain_all_410_as_G10_migration_blockers
+  reason: This would expand the bounded strategic-baseline migration into full-framework implementation without support in the plan definition of done.
+- route_id: scoped_plan_text_supersession
+  reason: The existing controlled plan supports explicit future-work retention; modifying canonical plan text would add unnecessary baseline risk.
+- route_id: bulk_promote_or_close_trace_states
+  reason: No implementation verification or coverage evidence supports state promotion.
+- route_id: waive_the_410_candidates
+  reason: The requirements remain active future work and no waiver was authorized or required.
+- route_id: accept_G10_or_promote_to_production
+  reason: This packet decides only the 410-candidate interpretation and leaves all later evidence and acceptance gates intact.
+authority_boundary:
+  human_authority_recorded: true
+  accepts_gate_G_11_plan_interpretation_route: true
+  authorizes_TX_25_plan_interpretation: true
+  plan_candidates_decided: 410
+  retained_as_future_framework_work: 410
+  authorizes_trace_state_mutation: false
+  accepts_any_waiver: false
+  accepts_gate_G_10: false
+  may_claim_production_readiness: false
+  may_grant_operational_authority: false
+  may_claim_broad_stakeholder_consensus: false
+  may_claim_domain_truth_or_domain_acceptance: false
+  may_expand_permissions: false
+  may_rewrite_activated_control_history: false
+supersession:
+  supersedes_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-001
+  scope: Supersedes only the prior decision's prohibition on interpreting the 410 candidates after TX-24; preserves its completed seven-row authorization and all TX-24 evidence.
+  preserves:
+  - completed TX-24 local semantic-review authority and evidence
+  - frozen TX-23 ledger
+  - all trace capability verification coverage lifecycle applicability and waiver states
+  - G-10 defer production operational stakeholder domain target-runtime and permission boundaries
+rollback_and_review:
+  rollback_class: activating_bounded_plan_interpretation_decision
+  rollback_scope: Before publication revert the atomic G-11-002 and TX-25 packet. After publication preserve this decision and supersede it only through a new accountable decision.
+  supersession_rule: Later evidence may advance individual future-work states only through separately authorized transactions with exact evidence; it must not rewrite the activated interpretation record.
+  review_triggers:
+  - a future packet proposes implementation verification or coverage advancement for a retained requirement
+  - a waiver or requirement lifecycle change is proposed
+  - G-10 production operations stakeholder domain target-runtime or permission authority is proposed
+  expiry: remains current for the 410 dispositions and grants no continuing execution authority
+evidence_references:
+- implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+- implementation_plans/STRATEGIC-BASELINE-MIGRATION-EVIDENCE-CLOSURE-PLAN-SFADEV-TX23.md
+- Sys4AI/registries/evidence_closure_plan_registry.csv
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX24-001.yaml
+- Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-25-PLAN-INTERPRETATION-20260711T164526Z.yaml
+validators:
+- cd Sys4AI && make validate-director-decisions
+- cd Sys4AI && make validate-director-decision-registry
+- cd Sys4AI && make validate-plan-interpretation
+- cd Sys4AI && make validate-program-state
+- make validate
+- git diff --check

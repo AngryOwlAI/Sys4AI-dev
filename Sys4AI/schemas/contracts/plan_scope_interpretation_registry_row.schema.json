@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/Sys4AI/schemas/contracts/plan_scope_interpretation_registry_row.schema.json",
+  "title": "Sys4AI controlled plan-scope interpretation registry row",
+  "type": "object",
+  "required": [
+    "disposition_id",
+    "closure_id",
+    "trace_id",
+    "requirement_id",
+    "gap_dimension",
+    "retained_trace_state",
+    "plan_interpretation",
+    "g10_migration_effect",
+    "requirement_lifecycle_effect",
+    "trace_mutation",
+    "waiver_id",
+    "decision_id",
+    "execution_transaction_id",
+    "evidence_report_path",
+    "reviewer_role",
+    "review_date",
+    "status",
+    "notes"
+  ],
+  "properties": {
+    "disposition_id": { "type": "string", "pattern": "^DISP-SFA-[A-Z0-9-]+-(VERIFICATION|CAPABILITY|COVERAGE)$" },
+    "closure_id": { "type": "string", "pattern": "^CLOSE-SFA-[A-Z0-9-]+-(VERIFICATION|CAPABILITY|COVERAGE)$" },
+    "trace_id": { "type": "string", "pattern": "^TRACE-SFA-[A-Z0-9-]+$" },
+    "requirement_id": { "type": "string", "pattern": "^SFA-[A-Z0-9-]+$" },
+    "gap_dimension": { "enum": ["verification", "capability", "coverage"] },
+    "retained_trace_state": { "enum": ["planned", "scaffolded", "absent", "partial"] },
+    "plan_interpretation": { "const": "explicit_future_framework_work" },
+    "g10_migration_effect": { "const": "not_a_strategic_baseline_migration_blocker" },
+    "requirement_lifecycle_effect": { "const": "remains_active_required" },
+    "trace_mutation": { "const": "none" },
+    "waiver_id": { "const": "none" },
+    "decision_id": { "const": "DDR-SFADEV-STRATEGIC-BASELINE-G11-002" },
+    "execution_transaction_id": { "const": "TX-25-PLAN-INTERPRETATION" },
+    "evidence_report_path": {
+      "const": "implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-PLAN-INTERPRETATION-SFADEV-TX25.md"
+    },
+    "reviewer_role": { "const": "system_director" },
+    "review_date": { "const": "2026-07-11" },
+    "status": { "const": "accepted" },
+    "notes": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": false
+}

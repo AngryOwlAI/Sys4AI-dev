@@ -21,11 +21,11 @@ class SelfHostingAcceptanceTests(unittest.TestCase):
         self.assertIsNone(state["active_execution_transaction_id"])
         self.assertIsNone(state["active_director_decision_id"])
         self.assertEqual(
-            "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX24-001",
+            "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX25-001",
             state["latest_closeout_evidence_id"],
         )
         self.assertEqual(
-            "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX24-001",
+            "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX25-001",
             state["latest_handoff_evidence_id"],
         )
         self.assertEqual("blocked", state["continuation_state"])
@@ -39,6 +39,10 @@ class SelfHostingAcceptanceTests(unittest.TestCase):
         self.assertEqual("complete_G_09", state["capability_status_summary"]["derivative_regeneration"])
         self.assertEqual("accepted_G_07_mixed_profile", state["capability_status_summary"]["host_verification"])
         self.assertEqual("accepted_TX_24_7_of_7", state["capability_status_summary"]["semantic_review_evidence"])
+        self.assertEqual(
+            "accepted_TX_25_410_future_work",
+            state["capability_status_summary"]["plan_scope_interpretation"],
+        )
 
         handoff_rows = _rows(PRODUCT_ROOT / "registries/handoff_registry.csv", "handoff_id")
         completion_rows = _rows(PRODUCT_ROOT / "registries/completion_receipt_registry.csv", "completion_receipt_id")
@@ -60,6 +64,8 @@ class SelfHostingAcceptanceTests(unittest.TestCase):
         self.assertIn("HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001", handoff_rows)
         self.assertIn("RECEIPT-SFADEV-STRATEGIC-BASELINE-TX24-001", completion_rows)
         self.assertIn("HANDOFF-SFADEV-STRATEGIC-BASELINE-TX24-001", handoff_rows)
+        self.assertIn("RECEIPT-SFADEV-STRATEGIC-BASELINE-TX25-001", completion_rows)
+        self.assertIn("HANDOFF-SFADEV-STRATEGIC-BASELINE-TX25-001", handoff_rows)
         self.assertIn("RECEIPT-P1-SELFHOST-ACCEPTANCE-001", completion_rows)
         self.assertIn("RECEIPT-SYS4AI-DEV-NAME-MIGRATION-001", completion_rows)
         self.assertIn("RECEIPT-SFADEV-20-WALKING-SKELETON-FLOW-001", completion_rows)

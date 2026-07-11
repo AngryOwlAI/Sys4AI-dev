@@ -1,0 +1,72 @@
+completion_receipt_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX25-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-25-PLAN-INTERPRETATION
+role: system_director
+result: PASS
+summary: TX-25 assigned all 410 plan-scope candidates to explicit active required future framework work outside the bounded G-10 migration blocker set while preserving the trace frozen TX-23 ledger waivers and every later authority gate.
+changed_artifacts:
+- path: Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-002.yaml
+  change_summary: Records the accountable G-11 interpretation selection and narrowly supersedes only the prior prohibition on deciding the 410 candidates after completed TX-24.
+- path: implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-PLAN-INTERPRETATION-SFADEV-TX25.md;Sys4AI/registries/plan_scope_interpretation_registry.csv
+  change_summary: Records the plan definition-of-done reasoning and exact 410 row-level future-work dispositions separately from the frozen TX-23 plan.
+- path: Sys4AI/schemas/contracts/plan_scope_interpretation_registry_row.schema.json;Sys4AI/registries/validation_contract_registry.csv
+  change_summary: Adds the narrow fail-closed registry-row contract and validation binding.
+- path: Sys4AI/sys_for_ai/evidence_closure.py;Sys4AI/sys_for_ai/cli.py;Sys4AI/sys_for_ai/validators.py;Sys4AI/Makefile
+  change_summary: Adds deterministic generation and validation for exact candidate membership state retention no waiver and no trace mutation.
+- path: Sys4AI/tests/test_evidence_closure.py;Sys4AI/tests/test_trace_semantics.py;Sys4AI/tests/test_self_hosting_acceptance.py
+  change_summary: Covers exact 410-row reconciliation omission mutation waiver rejection and post-TX-25 routing.
+- path: Sys4AI/control_records/execution_transactions/TX-25-PLAN-INTERPRETATION.yaml;Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-25-PLAN-INTERPRETATION-20260711T164526Z.yaml
+  change_summary: Records the bounded portable transaction and source-first routing evidence.
+- path: Sys4AI/control_records/program_state.yaml;Sys4AI/registries/*registry.csv;Sys4AI/docs/generated/**
+  change_summary: Advances only to completed plan interpretation and reconciles controlled indexes plus noncanonical readers.
+- path: Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX25-001.yaml;Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX25-001.yaml;implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX25-001.md
+  change_summary: Records machine and human closeout plus a new gate for any local external operational or final-acceptance action.
+validation_evidence:
+  reviewed_baseline: 652b0381a352e1e1ce44234addbcde25a03c6981
+  g11_route: EXPLICIT_FUTURE_WORK_RETENTION
+  tx23_ledger: FROZEN_484_ROWS_SHA256_1E9E2B2A
+  plan_candidates: ACCEPTED_410_OF_410
+  plan_scope_interpretation_sha256: 9ed89d6ff5872ee2fb2b740791c268d9048e97f31eae8ff7d3b4d2d8929d5f38
+  plan_candidate_dimensions: VERIFICATION_133_CAPABILITY_142_COVERAGE_135
+  unique_future_work_requirements: 142
+  trace_rows: 227
+  trace_sha256: 2cbc0ee6e731233a0a66b7eb00a6ce7e67b1834b8c9f6eb67b873f1503c68aa4
+  trace_semantic_review: SUFFICIENT_227_NEEDS_EVIDENCE_0
+  trace_verification: PASS_27_PLANNED_200
+  trace_capability: IMPLEMENTED_85_SCAFFOLDED_137_ABSENT_5
+  trace_coverage: COVERED_92_PARTIAL_135
+  trace_mutations: 0
+  accepted_waivers: 0
+  g10_status: DEFERRED_NOT_ACCEPTED
+  focused_tests: PASS_87_OF_87
+  product_unit_suite: PASS_260_OF_260
+  root_aggregate_validation: PASS
+  production_readiness: NOT_CLAIMED
+  operational_authority: NOT_GRANTED
+  memory_status: PASS_WITH_WARNINGS_1079_OBJECTS_480_WARNINGS_ZERO_AUTHORITY_INVERSIONS
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-25-PLAN-INTERPRETATION-20260711T164526Z
+authority_changes:
+  g11_plan_interpretation_route_selected: true
+  tx25_plan_interpretation_authorized: true
+  plan_candidates_decided: 410
+  retained_as_active_required_future_work: 410
+  removed_from_g10_migration_blocker_set: 410
+  trace_states_changed: 0
+  accepted_waivers: 0
+  g10_accepted: false
+  migration_plan_complete: false
+  production_readiness_claimed: false
+  operational_authority_granted: false
+  broad_stakeholder_consensus_claimed: false
+  domain_truth_or_acceptance_claimed: false
+  permission_expansion_granted: false
+  canonical_prds_changed: false
+  controlled_plan_text_changed: false
+  frozen_tx23_ledger_changed: false
+unresolved_issues:
+- Sixty-seven locally executable verification obligations remain open and require separately authorized evidence-family packets if retained for final reacceptance.
+- Quantitative strategic external independent confidential rotated stakeholder and target-domain evidence remain open pending a separate accountable scope decision.
+- Production target runtime monitoring incident maintenance ownership and operational authorization remain absent or unavailable.
+- G-10 remains deferred and not accepted.
+next_recommendation: Stop at the new human gate. An accountable human may select one bounded family among the 67 local verification obligations or separately decide external evidence scope; TX-25 authorizes neither and does not authorize G-10 reacceptance.

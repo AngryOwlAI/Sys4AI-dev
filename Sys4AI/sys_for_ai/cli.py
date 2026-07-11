@@ -26,7 +26,9 @@ from .derivatives import (
 from .evidence_closure import (
     validate_evidence_closure_plan,
     validate_local_evidence_execution,
+    validate_plan_interpretation,
     write_evidence_closure_ledger,
+    write_plan_interpretation_registry,
 )
 from .host_profiles import validate_host_capability_profiles
 from .lifecycle_patterns import validate_lifecycle_and_patterns
@@ -407,6 +409,27 @@ def build_parser() -> argparse.ArgumentParser:
     validate_local_evidence.add_argument("--trace", default="registries/requirement_trace_registry.csv")
     validate_local_evidence.add_argument("--ledger", default="registries/evidence_closure_plan_registry.csv")
 
+    validate_plan_scope = sub.add_parser(
+        "validate-plan-interpretation",
+        help="Validate the controlled 410-row G-11 future-work disposition",
+    )
+    validate_plan_scope.add_argument(
+        "registry",
+        default="registries/plan_scope_interpretation_registry.csv",
+        nargs="?",
+    )
+    validate_plan_scope.add_argument("--trace", default="registries/requirement_trace_registry.csv")
+    validate_plan_scope.add_argument("--ledger", default="registries/evidence_closure_plan_registry.csv")
+
+    generate_plan_scope = sub.add_parser(
+        "generate-plan-interpretation",
+        help="Generate or check the deterministic 410-row G-11 disposition registry",
+    )
+    generate_plan_scope.add_argument("--ledger", default="registries/evidence_closure_plan_registry.csv")
+    generate_plan_scope.add_argument("--registry", default="registries/plan_scope_interpretation_registry.csv")
+    generate_plan_scope.add_argument("--trace", default="registries/requirement_trace_registry.csv")
+    generate_plan_scope.add_argument("--write", action="store_true")
+
     generate_closure = sub.add_parser(
         "generate-evidence-closure-ledger",
         help="Generate or check the deterministic TX-23 closure ledger",
@@ -613,6 +636,17 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "validate-local-evidence-execution":
         return print_result(validate_local_evidence_execution(args.trace, args.ledger, args.execution_registry))
+
+    if args.command == "validate-plan-interpretation":
+        return print_result(validate_plan_interpretation(args.trace, args.ledger, args.registry))
+
+    if args.command == "generate-plan-interpretation":
+        result = (
+            write_plan_interpretation_registry(args.ledger, args.registry)
+            if args.write
+            else validate_plan_interpretation(args.trace, args.ledger, args.registry)
+        )
+        return print_result(result)
 
     if args.command == "generate-evidence-closure-ledger":
         result = (

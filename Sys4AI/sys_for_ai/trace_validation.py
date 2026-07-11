@@ -414,6 +414,48 @@ def _validate_program_state_alignment(path: Path, state: dict[str, Any]) -> list
             messages.append(f"{path}: post-TX-24 state must stop at a new bounded authorization gate")
         if state.get("state_status") != "human_gated" or state.get("human_gate_required") is not True:
             messages.append(f"{path}: post-TX-24 state must remain human gated")
+    elif phase == "strategic_baseline_migration_TX_25_plan_interpretation_complete":
+        if summary.get("strategic_approval") != "accepted_G_08":
+            messages.append(f"{path}: post-TX-25 state must retain strategic_approval accepted_G_08")
+        if summary.get("derivative_regeneration") != "complete_G_09":
+            messages.append(f"{path}: post-TX-25 state must retain derivative_regeneration complete_G_09")
+        if summary.get("host_verification") != "accepted_G_07_mixed_profile":
+            messages.append(f"{path}: post-TX-25 state must retain accepted G-07 mixed host evidence")
+        if summary.get("semantic_review_evidence") != "accepted_TX_24_7_of_7":
+            messages.append(f"{path}: post-TX-25 state must retain the seven accepted semantic reviews")
+        if summary.get("plan_scope_interpretation") != "accepted_TX_25_410_future_work":
+            messages.append(f"{path}: post-TX-25 state must record the exact 410-row future-work interpretation")
+        for required_route in (
+            "seek_separate_authorization_for_remaining_67_local_verification_obligations",
+            "seek_accountable_external_evidence_scope",
+            "seek_accountable_G_10_reacceptance_only_after_retained_evidence_closure",
+        ):
+            if required_route not in allowed:
+                messages.append(f"{path}: post-TX-25 state omits controlled next route {required_route}")
+        for required_block in (
+            "begin_later_evidence_or_acceptance_work_without_separate_authorization",
+            "treat_410_future_work_dispositions_as_trace_completion_or_waivers",
+            "mutate_trace_state_from_plan_interpretation",
+            "claim_G_10_after_TX_25_without_retained_evidence_closure",
+            "claim_production_readiness_or_operational_authority",
+        ):
+            if required_block not in blocked:
+                messages.append(f"{path}: post-TX-25 state omits blocked action {required_block}")
+        if state.get("latest_closeout_evidence_id") != "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX25-001":
+            messages.append(f"{path}: post-TX-25 state is not aligned to the TX-25 completion")
+        if state.get("latest_handoff_evidence_id") != "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX25-001":
+            messages.append(f"{path}: post-TX-25 state is not aligned to the TX-25 handoff")
+        for evidence_id in (
+            "DDR-SFADEV-STRATEGIC-BASELINE-G11-002",
+            "TX-25-PLAN-INTERPRETATION",
+            "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX25-001",
+        ):
+            if evidence_id not in set(state.get("current_state_evidence", [])):
+                messages.append(f"{path}: post-TX-25 state omits {evidence_id}")
+        if state.get("continuation_state") != "blocked" or state.get("escalation_state") != "pending":
+            messages.append(f"{path}: post-TX-25 state must stop at a new bounded authorization gate")
+        if state.get("state_status") != "human_gated" or state.get("human_gate_required") is not True:
+            messages.append(f"{path}: post-TX-25 state must remain human gated")
     else:
         messages.append(f"{path}: unsupported strategic-baseline program phase {phase!r}")
     return messages

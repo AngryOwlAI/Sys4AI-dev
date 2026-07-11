@@ -172,10 +172,10 @@ class TraceSemanticTests(unittest.TestCase):
         self.assertFalse(result.ok)
         self.assertTrue(any("treat_TX_23_classification_as_executed_evidence" in item for item in result.messages))
 
-    def test_post_tx24_state_requires_separate_next_family_authorization(self) -> None:
+    def test_post_tx25_state_requires_separate_next_family_authorization(self) -> None:
         def mutate_state(state):
             state["allowed_next_actions"].remove(
-                "seek_separate_authorization_for_next_TX_24_local_verification_family"
+                "seek_separate_authorization_for_remaining_67_local_verification_obligations"
             )
 
         result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
