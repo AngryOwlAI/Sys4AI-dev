@@ -869,6 +869,103 @@ def _validate_program_state_alignment(path: Path, state: dict[str, Any]) -> list
             messages.append(f"{path}: post-TX-34 state must stop at the next bounded external-evidence gate")
         if state.get("state_status") != "human_gated" or state.get("human_gate_required") is not True:
             messages.append(f"{path}: post-TX-34 state must remain human gated for evidence-dependent acceptance")
+    elif phase == "strategic_baseline_migration_TX_35_quantitative_measurement_pending_human_acceptance":
+        required_summary = {
+            "strategic_approval": "accepted_G_08",
+            "derivative_regeneration": "complete_G_09",
+            "host_verification": "accepted_G_07_mixed_profile",
+            "semantic_review_evidence": "accepted_TX_24_7_of_7",
+            "plan_scope_interpretation": "accepted_TX_25_410_future_work",
+            "python_package_verification": "accepted_TX_26_4_of_4",
+            "yaml_control_verification": "accepted_TX_27_11_of_11",
+            "format_governance_verification": "accepted_TX_28_10_of_10",
+            "csv_registry_verification": "accepted_TX_29_5_of_5",
+            "markdown_source_verification": "accepted_TX_30_4_of_4",
+            "toml_config_verification": "accepted_TX_31_9_of_9",
+            "jsonschema_contract_verification": "accepted_TX_32_10_of_10",
+        }
+        for field, expected in required_summary.items():
+            if summary.get(field) != expected:
+                messages.append(f"{path}: post-TX-35 {field} must be {expected}")
+        for required_route in (
+            "review_TX_35_metric_definitions_thresholds_sources_intervals_results_and_limitations",
+            "explicitly_accept_reject_or_revise_TX_35_metric_standard_and_results",
+        ):
+            if required_route not in allowed:
+                messages.append(f"{path}: post-TX-35 state omits controlled human route {required_route}")
+        for required_block in (
+            "treat_TX_35_candidate_metrics_as_accepted_without_accountable_human_evidence",
+            "claim_user_benefit_stakeholder_domain_production_operational_permission_or_G_10_evidence_from_TX_35_repository_metrics",
+            "claim_production_readiness_or_operational_authority_without_executed_evidence",
+        ):
+            if required_block not in blocked:
+                messages.append(f"{path}: post-TX-35 state omits blocked action {required_block}")
+        if state.get("latest_closeout_evidence_id") != "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX35-001":
+            messages.append(f"{path}: post-TX-35 state is not aligned to the TX-35 completion")
+        if state.get("latest_handoff_evidence_id") != "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX35-001":
+            messages.append(f"{path}: post-TX-35 state is not aligned to the TX-35 handoff")
+        for evidence_id in (
+            "DDR-SFADEV-STRATEGIC-BASELINE-G11-012",
+            "TX-35-QUANTITATIVE-STRATEGIC-EVIDENCE",
+            "TX35-MEASUREMENT-REPRODUCED-4-OF-4",
+            "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX35-001",
+        ):
+            if evidence_id not in set(state.get("current_state_evidence", [])):
+                messages.append(f"{path}: post-TX-35 state omits {evidence_id}")
+        if state.get("continuation_state") != "blocked" or state.get("escalation_state") != "pending":
+            messages.append(f"{path}: post-TX-35 state must stop at accountable human acceptance")
+        if state.get("state_status") != "human_gated" or state.get("human_gate_required") is not True:
+            messages.append(f"{path}: post-TX-35 state must remain human gated")
+    elif phase == "strategic_baseline_migration_TX_36_quantitative_measurement_accepted":
+        required_summary = {
+            "strategic_approval": "accepted_G_08",
+            "derivative_regeneration": "complete_G_09",
+            "host_verification": "accepted_G_07_mixed_profile",
+            "semantic_review_evidence": "accepted_TX_24_7_of_7",
+            "plan_scope_interpretation": "accepted_TX_25_410_future_work",
+            "python_package_verification": "accepted_TX_26_4_of_4",
+            "yaml_control_verification": "accepted_TX_27_11_of_11",
+            "format_governance_verification": "accepted_TX_28_10_of_10",
+            "csv_registry_verification": "accepted_TX_29_5_of_5",
+            "markdown_source_verification": "accepted_TX_30_4_of_4",
+            "toml_config_verification": "accepted_TX_31_9_of_9",
+            "jsonschema_contract_verification": "accepted_TX_32_10_of_10",
+        }
+        for field, expected in required_summary.items():
+            if summary.get(field) != expected:
+                messages.append(f"{path}: post-TX-36 {field} must be {expected}")
+        for required_route in (
+            "review_accepted_TX_35_measurement_and_TX_36_acceptance_evidence",
+            "select_dependency_ready_retained_external_evidence_transaction",
+            "execute_authorized_external_evidence_scope_only_through_a_bounded_transaction",
+            "seek_accountable_G_10_reacceptance_only_after_retained_evidence_closure",
+        ):
+            if required_route not in allowed:
+                messages.append(f"{path}: post-TX-36 state omits controlled next route {required_route}")
+        for required_block in (
+            "mutate_accepted_TX_35_measurement_without_accountable_supersession_and_remeasurement",
+            "begin_later_evidence_or_acceptance_work_without_separate_transaction_control",
+            "claim_user_benefit_stakeholder_domain_production_operational_permission_or_G_10_evidence_from_TX_35_repository_metrics",
+            "claim_production_readiness_or_operational_authority_without_executed_evidence",
+        ):
+            if required_block not in blocked:
+                messages.append(f"{path}: post-TX-36 state omits blocked action {required_block}")
+        if state.get("latest_closeout_evidence_id") != "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX36-001":
+            messages.append(f"{path}: post-TX-36 state is not aligned to the TX-36 completion")
+        if state.get("latest_handoff_evidence_id") != "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001":
+            messages.append(f"{path}: post-TX-36 state is not aligned to the TX-36 handoff")
+        for evidence_id in (
+            "DDR-SFADEV-STRATEGIC-BASELINE-G11-013",
+            "TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE",
+            "TX36-TX35-MEASUREMENT-ACCEPTED-4-OF-4",
+            "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX36-001",
+        ):
+            if evidence_id not in set(state.get("current_state_evidence", [])):
+                messages.append(f"{path}: post-TX-36 state omits {evidence_id}")
+        if state.get("continuation_state") != "blocked" or state.get("escalation_state") != "pending":
+            messages.append(f"{path}: post-TX-36 state must stop at the next accountable evidence-scope gate")
+        if state.get("state_status") != "human_gated" or state.get("human_gate_required") is not True:
+            messages.append(f"{path}: post-TX-36 state must remain human gated")
     else:
         messages.append(f"{path}: unsupported strategic-baseline program phase {phase!r}")
     return messages

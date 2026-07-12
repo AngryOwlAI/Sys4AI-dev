@@ -65,6 +65,7 @@ page_metadata:
     - contract_plan_scope_interpretation_registry_row
     - contract_skill_import_manifest
     - contract_registry_definition_registry_row
+    - contract_strategic_vision_measurement
   generated_at: 2026-07-12T14:24:41Z
   generator: sys_for_ai.derivatives.validation_contracts_catalog:0.2.0
   validation_status: generated_content_checked
@@ -365,6 +366,12 @@ Validation contracts prove structural conformance only. They do not prove semant
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | contract_state_snapshot | schemas/contracts/state_snapshot.schema.json | 2020-12 | yaml | state_snapshot | control_records/**/*.yaml | Sys4AI validate-jsonschema-contracts | implementation_initialization | historical | pending | pending | sys_for_ai.derivatives.validation_contracts_catalog:0.2.0 | 2026-07-12T14:24:41Z | current | structural conformance only; semantic and acceptance review remain separate |
 
+## yaml / strategic_vision_measurement
+
+| contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash | generator_version | generation_timestamp | stale_or_orphan_status | known_limitations |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| contract_strategic_vision_measurement | schemas/contracts/strategic_vision_measurement.schema.json | 2020-12 | yaml | strategic_vision_measurement | assurance/strategic_vision_measurement_tx35.yaml | Sys4AI validate-strategic-metrics | verification_engineer | controlled | pending | pending | sys_for_ai.derivatives.validation_contracts_catalog:0.2.0 | 2026-07-12T14:24:41Z | current | structural conformance only; semantic and acceptance review remain separate |
+
 ## yaml / target_system_package_manifest
 
 | contract_id | path | dialect | target_format | target_artifact_type | target_glob | validator_command | owner | authority_status | supersedes | source_hash | generator_version | generation_timestamp | stale_or_orphan_status | known_limitations |
@@ -471,6 +478,8 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_completion_receipt_v1_0 | registries/control_record_registry.csv | ctrl_strategic_baseline_tx32_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX32-001.yaml | completion_receipt |
 | contract_completion_receipt_v1_0 | registries/control_record_registry.csv | ctrl_strategic_baseline_tx33_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX33-001.yaml | completion_receipt |
 | contract_completion_receipt_v1_0 | registries/control_record_registry.csv | ctrl_strategic_baseline_tx34_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX34-001.yaml | completion_receipt |
+| contract_completion_receipt_v1_0 | registries/control_record_registry.csv | ctrl_strategic_baseline_tx35_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX35-001.yaml | completion_receipt |
+| contract_completion_receipt_v1_0 | registries/control_record_registry.csv | ctrl_strategic_baseline_tx36_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX36-001.yaml | completion_receipt |
 | contract_director_decision | registries/artifact_contract_registry.csv | artifact_director_decision | control_records/director_decisions/*.yaml | DirectorDecision |
 | contract_director_decision | registries/control_record_registry.csv | ctrl_core_skills_batch_1_director_decision | control_records/director_decisions/DDR-SFADEV-07-CORE-SKILLS-BATCH-1-001.yaml | director_decision |
 | contract_director_decision | registries/control_record_registry.csv | ctrl_core_skills_batch_2_director_decision | control_records/director_decisions/DDR-SFADEV-08-CORE-SKILLS-BATCH-2-001.yaml | director_decision |
@@ -508,6 +517,8 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_director_decision | registries/control_record_registry.csv | ctrl_strategic_baseline_g11_markdown_source_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-007.yaml | director_decision |
 | contract_director_decision | registries/control_record_registry.csv | ctrl_strategic_baseline_g11_plan_interpretation_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-002.yaml | director_decision |
 | contract_director_decision | registries/control_record_registry.csv | ctrl_strategic_baseline_g11_python_package_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-003.yaml | director_decision |
+| contract_director_decision | registries/control_record_registry.csv | ctrl_strategic_baseline_g11_quantitative_acceptance_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-013.yaml | director_decision |
+| contract_director_decision | registries/control_record_registry.csv | ctrl_strategic_baseline_g11_quantitative_measurement_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-012.yaml | director_decision |
 | contract_director_decision | registries/control_record_registry.csv | ctrl_strategic_baseline_g11_toml_config_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-008.yaml | director_decision |
 | contract_director_decision | registries/control_record_registry.csv | ctrl_strategic_baseline_g11_yaml_control_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-004.yaml | director_decision |
 | contract_director_decision | registries/control_record_registry.csv | ctrl_subprd_promotion_director_decision | control_records/director_decisions/DDR-SFADEV-25-SUBPRD-PROMOTION-001.yaml | director_decision |
@@ -539,6 +550,8 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_execution_transaction | registries/control_record_registry.csv | ctrl_strategic_baseline_tx32_execution_transaction | control_records/execution_transactions/TX-32-LOCAL-EVIDENCE-JSON-SCHEMA.yaml | execution_transaction |
 | contract_execution_transaction | registries/control_record_registry.csv | ctrl_strategic_baseline_tx33_execution_transaction | control_records/execution_transactions/TX-33-LOCAL-EVIDENCE-GENERATED-READERS.yaml | execution_transaction |
 | contract_execution_transaction | registries/control_record_registry.csv | ctrl_strategic_baseline_tx34_execution_transaction | control_records/execution_transactions/TX-34-CROSS-VERSION-PYTHON-CI.yaml | execution_transaction |
+| contract_execution_transaction | registries/control_record_registry.csv | ctrl_strategic_baseline_tx35_execution_transaction | control_records/execution_transactions/TX-35-QUANTITATIVE-STRATEGIC-EVIDENCE.yaml | execution_transaction |
+| contract_execution_transaction | registries/control_record_registry.csv | ctrl_strategic_baseline_tx36_execution_transaction | control_records/execution_transactions/TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE.yaml | execution_transaction |
 | contract_handoff | registries/control_record_registry.csv | ctrl_handoff_example | control_records/examples/handoff.example.yaml | handoff |
 | contract_handoff_v0_2 | registries/artifact_contract_registry.csv | artifact_handoff | control_records/handoffs/*.yaml | Handoff |
 | contract_handoff_v0_2 | registries/control_record_registry.csv | ctrl_core_skills_batch_1_handoff | control_records/handoffs/HANDOFF-SFADEV-07-CORE-SKILLS-BATCH-1-001.yaml | handoff_v0_2 |
@@ -595,6 +608,8 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_handoff_v1_0 | registries/control_record_registry.csv | ctrl_strategic_baseline_tx32_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX32-001.yaml | handoff |
 | contract_handoff_v1_0 | registries/control_record_registry.csv | ctrl_strategic_baseline_tx33_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001.yaml | handoff |
 | contract_handoff_v1_0 | registries/control_record_registry.csv | ctrl_strategic_baseline_tx34_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX34-001.yaml | handoff |
+| contract_handoff_v1_0 | registries/control_record_registry.csv | ctrl_strategic_baseline_tx35_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX35-001.yaml | handoff |
+| contract_handoff_v1_0 | registries/control_record_registry.csv | ctrl_strategic_baseline_tx36_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001.yaml | handoff |
 | contract_host_capability_profile | registries/config_source_registry.csv | cfg_codex_app_reference | configs/host_profiles/codex_app_reference.toml | host_capability_profile |
 | contract_memory_preflight_receipt | registries/artifact_contract_registry.csv | artifact_memory_preflight | control_records/memory_preflights/*.yaml | MemoryPreflightReceipt |
 | contract_memory_preflight_receipt | registries/control_record_registry.csv | ctrl_strategic_baseline_tx10_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-10-ACTIVE-SURFACE-MIGRATION-20260710T135843Z.yaml | memory_preflight_receipt |
@@ -622,6 +637,8 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_memory_preflight_receipt | registries/control_record_registry.csv | ctrl_strategic_baseline_tx32_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-32-LOCAL-EVIDENCE-JSON-SCHEMA-20260712T132623Z.yaml | memory_preflight_receipt |
 | contract_memory_preflight_receipt | registries/control_record_registry.csv | ctrl_strategic_baseline_tx33_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-33-LOCAL-EVIDENCE-GENERATED-READERS-20260712T142441Z.yaml | memory_preflight_receipt |
 | contract_memory_preflight_receipt | registries/control_record_registry.csv | ctrl_strategic_baseline_tx34_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-34-CROSS-VERSION-PYTHON-CI-20260712T145255Z.yaml | memory_preflight_receipt |
+| contract_memory_preflight_receipt | registries/control_record_registry.csv | ctrl_strategic_baseline_tx35_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-35-QUANTITATIVE-STRATEGIC-EVIDENCE-20260712T153133Z.yaml | memory_preflight_receipt |
+| contract_memory_preflight_receipt | registries/control_record_registry.csv | ctrl_strategic_baseline_tx36_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE-20260712T161021Z.yaml | memory_preflight_receipt |
 | contract_memory_preflight_receipt_v0_1 | registries/control_record_registry.csv | ctrl_core_skills_batch_1_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-07-CORE-SKILLS-BATCH-1-001.yaml | memory_preflight_receipt |
 | contract_memory_preflight_receipt_v0_1 | registries/control_record_registry.csv | ctrl_core_skills_batch_2_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-08-CORE-SKILLS-BATCH-2-001.yaml | memory_preflight_receipt |
 | contract_memory_preflight_receipt_v0_1 | registries/control_record_registry.csv | ctrl_discovery_gate_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-SFADEV-03-DISCOVERY-GATE-001.yaml | memory_preflight_receipt |
@@ -659,6 +676,7 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_skill_import_manifest | registries/control_record_registry.csv | ctrl_skill_import_manifest | control_records/examples/skill_import_manifest.yaml | skill_import_manifest |
 | contract_state_snapshot | registries/control_record_registry.csv | ctrl_selfhost_continue_kernel_state_snapshot | control_records/state_snapshots/state_snapshot.example.v0_2.yaml | state_snapshot |
 | contract_state_snapshot | registries/control_record_registry.csv | ctrl_state_snapshot_example | control_records/examples/state_snapshot.example.yaml | state_snapshot |
+| contract_strategic_vision_measurement | registries/artifact_contract_registry.csv | artifact_strategic_vision_measurement | assurance/strategic_vision_measurement_tx35.yaml | StrategicVisionMeasurement |
 | contract_sys4ai_config | registries/config_source_registry.csv | cfg_pyproject | pyproject.toml | python_package |
 | contract_sys4ai_config | registries/config_source_registry.csv | cfg_sys4ai_example | configs/examples/sys4ai.example.toml | framework_example |
 | contract_target_core_values | registries/artifact_contract_registry.csv | artifact_target_core_values | governance/core-values.md | TargetCoreValues |

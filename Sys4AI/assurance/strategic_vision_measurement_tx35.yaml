@@ -1,0 +1,144 @@
+measurement_id: VISION-MEASURE-SFADEV-TX35-001
+schema_version: 1.0.0
+authority_status: controlled
+evaluation_status: measured_and_human_accepted
+subject:
+  system_id: sys4ai
+  subject_layer: framework_product
+  vision_id: SFA-VISION-001
+  value_ids:
+  - SFA-VALUE-001
+  - SFA-VALUE-002
+  - SFA-VALUE-003
+  - SFA-VALUE-004
+  - SFA-VALUE-005
+  - SFA-VALUE-006
+  - SFA-VALUE-007
+  - SFA-VALUE-008
+  requirement_ids:
+  - SFA-CORE-VISION-001
+  - SFA-CORE-VISION-002
+  - SFA-CORE-VISION-003
+observation:
+  baseline_commit: a7628661b386c03c977182643aa101c2524f0dde
+  extracted_at: '2026-07-12T15:31:33Z'
+  scope: Repository-observable governance and verification signals for the strategic-baseline migration from TX-10 through TX-34.
+  exclusions:
+  - User and beneficiary outcome quality is not observed by repository control records.
+  - Fit-for-purpose target-system behavior is not observed by the framework repository.
+  - Stakeholder consensus domain acceptance production fitness operations permissions and G-10 are separately gated.
+metrics:
+- metric_id: QSM-001
+  name: Accountable strategic-scope decision rate
+  vision_signals:
+  - Accountable human authority remains visible.
+  definition: Fraction of G-11-001 through G-11-011 scope decisions that are completed, name the accountable human principal, and prohibit model self-approval.
+  numerator_definition: Count of the eleven in-scope G-11 decision records whose status is completed, principal is Alex Omegapy, principal role is repository maintainer and product owner, and model_self_approval is false.
+  denominator_definition: The fixed eleven G-11 scope decisions activated from G-11-001 through G-11-011 before TX-35 selection.
+  unit: fraction
+  threshold:
+    operator: '>='
+    value: 1.0
+    approval_status: accepted_by_accountable_human
+  data_sources:
+  - Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-001.yaml through G11-011.yaml
+  observation_interval:
+    start: '2026-07-11T16:19:17Z'
+    end: '2026-07-12T14:52:55Z'
+  result:
+    numerator: 11
+    denominator: 11
+    value: 1.0
+    threshold_comparison: meets_accepted_threshold
+    acceptance_status: accepted_by_accountable_human
+- metric_id: QSM-002
+  name: Controlled transaction closeout rate
+  vision_signals:
+  - Material claims decisions and changes remain evidence-grounded traceable and reviewable.
+  definition: Fraction of TX-10 through TX-34 transactions with completed state, complete closeout evidence, and matching registered completion receipt and handoff artifacts.
+  numerator_definition: Count of the twenty-five fixed transaction IDs TX-10 through TX-34 satisfying all transaction, receipt, handoff, and registry checks.
+  denominator_definition: The fixed twenty-five activated execution transactions from TX-10 through TX-34 inclusive.
+  unit: fraction
+  threshold:
+    operator: '>='
+    value: 1.0
+    approval_status: accepted_by_accountable_human
+  data_sources:
+  - Sys4AI/control_records/execution_transactions/TX-10 through TX-34 YAML records
+  - Sys4AI/registries/completion_receipt_registry.csv
+  - Sys4AI/registries/handoff_registry.csv
+  observation_interval:
+    start: '2026-07-10T13:58:43Z'
+    end: '2026-07-12T15:15:02Z'
+  result:
+    numerator: 25
+    denominator: 25
+    value: 1.0
+    threshold_comparison: meets_accepted_threshold
+    acceptance_status: accepted_by_accountable_human
+- metric_id: QSM-003
+  name: Requirement-trace disposition visibility rate
+  vision_signals:
+  - Material claims and decisions trace to current evidence.
+  definition: Fraction of current trace rows with explicit lifecycle, applicability, coverage, capability, verification, evidence, trace-class, semantic-review, and evidence-path dispositions.
+  numerator_definition: Count of current trace rows with every named disposition field populated and verification_status equal to pass or planned.
+  denominator_definition: All 227 rows in the current requirement_trace_registry.csv baseline.
+  unit: fraction
+  threshold:
+    operator: '>='
+    value: 1.0
+    approval_status: accepted_by_accountable_human
+  data_sources:
+  - Sys4AI/registries/requirement_trace_registry.csv
+  observation_interval:
+    start: '2026-07-12T15:15:02Z'
+    end: '2026-07-12T15:15:02Z'
+  result:
+    numerator: 227
+    denominator: 227
+    value: 1.0
+    threshold_comparison: meets_accepted_threshold
+    acceptance_status: accepted_by_accountable_human
+    context: Verification remains pass=94 and planned=133; visibility is not implementation or verification completion.
+- metric_id: QSM-004
+  name: Supported-Python clean-checkout validation success rate
+  vision_signals:
+  - Execution claims match observable behavior.
+  - Changes remain testable and reviewable.
+  definition: Fraction of the declared stable Python 3.10 through 3.14 matrix jobs that completed the full root validation successfully from clean GitHub-hosted checkouts.
+  numerator_definition: Count of successful jobs in GitHub Actions run 29197460029 for Python 3.10, 3.11, 3.12, 3.13, and 3.14.
+  denominator_definition: The fixed five stable Python minors implied by requires-python >=3.10 at the TX-34 baseline date.
+  unit: fraction
+  threshold:
+    operator: '>='
+    value: 1.0
+    approval_status: accepted_by_accountable_human
+  data_sources:
+  - https://github.com/AngryOwlAI/Sys4AI-dev/actions/runs/29197460029
+  - Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX34-001.yaml
+  observation_interval:
+    start: '2026-07-12T15:04:08Z'
+    end: '2026-07-12T15:05:21Z'
+  result:
+    numerator: 5
+    denominator: 5
+    value: 1.0
+    threshold_comparison: meets_accepted_threshold
+    acceptance_status: accepted_by_accountable_human
+acceptance:
+  principal_id: alex_omegapy
+  principal_type: accountable_human
+  definition_status: accepted_by_accountable_human
+  result_status: accepted_by_accountable_human
+  model_self_approval: false
+  required_action: Preserve the accepted definitions, thresholds, sources, intervals, results, and limitations; any material change requires accountable supersession and remeasurement.
+  acceptance_evidence_ids:
+  - HUMAN-TASK-2026-07-12-TX35-MEASUREMENT-ACCEPTANCE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-013
+limitations:
+- These measures cover repository-observable governance and verification adherence, not the complete product vision.
+- A 100 percent control rate does not prove user benefit, target-system fitness, broad stakeholder consensus, or domain truth.
+- Requirement-trace disposition visibility does not convert 133 planned verification rows to pass.
+- The GitHub Actions result proves only the current validation stack under the recorded matrix and commit.
+- Independent confidential and rotated evaluation remains absent.
+- Production runtime monitoring incident recovery maintenance ownership operational authorization permission expansion and G-10 remain ungranted.

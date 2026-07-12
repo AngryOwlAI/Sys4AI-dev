@@ -1,0 +1,49 @@
+handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+producing_execution_transaction_id: TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE
+next_execution_transaction_id: null
+status: human_gated
+producing_role: verification_engineer
+recommended_next_role: system_director
+summary: TX-36 records accountable acceptance of the exact TX-35 measurement baseline and stops before selection or execution of another evidence family or G-10 reconsideration.
+source_ids:
+- SRC-DDR-STRATEGIC-BASELINE-G11-013
+- SRC-STRATEGIC-VISION-MEASUREMENT-TX35
+- SRC-CONTRACT-STRATEGIC-VISION-MEASUREMENT
+- SRC-VALIDATOR-STRATEGIC-METRICS
+- SRC-TEST-STRATEGIC-METRICS
+- SRC-TX36-EXECUTION-TRANSACTION
+- SRC-MEMPREFLIGHT-STRATEGIC-BASELINE-TX36
+- SRC-COMPLETION-STRATEGIC-BASELINE-TX36
+- SRC-QUANTITATIVE-STRATEGIC-EVIDENCE-REPORT-TX35
+- SRC-REG-REQ-TRACE
+- SRC-REG-EVIDENCE-CLOSURE-PLAN
+- SRC-REG-PLAN-SCOPE-INTERPRETATION
+closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX36-001
+current_state_evidence:
+- TX36-TX35-MEASUREMENT-ACCEPTED-4-OF-4
+- TX36-QSM-001-ACCEPTED-11-OF-11
+- TX36-QSM-002-ACCEPTED-25-OF-25
+- TX36-QSM-003-ACCEPTED-227-OF-227
+- TX36-QSM-004-ACCEPTED-5-OF-5
+- TX36-HUMAN-ACCEPTANCE-EXACT-SCOPE
+- TX36-TRACE-UNCHANGED-PASS-94-PLANNED-133
+- TX36-TX23-TX25-FROZEN
+validation_evidence:
+  baseline_commit: a7628661b386c03c977182643aa101c2524f0dde
+  metrics_reproduced: 4
+  metrics_failed_reproduction: 0
+  accepted_threshold: 1.0_each
+  definition_acceptance_status: accepted_by_accountable_human
+  result_acceptance_status: accepted_by_accountable_human
+  acceptance_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-013
+  trace_rows: 227
+  trace_verification: PASS_94_PLANNED_133
+  g10_status: DEFERRED_NOT_ACCEPTED
+  next_authority_gate: SEPARATE_ACCOUNTABLE_RETAINED_EVIDENCE_SCOPE_SELECTION
+stop_conditions:
+- Do not change the accepted TX-35 metric baseline without accountable supersession impact analysis and remeasurement.
+- Do not infer user benefit stakeholder consensus domain fitness production operational target-runtime permission independent-evaluation or G-10 evidence.
+- Do not modify frozen TX-23 TX-25 canonical PRDs trace state or prior activated history.
+- Do not start another evidence family without exact prerequisites transaction control and accountable scope.

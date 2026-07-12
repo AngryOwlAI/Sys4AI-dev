@@ -1,0 +1,54 @@
+completion_receipt_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX36-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE
+role: verification_engineer
+result: PASS
+summary: TX-36 records the direct accountable human acceptance of the exact four-metric TX-35 standard and results while retaining every adjacent evidence and authority gate.
+changed_artifacts:
+- path: Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-013.yaml;Sys4AI/control_records/execution_transactions/TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE.yaml
+  change_summary: Records direct accountable acceptance and bounds its additive implementation transaction.
+- path: Sys4AI/assurance/strategic_vision_measurement_tx35.yaml;Sys4AI/schemas/contracts/strategic_vision_measurement.schema.json
+  change_summary: Promotes only acceptance metadata and requires exact accountable evidence while preserving metric content and limitations.
+- path: Sys4AI/sys_for_ai/strategic_metrics.py;Sys4AI/tests/test_strategic_metrics.py
+  change_summary: Requires the exact human decision and rejects counterfeit missing self-approved pending inflated or relaxed states.
+- path: Sys4AI/control_records/program_state.yaml;Sys4AI/sys_for_ai/trace_validation.py;Sys4AI/sys_for_ai/prd_semantics.py
+  change_summary: Advances to accepted measurement state and retains separate later-evidence and G-10 boundaries.
+- path: Sys4AI/tests/test_trace_semantics.py;Sys4AI/tests/test_self_hosting_acceptance.py
+  change_summary: Adds current-state and fail-closed accepted-baseline regression coverage.
+- path: implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-QUANTITATIVE-STRATEGIC-EVIDENCE-SFADEV-TX35.md
+  change_summary: Adds the direct accountable disposition without changing the reported measurements or limitations.
+- path: Sys4AI/registries
+  change_summary: Registers the additive decision transaction preflight completion handoff accepted artifact and evidence relationships.
+- path: Sys4AI/docs/generated
+  change_summary: Refreshes noncanonical configuration control validation contract and governance readers deterministically.
+- path: Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE-20260712T161021Z.yaml
+  change_summary: Preserves source-first routing evidence and the known pending-hash warning baseline.
+- path: Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX36-001.yaml;Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001.yaml;implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX36-001.md
+  change_summary: Closes only the acceptance-recording packet and stops before another evidence family or G-10.
+validation_evidence:
+  metric_reproduction: PASS_4_OF_4
+  focused_acceptance_tests: PASS_36_OF_36
+  focused_metric_tests: PASS_8_OF_8
+  full_product_tests: PASS_345_OF_345
+  repository_validation: PASS_PRODUCT_AND_ROOT
+  memory_status: PASS_WITH_WARNINGS_1284_OBJECTS_582_WARNINGS_ZERO_AUTHORITY_INVERSIONS
+  definition_acceptance: ACCEPTED_BY_ACCOUNTABLE_HUMAN
+  result_acceptance: ACCEPTED_BY_ACCOUNTABLE_HUMAN
+  trace_verification: PASS_94_PLANNED_133_UNCHANGED
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE-20260712T161021Z
+authority_changes:
+  records_G_11_013_accountable_acceptance: true
+  promotes_TX35_measurement_to_controlled_accepted: true
+  accepts_metric_definitions_thresholds_sources_intervals_results_and_limitations: true
+  changes_metric_definitions_populations_numeric_thresholds_sources_intervals_numeric_results_or_limitations: false
+  closes_all_retained_external_evidence_now: false
+  changes_trace_state: false
+  changes_TX_23_or_TX_25_frozen_bytes: false
+  accepts_G_10_now: false
+  grants_independent_stakeholder_domain_production_operational_target_runtime_or_permission_authority_now: false
+unresolved_issues:
+- User beneficiary stakeholder and target-system outcomes remain unobserved by these repository-control measures.
+- Independent confidential rotated stakeholder domain production operational permission and G-10 evidence remain separately gated.
+- Any later measurement claim requires a fresh observation interval and separately controlled execution.
+next_recommendation: Select the earliest dependency-ready retained evidence family through a new accountable scope decision and bounded transaction; do not infer G-10 from TX-36 alone.

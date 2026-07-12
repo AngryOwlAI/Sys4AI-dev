@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://angryowl.ai/sys4ai/schemas/strategic_vision_measurement.schema.json",
+  "title": "Strategic vision measurement",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "measurement_id",
+    "schema_version",
+    "authority_status",
+    "evaluation_status",
+    "subject",
+    "observation",
+    "metrics",
+    "acceptance",
+    "limitations"
+  ],
+  "properties": {
+    "measurement_id": {"type": "string", "pattern": "^VISION-MEASURE-SFADEV-TX35-[0-9]{3}$"},
+    "schema_version": {"const": "1.0.0"},
+    "authority_status": {"const": "controlled"},
+    "evaluation_status": {"const": "measured_and_human_accepted"},
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system_id", "subject_layer", "vision_id", "value_ids", "requirement_ids"],
+      "properties": {
+        "system_id": {"const": "sys4ai"},
+        "subject_layer": {"const": "framework_product"},
+        "vision_id": {"const": "SFA-VISION-001"},
+        "value_ids": {
+          "type": "array",
+          "items": {"type": "string", "pattern": "^SFA-VALUE-00[1-8]$"},
+          "minItems": 8,
+          "maxItems": 8,
+          "uniqueItems": true
+        },
+        "requirement_ids": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 3,
+          "uniqueItems": true
+        }
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["baseline_commit", "extracted_at", "scope", "exclusions"],
+      "properties": {
+        "baseline_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "extracted_at": {"type": "string", "format": "date-time"},
+        "scope": {"type": "string", "minLength": 1},
+        "exclusions": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1}
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {"$ref": "#/$defs/metric"}
+    },
+    "acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "principal_id",
+        "principal_type",
+        "definition_status",
+        "result_status",
+        "model_self_approval",
+        "required_action",
+        "acceptance_evidence_ids"
+      ],
+      "properties": {
+        "principal_id": {"const": "alex_omegapy"},
+        "principal_type": {"const": "accountable_human"},
+        "definition_status": {"const": "accepted_by_accountable_human"},
+        "result_status": {"const": "accepted_by_accountable_human"},
+        "model_self_approval": {"const": false},
+        "required_action": {"type": "string", "minLength": 1},
+        "acceptance_evidence_ids": {
+          "type": "array",
+          "prefixItems": [
+            {"const": "HUMAN-TASK-2026-07-12-TX35-MEASUREMENT-ACCEPTANCE"},
+            {"const": "DDR-SFADEV-STRATEGIC-BASELINE-G11-013"}
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "minItems": 5
+    }
+  },
+  "$defs": {
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metric_id",
+        "name",
+        "vision_signals",
+        "definition",
+        "numerator_definition",
+        "denominator_definition",
+        "unit",
+        "threshold",
+        "data_sources",
+        "observation_interval",
+        "result"
+      ],
+      "properties": {
+        "metric_id": {"type": "string", "pattern": "^QSM-00[1-4]$"},
+        "name": {"type": "string", "minLength": 1},
+        "vision_signals": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
+        "definition": {"type": "string", "minLength": 1},
+        "numerator_definition": {"type": "string", "minLength": 1},
+        "denominator_definition": {"type": "string", "minLength": 1},
+        "unit": {"const": "fraction"},
+        "threshold": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["operator", "value", "approval_status"],
+          "properties": {
+            "operator": {"const": ">="},
+            "value": {"const": 1.0},
+            "approval_status": {"const": "accepted_by_accountable_human"}
+          }
+        },
+        "data_sources": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true},
+        "observation_interval": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["start", "end"],
+          "properties": {
+            "start": {"type": "string", "format": "date-time"},
+            "end": {"type": "string", "format": "date-time"}
+          }
+        },
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["numerator", "denominator", "value", "threshold_comparison", "acceptance_status"],
+          "properties": {
+            "numerator": {"type": "integer", "minimum": 0},
+            "denominator": {"type": "integer", "minimum": 1},
+            "value": {"type": "number", "minimum": 0, "maximum": 1},
+            "threshold_comparison": {"enum": ["meets_accepted_threshold", "does_not_meet_accepted_threshold"]},
+            "acceptance_status": {"const": "accepted_by_accountable_human"},
+            "context": {"type": "string"}
+          }
+        }
+      }
+    }
+  }
+}

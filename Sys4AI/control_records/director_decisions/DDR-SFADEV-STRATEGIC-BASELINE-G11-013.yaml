@@ -1,0 +1,111 @@
+director_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-013
+schema_version: 0.1.0
+decision_status: completed
+created_at: '2026-07-12T16:10:21Z'
+completed_at: '2026-07-12T16:10:21Z'
+director_role: system_director
+human_authorization:
+  principal_name: Alex Omegapy
+  principal_role: repository_maintainer_and_product_owner
+  authority_basis: The accountable human reviewed the exact TX-35 metric definitions thresholds named data sources observation intervals results and limitations and directly accepted all of them.
+  approval_evidence: 'Human-issued Codex task instruction dated 2026-07-12: I accept VISION-MEASURE-SFADEV-TX35-001, including QSM-001 through QSM-004, their 100% thresholds, named data sources, observation intervals, results, and stated limitations.'
+  approval_scope:
+  - accept VISION-MEASURE-SFADEV-TX35-001 as the controlled quantitative strategic measurement baseline
+  - accept QSM-001 through QSM-004 definitions fixed populations named sources observation intervals 100 percent thresholds and recorded results
+  - accept the six stated limitations without treating them as waived or resolved
+  - authorize one bounded TX-36 acceptance-recording and baseline-promotion packet
+  - preserve independent stakeholder domain production operational permission and G-10 gates
+  model_self_approval: false
+decision_context:
+  trigger: accountable_TX35_measurement_acceptance
+  transaction_id: TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE
+  gate_id: G-11-EVIDENCE-SCOPE
+  latest_handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX35-001
+  governing_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+  prior_gate_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-012
+  measurement_id: VISION-MEASURE-SFADEV-TX35-001
+  memory_preflight_receipt_id: MEMPREFLIGHT-TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE-20260712T161021Z
+  observed_evidence:
+  - TX-35 reproduced all four fixed results from the named repository and external CI sources.
+  - Focused metric tests and the broader repository validation passed before accountable disposition.
+  - The accountable human received the exact results thresholds named sources intervals limitations and separate-gate warnings.
+  - The accountable human then directly accepted the exact named measurement artifact and all four metric records.
+selected_route:
+  route_id: accept_exact_TX_35_measurement_standard_and_results
+  route_name: Promote the exact reviewed TX-35 measurement candidate without expanding adjacent authority
+  rationale: The direct human statement supplies the previously missing accountable acceptance while the controlled artifact retains exact reproducible data and explicit limitations.
+  immediate_effect: VISION-MEASURE-SFADEV-TX35-001 becomes controlled accepted quantitative strategic evidence; TX-36 may record that state and must stop before another evidence family or G-10 reconsideration.
+reviewed_content:
+  measurement_id: VISION-MEASURE-SFADEV-TX35-001
+  metric_ids:
+  - QSM-001
+  - QSM-002
+  - QSM-003
+  - QSM-004
+  threshold_value_each: 1.0
+  results:
+  - QSM-001_11_OF_11
+  - QSM-002_25_OF_25
+  - QSM-003_227_OF_227
+  - QSM-004_5_OF_5
+  accepted_fields:
+  - definitions_and_fixed_populations
+  - thresholds
+  - named_data_sources
+  - observation_intervals
+  - results
+  - stated_limitations
+  acceptance_class: E4_accountable_human_acceptance_of_repository_observable_measurement
+rejected_routes:
+- route_id: leave_TX35_pending_after_explicit_acceptance
+  reason: This would contradict the direct accountable human disposition and leave controlled state stale.
+- route_id: revise_or_remeasure_TX35
+  reason: The accountable human accepted the exact artifact without naming revisions.
+- route_id: infer_adjacent_evidence_or_G10_acceptance
+  reason: The accepted repository-control measures do not observe stakeholder domain production operational permission independent-evaluation or complete G-10 evidence.
+- route_id: mutate_completed_TX35_control_history
+  reason: TX-35 remains the immutable measured-pending-acceptance stage; TX-36 records the later acceptance additively.
+authority_boundary:
+  human_authority_recorded: true
+  accepts_TX_35_measurement_standard_and_results: true
+  accepts_QSM_001_through_QSM_004: true
+  accepts_100_percent_thresholds: true
+  accepts_named_sources_intervals_and_limitations: true
+  authorizes_TX_36_acceptance_recording: true
+  closes_only_TX_35_quantitative_measurement_acceptance_gate: true
+  closes_all_retained_external_evidence_now: false
+  authorizes_independent_or_rotated_evaluation_now: false
+  authorizes_stakeholder_or_domain_acceptance_now: false
+  accepts_gate_G_10_now: false
+  may_claim_production_readiness_now: false
+  may_grant_operational_authority_now: false
+  may_expand_permissions: false
+  may_rewrite_activated_control_history: false
+supersession:
+  supersedes_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-012
+  scope: Supersedes only the pending-accountable-acceptance disposition for VISION-MEASURE-SFADEV-TX35-001 after TX-35 completed measurement.
+  preserves:
+  - the TX-35 measurement authorization and completed measured-pending-acceptance history
+  - exact QSM-001 through QSM-004 definitions populations sources intervals results and limitations
+  - frozen TX-23 ledger and TX-25 interpretation
+  - canonical PRDs trace states waivers and all independent stakeholder domain production operational permission and G-10 boundaries
+rollback_and_review:
+  rollback_class: activating_quantitative_measurement_acceptance_decision
+  rollback_scope: Before publication revert the complete TX-36 acceptance packet; after publication preserve this decision and supersede it additively with accountable impact analysis and remeasurement evidence.
+  review_triggers:
+  - any accepted metric definition population source interval threshold result or limitation changes
+  - any named source or observation becomes stale invalid or contradicted
+  - repository-control metrics are used to claim stakeholder domain production operational permission or G-10 evidence
+  expiry: none; the accepted historical observation remains fixed while future claims require fresh measurements
+evidence_references:
+- Sys4AI/assurance/strategic_vision_measurement_tx35.yaml
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX35-001.yaml
+- Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX35-001.yaml
+- implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-QUANTITATIVE-STRATEGIC-EVIDENCE-SFADEV-TX35.md
+- Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE-20260712T161021Z.yaml
+validators:
+- cd Sys4AI && make validate-strategic-metrics
+- cd Sys4AI && make validate-director-decisions validate-director-decision-registry validate-program-state
+- cd Sys4AI && .venv/bin/python -m unittest tests.test_strategic_metrics tests.test_trace_semantics tests.test_self_hosting_acceptance
+- make validate
+- git diff --check

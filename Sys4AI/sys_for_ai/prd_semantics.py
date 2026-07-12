@@ -178,6 +178,8 @@ def _validate_strategic_approval_state(
         "strategic_baseline_migration_TX_32_jsonschema_contract_verification_complete",
         "strategic_baseline_migration_TX_33_generated_reader_verification_complete",
         "strategic_baseline_migration_TX_34_cross_version_CI_complete",
+        "strategic_baseline_migration_TX_35_quantitative_measurement_pending_human_acceptance",
+        "strategic_baseline_migration_TX_36_quantitative_measurement_accepted",
     }:
         return []
 

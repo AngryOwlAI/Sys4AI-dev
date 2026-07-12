@@ -1,0 +1,67 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-35-QUANTITATIVE-STRATEGIC-EVIDENCE-20260712T153133Z
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-35-QUANTITATIVE-STRATEGIC-EVIDENCE
+created_at: '2026-07-12T15:31:33Z'
+status: PASS_WITH_WARNINGS
+commands_run:
+- command: python -m sys_for_ai.cli memory status --json
+  result: pass
+- command: python -m sys_for_ai.cli memory lookup TX-35-QUANTITATIVE-STRATEGIC-EVIDENCE
+    --json
+  result: warn
+- command: python -m sys_for_ai.cli memory lookup HANDOFF-SFADEV-STRATEGIC-BASELINE-TX34-001
+    --json
+  result: pass
+- command: python -m sys_for_ai.cli memory search 'quantitative vision success measures
+    metric definitions data sources observation interval accountable acceptance' --limit
+    10 --json
+  result: pass
+queries:
+- query: quantitative vision success measures metric definitions data sources observation
+    interval accountable acceptance
+  returned_object_ids:
+  - SRC-TEST-EXECUTION-TRANSACTION
+  - SRC-TEST-HOST-PROFILES
+  - SRC-REG-EVIDENCE-CLOSURE-PLAN
+  - SRC-REG-PLAN-SCOPE-INTERPRETATION
+  - SRC-VALIDATOR-STRATEGIC-INTENT
+  - SRC-REG-LOCAL-EVIDENCE-EXECUTION
+  - SRC-SAFETY-EVALUATION-PACKET-TX17
+  - DDR-SFADEV-STRATEGIC-BASELINE-G08-001
+  - SRC-DDR-STRATEGIC-BASELINE-G08-001
+  - ctrl_strategic_baseline_g08_director_decision
+canonical_sources_inspected:
+- path: Sys4AI/tests/test_execution_transactions.py
+  registry: source_registry.csv
+  row_id: SRC-TEST-EXECUTION-TRANSACTION
+  inspected_sections:
+  - registered source metadata
+- path: Sys4AI/tests/test_host_profiles.py
+  registry: source_registry.csv
+  row_id: SRC-TEST-HOST-PROFILES
+  inspected_sections:
+  - registered source metadata
+- path: Sys4AI/registries/evidence_closure_plan_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-EVIDENCE-CLOSURE-PLAN
+  inspected_sections:
+  - registered source metadata
+registry_rows_inspected:
+- path: Sys4AI/registries/plan_scope_interpretation_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-PLAN-SCOPE-INTERPRETATION
+  purpose: Confirm memory hit registry evidence.
+- path: Sys4AI/sys_for_ai/strategic_intent.py
+  registry: source_registry.csv
+  row_id: SRC-VALIDATOR-STRATEGIC-INTENT
+  purpose: Confirm memory hit registry evidence.
+- path: Sys4AI/registries/local_evidence_execution_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-LOCAL-EVIDENCE-EXECUTION
+  purpose: Confirm memory hit registry evidence.
+stale_context_risks:
+- risk_id: MEMPREFLIGHT-RISK-001
+  status: not_observed
+  notes: No generated derivative was used as source authority.
+usable_for_routing: true

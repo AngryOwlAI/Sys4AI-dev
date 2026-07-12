@@ -22,6 +22,7 @@ page_metadata:
     - contract_role_registry_row
     - contract_self_change_holdout_suite
     - contract_self_change_safety_evaluation
+    - contract_strategic_vision_measurement
     - contract_target_core_values
     - contract_target_system_package_manifest
     - contract_target_vision_statement
@@ -80,6 +81,7 @@ Validation contracts prove structural conformance only. They do not prove semant
 | artifact_target_system_package_manifest | TargetSystemPackageManifest | implementation_initialization_agent | requirements_verifier;verification_engineer;system_architect;runtime_maintenance_planner | derivative | contract_target_system_package_manifest | target_package;registry_catalog | Promote only through accountable source authority with current strategic approval impact trace hashes validation and production evidence where claimed |
 | artifact_self_change_safety_evaluation_packet | SelfChangeSafetyEvaluationPacket | security_safety_privacy_compliance_reviewer;verification_engineer;runtime_maintenance_planner;svc_documentation_surface_architect | system_director;requirements_verifier;software_engineer | controlled | contract_self_change_safety_evaluation | none | Consequential baseline acceptance requires TX-18 accountable human review and cannot grant production or operational authority |
 | artifact_self_change_holdout_suite | SelfChangeHoldoutSuite | verification_engineer | security_safety_privacy_compliance_reviewer;system_director | controlled | contract_self_change_holdout_suite | none | Threshold or scenario mutation requires accountable approval independent review updated baseline evidence and full regression |
+| artifact_strategic_vision_measurement | StrategicVisionMeasurement | verification_engineer | system_director;requirements_verifier;context_memory_knowledge_architect | controlled | contract_strategic_vision_measurement | none | Accepted by DDR-SFADEV-STRATEGIC-BASELINE-G11-013; any material change requires accountable supersession impact analysis and remeasurement |
 
 ## Allowed Promotion Path
 

@@ -1,0 +1,55 @@
+completion_receipt_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX35-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-35-QUANTITATIVE-STRATEGIC-EVIDENCE
+role: verification_engineer
+result: PASS_WITH_WARNINGS
+summary: TX-35 bound and reproduced four repository-observable quantitative strategic measures while leaving their standard and results pending accountable human acceptance.
+changed_artifacts:
+- path: Sys4AI/assurance/strategic_vision_measurement_tx35.yaml;Sys4AI/schemas/contracts/strategic_vision_measurement.schema.json
+  change_summary: Adds the controlled candidate metric definitions populations sources intervals proposed thresholds results limitations and human acceptance contract.
+- path: Sys4AI/sys_for_ai/strategic_metrics.py;Sys4AI/tests/test_strategic_metrics.py
+  change_summary: Adds fail-closed result reproduction and negative inflated-threshold self-approval and premature-acceptance tests.
+- path: Sys4AI/sys_for_ai/cli.py;Sys4AI/Makefile
+  change_summary: Adds focused and aggregate strategic-metric validation entry points.
+- path: Sys4AI/sys_for_ai/trace_validation.py;Sys4AI/sys_for_ai/prd_semantics.py;Sys4AI/tests/test_trace_semantics.py;Sys4AI/tests/test_self_hosting_acceptance.py
+  change_summary: Adds the fail-closed TX-35 pending-human-acceptance state transition to semantic validation and updates current-state regression fixtures.
+- path: Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-012.yaml;Sys4AI/control_records/execution_transactions/TX-35-QUANTITATIVE-STRATEGIC-EVIDENCE.yaml
+  change_summary: Records accountable scope selection without accepting the runtime-proposed evaluation standard or results.
+- path: implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-QUANTITATIVE-STRATEGIC-EVIDENCE-SFADEV-TX35.md
+  change_summary: Records definitions observations results limitations and the exact remaining acceptance gate.
+- path: Sys4AI/control_records/program_state.yaml;Sys4AI/registries;Sys4AI/docs/generated
+  change_summary: Advances only to measured pending human acceptance and reconciles controlled navigation plus noncanonical readers.
+- path: Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX35-001.yaml;Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX35-001.yaml;implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX35-001.md
+  change_summary: Closes measurement execution and stops at accountable definition threshold result and limitation acceptance.
+validation_evidence:
+  measurement_reproduction: PASS_4_OF_4
+  metric_QSM_001_accountable_decisions: PASS_11_OF_11
+  metric_QSM_002_controlled_closeouts: PASS_25_OF_25
+  metric_QSM_003_trace_dispositions: PASS_227_OF_227
+  metric_QSM_004_external_CI_jobs: PASS_5_OF_5
+  focused_tests: PASS_6_OF_6
+  full_product_tests: PASS_342_OF_342
+  repository_validation: PASS
+  memory_status: PASS_WITH_WARNINGS_1269_OBJECTS_573_WARNINGS_ZERO_AUTHORITY_INVERSIONS
+  definition_acceptance: PENDING_ACCOUNTABLE_HUMAN
+  result_acceptance: PENDING_ACCOUNTABLE_HUMAN
+  trace_verification: PASS_94_PLANNED_133_UNCHANGED
+  frozen_tx23_ledger_sha256: 1e9e2b2a0a7bc4f589addd65b8d34642899a3f812e7ce35be6e62a2c0fcc6138
+  frozen_tx25_interpretation_sha256: 9ed89d6ff5872ee2fb2b740791c268d9048e97f31eae8ff7d3b4d2d8929d5f38
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-35-QUANTITATIVE-STRATEGIC-EVIDENCE-20260712T153133Z
+authority_changes:
+  accepts_G_11_012_quantitative_measurement_route: true
+  records_reproducible_metric_candidates: 4
+  accepts_metric_definitions_or_thresholds_now: false
+  accepts_metric_results_now: false
+  closes_quantitative_external_dependency_now: false
+  changes_trace_state: false
+  changes_TX_23_or_TX_25_frozen_bytes: false
+  accepts_G_10_now: false
+  grants_independent_stakeholder_domain_production_operational_target_runtime_or_permission_authority_now: false
+unresolved_issues:
+- The accountable human has not accepted rejected or revised the four definitions proposed thresholds results and limitations.
+- User beneficiary stakeholder and target-system outcomes remain unobserved by these repository-control measures.
+- Independent confidential rotated stakeholder domain production operational permission and G-10 evidence remain separately gated.
+next_recommendation: Obtain an explicit accountable human disposition of the exact TX-35 measurement artifact before treating any result as accepted quantitative strategic evidence.

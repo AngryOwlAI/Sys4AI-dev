@@ -316,6 +316,16 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_strategic_baseline_tx34_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-34-CROSS-VERSION-PYTHON-CI-20260712T145255Z.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
 | ctrl_strategic_baseline_tx34_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX34-001.yaml | completion_receipt | controlled | verification_engineer | contract_completion_receipt_v1_0 | pending |
 | ctrl_strategic_baseline_tx34_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX34-001.yaml | handoff | controlled | verification_engineer | contract_handoff_v1_0 | pending |
+| ctrl_strategic_baseline_g11_quantitative_measurement_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-012.yaml | director_decision | controlled | system_director | contract_director_decision | pending |
+| ctrl_strategic_baseline_tx35_execution_transaction | control_records/execution_transactions/TX-35-QUANTITATIVE-STRATEGIC-EVIDENCE.yaml | execution_transaction | controlled | bounded_execution_planner | contract_execution_transaction | pending |
+| ctrl_strategic_baseline_tx35_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-35-QUANTITATIVE-STRATEGIC-EVIDENCE-20260712T153133Z.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
+| ctrl_strategic_baseline_tx35_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX35-001.yaml | completion_receipt | controlled | verification_engineer | contract_completion_receipt_v1_0 | pending |
+| ctrl_strategic_baseline_tx35_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX35-001.yaml | handoff | controlled | verification_engineer | contract_handoff_v1_0 | pending |
+| ctrl_strategic_baseline_g11_quantitative_acceptance_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-013.yaml | director_decision | controlled | system_director | contract_director_decision | pending |
+| ctrl_strategic_baseline_tx36_execution_transaction | control_records/execution_transactions/TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE.yaml | execution_transaction | controlled | bounded_execution_planner | contract_execution_transaction | pending |
+| ctrl_strategic_baseline_tx36_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE-20260712T161021Z.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
+| ctrl_strategic_baseline_tx36_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX36-001.yaml | completion_receipt | controlled | verification_engineer | contract_completion_receipt_v1_0 | pending |
+| ctrl_strategic_baseline_tx36_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001.yaml | handoff | controlled | verification_engineer | contract_handoff_v1_0 | pending |
 
 ## Validation Contract Trace
 

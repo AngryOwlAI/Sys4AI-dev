@@ -47,6 +47,7 @@ from .prd_semantics import validate_prd_semantics
 from .python_package_surface import validate_python_package_surface
 from .safety_evaluation import validate_safety_evaluation
 from .strategic_intent import validate_strategic_intent
+from .strategic_metrics import validate_strategic_vision_measurement
 from .yaml_control_surface import validate_yaml_control_surface
 from .walking_skeleton import (
     validate_walking_skeleton_flow,
@@ -434,6 +435,19 @@ def build_parser() -> argparse.ArgumentParser:
         default="../.github/workflows/cross-version-python.yml",
     )
 
+    validate_strategic_metrics = sub.add_parser(
+        "validate-strategic-metrics",
+        help="Reproduce the bounded TX-35 quantitative strategic measurements",
+    )
+    validate_strategic_metrics.add_argument(
+        "--measurement",
+        default="assurance/strategic_vision_measurement_tx35.yaml",
+    )
+    validate_strategic_metrics.add_argument(
+        "--schema",
+        default="schemas/contracts/strategic_vision_measurement.schema.json",
+    )
+
     validate_yaml_control = sub.add_parser(
         "validate-yaml-control-surface",
         help="Verify the bounded YAML control/state and safe-parsing family",
@@ -781,6 +795,11 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "validate-cross-version-ci":
         return print_result(validate_cross_version_ci(args.workflow))
 
+    if args.command == "validate-strategic-metrics":
+        return print_result(
+            validate_strategic_vision_measurement(args.measurement, args.schema)
+        )
+
     if args.command == "validate-yaml-control-surface":
         return print_result(
             validate_yaml_control_surface(
@@ -929,6 +948,7 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_requirement_trace_migration(args.requirement_trace))
         result.extend(validate_python_package_surface())
         result.extend(validate_cross_version_ci())
+        result.extend(validate_strategic_vision_measurement())
         result.extend(validate_yaml_control_surface())
         result.extend(validate_format_governance_surface())
         result.extend(validate_prd_modules(args.prd_modules))

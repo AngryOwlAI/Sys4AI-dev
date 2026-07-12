@@ -174,6 +174,9 @@ class TraceSemanticTests(unittest.TestCase):
 
     def test_post_tx33_state_requires_controlled_external_evidence_route(self) -> None:
         def mutate_state(state):
+            state["current_phase"] = "strategic_baseline_migration_TX_33_generated_reader_verification_complete"
+            state["latest_closeout_evidence_id"] = "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX33-001"
+            state["latest_handoff_evidence_id"] = "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001"
             state["allowed_next_actions"].remove(
                 "select_dependency_ready_retained_external_evidence_transaction"
             )
@@ -184,6 +187,9 @@ class TraceSemanticTests(unittest.TestCase):
 
     def test_post_tx34_state_requires_remaining_external_evidence_boundary(self) -> None:
         def mutate_state(state):
+            state["current_phase"] = "strategic_baseline_migration_TX_34_cross_version_CI_complete"
+            state["latest_closeout_evidence_id"] = "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX34-001"
+            state["latest_handoff_evidence_id"] = "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX34-001"
             state["blocked_actions"].remove(
                 "claim_G_10_after_TX_34_without_remaining_retained_external_evidence_closure"
             )
@@ -191,6 +197,35 @@ class TraceSemanticTests(unittest.TestCase):
         result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
         self.assertFalse(result.ok)
         self.assertTrue(any("post-TX-34 state omits blocked action" in item for item in result.messages))
+
+    def test_post_tx35_state_requires_accountable_metric_acceptance(self) -> None:
+        def mutate_state(state):
+            state["current_phase"] = "strategic_baseline_migration_TX_35_quantitative_measurement_pending_human_acceptance"
+            state["latest_closeout_evidence_id"] = "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX35-001"
+            state["latest_handoff_evidence_id"] = "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX35-001"
+            state["allowed_next_actions"].extend(
+                [
+                    "review_TX_35_metric_definitions_thresholds_sources_intervals_results_and_limitations",
+                    "explicitly_accept_reject_or_revise_TX_35_metric_standard_and_results",
+                ]
+            )
+            state["blocked_actions"].remove(
+                "treat_TX_35_candidate_metrics_as_accepted_without_accountable_human_evidence"
+            )
+
+        result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
+        self.assertFalse(result.ok)
+        self.assertTrue(any("post-TX-35 state omits blocked action" in item for item in result.messages))
+
+    def test_post_tx36_state_requires_accepted_measurement_supersession_boundary(self) -> None:
+        def mutate_state(state):
+            state["blocked_actions"].remove(
+                "mutate_accepted_TX_35_measurement_without_accountable_supersession_and_remeasurement"
+            )
+
+        result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
+        self.assertFalse(result.ok)
+        self.assertTrue(any("post-TX-36 state omits blocked action" in item for item in result.messages))
 
     @staticmethod
     def _as_post_tx20(state):

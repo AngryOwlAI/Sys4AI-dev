@@ -1,0 +1,76 @@
+director_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-012
+schema_version: 0.1.0
+decision_status: completed
+created_at: '2026-07-12T15:31:33Z'
+completed_at: '2026-07-12T15:31:33Z'
+director_role: system_director
+human_authorization:
+  principal_name: Alex Omegapy
+  principal_role: repository_maintainer_and_product_owner
+  authority_basis: The accountable human directed selection of the quantitative strategic-evidence family after exact metric definitions data sources observation intervals and accountable acceptance were bound.
+  approval_evidence: Human-issued Codex task instruction dated 2026-07-12 selecting the quantitative strategic-evidence family while retaining all separately named gates.
+  model_self_approval: false
+decision_context:
+  trigger: accountable_quantitative_strategic_evidence_family_selection
+  transaction_id: TX-35-QUANTITATIVE-STRATEGIC-EVIDENCE
+  gate_id: G-11-EVIDENCE-SCOPE
+  latest_handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX34-001
+  governing_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+  prior_gate_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-011
+  reviewed_head_commit: a7628661b386c03c977182643aa101c2524f0dde
+  memory_preflight_receipt_id: MEMPREFLIGHT-TX-35-QUANTITATIVE-STRATEGIC-EVIDENCE-20260712T153133Z
+  observed_evidence:
+  - TX-34 closed cross-version Python CI and left quantitative strategic evidence as the first dependency-ready named family.
+  - The approved vision names repository-observable authority trace evidence execution fidelity testability reviewability and reversibility signals but explicitly defers quantitative thresholds.
+  - The runtime actor may propose and execute a reproducible measurement but may not approve its own evaluation standard or results.
+selected_route:
+  route_id: authorize_bounded_TX_35_quantitative_measurement_candidate
+  route_name: Define and reproduce four repository-observable strategic measures then stop for accountable human acceptance
+  rationale: This is the smallest evidence-producing packet that binds exact definitions populations sources intervals thresholds limitations and acceptance responsibility without inventing unavailable stakeholder or domain outcomes.
+  immediate_effect: TX-35 may add a controlled candidate measurement contract validator tests result report and human-gated closeout; the metric definitions thresholds and results remain unaccepted until a later explicit human disposition.
+rejected_routes:
+- route_id: infer_stakeholder_acceptance_from_repository_metrics
+  reason: Repository control adherence does not observe user benefit broad consensus affected-party outcomes or domain fitness.
+- route_id: let_the_runtime_approve_the_evaluation_standard
+  reason: SFA-CORE-VALUES-005 prohibits model self-approval of an evaluation standard or acceptance.
+- route_id: combine_independent_domain_operational_or_G10_evidence
+  reason: Those families require different principals environments methods and grants and remain separately gated.
+authority_boundary:
+  human_authority_recorded: true
+  accepts_gate_G_11_quantitative_family_route: true
+  authorizes_TX_35_measurement_candidate: true
+  authorizes_metric_definition_or_threshold_acceptance_now: false
+  authorizes_result_acceptance_now: false
+  closes_quantitative_external_dependency_now: false
+  authorizes_independent_or_rotated_evaluation_now: false
+  authorizes_stakeholder_or_domain_acceptance_now: false
+  accepts_gate_G_10_now: false
+  may_claim_production_readiness_now: false
+  may_grant_operational_authority_now: false
+  may_expand_permissions: false
+  may_rewrite_activated_control_history: false
+supersession:
+  supersedes_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-011
+  scope: Supersedes only the prohibition on beginning a later quantitative measurement packet without a new accountable scope decision.
+  preserves:
+  - completed TX-24 through TX-34 evidence
+  - frozen TX-23 ledger and TX-25 interpretation
+  - canonical PRDs trace states waivers and every independent stakeholder domain production operational permission and G-10 boundary
+rollback_and_review:
+  rollback_class: activating_bounded_measurement_candidate_scope_decision
+  rollback_scope: Before accountable acceptance the candidate files may be reverted; after acceptance preserve the exact measurement baseline and supersede it additively.
+  review_triggers:
+  - any metric definition population source interval threshold or result changes
+  - any result is presented as accepted without accountable human evidence
+  - repository metrics are used to claim stakeholder domain production operational permission or G-10 evidence
+  expiry: scope closes after the candidate measurement and human-gated handoff; it grants no continuing acceptance authority
+evidence_references:
+- PRDs/Sys4AI_phase-0_product_system_design_prd.md
+- Sys4AI/assurance/strategic_vision_measurement_tx35.yaml
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX34-001.yaml
+- Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-35-QUANTITATIVE-STRATEGIC-EVIDENCE-20260712T153133Z.yaml
+validators:
+- cd Sys4AI && make validate-strategic-metrics
+- cd Sys4AI && .venv/bin/python -m unittest tests.test_strategic_metrics
+- make validate
+- git diff --check

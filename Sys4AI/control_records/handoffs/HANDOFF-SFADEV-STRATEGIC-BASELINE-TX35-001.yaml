@@ -1,0 +1,47 @@
+handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX35-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+producing_execution_transaction_id: TX-35-QUANTITATIVE-STRATEGIC-EVIDENCE
+next_execution_transaction_id: null
+status: human_gated
+producing_role: verification_engineer
+recommended_next_role: system_director
+summary: TX-35 reproduced four repository-observable strategic measures and stops before accountable acceptance of their definitions thresholds results and limitations.
+source_ids:
+- SRC-DDR-STRATEGIC-BASELINE-G11-012
+- SRC-STRATEGIC-VISION-MEASUREMENT-TX35
+- SRC-CONTRACT-STRATEGIC-VISION-MEASUREMENT
+- SRC-VALIDATOR-STRATEGIC-METRICS
+- SRC-TEST-STRATEGIC-METRICS
+- SRC-QUANTITATIVE-STRATEGIC-EVIDENCE-REPORT-TX35
+- SRC-TX35-EXECUTION-TRANSACTION
+- SRC-COMPLETION-STRATEGIC-BASELINE-TX35
+- SRC-REG-REQ-TRACE
+- SRC-REG-EVIDENCE-CLOSURE-PLAN
+- SRC-REG-PLAN-SCOPE-INTERPRETATION
+closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX35-001
+current_state_evidence:
+- TX35-MEASUREMENT-REPRODUCED-4-OF-4
+- TX35-QSM-001-11-OF-11
+- TX35-QSM-002-25-OF-25
+- TX35-QSM-003-227-OF-227
+- TX35-QSM-004-5-OF-5
+- TX35-DEFINITIONS-THRESHOLDS-RESULTS-PENDING-HUMAN-ACCEPTANCE
+- TX35-TRACE-UNCHANGED-PASS-94-PLANNED-133
+- TX35-TX23-TX25-FROZEN
+validation_evidence:
+  baseline_commit: a7628661b386c03c977182643aa101c2524f0dde
+  metrics_reproduced: 4
+  metrics_failed_reproduction: 0
+  proposed_threshold: 1.0_each
+  definition_acceptance_status: pending_human_acceptance
+  result_acceptance_status: pending_human_acceptance
+  trace_rows: 227
+  trace_verification: PASS_94_PLANNED_133
+  g10_status: DEFERRED_NOT_ACCEPTED
+  next_authority_gate: EXPLICIT_ACCOUNTABLE_HUMAN_TX35_METRIC_STANDARD_AND_RESULT_DISPOSITION
+stop_conditions:
+- Do not label any TX-35 definition threshold or result accepted without explicit accountable human evidence.
+- Do not infer user benefit stakeholder consensus domain fitness production operational target-runtime permission independent-evaluation or G-10 evidence.
+- Do not modify frozen TX-23 TX-25 canonical PRDs trace state or activated TX-24 through TX-35 history without supersession.
+- Do not start another evidence family from this handoff without exact prerequisites transaction control and accountable scope.

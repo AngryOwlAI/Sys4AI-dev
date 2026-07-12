@@ -1,0 +1,223 @@
+execution_transaction_id: TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE
+contract_version: 1.0.0
+objective: Record the direct accountable human acceptance of the exact TX-35 quantitative measurement baseline while preserving every separately gated evidence and authority family.
+source_requirement_ids:
+- SFA-CORE-VISION-001
+- SFA-CORE-VISION-002
+- SFA-CORE-VISION-003
+- SFA-CORE-VALUES-005
+source_decision_ids:
+- DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-012
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-013
+subject_system:
+  system_id: sys4ai
+  system_name: Sys4AI
+subject_layer: framework_product
+runtime_actor:
+  actor_id: codex_meta_agent_runtime
+  actor_type: meta_agent_runtime
+  role_ids:
+  - system_director
+  - verification_engineer
+  - baseline_change_manager
+  - source_authority_auditor
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-12-TX35-MEASUREMENT-ACCEPTANCE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-013
+approval_principal:
+  principal_id: alex_omegapy
+  principal_type: accountable_human
+  approval_scope: Accept VISION-MEASURE-SFADEV-TX35-001 including QSM-001 through QSM-004 their 100 percent thresholds named sources observation intervals results and limitations and record only that accepted state.
+  authorization_evidence_ids:
+  - HUMAN-TASK-2026-07-12-TX35-MEASUREMENT-ACCEPTANCE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-013
+  model_self_approval: false
+execution_authorization:
+  status: authorized
+  authorized_at: '2026-07-12T16:10:21Z'
+  expires_at: '2026-07-13T04:10:21Z'
+  authority_evidence_ids:
+  - HUMAN-TASK-2026-07-12-TX35-MEASUREMENT-ACCEPTANCE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-013
+  self_authorized: false
+permission_envelope:
+  envelope_id: PERMISSION-ENVELOPE-TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE
+  status: current
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-12-TX35-MEASUREMENT-ACCEPTANCE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-013
+  data_classes:
+  - repository_controlled_artifacts
+  - accountable_human_acceptance_evidence
+  - public_repository_and_CI_measurement_evidence
+  resource_limits:
+  - One bounded TX-36 acceptance decision promotion validation closeout and handoff packet.
+  - Change only acceptance and authority metadata for VISION-MEASURE-SFADEV-TX35-001.
+  - Preserve all four definitions populations 100 percent values data sources observation intervals numerators denominators and limitations.
+  - Preserve TX-35 and all prior activated control history unchanged.
+  - Stop before selecting or executing another evidence family or reconsidering G-10.
+  valid_from: '2026-07-12T16:10:21Z'
+  expires_at: '2026-07-13T04:10:21Z'
+  sensitive_data_allowed: false
+  secrets_allowed: false
+  data_egress_allowed: false
+  external_side_effects_allowed: false
+  delegation_allowed: false
+  delegation_expires_at: not_applicable
+  permission_expansion_allowed: false
+allowed_reads:
+- PRDs/Sys4AI_phase-0_product_system_design_prd.md
+- Sys4AI/assurance/strategic_vision_measurement_tx35.yaml
+- Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-012.yaml
+- Sys4AI/control_records/execution_transactions/TX-35-QUANTITATIVE-STRATEGIC-EVIDENCE.yaml
+- Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX35-001.yaml
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX35-001.yaml
+- Sys4AI/registries/**
+- implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-QUANTITATIVE-STRATEGIC-EVIDENCE-SFADEV-TX35.md
+allowed_writes:
+- Sys4AI/assurance/strategic_vision_measurement_tx35.yaml
+- Sys4AI/schemas/contracts/strategic_vision_measurement.schema.json
+- Sys4AI/sys_for_ai/strategic_metrics.py
+- Sys4AI/sys_for_ai/prd_semantics.py
+- Sys4AI/sys_for_ai/trace_validation.py
+- Sys4AI/tests/test_strategic_metrics.py
+- Sys4AI/tests/test_trace_semantics.py
+- Sys4AI/tests/test_self_hosting_acceptance.py
+- Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-013.yaml
+- Sys4AI/control_records/execution_transactions/TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE.yaml
+- Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE-20260712T161021Z.yaml
+- Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX36-001.yaml
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001.yaml
+- Sys4AI/control_records/program_state.yaml
+- Sys4AI/registries/*.csv
+- Sys4AI/docs/generated/**
+- implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-QUANTITATIVE-STRATEGIC-EVIDENCE-SFADEV-TX35.md
+- implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX36-001.md
+allowed_tools:
+- repository filesystem reads and bounded apply_patch writes
+- repository-native Python Make and Git validation
+- deterministic generated-document writers
+allowed_external_actions: []
+forbidden_actions:
+- Change any accepted metric definition population source interval numeric threshold result numerator denominator or limitation.
+- Modify TX-35 or earlier activated Director Decisions execution transactions receipts handoffs memory preflights or frozen TX-23 and TX-25 evidence.
+- Modify canonical PRDs requirement trace states or waivers.
+- Treat accepted repository-control measures as stakeholder domain production operational target-runtime permission independent-evaluation or G-10 evidence.
+- Begin another evidence family or G-10 reconsideration.
+- Commit push deploy publish or modify external systems without separate explicit authorization.
+inputs:
+- Human task instruction dated 2026-07-12 accepting VISION-MEASURE-SFADEV-TX35-001.
+- Sys4AI/assurance/strategic_vision_measurement_tx35.yaml
+- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX35-001
+- RECEIPT-SFADEV-STRATEGIC-BASELINE-TX35-001
+- MEMPREFLIGHT-TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE-20260712T161021Z
+expected_outputs:
+- An additive accountable G-11-013 acceptance decision.
+- The exact TX-35 measurement promoted from controlled candidate to controlled accepted evidence.
+- Fail-closed schema validator and negative tests requiring the exact accountable acceptance evidence.
+- Registered TX-36 completion and a human-gated handoff for separately controlled later work.
+validators:
+- validator_id: accepted_strategic_measurement_contract
+  command_or_method: cd Sys4AI && make validate-strategic-metrics
+  blocking: true
+  expected_evidence: All four results reproduce and exact accountable acceptance evidence validates.
+- validator_id: focused_acceptance_semantics
+  command_or_method: cd Sys4AI && .venv/bin/python -m unittest tests.test_strategic_metrics tests.test_trace_semantics tests.test_self_hosting_acceptance
+  blocking: true
+  expected_evidence: Positive acceptance and negative counterfeit pending self-approval inflated and relaxed-threshold probes pass.
+- validator_id: aggregate_validation
+  command_or_method: make validate at product and repository roots
+  blocking: true
+  expected_evidence: Product and development-system validation pass with generated readers current.
+- validator_id: frozen_boundaries
+  command_or_method: verify TX-23 TX-25 canonical PRDs and requirement trace are unchanged
+  blocking: true
+  expected_evidence: Frozen hashes and trace pass-planned counts remain unchanged.
+- validator_id: diff_integrity
+  command_or_method: git diff --check
+  blocking: true
+  expected_evidence: No whitespace or patch-integrity errors.
+stop_conditions:
+- The direct human acceptance is absent ambiguous contradicted or does not match the exact artifact.
+- Any metric content or limitation changes beyond acceptance metadata.
+- Any prior activated control record frozen baseline canonical PRD trace state waiver or adjacent authority changes.
+- A blocking validator fails after bounded repair.
+host_capability_requirements:
+  execution_profile_id: codex_app_reference
+  overall_status: verified_available
+  required_capability_ids:
+  - workspace_filesystem
+  - terminal_and_tests
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G07-001
+  - MEMPREFLIGHT-TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE-20260712T161021Z
+  checked_at: '2026-07-12T16:10:21Z'
+  values_or_goals_may_override: false
+state:
+  status: completed
+  current_state_evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-013
+  - TX36-TX35-MEASUREMENT-ACCEPTED-4-OF-4
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX36-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001
+  continuation_state: not_applicable
+  continuation_evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001
+  state_transition_evidence_ids:
+  - HUMAN-TASK-2026-07-12-TX35-MEASUREMENT-ACCEPTANCE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-013
+cancellation:
+  state: not_requested
+  requested_by: not_applicable
+  behavior: Stop before publication or later evidence work while preserving the exact accepted measurement and direct acceptance evidence.
+  evidence_ids: []
+  uncertain_operations: []
+escalation:
+  state: not_required
+  conditions:
+  - The exact measurement standard and results are accepted; later evidence and G-10 remain separately gated.
+  responsible_principal_id: alex_omegapy
+  required_decision: Select any later evidence family through separate prerequisites transaction control and accountable scope.
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-013
+resume_evidence:
+  required: true
+  status: consumed
+  last_known_state: TX-35 completed reproducible measurement and stopped at explicit accountable acceptance.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX35-001
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX35-001
+  - MEMPREFLIGHT-TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE-20260712T161021Z
+closeout_evidence:
+  status: complete
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-013
+  - TX36-TX35-MEASUREMENT-ACCEPTED-4-OF-4
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX36-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001
+  changed_artifacts:
+  - TX-36 acceptance decision promoted measurement metadata schema validator tests state registries generated readers receipt and handoff.
+  validation_evidence_ids:
+  - TX36-FOCUSED-ACCEPTANCE-TESTS-PASS
+  - TX36-PRODUCT-AND-ROOT-VALIDATE-PASS
+  acceptance_evidence_ids:
+  - HUMAN-TASK-2026-07-12-TX35-MEASUREMENT-ACCEPTANCE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-013
+rollback:
+  status: available
+  strategy: Before publication revert the complete TX-36 packet to the validated TX-35 pending state; after publication preserve acceptance history and supersede it additively.
+  triggers:
+  - A blocking validator or exact-acceptance check fails.
+  - The accepted artifact differs materially from the reviewed TX-35 candidate.
+  actions:
+  - Stop later work and preserve diagnostics.
+  - Revert only the unshared TX-36 packet or create an accountable supersession after sharing.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX35-001
+supersession:
+  status: current
+  supersedes_transaction_ids: []
+  superseded_by: not_applicable
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-013
