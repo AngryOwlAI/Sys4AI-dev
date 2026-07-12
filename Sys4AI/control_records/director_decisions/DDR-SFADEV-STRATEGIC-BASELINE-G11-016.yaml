@@ -1,0 +1,115 @@
+director_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-016
+schema_version: 0.1.0
+decision_status: completed
+created_at: '2026-07-12T20:02:20Z'
+completed_at: '2026-07-12T20:02:20Z'
+director_role: system_director
+human_authorization:
+  principal_name: Alex Omegapy
+  principal_role: repository_maintainer_and_product_owner
+  authority_basis: The accountable human explicitly authorized the bounded post-TX-38 G-11 evidence-scope decision for the three named remaining evidence families and prohibited execution or G-10 reconsideration in the packet.
+  approval_evidence: 'Human-issued Codex task instruction dated 2026-07-12: After the TX-38 push, execute a bounded G-11-EVIDENCE-SCOPE decision covering exactly broad stakeholder and affected-party review, target-domain acceptance, and production and operational evidence; classify each as required for the non-production migration baseline or retained future work; do not execute any family or reconsider G-10.'
+  approval_scope:
+  - disposition exactly the three remaining evidence families named by the TX-38 handoff
+  - retain each family as active future work outside the bounded non-production migration-completion requirement set
+  - preserve TX-38 and all earlier activated evidence while keeping G-10 deferred
+  model_self_approval: false
+decision_context:
+  trigger: accountable_remaining_evidence_family_scope_disposition
+  transaction_id: TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION
+  gate_id: G-11-EVIDENCE-SCOPE
+  program_state_id: SYS4AI-PROGRAM-STATE-001
+  latest_handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX38-001
+  plan_source_id: SRC-STRATEGIC-BASELINE-MIGRATION-PLAN
+  closure_plan_source_id: SRC-EVIDENCE-CLOSURE-PLAN-TX23
+  governing_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+  prior_gate_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-015
+  reviewed_head_commit: f0ca2d7bb49864b8200bc95331940f94a333a210
+  memory_preflight_receipt_id: MEMPREFLIGHT-TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION-20260712T200220Z
+  observed_evidence:
+  - HEAD and origin/main both resolve to f0ca2d7 so TX-38 is a shared baseline.
+  - The TX-23 closure plan classifies broad stakeholder and affected-party review and target-domain acceptance as external dependencies and leaves both open and unclaimed.
+  - The TX-23 closure plan classifies production runtime monitoring incident maintenance and operational authorization evidence as a blocked gap because no target runtime operator environment or authority is available.
+  - The TX-38 handoff requires an accountable required-versus-future-work disposition for exactly these three families before any G-10 reconsideration.
+selected_route:
+  route_id: retain_all_three_remaining_evidence_families_as_active_future_work
+  route_name: Retain stakeholder affected-party domain production and operational evidence outside the bounded non-production migration-completion requirement set
+  rationale: The bounded baseline is explicitly non-production and framework-level. Broad stakeholder review and named target-domain acceptance require external principals and contexts not supplied to this migration; production and operational evidence additionally requires a target runtime operator environment and operational authority that do not exist in scope. Retaining all three families preserves the obligations without inventing evidence or expanding this packet into external target or production execution.
+  immediate_effect: Broad stakeholder and affected-party review target-domain acceptance and production and operational evidence remain active future work and are not required to complete this bounded non-production migration baseline. TX-39 records no evidence result waiver deletion production claim operational grant stakeholder acceptance domain acceptance or G-10 acceptance.
+family_dispositions:
+- family_id: broad_stakeholder_and_affected_party_review
+  classification: retained_active_future_work
+  current_migration_requirement: false
+  rationale: Representative selection participation concerns dissent conditions and accountable disposition require external affected parties and cannot be inferred from repository evidence.
+  reactivation_trigger: A future target baseline consequential deployment or scope expansion requires broad stakeholder or affected-party legitimacy evidence.
+- family_id: target_domain_acceptance
+  classification: retained_active_future_work
+  current_migration_requirement: false
+  rationale: Domain-neutral framework validation cannot establish domain truth or fit for a named target context and no target domain specialist or acceptance context is in scope.
+  reactivation_trigger: A named target-system context seeks domain adequacy acceptance deployment or domain-specific authority.
+- family_id: production_and_operational_evidence
+  classification: retained_active_future_work
+  current_migration_requirement: false
+  rationale: A non-production framework migration cannot produce runtime monitoring incident recovery maintenance ownership production approval or operational authorization evidence without a supplied target runtime environment operator and authority.
+  reactivation_trigger: Production promotion operational use or a target runtime is proposed and the required owners environments permissions controls and evidence are available.
+rejected_routes:
+- route_id: require_broad_stakeholder_and_affected_party_review_for_current_baseline
+  reason: This would add external representative engagement to a bounded non-production framework migration without named parties process authority or executed evidence.
+- route_id: require_target_domain_acceptance_for_current_baseline
+  reason: No named target context domain specialist or domain-specific evaluation exists and framework evidence cannot establish domain truth.
+- route_id: require_production_and_operational_evidence_for_current_baseline
+  reason: The current baseline is non-production and no target runtime operator environment monitoring incident exercise maintenance owner production approval or operational grant is supplied.
+- route_id: treat_disposition_as_waiver_deletion_or_completed_evidence
+  reason: Each obligation remains active future work with explicit reactivation triggers; classification supplies no evidence result and waives nothing.
+- route_id: reconsider_or_accept_G10_inside_TX39
+  reason: The user explicitly prohibited G-10 reconsideration in this packet and G-10 remains a separate accountable gate.
+authority_boundary:
+  human_authority_recorded: true
+  accepts_G_11_remaining_family_disposition: true
+  retains_broad_stakeholder_and_affected_party_review_as_active_future_work: true
+  retains_target_domain_acceptance_as_active_future_work: true
+  retains_production_and_operational_evidence_as_active_future_work: true
+  removes_three_families_from_current_bounded_nonproduction_migration_completion_requirements: true
+  executes_any_evidence_family_now: false
+  waives_or_deletes_any_evidence_obligation: false
+  accepts_gate_G_10_now: false
+  may_claim_production_readiness: false
+  may_grant_operational_authority: false
+  may_claim_broad_stakeholder_or_affected_party_acceptance: false
+  may_claim_domain_truth_or_domain_acceptance: false
+  may_expand_permissions: false
+  may_rewrite_activated_control_history: false
+supersession:
+  supersedes_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-015
+  scope: Supersedes only G11-015's unresolved post-TX-38 route for the three remaining evidence-family scope dispositions; it does not supersede the independent-evaluation disposition or any completed TX-38 or TX-37 evidence.
+  preserves:
+  - completed TX-38 decision transaction receipt handoff report validation and shared-baseline evidence
+  - independent external evaluation as active future work outside the current bounded non-production migration completion requirements
+  - completed TX-37 protocol readiness and the factual finding that independent evaluation was not executed
+  - frozen TX-23 ledger TX-25 interpretation accepted TX-35 measurement canonical PRDs trace states waivers and prior activated history
+  - all production operational stakeholder affected-party domain permission and G-10 claim boundaries
+rollback_and_review:
+  rollback_class: additive_future_work_disposition
+  rollback_scope: Before publication revert the atomic TX-39 disposition packet; after publication preserve this decision and supersede it only through a new accountable decision.
+  supersession_rule: Any family may resume only through a new accountable scope decision for a named context with its required principals permissions evidence contract and bounded execution transaction.
+  review_triggers:
+  - a named target system seeks deployment domain acceptance production promotion or operational authority
+  - a consequential framework or target change requires broader stakeholder or affected-party legitimacy evidence
+  - the bounded non-production migration scope is expanded or reconsidered
+  - G-10 reacceptance is separately proposed
+  expiry: remains current until an accountable successor reactivates a named family or changes the bounded baseline scope; it grants no execution authority
+evidence_references:
+- implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+- implementation_plans/STRATEGIC-BASELINE-MIGRATION-EVIDENCE-CLOSURE-PLAN-SFADEV-TX23.md
+- Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-015.yaml
+- Sys4AI/control_records/execution_transactions/TX-38-INDEPENDENT-EVALUATION-FUTURE-WORK-DISPOSITION.yaml
+- Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX38-001.yaml
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX38-001.yaml
+- Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION-20260712T200220Z.yaml
+validators:
+- cd Sys4AI && make validate-director-decisions validate-director-decision-registry validate-program-state validate-handoffs validate-handoff-registry
+- cd Sys4AI && make validate-prd-semantics validate-independent-evaluation
+- cd Sys4AI && .venv/bin/python -m unittest tests.test_trace_semantics tests.test_self_hosting_acceptance tests.test_independent_evaluation
+- cd Sys4AI && make validate
+- make validate
+- git diff --check

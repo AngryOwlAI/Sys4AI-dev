@@ -182,6 +182,7 @@ def _validate_strategic_approval_state(
         "strategic_baseline_migration_TX_36_quantitative_measurement_accepted",
         "strategic_baseline_migration_TX_37_independent_evaluation_protocol_ready",
         "strategic_baseline_migration_TX_38_independent_evaluation_retained_future_work",
+        "strategic_baseline_migration_TX_39_remaining_evidence_families_retained_future_work",
     }:
         return []
 

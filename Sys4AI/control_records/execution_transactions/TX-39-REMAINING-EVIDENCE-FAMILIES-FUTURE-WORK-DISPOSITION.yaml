@@ -1,0 +1,226 @@
+execution_transaction_id: TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION
+contract_version: 1.0.0
+objective: Record accountable future-work dispositions for exactly the three remaining evidence families while preserving TX-38 and stopping before separate G-10 reconsideration.
+source_requirement_ids:
+- SFA-CORE-VISION-001
+- SFA-P0-FR-004
+- SFA-P0-NFR-002
+source_decision_ids:
+- DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-015
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-016
+subject_system:
+  system_id: sys4ai
+  system_name: Sys4AI
+subject_layer: framework_product
+runtime_actor:
+  actor_id: codex_meta_agent_runtime
+  actor_type: meta_agent_runtime
+  role_ids:
+  - system_director
+  - baseline_change_manager
+  - source_authority_auditor
+  - trace_owner
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-12-REMAINING-EVIDENCE-FAMILIES-DISPOSITION
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-016
+approval_principal:
+  principal_id: alex_omegapy
+  principal_type: accountable_human
+  approval_scope: Disposition exactly broad stakeholder and affected-party review target-domain acceptance and production and operational evidence for the bounded non-production migration baseline without executing any family or reconsidering G-10.
+  authorization_evidence_ids:
+  - HUMAN-TASK-2026-07-12-REMAINING-EVIDENCE-FAMILIES-DISPOSITION
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-016
+  model_self_approval: false
+execution_authorization:
+  status: authorized
+  authorized_at: '2026-07-12T20:02:20Z'
+  expires_at: '2026-07-13T08:02:20Z'
+  authority_evidence_ids:
+  - HUMAN-TASK-2026-07-12-REMAINING-EVIDENCE-FAMILIES-DISPOSITION
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-016
+  self_authorized: false
+permission_envelope:
+  envelope_id: PERMISSION-ENVELOPE-TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION
+  status: current
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-12-REMAINING-EVIDENCE-FAMILIES-DISPOSITION
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-016
+  data_classes:
+  - repository_controlled_artifacts
+  - accountable_human_disposition_evidence
+  resource_limits:
+  - One bounded decision transaction preflight receipt handoff registry derivative and validation packet.
+  - Preserve TX-38 and all activated history byte-for-byte.
+  - Classify exactly the three named remaining evidence families as retained active future work for the bounded non-production migration baseline.
+  - Do not execute stakeholder affected-party domain production or operational evidence.
+  - Stop before separate G-10 reconsideration.
+  valid_from: '2026-07-12T20:02:20Z'
+  expires_at: '2026-07-13T08:02:20Z'
+  sensitive_data_allowed: false
+  secrets_allowed: false
+  data_egress_allowed: false
+  external_side_effects_allowed: false
+  delegation_allowed: false
+  delegation_expires_at: not_applicable
+  permission_expansion_allowed: false
+allowed_reads:
+- implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+- implementation_plans/STRATEGIC-BASELINE-MIGRATION-EVIDENCE-CLOSURE-PLAN-SFADEV-TX23.md
+- Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-015.yaml
+- Sys4AI/control_records/execution_transactions/TX-38-INDEPENDENT-EVALUATION-FUTURE-WORK-DISPOSITION.yaml
+- Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX38-001.yaml
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX38-001.yaml
+- Sys4AI/registries/**
+allowed_writes:
+- Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-016.yaml
+- Sys4AI/control_records/execution_transactions/TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION.yaml
+- Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION-20260712T200220Z.yaml
+- Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX39-001.yaml
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001.yaml
+- Sys4AI/control_records/program_state.yaml
+- Sys4AI/schemas/contracts/program_state.schema.json
+- Sys4AI/sys_for_ai/trace_validation.py
+- Sys4AI/sys_for_ai/prd_semantics.py
+- Sys4AI/tests/test_trace_semantics.py
+- Sys4AI/tests/test_self_hosting_acceptance.py
+- Sys4AI/registries/*.csv
+- Sys4AI/docs/generated/**
+- implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION-SFADEV-TX39.md
+- implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX39-001.md
+allowed_tools:
+- repository filesystem reads and bounded apply_patch writes
+- repository-native Python Make and Git validation
+- deterministic generated-document writers
+allowed_external_actions: []
+forbidden_actions:
+- Execute broad stakeholder or affected-party review identify or contact representatives or claim their acceptance.
+- Execute target-domain evaluation select a domain specialist or claim domain truth or acceptance.
+- Execute production runtime monitoring incident recovery maintenance or operational authorization work.
+- Modify G11-015 TX-38 G11-014 TX-37 or any earlier activated control history.
+- Modify canonical PRDs requirement trace states waivers frozen TX-23 or TX-25 evidence or accepted TX-35 measurement.
+- Delete waive or represent any retained evidence family as completed.
+- Reconsider accept or supersede G-10 or claim production readiness operational authority stakeholder consensus domain acceptance or permission expansion.
+- Commit push deploy publish or modify external systems without separate explicit authorization.
+inputs:
+- Human task instruction dated 2026-07-12 authorizing the exact three-family disposition gate and prohibiting execution and G-10 reconsideration.
+- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX38-001
+- RECEIPT-SFADEV-STRATEGIC-BASELINE-TX38-001
+- MEMPREFLIGHT-TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION-20260712T200220Z
+expected_outputs:
+- An additive G11-016 Director Decision narrowly superseding only G11-015's unresolved next-route scope.
+- A controlled TX-39 disposition retaining all three named families as active future work.
+- Program state and handoff stopped at a separate G-10 reconsideration gate.
+- Registered and regenerated noncanonical derivative surfaces with focused and aggregate validation evidence.
+validators:
+- validator_id: focused_disposition_control
+  command_or_method: cd Sys4AI && make validate-director-decisions validate-director-decision-registry validate-program-state validate-handoffs validate-handoff-registry
+  blocking: true
+  expected_evidence: G11-016 TX-39 state and handoff validate while TX-38 remains preserved.
+- validator_id: semantic_boundary
+  command_or_method: cd Sys4AI && make validate-prd-semantics validate-independent-evaluation
+  blocking: true
+  expected_evidence: All three dispositions remain future-work classifications and no external production operational stakeholder domain or G-10 claim is introduced.
+- validator_id: focused_semantic_tests
+  command_or_method: cd Sys4AI && .venv/bin/python -m unittest tests.test_trace_semantics tests.test_self_hosting_acceptance tests.test_independent_evaluation
+  blocking: true
+  expected_evidence: Future-work-not-waiver and separate G-10 boundaries fail closed.
+- validator_id: aggregate_validation
+  command_or_method: make validate at product and repository roots
+  blocking: true
+  expected_evidence: Product and development-system validation pass with generated readers current.
+- validator_id: frozen_boundaries
+  command_or_method: verify G11-015 TX-38 G11-014 TX-37 protocol TX-23 TX-25 TX-35 and requirement trace hashes are unchanged
+  blocking: true
+  expected_evidence: Activated evidence and trace state remain byte-identical.
+- validator_id: diff_integrity
+  command_or_method: git diff --check
+  blocking: true
+  expected_evidence: No whitespace or patch-integrity errors.
+stop_conditions:
+- The exact three-family disposition authority is absent ambiguous or contradicted.
+- Any evidence execution production operational stakeholder domain permission or G-10 claim appears.
+- Any prior activated record frozen baseline canonical PRD trace state or waiver changes.
+- A blocking validator fails after bounded repair.
+host_capability_requirements:
+  execution_profile_id: codex_app_reference
+  overall_status: verified_available
+  required_capability_ids:
+  - workspace_filesystem
+  - terminal_and_tests
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G07-001
+  - MEMPREFLIGHT-TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION-20260712T200220Z
+  checked_at: '2026-07-12T20:02:20Z'
+  values_or_goals_may_override: false
+state:
+  status: completed
+  current_state_evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-016
+  - TX39-STAKEHOLDER-AFFECTED-PARTY-REVIEW-RETAINED-ACTIVE-FUTURE-WORK
+  - TX39-TARGET-DOMAIN-ACCEPTANCE-RETAINED-ACTIVE-FUTURE-WORK
+  - TX39-PRODUCTION-OPERATIONAL-EVIDENCE-RETAINED-ACTIVE-FUTURE-WORK
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX39-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001
+  continuation_state: not_applicable
+  continuation_evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001
+  state_transition_evidence_ids:
+  - HUMAN-TASK-2026-07-12-REMAINING-EVIDENCE-FAMILIES-DISPOSITION
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-016
+cancellation:
+  state: not_requested
+  requested_by: not_applicable
+  behavior: Stop before publication or G-10 reconsideration while preserving TX-38 and all three active future-work obligations.
+  evidence_ids: []
+  uncertain_operations: []
+escalation:
+  state: pending
+  conditions:
+  - G-10 remains deferred and may be reconsidered only through a separate accountable decision after this packet is a shared baseline.
+  responsible_principal_id: alex_omegapy
+  required_decision: Separately determine whether to reconsider G-10 using the bounded non-production migration scope and completed accountable dispositions.
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-016
+resume_evidence:
+  required: true
+  status: consumed
+  last_known_state: TX-38 retained independent evaluation as active future work and stopped before the three remaining evidence-family dispositions.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX38-001
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX38-001
+  - MEMPREFLIGHT-TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION-20260712T200220Z
+closeout_evidence:
+  status: complete
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-016
+  - TX39-ALL-THREE-REMAINING-EVIDENCE-FAMILIES-RETAINED-ACTIVE-FUTURE-WORK
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX39-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001
+  changed_artifacts:
+  - TX-39 adds only disposition state controls registries generated readers receipt report and handoff.
+  validation_evidence_ids:
+  - TX39-FOCUSED-CONTROL-VALIDATION-PASS
+  - TX39-FOCUSED-SEMANTIC-TESTS-PASS
+  - TX39-FULL-PRODUCT-TESTS-PASS
+  - TX39-PRODUCT-AND-ROOT-VALIDATION-PASS
+  acceptance_evidence_ids:
+  - HUMAN-TASK-2026-07-12-REMAINING-EVIDENCE-FAMILIES-DISPOSITION
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-016
+rollback:
+  status: available
+  strategy: Before publication revert the complete TX-39 packet to the validated shared TX-38 state; after publication preserve the disposition and supersede it additively.
+  triggers:
+  - A blocking validator or frozen-boundary check fails.
+  - Any disposition is represented as a waiver deletion executed result production claim or G-10 acceptance.
+  actions:
+  - Stop later work and preserve diagnostics.
+  - Revert only the unshared TX-39 packet or create an accountable supersession after sharing.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX38-001
+supersession:
+  status: current
+  supersedes_transaction_ids: []
+  superseded_by: not_applicable
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-016

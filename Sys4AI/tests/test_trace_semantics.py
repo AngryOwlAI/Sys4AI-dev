@@ -223,6 +223,7 @@ class TraceSemanticTests(unittest.TestCase):
 
     def test_post_tx38_state_preserves_protocol_not_executed_boundary(self) -> None:
         def mutate_state(state):
+            self._as_post_tx38(state)
             state["blocked_actions"].remove(
                 "treat_TX_37_protocol_as_executed_independent_evidence"
             )
@@ -233,6 +234,7 @@ class TraceSemanticTests(unittest.TestCase):
 
     def test_post_tx38_state_requires_future_work_not_waiver_boundary(self) -> None:
         def mutate_state(state):
+            self._as_post_tx38(state)
             state["blocked_actions"].remove(
                 "treat_TX_38_future_work_disposition_as_independent_evaluation_evidence_waiver_or_deletion"
             )
@@ -240,6 +242,24 @@ class TraceSemanticTests(unittest.TestCase):
         result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
         self.assertFalse(result.ok)
         self.assertTrue(any("post-TX-38 state omits blocked action" in item for item in result.messages))
+
+    def test_post_tx39_state_requires_future_work_not_waiver_boundary(self) -> None:
+        def mutate_state(state):
+            state["blocked_actions"].remove(
+                "treat_TX_39_future_work_dispositions_as_stakeholder_domain_production_operational_evidence_waivers_or_deletions"
+            )
+
+        result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
+        self.assertFalse(result.ok)
+        self.assertTrue(any("post-TX-39 state omits blocked action" in item for item in result.messages))
+
+    def test_post_tx39_state_requires_separate_g10_gate(self) -> None:
+        def mutate_state(state):
+            state["blocked_actions"].remove("reconsider_accept_or_supersede_G_10_inside_TX_39")
+
+        result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
+        self.assertFalse(result.ok)
+        self.assertTrue(any("post-TX-39 state omits blocked action" in item for item in result.messages))
 
     @staticmethod
     def _as_post_tx20(state):
@@ -273,6 +293,12 @@ class TraceSemanticTests(unittest.TestCase):
         state["latest_handoff_evidence_id"] = "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX23-001"
         if "seek_accountable_G_11_EVIDENCE_SCOPE_decision" not in state["allowed_next_actions"]:
             state["allowed_next_actions"].append("seek_accountable_G_11_EVIDENCE_SCOPE_decision")
+
+    @staticmethod
+    def _as_post_tx38(state):
+        state["current_phase"] = "strategic_baseline_migration_TX_38_independent_evaluation_retained_future_work"
+        state["latest_closeout_evidence_id"] = "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX38-001"
+        state["latest_handoff_evidence_id"] = "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX38-001"
 
     def test_derivative_requirement_source_fails(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

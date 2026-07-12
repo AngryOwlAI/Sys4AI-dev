@@ -1077,6 +1077,65 @@ def _validate_program_state_alignment(path: Path, state: dict[str, Any]) -> list
             messages.append(f"{path}: post-TX-38 state must stop at the remaining evidence-family disposition gate")
         if state.get("state_status") != "human_gated" or state.get("human_gate_required") is not True:
             messages.append(f"{path}: post-TX-38 state must remain human gated")
+    elif phase == "strategic_baseline_migration_TX_39_remaining_evidence_families_retained_future_work":
+        required_summary = {
+            "strategic_approval": "accepted_G_08",
+            "derivative_regeneration": "complete_G_09",
+            "host_verification": "accepted_G_07_mixed_profile",
+            "semantic_review_evidence": "accepted_TX_24_7_of_7",
+            "plan_scope_interpretation": "accepted_TX_25_410_future_work",
+            "python_package_verification": "accepted_TX_26_4_of_4",
+            "yaml_control_verification": "accepted_TX_27_11_of_11",
+            "format_governance_verification": "accepted_TX_28_10_of_10",
+            "csv_registry_verification": "accepted_TX_29_5_of_5",
+            "markdown_source_verification": "accepted_TX_30_4_of_4",
+            "toml_config_verification": "accepted_TX_31_9_of_9",
+            "jsonschema_contract_verification": "accepted_TX_32_10_of_10",
+            "independent_evaluation_protocol": "ready_TX_37_external_execution_not_run",
+            "independent_evaluation_disposition": "retained_active_future_work_G_11_015",
+            "stakeholder_affected_party_review_disposition": "retained_active_future_work_G_11_016",
+            "target_domain_acceptance_disposition": "retained_active_future_work_G_11_016",
+            "production_operational_evidence_disposition": "retained_active_future_work_G_11_016",
+        }
+        for field, expected in required_summary.items():
+            if summary.get(field) != expected:
+                messages.append(f"{path}: post-TX-39 {field} must be {expected}")
+        for required_route in (
+            "review_TX_39_remaining_evidence_families_future_work_disposition",
+            "seek_separate_accountable_G_10_reconsideration_for_bounded_nonproduction_migration_only_after_TX_39_shared_baseline",
+        ):
+            if required_route not in allowed:
+                messages.append(f"{path}: post-TX-39 state omits controlled next route {required_route}")
+        for required_block in (
+            "treat_TX_37_protocol_as_executed_independent_evidence",
+            "treat_TX_38_future_work_disposition_as_independent_evaluation_evidence_waiver_or_deletion",
+            "treat_TX_39_future_work_dispositions_as_stakeholder_domain_production_operational_evidence_waivers_or_deletions",
+            "reactivate_any_TX_39_retained_family_without_accountable_context_specific_supersession",
+            "execute_stakeholder_affected_party_domain_production_or_operational_work_from_TX_39",
+            "reconsider_accept_or_supersede_G_10_inside_TX_39",
+            "claim_G_10_from_TX_39_dispositions_without_separate_accountable_reconsideration",
+            "claim_production_readiness_or_operational_authority_without_executed_evidence",
+        ):
+            if required_block not in blocked:
+                messages.append(f"{path}: post-TX-39 state omits blocked action {required_block}")
+        if state.get("latest_closeout_evidence_id") != "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX39-001":
+            messages.append(f"{path}: post-TX-39 state is not aligned to the TX-39 completion")
+        if state.get("latest_handoff_evidence_id") != "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001":
+            messages.append(f"{path}: post-TX-39 state is not aligned to the TX-39 handoff")
+        for evidence_id in (
+            "DDR-SFADEV-STRATEGIC-BASELINE-G11-016",
+            "TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION",
+            "TX39-STAKEHOLDER-AFFECTED-PARTY-REVIEW-RETAINED-ACTIVE-FUTURE-WORK",
+            "TX39-TARGET-DOMAIN-ACCEPTANCE-RETAINED-ACTIVE-FUTURE-WORK",
+            "TX39-PRODUCTION-OPERATIONAL-EVIDENCE-RETAINED-ACTIVE-FUTURE-WORK",
+            "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX39-001",
+        ):
+            if evidence_id not in set(state.get("current_state_evidence", [])):
+                messages.append(f"{path}: post-TX-39 state omits {evidence_id}")
+        if state.get("continuation_state") != "blocked" or state.get("escalation_state") != "pending":
+            messages.append(f"{path}: post-TX-39 state must stop at the separate G-10 reconsideration gate")
+        if state.get("state_status") != "human_gated" or state.get("human_gate_required") is not True:
+            messages.append(f"{path}: post-TX-39 state must remain human gated")
     else:
         messages.append(f"{path}: unsupported strategic-baseline program phase {phase!r}")
     return messages

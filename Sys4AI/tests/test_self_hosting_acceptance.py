@@ -21,11 +21,11 @@ class SelfHostingAcceptanceTests(unittest.TestCase):
         self.assertIsNone(state["active_execution_transaction_id"])
         self.assertIsNone(state["active_director_decision_id"])
         self.assertEqual(
-            "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX38-001",
+            "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX39-001",
             state["latest_closeout_evidence_id"],
         )
         self.assertEqual(
-            "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX38-001",
+            "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001",
             state["latest_handoff_evidence_id"],
         )
         self.assertEqual("blocked", state["continuation_state"])
@@ -41,6 +41,18 @@ class SelfHostingAcceptanceTests(unittest.TestCase):
         self.assertEqual(
             "retained_active_future_work_G_11_015",
             state["capability_status_summary"]["independent_evaluation_disposition"],
+        )
+        self.assertEqual(
+            "retained_active_future_work_G_11_016",
+            state["capability_status_summary"]["stakeholder_affected_party_review_disposition"],
+        )
+        self.assertEqual(
+            "retained_active_future_work_G_11_016",
+            state["capability_status_summary"]["target_domain_acceptance_disposition"],
+        )
+        self.assertEqual(
+            "retained_active_future_work_G_11_016",
+            state["capability_status_summary"]["production_operational_evidence_disposition"],
         )
         self.assertEqual("accepted_TX_24_7_of_7", state["capability_status_summary"]["semantic_review_evidence"])
         self.assertEqual(

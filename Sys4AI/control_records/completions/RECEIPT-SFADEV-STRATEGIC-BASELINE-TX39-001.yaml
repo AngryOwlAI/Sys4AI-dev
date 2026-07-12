@@ -1,0 +1,55 @@
+completion_receipt_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX39-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION
+role: system_director
+result: PASS_WITH_WARNINGS
+summary: TX-39 records accountable active future-work dispositions for exactly the three remaining evidence families while preserving TX-38 and keeping G-10 deferred for a separate gate.
+changed_artifacts:
+- path: Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-016.yaml;Sys4AI/control_records/execution_transactions/TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION.yaml
+  change_summary: Records the three exact classifications and bounds the disposition transaction.
+- path: Sys4AI/control_records/program_state.yaml;Sys4AI/schemas/contracts/program_state.schema.json
+  change_summary: Advances only to completed future-work dispositions and the separate G-10 reconsideration gate.
+- path: Sys4AI/sys_for_ai/trace_validation.py;Sys4AI/sys_for_ai/prd_semantics.py;Sys4AI/tests/test_trace_semantics.py;Sys4AI/tests/test_self_hosting_acceptance.py
+  change_summary: Adds fail-closed current-state validation without executing any evidence family.
+- path: Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION-20260712T200220Z.yaml
+  change_summary: Preserves source-first routing evidence and known pending-hash warnings.
+- path: Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX39-001.yaml;Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001.yaml
+  change_summary: Closes only the disposition packet and stops before separate G-10 reconsideration.
+- path: Sys4AI/registries
+  change_summary: Registers the decision transaction preflight receipt handoff and evidence relationships.
+- path: Sys4AI/docs/generated
+  change_summary: Refreshes deterministic noncanonical reader surfaces.
+- path: implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION-SFADEV-TX39.md;implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX39-001.md
+  change_summary: Records the human-readable dispositions preserved boundaries and next gate.
+validation_evidence:
+  focused_control_validation: PASS
+  focused_semantic_tests: PASS_38_OF_38
+  independent_evaluation_boundary: PRESERVED_TX38_ACTIVE_FUTURE_WORK
+  full_product_tests: PASS_355_OF_355
+  product_validation: PASS
+  repository_validation: PASS
+  generated_derivatives: CURRENT
+  memory_status: PASS_WITH_WARNINGS_1337_OBJECTS_610_WARNINGS_ZERO_AUTHORITY_INVERSIONS
+  trace_verification: PASS_94_PLANNED_133_UNCHANGED
+  frozen_G11_015_sha256: 408cafc64808f3d1623457bfd64c1fefa8521ca6d5800d4dc8ff3348abf83998
+  frozen_TX38_sha256: e67682679545b92e55f220e0723445b43561aea764fe8246632624b56ecffdc5
+  frozen_TX38_receipt_sha256: 8529c36a7acdf4c8b79b72cc050762635ffbfd2dc4cb7936b83e2d5181db2eec
+  frozen_TX38_handoff_sha256: 496b789469dacf6303027f82eef76df66b65a93bc8f19f63a338348a2bcab780
+  frozen_requirement_trace_sha256: 9cf48068581f8c8764dc708f1c33d95039e1451df3567a2eff0f418b7dfcc5fa
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION-20260712T200220Z
+authority_changes:
+  records_G_11_016_remaining_family_disposition: true
+  retains_broad_stakeholder_and_affected_party_review_as_active_future_work: true
+  retains_target_domain_acceptance_as_active_future_work: true
+  retains_production_and_operational_evidence_as_active_future_work: true
+  removes_three_families_from_current_bounded_nonproduction_migration_completion_requirements: true
+  executes_or_claims_any_family: false
+  waives_or_deletes_any_family: false
+  preserves_TX_38_and_independent_evaluation_future_work: true
+  reconsiders_accepts_or_supersedes_G_10: false
+  grants_production_operational_stakeholder_domain_or_permission_authority: false
+unresolved_issues:
+- G-10 remains deferred and was not reconsidered by TX-39.
+- Each retained family requires a new accountable scope decision before future execution for a named context.
+next_recommendation: After TX-39 is validated and shared, separately decide whether to reconsider G-10 for the bounded non-production migration baseline; do not infer acceptance from these dispositions.

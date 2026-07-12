@@ -336,6 +336,11 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_strategic_baseline_tx38_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-38-INDEPENDENT-EVALUATION-FUTURE-WORK-DISPOSITION-20260712T193912Z.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
 | ctrl_strategic_baseline_tx38_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX38-001.yaml | completion_receipt | controlled | system_director | contract_completion_receipt_v1_0 | pending |
 | ctrl_strategic_baseline_tx38_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX38-001.yaml | handoff | controlled | system_director | contract_handoff_v1_0 | pending |
+| ctrl_strategic_baseline_g11_016_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-016.yaml | director_decision | controlled | system_director | contract_director_decision | pending |
+| ctrl_strategic_baseline_tx39_execution_transaction | control_records/execution_transactions/TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION.yaml | execution_transaction | controlled | bounded_execution_planner | contract_execution_transaction | pending |
+| ctrl_strategic_baseline_tx39_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION-20260712T200220Z.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
+| ctrl_strategic_baseline_tx39_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX39-001.yaml | completion_receipt | controlled | system_director | contract_completion_receipt_v1_0 | pending |
+| ctrl_strategic_baseline_tx39_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001.yaml | handoff | controlled | system_director | contract_handoff_v1_0 | pending |
 
 ## Validation Contract Trace
 

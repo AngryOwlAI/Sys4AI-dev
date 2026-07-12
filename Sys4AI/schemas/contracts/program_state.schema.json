@@ -96,7 +96,10 @@
         "toml_config_verification": { "enum": ["pending", "accepted_TX_31_9_of_9"] },
         "jsonschema_contract_verification": { "enum": ["pending", "accepted_TX_32_10_of_10"] },
         "independent_evaluation_protocol": { "enum": ["pending", "ready_TX_37_external_execution_not_run"] },
-        "independent_evaluation_disposition": { "enum": ["pending", "retained_active_future_work_G_11_015"] }
+        "independent_evaluation_disposition": { "enum": ["pending", "retained_active_future_work_G_11_015"] },
+        "stakeholder_affected_party_review_disposition": { "enum": ["pending", "retained_active_future_work_G_11_016"] },
+        "target_domain_acceptance_disposition": { "enum": ["pending", "retained_active_future_work_G_11_016"] },
+        "production_operational_evidence_disposition": { "enum": ["pending", "retained_active_future_work_G_11_016"] }
       },
       "additionalProperties": false
     },
