@@ -1,0 +1,57 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-34-CROSS-VERSION-PYTHON-CI-20260712T145255Z
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-34-CROSS-VERSION-PYTHON-CI
+created_at: '2026-07-12T14:52:55Z'
+status: PASS_WITH_WARNINGS
+commands_run:
+- command: python -m sys_for_ai.cli memory status --json
+  result: pass
+- command: python -m sys_for_ai.cli memory search 'strategic baseline external evidence G-10 cross-version' --limit 10 --json
+  result: pass
+- command: inspect HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001 and program_state.yaml
+  result: pass
+queries:
+- query: strategic baseline external evidence G-10 cross-version
+  returned_object_ids:
+  - SRC-STRATEGIC-BASELINE-MIGRATION-PLAN
+  - SRC-EVIDENCE-CLOSURE-PLAN-TX23
+  - SRC-HANDOFF-STRATEGIC-BASELINE-TX33
+  - SRC-PYPROJECT
+canonical_sources_inspected:
+- path: implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+  registry: source_registry.csv
+  row_id: SRC-STRATEGIC-BASELINE-MIGRATION-PLAN
+  inspected_sections:
+  - WS-16 final evidence definition and G-10 boundary
+- path: Sys4AI/pyproject.toml
+  registry: source_registry.csv
+  row_id: SRC-PYPROJECT
+  inspected_sections:
+  - requires-python and dependency policy
+- path: implementation_plans/STRATEGIC-BASELINE-MIGRATION-EVIDENCE-CLOSURE-PLAN-SFADEV-TX23.md
+  registry: source_registry.csv
+  row_id: SRC-EVIDENCE-CLOSURE-PLAN-TX23
+  inspected_sections:
+  - program-level evidence dependencies and ordered closure program
+registry_rows_inspected:
+- path: control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001.yaml
+  registry: handoff_registry.csv
+  row_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001
+  purpose: Confirm local exhaustion and the exact external-evidence gate.
+- path: registries/requirement_trace_registry.csv
+  registry: requirement_trace_registry.csv
+  row_id: TRACE-SFA-CORE-PY-002
+  purpose: Confirm the package supported-version declaration and existing bounded local evidence.
+- path: registries/local_evidence_execution_registry.csv
+  registry: local_evidence_execution_registry.csv
+  row_id: EVID-TX26-SFA-CORE-PY-002
+  purpose: Confirm the local supported-version evidence explicitly did not exercise every supported minor.
+stale_context_risks:
+- risk_id: MEMPREFLIGHT-RISK-001
+  status: observed_and_mitigated
+  notes: Memory was used only for navigation; live git plan handoff package metadata and registries determined the route.
+- risk_id: MEMPREFLIGHT-RISK-002
+  status: observed_and_mitigated
+  notes: Current official setup-python and stable-Python documentation was checked before binding the matrix.
+usable_for_routing: true

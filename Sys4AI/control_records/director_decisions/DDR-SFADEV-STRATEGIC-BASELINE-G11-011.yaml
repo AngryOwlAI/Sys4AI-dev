@@ -1,0 +1,78 @@
+director_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-011
+schema_version: 0.1.0
+decision_status: completed
+created_at: '2026-07-12T14:52:55Z'
+completed_at: '2026-07-12T14:52:55Z'
+director_role: system_director
+human_authorization:
+  principal_name: Alex Omegapy
+  principal_role: repository_maintainer_and_product_owner
+  authority_basis: The accountable human directed selection and execution of the earliest dependency-ready retained external-evidence obligation after TX-33 exhausted local verification.
+  approval_evidence: Human-issued Codex task instruction dated 2026-07-12 selecting the logical next retained external-evidence transaction.
+  model_self_approval: false
+decision_context:
+  trigger: accountable_external_evidence_family_selection
+  transaction_id: TX-34-CROSS-VERSION-PYTHON-CI
+  gate_id: G-11-EVIDENCE-SCOPE
+  latest_handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001
+  governing_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+  prior_gate_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-010
+  reviewed_head_commit: 7f111dce08691ce9e4f9ccdd2fe20ab102f6d81c
+  memory_preflight_receipt_id: MEMPREFLIGHT-TX-34-CROSS-VERSION-PYTHON-CI-20260712T145255Z
+  observed_evidence:
+  - TX-33 completed all 74 locally executable verification obligations and left external CI stakeholder domain operational production and final-acceptance claims unexecuted.
+  - Sys4AI declares requires-python >=3.10 but has no GitHub Actions workflow and no independent clean-run evidence across supported stable Python minors.
+  - Python 3.10 through 3.14 are the stable supported minors implied by the current open-ended package declaration on 2026-07-12.
+  - Cross-version CI can execute without a target runtime stakeholder representative domain specialist permission expansion production owner or operational grant.
+selected_route:
+  route_id: authorize_bounded_TX_34_cross_version_python_CI
+  route_name: Execute read-only full validation on Python 3.10 through 3.14 in GitHub Actions
+  rationale: This is the earliest dependency-ready retained external obligation and the smallest external packet that can produce independent clean-checkout evidence now.
+  immediate_effect: TX-34 may add and validate one read-only matrix workflow push its candidate baseline observe all five jobs and record exact run evidence.
+rejected_routes:
+- route_id: begin_stakeholder_or_domain_acceptance
+  reason: Identified representatives and domain specialists are not supplied and evidence cannot be inferred.
+- route_id: begin_production_or_operational_evidence
+  reason: No target runtime production owner monitoring interval incident exercise maintenance owner or operational grant exists.
+- route_id: accept_G10_now
+  reason: Authorization to execute CI is not executed evidence and cannot satisfy later accountable reacceptance by itself.
+authority_boundary:
+  human_authority_recorded: true
+  accepts_gate_G_11_external_family_route: true
+  authorizes_TX_34_cross_version_CI: true
+  authorized_python_minors: 5
+  changes_410_plan_interpretations: false
+  accepts_any_waiver: false
+  accepts_gate_G_10_now: false
+  may_claim_production_readiness_now: false
+  may_grant_operational_authority_now: false
+  may_claim_stakeholder_or_domain_acceptance_now: false
+  may_expand_permissions: false
+  may_rewrite_activated_control_history: false
+supersession:
+  supersedes_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-010
+  scope: Supersedes only the prohibition on starting a later external evidence transaction without a new accountable scope decision.
+  preserves:
+  - completed TX-24 through TX-33 evidence
+  - frozen TX-23 ledger and TX-25 interpretation
+  - canonical PRDs and all G-10 production operational stakeholder domain target-runtime and permission boundaries
+rollback_and_review:
+  rollback_class: activating_bounded_external_verification_scope_decision
+  rollback_scope: Before publication revert the workflow and candidate control packet; after publication preserve the decision and supersede it only through a new accountable decision.
+  review_triggers:
+  - the supported Python range changes
+  - any matrix job fails or cannot produce admissible evidence
+  - CI requests secrets write permissions deployment or other external side effects
+  - stakeholder domain production operational permission or G-10 evidence is proposed inside TX-34
+  expiry: remains current for this bounded packet and grants no continuing authority after closeout
+evidence_references:
+- Sys4AI/pyproject.toml
+- .github/workflows/cross-version-python.yml
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001.yaml
+- Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-34-CROSS-VERSION-PYTHON-CI-20260712T145255Z.yaml
+validators:
+- cd Sys4AI && make validate-cross-version-ci
+- cd Sys4AI && .venv/bin/python -m unittest tests.test_cross_version_ci
+- make validate
+- GitHub Actions Cross-version Python matrix passes on Python 3.10 through 3.14
+- git diff --check

@@ -31,6 +31,7 @@ from .evidence_closure import (
     write_plan_interpretation_registry,
 )
 from .csv_registry_surface import validate_csv_registry_surface
+from .cross_version_ci import validate_cross_version_ci
 from .format_governance_surface import validate_format_governance_surface
 from .generated_reader_surface import validate_generated_reader_surface
 from .jsonschema_contract_surface import validate_jsonschema_contract_surface
@@ -424,6 +425,15 @@ def build_parser() -> argparse.ArgumentParser:
     validate_python_package.add_argument("--pyproject", default="pyproject.toml")
     validate_python_package.add_argument("--requirements", default="requirements.txt")
 
+    validate_cross_version = sub.add_parser(
+        "validate-cross-version-ci",
+        help="Verify the supported-Python GitHub Actions matrix and authority boundary",
+    )
+    validate_cross_version.add_argument(
+        "--workflow",
+        default="../.github/workflows/cross-version-python.yml",
+    )
+
     validate_yaml_control = sub.add_parser(
         "validate-yaml-control-surface",
         help="Verify the bounded YAML control/state and safe-parsing family",
@@ -768,6 +778,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "validate-python-package-surface":
         return print_result(validate_python_package_surface(args.pyproject, args.requirements))
 
+    if args.command == "validate-cross-version-ci":
+        return print_result(validate_cross_version_ci(args.workflow))
+
     if args.command == "validate-yaml-control-surface":
         return print_result(
             validate_yaml_control_surface(
@@ -915,6 +928,7 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_requirement_trace(args.requirement_trace))
         result.extend(validate_requirement_trace_migration(args.requirement_trace))
         result.extend(validate_python_package_surface())
+        result.extend(validate_cross_version_ci())
         result.extend(validate_yaml_control_surface())
         result.extend(validate_format_governance_surface())
         result.extend(validate_prd_modules(args.prd_modules))

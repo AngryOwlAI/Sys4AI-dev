@@ -1,0 +1,208 @@
+execution_transaction_id: TX-34-CROSS-VERSION-PYTHON-CI
+contract_version: 1.0.0
+objective: Produce exact clean-checkout external CI evidence for the declared Python 3.10 through 3.14 support range without advancing any unrelated authority claim.
+source_requirement_ids:
+- SFA-CORE-PY-001
+- SFA-CORE-PY-002
+- SFA-CORE-PY-003
+- SFA-P0-NFR-015
+source_decision_ids:
+- DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-011
+subject_system:
+  system_id: sys4ai
+  system_name: Sys4AI
+subject_layer: framework_product
+runtime_actor:
+  actor_id: codex_meta_agent_runtime
+  actor_type: meta_agent_runtime
+  role_ids:
+  - verification_engineer
+  - source_authority_auditor
+  - baseline_change_manager
+  authority_source_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-011
+approval_principal:
+  principal_id: alex_omegapy
+  principal_type: accountable_human
+  approval_scope: Execute only the earliest dependency-ready retained external evidence packet cross-version Python CI; preserve every stakeholder domain production operational target-runtime permission and G-10 boundary.
+  authorization_evidence_ids:
+  - HUMAN-TASK-2026-07-12-TX34-EXTERNAL-EVIDENCE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-011
+  model_self_approval: false
+execution_authorization:
+  status: authorized
+  authorized_at: '2026-07-12T14:52:55Z'
+  expires_at: '2026-07-13T02:52:55Z'
+  authority_evidence_ids:
+  - HUMAN-TASK-2026-07-12-TX34-EXTERNAL-EVIDENCE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-011
+  self_authorized: false
+permission_envelope:
+  envelope_id: PERMISSION-ENVELOPE-TX-34-CROSS-VERSION-PYTHON-CI
+  status: current
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-12-TX34-EXTERNAL-EVIDENCE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-011
+  data_classes:
+  - public_repository_sources
+  - external_ci_validation_evidence
+  resource_limits:
+  - One GitHub Actions workflow with five supported stable Python minor jobs.
+  - Read-only contents permission and thirty-minute timeout per job.
+  - Full root validation from a clean checkout; no deployment secrets target runtime or production operation.
+  - Preserve frozen TX-23 and TX-25 bytes canonical PRDs trace states waivers and completed TX-24 through TX-33 history.
+  valid_from: '2026-07-12T14:52:55Z'
+  expires_at: '2026-07-13T02:52:55Z'
+  sensitive_data_allowed: false
+  secrets_allowed: false
+  data_egress_allowed: true
+  external_side_effects_allowed: true
+  delegation_allowed: false
+  delegation_expires_at: not_applicable
+  permission_expansion_allowed: false
+allowed_reads:
+- Sys4AI/pyproject.toml
+- Sys4AI/requirements.txt
+- Sys4AI/Makefile
+- Makefile
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001.yaml
+- Sys4AI/control_records/program_state.yaml
+- Sys4AI/registries/requirement_trace_registry.csv
+- Sys4AI/registries/evidence_closure_plan_registry.csv
+- Sys4AI/registries/plan_scope_interpretation_registry.csv
+allowed_writes:
+- .github/workflows/cross-version-python.yml
+- Sys4AI/sys_for_ai/cross_version_ci.py
+- Sys4AI/tests/test_cross_version_ci.py
+- Sys4AI/sys_for_ai/cli.py
+- Sys4AI/Makefile
+- Sys4AI/control_records/**TX34**
+- Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-011.yaml
+- Sys4AI/control_records/program_state.yaml
+- Sys4AI/registries/*.csv
+- Sys4AI/docs/generated/**
+- implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-CROSS-VERSION-CI-SFADEV-TX34.md
+- implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX34-001.md
+allowed_tools:
+- repository filesystem reads and bounded writes
+- local Python Make and Git validation
+- GitHub CLI workflow run inspection
+- official public documentation lookup
+allowed_external_actions:
+- Push the bounded TX-34 candidate and closeout commits to the existing origin main branch.
+- Execute and inspect the read-only Cross-version Python GitHub Actions workflow.
+forbidden_actions:
+- Modify canonical PRDs frozen TX-23 ledger frozen TX-25 interpretation or requirement trace state.
+- Use secrets write permissions deployment environments self-hosted runners or target runtimes.
+- Treat CI as stakeholder domain production operational target-runtime permission or G-10 evidence.
+- Create or modify branch protection repository settings releases packages deployments or external services.
+- Spawn delegated workers or mutate other Codex tasks.
+inputs:
+- Human authorization dated 2026-07-12.
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-011.
+- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001.
+- Current package declaration and full root validation stack.
+expected_outputs:
+- A fail-closed read-only GitHub Actions matrix for Python 3.10 through 3.14.
+- Static validator and positive-negative tests for triggers versions permissions action versions timeout install and full-validation commands.
+- One successful five-job external CI run on the candidate baseline.
+- Exact report receipt handoff state and registered evidence preserving all non-CI gates.
+validators:
+- validator_id: cross_version_ci_contract
+  command_or_method: cd Sys4AI && make validate-cross-version-ci
+  blocking: true
+  expected_evidence: Five exact stable minor entries read-only permissions bounded timeout current action versions and full root validation pass static inspection.
+- validator_id: cross_version_ci_tests
+  command_or_method: cd Sys4AI && .venv/bin/python -m unittest tests.test_cross_version_ci
+  blocking: true
+  expected_evidence: Positive workflow and negative missing-version write-permission and partial-validation tests pass.
+- validator_id: full_repository_validation
+  command_or_method: make validate
+  blocking: true
+  expected_evidence: Repository aggregate validation passes before publication.
+- validator_id: external_matrix_execution
+  command_or_method: GitHub Actions Cross-version Python workflow on the pushed candidate commit
+  blocking: true
+  expected_evidence: Python 3.10 3.11 3.12 3.13 and 3.14 jobs all pass from clean checkouts.
+- validator_id: diff_integrity
+  command_or_method: git diff --check
+  blocking: true
+  expected_evidence: No patch-integrity failures.
+stop_conditions:
+- Any supported stable minor is omitted or any matrix job fails.
+- The workflow requests write permission secrets deployment a target runtime or unbounded execution.
+- Frozen TX-23 TX-25 canonical PRD or trace state bytes change.
+- Any TX-34 action requires stakeholder domain production operational target-runtime permission or G-10 authority.
+host_capability_requirements:
+  execution_profile_id: codex_app_reference
+  overall_status: verified_available
+  required_capability_ids:
+  - workspace_filesystem
+  - terminal_and_tests
+  - tools_connectors_network
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G07-001
+  - MEMPREFLIGHT-TX-34-CROSS-VERSION-PYTHON-CI-20260712T145255Z
+  checked_at: '2026-07-12T14:52:55Z'
+  values_or_goals_may_override: false
+state:
+  status: active
+  current_state_evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-011
+  - MEMPREFLIGHT-TX-34-CROSS-VERSION-PYTHON-CI-20260712T145255Z
+  continuation_state: not_ready
+  continuation_evidence_ids: []
+  state_transition_evidence_ids:
+  - HUMAN-TASK-2026-07-12-TX34-EXTERNAL-EVIDENCE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-011
+cancellation:
+  state: not_requested
+  requested_by: not_applicable
+  behavior: Stop at the nearest safe boundary preserve exact CI diagnostics and do not close the external evidence obligation.
+  evidence_ids: []
+  uncertain_operations: []
+escalation:
+  state: pending
+  conditions:
+  - Any matrix job fails or produces ambiguous evidence.
+  - A later transaction proposes stakeholder domain production operational target-runtime permission or G-10 evidence.
+  responsible_principal_id: alex_omegapy
+  required_decision: Accept only exact successful matrix evidence and separately authorize every later evidence family.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001
+resume_evidence:
+  required: true
+  status: current
+  last_known_state: TX-33 completed all local verification and stopped at dependency-ready retained external evidence selection.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX33-001
+  - MEMPREFLIGHT-TX-34-CROSS-VERSION-PYTHON-CI-20260712T145255Z
+closeout_evidence:
+  status: partial
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-011
+  changed_artifacts:
+  - TX-34 candidate workflow validator tests and control packet.
+  validation_evidence_ids:
+  - TX34-STATIC-CONTRACT-5-OF-5-PASS
+  acceptance_evidence_ids:
+  - HUMAN-TASK-2026-07-12-TX34-EXTERNAL-EVIDENCE
+rollback:
+  status: planned
+  strategy: Before external publication revert the candidate packet; after publication preserve exact run evidence and use an additive supersession or repair transaction.
+  triggers:
+  - A blocking local or external validator fails.
+  - Any permission or claim escapes the bounded CI envelope.
+  actions:
+  - Stop new work and preserve the failing job logs and commit identity.
+  - Repair only through the bounded candidate before acceptance or a new superseding transaction after publication.
+  evidence_ids:
+  - BASELINE-7F111DCE0869
+supersession:
+  status: current
+  supersedes_transaction_ids: []
+  superseded_by: not_applicable
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-011

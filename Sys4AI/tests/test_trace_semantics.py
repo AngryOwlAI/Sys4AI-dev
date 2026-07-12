@@ -172,10 +172,10 @@ class TraceSemanticTests(unittest.TestCase):
         self.assertFalse(result.ok)
         self.assertTrue(any("treat_TX_23_classification_as_executed_evidence" in item for item in result.messages))
 
-    def test_post_tx32_state_requires_controlled_next_transaction_route(self) -> None:
+    def test_post_tx33_state_requires_controlled_external_evidence_route(self) -> None:
         def mutate_state(state):
             state["allowed_next_actions"].remove(
-                "seek_separate_authorization_for_remaining_14_local_verification_obligations"
+                "select_dependency_ready_retained_external_evidence_transaction"
             )
 
         result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
