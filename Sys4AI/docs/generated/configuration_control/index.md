@@ -67,7 +67,7 @@ This generated page indexes registered configuration and control surfaces. It is
 | --- | --- | --- |
 | format profiles | 5 | registries/format_profile_registry.csv |
 | configuration sources | 6 | registries/config_source_registry.csv |
-| control records | 251 | registries/control_record_registry.csv |
+| control records | 256 | registries/control_record_registry.csv |
 
 ## Allowed Promotion Path
 

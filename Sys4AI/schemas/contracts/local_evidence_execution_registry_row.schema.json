@@ -11,11 +11,11 @@
     "execution_transaction_id", "notes"
   ],
   "properties": {
-    "execution_evidence_id": { "type": "string", "pattern": "^EVID-TX(?:24|26|27|28|29|30)-SFA-[A-Z0-9-]+$" },
+    "execution_evidence_id": { "type": "string", "pattern": "^EVID-TX(?:24|26|27|28|29|30|31)-SFA-[A-Z0-9-]+$" },
     "closure_id": { "type": "string", "pattern": "^CLOSE-SFA-[A-Z0-9-]+-(?:SEMANTIC-REVIEW|VERIFICATION)$" },
     "trace_id": { "type": "string", "pattern": "^TRACE-SFA-[A-Z0-9-]+$" },
     "requirement_id": { "type": "string", "pattern": "^SFA-[A-Z0-9]+(?:-[A-Z0-9]+)*$" },
-    "evidence_family": { "enum": ["identity_and_system_boundary_semantic_review", "python_reference_and_dependency_policy_verification", "yaml_control_state_and_safe_parsing_verification", "core_format_profile_governance_and_memory_inspectability_verification", "csv_registry_and_graph_governance_verification", "markdown_source_authority_verification"] },
+    "evidence_family": { "enum": ["identity_and_system_boundary_semantic_review", "python_reference_and_dependency_policy_verification", "yaml_control_state_and_safe_parsing_verification", "core_format_profile_governance_and_memory_inspectability_verification", "csv_registry_and_graph_governance_verification", "markdown_source_authority_verification", "toml_configuration_and_secret_policy_verification"] },
     "prior_state": { "enum": ["needs_evidence", "planned"] },
     "resulting_state": { "enum": ["sufficient", "pass"] },
     "evidence_report_path": { "type": "string", "minLength": 1 },
@@ -24,7 +24,7 @@
     "reviewer_role": { "enum": ["requirements_verifier", "verification_engineer"] },
     "review_date": { "type": "string", "format": "date" },
     "status": { "const": "accepted" },
-    "execution_transaction_id": { "enum": ["TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW", "TX-26-LOCAL-EVIDENCE-PYTHON-PACKAGE", "TX-27-LOCAL-EVIDENCE-YAML-CONTROL", "TX-28-LOCAL-EVIDENCE-FORMAT-GOVERNANCE", "TX-29-LOCAL-EVIDENCE-CSV-REGISTRY", "TX-30-LOCAL-EVIDENCE-MARKDOWN-SOURCE"] },
+    "execution_transaction_id": { "enum": ["TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW", "TX-26-LOCAL-EVIDENCE-PYTHON-PACKAGE", "TX-27-LOCAL-EVIDENCE-YAML-CONTROL", "TX-28-LOCAL-EVIDENCE-FORMAT-GOVERNANCE", "TX-29-LOCAL-EVIDENCE-CSV-REGISTRY", "TX-30-LOCAL-EVIDENCE-MARKDOWN-SOURCE", "TX-31-LOCAL-EVIDENCE-TOML-CONFIG"] },
     "notes": { "type": "string", "minLength": 1 }
   },
   "allOf": [
@@ -103,6 +103,19 @@
           "resulting_state": { "const": "pass" },
           "reviewer_role": { "const": "verification_engineer" },
           "execution_transaction_id": { "const": "TX-30-LOCAL-EVIDENCE-MARKDOWN-SOURCE" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "evidence_family": { "const": "toml_configuration_and_secret_policy_verification" } }, "required": ["evidence_family"] },
+      "then": {
+        "properties": {
+          "execution_evidence_id": { "pattern": "^EVID-TX31-SFA-[A-Z0-9-]+$" },
+          "closure_id": { "pattern": "^CLOSE-SFA-[A-Z0-9-]+-VERIFICATION$" },
+          "prior_state": { "const": "planned" },
+          "resulting_state": { "const": "pass" },
+          "reviewer_role": { "const": "verification_engineer" },
+          "execution_transaction_id": { "const": "TX-31-LOCAL-EVIDENCE-TOML-CONFIG" }
         }
       }
     }

@@ -1,0 +1,220 @@
+execution_transaction_id: TX-31-LOCAL-EVIDENCE-TOML-CONFIG
+contract_version: 1.0.0
+objective: Verify exactly seven core TOML requirements and two Phase 0 TOML and secret-policy assignments with positive and negative local evidence.
+source_requirement_ids:
+- SFA-CORE-TOML-001
+- SFA-CORE-TOML-002
+- SFA-CORE-TOML-003
+- SFA-CORE-TOML-004
+- SFA-CORE-TOML-005
+- SFA-CORE-TOML-006
+- SFA-CORE-TOML-007
+- SFA-P0-FR-034
+- SFA-P0-FR-043
+source_decision_ids:
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-008
+subject_system:
+  system_id: sys4ai
+  system_name: Sys4AI
+subject_layer: framework_product
+runtime_actor:
+  actor_id: codex_meta_agent_runtime
+  actor_type: meta_agent_runtime
+  role_ids:
+  - verification_engineer
+  - source_authority_auditor
+  - baseline_change_manager
+  authority_source_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-008
+approval_principal:
+  principal_id: alex_omegapy
+  principal_type: accountable_human
+  approval_scope: Execute the nine-row TOML family now; later authorized external CI G-10 production and operational work remains evidence-dependent and outside this atomic packet.
+  authorization_evidence_ids:
+  - HUMAN-TASK-2026-07-12-TX31-TOML-CONFIG
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-008
+  model_self_approval: false
+execution_authorization:
+  status: authorized
+  authorized_at: '2026-07-12T13:02:56Z'
+  expires_at: '2026-07-12T19:02:56Z'
+  authority_evidence_ids:
+  - HUMAN-TASK-2026-07-12-TX31-TOML-CONFIG
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-008
+  self_authorized: false
+permission_envelope:
+  envelope_id: PERMISSION-ENVELOPE-TX-31-LOCAL-EVIDENCE-TOML-CONFIG
+  status: current
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-12-TX31-TOML-CONFIG
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-008
+  data_classes:
+  - repository_controlled_artifacts
+  - local_validation_evidence
+  resource_limits:
+  - One bounded nine-row TOML configuration and secret-policy verification family.
+  - Repair only TOML validation and directly dependent contracts tests trace state and evidence.
+  - Preserve frozen TX-23 and TX-25 bytes canonical PRDs and completed TX-24 through TX-30 history.
+  valid_from: '2026-07-12T13:02:56Z'
+  expires_at: '2026-07-12T19:02:56Z'
+  sensitive_data_allowed: false
+  secrets_allowed: false
+  data_egress_allowed: false
+  external_side_effects_allowed: true
+  delegation_allowed: false
+  delegation_expires_at: not_applicable
+  permission_expansion_allowed: false
+allowed_reads:
+- PRDs/Sys4AI_phase-0_product_system_design_prd.md
+- PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+- Sys4AI/pyproject.toml
+- Sys4AI/requirements.txt
+- Sys4AI/configs/**/*.toml
+- Sys4AI/registries/evidence_closure_plan_registry.csv
+- Sys4AI/registries/plan_scope_interpretation_registry.csv
+- Sys4AI/registries/requirement_trace_registry.csv
+- Sys4AI/registries/config_source_registry.csv
+- Sys4AI/registries/validation_contract_registry.csv
+- Sys4AI/registries/format_profile_registry.csv
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX30-001.yaml
+allowed_writes:
+- Sys4AI/sys_for_ai/toml_config_surface.py
+- Sys4AI/tests/test_toml_config_surface.py
+- Sys4AI/sys_for_ai/cli.py
+- Sys4AI/Makefile
+- Sys4AI/registries/local_evidence_execution_registry.csv
+- Sys4AI/registries/requirement_trace_registry.csv
+- Sys4AI/control_records/**TX31**
+- Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-008.yaml
+- Sys4AI/control_records/program_state.yaml
+- Sys4AI/registries/*.csv
+- Sys4AI/schemas/contracts/*.json
+- Sys4AI/docs/generated/**
+- implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-LOCAL-EVIDENCE-TOML-CONFIG-SFADEV-TX31.md
+- implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX31-001.md
+allowed_tools:
+- repository filesystem reads and bounded writes
+- local Python and Make validators
+- git status diff add commit and push
+allowed_external_actions:
+- Push the atomic TX-31 commit to the existing origin main branch after validation.
+forbidden_actions:
+- Modify canonical PRDs frozen TX-23 ledger or frozen TX-25 interpretation bytes.
+- Execute any of the remaining 24 local obligations or any external CI operational or final-acceptance evidence inside TX-31.
+- Treat broad authorization as proof accept a waiver accept G-10 or claim production operational stakeholder domain target-runtime or permission authority.
+- Add TOML writing or secret-bearing examples.
+- Rewrite activated TX-24 through TX-30 control history.
+- Spawn delegated workers or mutate other Codex tasks.
+inputs:
+- Human authorization dated 2026-07-12.
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-008.
+- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX30-001.
+- Frozen TX-23 evidence closure ledger and TX-25 interpretation.
+expected_outputs:
+- Focused TOML assignment registry parser contract parse-only secret-policy and generated-index validator.
+- Positive and mandatory negative tests including parser drift secret-like values writer API contract drift and stale index probes.
+- Exactly nine accepted evidence rows and nine planned-to-pass trace transitions.
+- Verification report receipt handoff state and registered evidence.
+validators:
+- validator_id: toml_config_surface
+  command_or_method: cd Sys4AI && make validate-toml-config-surface
+  blocking: true
+  expected_evidence: Nine of nine requirements pass and assignment registry parser secret contract writer and generated-index drift fail closed.
+- validator_id: focused_tests
+  command_or_method: cd Sys4AI && .venv/bin/python -m unittest tests.test_toml_config_surface
+  blocking: true
+  expected_evidence: Ten positive and mandatory negative TOML configuration tests pass.
+- validator_id: local_evidence_execution
+  command_or_method: cd Sys4AI && make validate-local-evidence-execution
+  blocking: true
+  expected_evidence: Exactly 50 accepted local evidence rows align to live trace and frozen ledger.
+- validator_id: full_repository_validation
+  command_or_method: make validate
+  blocking: true
+  expected_evidence: Repository aggregate validation passes from the workspace root.
+- validator_id: diff_integrity
+  command_or_method: git diff --check
+  blocking: true
+  expected_evidence: No patch-integrity failures.
+stop_conditions:
+- Any selected row lacks exact current evidence or remains planned after acceptance.
+- Any unrelated trace capability coverage semantic waiver or lifecycle state changes.
+- Frozen TX-23 or TX-25 SHA-256 changes.
+- TOML writing secret-bearing examples or stale generated indexing remains possible.
+- Any TX-31 action requires external CI G-10 acceptance permission expansion or delegation.
+host_capability_requirements:
+  execution_profile_id: codex_app_reference
+  overall_status: verified_available
+  required_capability_ids:
+  - workspace_filesystem
+  - terminal_and_tests
+  - memory_and_retrieval
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G07-001
+  - MEMPREFLIGHT-TX-31-LOCAL-EVIDENCE-TOML-CONFIG-20260712T130256Z
+  checked_at: '2026-07-12T13:02:56Z'
+  values_or_goals_may_override: false
+state:
+  status: completed
+  current_state_evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-008
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX31-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX31-001
+  continuation_state: not_applicable
+  continuation_evidence_ids: []
+  state_transition_evidence_ids:
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX31-001
+cancellation:
+  state: not_requested
+  requested_by: not_applicable
+  behavior: Stop at the nearest safe boundary retain the bounded diff and do not activate evidence.
+  evidence_ids: []
+  uncertain_operations: []
+escalation:
+  state: pending
+  conditions:
+  - A later bounded transaction proposes another local family external CI waiver G-10 production or operational evidence.
+  - The selected family cannot pass without changing canonical requirements or unrelated implementation.
+  responsible_principal_id: alex_omegapy
+  required_decision: Bind the already expressed broader authorization to an exact dependency-ready transaction and its evidence obligations.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX30-001
+resume_evidence:
+  required: true
+  status: current
+  last_known_state: TX-30 completed and stopped with 33 locally executable verification obligations.
+  evidence_ids:
+  - MEMPREFLIGHT-TX-31-LOCAL-EVIDENCE-TOML-CONFIG-20260712T130256Z
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX30-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX30-001
+closeout_evidence:
+  status: complete
+  evidence_ids:
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX31-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX31-001
+  changed_artifacts:
+  - TX-31 TOML configuration implementation tests trace and control evidence.
+  validation_evidence_ids:
+  - TX31-TOML-CONFIG-9-OF-9-PASS
+  - TX31-FOCUSED-TESTS-10-OF-10-PASS
+  - TX31-ROOT-VALIDATE-PASS
+  acceptance_evidence_ids:
+  - HUMAN-TASK-2026-07-12-TX31-TOML-CONFIG
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-008
+rollback:
+  status: planned
+  strategy: Before publication revert the complete TX-31 packet; after publication preserve activated evidence and use a new additive transaction.
+  triggers:
+  - A blocking validator fails or frozen planning bytes change.
+  - Any write or claim escapes the nine-row permission envelope.
+  actions:
+  - Stop new work and preserve the diff and validation logs.
+  - Revert the unshared TX-31 packet or create controlled supersession after sharing.
+  evidence_ids:
+  - BASELINE-DC923D03A2A8
+supersession:
+  status: current
+  supersedes_transaction_ids: []
+  superseded_by: not_applicable
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-008

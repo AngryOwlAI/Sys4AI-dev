@@ -1,0 +1,53 @@
+completion_receipt_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX31-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-31-LOCAL-EVIDENCE-TOML-CONFIG
+role: verification_engineer
+result: PASS
+summary: TX-31 verified seven core TOML requirements and two Phase 0 configuration and secret-policy assignments while preserving frozen planning history and evidence-dependent later gates.
+changed_artifacts:
+- path: Sys4AI/sys_for_ai/toml_config_surface.py;Sys4AI/tests/test_toml_config_surface.py
+  change_summary: Adds focused assignment registry parser contract parse-only secret-policy generated-index checks and positive-negative verification.
+- path: Sys4AI/sys_for_ai/cli.py;Sys4AI/Makefile
+  change_summary: Adds the focused command and aggregate validation target.
+- path: Sys4AI/registries/local_evidence_execution_registry.csv;Sys4AI/registries/requirement_trace_registry.csv
+  change_summary: Adds exactly nine accepted evidence bindings and planned-to-pass transitions without changing capability coverage lifecycle or waiver fields.
+- path: implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-LOCAL-EVIDENCE-TOML-CONFIG-SFADEV-TX31.md
+  change_summary: Records exact methods dispositions results limitations and rollback boundary.
+- path: Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-008.yaml;Sys4AI/control_records/execution_transactions/TX-31-LOCAL-EVIDENCE-TOML-CONFIG.yaml
+  change_summary: Records accountable scope broader future intent and the one-family transaction boundary.
+- path: Sys4AI/control_records/program_state.yaml;Sys4AI/registries;Sys4AI/docs/generated
+  change_summary: Advances only to completed TX-31 and reconciles controlled indexes plus noncanonical readers.
+- path: Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX31-001.yaml;Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX31-001.yaml;implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX31-001.md
+  change_summary: Closes TX-31 at the next bounded evidence transaction gate.
+validation_evidence:
+  toml_config_requirements: PASS_9_OF_9
+  toml_config_tests: PASS_10_OF_10
+  full_product_tests: PASS_307_OF_307
+  trace_rows: 227
+  trace_verification: PASS_70_PLANNED_157
+  local_evidence_accepted: 50
+  remaining_local_verification_obligations: 24
+  frozen_tx23_ledger_sha256: 1e9e2b2a0a7bc4f589addd65b8d34642899a3f812e7ce35be6e62a2c0fcc6138
+  frozen_tx25_interpretation_sha256: 9ed89d6ff5872ee2fb2b740791c268d9048e97f31eae8ff7d3b4d2d8929d5f38
+  accepted_waivers: 0
+  g10_status: DEFERRED_NOT_ACCEPTED
+  repository_validation: PASS
+  memory_status: PASS_WITH_WARNINGS_1193_OBJECTS_536_WARNINGS_ZERO_AUTHORITY_INVERSIONS
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-31-LOCAL-EVIDENCE-TOML-CONFIG-20260712T130256Z
+authority_changes:
+  accepts_G_11_008_bounded_toml_family: true
+  records_broader_future_scope_authorization: true
+  advances_exact_verification_rows: 9
+  remaining_local_verifications: 24
+  changes_capability_or_coverage: false
+  changes_TX_23_or_TX_25_frozen_bytes: false
+  accepted_waiver: false
+  accepts_G_10_now: false
+  grants_production_or_operational_authority_now: false
+unresolved_issues:
+- Twenty-four other local verification obligations remain outside TX-31.
+- Cross-version Python 3.10 through 3.13 CI remains authorized but unexecuted.
+- External metric independent stakeholder domain and operational evidence remain unexecuted.
+- Memory retains known pending-hash warnings but no authority inversion.
+next_recommendation: Select the earliest dependency-ready remaining evidence family in a new bounded transaction; do not treat broad authorization as proof or G-10 acceptance.

@@ -1,0 +1,80 @@
+director_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-008
+schema_version: 0.1.0
+decision_status: completed
+created_at: '2026-07-12T13:02:56Z'
+completed_at: '2026-07-12T13:02:56Z'
+director_role: system_director
+human_authorization:
+  principal_name: Alex Omegapy
+  principal_role: repository_maintainer_and_product_owner
+  authority_basis: The accountable human explicitly authorized the quoted nine-row TOML family and authorized later external evidence cross-version CI G-10 production-readiness and operational-authority work subject to ordering and executed evidence.
+  approval_evidence: Human-issued Codex task instruction dated 2026-07-12 stating I authorize all in response to the exact quoted TOML and retained-gate boundary.
+  model_self_approval: false
+decision_context:
+  trigger: accountable_local_evidence_family_selection
+  transaction_id: TX-31-LOCAL-EVIDENCE-TOML-CONFIG
+  gate_id: G-11-EVIDENCE-SCOPE
+  latest_handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX30-001
+  governing_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+  prior_gate_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-007
+  reviewed_head_commit: dc923d03a2a852f1595eff994aa31f9c163ef447
+  memory_preflight_receipt_id: MEMPREFLIGHT-TX-31-LOCAL-EVIDENCE-TOML-CONFIG-20260712T130256Z
+  observed_evidence:
+  - TX-30 is complete and leaves exactly 33 locally executable verification obligations.
+  - SFA-CORE-TOML-001 through 007 SFA-P0-FR-034 and SFA-P0-FR-043 are the earliest remaining coherent family in frozen trace order.
+  - Broader authorization permits later bounded planning but does not itself create external proof satisfy G-10 or establish production or operational readiness.
+selected_route:
+  route_id: authorize_bounded_TX_31_toml_config_verification
+  route_name: Execute the nine-row TOML configuration and secret-policy family
+  rationale: The selected obligations share TOML assignment registry parser contract parse-only secret-policy and generated-index evidence; SFA-P0-FR-043 also reuses retained YAML secret validation.
+  immediate_effect: TX-31 may record exactly nine planned-to-pass verification transitions after all blocking evidence passes.
+rejected_routes:
+- route_id: execute_all_remaining_work_in_one_packet
+  reason: A bulk packet would erase local external CI final-acceptance production and operational evidence boundaries.
+- route_id: treat_authorization_as_external_evidence
+  reason: Permission to pursue evidence is not the evidence itself.
+- route_id: add_cross_version_python_CI_inside_TX31
+  reason: Cross-version CI is authorized for later bounded work but is not TOML-family evidence.
+- route_id: accept_G10_or_promote_to_production_now
+  reason: Local TOML evidence cannot satisfy retained external operational or final-acceptance prerequisites.
+authority_boundary:
+  human_authority_recorded: true
+  accepts_gate_G_11_local_family_route: true
+  authorizes_TX_31_toml_config_verification: true
+  authorized_local_obligations: 9
+  records_broader_future_scope_authorization: true
+  authorizes_remaining_local_verification_obligations_in_TX31: false
+  changes_410_plan_interpretations: false
+  accepts_any_waiver: false
+  accepts_gate_G_10_now: false
+  may_claim_production_readiness_now: false
+  may_grant_operational_authority_now: false
+  may_expand_permissions: false
+  may_rewrite_activated_control_history: false
+supersession:
+  supersedes_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-007
+  scope: Supersedes the prior prohibition on starting the TOML family and records broader future intent without merging evidence transactions or pre-accepting their results.
+  preserves:
+  - completed TX-24 through TX-30 evidence
+  - frozen TX-23 ledger and TX-25 interpretation
+  - canonical PRDs and evidence-dependent G-10 production operational target-runtime and permission boundaries
+rollback_and_review:
+  rollback_class: activating_bounded_verification_scope_decision
+  rollback_scope: Before publication revert the atomic G-11-008 and TX-31 packet; after publication supersede it only through a new accountable decision.
+  review_triggers:
+  - a tenth local verification obligation is proposed inside TX-31
+  - TOML writing secret-bearing examples or stale generated indexing is proposed
+  - cross-version CI external operational waiver or G-10 evidence is proposed inside this transaction
+  expiry: remains current for this completed packet and records no self-executing evidence claim
+evidence_references:
+- Sys4AI/registries/evidence_closure_plan_registry.csv
+- Sys4AI/registries/requirement_trace_registry.csv
+- Sys4AI/registries/config_source_registry.csv
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX30-001.yaml
+- Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-31-LOCAL-EVIDENCE-TOML-CONFIG-20260712T130256Z.yaml
+validators:
+- cd Sys4AI && make validate-toml-config-surface
+- cd Sys4AI && make validate-local-evidence-execution
+- cd Sys4AI && make validate-requirement-trace-migration
+- make validate
+- git diff --check

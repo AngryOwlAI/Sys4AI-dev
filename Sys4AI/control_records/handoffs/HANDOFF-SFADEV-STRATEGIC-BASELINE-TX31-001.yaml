@@ -1,0 +1,47 @@
+handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX31-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+producing_execution_transaction_id: TX-31-LOCAL-EVIDENCE-TOML-CONFIG
+next_execution_transaction_id: null
+status: human_gated
+producing_role: verification_engineer
+recommended_next_role: system_director
+summary: TX-31 verified exactly nine TOML configuration and secret-policy obligations and stops with 24 local verification obligations plus authorized but unexecuted external CI G-10 production and operational scope.
+source_ids:
+- SRC-DDR-STRATEGIC-BASELINE-G11-008
+- SRC-LOCAL-EVIDENCE-TOML-CONFIG-REPORT-TX31
+- SRC-VALIDATOR-TOML-CONFIG-SURFACE
+- SRC-TEST-TOML-CONFIG-SURFACE
+- SRC-REG-CONFIG-SOURCES
+- SRC-REG-VALIDATION-CONTRACTS
+- SRC-REG-FORMAT-PROFILES
+- SRC-TOML-IO
+- SRC-TX31-EXECUTION-TRANSACTION
+- SRC-COMPLETION-STRATEGIC-BASELINE-TX31
+- SRC-REG-REQ-TRACE
+- SRC-REG-EVIDENCE-CLOSURE-PLAN
+- SRC-REG-PLAN-SCOPE-INTERPRETATION
+closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX31-001
+current_state_evidence:
+- TX31-TOML-CONFIG-9-OF-9-PASS
+- TX31-LOCAL-EVIDENCE-50-ACTIVATED-PASS
+- TX31-TX23-LEDGER-FROZEN
+- TX31-TX25-INTERPRETATION-FROZEN
+- TX31-TRACE-PASS-70-PLANNED-157
+- TX31-ROOT-VALIDATE-PASS
+validation_evidence:
+  trace_rows: 227
+  trace_semantic_review: SUFFICIENT_227_NEEDS_EVIDENCE_0
+  trace_verification: PASS_70_PLANNED_157
+  local_evidence_accepted: 50
+  remaining_local_verification_obligations: 24
+  frozen_tx23_ledger_obligations: 484
+  accepted_plan_interpretations: 410
+  accepted_waivers: 0
+  g10_status: DEFERRED_NOT_ACCEPTED
+  next_authority_gate: BOUNDED_EVIDENCE_TRANSACTION_AND_FINAL_EVIDENCE_DEPENDENT_HUMAN_ACCEPTANCE
+stop_conditions:
+- Do not start another local external operational cross-version-CI or final-acceptance transaction without an exact transaction record and prerequisite check.
+- Do not modify the frozen TX-23 ledger TX-25 interpretation canonical PRDs or activated G-11 and TX-24 through TX-31 history.
+- Do not treat prior authorization as executed evidence accept G-10 or claim production operational stakeholder domain target-runtime or permission authority.
+- Reverify the TOML family if assignment registry parser contract secret policy parse-only API or generated index materially changes.

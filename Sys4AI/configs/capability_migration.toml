@@ -61,7 +61,7 @@ source_registry_path = "Sys4AI/registries/source_registry.csv"
 derivative_registry_path = "Sys4AI/registries/derivative_registry.csv"
 max_current_evidence_age_days = 30
 expected_needs_evidence = 0
-expected_planned_verification = 166
+expected_planned_verification = 157
 expected_operational_capability = 0
 
 [[classifications]]

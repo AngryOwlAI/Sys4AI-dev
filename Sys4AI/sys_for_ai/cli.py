@@ -33,6 +33,7 @@ from .evidence_closure import (
 from .csv_registry_surface import validate_csv_registry_surface
 from .format_governance_surface import validate_format_governance_surface
 from .markdown_source_surface import validate_markdown_source_surface
+from .toml_config_surface import validate_toml_config_surface
 from .host_profiles import validate_host_capability_profiles
 from .lifecycle_patterns import validate_lifecycle_and_patterns
 from .memory import bootstrap_registries
@@ -464,6 +465,30 @@ def build_parser() -> argparse.ArgumentParser:
         default="registries/registry_definition_registry.csv",
     )
 
+    validate_toml_surface = sub.add_parser(
+        "validate-toml-config-surface",
+        help="Verify the bounded TOML configuration and secret-policy family",
+    )
+    validate_toml_surface.add_argument("--pyproject", default="pyproject.toml")
+    validate_toml_surface.add_argument("--requirements", default="requirements.txt")
+    validate_toml_surface.add_argument("--format-profiles", default="registries/format_profile_registry.csv")
+    validate_toml_surface.add_argument("--config-sources", default="registries/config_source_registry.csv")
+    validate_toml_surface.add_argument(
+        "--validation-contracts",
+        default="registries/validation_contract_registry.csv",
+    )
+    validate_toml_surface.add_argument("--control-records", default="registries/control_record_registry.csv")
+    validate_toml_surface.add_argument("--format-policy", default="docs/format_profile_policy.md")
+    validate_toml_surface.add_argument(
+        "--wiki-policy",
+        default="docs/configuration_control_wiki_policy.md",
+    )
+    validate_toml_surface.add_argument(
+        "--generated-toml-page",
+        default="docs/generated/configuration_control/toml-configuration-sources.md",
+    )
+    validate_toml_surface.add_argument("--toml-io-source", default="sys_for_ai/toml_io.py")
+
     validate_plan_scope = sub.add_parser(
         "validate-plan-interpretation",
         help="Validate the controlled 410-row G-11 future-work disposition",
@@ -724,6 +749,22 @@ def main(argv: list[str] | None = None) -> int:
                 args.generated_root,
                 args.registry_dir,
                 args.registry_definitions,
+            )
+        )
+
+    if args.command == "validate-toml-config-surface":
+        return print_result(
+            validate_toml_config_surface(
+                args.pyproject,
+                args.requirements,
+                args.format_profiles,
+                args.config_sources,
+                args.validation_contracts,
+                args.control_records,
+                args.format_policy,
+                args.wiki_policy,
+                args.generated_toml_page,
+                args.toml_io_source,
             )
         )
 

@@ -6,7 +6,7 @@ system_context:
   target_system: Sys4AI
   self_hosting_mode: true
   reflection_depth: 1
-current_phase: strategic_baseline_migration_TX_30_markdown_source_verification_complete
+current_phase: strategic_baseline_migration_TX_31_toml_config_verification_complete
 lifecycle_stage: test
 active_task_id: null
 active_director_decision_id: null
@@ -62,12 +62,16 @@ current_state_evidence:
 - TX-30-LOCAL-EVIDENCE-MARKDOWN-SOURCE
 - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX30-001
 - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX30-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-008
+- TX-31-LOCAL-EVIDENCE-TOML-CONFIG
+- RECEIPT-SFADEV-STRATEGIC-BASELINE-TX31-001
+- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX31-001
 continuation_state: blocked
 cancellation_state: not_requested
 escalation_state: pending
-latest_closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX30-001
-latest_handoff_evidence_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX30-001
-latest_memory_preflight_receipt_id: MEMPREFLIGHT-TX-30-LOCAL-EVIDENCE-MARKDOWN-SOURCE-20260712T121134Z
+latest_closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX31-001
+latest_handoff_evidence_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX31-001
+latest_memory_preflight_receipt_id: MEMPREFLIGHT-TX-31-LOCAL-EVIDENCE-TOML-CONFIG-20260712T130256Z
 capability_status_summary:
   portable_execution_contract: implemented
   current_state_model: implemented
@@ -85,14 +89,15 @@ capability_status_summary:
   format_governance_verification: accepted_TX_28_10_of_10
   csv_registry_verification: accepted_TX_29_5_of_5
   markdown_source_verification: accepted_TX_30_4_of_4
+  toml_config_verification: accepted_TX_31_9_of_9
 state_status: human_gated
-blocked_reason: TX-30 verified the four-row Markdown source-authority family; any of the remaining 33 local external operational cross-version-CI or G-10 actions requires separate accountable authorization.
+blocked_reason: TX-31 verified the nine-row TOML family; broader scope is authorized in principle but each remaining claim requires a dependency-ready transaction and executed evidence before G-10 production or operational acceptance.
 human_gate_required: true
 allowed_next_actions:
 - run_memory_preflight
 - inspect_latest_handoff
-- seek_separate_authorization_for_remaining_33_local_verification_obligations
-- seek_accountable_external_evidence_scope
+- seek_separate_authorization_for_remaining_24_local_verification_obligations
+- execute_authorized_external_evidence_scope_only_through_a_bounded_transaction
 - seek_accountable_G_10_reacceptance_only_after_retained_evidence_closure
 - reverify_G_07_if_profile_evidence_becomes_stale_or_changes
 - supersede_G_10_defer_only_with_accountable_evidence
@@ -114,9 +119,9 @@ blocked_actions:
 - treat_TX_23_classification_as_executed_evidence
 - approve_evidence_waiver_from_TX_23_candidate_classification
 - supersede_the_plan_from_TX_23_candidate_classification
-- begin_another_local_evidence_family_without_separate_authorization
+- begin_another_local_evidence_family_without_separate_transaction_control
 - begin_bulk_evidence_status_mutation_without_family_evidence
-- begin_later_evidence_or_acceptance_work_without_separate_authorization
+- begin_later_evidence_or_acceptance_work_without_separate_transaction_control
 - treat_410_future_work_dispositions_as_trace_completion_or_waivers
 - mutate_trace_state_from_plan_interpretation
 - claim_G_10_after_TX_25_without_retained_evidence_closure
@@ -125,13 +130,15 @@ blocked_actions:
 - claim_G_10_after_TX_28_without_retained_evidence_closure
 - claim_G_10_after_TX_29_without_retained_evidence_closure
 - claim_G_10_after_TX_30_without_retained_evidence_closure
+- claim_G_10_after_TX_31_without_retained_evidence_closure
+- claim_production_readiness_or_operational_authority_without_executed_evidence
 - treat_TX_19_module_validation_as_G_07_G_09_G_10_or_production_acceptance
 - treat_TX_17_structural_or_holdout_validation_as_G_07_or_domain_acceptance
 - use_G_08_approval_to_expand_permissions
 - claim_broad_stakeholder_consensus_or_domain_truth_from_G_08
 - claim_production_readiness_or_operational_authority
 validation_status:
-  last_validated_at: '2026-07-12T12:11:34Z'
+  last_validated_at: '2026-07-12T13:02:56Z'
   validators:
   - make validate-program-state
   - make validate-capability-migration
@@ -153,6 +160,7 @@ validation_status:
   - make validate-format-governance-surface
   - make validate-csv-registry-surface
   - make validate-markdown-source-surface
+  - make validate-toml-config-surface
   - make validate-plan-interpretation
   - make validate-generated-derivatives
   - make validate

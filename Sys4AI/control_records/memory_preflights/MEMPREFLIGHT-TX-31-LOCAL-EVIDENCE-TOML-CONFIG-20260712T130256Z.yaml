@@ -1,0 +1,66 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-31-LOCAL-EVIDENCE-TOML-CONFIG-20260712T130256Z
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-31-LOCAL-EVIDENCE-TOML-CONFIG
+created_at: '2026-07-12T13:02:56Z'
+status: PASS_WITH_WARNINGS
+commands_run:
+- command: .venv/bin/python -m sys_for_ai.cli memory status --json
+  result: pass_with_1175_objects_527_known_pending_hash_warnings_and_zero_authority_inversions
+- command: .venv/bin/python -m sys_for_ai.cli memory search TX-30 TOML SFA-CORE-TOML --json
+  result: pass
+- command: inspect HANDOFF-SFADEV-STRATEGIC-BASELINE-TX30-001 and selected live registry rows
+  result: pass
+queries:
+- query: TX-30 TOML SFA-CORE-TOML
+  returned_object_ids:
+  - SRC-TRACE-SEMANTIC-REVIEW-TX12
+  - SRC-PRD-P1
+  - SRC-REG-CONFIG-SOURCES
+  - SRC-TOML-IO
+  - SRC-REG-REQ-TRACE
+- query: TOML configuration registry parser contracts and generated index
+  returned_object_ids:
+  - SRC-REG-FORMAT-PROFILES
+  - SRC-REG-CONFIG-SOURCES
+  - SRC-REG-VALIDATION-CONTRACTS
+  - SRC-TOML-IO
+canonical_sources_inspected:
+- path: PRDs/Sys4AI_phase-0_product_system_design_prd.md
+  registry: source_registry.csv
+  row_id: SRC-PRD-P0
+  inspected_sections:
+  - SFA-CORE-TOML-001 through SFA-CORE-TOML-007 SFA-P0-FR-034 and SFA-P0-FR-043
+- path: Sys4AI/registries/config_source_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-CONFIG-SOURCES
+  inspected_sections:
+  - registered TOML source path domain owner authority parser contract consumers environment secrets supersession and metadata
+- path: Sys4AI/registries/validation_contract_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-VALIDATION-CONTRACTS
+  inspected_sections:
+  - TOML target contracts and target globs
+- path: Sys4AI/sys_for_ai/toml_io.py
+  registry: source_registry.csv
+  row_id: SRC-TOML-IO
+  inspected_sections:
+  - size-limited tomllib with conditional tomli fallback and parse-only API
+registry_rows_inspected:
+- path: control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX30-001.yaml
+  registry: handoff_registry.csv
+  row_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX30-001
+  purpose: Confirm 33 remaining local obligations and the exact next TOML family.
+- path: registries/evidence_closure_plan_registry.csv
+  registry: evidence_closure_plan_registry.csv
+  row_id: CLOSE-SFA-CORE-TOML-001-VERIFICATION
+  purpose: Confirm the selected family remains planned in frozen history.
+- path: registries/requirement_trace_registry.csv
+  registry: requirement_trace_registry.csv
+  row_id: TRACE-SFA-CORE-TOML-001
+  purpose: Confirm implemented covered planned sufficient and unwaived entry state.
+stale_context_risks:
+- risk_id: MEMPREFLIGHT-RISK-001
+  status: observed_and_mitigated
+  notes: Memory warnings concern known pending source hashes; canonical PRDs live registries handoff parser implementation generated derivative and validators were inspected directly.
+usable_for_routing: true
