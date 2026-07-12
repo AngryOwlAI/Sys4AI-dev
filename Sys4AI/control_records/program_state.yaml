@@ -6,7 +6,7 @@ system_context:
   target_system: Sys4AI
   self_hosting_mode: true
   reflection_depth: 1
-current_phase: strategic_baseline_migration_TX_36_quantitative_measurement_accepted
+current_phase: strategic_baseline_migration_TX_37_independent_evaluation_protocol_ready
 lifecycle_stage: test
 active_task_id: null
 active_director_decision_id: null
@@ -89,12 +89,18 @@ current_state_evidence:
 - TX36-TX35-MEASUREMENT-ACCEPTED-4-OF-4
 - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX36-001
 - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-014
+- TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL
+- TX37-INDEPENDENT-EVALUATION-PROTOCOL-READY
+- TX37-INDEPENDENT-EVALUATION-NOT-EXECUTED
+- RECEIPT-SFADEV-STRATEGIC-BASELINE-TX37-001
+- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX37-001
 continuation_state: blocked
 cancellation_state: not_requested
 escalation_state: pending
-latest_closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX36-001
-latest_handoff_evidence_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001
-latest_memory_preflight_receipt_id: MEMPREFLIGHT-TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE-20260712T161021Z
+latest_closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX37-001
+latest_handoff_evidence_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX37-001
+latest_memory_preflight_receipt_id: MEMPREFLIGHT-TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL-20260712T163604Z
 capability_status_summary:
   portable_execution_contract: implemented
   current_state_model: implemented
@@ -114,15 +120,17 @@ capability_status_summary:
   markdown_source_verification: accepted_TX_30_4_of_4
   toml_config_verification: accepted_TX_31_9_of_9
   jsonschema_contract_verification: accepted_TX_32_10_of_10
+  independent_evaluation_protocol: ready_TX_37_external_execution_not_run
 state_status: human_gated
-blocked_reason: TX-36 records accountable acceptance of the exact four-metric TX-35 measurement baseline; selection or execution of any later evidence family and G-10 reconsideration remain separately gated.
+blocked_reason: TX-37 establishes the independent confidential rotated evaluation protocol, but evaluator selection confidential suite creation artifact transfer external execution result acceptance and G-10 reconsideration remain separately gated.
 human_gate_required: true
 allowed_next_actions:
 - run_memory_preflight
 - inspect_latest_handoff
 - review_accepted_TX_35_measurement_and_TX_36_acceptance_evidence
-- select_dependency_ready_retained_external_evidence_transaction
-- execute_authorized_external_evidence_scope_only_through_a_bounded_transaction
+- review_TX_37_protocol_and_external_prerequisites
+- nominate_independent_evaluator_and_supply_conflict_attestation
+- authorize_minimal_artifact_transfer_and_external_execution_only_after_named_evaluator_acceptance
 - seek_accountable_G_10_reacceptance_only_after_retained_evidence_closure
 - reverify_G_07_if_profile_evidence_becomes_stale_or_changes
 - supersede_G_10_defer_only_with_accountable_evidence
@@ -162,6 +170,11 @@ blocked_actions:
 - treat_TX_35_candidate_metrics_as_accepted_without_accountable_human_evidence
 - mutate_accepted_TX_35_measurement_without_accountable_supersession_and_remeasurement
 - claim_user_benefit_stakeholder_domain_production_operational_permission_or_G_10_evidence_from_TX_35_repository_metrics
+- treat_TX_37_protocol_as_executed_independent_evidence
+- create_or_store_confidential_holdouts_in_repository
+- transmit_artifacts_without_separate_permission_envelope
+- accept_external_evaluation_without_complete_result_receipt
+- claim_G_10_after_TX_37_without_executed_independent_and_remaining_retained_evidence
 - claim_production_readiness_or_operational_authority_without_executed_evidence
 - treat_TX_19_module_validation_as_G_07_G_09_G_10_or_production_acceptance
 - treat_TX_17_structural_or_holdout_validation_as_G_07_or_domain_acceptance
@@ -169,7 +182,7 @@ blocked_actions:
 - claim_broad_stakeholder_consensus_or_domain_truth_from_G_08
 - claim_production_readiness_or_operational_authority
 validation_status:
-  last_validated_at: '2026-07-12T16:21:57Z'
+  last_validated_at: '2026-07-12T16:52:49Z'
   validators:
   - make validate-program-state
   - make validate-capability-migration
@@ -196,6 +209,7 @@ validation_status:
   - make validate-generated-reader-surface
   - make validate-cross-version-ci
   - make validate-strategic-metrics
+  - make validate-independent-evaluation
   - make validate-plan-interpretation
   - make validate-generated-derivatives
   - make validate

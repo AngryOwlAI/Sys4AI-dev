@@ -177,6 +177,10 @@ class TraceSemanticTests(unittest.TestCase):
             state["current_phase"] = "strategic_baseline_migration_TX_33_generated_reader_verification_complete"
             state["latest_closeout_evidence_id"] = "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX33-001"
             state["latest_handoff_evidence_id"] = "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001"
+            if "select_dependency_ready_retained_external_evidence_transaction" not in state["allowed_next_actions"]:
+                state["allowed_next_actions"].append(
+                    "select_dependency_ready_retained_external_evidence_transaction"
+                )
             state["allowed_next_actions"].remove(
                 "select_dependency_ready_retained_external_evidence_transaction"
             )
@@ -217,15 +221,15 @@ class TraceSemanticTests(unittest.TestCase):
         self.assertFalse(result.ok)
         self.assertTrue(any("post-TX-35 state omits blocked action" in item for item in result.messages))
 
-    def test_post_tx36_state_requires_accepted_measurement_supersession_boundary(self) -> None:
+    def test_post_tx37_state_requires_protocol_not_executed_boundary(self) -> None:
         def mutate_state(state):
             state["blocked_actions"].remove(
-                "mutate_accepted_TX_35_measurement_without_accountable_supersession_and_remeasurement"
+                "treat_TX_37_protocol_as_executed_independent_evidence"
             )
 
         result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
         self.assertFalse(result.ok)
-        self.assertTrue(any("post-TX-36 state omits blocked action" in item for item in result.messages))
+        self.assertTrue(any("post-TX-37 state omits blocked action" in item for item in result.messages))
 
     @staticmethod
     def _as_post_tx20(state):

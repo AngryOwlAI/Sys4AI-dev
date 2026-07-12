@@ -1,0 +1,80 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL-20260712T163604Z
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL
+created_at: '2026-07-12T16:36:04Z'
+status: PASS_WITH_WARNINGS
+commands_run:
+- command: python -m sys_for_ai.cli memory status --json
+  result: pass
+- command: python -m sys_for_ai.cli memory lookup TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL
+    --json
+  result: warn
+- command: python -m sys_for_ai.cli memory lookup HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001
+    --json
+  result: pass
+- command: python -m sys_for_ai.cli memory search 'TX-36 retained external evidence
+    independent confidential rotated evaluation' --limit 10 --json
+  result: pass
+- command: python -m sys_for_ai.cli memory search 'meta-agent self-change holdout
+    independent evaluator confidentiality rotation' --limit 10 --json
+  result: pass
+queries:
+- query: TX-36 retained external evidence independent confidential rotated evaluation
+  returned_object_ids:
+  - SRC-REG-LOCAL-EVIDENCE-EXECUTION
+  - SRC-SAFETY-EVALUATION-PACKET-TX17
+  - SRC-PROGRAM-STATE
+  - ctrl_program_state
+  - SRC-TX24-EXECUTION-TRANSACTION
+  - SRC-TX36-EXECUTION-TRANSACTION
+  - SRC-VALIDATOR-EVIDENCE-CLOSURE
+  - ctrl_strategic_baseline_tx24_execution_transaction
+  - ctrl_strategic_baseline_tx36_execution_transaction
+  - SRC-HOST-PROFILE-CODEX-APP-REFERENCE
+- query: meta-agent self-change holdout independent evaluator confidentiality rotation
+  returned_object_ids:
+  - SRC-SAFETY-EVALUATION-PACKET-TX17
+  - SRC-VALIDATOR-SAFETY-EVALUATION
+  - SRC-HOLDOUT-SUITE-SELF-CHANGE-TX17
+  - SRC-TEST-SAFETY-EVALUATION
+  - SRC-SCHEMA-SELF-CHANGE-HOLDOUT-SUITE
+  - contract_self_change_holdout_suite
+  - SRC-TX17-EXECUTION-TRANSACTION
+  - ctrl_strategic_baseline_tx17_execution_transaction
+  - SRC-PRD-MODULE-SECURITY-SAFETY-ASSURANCE
+  - SRC-PRD-P0
+canonical_sources_inspected:
+- path: Sys4AI/registries/local_evidence_execution_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-LOCAL-EVIDENCE-EXECUTION
+  inspected_sections:
+  - registered source metadata
+- path: Sys4AI/assurance/meta_agent_self_change_safety_evaluation.yaml
+  registry: source_registry.csv
+  row_id: SRC-SAFETY-EVALUATION-PACKET-TX17
+  inspected_sections:
+  - registered source metadata
+- path: Sys4AI/control_records/program_state.yaml
+  registry: source_registry.csv
+  row_id: SRC-PROGRAM-STATE
+  inspected_sections:
+  - registered source metadata
+registry_rows_inspected:
+- path: control_records/program_state.yaml
+  registry: control_record_registry.csv
+  row_id: ctrl_program_state
+  purpose: Confirm memory hit registry evidence.
+- path: Sys4AI/control_records/execution_transactions/TX-24-LOCAL-EVIDENCE-SEMANTIC-REVIEW.yaml
+  registry: source_registry.csv
+  row_id: SRC-TX24-EXECUTION-TRANSACTION
+  purpose: Confirm memory hit registry evidence.
+- path: Sys4AI/control_records/execution_transactions/TX-36-QUANTITATIVE-STRATEGIC-EVIDENCE-ACCEPTANCE.yaml
+  registry: source_registry.csv
+  row_id: SRC-TX36-EXECUTION-TRANSACTION
+  purpose: Confirm memory hit registry evidence.
+stale_context_risks:
+- risk_id: MEMPREFLIGHT-RISK-001
+  status: not_observed
+  notes: No generated derivative was used as source authority.
+usable_for_routing: true

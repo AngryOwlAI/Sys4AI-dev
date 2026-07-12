@@ -966,6 +966,61 @@ def _validate_program_state_alignment(path: Path, state: dict[str, Any]) -> list
             messages.append(f"{path}: post-TX-36 state must stop at the next accountable evidence-scope gate")
         if state.get("state_status") != "human_gated" or state.get("human_gate_required") is not True:
             messages.append(f"{path}: post-TX-36 state must remain human gated")
+    elif phase == "strategic_baseline_migration_TX_37_independent_evaluation_protocol_ready":
+        required_summary = {
+            "strategic_approval": "accepted_G_08",
+            "derivative_regeneration": "complete_G_09",
+            "host_verification": "accepted_G_07_mixed_profile",
+            "semantic_review_evidence": "accepted_TX_24_7_of_7",
+            "plan_scope_interpretation": "accepted_TX_25_410_future_work",
+            "python_package_verification": "accepted_TX_26_4_of_4",
+            "yaml_control_verification": "accepted_TX_27_11_of_11",
+            "format_governance_verification": "accepted_TX_28_10_of_10",
+            "csv_registry_verification": "accepted_TX_29_5_of_5",
+            "markdown_source_verification": "accepted_TX_30_4_of_4",
+            "toml_config_verification": "accepted_TX_31_9_of_9",
+            "jsonschema_contract_verification": "accepted_TX_32_10_of_10",
+            "independent_evaluation_protocol": "ready_TX_37_external_execution_not_run",
+        }
+        for field, expected in required_summary.items():
+            if summary.get(field) != expected:
+                messages.append(f"{path}: post-TX-37 {field} must be {expected}")
+        for required_route in (
+            "review_TX_37_protocol_and_external_prerequisites",
+            "nominate_independent_evaluator_and_supply_conflict_attestation",
+            "authorize_minimal_artifact_transfer_and_external_execution_only_after_named_evaluator_acceptance",
+            "seek_accountable_G_10_reacceptance_only_after_retained_evidence_closure",
+        ):
+            if required_route not in allowed:
+                messages.append(f"{path}: post-TX-37 state omits controlled next route {required_route}")
+        for required_block in (
+            "mutate_accepted_TX_35_measurement_without_accountable_supersession_and_remeasurement",
+            "treat_TX_37_protocol_as_executed_independent_evidence",
+            "create_or_store_confidential_holdouts_in_repository",
+            "transmit_artifacts_without_separate_permission_envelope",
+            "accept_external_evaluation_without_complete_result_receipt",
+            "claim_G_10_after_TX_37_without_executed_independent_and_remaining_retained_evidence",
+            "claim_production_readiness_or_operational_authority_without_executed_evidence",
+        ):
+            if required_block not in blocked:
+                messages.append(f"{path}: post-TX-37 state omits blocked action {required_block}")
+        if state.get("latest_closeout_evidence_id") != "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX37-001":
+            messages.append(f"{path}: post-TX-37 state is not aligned to the TX-37 completion")
+        if state.get("latest_handoff_evidence_id") != "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX37-001":
+            messages.append(f"{path}: post-TX-37 state is not aligned to the TX-37 handoff")
+        for evidence_id in (
+            "DDR-SFADEV-STRATEGIC-BASELINE-G11-014",
+            "TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL",
+            "TX37-INDEPENDENT-EVALUATION-PROTOCOL-READY",
+            "TX37-INDEPENDENT-EVALUATION-NOT-EXECUTED",
+            "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX37-001",
+        ):
+            if evidence_id not in set(state.get("current_state_evidence", [])):
+                messages.append(f"{path}: post-TX-37 state omits {evidence_id}")
+        if state.get("continuation_state") != "blocked" or state.get("escalation_state") != "pending":
+            messages.append(f"{path}: post-TX-37 state must stop at the named external-evaluator gate")
+        if state.get("state_status") != "human_gated" or state.get("human_gate_required") is not True:
+            messages.append(f"{path}: post-TX-37 state must remain human gated")
     else:
         messages.append(f"{path}: unsupported strategic-baseline program phase {phase!r}")
     return messages

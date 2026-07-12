@@ -84,7 +84,10 @@ class SafetyEvaluationTests(unittest.TestCase):
         makefile = (PRODUCT_ROOT / "Makefile").read_text(encoding="utf-8")
 
         self.assertIn("validate-safety-evaluation:", makefile)
-        self.assertIn("validate-lifecycle-and-patterns validate-safety-evaluation validate-prd-semantics", makefile)
+        self.assertIn(
+            "validate-lifecycle-and-patterns validate-safety-evaluation validate-independent-evaluation validate-prd-semantics",
+            makefile,
+        )
 
     def test_role_bindings_make_evaluation_and_assurance_duties_explicit(self) -> None:
         roles = _rows(PRODUCT_ROOT / "registries/role_registry.csv", "role_id")

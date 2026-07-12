@@ -1,0 +1,80 @@
+director_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-014
+schema_version: 0.1.0
+decision_status: completed
+created_at: '2026-07-12T16:36:04Z'
+completed_at: '2026-07-12T16:36:04Z'
+director_role: system_director
+human_authorization:
+  principal_name: Alex Omegapy
+  principal_role: repository_maintainer_and_product_owner
+  authority_basis: The accountable human directly authorized the next logical step after receiving the TX-36 closeout and its retained-evidence boundary.
+  approval_evidence: 'Human-issued Codex task instruction dated 2026-07-12: I authorize the next logical step.'
+  model_self_approval: false
+decision_context:
+  trigger: accountable_post_TX36_next_logical_step_authorization
+  transaction_id: TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL
+  gate_id: G-11-EVIDENCE-SCOPE
+  latest_handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001
+  governing_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+  prior_gate_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-013
+  reviewed_head_commit: 3e9d32093499d6518df5466be93cbd5350987184
+  memory_preflight_receipt_id: MEMPREFLIGHT-TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL-20260712T163604Z
+  observed_evidence:
+  - TX-36 accepted the quantitative family and named independent confidential rotated evaluation as the next retained family.
+  - The TX-17 reference holdouts are repository-visible integrity-controlled regression fixtures and explicitly do not provide confidentiality or external independence.
+  - No named independent evaluator confidential external suite transfer permission or external result receipt is currently available.
+  - The smallest dependency-ready action is therefore to bind a fail-closed protocol and exact external prerequisites without claiming execution.
+selected_route:
+  route_id: authorize_bounded_TX_37_independent_evaluation_protocol_readiness
+  route_name: Establish the independent confidential rotated evaluation contract and stop at the external evaluator gate
+  rationale: This route advances the earliest retained family to a reproducible handoff while preserving the factual absence of an evaluator confidential suite transfer authority and executed result.
+  immediate_effect: TX-37 may add a schema-bound protocol validator tests and controlled readiness evidence; no external execution data egress evaluator selection result acceptance or G-10 reconsideration is authorized.
+rejected_routes:
+- route_id: treat_TX17_reference_holdouts_as_independent_confidential_evidence
+  reason: The fixtures are visible to the implementation actor and explicitly integrity-controlled rather than confidential.
+- route_id: self_generate_and_self_score_external_holdouts
+  reason: The runtime and accountable repository principal are prohibited evaluator identities for this independent evidence family.
+- route_id: send_repository_data_or_create_external_infrastructure_now
+  reason: TX-37 grants no data egress secrets external side effects private repository creation or evaluator procurement authority.
+- route_id: claim_independent_evaluation_or_G10_completion_from_protocol_readiness
+  reason: A protocol is not an evaluation result and cannot increase absent evidence strength.
+authority_boundary:
+  human_authority_recorded: true
+  selects_independent_confidential_rotated_family: true
+  authorizes_TX_37_protocol_readiness_packet: true
+  authorizes_external_evaluation_execution_now: false
+  authorizes_data_egress_now: false
+  establishes_evaluator_independence_now: false
+  establishes_confidential_or_rotated_holdout_evidence_now: false
+  accepts_external_evaluation_results_now: false
+  authorizes_stakeholder_domain_production_operational_or_G10_evidence_now: false
+  may_expand_permissions: false
+  may_rewrite_activated_control_history: false
+supersession:
+  supersedes_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-013
+  scope: Supersedes only the requirement for a new accountable scope decision before beginning the next retained evidence family.
+  preserves:
+  - accepted TX-35 measurement and completed TX-36 acceptance history
+  - frozen TX-23 ledger and TX-25 interpretation
+  - canonical PRDs requirement trace states waivers and prior activated history
+  - independent evaluator execution stakeholder domain production operational permission and G-10 gates
+rollback_and_review:
+  rollback_class: additive_protocol_readiness_decision
+  rollback_scope: Before publication revert the TX-37 readiness packet together; after publication preserve history and supersede it additively.
+  review_triggers:
+  - an evaluator is proposed or the independence standard changes
+  - confidential holdout transfer execution or result acceptance is proposed
+  - protocol readiness is presented as executed independent evidence
+  expiry: scope closes when the readiness packet and external-gated handoff are complete
+evidence_references:
+- implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+- Sys4AI/assurance/meta_agent_self_change_safety_evaluation.yaml
+- Sys4AI/assurance/holdouts/meta_agent_self_change_holdouts.yaml
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001.yaml
+- Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL-20260712T163604Z.yaml
+validators:
+- cd Sys4AI && make validate-independent-evaluation
+- cd Sys4AI && .venv/bin/python -m unittest tests.test_independent_evaluation
+- cd Sys4AI && make validate-director-decisions validate-director-decision-registry validate-program-state
+- make validate
+- git diff --check

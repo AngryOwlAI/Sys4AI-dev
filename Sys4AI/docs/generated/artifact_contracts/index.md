@@ -18,6 +18,7 @@ page_metadata:
     - contract_discovery_record_registry_row
     - contract_execution_transaction
     - contract_handoff_v0_2
+    - contract_independent_evaluation_protocol
     - contract_memory_preflight_receipt
     - contract_role_registry_row
     - contract_self_change_holdout_suite
@@ -82,6 +83,7 @@ Validation contracts prove structural conformance only. They do not prove semant
 | artifact_self_change_safety_evaluation_packet | SelfChangeSafetyEvaluationPacket | security_safety_privacy_compliance_reviewer;verification_engineer;runtime_maintenance_planner;svc_documentation_surface_architect | system_director;requirements_verifier;software_engineer | controlled | contract_self_change_safety_evaluation | none | Consequential baseline acceptance requires TX-18 accountable human review and cannot grant production or operational authority |
 | artifact_self_change_holdout_suite | SelfChangeHoldoutSuite | verification_engineer | security_safety_privacy_compliance_reviewer;system_director | controlled | contract_self_change_holdout_suite | none | Threshold or scenario mutation requires accountable approval independent review updated baseline evidence and full regression |
 | artifact_strategic_vision_measurement | StrategicVisionMeasurement | verification_engineer | system_director;requirements_verifier;context_memory_knowledge_architect | controlled | contract_strategic_vision_measurement | none | Accepted by DDR-SFADEV-STRATEGIC-BASELINE-G11-013; any material change requires accountable supersession impact analysis and remeasurement |
+| artifact_independent_evaluation_protocol | IndependentEvaluationProtocol | verification_engineer;system_director | security_safety_privacy_compliance_reviewer;system_director;verification_engineer | controlled | contract_independent_evaluation_protocol | none | External execution requires a new accountable transaction named evaluator attestation confidential suite commitment minimal transfer permission and complete result receipt |
 
 ## Allowed Promotion Path
 

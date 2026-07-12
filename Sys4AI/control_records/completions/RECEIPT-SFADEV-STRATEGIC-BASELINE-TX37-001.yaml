@@ -1,0 +1,59 @@
+completion_receipt_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX37-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL
+role: verification_engineer
+result: PASS_WITH_WARNINGS
+summary: TX-37 establishes a controlled independent confidential rotated evaluation protocol and exact external prerequisites; no independent evaluation has been executed.
+changed_artifacts:
+- path: Sys4AI/assurance/independent_evaluation_protocol_tx37.yaml;Sys4AI/schemas/contracts/independent_evaluation_protocol.schema.json
+  change_summary: Binds independence confidentiality rotation rubric result receipt and permission requirements to the accepted TX-36 baseline.
+- path: Sys4AI/sys_for_ai/independent_evaluation.py;Sys4AI/tests/test_independent_evaluation.py
+  change_summary: Adds fail-closed validation and negative probes for self-evaluation disclosure relaxed thresholds permission and artifact drift.
+- path: Sys4AI/sys_for_ai/cli.py;Sys4AI/Makefile
+  change_summary: Adds focused and aggregate protocol validation.
+- path: Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-014.yaml;Sys4AI/control_records/execution_transactions/TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL.yaml
+  change_summary: Records accountable route selection and exact transaction limits.
+- path: Sys4AI/control_records/program_state.yaml;Sys4AI/sys_for_ai/trace_validation.py;Sys4AI/sys_for_ai/prd_semantics.py
+  change_summary: Advances only to protocol readiness and preserves all evidence-dependent gates.
+- path: Sys4AI/registries;Sys4AI/docs/generated
+  change_summary: Registers controlled sources contracts control records relationships and deterministic noncanonical readers.
+- path: Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL-20260712T163604Z.yaml
+  change_summary: Preserves source-first routing evidence and known pending-hash warnings.
+- path: Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX37-001.yaml;Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX37-001.yaml
+  change_summary: Records readiness completion and stops at the named external-evaluator gate.
+- path: implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-INDEPENDENT-EVALUATION-PROTOCOL-SFADEV-TX37.md;implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX37-001.md
+  change_summary: Provides human-readable evidence limitations and next prerequisite.
+validation_evidence:
+  focused_protocol_tests: PASS_7_OF_7
+  focused_protocol_and_boundary_tests: PASS_70_OF_70
+  full_product_tests: PASS_352_OF_352
+  repository_validation: PASS_PRODUCT_AND_ROOT
+  generated_derivatives: CURRENT
+  diff_integrity: PASS
+  frozen_TX23_hash: 1e9e2b2a0a7bc4f589addd65b8d34642899a3f812e7ce35be6e62a2c0fcc6138
+  frozen_TX25_hash: 9ed89d6ff5872ee2fb2b740791c268d9048e97f31eae8ff7d3b4d2d8929d5f38
+  requirement_trace_hash: 9cf48068581f8c8764dc708f1c33d95039e1451df3567a2eff0f418b7dfcc5fa
+  memory_status: PASS_WITH_WARNINGS_1305_OBJECTS_592_WARNINGS_ZERO_AUTHORITY_INVERSIONS
+  protocol_contract: PASS_READY_WITH_4_BLOCKED_EXTERNAL_PREREQUISITES
+  independent_evaluation_execution: NOT_EXECUTED
+  confidential_external_holdout: NOT_AVAILABLE
+  named_independent_evaluator: NOT_SELECTED
+  data_egress_or_external_side_effects: NOT_AUTHORIZED
+  trace_verification: PASS_94_PLANNED_133_UNCHANGED
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL-20260712T163604Z
+authority_changes:
+  selects_independent_confidential_rotated_family: true
+  establishes_protocol_readiness: true
+  executes_independent_evaluation: false
+  establishes_confidential_or_rotated_result_evidence: false
+  authorizes_data_egress_or_external_execution: false
+  changes_accepted_TX35_measurement: false
+  changes_trace_state_TX23_TX25_or_canonical_PRDs: false
+  accepts_G_10_or_grants_production_operational_stakeholder_domain_or_permission_authority: false
+unresolved_issues:
+- A named independent evaluator and conflict-of-interest attestation are absent.
+- A confidential externally controlled rotated holdout suite and pre-execution commitment are absent.
+- Minimal artifact transfer and external execution require a separate permission envelope and accountable authorization.
+- No external result receipt exists; independent evaluation remains unexecuted.
+next_recommendation: Obtain a named independent evaluator proposal and conflict-of-interest attestation for accountable review; do not transmit artifacts or create holdouts from this handoff alone.

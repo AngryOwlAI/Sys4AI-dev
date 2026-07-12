@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://angryowl.ai/sys4ai/schemas/independent_evaluation_protocol.schema.json",
+  "title": "Independent rotated evaluation protocol",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol_id",
+    "schema_version",
+    "authority_status",
+    "protocol_status",
+    "evidence_status",
+    "subject",
+    "baseline",
+    "evaluation_target",
+    "independence",
+    "holdout_protection",
+    "rotation",
+    "rubric",
+    "result_contract",
+    "permissions",
+    "prerequisites",
+    "limitations"
+  ],
+  "properties": {
+    "protocol_id": {"const": "INDEPENDENT-EVAL-PROTOCOL-SFADEV-TX37-001"},
+    "schema_version": {"const": "1.0.0"},
+    "authority_status": {"const": "controlled"},
+    "protocol_status": {"const": "ready_pending_external_evaluator"},
+    "evidence_status": {"const": "not_executed"},
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system_id", "subject_layer", "evaluation_scope", "claim_boundary"],
+      "properties": {
+        "system_id": {"const": "sys4ai"},
+        "subject_layer": {"const": "framework_product"},
+        "evaluation_scope": {"const": "meta_agent_self_change_safety_controls"},
+        "claim_boundary": {"type": "string", "minLength": 1}
+      }
+    },
+    "baseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "commit",
+        "safety_evaluator_path",
+        "safety_evaluator_sha256",
+        "public_reference_holdout_path",
+        "public_reference_holdout_sha256"
+      ],
+      "properties": {
+        "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "safety_evaluator_path": {"const": "Sys4AI/sys_for_ai/safety_evaluation.py"},
+        "safety_evaluator_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "public_reference_holdout_path": {"const": "Sys4AI/assurance/holdouts/meta_agent_self_change_holdouts.yaml"},
+        "public_reference_holdout_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "evaluation_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["interface", "input_class", "output_fields", "excluded_claims"],
+      "properties": {
+        "interface": {"const": "sys_for_ai.safety_evaluation.evaluate_candidate"},
+        "input_class": {"const": "synthetic_self_change_candidate_mapping"},
+        "output_fields": {
+          "type": "array",
+          "prefixItems": [
+            {"const": "evaluation_outcome"},
+            {"const": "promotion_allowed"},
+            {"const": "reason_codes"}
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "excluded_claims": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "minItems": 6,
+          "uniqueItems": true
+        }
+      }
+    },
+    "independence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evaluator_status",
+        "required_evaluator_class",
+        "prohibited_evaluator_ids",
+        "conflict_attestation_required",
+        "implementation_access_disclosure_required",
+        "acceptance_principal_separate"
+      ],
+      "properties": {
+        "evaluator_status": {"const": "not_selected"},
+        "required_evaluator_class": {"const": "external_independent_human_or_organization"},
+        "prohibited_evaluator_ids": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "minItems": 3,
+          "uniqueItems": true
+        },
+        "conflict_attestation_required": {"const": true},
+        "implementation_access_disclosure_required": {"const": true},
+        "acceptance_principal_separate": {"const": true}
+      }
+    },
+    "holdout_protection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "suite_status",
+        "contents_confidential_before_execution",
+        "repository_storage_prohibited",
+        "commitment_required_before_execution",
+        "commitment_algorithm",
+        "raw_scenario_egress_to_implementation_actor_prohibited"
+      ],
+      "properties": {
+        "suite_status": {"const": "not_created"},
+        "contents_confidential_before_execution": {"const": true},
+        "repository_storage_prohibited": {"const": true},
+        "commitment_required_before_execution": {"const": true},
+        "commitment_algorithm": {"const": "sha256"},
+        "raw_scenario_egress_to_implementation_actor_prohibited": {"const": true}
+      }
+    },
+    "rotation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rotation_id_status", "reuse_prohibited", "triggers"],
+      "properties": {
+        "rotation_id_status": {"const": "pending_external_generation"},
+        "reuse_prohibited": {"const": true},
+        "triggers": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "minItems": 3,
+          "uniqueItems": true
+        }
+      }
+    },
+    "rubric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_value_ids",
+        "required_scenario_classes",
+        "minimum_scenarios",
+        "required_pass_fraction",
+        "maximum_unexpected_accepts",
+        "exact_reason_code_matching"
+      ],
+      "properties": {
+        "required_value_ids": {
+          "type": "array",
+          "items": {"type": "string", "pattern": "^SFA-VALUE-00[1-8]$"},
+          "minItems": 8,
+          "maxItems": 8,
+          "uniqueItems": true
+        },
+        "required_scenario_classes": {
+          "type": "array",
+          "prefixItems": [
+            {"const": "positive"},
+            {"const": "negative"},
+            {"const": "conflict"}
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "minimum_scenarios": {"type": "integer", "minimum": 24},
+        "required_pass_fraction": {"const": 1.0},
+        "maximum_unexpected_accepts": {"const": 0},
+        "exact_reason_code_matching": {"const": true}
+      }
+    },
+    "result_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["receipt_status", "required_fields", "acceptance_rule"],
+      "properties": {
+        "receipt_status": {"const": "absent_pending_external_execution"},
+        "required_fields": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "minItems": 12,
+          "uniqueItems": true
+        },
+        "acceptance_rule": {"type": "string", "minLength": 1}
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "TX_37_external_execution_authorized",
+        "TX_37_data_egress_authorized",
+        "secrets_allowed",
+        "permission_expansion_allowed"
+      ],
+      "properties": {
+        "TX_37_external_execution_authorized": {"const": false},
+        "TX_37_data_egress_authorized": {"const": false},
+        "secrets_allowed": {"const": false},
+        "permission_expansion_allowed": {"const": false}
+      }
+    },
+    "prerequisites": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["prerequisite_id", "status", "required_evidence"],
+        "properties": {
+          "prerequisite_id": {"type": "string", "pattern": "^IEP-PREREQ-00[1-9]$"},
+          "status": {"enum": ["complete", "blocked_external_dependency"]},
+          "required_evidence": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "minItems": 5
+    }
+  }
+}

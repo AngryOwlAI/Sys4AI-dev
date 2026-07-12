@@ -38,6 +38,7 @@ from .jsonschema_contract_surface import validate_jsonschema_contract_surface
 from .markdown_source_surface import validate_markdown_source_surface
 from .toml_config_surface import validate_toml_config_surface
 from .host_profiles import validate_host_capability_profiles
+from .independent_evaluation import validate_independent_evaluation_protocol
 from .lifecycle_patterns import validate_lifecycle_and_patterns
 from .memory import bootstrap_registries
 from .memory import hash_path as memory_hash_path
@@ -448,6 +449,19 @@ def build_parser() -> argparse.ArgumentParser:
         default="schemas/contracts/strategic_vision_measurement.schema.json",
     )
 
+    validate_independent_evaluation = sub.add_parser(
+        "validate-independent-evaluation",
+        help="Validate the independent rotated evaluation protocol readiness boundary",
+    )
+    validate_independent_evaluation.add_argument(
+        "--protocol",
+        default="assurance/independent_evaluation_protocol_tx37.yaml",
+    )
+    validate_independent_evaluation.add_argument(
+        "--schema",
+        default="schemas/contracts/independent_evaluation_protocol.schema.json",
+    )
+
     validate_yaml_control = sub.add_parser(
         "validate-yaml-control-surface",
         help="Verify the bounded YAML control/state and safe-parsing family",
@@ -800,6 +814,11 @@ def main(argv: list[str] | None = None) -> int:
             validate_strategic_vision_measurement(args.measurement, args.schema)
         )
 
+    if args.command == "validate-independent-evaluation":
+        return print_result(
+            validate_independent_evaluation_protocol(args.protocol, args.schema)
+        )
+
     if args.command == "validate-yaml-control-surface":
         return print_result(
             validate_yaml_control_surface(
@@ -949,6 +968,7 @@ def main(argv: list[str] | None = None) -> int:
         result.extend(validate_python_package_surface())
         result.extend(validate_cross_version_ci())
         result.extend(validate_strategic_vision_measurement())
+        result.extend(validate_independent_evaluation_protocol())
         result.extend(validate_yaml_control_surface())
         result.extend(validate_format_governance_surface())
         result.extend(validate_prd_modules(args.prd_modules))

@@ -1,0 +1,212 @@
+execution_transaction_id: TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL
+contract_version: 1.0.0
+objective: Establish a fail-closed protocol and external handoff for independent confidential rotated evaluation without claiming or performing the evaluation.
+source_requirement_ids:
+- SFA-CORE-VALUES-005
+- SFA-CORE-VALUES-007
+- SFA-P2-ADD-SAFETY-001
+source_decision_ids:
+- DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-013
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-014
+subject_system:
+  system_id: sys4ai
+  system_name: Sys4AI
+subject_layer: framework_product
+runtime_actor:
+  actor_id: codex_meta_agent_runtime
+  actor_type: meta_agent_runtime
+  role_ids:
+  - system_director
+  - verification_engineer
+  - evaluation_harness_designer
+  - assurance_case_builder
+  - baseline_change_manager
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-12-NEXT-LOGICAL-STEP
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-014
+approval_principal:
+  principal_id: alex_omegapy
+  principal_type: accountable_human
+  approval_scope: Authorize only the next dependency-ready protocol and readiness packet for the independent confidential rotated evaluation family.
+  authorization_evidence_ids:
+  - HUMAN-TASK-2026-07-12-NEXT-LOGICAL-STEP
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-014
+  model_self_approval: false
+execution_authorization:
+  status: authorized
+  authorized_at: '2026-07-12T16:36:04Z'
+  expires_at: '2026-07-13T04:36:04Z'
+  authority_evidence_ids:
+  - HUMAN-TASK-2026-07-12-NEXT-LOGICAL-STEP
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-014
+  self_authorized: false
+permission_envelope:
+  envelope_id: PERMISSION-ENVELOPE-TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL
+  status: current
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-12-NEXT-LOGICAL-STEP
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-014
+  data_classes:
+  - repository_controlled_public_artifacts
+  - protocol_and_readiness_metadata
+  resource_limits:
+  - One bounded TX-37 protocol schema validator test control and handoff packet.
+  - Bind the accepted TX-36 baseline and public TX-17 evaluator fixtures by hash.
+  - Record unavailable external prerequisites as blocked rather than synthesizing evidence.
+  - Preserve canonical PRDs trace states frozen TX-23 TX-25 and prior activated history.
+  valid_from: '2026-07-12T16:36:04Z'
+  expires_at: '2026-07-13T04:36:04Z'
+  sensitive_data_allowed: false
+  secrets_allowed: false
+  data_egress_allowed: false
+  external_side_effects_allowed: false
+  delegation_allowed: false
+  delegation_expires_at: not_applicable
+  permission_expansion_allowed: false
+allowed_reads:
+- implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+- Sys4AI/assurance/meta_agent_self_change_safety_evaluation.yaml
+- Sys4AI/assurance/holdouts/meta_agent_self_change_holdouts.yaml
+- Sys4AI/sys_for_ai/safety_evaluation.py
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001.yaml
+- Sys4AI/registries/**
+allowed_writes:
+- Sys4AI/assurance/independent_evaluation_protocol_tx37.yaml
+- Sys4AI/schemas/contracts/independent_evaluation_protocol.schema.json
+- Sys4AI/schemas/contracts/program_state.schema.json
+- Sys4AI/sys_for_ai/independent_evaluation.py
+- Sys4AI/tests/test_independent_evaluation.py
+- Sys4AI/sys_for_ai/cli.py
+- Sys4AI/Makefile
+- Sys4AI/control_records/**TX37**
+- Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-014.yaml
+- Sys4AI/control_records/program_state.yaml
+- Sys4AI/registries/*.csv
+- Sys4AI/docs/generated/**
+- implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-INDEPENDENT-EVALUATION-PROTOCOL-SFADEV-TX37.md
+- implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX37-001.md
+allowed_tools:
+- repository filesystem reads and bounded apply_patch writes
+- repository-native Python Make and Git validation
+- deterministic generated-document writers
+allowed_external_actions: []
+forbidden_actions:
+- Select or impersonate an independent evaluator.
+- Create commit transmit or expose confidential holdout scenarios.
+- Send repository data or create external infrastructure.
+- Claim an independent evaluation was executed or passed.
+- Modify canonical PRDs trace states waivers frozen TX-23 TX-25 accepted TX-35 measurement or prior activated history.
+- Claim stakeholder domain production operational target-runtime permission or G-10 evidence.
+- Commit push deploy publish or modify external systems without separate explicit authorization.
+inputs:
+- Human task instruction dated 2026-07-12 authorizing the next logical step.
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-014.
+- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001.
+- TX-17 public evaluator and reference holdout baseline.
+expected_outputs:
+- One schema-bound independent evaluation protocol with exact independence confidentiality rotation rubric result and permission requirements.
+- A fail-closed validator and positive-negative tests.
+- A controlled readiness receipt and handoff that names every external prerequisite and claims no executed result.
+validators:
+- validator_id: independent_evaluation_protocol_contract
+  command_or_method: cd Sys4AI && make validate-independent-evaluation
+  blocking: true
+  expected_evidence: Protocol validates and reports four blocked external prerequisites with no executed-evidence claim.
+- validator_id: independent_evaluation_protocol_tests
+  command_or_method: cd Sys4AI && .venv/bin/python -m unittest tests.test_independent_evaluation
+  blocking: true
+  expected_evidence: Positive readiness and negative self-evaluator confidentiality threshold permission and hash-drift probes pass.
+- validator_id: aggregate_validation
+  command_or_method: make validate at product and repository roots
+  blocking: true
+  expected_evidence: Product and development-system validation pass without frozen baseline changes.
+- validator_id: diff_integrity
+  command_or_method: git diff --check
+  blocking: true
+  expected_evidence: No whitespace or patch-integrity errors.
+stop_conditions:
+- Any artifact claims an evaluator confidential suite or result exists without external evidence.
+- The protocol permits repository storage of confidential holdouts or evaluator identity overlap.
+- Any external action data egress permission expansion or adjacent evidence family is required.
+- A blocking validator fails after bounded repair.
+host_capability_requirements:
+  execution_profile_id: codex_app_reference
+  overall_status: verified_available
+  required_capability_ids:
+  - workspace_filesystem
+  - terminal_and_tests
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G07-001
+  - MEMPREFLIGHT-TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL-20260712T163604Z
+  checked_at: '2026-07-12T16:36:04Z'
+  values_or_goals_may_override: false
+state:
+  status: completed
+  current_state_evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-014
+  - TX37-INDEPENDENT-EVALUATION-PROTOCOL-READY
+  - TX37-INDEPENDENT-EVALUATION-NOT-EXECUTED
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX37-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX37-001
+  continuation_state: not_applicable
+  continuation_evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX37-001
+  state_transition_evidence_ids:
+  - HUMAN-TASK-2026-07-12-NEXT-LOGICAL-STEP
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-014
+cancellation:
+  state: not_requested
+  requested_by: not_applicable
+  behavior: Stop with protocol readiness preserved and every external prerequisite explicitly blocked.
+  evidence_ids: []
+  uncertain_operations: []
+escalation:
+  state: pending
+  conditions:
+  - A named independent evaluator and conflict attestation become available.
+  - Confidential holdout generation transfer or external execution is proposed.
+  responsible_principal_id: alex_omegapy
+  required_decision: Separately authorize an exact evaluator artifact-transfer execution and result-acceptance packet after reviewing the named evaluator and permission envelope.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX37-001
+resume_evidence:
+  required: true
+  status: consumed
+  last_known_state: TX-36 accepted the quantitative measurement and stopped before the next retained evidence family.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX36-001
+  - MEMPREFLIGHT-TX-37-INDEPENDENT-ROTATED-EVALUATION-PROTOCOL-20260712T163604Z
+closeout_evidence:
+  status: complete
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-014
+  - TX37-INDEPENDENT-EVALUATION-PROTOCOL-READY
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX37-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX37-001
+  changed_artifacts:
+  - Protocol schema validator tests control state registries generated readers receipt and handoff.
+  validation_evidence_ids:
+  - TX37-FOCUSED-PROTOCOL-TESTS-PASS
+  - TX37-PRODUCT-AND-ROOT-VALIDATE-PASS
+  acceptance_evidence_ids:
+  - HUMAN-TASK-2026-07-12-NEXT-LOGICAL-STEP
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-014
+rollback:
+  status: available
+  strategy: Before publication revert the complete TX-37 packet; after publication preserve readiness history and supersede it additively.
+  triggers:
+  - Protocol or aggregate validation fails.
+  - Readiness is misrepresented as executed independent evidence.
+  actions:
+  - Stop external-evaluation preparation and preserve diagnostics.
+  - Revert only the unshared TX-37 packet or add an accountable supersession after sharing.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX36-001
+supersession:
+  status: current
+  supersedes_transaction_ids: []
+  superseded_by: not_applicable
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-014
