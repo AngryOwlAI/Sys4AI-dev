@@ -1,0 +1,79 @@
+director_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-010
+schema_version: 0.1.0
+decision_status: completed
+created_at: '2026-07-12T14:24:41Z'
+completed_at: '2026-07-12T14:24:41Z'
+director_role: system_director
+human_authorization:
+  principal_name: Alex Omegapy
+  principal_role: repository_maintainer_and_product_owner
+  authority_basis: The accountable human explicitly authorized the quoted fourteen-row generated-reader family while retaining external evidence cross-version CI G-10 production-readiness and operational-authority work as unproven scope.
+  approval_evidence: Human-issued Codex task instruction dated 2026-07-12 authorizing the exact generated-reader family and retained-gate boundary.
+  model_self_approval: false
+decision_context:
+  trigger: accountable_local_evidence_family_selection
+  transaction_id: TX-33-LOCAL-EVIDENCE-GENERATED-READERS
+  gate_id: G-11-EVIDENCE-SCOPE
+  latest_handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX32-001
+  governing_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+  prior_gate_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-009
+  reviewed_head_commit: 1bbc712ed351dc749a58447ac44bb029d1f870ad
+  memory_preflight_receipt_id: MEMPREFLIGHT-TX-33-LOCAL-EVIDENCE-GENERATED-READERS-20260712T142441Z
+  observed_evidence:
+  - TX-32 is complete and leaves exactly 14 locally executable verification obligations.
+  - SFA-CORE-CCWIKI-001 through 005 SFA-CORE-VCCAT-001 through 005 SFA-P0-FR-037 SFA-P0-FR-038 SFA-P0-FR-044 and SFA-P0-NFR-017 are the only remaining local family in frozen trace order.
+  - External evidence cross-version CI G-10 production operational stakeholder domain target-runtime and permission claims remain evidence-dependent.
+selected_route:
+  route_id: authorize_bounded_TX_33_generated_reader_verification
+  route_name: Execute the fourteen-row generated-reader family
+  rationale: The selected obligations share deterministic configuration/control wiki and validation-contract catalog generation source and declaration trace authority banner freshness mirror no-wiki and promotion controls.
+  immediate_effect: TX-33 may record exactly fourteen planned-to-pass verification transitions after all blocking evidence passes.
+rejected_routes:
+- route_id: merge_local_and_external_evidence
+  reason: Local generated-reader evidence cannot replace external CI stakeholder domain production or operational evidence.
+- route_id: treat_generation_as_source_authority
+  reason: Generated reader pages remain noncanonical navigation and cannot promote themselves.
+- route_id: accept_G10_or_promote_to_production_now
+  reason: Closing local verification does not satisfy retained external operational or final-acceptance prerequisites.
+authority_boundary:
+  human_authority_recorded: true
+  accepts_gate_G_11_local_family_route: true
+  authorizes_TX_33_generated_reader_verification: true
+  authorized_local_obligations: 14
+  records_broader_future_scope_authorization: false
+  authorizes_external_or_operational_evidence_in_TX33: false
+  changes_410_plan_interpretations: false
+  accepts_any_waiver: false
+  accepts_gate_G_10_now: false
+  may_claim_production_readiness_now: false
+  may_grant_operational_authority_now: false
+  may_expand_permissions: false
+  may_rewrite_activated_control_history: false
+supersession:
+  supersedes_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-009
+  scope: Supersedes the prior prohibition on starting the remaining generated-reader family without merging evidence transactions or pre-accepting results.
+  preserves:
+  - completed TX-24 through TX-32 evidence
+  - frozen TX-23 ledger and TX-25 interpretation
+  - canonical PRDs and evidence-dependent G-10 production operational target-runtime and permission boundaries
+rollback_and_review:
+  rollback_class: activating_bounded_verification_scope_decision
+  rollback_scope: Before publication revert the atomic G-11-010 and TX-33 packet; after publication supersede it only through a new accountable decision.
+  review_triggers:
+  - a fifteenth local verification obligation is proposed inside TX-33
+  - a generated reader claims canonical authority or a JSON wiki is proposed
+  - cross-version CI external operational waiver or G-10 evidence is proposed inside this transaction
+  expiry: remains current for this completed packet and records no self-executing external evidence claim
+evidence_references:
+- PRDs/Sys4AI_phase-0_product_system_design_prd.md
+- Sys4AI/registries/evidence_closure_plan_registry.csv
+- Sys4AI/registries/requirement_trace_registry.csv
+- Sys4AI/registries/derivative_registry.csv
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX32-001.yaml
+- Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-33-LOCAL-EVIDENCE-GENERATED-READERS-20260712T142441Z.yaml
+validators:
+- cd Sys4AI && make validate-generated-reader-surface
+- cd Sys4AI && make validate-local-evidence-execution
+- cd Sys4AI && make validate-requirement-trace-migration
+- make validate
+- git diff --check

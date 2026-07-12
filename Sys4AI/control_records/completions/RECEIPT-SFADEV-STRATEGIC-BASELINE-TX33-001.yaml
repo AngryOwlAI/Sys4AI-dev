@@ -1,0 +1,54 @@
+completion_receipt_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX33-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-33-LOCAL-EVIDENCE-GENERATED-READERS
+role: verification_engineer
+result: PASS
+summary: TX-33 verified ten core and four Phase 0 generated-reader requirements while preserving frozen planning history and evidence-dependent external gates.
+changed_artifacts:
+- path: Sys4AI/sys_for_ai/generated_reader_surface.py;Sys4AI/tests/test_generated_reader_surface.py
+  change_summary: Adds focused source registry contract declaration metadata freshness mirror no-wiki authority and promotion checks with positive-negative verification.
+- path: Sys4AI/sys_for_ai/derivatives/templates.py;Sys4AI/sys_for_ai/derivatives/config_control_wiki.py;Sys4AI/sys_for_ai/derivatives/validation_contracts_catalog.py
+  change_summary: Completes reader metadata format traces per-contract fields and declaring-row links without promoting derivative authority.
+- path: Sys4AI/sys_for_ai/cli.py;Sys4AI/Makefile
+  change_summary: Adds the focused command and aggregate validation target.
+- path: Sys4AI/registries/local_evidence_execution_registry.csv;Sys4AI/registries/requirement_trace_registry.csv
+  change_summary: Adds exactly fourteen accepted evidence bindings and planned-to-pass transitions without changing capability coverage lifecycle or waiver fields.
+- path: implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-LOCAL-EVIDENCE-GENERATED-READERS-SFADEV-TX33.md
+  change_summary: Records exact methods dispositions results limitations and rollback boundary.
+- path: Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-010.yaml;Sys4AI/control_records/execution_transactions/TX-33-LOCAL-EVIDENCE-GENERATED-READERS.yaml
+  change_summary: Records accountable scope and the one-family transaction boundary.
+- path: Sys4AI/control_records/program_state.yaml;Sys4AI/registries;Sys4AI/docs/generated
+  change_summary: Advances only to completed TX-33 and reconciles controlled indexes plus noncanonical readers.
+- path: Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX33-001.yaml;Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001.yaml;implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX33-001.md
+  change_summary: Closes local verification at the external evidence transaction and G-10 reacceptance gate.
+validation_evidence:
+  generated_reader_requirements: PASS_14_OF_14
+  generated_reader_tests: PASS_11_OF_11
+  full_product_tests: PASS_329_OF_329
+  trace_rows: 227
+  trace_verification: PASS_94_PLANNED_133
+  local_evidence_accepted: 74
+  remaining_local_verification_obligations: 0
+  frozen_tx23_ledger_sha256: 1e9e2b2a0a7bc4f589addd65b8d34642899a3f812e7ce35be6e62a2c0fcc6138
+  frozen_tx25_interpretation_sha256: 9ed89d6ff5872ee2fb2b740791c268d9048e97f31eae8ff7d3b4d2d8929d5f38
+  accepted_waivers: 0
+  g10_status: DEFERRED_NOT_ACCEPTED
+  repository_validation: PASS
+  memory_status: PASS_WITH_WARNINGS_1229_OBJECTS_554_WARNINGS_ZERO_AUTHORITY_INVERSIONS
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-33-LOCAL-EVIDENCE-GENERATED-READERS-20260712T142441Z
+authority_changes:
+  accepts_G_11_010_bounded_generated_reader_family: true
+  advances_exact_verification_rows: 14
+  remaining_local_verifications: 0
+  changes_capability_or_coverage: false
+  changes_TX_23_or_TX_25_frozen_bytes: false
+  accepted_waiver: false
+  accepts_G_10_now: false
+  grants_production_or_operational_authority_now: false
+unresolved_issues:
+- Cross-version Python 3.10 through 3.13 CI remains authorized but unexecuted.
+- External metric independent stakeholder domain and operational evidence remain unexecuted.
+- G-10 remains deferred pending retained external evidence and accountable reacceptance.
+- Memory retains known pending-hash warnings but no authority inversion.
+next_recommendation: Select the earliest retained external evidence obligation in a new bounded transaction; do not treat local closure as external proof or G-10 acceptance.

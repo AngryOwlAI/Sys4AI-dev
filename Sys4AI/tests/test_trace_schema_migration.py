@@ -172,7 +172,7 @@ class TraceSchemaMigrationTests(unittest.TestCase):
             {"absent": 5, "implemented": 72, "scaffolded": 137},
             counts("capability_status"),
         )
-        self.assertEqual({"pass": 67, "planned": 147}, counts("verification_status"))
+        self.assertEqual({"pass": 81, "planned": 133}, counts("verification_status"))
         self.assertEqual(
             {"sufficient": 214},
             counts("semantic_review_verdict"),

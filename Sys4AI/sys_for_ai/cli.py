@@ -32,6 +32,7 @@ from .evidence_closure import (
 )
 from .csv_registry_surface import validate_csv_registry_surface
 from .format_governance_surface import validate_format_governance_surface
+from .generated_reader_surface import validate_generated_reader_surface
 from .jsonschema_contract_surface import validate_jsonschema_contract_surface
 from .markdown_source_surface import validate_markdown_source_surface
 from .toml_config_surface import validate_toml_config_surface
@@ -515,6 +516,27 @@ def build_parser() -> argparse.ArgumentParser:
         default="docs/generated/validation_contracts/contracts-by-target.md",
     )
 
+    validate_generated_reader = sub.add_parser(
+        "validate-generated-reader-surface",
+        help="Verify the bounded generated configuration/control and validation-catalog family",
+    )
+    validate_generated_reader.add_argument("--format-profiles", default="registries/format_profile_registry.csv")
+    validate_generated_reader.add_argument("--config-sources", default="registries/config_source_registry.csv")
+    validate_generated_reader.add_argument("--control-records", default="registries/control_record_registry.csv")
+    validate_generated_reader.add_argument(
+        "--validation-contracts", default="registries/validation_contract_registry.csv"
+    )
+    validate_generated_reader.add_argument(
+        "--artifact-contracts", default="registries/artifact_contract_registry.csv"
+    )
+    validate_generated_reader.add_argument("--derivatives", default="registries/derivative_registry.csv")
+    validate_generated_reader.add_argument(
+        "--wiki-policy", default="docs/configuration_control_wiki_policy.md"
+    )
+    validate_generated_reader.add_argument(
+        "--catalog-policy", default="docs/validation_contracts_catalog_policy.md"
+    )
+
     validate_plan_scope = sub.add_parser(
         "validate-plan-interpretation",
         help="Validate the controlled 410-row G-11 future-work disposition",
@@ -805,6 +827,20 @@ def main(argv: list[str] | None = None) -> int:
                 args.catalog_policy,
                 args.generated_index,
                 args.generated_by_target,
+            )
+        )
+
+    if args.command == "validate-generated-reader-surface":
+        return print_result(
+            validate_generated_reader_surface(
+                args.format_profiles,
+                args.config_sources,
+                args.control_records,
+                args.validation_contracts,
+                args.artifact_contracts,
+                args.derivatives,
+                args.wiki_policy,
+                args.catalog_policy,
             )
         )
 

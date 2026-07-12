@@ -11,14 +11,17 @@ page_metadata:
     - registries/config_source_registry.csv
     - registries/validation_contract_registry.csv
     - registries/format_profile_registry.csv
+  format_profile_ids:
+    - fmt_toml_config
   validation_contracts:
     - contract_capability_migration_manifest
     - contract_host_capability_profile
     - contract_self_hosting_mode
     - contract_sys4ai_config
     - contract_target_project_config
-  generated_at: 2026-07-11T14:12:24Z
-  generator: sys_for_ai.derivatives.config_control_wiki:0.1.0
+  generated_at: 2026-07-12T14:24:41Z
+  generator: sys_for_ai.derivatives.config_control_wiki:0.2.0
+  validation_status: generated_content_checked
   stale_or_orphan_status: current
   source_hashes:
     - pending

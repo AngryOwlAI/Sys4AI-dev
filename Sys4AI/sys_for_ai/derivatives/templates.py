@@ -8,7 +8,7 @@ from typing import Iterable
 from ..registry_io import read_registry_rows
 from ..validators import ValidationResult
 
-GENERATED_AT = "2026-07-11T14:12:24Z"
+GENERATED_AT = "2026-07-12T14:24:41Z"
 NOTICE = (
     "> **Generated derivative notice**\n"
     ">\n"
@@ -44,6 +44,7 @@ def render_metadata(
     source_registries: list[str],
     validation_contracts: list[str],
     generator: str,
+    format_profile_ids: Iterable[str] = (),
     source_hashes: Iterable[str] = ("pending",),
 ) -> str:
     """Render a deterministic page metadata YAML block."""
@@ -57,12 +58,17 @@ def render_metadata(
         "  source_registries:",
     ]
     lines.extend(f"    - {item}" for item in source_registries)
+    profile_ids = list(format_profile_ids)
+    if profile_ids:
+        lines.append("  format_profile_ids:")
+        lines.extend(f"    - {item}" for item in profile_ids)
     lines.append("  validation_contracts:")
     lines.extend(f"    - {item}" for item in validation_contracts)
     lines.extend(
         [
             f"  generated_at: {GENERATED_AT}",
             f"  generator: {generator}",
+            "  validation_status: generated_content_checked",
             "  stale_or_orphan_status: current",
             "  source_hashes:",
         ]
@@ -81,6 +87,7 @@ def render_page(
     validation_contracts: list[str],
     generator: str,
     body: str,
+    format_profile_ids: Iterable[str] = (),
     source_hashes: Iterable[str] = ("pending",),
 ) -> str:
     """Render a full generated derivative Markdown page."""
@@ -94,6 +101,7 @@ def render_page(
                 source_registries=source_registries,
                 validation_contracts=validation_contracts,
                 generator=generator,
+                format_profile_ids=format_profile_ids,
                 source_hashes=source_hashes,
             ),
             f"# {title}",

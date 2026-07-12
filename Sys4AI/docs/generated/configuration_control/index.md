@@ -11,6 +11,9 @@ page_metadata:
     - registries/format_profile_registry.csv
     - registries/config_source_registry.csv
     - registries/control_record_registry.csv
+  format_profile_ids:
+    - fmt_yaml_control
+    - fmt_toml_config
   validation_contracts:
     - contract_agentjob
     - contract_agentjob_v0_2
@@ -32,8 +35,9 @@ page_metadata:
     - contract_state_snapshot
     - contract_sys4ai_config
     - contract_target_project_config
-  generated_at: 2026-07-11T14:12:24Z
-  generator: sys_for_ai.derivatives.config_control_wiki:0.1.0
+  generated_at: 2026-07-12T14:24:41Z
+  generator: sys_for_ai.derivatives.config_control_wiki:0.2.0
+  validation_status: generated_content_checked
   stale_or_orphan_status: current
   source_hashes:
     - pending
@@ -47,9 +51,9 @@ This generated page indexes registered configuration and control surfaces. It is
 
 | derivative_id | path | source_ids | generation_method | status |
 | --- | --- | --- | --- | --- |
-| der_configuration_control_index | docs/generated/configuration_control/index.md | SRC-REG-FORMAT-PROFILES;SRC-REG-CONFIG-SOURCES;SRC-REG-CONTROL-RECORDS | sys_for_ai.derivatives.config_control_wiki:0.1.0 | generated_derivative |
-| der_configuration_control_yaml | docs/generated/configuration_control/yaml-control-records.md | SRC-REG-CONTROL-RECORDS;SRC-REG-VALIDATION-CONTRACTS | sys_for_ai.derivatives.config_control_wiki:0.1.0 | generated_derivative |
-| der_configuration_control_toml | docs/generated/configuration_control/toml-configuration-sources.md | SRC-REG-CONFIG-SOURCES;SRC-REG-VALIDATION-CONTRACTS | sys_for_ai.derivatives.config_control_wiki:0.1.0 | generated_derivative |
+| der_configuration_control_index | docs/generated/configuration_control/index.md | SRC-REG-FORMAT-PROFILES;SRC-REG-CONFIG-SOURCES;SRC-REG-CONTROL-RECORDS | sys_for_ai.derivatives.config_control_wiki:0.2.0 | generated_derivative |
+| der_configuration_control_yaml | docs/generated/configuration_control/yaml-control-records.md | SRC-REG-CONTROL-RECORDS;SRC-REG-VALIDATION-CONTRACTS;SRC-REG-FORMAT-PROFILES | sys_for_ai.derivatives.config_control_wiki:0.2.0 | generated_derivative |
+| der_configuration_control_toml | docs/generated/configuration_control/toml-configuration-sources.md | SRC-REG-CONFIG-SOURCES;SRC-REG-VALIDATION-CONTRACTS;SRC-REG-FORMAT-PROFILES | sys_for_ai.derivatives.config_control_wiki:0.2.0 | generated_derivative |
 
 ## Format Profile IDs
 
@@ -67,7 +71,7 @@ This generated page indexes registered configuration and control surfaces. It is
 | --- | --- | --- |
 | format profiles | 5 | registries/format_profile_registry.csv |
 | configuration sources | 6 | registries/config_source_registry.csv |
-| control records | 261 | registries/control_record_registry.csv |
+| control records | 266 | registries/control_record_registry.csv |
 
 ## Allowed Promotion Path
 

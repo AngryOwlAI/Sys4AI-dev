@@ -11,6 +11,8 @@ page_metadata:
     - registries/control_record_registry.csv
     - registries/validation_contract_registry.csv
     - registries/format_profile_registry.csv
+  format_profile_ids:
+    - fmt_yaml_control
   validation_contracts:
     - contract_agentjob
     - contract_agentjob_v0_2
@@ -27,8 +29,9 @@ page_metadata:
     - contract_program_state
     - contract_skill_import_manifest
     - contract_state_snapshot
-  generated_at: 2026-07-11T14:12:24Z
-  generator: sys_for_ai.derivatives.config_control_wiki:0.1.0
+  generated_at: 2026-07-12T14:24:41Z
+  generator: sys_for_ai.derivatives.config_control_wiki:0.2.0
+  validation_status: generated_content_checked
   stale_or_orphan_status: current
   source_hashes:
     - pending
@@ -303,6 +306,11 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_strategic_baseline_tx32_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-32-LOCAL-EVIDENCE-JSON-SCHEMA-20260712T132623Z.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
 | ctrl_strategic_baseline_tx32_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX32-001.yaml | completion_receipt | controlled | verification_engineer | contract_completion_receipt_v1_0 | pending |
 | ctrl_strategic_baseline_tx32_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX32-001.yaml | handoff | controlled | verification_engineer | contract_handoff_v1_0 | pending |
+| ctrl_strategic_baseline_g11_generated_reader_decision | control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-010.yaml | director_decision | controlled | system_director | contract_director_decision | pending |
+| ctrl_strategic_baseline_tx33_execution_transaction | control_records/execution_transactions/TX-33-LOCAL-EVIDENCE-GENERATED-READERS.yaml | execution_transaction | controlled | bounded_execution_planner | contract_execution_transaction | pending |
+| ctrl_strategic_baseline_tx33_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-33-LOCAL-EVIDENCE-GENERATED-READERS-20260712T142441Z.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
+| ctrl_strategic_baseline_tx33_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX33-001.yaml | completion_receipt | controlled | verification_engineer | contract_completion_receipt_v1_0 | pending |
+| ctrl_strategic_baseline_tx33_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001.yaml | handoff | controlled | verification_engineer | contract_handoff_v1_0 | pending |
 
 ## Validation Contract Trace
 

@@ -15,8 +15,9 @@ page_metadata:
   validation_contracts:
     - contract_core_skill_proposal_registry_row
     - contract_skill_lifecycle_status_registry_row
-  generated_at: 2026-07-11T14:12:24Z
+  generated_at: 2026-07-12T14:24:41Z
   generator: sys_for_ai.derivative_generation.governance_generated_docs:0.2.0
+  validation_status: generated_content_checked
   stale_or_orphan_status: current
   source_hashes:
     - pending

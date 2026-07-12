@@ -14,8 +14,9 @@ page_metadata:
     - registries/derivative_registry.csv
   validation_contracts:
     - contract_requirement_trace_registry_row
-  generated_at: 2026-07-11T14:12:24Z
+  generated_at: 2026-07-12T14:24:41Z
   generator: sys_for_ai.derivative_generation.governance_generated_docs:0.2.0
+  validation_status: generated_content_checked
   stale_or_orphan_status: current
   source_hashes:
     - pending
@@ -41,7 +42,7 @@ This graph is a generated navigation view over registered evidence. Status label
 | requirements | current_mixed_capability | SRC-REG-REQ-TRACE | absent=5; implemented=85; scaffolded=137 |
 | architecture | current_design_basis | SRC-PRD-P0 | Pattern and maturity remain independent |
 | permissions | bounded | SRC-SCHEMA-EXECUTION-TRANSACTION | Values do not grant permission |
-| tests | current_local_evidence | SRC-TEST-SAFETY-EVALUATION | pass=80; planned=147 |
+| tests | current_local_evidence | SRC-TEST-SAFETY-EVALUATION | pass=94; planned=133 |
 | evaluations | current_with_gaps | SRC-SAFETY-EVALUATION-PACKET-TX17 | current=227 |
 | operations | planned_not_operational | SRC-SAFETY-EVALUATION-PACKET-TX17 | No operational authority |
 | maintenance | planned | SRC-PRD-P0 | Requires current operational evidence |

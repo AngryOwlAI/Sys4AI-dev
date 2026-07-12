@@ -772,6 +772,54 @@ def _validate_program_state_alignment(path: Path, state: dict[str, Any]) -> list
             messages.append(f"{path}: post-TX-32 state must stop at a new bounded transaction gate")
         if state.get("state_status") != "human_gated" or state.get("human_gate_required") is not True:
             messages.append(f"{path}: post-TX-32 state must remain human gated for evidence-dependent acceptance")
+    elif phase == "strategic_baseline_migration_TX_33_generated_reader_verification_complete":
+        required_summary = {
+            "strategic_approval": "accepted_G_08",
+            "derivative_regeneration": "complete_G_09",
+            "host_verification": "accepted_G_07_mixed_profile",
+            "semantic_review_evidence": "accepted_TX_24_7_of_7",
+            "plan_scope_interpretation": "accepted_TX_25_410_future_work",
+            "python_package_verification": "accepted_TX_26_4_of_4",
+            "yaml_control_verification": "accepted_TX_27_11_of_11",
+            "format_governance_verification": "accepted_TX_28_10_of_10",
+            "csv_registry_verification": "accepted_TX_29_5_of_5",
+            "markdown_source_verification": "accepted_TX_30_4_of_4",
+            "toml_config_verification": "accepted_TX_31_9_of_9",
+            "jsonschema_contract_verification": "accepted_TX_32_10_of_10",
+        }
+        for field, expected in required_summary.items():
+            if summary.get(field) != expected:
+                messages.append(f"{path}: post-TX-33 {field} must be {expected}")
+        for required_route in (
+            "select_dependency_ready_retained_external_evidence_transaction",
+            "execute_authorized_external_evidence_scope_only_through_a_bounded_transaction",
+            "seek_accountable_G_10_reacceptance_only_after_retained_evidence_closure",
+        ):
+            if required_route not in allowed:
+                messages.append(f"{path}: post-TX-33 state omits controlled next route {required_route}")
+        for required_block in (
+            "begin_later_evidence_or_acceptance_work_without_separate_transaction_control",
+            "treat_410_future_work_dispositions_as_trace_completion_or_waivers",
+            "claim_G_10_after_TX_33_without_retained_external_evidence_closure",
+            "claim_production_readiness_or_operational_authority_without_executed_evidence",
+        ):
+            if required_block not in blocked:
+                messages.append(f"{path}: post-TX-33 state omits blocked action {required_block}")
+        if state.get("latest_closeout_evidence_id") != "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX33-001":
+            messages.append(f"{path}: post-TX-33 state is not aligned to the TX-33 completion")
+        if state.get("latest_handoff_evidence_id") != "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001":
+            messages.append(f"{path}: post-TX-33 state is not aligned to the TX-33 handoff")
+        for evidence_id in (
+            "DDR-SFADEV-STRATEGIC-BASELINE-G11-010",
+            "TX-33-LOCAL-EVIDENCE-GENERATED-READERS",
+            "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX33-001",
+        ):
+            if evidence_id not in set(state.get("current_state_evidence", [])):
+                messages.append(f"{path}: post-TX-33 state omits {evidence_id}")
+        if state.get("continuation_state") != "blocked" or state.get("escalation_state") != "pending":
+            messages.append(f"{path}: post-TX-33 state must stop at a new bounded external-evidence transaction gate")
+        if state.get("state_status") != "human_gated" or state.get("human_gate_required") is not True:
+            messages.append(f"{path}: post-TX-33 state must remain human gated for evidence-dependent acceptance")
     else:
         messages.append(f"{path}: unsupported strategic-baseline program phase {phase!r}")
     return messages

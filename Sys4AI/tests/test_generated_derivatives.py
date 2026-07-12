@@ -126,6 +126,15 @@ def _write_generated_fixture(root: Path) -> None:
         "configs/**/*.toml,controlled,test,validate-toml,,pending,pending,fixture\n",
         encoding="utf-8",
     )
+    (root / "registries/artifact_contract_registry.csv").write_text(
+        "artifact_contract_id,artifact_type,canonical_filename_or_pattern,producer_role_ids,"
+        "consumer_role_ids,system_layer_scope,authority_default,lifecycle_status,required_sections,"
+        "validation_contract_id,registry_required,derivative_surfaces,promotion_rule,source_hash,"
+        "last_validated_at,notes\n"
+        "artifact_fixture,Fixture,fixtures/*.yaml,test,test,framework_product,controlled,current,body,"
+        "contract_agentjob,true,validation_contracts_catalog,decision,pending,pending,fixture\n",
+        encoding="utf-8",
+    )
     (root / "registries/derivative_registry.csv").write_text(
         "derivative_id,path,derivative_type,source_ids,generation_method,last_generated,status,notes\n"
         "der_configuration_control_index,docs/generated/configuration_control/index.md,"

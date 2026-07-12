@@ -16,7 +16,7 @@ from .templates import (
     source_hashes_from_rows,
 )
 
-GENERATOR = "sys_for_ai.derivatives.config_control_wiki:0.1.0"
+GENERATOR = "sys_for_ai.derivatives.config_control_wiki:0.2.0"
 
 
 def expected_config_control_wiki_pages(root: str | Path = ".") -> dict[Path, str]:
@@ -124,6 +124,7 @@ def _index_page(
         ],
         validation_contracts=_contract_ids_from_rows(config_rows + control_rows),
         generator=GENERATOR,
+        format_profile_ids=["fmt_yaml_control", "fmt_toml_config"],
         source_hashes=source_hashes_from_rows(config_rows + control_rows),
         body=body,
     )
@@ -174,6 +175,7 @@ def _yaml_page(control_rows: list[dict[str, str]], contracts_by_id: dict[str, di
         ],
         validation_contracts=_contract_ids_from_rows(control_rows),
         generator=GENERATOR,
+        format_profile_ids=["fmt_yaml_control"],
         source_hashes=source_hashes_from_rows(control_rows),
         body=body,
     )
@@ -224,6 +226,7 @@ def _toml_page(config_rows: list[dict[str, str]], contracts_by_id: dict[str, dic
         ],
         validation_contracts=_contract_ids_from_rows(config_rows),
         generator=GENERATOR,
+        format_profile_ids=["fmt_toml_config"],
         source_hashes=source_hashes_from_rows(config_rows),
         body=body,
     )

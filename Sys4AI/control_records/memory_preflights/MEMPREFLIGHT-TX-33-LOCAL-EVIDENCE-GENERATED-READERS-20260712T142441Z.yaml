@@ -1,0 +1,65 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-33-LOCAL-EVIDENCE-GENERATED-READERS-20260712T142441Z
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-33-LOCAL-EVIDENCE-GENERATED-READERS
+created_at: '2026-07-12T14:24:41Z'
+status: PASS_WITH_WARNINGS
+commands_run:
+- command: python -m sys_for_ai.cli memory status --json
+  result: pass
+- command: python -m sys_for_ai.cli memory lookup TX-33-LOCAL-EVIDENCE-GENERATED-READERS --json
+  result: warn
+- command: python -m sys_for_ai.cli memory lookup HANDOFF-SFADEV-STRATEGIC-BASELINE-TX32-001 --json
+  result: pass
+- command: python -m sys_for_ai.cli memory search 'TX-32 generated reader SFA-CORE-CCWIKI SFA-CORE-VCCAT configuration control wiki validation contracts catalog' --limit 10 --json
+  result: pass
+queries:
+- query: TX-32 generated reader SFA-CORE-CCWIKI SFA-CORE-VCCAT configuration control wiki validation contracts catalog
+  returned_object_ids:
+  - der_validation_contracts_index
+  - SRC-REG-DERIVATIVES
+  - SRC-REG-SOURCES
+  - der_configuration_control_yaml
+  - SRC-PRD-P1
+  - SRC-REG-VALIDATION-CONTRACTS
+  - der_validation_contracts_by_target
+  - SRC-TEST-GENERATED-DERIVATIVES
+  - SRC-SELFHOST-MEMORY-CONTINUE-PLAN
+  - SRC-DERIVATIVES-CONFIG-CONTROL
+canonical_sources_inspected:
+- path: PRDs/Sys4AI_phase-0_product_system_design_prd.md
+  registry: source_registry.csv
+  row_id: SRC-PRD-P0
+  inspected_sections:
+  - SFA-CORE-CCWIKI-001 through 005 SFA-CORE-VCCAT-001 through 005 SFA-P0-FR-037 SFA-P0-FR-038 SFA-P0-FR-044 and SFA-P0-NFR-017
+- path: Sys4AI/registries/derivative_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-DERIVATIVES
+  inspected_sections:
+  - generated-reader registrations generation methods source IDs timestamps and authority status
+- path: Sys4AI/registries/validation_contract_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-VALIDATION-CONTRACTS
+  inspected_sections:
+  - catalog source contracts and declaration targets
+registry_rows_inspected:
+- path: control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX32-001.yaml
+  registry: handoff_registry.csv
+  row_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX32-001
+  purpose: Confirm 14 remaining local obligations and the separate generated-reader gate.
+- path: registries/requirement_trace_registry.csv
+  registry: requirement_trace_registry.csv
+  row_id: TRACE-SFA-CORE-CCWIKI-001
+  purpose: Confirm implemented covered planned sufficient and unwaived entry state before TX-33.
+- path: docs/generated/validation_contracts/index.md
+  registry: derivative_registry.csv
+  row_id: der_validation_contracts_index
+  purpose: Inspect the derivative only against its canonical registry and deterministic generator.
+stale_context_risks:
+- risk_id: MEMPREFLIGHT-RISK-001
+  status: observed_and_mitigated
+  notes: Generated catalog and wiki hits were treated only as navigation and checked against canonical PRD registry generator and source rows.
+- risk_id: MEMPREFLIGHT-RISK-002
+  status: observed_and_mitigated
+  notes: Live git handoff and trace state superseded memory where they could differ.
+usable_for_routing: true

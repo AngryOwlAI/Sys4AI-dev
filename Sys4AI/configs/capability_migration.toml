@@ -61,7 +61,7 @@ source_registry_path = "Sys4AI/registries/source_registry.csv"
 derivative_registry_path = "Sys4AI/registries/derivative_registry.csv"
 max_current_evidence_age_days = 30
 expected_needs_evidence = 0
-expected_planned_verification = 147
+expected_planned_verification = 133
 expected_operational_capability = 0
 
 [[classifications]]
@@ -341,8 +341,8 @@ replacement_capability = "source-classified portable execution documentation"
 blocking_transaction = "none"
 allowed_modes = ["pre_tx10", "post_tx10"]
 expected_files = 16
-expected_references = 298
-expected_inventory_sha256 = "fd1608bee6e58915a51c064c133063f5ae59f7736bd94e0567a7aa64580fb37e"
+expected_references = 611
+expected_inventory_sha256 = "9f3ce972d85ce67fee343aabd2fe966be8cb41ed75d749a98c6bd4708d9d85c7"
 
 [[classifications]]
 classification_id = "active_surface_tx10"

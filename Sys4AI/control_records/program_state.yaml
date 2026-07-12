@@ -6,7 +6,7 @@ system_context:
   target_system: Sys4AI
   self_hosting_mode: true
   reflection_depth: 1
-current_phase: strategic_baseline_migration_TX_32_jsonschema_contract_verification_complete
+current_phase: strategic_baseline_migration_TX_33_generated_reader_verification_complete
 lifecycle_stage: test
 active_task_id: null
 active_director_decision_id: null
@@ -70,12 +70,16 @@ current_state_evidence:
 - TX-32-LOCAL-EVIDENCE-JSON-SCHEMA
 - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX32-001
 - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX32-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-010
+- TX-33-LOCAL-EVIDENCE-GENERATED-READERS
+- RECEIPT-SFADEV-STRATEGIC-BASELINE-TX33-001
+- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001
 continuation_state: blocked
 cancellation_state: not_requested
 escalation_state: pending
-latest_closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX32-001
-latest_handoff_evidence_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX32-001
-latest_memory_preflight_receipt_id: MEMPREFLIGHT-TX-32-LOCAL-EVIDENCE-JSON-SCHEMA-20260712T132623Z
+latest_closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX33-001
+latest_handoff_evidence_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX33-001
+latest_memory_preflight_receipt_id: MEMPREFLIGHT-TX-33-LOCAL-EVIDENCE-GENERATED-READERS-20260712T142441Z
 capability_status_summary:
   portable_execution_contract: implemented
   current_state_model: implemented
@@ -96,12 +100,12 @@ capability_status_summary:
   toml_config_verification: accepted_TX_31_9_of_9
   jsonschema_contract_verification: accepted_TX_32_10_of_10
 state_status: human_gated
-blocked_reason: TX-32 verified the ten-row JSON Schema family; broader scope is authorized in principle but each remaining claim requires a dependency-ready transaction and executed evidence before G-10 production or operational acceptance.
+blocked_reason: TX-33 completed all 74 locally executable verification obligations; retained external CI stakeholder domain operational production and final-acceptance claims still require dependency-ready transactions and executed evidence before G-10 reacceptance.
 human_gate_required: true
 allowed_next_actions:
 - run_memory_preflight
 - inspect_latest_handoff
-- seek_separate_authorization_for_remaining_14_local_verification_obligations
+- select_dependency_ready_retained_external_evidence_transaction
 - execute_authorized_external_evidence_scope_only_through_a_bounded_transaction
 - seek_accountable_G_10_reacceptance_only_after_retained_evidence_closure
 - reverify_G_07_if_profile_evidence_becomes_stale_or_changes
@@ -137,6 +141,7 @@ blocked_actions:
 - claim_G_10_after_TX_30_without_retained_evidence_closure
 - claim_G_10_after_TX_31_without_retained_evidence_closure
 - claim_G_10_after_TX_32_without_retained_evidence_closure
+- claim_G_10_after_TX_33_without_retained_external_evidence_closure
 - claim_production_readiness_or_operational_authority_without_executed_evidence
 - treat_TX_19_module_validation_as_G_07_G_09_G_10_or_production_acceptance
 - treat_TX_17_structural_or_holdout_validation_as_G_07_or_domain_acceptance
@@ -144,7 +149,7 @@ blocked_actions:
 - claim_broad_stakeholder_consensus_or_domain_truth_from_G_08
 - claim_production_readiness_or_operational_authority
 validation_status:
-  last_validated_at: '2026-07-12T13:26:23Z'
+  last_validated_at: '2026-07-12T14:24:41Z'
   validators:
   - make validate-program-state
   - make validate-capability-migration
@@ -168,6 +173,7 @@ validation_status:
   - make validate-markdown-source-surface
   - make validate-toml-config-surface
   - make validate-jsonschema-contract-surface
+  - make validate-generated-reader-surface
   - make validate-plan-interpretation
   - make validate-generated-derivatives
   - make validate
