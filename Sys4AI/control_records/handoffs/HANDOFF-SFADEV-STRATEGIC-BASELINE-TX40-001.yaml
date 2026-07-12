@@ -1,0 +1,45 @@
+handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX40-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+producing_execution_transaction_id: TX-40-G10-ACCOUNTABLE-RECONSIDERATION
+next_execution_transaction_id: null
+status: human_gated
+producing_role: system_director
+recommended_next_role: system_director
+summary: TX-40 separately reconsiders G-10 and keeps it deferred because the accountable instruction prohibited inferred acceptance and did not explicitly select acceptance or rejection.
+source_ids:
+- SRC-DDR-STRATEGIC-BASELINE-G10-002
+- SRC-TX40-EXECUTION-TRANSACTION
+- SRC-MEMPREFLIGHT-STRATEGIC-BASELINE-TX40
+- SRC-COMPLETION-STRATEGIC-BASELINE-TX40
+- SRC-G10-ACCOUNTABLE-RECONSIDERATION-REPORT-TX40
+- SRC-DDR-STRATEGIC-BASELINE-G11-016
+- SRC-TX39-EXECUTION-TRANSACTION
+- SRC-COMPLETION-STRATEGIC-BASELINE-TX39
+- SRC-HANDOFF-STRATEGIC-BASELINE-TX39
+- SRC-DDR-STRATEGIC-BASELINE-G10-001
+closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX40-001
+current_state_evidence:
+- TX40-G10-RECONSIDERED-DEFERRED-NO-INFERRED-ACCEPTANCE
+- TX40-RETAINED-EVIDENCE-FAMILIES-UNEXECUTED-AND-PRESERVED
+- TX40-SHARED-TX39-BASELINE-REVIEWED-9996771
+validation_evidence:
+  baseline_commit: 99967710984a60985429fa4346861414ddd55d5d
+  baseline_origin_main: 99967710984a60985429fa4346861414ddd55d5d
+  g10_status: RECONSIDERED_DEFERRED_NOT_ACCEPTED_NOT_REJECTED
+  retained_evidence_families: ACTIVE_FUTURE_WORK_UNEXECUTED
+  focused_control_validation: PASS
+  focused_semantic_tests: PASS_40_OF_40
+  full_product_tests: PASS_357_OF_357
+  repository_validation: PASS_PRODUCT_AND_ROOT
+  generated_derivatives: CURRENT
+  memory_status: PASS_WITH_WARNINGS_1353_OBJECTS_619_WARNINGS_ZERO_AUTHORITY_INVERSIONS
+  trace_rows: 227
+  trace_verification: PASS_94_PLANNED_133_UNCHANGED
+  next_authority_gate: EXPLICIT_ACCOUNTABLE_G10_ACCEPT_OR_REJECT_ROUTE_SELECTION
+stop_conditions:
+- Do not infer G-10 acceptance or rejection from TX-39 TX-40 or chat context.
+- Do not execute reactivate waive delete or claim any retained evidence family.
+- Do not modify completed TX-39 or earlier activated history.
+- Do not claim production readiness operational authority stakeholder acceptance domain acceptance or permission expansion.
+- Do not create a successor transaction until the accountable human explicitly selects the G-10 route.

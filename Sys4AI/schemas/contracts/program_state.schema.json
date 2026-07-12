@@ -99,7 +99,8 @@
         "independent_evaluation_disposition": { "enum": ["pending", "retained_active_future_work_G_11_015"] },
         "stakeholder_affected_party_review_disposition": { "enum": ["pending", "retained_active_future_work_G_11_016"] },
         "target_domain_acceptance_disposition": { "enum": ["pending", "retained_active_future_work_G_11_016"] },
-        "production_operational_evidence_disposition": { "enum": ["pending", "retained_active_future_work_G_11_016"] }
+        "production_operational_evidence_disposition": { "enum": ["pending", "retained_active_future_work_G_11_016"] },
+        "g10_reconsideration": { "enum": ["pending", "deferred_G_10_002_no_inferred_acceptance"] }
       },
       "additionalProperties": false
     },

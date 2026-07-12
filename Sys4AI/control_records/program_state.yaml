@@ -6,7 +6,7 @@ system_context:
   target_system: Sys4AI
   self_hosting_mode: true
   reflection_depth: 1
-current_phase: strategic_baseline_migration_TX_39_remaining_evidence_families_retained_future_work
+current_phase: strategic_baseline_migration_TX_40_G_10_reconsidered_deferred_no_inferred_acceptance
 lifecycle_stage: test
 active_task_id: null
 active_director_decision_id: null
@@ -108,12 +108,18 @@ current_state_evidence:
 - TX39-PRODUCTION-OPERATIONAL-EVIDENCE-RETAINED-ACTIVE-FUTURE-WORK
 - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX39-001
 - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G10-002
+- TX-40-G10-ACCOUNTABLE-RECONSIDERATION
+- TX40-G10-RECONSIDERED-DEFERRED-NO-INFERRED-ACCEPTANCE
+- TX40-RETAINED-EVIDENCE-FAMILIES-UNEXECUTED-AND-PRESERVED
+- RECEIPT-SFADEV-STRATEGIC-BASELINE-TX40-001
+- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX40-001
 continuation_state: blocked
 cancellation_state: not_requested
 escalation_state: pending
-latest_closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX39-001
-latest_handoff_evidence_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001
-latest_memory_preflight_receipt_id: MEMPREFLIGHT-TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION-20260712T200220Z
+latest_closeout_evidence_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX40-001
+latest_handoff_evidence_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX40-001
+latest_memory_preflight_receipt_id: MEMPREFLIGHT-TX-40-G10-ACCOUNTABLE-RECONSIDERATION-20260712T203155Z
 capability_status_summary:
   portable_execution_contract: implemented
   current_state_model: implemented
@@ -138,8 +144,9 @@ capability_status_summary:
   stakeholder_affected_party_review_disposition: retained_active_future_work_G_11_016
   target_domain_acceptance_disposition: retained_active_future_work_G_11_016
   production_operational_evidence_disposition: retained_active_future_work_G_11_016
+  g10_reconsideration: deferred_G_10_002_no_inferred_acceptance
 state_status: human_gated
-blocked_reason: TX-39 retains broad stakeholder and affected-party review target-domain acceptance and production and operational evidence as active future work outside the current bounded non-production migration-completion requirements; G-10 remains deferred and requires a separate accountable reconsideration decision.
+blocked_reason: TX-40 separately reconsidered G-10 against shared TX-39 baseline 9996771 and kept it deferred because the accountable instruction prohibited inferred acceptance and did not explicitly select acceptance or rejection; every retained evidence family remains active future work and unexecuted.
 human_gate_required: true
 allowed_next_actions:
 - run_memory_preflight
@@ -148,7 +155,8 @@ allowed_next_actions:
 - review_TX_37_protocol_and_external_prerequisites
 - review_TX_38_independent_evaluation_future_work_disposition
 - review_TX_39_remaining_evidence_families_future_work_disposition
-- seek_separate_accountable_G_10_reconsideration_for_bounded_nonproduction_migration_only_after_TX_39_shared_baseline
+- review_TX_40_G_10_reconsidered_deferred_disposition
+- seek_explicit_accountable_G_10_accept_or_reject_route_for_shared_baseline_9996771
 - reverify_G_07_if_profile_evidence_becomes_stale_or_changes
 - supersede_G_10_defer_only_with_accountable_evidence
 blocked_actions:
@@ -201,6 +209,10 @@ blocked_actions:
 - execute_stakeholder_affected_party_domain_production_or_operational_work_from_TX_39
 - reconsider_accept_or_supersede_G_10_inside_TX_39
 - claim_G_10_from_TX_39_dispositions_without_separate_accountable_reconsideration
+- infer_G_10_acceptance_or_rejection_from_TX_40_reconsideration
+- accept_G_10_without_explicit_accountable_human_route_selection_for_exact_shared_baseline
+- treat_TX_40_as_retained_evidence_execution_acceptance_waiver_or_deletion
+- execute_or_reactivate_any_retained_evidence_family_from_TX_40
 - claim_production_readiness_or_operational_authority_without_executed_evidence
 - treat_TX_19_module_validation_as_G_07_G_09_G_10_or_production_acceptance
 - treat_TX_17_structural_or_holdout_validation_as_G_07_or_domain_acceptance
@@ -208,7 +220,7 @@ blocked_actions:
 - claim_broad_stakeholder_consensus_or_domain_truth_from_G_08
 - claim_production_readiness_or_operational_authority
 validation_status:
-  last_validated_at: '2026-07-12T20:12:04Z'
+  last_validated_at: '2026-07-12T20:40:57Z'
   validators:
   - make validate-program-state
   - make validate-capability-migration

@@ -1,0 +1,55 @@
+completion_receipt_id: RECEIPT-SFADEV-STRATEGIC-BASELINE-TX40-001
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-40-G10-ACCOUNTABLE-RECONSIDERATION
+role: system_director
+result: PASS_WITH_WARNINGS
+summary: TX-40 separately reconsiders G-10 against shared TX-39 and keeps it deferred because acceptance was not explicitly selected; no retained evidence family or adjacent authority is inferred.
+changed_artifacts:
+- path: Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G10-002.yaml;Sys4AI/control_records/execution_transactions/TX-40-G10-ACCOUNTABLE-RECONSIDERATION.yaml
+  change_summary: Records the fail-closed post-TX39 reconsideration and bounds the transaction.
+- path: Sys4AI/control_records/program_state.yaml;Sys4AI/schemas/contracts/program_state.schema.json
+  change_summary: Advances only to a reconsidered-deferred human gate with explicit no-inference status.
+- path: Sys4AI/sys_for_ai/trace_validation.py;Sys4AI/sys_for_ai/prd_semantics.py;Sys4AI/tests/test_trace_semantics.py;Sys4AI/tests/test_self_hosting_acceptance.py
+  change_summary: Adds fail-closed TX-40 current-state validation without changing retained evidence or PRD behavior.
+- path: Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-40-G10-ACCOUNTABLE-RECONSIDERATION-20260712T203155Z.yaml
+  change_summary: Preserves source-first routing evidence and known pending-hash warnings.
+- path: Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX40-001.yaml;Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX40-001.yaml
+  change_summary: Closes only the reconsideration packet and stops before explicit acceptance or rejection.
+- path: Sys4AI/registries
+  change_summary: Registers the decision transaction preflight receipt handoff and evidence relationships.
+- path: Sys4AI/docs/generated
+  change_summary: Refreshes deterministic noncanonical reader surfaces.
+- path: implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-G10-ACCOUNTABLE-RECONSIDERATION-SFADEV-TX40.md;implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX40-001.md
+  change_summary: Records the human-readable reconsideration result preserved boundaries and explicit next gate.
+validation_evidence:
+  baseline_commit: 99967710984a60985429fa4346861414ddd55d5d
+  baseline_origin_main: 99967710984a60985429fa4346861414ddd55d5d
+  disposition_status: RECONSIDERED_DEFERRED_NO_INFERRED_ACCEPTANCE
+  focused_control_validation: PASS
+  focused_semantic_tests: PASS_40_OF_40
+  full_product_tests: PASS_357_OF_357
+  product_validation: PASS
+  repository_validation: PASS
+  generated_derivatives: CURRENT
+  memory_status: PASS_WITH_WARNINGS_1353_OBJECTS_619_WARNINGS_ZERO_AUTHORITY_INVERSIONS
+  trace_verification: PASS_94_PLANNED_133_UNCHANGED
+  frozen_G11_016_sha256: 38fe210e0106723b87fdfe7e6caa3eadb192a136c60f9019750d00ca131df782
+  frozen_TX39_sha256: 9f5c858c3fbe11372ba1585455f36de663554f3a52e791bb44ccc074bbbb8dda
+  frozen_TX39_receipt_sha256: f8d51fadd240cfb35795400f896cb0e92781a252945f258fd1d1abb40207eec0
+  frozen_TX39_handoff_sha256: cb9748e27c8362f64ae7d5e4cca256c54e167fad6f18ebec6be78ad077113a26
+  frozen_G10_001_sha256: 9c6e5a16a5fbce5c8e9af2d10cac21564ca7b6764c3777f5384ecc2f31689b4f
+  frozen_requirement_trace_sha256: 9cf48068581f8c8764dc708f1c33d95039e1451df3567a2eff0f418b7dfcc5fa
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-40-G10-ACCOUNTABLE-RECONSIDERATION-20260712T203155Z
+authority_changes:
+  records_G_10_002_reconsideration: true
+  supersedes_G_10_001_review_trigger_and_evidence_snapshot: true
+  accepts_or_rejects_G_10: false
+  keeps_G_10_deferred_without_inferred_acceptance: true
+  executes_reactivates_waives_deletes_or_claims_any_retained_family: false
+  preserves_TX_39_and_prior_activated_history: true
+  grants_production_operational_stakeholder_domain_or_permission_authority: false
+unresolved_issues:
+- G-10 requires an explicit accountable human acceptance or rejection route selection for the exact shared bounded baseline.
+- Each retained evidence family remains active future work and requires separate context-specific supersession before execution.
+next_recommendation: Obtain an explicit accountable human G-10 acceptance or rejection decision for shared baseline 9996771; do not infer that route or execute a retained family.

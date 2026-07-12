@@ -1,0 +1,101 @@
+director_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G10-002
+schema_version: 0.1.0
+decision_status: completed
+created_at: '2026-07-12T20:32:54Z'
+completed_at: '2026-07-12T20:32:54Z'
+director_role: system_director
+human_authorization:
+  principal_name: Alex Omegapy
+  principal_role: repository_maintainer_and_product_owner
+  authority_basis: The accountable human explicitly authorized a separate post-TX-39 G-10 reconsideration after commit 9996771 became the shared baseline and prohibited inferred acceptance or execution of any retained evidence family.
+  approval_evidence: 'Human-issued Codex task instruction dated 2026-07-12: After 9996771 becomes the shared baseline, the next governed step is a separate accountable G-10 reconsideration decision; it must not infer acceptance or execute any retained evidence family.'
+  approval_scope:
+  - reconsider G-10 against the shared TX-39 bounded non-production migration baseline
+  - record a truthful fail-closed disposition without inferring G-10 or retained-family acceptance
+  - preserve every retained evidence family and all completed TX-39 and earlier evidence
+  model_self_approval: false
+decision_context:
+  trigger: accountable_post_TX39_G10_reconsideration
+  transaction_id: TX-40-G10-ACCOUNTABLE-RECONSIDERATION
+  gate_id: G-10
+  program_state_id: SYS4AI-PROGRAM-STATE-001
+  latest_handoff_id: HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001
+  plan_source_id: SRC-STRATEGIC-BASELINE-MIGRATION-PLAN
+  governing_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+  prior_scope_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-016
+  reviewed_head_commit: 99967710984a60985429fa4346861414ddd55d5d
+  reviewed_origin_main_commit: 99967710984a60985429fa4346861414ddd55d5d
+  memory_preflight_receipt_id: MEMPREFLIGHT-TX-40-G10-ACCOUNTABLE-RECONSIDERATION-20260712T203155Z
+  observed_evidence:
+  - HEAD and origin/main both resolve to 99967710984a60985429fa4346861414ddd55d5d so TX-39 is the shared baseline.
+  - G-07 is accepted only as a mixed observable development-host profile and grants no production operational target-runtime or permission authority.
+  - TX-24 through TX-36 provide the accepted bounded repository evidence and accountable measurement evidence recorded in program state.
+  - TX-38 retains independent external evaluation as active future work outside the bounded non-production migration completion requirements.
+  - TX-39 retains broad stakeholder and affected-party review target-domain acceptance and production and operational evidence as active future work outside the bounded non-production migration completion requirements.
+  - TX-39 executed no retained evidence family and explicitly supplied no automatic G-10 acceptance.
+  - The current human instruction authorizes reconsideration but expressly prohibits inferred acceptance and does not explicitly select G-10 acceptance.
+selected_route:
+  route_id: reconsider_G_10_and_keep_deferred_without_explicit_acceptance
+  route_name: Reconsider the bounded non-production migration gate and retain the fail-closed defer disposition
+  rationale: TX-39 makes the bounded scope eligible for separate reconsideration but supplies no automatic acceptance. The accountable instruction prohibits inferred acceptance and does not explicitly authorize accepting G-10. The only authorized evidence-supported disposition is therefore to complete the reconsideration review while keeping G-10 deferred until an accountable human explicitly selects acceptance or rejection for the exact shared baseline.
+  immediate_effect: G-10 has been separately reconsidered against shared commit 9996771 and remains not accepted. No retained family is executed reactivated waived deleted or represented as accepted evidence; no production operational stakeholder domain or permission authority is granted.
+rejected_routes:
+- route_id: accept_G_10_from_TX39_dispositions
+  reason: TX-39 explicitly states that no acceptance follows automatically and the current instruction prohibits inferred acceptance.
+- route_id: infer_human_acceptance_from_authorization_to_reconsider
+  reason: Authorization to decide is not an explicit selection of the acceptance route.
+- route_id: execute_or_reactivate_a_retained_evidence_family
+  reason: The instruction expressly prohibits execution and each family requires a separate accountable context-specific supersession.
+- route_id: treat_future_work_dispositions_as_waivers_or_completed_evidence
+  reason: TX-38 and TX-39 preserve every obligation as active future work and record no waiver deletion or result.
+- route_id: claim_production_readiness_operational_authority_stakeholder_acceptance_domain_acceptance_or_permission_expansion
+  reason: None of those authorities is supported or requested by this bounded non-production decision.
+authority_boundary:
+  human_authority_recorded: true
+  reconsiders_gate_G_10: true
+  accepts_gate_G_10: false
+  rejects_gate_G_10: false
+  keeps_gate_G_10_deferred: true
+  infers_acceptance_from_TX_39_or_chat_context: false
+  executes_or_reactivates_any_retained_evidence_family: false
+  waives_deletes_or_completes_any_retained_evidence_obligation: false
+  may_claim_production_readiness: false
+  may_grant_operational_authority: false
+  may_claim_broad_stakeholder_or_affected_party_acceptance: false
+  may_claim_domain_truth_or_domain_acceptance: false
+  may_expand_permissions: false
+  may_rewrite_activated_control_history: false
+supersession:
+  supersedes_decision_id: DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+  scope: Supersedes only the earlier G10-001 review trigger and evidence snapshot with this post-TX-39 reconsideration outcome. It preserves the fail-closed non-acceptance disposition until an explicit accountable successor selects a route.
+  preserves:
+  - the factual TX-21 audit and its recorded validation rollback and limitation evidence
+  - accepted G-07 mixed development-host verification without production operational target-runtime or permission promotion
+  - TX-23 through TX-36 evidence classifications results dispositions and accepted measurements
+  - TX-37 protocol readiness with external evaluation not executed
+  - TX-38 and TX-39 active future-work dispositions and every reactivation trigger
+  - canonical PRDs requirement trace states waivers protected hashes and all prior activated history
+rollback_and_review:
+  rollback_class: additive_fail_closed_G10_reconsideration
+  rollback_scope: Before publication revert the atomic TX-40 decision packet; after publication preserve this decision and supersede it only through a new accountable decision.
+  supersession_rule: A later G-10 decision must quote an explicit accountable human route selection for the exact reviewed baseline and preserve all scope limitations unless separately superseded with evidence.
+  review_triggers:
+  - an accountable human explicitly accepts or rejects G-10 for the bounded non-production migration baseline
+  - the shared baseline or bounded migration scope changes
+  - a retained evidence family is reactivated for a named target deployment or operational context
+  expiry: remains current until an accountable successor explicitly selects the G-10 route; it grants no execution or production authority
+evidence_references:
+- implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+- Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G10-001.yaml
+- Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-016.yaml
+- Sys4AI/control_records/execution_transactions/TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION.yaml
+- Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX39-001.yaml
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001.yaml
+- Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-40-G10-ACCOUNTABLE-RECONSIDERATION-20260712T203155Z.yaml
+validators:
+- cd Sys4AI && make validate-director-decisions validate-director-decision-registry validate-program-state validate-handoffs validate-handoff-registry
+- cd Sys4AI && make validate-prd-semantics validate-independent-evaluation validate-requirement-trace
+- cd Sys4AI && .venv/bin/python -m unittest tests.test_trace_semantics tests.test_self_hosting_acceptance tests.test_independent_evaluation
+- cd Sys4AI && make validate
+- make validate
+- git diff --check

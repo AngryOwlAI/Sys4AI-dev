@@ -1,0 +1,222 @@
+execution_transaction_id: TX-40-G10-ACCOUNTABLE-RECONSIDERATION
+contract_version: 1.0.0
+objective: Reconsider G-10 separately against the shared TX-39 bounded non-production migration baseline and record a fail-closed defer disposition without inferred acceptance or retained-family execution.
+source_requirement_ids:
+- SFA-CORE-VISION-001
+- SFA-P0-FR-004
+- SFA-P0-NFR-002
+source_decision_ids:
+- DDR-SFADEV-STRATEGIC-BASELINE-G10-001
+- DDR-SFADEV-STRATEGIC-BASELINE-G11-016
+- DDR-SFADEV-STRATEGIC-BASELINE-G10-002
+subject_system:
+  system_id: sys4ai
+  system_name: Sys4AI
+subject_layer: framework_product
+runtime_actor:
+  actor_id: codex_meta_agent_runtime
+  actor_type: meta_agent_runtime
+  role_ids:
+  - system_director
+  - baseline_change_manager
+  - source_authority_auditor
+  - trace_owner
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-12-G10-ACCOUNTABLE-RECONSIDERATION
+  - DDR-SFADEV-STRATEGIC-BASELINE-G10-002
+approval_principal:
+  principal_id: alex_omegapy
+  principal_type: accountable_human
+  approval_scope: Reconsider G-10 after TX-39 is shared without inferring acceptance or executing any retained evidence family.
+  authorization_evidence_ids:
+  - HUMAN-TASK-2026-07-12-G10-ACCOUNTABLE-RECONSIDERATION
+  - DDR-SFADEV-STRATEGIC-BASELINE-G10-002
+  model_self_approval: false
+execution_authorization:
+  status: authorized
+  authorized_at: '2026-07-12T20:32:54Z'
+  expires_at: '2026-07-13T08:32:54Z'
+  authority_evidence_ids:
+  - HUMAN-TASK-2026-07-12-G10-ACCOUNTABLE-RECONSIDERATION
+  - DDR-SFADEV-STRATEGIC-BASELINE-G10-002
+  self_authorized: false
+permission_envelope:
+  envelope_id: PERMISSION-ENVELOPE-TX-40-G10-ACCOUNTABLE-RECONSIDERATION
+  status: current
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-12-G10-ACCOUNTABLE-RECONSIDERATION
+  - DDR-SFADEV-STRATEGIC-BASELINE-G10-002
+  data_classes:
+  - repository_controlled_artifacts
+  - accountable_human_gate_evidence
+  resource_limits:
+  - One bounded G-10 decision transaction preflight receipt handoff registry derivative and validation packet.
+  - Preserve TX-39 and all earlier activated evidence byte-for-byte.
+  - Record reconsideration without accepting or rejecting G-10 unless the human route is explicit.
+  - Do not execute reactivate waive delete or claim any retained evidence family.
+  valid_from: '2026-07-12T20:32:54Z'
+  expires_at: '2026-07-13T08:32:54Z'
+  sensitive_data_allowed: false
+  secrets_allowed: false
+  data_egress_allowed: false
+  external_side_effects_allowed: false
+  delegation_allowed: false
+  delegation_expires_at: not_applicable
+  permission_expansion_allowed: false
+allowed_reads:
+- implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+- Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G10-001.yaml
+- Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-016.yaml
+- Sys4AI/control_records/execution_transactions/TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION.yaml
+- Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX39-001.yaml
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001.yaml
+- Sys4AI/registries/**
+allowed_writes:
+- Sys4AI/control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G10-002.yaml
+- Sys4AI/control_records/execution_transactions/TX-40-G10-ACCOUNTABLE-RECONSIDERATION.yaml
+- Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-40-G10-ACCOUNTABLE-RECONSIDERATION-20260712T203155Z.yaml
+- Sys4AI/control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX40-001.yaml
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX40-001.yaml
+- Sys4AI/control_records/program_state.yaml
+- Sys4AI/schemas/contracts/program_state.schema.json
+- Sys4AI/sys_for_ai/trace_validation.py
+- Sys4AI/sys_for_ai/prd_semantics.py
+- Sys4AI/tests/test_trace_semantics.py
+- Sys4AI/tests/test_self_hosting_acceptance.py
+- Sys4AI/registries/*.csv
+- Sys4AI/docs/generated/**
+- implementation_plans/acceptance_reports/STRATEGIC-BASELINE-MIGRATION-G10-ACCOUNTABLE-RECONSIDERATION-SFADEV-TX40.md
+- implementation_plans/completion_receipts/CR-SFADEV-STRATEGIC-BASELINE-TX40-001.md
+allowed_tools:
+- repository filesystem reads and bounded apply_patch writes
+- repository-native Python Make and Git validation
+- deterministic generated-document writers
+allowed_external_actions: []
+forbidden_actions:
+- Infer G-10 acceptance from TX-39 future-work dispositions authorization to reconsider or chat context.
+- Execute reactivate waive delete or represent any retained evidence family as completed or accepted.
+- Modify G11-016 TX-39 G10-001 or any earlier activated control history.
+- Modify canonical PRDs requirement trace states waivers frozen TX-23 or TX-25 evidence or accepted TX-35 measurement.
+- Claim production readiness operational authority stakeholder or affected-party acceptance domain truth domain acceptance or permission expansion.
+- Commit push deploy publish or modify external systems without separate explicit authorization.
+inputs:
+- Human task instruction dated 2026-07-12 authorizing separate post-TX39 G-10 reconsideration while prohibiting inferred acceptance and retained-family execution.
+- Shared baseline commit 99967710984a60985429fa4346861414ddd55d5d
+- HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001
+- RECEIPT-SFADEV-STRATEGIC-BASELINE-TX39-001
+- MEMPREFLIGHT-TX-40-G10-ACCOUNTABLE-RECONSIDERATION-20260712T203155Z
+expected_outputs:
+- An additive G10-002 Director Decision superseding only G10-001's review trigger and evidence snapshot.
+- A fail-closed G-10 reconsideration outcome that remains deferred because acceptance was not explicitly selected.
+- Program state and handoff stopped at an explicit accountable human route-selection gate.
+- Registered and regenerated noncanonical derivative surfaces with focused and aggregate validation evidence.
+validators:
+- validator_id: focused_g10_control
+  command_or_method: cd Sys4AI && make validate-director-decisions validate-director-decision-registry validate-program-state validate-handoffs validate-handoff-registry
+  blocking: true
+  expected_evidence: G10-002 TX-40 state and handoff validate while TX-39 remains preserved.
+- validator_id: semantic_boundary
+  command_or_method: cd Sys4AI && make validate-prd-semantics validate-independent-evaluation validate-requirement-trace
+  blocking: true
+  expected_evidence: G-10 remains deferred and no retained evidence or adjacent authority claim is introduced.
+- validator_id: focused_semantic_tests
+  command_or_method: cd Sys4AI && .venv/bin/python -m unittest tests.test_trace_semantics tests.test_self_hosting_acceptance tests.test_independent_evaluation
+  blocking: true
+  expected_evidence: Explicit-acceptance and retained-family boundaries fail closed.
+- validator_id: aggregate_validation
+  command_or_method: make validate at product and repository roots
+  blocking: true
+  expected_evidence: Product and development-system validation pass with generated readers current.
+- validator_id: frozen_boundaries
+  command_or_method: verify G11-016 TX-39 G10-001 TX-23 TX-25 TX-35 canonical PRDs and requirement trace hashes are unchanged
+  blocking: true
+  expected_evidence: Activated evidence PRD authority and trace state remain byte-identical.
+- validator_id: diff_integrity
+  command_or_method: git diff --check
+  blocking: true
+  expected_evidence: No whitespace or patch-integrity errors.
+stop_conditions:
+- The shared TX-39 baseline or explicit reconsideration authority is absent ambiguous or contradicted.
+- Any acceptance evidence family execution production operational stakeholder domain or permission claim is inferred.
+- Any prior activated record frozen baseline canonical PRD trace state or waiver changes.
+- A blocking validator fails after bounded repair.
+host_capability_requirements:
+  execution_profile_id: codex_app_reference
+  overall_status: verified_available
+  required_capability_ids:
+  - workspace_filesystem
+  - terminal_and_tests
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G07-001
+  - MEMPREFLIGHT-TX-40-G10-ACCOUNTABLE-RECONSIDERATION-20260712T203155Z
+  checked_at: '2026-07-12T20:32:54Z'
+  values_or_goals_may_override: false
+state:
+  status: completed
+  current_state_evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G10-002
+  - TX40-G10-RECONSIDERED-DEFERRED-NO-INFERRED-ACCEPTANCE
+  - TX40-RETAINED-EVIDENCE-FAMILIES-UNEXECUTED-AND-PRESERVED
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX40-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX40-001
+  continuation_state: not_applicable
+  continuation_evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX40-001
+  state_transition_evidence_ids:
+  - HUMAN-TASK-2026-07-12-G10-ACCOUNTABLE-RECONSIDERATION
+  - DDR-SFADEV-STRATEGIC-BASELINE-G10-002
+cancellation:
+  state: not_requested
+  requested_by: not_applicable
+  behavior: Stop before any G-10 acceptance rejection or retained-family reactivation while preserving TX-39 and prior evidence.
+  evidence_ids: []
+  uncertain_operations: []
+escalation:
+  state: pending
+  conditions:
+  - G-10 remains deferred until the accountable human explicitly selects acceptance or rejection for the exact shared bounded baseline.
+  responsible_principal_id: alex_omegapy
+  required_decision: Explicitly accept or reject G-10 for the bounded non-production migration baseline without inferring retained-family acceptance.
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G10-002
+resume_evidence:
+  required: true
+  status: consumed
+  last_known_state: TX-39 retained all remaining named evidence families as active future work and stopped before separate G-10 reconsideration.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX39-001
+  - MEMPREFLIGHT-TX-40-G10-ACCOUNTABLE-RECONSIDERATION-20260712T203155Z
+closeout_evidence:
+  status: complete
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G10-002
+  - TX40-G10-RECONSIDERED-DEFERRED-NO-INFERRED-ACCEPTANCE
+  - TX40-RETAINED-EVIDENCE-FAMILIES-UNEXECUTED-AND-PRESERVED
+  - RECEIPT-SFADEV-STRATEGIC-BASELINE-TX40-001
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX40-001
+  changed_artifacts:
+  - TX-40 adds only fail-closed G-10 reconsideration state controls registries generated readers receipt report and handoff.
+  validation_evidence_ids:
+  - TX40-FOCUSED-CONTROL-VALIDATION-PASS
+  - TX40-FOCUSED-SEMANTIC-TESTS-PASS
+  - TX40-FULL-PRODUCT-TESTS-PASS
+  - TX40-PRODUCT-AND-ROOT-VALIDATION-PASS
+  acceptance_evidence_ids: []
+rollback:
+  status: available
+  strategy: Before publication revert the complete TX-40 packet to shared TX-39 state; after publication preserve the reconsideration and supersede it additively.
+  triggers:
+  - A blocking validator or frozen-boundary check fails.
+  - Any acceptance or retained evidence result is inferred.
+  actions:
+  - Stop later work and preserve diagnostics.
+  - Revert only the unshared TX-40 packet or create an accountable supersession after sharing.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001
+supersession:
+  status: current
+  supersedes_transaction_ids: []
+  superseded_by: not_applicable
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G10-002

@@ -245,6 +245,7 @@ class TraceSemanticTests(unittest.TestCase):
 
     def test_post_tx39_state_requires_future_work_not_waiver_boundary(self) -> None:
         def mutate_state(state):
+            state["current_phase"] = "strategic_baseline_migration_TX_39_remaining_evidence_families_retained_future_work"
             state["blocked_actions"].remove(
                 "treat_TX_39_future_work_dispositions_as_stakeholder_domain_production_operational_evidence_waivers_or_deletions"
             )
@@ -255,11 +256,30 @@ class TraceSemanticTests(unittest.TestCase):
 
     def test_post_tx39_state_requires_separate_g10_gate(self) -> None:
         def mutate_state(state):
+            state["current_phase"] = "strategic_baseline_migration_TX_39_remaining_evidence_families_retained_future_work"
             state["blocked_actions"].remove("reconsider_accept_or_supersede_G_10_inside_TX_39")
 
         result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
         self.assertFalse(result.ok)
         self.assertTrue(any("post-TX-39 state omits blocked action" in item for item in result.messages))
+
+    def test_post_tx40_state_requires_explicit_g10_route_selection(self) -> None:
+        def mutate_state(state):
+            state["blocked_actions"].remove(
+                "accept_G_10_without_explicit_accountable_human_route_selection_for_exact_shared_baseline"
+            )
+
+        result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
+        self.assertFalse(result.ok)
+        self.assertTrue(any("post-TX-40 state omits blocked action" in item for item in result.messages))
+
+    def test_post_tx40_state_requires_retained_families_to_remain_unexecuted(self) -> None:
+        def mutate_state(state):
+            state["blocked_actions"].remove("execute_or_reactivate_any_retained_evidence_family_from_TX_40")
+
+        result = self._mutated_trace(lambda rows: None, state_mutation=mutate_state)
+        self.assertFalse(result.ok)
+        self.assertTrue(any("post-TX-40 state omits blocked action" in item for item in result.messages))
 
     @staticmethod
     def _as_post_tx20(state):

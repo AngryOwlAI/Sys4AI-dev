@@ -21,11 +21,11 @@ class SelfHostingAcceptanceTests(unittest.TestCase):
         self.assertIsNone(state["active_execution_transaction_id"])
         self.assertIsNone(state["active_director_decision_id"])
         self.assertEqual(
-            "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX39-001",
+            "RECEIPT-SFADEV-STRATEGIC-BASELINE-TX40-001",
             state["latest_closeout_evidence_id"],
         )
         self.assertEqual(
-            "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001",
+            "HANDOFF-SFADEV-STRATEGIC-BASELINE-TX40-001",
             state["latest_handoff_evidence_id"],
         )
         self.assertEqual("blocked", state["continuation_state"])
@@ -34,6 +34,7 @@ class SelfHostingAcceptanceTests(unittest.TestCase):
         self.assertTrue(state["human_gate_required"])
         self.assertIn("DDR-SFADEV-STRATEGIC-BASELINE-G07-001", state["current_state_evidence"])
         self.assertIn("DDR-SFADEV-STRATEGIC-BASELINE-G10-001", state["current_state_evidence"])
+        self.assertIn("DDR-SFADEV-STRATEGIC-BASELINE-G10-002", state["current_state_evidence"])
         self.assertEqual("implemented", state["capability_status_summary"]["safety_evaluation_controls"])
         self.assertEqual("accepted_G_08", state["capability_status_summary"]["strategic_approval"])
         self.assertEqual("complete_G_09", state["capability_status_summary"]["derivative_regeneration"])
@@ -53,6 +54,10 @@ class SelfHostingAcceptanceTests(unittest.TestCase):
         self.assertEqual(
             "retained_active_future_work_G_11_016",
             state["capability_status_summary"]["production_operational_evidence_disposition"],
+        )
+        self.assertEqual(
+            "deferred_G_10_002_no_inferred_acceptance",
+            state["capability_status_summary"]["g10_reconsideration"],
         )
         self.assertEqual("accepted_TX_24_7_of_7", state["capability_status_summary"]["semantic_review_evidence"])
         self.assertEqual(

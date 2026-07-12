@@ -1,0 +1,66 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-40-G10-ACCOUNTABLE-RECONSIDERATION-20260712T203155Z
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-40-G10-ACCOUNTABLE-RECONSIDERATION
+created_at: '2026-07-12T20:31:55Z'
+status: PASS_WITH_WARNINGS
+commands_run:
+- command: python -m sys_for_ai.cli memory status --json
+  result: pass
+- command: python -m sys_for_ai.cli memory lookup TX-40-G10-ACCOUNTABLE-RECONSIDERATION
+    --json
+  result: warn
+- command: python -m sys_for_ai.cli memory lookup HANDOFF-SFADEV-STRATEGIC-BASELINE-TX39-001
+    --json
+  result: pass
+- command: python -m sys_for_ai.cli memory search 'G-10 TX-39 accountable reconsideration
+    bounded non-production migration retained evidence families' --limit 10 --json
+  result: pass
+queries:
+- query: G-10 TX-39 accountable reconsideration bounded non-production migration retained
+    evidence families
+  returned_object_ids:
+  - SRC-REG-LOCAL-EVIDENCE-EXECUTION
+  - SRC-REG-PLAN-SCOPE-INTERPRETATION
+  - SRC-REG-EVIDENCE-CLOSURE-PLAN
+  - SRC-TX39-EXECUTION-TRANSACTION
+  - ctrl_strategic_baseline_tx39_execution_transaction
+  - DDR-SFADEV-STRATEGIC-BASELINE-G11-016
+  - SRC-DDR-STRATEGIC-BASELINE-G11-016
+  - ctrl_strategic_baseline_g11_016_decision
+  - SRC-PROGRAM-STATE
+  - ctrl_program_state
+canonical_sources_inspected:
+- path: Sys4AI/registries/local_evidence_execution_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-LOCAL-EVIDENCE-EXECUTION
+  inspected_sections:
+  - registered source metadata
+- path: Sys4AI/registries/plan_scope_interpretation_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-PLAN-SCOPE-INTERPRETATION
+  inspected_sections:
+  - registered source metadata
+- path: Sys4AI/registries/evidence_closure_plan_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-EVIDENCE-CLOSURE-PLAN
+  inspected_sections:
+  - registered source metadata
+registry_rows_inspected:
+- path: Sys4AI/control_records/execution_transactions/TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION.yaml
+  registry: source_registry.csv
+  row_id: SRC-TX39-EXECUTION-TRANSACTION
+  purpose: Confirm memory hit registry evidence.
+- path: control_records/execution_transactions/TX-39-REMAINING-EVIDENCE-FAMILIES-FUTURE-WORK-DISPOSITION.yaml
+  registry: control_record_registry.csv
+  row_id: ctrl_strategic_baseline_tx39_execution_transaction
+  purpose: Confirm memory hit registry evidence.
+- path: control_records/director_decisions/DDR-SFADEV-STRATEGIC-BASELINE-G11-016.yaml
+  registry: director_decision_registry.csv
+  row_id: DDR-SFADEV-STRATEGIC-BASELINE-G11-016
+  purpose: Confirm memory hit registry evidence.
+stale_context_risks:
+- risk_id: MEMPREFLIGHT-RISK-001
+  status: not_observed
+  notes: No generated derivative was used as source authority.
+usable_for_routing: true
