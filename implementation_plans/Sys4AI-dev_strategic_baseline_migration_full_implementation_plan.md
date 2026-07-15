@@ -3,7 +3,7 @@
 | Metadata | Value |
 |---|---|
 | Plan ID | `SFADEV-IMPL-PLAN-STRATEGIC-BASELINE-001` |
-| Document status | Draft for maintainer and product-owner review |
+| Document status | Retained historical planning evidence |
 | Source authority status | Planning artifact; not a canonical requirements baseline |
 | Prepared date | 2026-07-09 |
 | Repository | `AngryOwlAI/Sys4AI-dev` |
@@ -14,8 +14,15 @@
 | Affected layers | `development_system`, `framework_product`, `target_system_template`, future `target_system_instance` packages, and `derivative_surface` |
 | Recommended execution-model route | Harness-neutral bounded execution with a Codex reference-host profile, pending explicit authority approval |
 | Plan relationship | New post-`15a9b17` successor scope; it does not reopen, overwrite, or silently amend the completed July 7-8 implementation-plan sequences |
+| Current disposition | The bounded migration completed at `TX-41`; current state and limitations are controlled by `Sys4AI/control_records/program_state.yaml`, `DDR-SFADEV-STRATEGIC-BASELINE-G10-003`, and the TX-41 receipt and handoff. Retained evidence families remain active future work. |
 
 ---
+
+> **Historical routing notice:** This plan preserves the proposed sequence,
+> review checklists, and gate design used during migration. Its pending boxes,
+> approval table, and logical-next-step section are not current execution
+> authority. Use current program state and accepted control evidence before
+> beginning new work.
 
 ## 0. Executive Summary
 

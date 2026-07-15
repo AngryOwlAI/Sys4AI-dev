@@ -1,0 +1,92 @@
+memory_preflight_receipt_id: MEMPREFLIGHT-TX-DOCS-SPINE-001-20260715T144704Z
+schema_version: 1.0.0
+execution_profile_id: portable_execution_transaction_v1
+execution_transaction_id: TX-DOCS-SPINE-001
+created_at: '2026-07-15T14:47:04Z'
+status: PASS_WITH_WARNINGS
+commands_run:
+- command: .venv/bin/python -m sys_for_ai.cli memory status --json
+  result: pass_with_1369_objects_known_pending_hash_warnings_and_zero_authority_inversions
+- command: .venv/bin/python -m sys_for_ai.cli memory lookup SRC-PRD-P0 --json
+  result: canonical_source_resolved_and_inspected
+- command: .venv/bin/python -m sys_for_ai.cli memory lookup SRC-PRD-P1 --json
+  result: canonical_source_resolved_and_inspected
+- command: verify candidate SHA256SUMS.json
+  result: all_eleven_listed_files_match
+- command: inspect current program state registries policies host profile validators and TX-41 closeout
+  result: pass
+queries:
+- query: canonical Phase 0 and Phase 1 requirements
+  returned_object_ids:
+  - SRC-PRD-P0
+  - SRC-PRD-P1
+- query: documentation source authority and derivative boundaries
+  returned_object_ids:
+  - SRC-REG-SOURCES
+  - SRC-REG-DERIVATIVES
+  - SRC-FORMAT-PROFILE-POLICY
+  - SRC-MEMORY-RETRIEVAL-POLICY
+- query: current bounded non-production state and host freshness
+  returned_object_ids:
+  - SRC-PROGRAM-STATE
+  - SRC-HOST-PROFILE-CODEX-APP-REFERENCE
+  - SRC-HANDOFF-STRATEGIC-BASELINE-TX41
+canonical_sources_inspected:
+- path: PRDs/Sys4AI_phase-0_product_system_design_prd.md
+  registry: source_registry.csv
+  row_id: SRC-PRD-P0
+  inspected_sections:
+  - four-object model system layers source-first memory documentation and source-version control requirements
+- path: PRDs/Sys4AI_phase-1_implementation_initialization_prd.md
+  registry: source_registry.csv
+  row_id: SRC-PRD-P1
+  inspected_sections:
+  - repository setup documentation source-first registry and portable execution requirements
+- path: Sys4AI/control_records/program_state.yaml
+  registry: source_registry.csv
+  row_id: SRC-PROGRAM-STATE
+  inspected_sections:
+  - current phase lifecycle active control state capability summary retained evidence and blocked claims
+- path: Sys4AI/configs/host_profiles/codex_app_reference.toml
+  registry: source_registry.csv
+  row_id: SRC-HOST-PROFILE-CODEX-APP-REFERENCE
+  inspected_sections:
+  - profile freshness permission source verified interfaces and known limitations
+- path: Sys4AI/registries/source_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-SOURCES
+  inspected_sections:
+  - headers path conventions source types owners authority states and related documentation rows
+- path: Sys4AI/registries/object_relationship_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-REG-OBJECT-RELATIONSHIPS
+  inspected_sections:
+  - headers predicate vocabulary documentation edges and TX-41 closeout edges
+registry_rows_inspected:
+- path: registries/source_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-ROOT-README
+  purpose: Confirm the existing root README row must be updated rather than duplicated.
+- path: registries/source_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-SELFHOST-BOUNDARY-POLICY
+  purpose: Confirm controlled registry status supports correcting the stale Draft heading.
+- path: registries/source_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-MEMORY-RETRIEVAL-POLICY
+  purpose: Confirm controlled registry status supports correcting the stale Draft heading.
+- path: registries/source_registry.csv
+  registry: source_registry.csv
+  row_id: SRC-STRATEGIC-BASELINE-MIGRATION-PLAN
+  purpose: Confirm the plan is noncanonical planning evidence and inspect TX-41 completion before status reconciliation.
+stale_context_risks:
+- risk_id: MEMPREFLIGHT-DOCS-RISK-001
+  status: observed_and_mitigated
+  notes: Memory reports known pending source hashes. Current canonical and controlled files were inspected directly and no authority inversion was reported.
+- risk_id: MEMPREFLIGHT-DOCS-RISK-002
+  status: observed_and_mitigated
+  notes: The verified host profile remains fresh only through 2026-07-18T15:19:10Z and grants no future transaction or production permission.
+- risk_id: MEMPREFLIGHT-DOCS-RISK-003
+  status: bounded_blocker
+  notes: GitHub private vulnerability reporting is disabled and no private fallback contact or supported-version evidence is registered. SECURITY.md must remain unpromoted.
+usable_for_routing: true

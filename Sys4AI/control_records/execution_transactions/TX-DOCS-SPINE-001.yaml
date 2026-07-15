@@ -1,0 +1,266 @@
+execution_transaction_id: TX-DOCS-SPINE-001
+contract_version: 1.0.0
+objective: Add and register a current human-facing Sys4AI documentation spine and close it with local validation and a reviewable commit.
+source_requirement_ids:
+- SFA-CORE-DOC-001
+- SFA-CORE-MD-001
+- SFA-CORE-LAYER-001
+- SFA-CORE-SVC-001
+- SFA-P1-INIT-MEM-003
+- SFA-P1-INIT-EXEC-001
+source_decision_ids:
+- DDR-SFADEV-STRATEGIC-BASELINE-G10-003
+subject_system:
+  system_id: sys4ai_dev
+  system_name: Sys4AI-dev documentation workspace
+subject_layer: development_system
+runtime_actor:
+  actor_id: codex_meta_agent_runtime
+  actor_type: meta_agent_runtime
+  role_ids:
+  - svc_documentation_surface_architect
+  - source_authority_auditor
+  - baseline_change_manager
+  - trace_owner
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-15-SYS4AI-DOCUMENTATION-SPINE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G10-003
+approval_principal:
+  principal_id: alex_omegapy
+  principal_type: accountable_human
+  approval_scope: Implement and commit one documentation-only spine across development-system and framework-product documentation surfaces without changing product requirements runtime semantics schemas permissions or production authority.
+  authorization_evidence_ids:
+  - HUMAN-TASK-2026-07-15-SYS4AI-DOCUMENTATION-SPINE
+  model_self_approval: false
+execution_authorization:
+  status: authorized
+  authorized_at: '2026-07-15T14:47:04Z'
+  expires_at: '2026-07-16T02:47:04Z'
+  authority_evidence_ids:
+  - HUMAN-TASK-2026-07-15-SYS4AI-DOCUMENTATION-SPINE
+  self_authorized: false
+permission_envelope:
+  envelope_id: PERMISSION-ENVELOPE-TX-DOCS-SPINE-001
+  status: current
+  authority_source_ids:
+  - HUMAN-TASK-2026-07-15-SYS4AI-DOCUMENTATION-SPINE
+  - DDR-SFADEV-STRATEGIC-BASELINE-G10-003
+  data_classes:
+  - repository_controlled_artifacts
+  - candidate_documentation_package
+  - local_validation_evidence
+  resource_limits:
+  - One documentation and developer-experience packet.
+  - Human-authored documentation navigation registries and required local execution evidence only.
+  - Deterministic generated readers may change only through existing generators.
+  - No Product Requirements Document runtime schema package command CI permission production or external-system mutation.
+  valid_from: '2026-07-15T14:47:04Z'
+  expires_at: '2026-07-16T02:47:04Z'
+  sensitive_data_allowed: false
+  secrets_allowed: false
+  data_egress_allowed: false
+  external_side_effects_allowed: false
+  delegation_allowed: false
+  delegation_expires_at: not_applicable
+  permission_expansion_allowed: false
+allowed_reads:
+- /Users/alex.omegapy/Downloads/sys4ai_documentation_proposal/**
+- README.md
+- LICENSE
+- NOTICE
+- PRDs/**
+- implementation_plans/**
+- .agents/skills/**
+- .codex/skills/**
+- .github/workflows/**
+- Makefile
+- Sys4AI/**
+allowed_writes:
+- README.md
+- ARCHITECTURE.md
+- CONTRIBUTING.md
+- implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+- Sys4AI/README.md
+- Sys4AI/docs/README.md
+- Sys4AI/docs/getting_started.md
+- Sys4AI/docs/concepts_and_invariants.md
+- Sys4AI/docs/documentation_map.md
+- Sys4AI/docs/self_hosting_boundary_policy.md
+- Sys4AI/docs/memory_retrieval_policy.md
+- Sys4AI/registries/source_registry.csv
+- Sys4AI/registries/object_relationship_registry.csv
+- Sys4AI/registries/control_record_registry.csv
+- Sys4AI/registries/memory_preflight_receipt_registry.csv
+- Sys4AI/registries/completion_receipt_registry.csv
+- Sys4AI/registries/handoff_registry.csv
+- Sys4AI/control_records/execution_transactions/TX-DOCS-SPINE-001.yaml
+- Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-DOCS-SPINE-001-20260715T144704Z.yaml
+- Sys4AI/control_records/completions/RECEIPT-SFADEV-DOCUMENTATION-SPINE-001.yaml
+- Sys4AI/control_records/handoffs/HANDOFF-SFADEV-DOCUMENTATION-SPINE-001.yaml
+- Sys4AI/control_records/program_state.yaml
+- Sys4AI/docs/generated/**
+allowed_tools:
+- repository filesystem reads and bounded writes
+- local Python Make and deterministic generators
+- read-only Git and GitHub repository metadata inspection
+- git status diff add and commit
+allowed_external_actions: []
+forbidden_actions:
+- Modify canonical Product Requirements Documents requirements runtime semantics Python behavior schemas command behavior Make targets CI or package metadata.
+- Restore any retired authoring continuation or runtime surface.
+- Add SECURITY.md without a verified private reporting route and supported scope.
+- Invent approval security contact stakeholder domain production operational permission or evaluation evidence.
+- Hand-edit generated readers.
+- Push open a pull request publish deploy or change an external system.
+- Rewrite activated control history or discard unrelated work.
+inputs:
+- Human documentation-only authorization dated 2026-07-15.
+- Verified candidate documentation proposal package.
+- Canonical Phase 0 and Phase 1 Product Requirements Documents.
+- Current program state host profile registries policies validators and accepted TX-41 boundary.
+expected_outputs:
+- Current root README architecture overview and contributor guide.
+- Current getting-started concepts and documentation-map guides.
+- Coherent root and product documentation navigation.
+- Registered controlled sources and minimum relationship edges.
+- Security gate result with no misleading security policy.
+- Source-first preflight completion receipt and resumable handoff.
+- Passing tests focused validators aggregate validation and writing quality gate.
+- One clean local documentation commit with no push.
+validators:
+- validator_id: proposal_integrity
+  command_or_method: Verify every SHA256SUMS.json entry against the candidate package bytes.
+  blocking: true
+  expected_evidence: All eleven listed package files match their declared SHA-256 values.
+- validator_id: markdown_source_surface
+  command_or_method: cd Sys4AI && make validate-markdown-source-surface
+  blocking: true
+  expected_evidence: Controlled Markdown sources are registered and generated authority remains bounded.
+- validator_id: registry_graph
+  command_or_method: cd Sys4AI && make validate-registry-graph
+  blocking: true
+  expected_evidence: New source and relationship IDs resolve without authority inversion.
+- validator_id: generated_readers
+  command_or_method: cd Sys4AI && make validate-generated-reader-surface validate-generated-derivatives
+  blocking: true
+  expected_evidence: Deterministic readers are current and noncanonical.
+- validator_id: technical_writing_quality
+  command_or_method: Run the active technical-writing-quality-gate warning scan and source-aware review on the six human-facing documents.
+  blocking: true
+  expected_evidence: Gate result is pass with no unsupported or inflated claim.
+- validator_id: product_tests
+  command_or_method: cd Sys4AI && .venv/bin/python -m unittest discover -s tests -p test_*.py
+  blocking: true
+  expected_evidence: The full product unit-test suite passes.
+- validator_id: aggregate_validation
+  command_or_method: Run make validate from Sys4AI and repository roots.
+  blocking: true
+  expected_evidence: Product and development-system validation pass.
+- validator_id: diff_integrity
+  command_or_method: git diff --check
+  blocking: true
+  expected_evidence: No patch-integrity error or unrelated change is present.
+stop_conditions:
+- Any proposal checksum fails.
+- A required claim cannot be supported by current controlled sources.
+- The documentation requires a Product Requirements Document runtime schema CI package command permission or production change.
+- A generated reader would require hand editing.
+- A security contact private reporting route supported version or authority would need to be invented.
+- A blocking validator fails after the smallest documentation repair.
+host_capability_requirements:
+  execution_profile_id: codex_app_reference
+  overall_status: verified_available
+  required_capability_ids:
+  - workspace_filesystem
+  - terminal_and_tests
+  - memory_and_retrieval
+  evidence_ids:
+  - DDR-SFADEV-STRATEGIC-BASELINE-G07-001
+  - MEMPREFLIGHT-TX-DOCS-SPINE-001-20260715T144704Z
+  checked_at: '2026-07-15T14:47:04Z'
+  values_or_goals_may_override: false
+state:
+  status: completed
+  current_state_evidence_ids:
+  - HUMAN-TASK-2026-07-15-SYS4AI-DOCUMENTATION-SPINE
+  - MEMPREFLIGHT-TX-DOCS-SPINE-001-20260715T144704Z
+  - RECEIPT-SFADEV-DOCUMENTATION-SPINE-001
+  - HANDOFF-SFADEV-DOCUMENTATION-SPINE-001
+  continuation_state: consumed
+  continuation_evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX41-001
+  state_transition_evidence_ids:
+  - HUMAN-TASK-2026-07-15-SYS4AI-DOCUMENTATION-SPINE
+  - RECEIPT-SFADEV-DOCUMENTATION-SPINE-001
+cancellation:
+  state: not_requested
+  requested_by: not_applicable
+  behavior: Stop new writes preserve the bounded diff and report any uncertain operation.
+  evidence_ids: []
+  uncertain_operations: []
+escalation:
+  state: resolved
+  conditions:
+  - The human supplied exact documentation scope and explicit authority boundaries.
+  responsible_principal_id: alex_omegapy
+  required_decision: No Director Decision is required unless implementation exposes an unresolved authority choice.
+  evidence_ids:
+  - HUMAN-TASK-2026-07-15-SYS4AI-DOCUMENTATION-SPINE
+resume_evidence:
+  required: true
+  status: current
+  last_known_state: TX-41 completed the accepted bounded non-production migration and permits new governed work only through separate scope and authority.
+  evidence_ids:
+  - HANDOFF-SFADEV-STRATEGIC-BASELINE-TX41-001
+  - MEMPREFLIGHT-TX-DOCS-SPINE-001-20260715T144704Z
+closeout_evidence:
+  status: complete
+  evidence_ids:
+  - RECEIPT-SFADEV-DOCUMENTATION-SPINE-001
+  - HANDOFF-SFADEV-DOCUMENTATION-SPINE-001
+  changed_artifacts:
+  - README.md
+  - ARCHITECTURE.md
+  - CONTRIBUTING.md
+  - Sys4AI/README.md
+  - Sys4AI/docs/README.md
+  - Sys4AI/docs/getting_started.md
+  - Sys4AI/docs/concepts_and_invariants.md
+  - Sys4AI/docs/documentation_map.md
+  - Sys4AI/docs/self_hosting_boundary_policy.md
+  - Sys4AI/docs/memory_retrieval_policy.md
+  - implementation_plans/Sys4AI-dev_strategic_baseline_migration_full_implementation_plan.md
+  - Sys4AI/control_records/execution_transactions/TX-DOCS-SPINE-001.yaml
+  - Sys4AI/control_records/memory_preflights/MEMPREFLIGHT-TX-DOCS-SPINE-001-20260715T144704Z.yaml
+  - Sys4AI/control_records/completions/RECEIPT-SFADEV-DOCUMENTATION-SPINE-001.yaml
+  - Sys4AI/control_records/handoffs/HANDOFF-SFADEV-DOCUMENTATION-SPINE-001.yaml
+  - Sys4AI/registries
+  - Sys4AI/docs/generated
+  validation_evidence_ids:
+  - PROPOSAL-SHA256-PASS-11-OF-11
+  - TECHNICAL-WRITING-GATE-PASS-6-FILES-0-WARNINGS
+  - PRODUCT-TESTS-PASS-359-OF-359
+  - SYS4AI-MAKE-VALIDATE-PASS
+  - ROOT-MAKE-VALIDATE-PASS
+  - GENERATED-DERIVATIVES-CURRENT
+  - GIT-DIFF-CHECK-PASS
+  acceptance_evidence_ids:
+  - HUMAN-TASK-2026-07-15-SYS4AI-DOCUMENTATION-SPINE
+  - RECEIPT-SFADEV-DOCUMENTATION-SPINE-001
+rollback:
+  status: planned
+  strategy: Before publication revert the documentation packet and its registry control and generated-reader rows atomically. After publication preserve accepted evidence and supersede it additively.
+  triggers:
+  - A blocking validator fails or a current-state claim conflicts with controlled evidence.
+  - A write or claim escapes the documentation-only permission envelope.
+  actions:
+  - Stop new work and preserve the diff and validation output.
+  - Revert the unshared local commit as one packet or use controlled supersession after publication.
+  evidence_ids:
+  - BASELINE-EF93CC008F1D
+supersession:
+  status: current
+  supersedes_transaction_ids: []
+  superseded_by: not_applicable
+  evidence_ids:
+  - HUMAN-TASK-2026-07-15-SYS4AI-DOCUMENTATION-SPINE

@@ -351,6 +351,10 @@ Registered YAML control records are listed below. Their source files and registr
 | ctrl_strategic_baseline_tx41_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-41-G10-ACCOUNTABLE-ACCEPTANCE-20260712T204730Z.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
 | ctrl_strategic_baseline_tx41_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX41-001.yaml | completion_receipt | controlled | system_director | contract_completion_receipt_v1_0 | pending |
 | ctrl_strategic_baseline_tx41_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX41-001.yaml | handoff | controlled | system_director | contract_handoff_v1_0 | pending |
+| ctrl_documentation_spine_execution | control_records/execution_transactions/TX-DOCS-SPINE-001.yaml | execution_transaction | controlled | svc_documentation_surface_architect | contract_execution_transaction | pending |
+| ctrl_documentation_spine_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-DOCS-SPINE-001-20260715T144704Z.yaml | memory_preflight_receipt | controlled | source_first_memory | contract_memory_preflight_receipt | pending |
+| ctrl_documentation_spine_completion | control_records/completions/RECEIPT-SFADEV-DOCUMENTATION-SPINE-001.yaml | completion_receipt | controlled | svc_documentation_surface_architect | contract_completion_receipt_v1_0 | pending |
+| ctrl_documentation_spine_handoff | control_records/handoffs/HANDOFF-SFADEV-DOCUMENTATION-SPINE-001.yaml | handoff | controlled | svc_documentation_surface_architect | contract_handoff_v1_0 | pending |
 
 ## Validation Contract Trace
 

@@ -1,7 +1,10 @@
 # Memory Retrieval Policy
 
-**Status:** Draft  
+**Status:** Controlled
 **Scope:** Source-first memory for `Sys4AI` Phase 1
+
+**Authority note:** Registered as `SRC-MEMORY-RETRIEVAL-POLICY`. Retrieval
+guides navigation and cannot grant truth, permission, approval, or completion.
 
 ---
 

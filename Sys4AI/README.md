@@ -4,6 +4,13 @@
 
 Its purpose is meta-agentic: a root AI agent uses `Sys4AI` to design, develop, run, improve, and maintain target agentic systems for specific use cases.
 
+> **Current boundary:** version `0.1.0`, lifecycle stage `test`, accepted only
+> as a bounded non-production baseline. The repository does not establish a
+> production target runtime, independent external evaluation, stakeholder or
+> target-domain acceptance, operational authority, production readiness, or
+> permission expansion. See
+> [`control_records/program_state.yaml`](control_records/program_state.yaml).
+
 Phase 0 defines the product and system-design baseline. Phase 1 initializes the implementation: Python environment, YAML control records, TOML configuration examples, JSON Schema validation contracts, validators, skill adapters, memory registries, generated derivative stubs, and documentation policies.
 
 ## Phase 1 setup
@@ -63,3 +70,15 @@ Canonical sources and registries outrank generated derivatives. Obsidian, wiki, 
 Skill routing for unclear target-system intent is defined in [`docs/skill_integration_policy.md`](docs/skill_integration_policy.md).
 
 PRD trace validation is backed by explicit per-requirement rows in [`registries/requirement_trace_registry.csv`](registries/requirement_trace_registry.csv). Each row records structural coverage status, semantic trace class, justification for partial, deferred, or out-of-phase mappings, and a semantic review verdict for non-implemented mappings.
+
+## Documentation
+
+- [Repository architecture](../ARCHITECTURE.md)
+- [Getting started](docs/getting_started.md)
+- [Concepts and invariants](docs/concepts_and_invariants.md)
+- [Documentation map](docs/documentation_map.md)
+- [Contributor guide](../CONTRIBUTING.md)
+- [Documentation policy index](docs/README.md)
+
+Generated pages under `docs/generated/` are navigation aids. They are not
+canonical requirements, policy, permission, or state authority.

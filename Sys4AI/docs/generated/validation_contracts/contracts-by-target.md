@@ -460,6 +460,7 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_completion_receipt_v0_2 | registries/control_record_registry.csv | ctrl_target_package_smoke_completion | control_records/completions/RECEIPT-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml | completion_receipt_v0_2 |
 | contract_completion_receipt_v0_2 | registries/control_record_registry.csv | ctrl_walking_skeleton_demo_completion | control_records/completions/RECEIPT-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml | completion_receipt_v0_2 |
 | contract_completion_receipt_v0_2 | registries/control_record_registry.csv | ctrl_walking_skeleton_flow_completion | control_records/completions/RECEIPT-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml | completion_receipt_v0_2 |
+| contract_completion_receipt_v1_0 | registries/control_record_registry.csv | ctrl_documentation_spine_completion | control_records/completions/RECEIPT-SFADEV-DOCUMENTATION-SPINE-001.yaml | completion_receipt |
 | contract_completion_receipt_v1_0 | registries/control_record_registry.csv | ctrl_strategic_baseline_tx10_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX10-001.yaml | completion_receipt |
 | contract_completion_receipt_v1_0 | registries/control_record_registry.csv | ctrl_strategic_baseline_tx11_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX11-001.yaml | completion_receipt |
 | contract_completion_receipt_v1_0 | registries/control_record_registry.csv | ctrl_strategic_baseline_tx12_completion | control_records/completions/RECEIPT-SFADEV-STRATEGIC-BASELINE-TX12-001.yaml | completion_receipt |
@@ -542,6 +543,7 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_director_decision | registries/control_record_registry.csv | ctrl_sys4ai_name_migration_director_decision | control_records/director_decisions/DDR-SYS4AI-DEV-NAME-MIGRATION-001.yaml | director_decision |
 | contract_discovery_record_registry_row | registries/artifact_contract_registry.csv | artifact_rdr | requirements-discovery-record.md | RDR |
 | contract_execution_transaction | registries/artifact_contract_registry.csv | artifact_execution_transaction | control_records/execution_transactions/*.yaml | ExecutionTransaction |
+| contract_execution_transaction | registries/control_record_registry.csv | ctrl_documentation_spine_execution | control_records/execution_transactions/TX-DOCS-SPINE-001.yaml | execution_transaction |
 | contract_execution_transaction | registries/control_record_registry.csv | ctrl_strategic_baseline_tx10_execution_transaction | control_records/execution_transactions/TX-10-ACTIVE-SURFACE-MIGRATION.yaml | execution_transaction |
 | contract_execution_transaction | registries/control_record_registry.csv | ctrl_strategic_baseline_tx11_execution_transaction | control_records/execution_transactions/TX-11-TRACE-SCHEMA.yaml | execution_transaction |
 | contract_execution_transaction | registries/control_record_registry.csv | ctrl_strategic_baseline_tx12_execution_transaction | control_records/execution_transactions/TX-12-TRACE-DATA.yaml | execution_transaction |
@@ -605,6 +607,7 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_handoff_v0_2 | registries/control_record_registry.csv | ctrl_target_package_smoke_handoff | control_records/handoffs/HANDOFF-SFADEV-21-TARGET-PACKAGE-SMOKE-001.yaml | handoff_v0_2 |
 | contract_handoff_v0_2 | registries/control_record_registry.csv | ctrl_walking_skeleton_demo_handoff | control_records/handoffs/HANDOFF-SFADEV-22-WALKING-SKELETON-DEMO-001.yaml | handoff_v0_2 |
 | contract_handoff_v0_2 | registries/control_record_registry.csv | ctrl_walking_skeleton_flow_handoff | control_records/handoffs/HANDOFF-SFADEV-20-WALKING-SKELETON-FLOW-001.yaml | handoff_v0_2 |
+| contract_handoff_v1_0 | registries/control_record_registry.csv | ctrl_documentation_spine_handoff | control_records/handoffs/HANDOFF-SFADEV-DOCUMENTATION-SPINE-001.yaml | handoff |
 | contract_handoff_v1_0 | registries/control_record_registry.csv | ctrl_strategic_baseline_tx10_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX10-001.yaml | handoff |
 | contract_handoff_v1_0 | registries/control_record_registry.csv | ctrl_strategic_baseline_tx11_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX11-001.yaml | handoff |
 | contract_handoff_v1_0 | registries/control_record_registry.csv | ctrl_strategic_baseline_tx12_handoff | control_records/handoffs/HANDOFF-SFADEV-STRATEGIC-BASELINE-TX12-001.yaml | handoff |
@@ -640,6 +643,7 @@ Validation contracts prove structural conformance only. They do not prove semant
 | contract_host_capability_profile | registries/config_source_registry.csv | cfg_codex_app_reference | configs/host_profiles/codex_app_reference.toml | host_capability_profile |
 | contract_independent_evaluation_protocol | registries/artifact_contract_registry.csv | artifact_independent_evaluation_protocol | assurance/independent_evaluation_protocol_tx37.yaml | IndependentEvaluationProtocol |
 | contract_memory_preflight_receipt | registries/artifact_contract_registry.csv | artifact_memory_preflight | control_records/memory_preflights/*.yaml | MemoryPreflightReceipt |
+| contract_memory_preflight_receipt | registries/control_record_registry.csv | ctrl_documentation_spine_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-DOCS-SPINE-001-20260715T144704Z.yaml | memory_preflight_receipt |
 | contract_memory_preflight_receipt | registries/control_record_registry.csv | ctrl_strategic_baseline_tx10_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-10-ACTIVE-SURFACE-MIGRATION-20260710T135843Z.yaml | memory_preflight_receipt |
 | contract_memory_preflight_receipt | registries/control_record_registry.csv | ctrl_strategic_baseline_tx11_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-11-TRACE-SCHEMA-20260710T142714Z.yaml | memory_preflight_receipt |
 | contract_memory_preflight_receipt | registries/control_record_registry.csv | ctrl_strategic_baseline_tx12_memory_preflight | control_records/memory_preflights/MEMPREFLIGHT-TX-12-TRACE-DATA-20260710T145240Z.yaml | memory_preflight_receipt |

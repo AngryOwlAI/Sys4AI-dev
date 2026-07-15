@@ -1,7 +1,11 @@
 # Self-Hosting Boundary Policy
 
-**Status:** Draft
+**Status:** Controlled
 **Scope:** `Sys4AI-dev` dogfooding `Sys4AI` Phase 1 bounded-execution concepts
+
+**Authority note:** Registered as `SRC-SELFHOST-BOUNDARY-POLICY`. This policy
+does not grant write, approval, permission, production, or operational
+authority.
 
 ---
 
