@@ -9,6 +9,11 @@ The governing dependency rule is:
 
 > Sys4AI-dev may depend on Sys4AI. Sys4AI must not depend on Sys4AI-dev.
 
+## Your Soul
+
+The SOUL.md file is mandatory for all agents to read and understand. It define core aspect of your personality, 
+the way you think, reason, and act.  It is the most important file in the repository and should be read first by any agent before doing any work in the project.
+
 ## Sixty-second orientation
 
 | Object | Meaning | Location |
